@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequestWithoutPaymentReference",
+    "OmniProcessId": {
+        "Name": "GetPaymentReferencesDevDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetPaymentReferencesDevDinero/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "accountNumber": "%AccountExternalId%",
+            "additionalNode": "=\"\"",
+            "channel": "%DRSetHeader:channel%",
+            "idApplication": "%DRSetHeader:idApplication%",
+            "idBusinessTransaction": "= \"\"",
+            "idESBTransaction": "=\"\"",
+            "identificationNumber": "=\"\"",
+            "identificationType": "=\"\"",
+            "password": "=\"\"",
+            "paymentReference": "=\"\"",
+            "startDate": "%DRSetHeader:startDate%",
+            "subscriberNumber": "=\"\"",
+            "target": "=\"\"",
+            "userApplication": "=\"\"",
+            "userSession": "=\"\""
+        },
+        "executionConditionalFormula": "IPGetMock:ModoTest = \"false\" && SVAcountReference92:reference = \"93\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "SVRequest",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetPaymentReferencesDevDinero/Procedure/SVRequestWithoutPaymentReference"
+}

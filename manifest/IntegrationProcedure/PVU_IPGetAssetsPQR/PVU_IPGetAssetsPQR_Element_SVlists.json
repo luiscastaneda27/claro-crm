@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVlists",
+    "OmniProcessId": {
+        "Name": "IPGetAssetsPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetAssetsPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "numerosTelefonos": "=LIST(FILTER(LIST(%DRGetAssets%), 'AssetType == \"MSISDN\"'))",
+            "tecnologias": "=LIST(FILTER(LIST(%DRGetAssets%), 'AssetType == \"Tech\" && AssetFamily == \"Device\"'))",
+            "terminales": "=LIST(FILTER(LIST(%DRGetAssets%), 'AssetType == \"Handset\" && AssetFamily == \"Device\"'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetAssetsPQR/Procedure/SVlists"
+}

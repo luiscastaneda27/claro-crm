@@ -1,0 +1,75 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPGestorDocumentalModDatos",
+    "OmniProcessId": {
+        "Name": "IPGestorDocumentalForContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGestorDocumentalForContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBModificacionDatosGestorDoc",
+        "OmniProcessId": {
+            "Name": "IPGestorDocumentalForContract",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGestorDocumentalForContract/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGestorDocumentalForContract/Procedure/CBModificacionDatosGestorDoc",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBModificacionDatosGestorDoc",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "docName": "S01%DRGetCaseModDatos:NumeroCaso%.pdf",
+            "document": {
+                "xdCRM": "SALESFORCE",
+                "xdEmpresa": "COMCEL",
+                "xdIdCliente": "%DRGetCaseModDatos:AccountId%",
+                "xdIdProceso": "%DRGetCaseModDatos:NumeroCaso%",
+                "xdIdSalesforce": "%DRGetCaseModDatos:NumeroCaso%",
+                "xdMIN": "%DRGetAssetModDatos:subscriberNumber%",
+                "xdNombrePunto": "%DRGetUserDetails:UserDetails:PuntoVenta%",
+                "xdNumeroContrato": "S01%DRGetCaseModDatos:NumeroCaso%",
+                "xdNumeroIdentificacion": "%DRGetCaseModDatos:DocumentNumber%",
+                "xdTipoDocumental": "CONTRATO",
+                "xdTipoIdentificacion": "%DRGetCaseModDatos:DocumentType%"
+            },
+            "idDocument": "%DocumentData:DocumentContentVersionId%",
+            "serieDocumental": 1,
+            "target": "%RA_GetTargetAmb:targetCode%",
+            "xdIdProceso": "%DRGetCaseModDatos:NumeroCaso%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPMSEnSpDocUpload_InsertEnSpDocDelay",
+        "label": "IntegrationProcedureAction3",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGestorDocumentalForContract/Procedure/IPGestorDocumentalModDatos"
+}

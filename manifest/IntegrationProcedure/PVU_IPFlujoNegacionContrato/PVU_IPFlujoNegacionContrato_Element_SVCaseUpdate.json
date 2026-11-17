@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdate",
+    "OmniProcessId": {
+        "Name": "IPFlujoNegacionContrato",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPFlujoNegacionContrato/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBOrderCancelacion",
+        "OmniProcessId": {
+            "Name": "IPFlujoNegacionContrato",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPFlujoNegacionContrato/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPFlujoNegacionContrato/Procedure/CBOrderCancelacion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBOrderCancelacion",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetId": "%SetValuesSuspensionOrder:SVAssetId%",
+            "Id": "%SetValuesSuspensionOrder:SVCaseInfo:Id%",
+            "StageNegacion": "Suspensión iniciada"
+        },
+        "executionConditionalFormula": "IPUpdateOrderSuspension == true",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPFlujoNegacionContrato/Procedure/SVCaseUpdate"
+}

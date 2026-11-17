@@ -1,0 +1,56 @@
+{
+    "Description": "ISBLANK(%OM_DRE_GetOrderItemsActionAdd:ConnectDate%)\n%DRE_GetEffectiveDateFFRL:MilestoneInput:orderItems|1:item:services|1:action% == 'Add'",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRL_OrderItemAdd",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "AdditionProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/AdditionProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "AdditionProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "IdSuscripcion": "%DME_ObtenerIdSuscripcion:Subscription:Id%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_OrderItem",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%DRE_GetOrderItemActionAdd%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "DRT_CreateOrderItemsListAdd",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/DRL_OrderItemAdd"
+}

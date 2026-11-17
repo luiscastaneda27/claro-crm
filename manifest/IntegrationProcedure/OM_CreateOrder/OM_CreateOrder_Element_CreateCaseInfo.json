@@ -1,0 +1,23 @@
+{
+    "Description": "Si el tipo de orden es Suspension y posee valor en el campo dateExecution entonces se genera un JSON para el campo PVU_CaseInfo__c de la orden",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CreateCaseInfo",
+    "OmniProcessId": {
+        "Name": "CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%orderType% == \"Suspension\" && ISNOTBLANK(%dateExecution%)",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock2",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/CreateCaseInfo"
+}

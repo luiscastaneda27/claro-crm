@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFechayHora",
+    "OmniProcessId": {
+        "Name": "CreacionODSCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CreacionODSCaso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "fechaEntrada": "=YEAR(%DRGetODSData:Caso:FechaCreacion%) + '-' + IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(MONTH(%DRGetODSData:Caso:FechaCreacion%))) == 1, '0' + TOSTRING(MONTH(%DRGetODSData:Caso:FechaCreacion%)), TOSTRING(MONTH(%DRGetODSData:Caso:FechaCreacion%))) + '-' + IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(DAY(%DRGetODSData:Caso:FechaCreacion%))) == 1, '0' + TOSTRING(DAY(%DRGetODSData:Caso:FechaCreacion%)), TOSTRING(DAY(%DRGetODSData:Caso:FechaCreacion%)))",
+            "horaEntrada": "=IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(HOUR(%DRGetODSData:Caso:FechaCreacion%))) == 1, '0' + TOSTRING(HOUR(%DRGetODSData:Caso:FechaCreacion%)), TOSTRING(HOUR(%DRGetODSData:Caso:FechaCreacion%))) + ':' + IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(MINUTE(%DRGetODSData:Caso:FechaCreacion%))) == 1, '0' + TOSTRING(MINUTE(%DRGetODSData:Caso:FechaCreacion%)), TOSTRING(MINUTE(%DRGetODSData:Caso:FechaCreacion%)))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CreacionODSCaso/Procedure/SVFechayHora"
+}

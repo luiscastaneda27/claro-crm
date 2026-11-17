@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_FormaMetodoPagoAliadoFC_PL",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentMethodInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_PerfilAliado",
+        "OmniProcessId": {
+            "Name": "FVU_PaymentMethodInformation",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/CB_PerfilAliado",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_PerfilAliado",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "paymentType": [
+                {
+                    "cargoFactura": true,
+                    "label": "Contado",
+                    "paymentMethod": [
+                        {
+                            "label": "Sistemas de Recaudo en el Aliado",
+                            "value": "Sistemas de Recaudo en el Aliado"
+                        },
+                        {
+                            "label": "Pin/Link de Pagos",
+                            "value": "Pin Link de Pagos"
+                        }
+                    ],
+                    "value": "Contado"
+                }
+            ]
+        },
+        "executionConditionalFormula": "SV_Channel:pinLinkValid == TRUE",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "SV_FormaMetodoPagoAliadoFC",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/SV_FormaMetodoPagoAliadoFC_PL"
+}

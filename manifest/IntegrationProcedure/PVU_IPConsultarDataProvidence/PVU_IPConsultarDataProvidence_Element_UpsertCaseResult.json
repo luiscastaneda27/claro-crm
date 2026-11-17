@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpsertCaseResult",
+    "OmniProcessId": {
+        "Name": "IPConsultarDataProvidence",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPConsultarDataProvidence/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Case": {
+                "CAV": "%GetUserDetails:UserDetails:BusinessChannel%",
+                "Id": "%SVInput:CaseId%",
+                "Observaciones": "%SVRespuesta:Observaciones%",
+                "RequestProcessInfo": "%SVRespuesta:ResultCompleta%-%SVRespuesta:ResultCoincidence%"
+            }
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_DRUpsertCase",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPUnifiedLists:Status%=true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPConsultarDataProvidence/Procedure/UpsertCaseResult"
+}

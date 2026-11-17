@@ -1,0 +1,22 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ConditionalBlock1",
+    "OmniProcessId": {
+        "Name": "IPCambioEquipoSoporteFallas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioEquipoSoporteFallas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPGetFinancingInfo:financings:financing:status% != 'X - FRAUDE' AND %IPGetFinancingInfo:financings:financing:status% != 'H - CREDITO CANCELADO' AND ISBLANK(%GetCaseCambioEquipoByCredit:CaseNumber%) AND ISBLANK(%GetCaseCambioEquipoByCredit:CaseRelacion%)",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock1",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioEquipoSoporteFallas/Procedure/ConditionalBlock1"
+}

@@ -1,0 +1,66 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_InputNewRegisterIMEI",
+    "OmniProcessId": {
+        "Name": "GetIMEINumbersAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_NewRegisterIMEI",
+        "OmniProcessId": {
+            "Name": "GetIMEINumbersAndSendToBDO",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure/LB_NewRegisterIMEI",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_NewRegisterIMEI",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "NodoImei": {
+                "Category": "registroIMEI",
+                "Ciudad": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_Ciudad__c%,%Order:Account:City%)",
+                "Departamento": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_Departamento__c%,%Order:Account:Department%)",
+                "Direccion": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_Direccion__c%,%Order:Account:Address%)",
+                "IMEI": "%SV_OrderItemFilterNewService:OrderItemFiltered:OrderProductIMEI%",
+                "correo": "%Order:CuentaEmail%",
+                "empleoViolencia": "0",
+                "fiscalia": "1",
+                "idCuenta": "",
+                "marca": "%SV_OrderItemFilterNewService:OrderItemFiltered:OrderProductBrand%",
+                "modelo": "%SV_OrderItemFilterNewService:OrderItemFiltered:OrderProductCode%",
+                "msisdn": "3001234567",
+                "nombreReporte": "%Order:Account:Name%",
+                "numIdReporte": "30670362",
+                "telContactoReporte": "%Order:Account:Phone%",
+                "tipoArma": "0",
+                "tipoDocReporte": "1",
+                "tipoReporteAbd": "3",
+                "usuario": "%Order:CodigoCAV%",
+                "victimaMenorEdad": "0"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": {
+        }
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure/SV_InputNewRegisterIMEI"
+}

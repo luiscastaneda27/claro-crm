@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpdateOrderAndOrderItem",
+    "OmniProcessId": {
+        "Name": "SendOrderToOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendOrderToOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_DontSendOrderToOMS",
+        "OmniProcessId": {
+            "Name": "SendOrderToOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendOrderToOMS/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendOrderToOMS/Procedure/CB_DontSendOrderToOMS",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_DontSendOrderToOMS",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Order:CuentaCreadaSinServicio": "=IF(IP_CreateAccountBSCS:success = true , true , false)",
+            "Order:DefaultBillingAccountId": "%DR_UpsertAccount:Account_1|1:Id%",
+            "Order:FVU_OrderDeliveryStatus": "=\"PendingOMSNotification\"",
+            "Order:Id": "%Id%",
+            "OrderItem:FVU_ProductDeliveryStatus": "=\"WithoutLogistics\"",
+            "OrderItem:Id": "%orderItemSIMCard%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertOrderStatuses",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendOrderToOMS/Procedure/DR_UpdateOrderAndOrderItem"
+}

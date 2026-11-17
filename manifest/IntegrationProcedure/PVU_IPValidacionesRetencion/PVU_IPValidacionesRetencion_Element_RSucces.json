@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RSucces",
+    "OmniProcessId": {
+        "Name": "IPValidacionesRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRetencion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBInitial",
+        "OmniProcessId": {
+            "Name": "IPValidacionesRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRetencion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRetencion/Procedure/CBInitial",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBInitial",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "CaseDetail": "=%DRGetCaseInfo%",
+            "MostrarMensajeOrden": "=%SVValidacionMensaje:ShowMessageOrders%",
+            "Opciones": "=IF(%GetCasesRetencionByParent:hasCambioPlan% == TRUE,LIST(%LBFilterVozByCase%),LIST(%LBFilterVoz%))",
+            "OrdenEnCurso": "=%DRGetIOrderInfo:CaseInfo:IsEnCurso%",
+            "Role": "=%SVUserRole:UserRole%",
+            "hasCambioPlan": "=%GetCasesRetencionByParent:hasCambioPlan%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRetencion/Procedure/RSucces"
+}

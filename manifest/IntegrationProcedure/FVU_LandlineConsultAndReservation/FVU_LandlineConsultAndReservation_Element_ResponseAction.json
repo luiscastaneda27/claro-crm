@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "FVU_LandlineConsultAndReservation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/LandlineConsultAndReservation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ListProductLandline": "=%DRTRansform_AddField:ListActionLandline%",
+            "OrderItem": "=%LA_MergeFields%",
+            "code": "=%IP_LandlineReservation:code%",
+            "description": "=%IP_LandlineReservation:description%",
+            "reservationDate": "=%SV_ReservationResquest:reservationDate%",
+            "reservedNumber": "=%IP_LandlineConsult:listOfNumbers:numberElement:number%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(IP_LandlineReservation:LandLineOrderItem)",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/LandlineConsultAndReservation/Procedure/ResponseAction"
+}

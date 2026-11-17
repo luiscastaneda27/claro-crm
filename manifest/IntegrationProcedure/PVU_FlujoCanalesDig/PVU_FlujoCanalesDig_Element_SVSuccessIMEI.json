@@ -1,0 +1,71 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSuccessIMEI",
+    "OmniProcessId": {
+        "Name": "FlujoCanalesDig",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "updateCaseIMEI",
+        "OmniProcessId": {
+            "Name": "FlujoCanalesDig",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/updateCaseIMEI",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "updateCaseIMEI",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CargoFact": "False",
+            "Categoria": "Solicitud de información y modificaciones",
+            "Id": "%SVInput:CaseId%",
+            "IdProceso": "%SVProccessName:ProccessName%",
+            "OrderId": "%IP_OrdenOM:OrderId%",
+            "RequestProcessInfo": {
+                "IPCheckoutOrder": {
+                    "OrderId": "%IP_OrdenOM:OrderId%",
+                    "RequestedDate": "%SVFechaCheckout:requestDate%",
+                    "isQueueOrder": "%SVFechaCheckout:isqueueOrder%"
+                },
+                "IpGenerateSuspensionOrder": {
+                    "AssetId": "%SVInput:AssetId%",
+                    "CaseInfo": {
+                        "Id": "%SVInput:CaseId%",
+                        "fechaInicioSusp": "%CaseInfo:fechaHoraSuspension%"
+                    },
+                    "ProcessName": "%SVProccessName:ProccessName%"
+                }
+            },
+            "RequestProcessStatusDetail": {
+                "IPCheckoutOrder": "%IPCheckoutOrder%",
+                "IPCreateOrder": "%IP_OrdenOM%",
+                "SVFechaCheckoutIMEI": "%SVFechaCheckout%"
+            },
+            "Status": "En curso",
+            "SubCategoria": "Gestión de IMEI",
+            "SubEstado": "Pendiente ejecución de la orden"
+        },
+        "executionConditionalFormula": "%IPCheckoutOrder:EndProcess% == 'success'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "SVCaseUpdate",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/SVSuccessIMEI"
+}

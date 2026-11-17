@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPCheckoutOrder",
+    "OmniProcessId": {
+        "Name": "FlujoCanalesDig",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "proccess",
+        "OmniProcessId": {
+            "Name": "FlujoCanalesDig",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/proccess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "proccess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "OrderId": "=%IP_OrdenOM:OrderId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": true,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%IPUpdateOrder:EndProcess% == \"success\"",
+        "failOnStepError": false,
+        "failureConditionalFormula": "EndProcess = \"fail\"",
+        "failureResponse": {
+            "Details": "%IPCheckoutOrder:Details%",
+            "EndProcess": "fail"
+        },
+        "integrationProcedureKey": "PVU_IPCheckoutOrder",
+        "label": "IntegrationProcedureAction4",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "IPCheckoutOrder",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/IPCheckoutOrder"
+}

@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "HTTPAction",
+    "OmniProcessId": {
+        "Name": "FVU_CancelOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FVU_CancelOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "codigo_punto": "==IF(%orderId% <> NULL, %DRE_GetCancelOrder:codigo_punto% ,%DRE_GetCancelCase:codigo_punto%)",
+            "id_pedido": "=IF(%orderId% <> NULL, %DRE_GetCancelOrder:id_pedido%, %DRE_GetCancelCase:id_pedido%)",
+            "motivo": "=IF(ISNOTBLANK(%motivo%), %motivo%, \"RETRACTO\")",
+            "motivo_rechazo": "%rejectedCause%",
+            "numero_orden": "=IF(%orderId% <> NULL, %DRE_GetCancelOrder:numero_orden% ,%DRE_GetCancelCase:numero_orden%)"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "estado": "%HTTPAction:statusCode%",
+            "mensaje": "%HTTPAction:message%"
+        },
+        "label": "HTTPAction1",
+        "namedCredential": "CapaMediaAuthenticated",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "POST",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+            },
+            "sendBody": true,
+            "timeout": 10000,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "%SV_UrlPath:UrlPath%",
+        "retryCount": 2,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FVU_CancelOrder/Procedure/HTTPAction"
+}

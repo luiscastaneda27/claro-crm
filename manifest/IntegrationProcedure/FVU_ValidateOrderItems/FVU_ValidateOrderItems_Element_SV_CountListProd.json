@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CountListProd",
+    "OmniProcessId": {
+        "Name": "ValidateOrderItems",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidateOrderItems/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Handset": "=IF(ISNOTBLANK(%SV_listProducts:Handset|1:productType%),LISTSIZE(%SV_listProducts:Handset%),0)",
+            "Plan": "=IF(ISNOTBLANK(%SV_listProducts:Plan|1:productType%),LISTSIZE(%SV_listProducts:Plan%),0)",
+            "Tech": "=IF(ISNOTBLANK(%SV_listProducts:Tech|1:productType%),LISTSIZE(%SV_listProducts:Tech%),0)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidateOrderItems/Procedure/SV_CountListProd"
+}

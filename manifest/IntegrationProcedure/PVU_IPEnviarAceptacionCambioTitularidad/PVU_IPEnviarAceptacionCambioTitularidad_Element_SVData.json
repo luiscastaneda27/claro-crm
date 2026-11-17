@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVData",
+    "OmniProcessId": {
+        "Name": "IPEnviarAceptacionCambioTitularidad",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPEnviarAceptacionCambioTitularidad/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "NombreCliente": "%accountName%",
+            "TipoDocumento": "=IF(%TipoDocumento% == \"CC\", \"Cédula Ciudadanía\",IF(%TipoDocumento% == \"NI\", \"NIT\", IF(%TipoDocumento% == \"CE\",\"Cédula Extranjería\",IF(%TipoDocumento% == \"PP\", \"Pasaporte\", %TipoDocumento%))))",
+            "address": "=%direccion%",
+            "city": "%accountCity%",
+            "cityForm": "%cityForm%",
+            "contentType": "CONTENTID",
+            "day": "=DAY(TODAY())",
+            "docnumber": "=%NumeroDocumento%",
+            "hora": "=FORMATDATETIME(NOW(),\"HH:mm\", \"America/Bogota\")",
+            "imei": "%imeiFromContext%",
+            "mail": "%CorreoElectronicoContacto%",
+            "marca": "%marcaFromContext%",
+            "min": "=%minFromContext%",
+            "modelo": "%modeloFromContext%",
+            "month": "=MONTH(TODAY())",
+            "phone": "=%accountPhone%",
+            "templateid": "CAMBIOSERV_01",
+            "year": "=YEAR(TODAY())"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPEnviarAceptacionCambioTitularidad/Procedure/SVData"
+}

@@ -1,0 +1,61 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPNotificacionCliente",
+    "OmniProcessId": {
+        "Name": "CreacionODSCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CreacionODSCaso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "content": "=\"Hola \" +  %SVDatosCliente:nombre% + \", confirmamos el ingreso de tu equipo en uno de nuestros Centros de Atención Claro, con la orden de servicio no. \" +  %IPCreateODS1:idODS%",
+            "contentType": "MESSAGE",
+            "deliveryReceipts": "N",
+            "description": "''",
+            "messageType": "SMS",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "phone": "%SVphoneString:phone%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "''",
+            "tryTimes": 3
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPNotificationCusChannel",
+        "label": "IntegrationProcedureAction6",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CreacionODSCaso/Procedure/IPNotificacionCliente"
+}

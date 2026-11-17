@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ApprovalProccess",
+    "OmniProcessId": {
+        "Name": "IPCaseApprovalIMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCaseApprovalIMEI/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "ApprovalProccessName": "%SVInput:ApprovalProccess%",
+            "CaseId": "%SVInput:CaseId%",
+            "NextApproverId": "%QueueDetail:Id%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%QueueDetail:Id%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "isSuccess == false",
+        "failureResponse": {
+            "Details": "%ApprovalResp:error%",
+            "EndProcess": "fail"
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_ApprovalProccessInterface",
+        "remoteMethod": "approvalCaseDuplicadoIMEI",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "ApprovalResp",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCaseApprovalIMEI/Procedure/RA_ApprovalProccess"
+}

@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_RejectedAndExpired",
+    "OmniProcessId": {
+        "Name": "PreliminaryContractController",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreliminaryContractController/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_ContractStatus",
+        "OmniProcessId": {
+            "Name": "PreliminaryContractController",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreliminaryContractController/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreliminaryContractController/Procedure/CB_ContractStatus",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_ContractStatus",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "action": "Consult",
+            "documentStatus": "%IP_ContractStatusApproval:statusAccept%",
+            "message": "Solicitud de contrato preliminar fue rechazado por el cliente o expirado.",
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IP_ContractStatusApproval:success% && (%IP_ContractStatusApproval:statusAccept% == \"Rejected\" || %IP_ContractStatusApproval:statusAccept% == \"Expired\")",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreliminaryContractController/Procedure/RA_RejectedAndExpired"
+}

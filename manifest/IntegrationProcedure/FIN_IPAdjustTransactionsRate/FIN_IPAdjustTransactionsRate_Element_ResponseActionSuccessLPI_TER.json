@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccessLPI_TER",
+    "OmniProcessId": {
+        "Name": "IPAdjustTransactionsRate",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPAdjustTransactionsRate/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBAdjustmentInterestDefault",
+        "OmniProcessId": {
+            "Name": "IPAdjustTransactionsRate",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPAdjustTransactionsRate/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPAdjustTransactionsRate/Procedure/CBAdjustmentInterestDefault",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBAdjustmentInterestDefault",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "responseFinancingAjustTransactions": {
+                "AdjustTransactionsLPI_TER": "%SVResponseLPI_TER%"
+            },
+            "successTransactions": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPFinancingAdjustTransactionsLPI_TER:success% = $Vlocity.TRUE",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPAdjustTransactionsRate/Procedure/ResponseActionSuccessLPI_TER"
+}

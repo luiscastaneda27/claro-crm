@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DrUpdateOrderCancelacion",
+    "OmniProcessId": {
+        "Name": "IPFlujoNegacionContrato",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPFlujoNegacionContrato/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBOrderCancelacion",
+        "OmniProcessId": {
+            "Name": "IPFlujoNegacionContrato",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPFlujoNegacionContrato/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPFlujoNegacionContrato/Procedure/CBOrderCancelacion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBOrderCancelacion",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "CaseInfo": "%SetValuesSuspensionOrder:SVCaseInfoCaseInfoCancelacion%",
+            "OrderId": "%IPGenerateOrderCancelacion:OrderId%",
+            "motivo": "%SetValuesSuspensionOrder:SVMotivoUpdate%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_DR_UpdateSupentionOrder",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "IPUpdateOrderSuspension == true",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction2",
+        "responseJSONNode": "IPUpdateOrderCancelacion",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPFlujoNegacionContrato/Procedure/DrUpdateOrderCancelacion"
+}

@@ -1,0 +1,43 @@
+{
+    "Description": "Se va a ejecutar solo si no se reciben valores en los campos requeridos.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_InvalidData",
+    "OmniProcessId": {
+        "Name": "ExecutePortabilityReject",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortabilityReject/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "code": "404",
+                "idOrder": "%idOrder%",
+                "message": "%SV_InputValidations%",
+                "reason": "Uno o más de los valores requeridos se enuentra(n) vacíos",
+                "status": "Failed"
+            }
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_InputValidations:isValidMSISDN% <> \"success\" || %SV_InputValidations:isValidIdOrder% <> \"success\" ||\n%SV_InputValidations:isValidAction% <> \"success\" || %SV_InputValidations:isValidTypePort% <> \"success\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortabilityReject/Procedure/RA_InvalidData"
+}

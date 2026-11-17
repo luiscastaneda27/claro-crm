@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ListSizeAsset",
+    "OmniProcessId": {
+        "Name": "SalesFraudValidations",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesFraudValidations/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "lstPlanMonth": "=IF(ISNOTBLANK(%GetAssetFromAccountMonth:AssetPlan|1:Id%),LISTSIZE(%GetAssetFromAccountMonth:AssetPlan%),0)",
+            "lstPlanNow": "=IF(ISNOTBLANK(%GetAssetFromAccountNow:AssetPlan|1:Id%),LISTSIZE(%GetAssetFromAccountNow:AssetPlan%),0)",
+            "lstPlanWeek": "=IF(ISNOTBLANK(%GetAssetFromAccountWeek:AssetPlan|1:Id%),LISTSIZE(%GetAssetFromAccountWeek:AssetPlan%),0)",
+            "lstTyTHandMonth": "=IF(ISNOTBLANK(%GetAssetFromAccountMonth:AssetTyTHand|1:Id%),LISTSIZE(%GetAssetFromAccountMonth:AssetTyTHand%),0)",
+            "lstTyTHandNow": "=IF(ISNOTBLANK(%GetAssetFromAccountNow:AssetTyTHand|1:Id%),LISTSIZE(%GetAssetFromAccountNow:AssetTyTHand%),0)",
+            "lstTyTHandWeek": "=IF(ISNOTBLANK(%GetAssetFromAccountWeek:AssetTyTHand|1:Id%),LISTSIZE(%GetAssetFromAccountWeek:AssetTyTHand%),0)",
+            "lstTyTTechMonth": "=IF(ISNOTBLANK(%GetAssetFromAccountMonth:AssetTyTTech|1:Id%),LISTSIZE(%GetAssetFromAccountMonth:AssetTyTTech%),0)",
+            "lstTyTTechNow": "=IF(ISNOTBLANK(%GetAssetFromAccountNow:AssetTyTTech|1:Id%),LISTSIZE(%GetAssetFromAccountNow:AssetTyTTech%),0)",
+            "lstTyTTechWeek": "=IF(ISNOTBLANK(%GetAssetFromAccountWeek:AssetTyTTech|1:Id%),LISTSIZE(%GetAssetFromAccountWeek:AssetTyTTech%),0)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesFraudValidations/Procedure/SV_ListSizeAsset"
+}

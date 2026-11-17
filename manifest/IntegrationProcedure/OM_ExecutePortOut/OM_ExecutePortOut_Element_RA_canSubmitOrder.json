@@ -1,0 +1,67 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_canSubmitOrder",
+    "OmniProcessId": {
+        "Name": "OM_ExecutePortOut",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortOut/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CreateOrderPortOut",
+        "OmniProcessId": {
+            "Name": "OM_ExecutePortOut",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortOut/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortOut/Procedure/CreateOrderPortOut",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CreateOrderPortOut",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "cartId": "%IP_CreateOrder:result:orderId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%RA_canSubmitOrder:error% = true",
+        "failureResponse": {
+            "operation": "Unable to submit order",
+            "result": {
+                "code": "%RA_canSubmitOrder:errorCode%",
+                "message": "%RA_canSubmitOrder:message%",
+                "status": "error"
+            },
+            "success": false
+        },
+        "label": "RemoteAction2",
+        "remoteClass": "SubmitOrderService",
+        "remoteMethod": "canSubmitOrder",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortOut/Procedure/RA_canSubmitOrder"
+}

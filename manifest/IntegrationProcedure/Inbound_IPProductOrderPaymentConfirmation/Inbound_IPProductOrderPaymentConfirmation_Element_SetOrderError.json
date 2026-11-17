@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetOrderError",
+    "OmniProcessId": {
+        "Name": "IPProductOrderPaymentConfirmation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/Inbound/IPProductOrderPaymentConfirmation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "NotCaseResponse": "=IF(ISBLANK(%PaymentConfirmation|1:CaseNumber%), true, false)",
+            "NotOrderResponse": "=IF(ISBLANK(%PaymentConfirmation|1:OrderNumber%), true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/Inbound/IPProductOrderPaymentConfirmation/Procedure/SetOrderError"
+}

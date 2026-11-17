@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSaveLogs",
+    "OmniProcessId": {
+        "Name": "CusPaymDevolutions_UpdateDev",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CusPaymDevolutions_UpdateDev/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBSaveLog",
+        "OmniProcessId": {
+            "Name": "CusPaymDevolutions_UpdateDev",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CusPaymDevolutions_UpdateDev/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CusPaymDevolutions_UpdateDev/Procedure/CBSaveLog",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBSaveLog",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Descripcion": "RQ/BAc: %SVParams:billingAccount% FC: %SVParams:financingCode% SI: %SVParams:suretyId% - RP/SI: %CalloutAPICusPaymDevolutions:statusId%%CalloutAPICusPaymDevolutions:code% TI: %CalloutAPICusPaymDevolutions:transactionid% //",
+            "Endpoint": "%SetUrlPath:pathUrl%",
+            "Metodo": "PUT",
+            "Name": "CusPaymDevolutions/updateDev",
+            "Request": "%SVParams%",
+            "Response": "%CalloutAPICusPaymDevolutions%",
+            "StatusCode": "%CalloutAPICusPaymDevolutions:statusId%%CalloutAPICusPaymDevolutions:code%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CusPaymDevolutions_UpdateDev/Procedure/SVSaveLogs"
+}

@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "FVU_CreditScoreCheck",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreditScoreCheck/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "canal": "=TOSTRING(DR_GetInterfaceSettings:IdCode)",
+            "clave": "73ZUZ",
+            "identificacion": "%DR_GetAccountDetails:documentNumber%",
+            "origen": "INS",
+            "parametros": {
+                "parametro": [
+                    {
+                        "nombre": "01",
+                        "tipo": "T",
+                        "valor": "%CodigoMovil%"
+                    },
+                    {
+                        "nombre": "02",
+                        "tipo": "T",
+                        "valor": "DISTRIBUIDOR PRINCIPAL BUCARAMANGA"
+                    },
+                    {
+                        "nombre": "03",
+                        "tipo": "T",
+                        "valor": "890124125"
+                    }
+                ]
+            },
+            "primerApellido": "%DR_GetAccountDetails:lastName%",
+            "producto": "=\"60\"",
+            "region": "%DRE_CreditScoreCheckRequest:region%",
+            "tipoIdentificacion": "%DRE_CreditScoreCheckRequest:userDocumentType%",
+            "usuario": "=TOSTRING(%DRE_CreditScoreCheckRequest:userRed%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreditScoreCheck/Procedure/SV_Request"
+}

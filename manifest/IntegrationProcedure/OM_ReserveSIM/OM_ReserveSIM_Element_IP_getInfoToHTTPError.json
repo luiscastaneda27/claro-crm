@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_getInfoToHTTPError",
+    "OmniProcessId": {
+        "Name": "ReserveSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReserveSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "FailureHTTPRequest",
+        "OmniProcessId": {
+            "Name": "ReserveSIM",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReserveSIM/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReserveSIM/Procedure/FailureHTTPRequest",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "FailureHTTPRequest",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "ApiName": "reserveSIM",
+            "ErrorCode": "=IF(%SV_bndErrorConect:bErrorConn% = true, %SV_bndErrorConect:connErrorCode%,%DRTransformResponse:code%)",
+            "defaultQueue": "Error Queue BSCS Technical",
+            "httpCode": "=IF(ISNOTBLANK(%HTTPReserveSimInfo:statusCode%),%HTTPReserveSimInfo:statusCode%,'000')",
+            "orderId": "%OrderId%",
+            "process": "%OM_DRE_GetOrderDetail:Order:Type%",
+            "request": "%SV_RequestBody:request%",
+            "response": "=IF(%SV_bndErrorConect:bErrorConn% = true, %SV_ErrorConnResponse:responseErrorConn%,%DRTransformResponse%)"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "OM_getDataQueueCMAndOrderDetails",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReserveSIM/Procedure/IP_getInfoToHTTPError"
+}

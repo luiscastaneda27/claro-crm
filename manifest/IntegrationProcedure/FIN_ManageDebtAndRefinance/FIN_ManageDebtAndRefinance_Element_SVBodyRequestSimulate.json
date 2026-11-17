@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVBodyRequestSimulate",
+    "OmniProcessId": {
+        "Name": "ManageDebtAndRefinance",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/ManageDebtAndRefinance/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "BodyRequest": {
+                "administrativeFee": 0,
+                "administrativeFeePeriod": "M",
+                "debtInsuranceFee": 0,
+                "equipmentInsuranceFee": 0,
+                "financingCode": "%SVParams:CreditNumber%",
+                "forceSimulation": "N",
+                "interestRate": "%SVParams:NewRate%",
+                "interestType": "AE",
+                "principalDiscount": "%SVParams:AjustmentCapital%",
+                "referenceDate": "%SVParams:StartDateRestructure%",
+                "term": "%SVParams:NewTerm%",
+                "userRole": "%SVParams:RoleSaveSimulateRefinancing%"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/ManageDebtAndRefinance/Procedure/SVBodyRequestSimulate"
+}

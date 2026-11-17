@@ -1,0 +1,50 @@
+{
+    "Description": "SVCC1 todas la ordenes relacionadas a los casos cerrados están exitosas por OM.\nSVCC2  existen ordenes fallidas por OM en alguno de los casos que están cerrados. \nSVCC3 todas la ordenes relacionadas a los casos cerrados están no exitosas por OM.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVConteo",
+    "OmniProcessId": {
+        "Name": "IPValidacionesRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRetencion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCierreCaso",
+        "OmniProcessId": {
+            "Name": "IPValidacionesRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRetencion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRetencion/Procedure/CBCierreCaso",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCierreCaso",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CantidadOrdenesExitosas": "=IF(ISBLANK(%LAContarOrdenesExitosas%),0,LISTSIZE(%LAContarOrdenesExitosas%)",
+            "CantidadOrdenesFallidas": "=IF(ISBLANK(%LAContarOrdenesFallidas%),0,LISTSIZE(%LAContarOrdenesFallidas%)",
+            "CantidadOrdenesTotales": "=%PVUDRGetCasesRetencion:TotalCasos%",
+            "SVCC1": "Retenido exitoso",
+            "SVCC2": "Retenido Parcialmente",
+            "SVCC3": "No Retenido - Falla en el sistema"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRetencion/Procedure/SVConteo"
+}

@@ -1,0 +1,56 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpdateJsonAttributeFromFRL",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ChangeSimProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/ChangeSimProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ChangeSimProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Id": "=%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:fulfilmentRequestLineId%",
+            "JSONAttribute": "=IF(%DR_GetOrderDetailsChangeSim:Type% == \"Reconexion\", %UpdateFlagsAttributesChangeSim:JSONAttribute%, %RA_UpdateOldAttributes:JSONAttribute%)"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DR_UpdateJsonAttributeFromFRL",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction17",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/DR_UpdateJsonAttributeFromFRL"
+}

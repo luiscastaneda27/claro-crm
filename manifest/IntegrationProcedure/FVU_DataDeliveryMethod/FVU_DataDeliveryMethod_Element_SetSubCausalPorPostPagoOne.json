@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetSubCausalPorPostPagoOne",
+    "OmniProcessId": {
+        "Name": "DataDeliveryMethod",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataDeliveryMethod/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ValidateOneMobileProduct",
+        "OmniProcessId": {
+            "Name": "DataDeliveryMethod",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataDeliveryMethod/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataDeliveryMethod/Procedure/ValidateOneMobileProduct",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ValidateOneMobileProduct",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "SubCausal": "=IF(%IsReversion% == true,'Act Reversion Portover','Port. Pospago')"
+        },
+        "executionConditionalFormula": "DRGetOrder:PurchaseType == \"POR\" && ListActionProductMobile:productSubType == \"Postpaid\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "ListActionProductMobile:SubCausal",
+        "responseJSONPath": "SubCausal",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataDeliveryMethod/Procedure/SetSubCausalPorPostPagoOne"
+}

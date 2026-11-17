@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "PortInConsultAndTraceability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PortInConsultAndTraceability/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "estado": "=IF(%IsExecutePortOut% != true, '', 'EXECUTE')",
+            "idRegReq": "%regReqId%",
+            "min": "=IF(%IsExecutePortOut% != true, %min%, %minAPortar%)",
+            "numDocumento": "%DRE_GetAccountDetails:documentNumber%",
+            "numOfR": "=IF(%IsExecutePortOut% != true, %numOfR%, 1)",
+            "pag": "%pag%",
+            "tipoDocumento": "%DRE_GetDocumentCode:documentTypeCode%",
+            "tipoProceso": "=IF(%IsExecutePortOut% != true, 'PORTIN', 'POR_OUT')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PortInConsultAndTraceability/Procedure/SV_Request"
+}

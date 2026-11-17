@@ -1,0 +1,51 @@
+{
+    "Description": "Set the responseBSCS with transformed response",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValueResponseError",
+    "OmniProcessId": {
+        "Name": "CreateAccountBSCS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateAccountBSCS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalFailureBSCSInterface",
+        "OmniProcessId": {
+            "Name": "CreateAccountBSCS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateAccountBSCS/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateAccountBSCS/Procedure/ConditionalFailureBSCSInterface",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalFailureBSCSInterface",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "responseBSCS": {
+                "responseStatus": {
+                    "code": "%DRTransformResponseXMLToJSON:responseStatus:code%",
+                    "message": "%DRTransformResponseXMLToJSON:responseStatus:message%",
+                    "status": "ERROR"
+                }
+            }
+        },
+        "executionConditionalFormula": "%DRTransformResponseXMLToJSON:responseStatus:code% <> 'FS_ESB_0'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateAccountBSCS/Procedure/SetValueResponseError"
+}

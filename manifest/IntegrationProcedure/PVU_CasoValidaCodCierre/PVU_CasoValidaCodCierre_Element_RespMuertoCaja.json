@@ -1,0 +1,37 @@
+{
+    "Description": "20231124 - FM: se hace referencia al elemento LA para evaluar el grupo publico\nValidar: \nSub-estado\nCola",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RespMuertoCaja",
+    "OmniProcessId": {
+        "Name": "CasoValidaCodCierre",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CasoValidaCodCierre/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "MuertoenCaja": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "IF((%Caso:SubEstado% == \"Equipo en Diagnóstico por Asesor Técnico\" && %LAasesorTecnico|1:DeveloperName% == \"Asesor_Tecnico\"), true, false)",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CasoValidaCodCierre/Procedure/RespMuertoCaja"
+}

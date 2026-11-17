@@ -1,0 +1,70 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_CheckoutWithCPQ",
+    "OmniProcessId": {
+        "Name": "ExecutePortabilityReject",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortabilityReject/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_Rollback",
+        "OmniProcessId": {
+            "Name": "ExecutePortabilityReject",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortabilityReject/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortabilityReject/Procedure/CB_Rollback",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_Rollback",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "ContextId": "%IP_CreateOrder:result:orderId%",
+            "cartId": "%IP_CreateOrder:result:orderId%",
+            "checkOrderStatus": false,
+            "orderId": "%IP_CreateOrder:result:orderId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%RA_CheckoutWithCPQ:totalSize% = 0",
+        "failureResponse": {
+            "operation": "Failed to submit order",
+            "result": {
+                "code": "%RA_CheckoutWithCPQ:messages|1:code%",
+                "message": "%RA_CheckoutWithCPQ:messages|1:message%",
+                "status": "error"
+            },
+            "success": false
+        },
+        "label": "RemoteAction3",
+        "remoteClass": "%vlocity_namespace%.CPQAppHandler",
+        "remoteMethod": "checkout",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortabilityReject/Procedure/RA_CheckoutWithCPQ"
+}

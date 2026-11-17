@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDatos",
+    "OmniProcessId": {
+        "Name": "CrearRelacionServiciosEquipos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CrearRelacionServiciosEquipos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBAssets",
+        "OmniProcessId": {
+            "Name": "CrearRelacionServiciosEquipos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CrearRelacionServiciosEquipos/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CrearRelacionServiciosEquipos/Procedure/LBAssets",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBAssets",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "IsCuotaInicial": "=IF(ISNOTBLANK(%OrderVenta:CuotaInicial%), True,False) ",
+            "isEquipo": "=IF(%Assets:Product2:%vlocity_namespace%__Type__c% == \"Plan\", false, true)",
+            "isEquipoFinanciado": "=IF(%Assets:FIN_IdReferenciaDelCredito92__c%, true, false)",
+            "serialImei": "=IF(%Assets:PVU_IMEI__c%,%Assets:PVU_IMEI__c%,IF(%Assets:PVU_Serial__c%,%Assets:PVU_Serial__c%,\"\"))",
+            "tipoProducto": "=IF(%Assets:Product2:%vlocity_namespace%__Type__c% == \"Plan\",\"Servicio\",\"Producto\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CrearRelacionServiciosEquipos/Procedure/SVDatos"
+}

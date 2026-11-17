@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponseAMZ",
+    "OmniProcessId": {
+        "Name": "IPAdjustTransactionsRate",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPAdjustTransactionsRate/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBAdjustmentCapital",
+        "OmniProcessId": {
+            "Name": "IPAdjustTransactionsRate",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPAdjustTransactionsRate/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPAdjustTransactionsRate/Procedure/CBAdjustmentCapital",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBAdjustmentCapital",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "adjustedAmount": "%IPFinancingAdjustTransactionsAMZ:adjustedAmount%",
+            "financingCode": "%IPFinancingAdjustTransactionsAMZ:financingCode%",
+            "responseCode": "%IPFinancingAdjustTransactionsAMZ:responseCode%",
+            "success": "%IPFinancingAdjustTransactionsAMZ:success%"
+        },
+        "executionConditionalFormula": "%IPFinancingAdjustTransactionsAMZ:success% = $Vlocity.TRUE",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPAdjustTransactionsRate/Procedure/SVResponseAMZ"
+}

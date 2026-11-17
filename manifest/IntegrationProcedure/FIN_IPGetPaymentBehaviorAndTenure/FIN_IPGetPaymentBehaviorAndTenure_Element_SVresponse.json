@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVresponse",
+    "OmniProcessId": {
+        "Name": "IPGetPaymentBehaviorAndTenure",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPGetPaymentBehaviorAndTenure/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "antiguedad": "%DM_GetAccountByAccount:Account|1:FVU_AgeInMonths__c%",
+            "comportamientoPago": "=IF(%IPCustomerPaymentBehaviour:responseStatus:status%==\"ERROR\",\"\",%IPCustomerPaymentBehaviour:paymentScoreLabel%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPGetPaymentBehaviorAndTenure/Procedure/SVresponse"
+}

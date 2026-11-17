@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDatosDelProducto",
+    "OmniProcessId": {
+        "Name": "CreacionODSCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CreacionODSCaso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "brand": "=IF(%DRGetODSData:TipoEquipo% == \"Terminal\", %DRGetODSData:Equipo:TerminalMarca%, %DRGetODSData:Equipo:TecnologiaMarca%)",
+            "color": "=IF(%DRGetODSData:TipoEquipo% == \"Terminal\", %DRGetODSData:Equipo:TerminalColor%, %DRGetODSData:Equipo:TecnologiaColor%)",
+            "equipmentType": "=IF(%DRGetODSData:TipoEquipo% == \"Terminal\", 1, IF(%DRGetODSData:TipoEquipo% == \"Tecnología\", 2, 3))",
+            "law1480Applies": "%DRGetODSData:Caso:MasDeUnST%",
+            "min": "%DRGetODSData:Equipo:Min%",
+            "model": "=IF(%DRGetODSData:TipoEquipo% == \"Terminal\", %DRGetODSData:Equipo:TerminalModelo%, %DRGetODSData:Equipo:TecnologiaModelo%)",
+            "responseLaw": "%DRGetODSData:Caso:MotivoInconformidad%",
+            "serialImei": "=IF((ISBLANK(%DRGetODSData:Equipo:Imei%), \" \" , TOSTRING(%DRGetODSData:Equipo:Imei%))",
+            "serialNumero": "%DRGetODSData:Equipo:Serial%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues9",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CreacionODSCaso/Procedure/SVDatosDelProducto"
+}

@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFormatData",
+    "OmniProcessId": {
+        "Name": "IPChargesNotificationWrappper",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationWrappper/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBChargesNotification",
+        "OmniProcessId": {
+            "Name": "IPChargesNotificationWrappper",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationWrappper/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationWrappper/Procedure/CBChargesNotification",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBChargesNotification",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "accountNumber": "=TOSTRING(%DRGetCase:NumeroCuentaFacturador%)",
+            "amount": "=TOSTRING(%DRGetCase:ValorDevolucion%)",
+            "fechaHoy": "=TODAY()",
+            "fechaHoyBKP": "=%SVGetInput:anio% + \"-\" + %SVGetInput:dia% + \"-\" + %SVGetInput:mes%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationWrappper/Procedure/SVFormatData"
+}

@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RADetalladaTerm",
+    "OmniProcessId": {
+        "Name": "FIN_PlazoSelectIP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/PlazoSelectIP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SimulacionDetallada",
+        "OmniProcessId": {
+            "Name": "FIN_PlazoSelectIP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/PlazoSelectIP/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/PlazoSelectIP/Procedure/SimulacionDetallada",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SimulacionDetallada",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "QuoteLineItem": "%DRT_ProductInfoWithAttributeValues%",
+            "ResultadoPlazoCero": "=IF(%IPValidationPlazo:ValidacionMatrizDePlazos:CuotaMax% = 0,'Error','')",
+            "ResultadoPlazos": "=IF(ISBLANK(%RemoteActionTyT%), 'Error', '')",
+            "ResultadoPlazosXProducto": "=IF(ISBLANK(%GetPlazosDisponiblesTerm:result%), 'Error', '')",
+            "data": "%GetPlazosDisponiblesTerm:result%",
+            "messagePlazoCero": "%DRT_ProductInfoWithAttributeValues:message%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPPriceTermValidation:Producto% = 'Terminales'",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/PlazoSelectIP/Procedure/RADetalladaTerm"
+}

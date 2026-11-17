@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseMOCK",
+    "OmniProcessId": {
+        "Name": "MSLogResoVirtualSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPMSLogResoVirtualSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "iccid": "%IPGetMock:Response:data%",
+                "message": "%IPGetMock:Response:message%",
+                "responseCode": "%IPGetMock:Response:responseCode%"
+            },
+            "EndProcess": "fail",
+            "isInventoryAvailable": "=IF(%IPGetMock:Response:responseCode% = '200', 'available', IF(%IPGetMock:Response:responseCode% = '404','notavailable','fail'))"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "IPGetMock:ModoTest = \"true\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPMSLogResoVirtualSIM/Procedure/ResponseMOCK"
+}

@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AvailableDeliveryMethods",
+    "OmniProcessId": {
+        "Name": "FilterAvailableSIMCard",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableSIMCard/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Delivery": "=IF(%AvailableDeliveryMethod:deliveryBool% == true, true, false)",
+            "Immediatepickup": "=IF(%AvailableDeliveryMethod:immediatepickupBool% == true, true, false)",
+            "PickUp": "=IF(%AvailableDeliveryMethod:pickupBool% == true, true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "AvailableDeliveryMethods",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableSIMCard/Procedure/SV_AvailableDeliveryMethods"
+}

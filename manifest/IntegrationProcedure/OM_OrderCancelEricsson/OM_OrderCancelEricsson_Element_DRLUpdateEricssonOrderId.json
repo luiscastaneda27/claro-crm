@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRLUpdateEricssonOrderId",
+    "OmniProcessId": {
+        "Name": "OrderCancelEricsson",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/OrderCancelEricsson/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "ericssonOrderId": "=IF(ISNOTBLANK(%HTTPOrderCancelEricsson:customerOrderId%),%HTTPOrderCancelEricsson:customerOrderId%,%HTTPOrderCancelEricsson:id%)",
+            "errorCode": "=\"$Vlocity.NULL\"",
+            "orderErrorInfo": "=\"$Vlocity.NULL\"",
+            "orderId": "%sfOrderId%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_Order",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/OrderCancelEricsson/Procedure/DRLUpdateEricssonOrderId"
+}

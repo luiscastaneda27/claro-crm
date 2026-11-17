@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAQueueOrder",
+    "OmniProcessId": {
+        "Name": "IPCheckoutOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCheckoutOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "cartId": "%OrderId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%isQueueOrder% == true && (%isQueueOrder% == true && DATEDIFF(TODAY(), %RequestedDate%) != 0)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "hasError == \"true\"",
+        "failureResponse": {
+            "Details": "=CONCAT(%RAQueueOrder:errorCode% ,   '-'  ,%RAQueueOrder:message% )",
+            "EndProcess": "fail"
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "SubmitOrderService",
+        "remoteMethod": "canSubmitOrder",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCheckoutOrder/Procedure/RAQueueOrder"
+}

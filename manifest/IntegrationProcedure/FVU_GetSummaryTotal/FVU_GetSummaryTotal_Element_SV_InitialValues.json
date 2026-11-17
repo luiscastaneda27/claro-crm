@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_InitialValues",
+    "OmniProcessId": {
+        "Name": "GetSummaryTotal",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetSummaryTotal/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DeliveryCost": "=IF(%DR_GetSummaryTotal:TotalAPagar:CargoEnvio% != Null,%DR_GetSummaryTotal:TotalAPagar:CargoEnvio%, 0)",
+            "Discount": "=IF(%IP_CalculateCFM:detalle:Discount% > 0, CONCAT(\"-\", formatCurrency(%IP_CalculateCFM:detalle:Discount%)), 0)",
+            "NoPromotion": "=IF(%DR_GetSummaryTotal:TotalAPagar:TotalAPagarMovil:Promos|1:Promo% == \"\", true,false)",
+            "Total1erCFM": "=ROUND(%IP_CalculateCFM:detalle:cfm% - %IP_CalculateCFM:detalle:Discount% + %IP_CalculateCFM:detalle:iva% + %IP_CalculateCFM:detalle:ico% + %DR_GetSummaryTotal:TotalAPagar:TotalAPagarMovil:SimTotal% + %DR_GetSummaryTotal:TotalAPagar:CargoEnvio%, 0)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetSummaryTotal/Procedure/SV_InitialValues"
+}

@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CB_CloseOrderDeliveryType",
+    "OmniProcessId": {
+        "Name": "IPOMSMilestone",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ResourceFoundOrder",
+        "OmniProcessId": {
+            "Name": "IPOMSMilestone",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/ResourceFoundOrder",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ResourceFoundOrder",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "(%SV_OrderToUpdate:orderProductItemStatus% == \"DeliveredCustomer\" && %DRE_IPGetDetailsProductOrder:orderDeliveryMethod% == \"Delivery\" && %DRE_IPGetDetailsProductOrder:orderStatus% == \"DeliveryAndActivated\")",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock4",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/CB_CloseOrderDeliveryType"
+}

@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCambioNumero",
+    "OmniProcessId": {
+        "Name": "FlujoCanalesDig",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "process_CambioNumero",
+        "OmniProcessId": {
+            "Name": "FlujoCanalesDig",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/process_CambioNumero",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "process_CambioNumero",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetId": "%CaseInfo:AssetId%",
+            "CaseId": "%caseid%",
+            "fechaInicioSusp": "=CONCAT(YEAR(TODAY()),'-',IF(MONTH(TODAY())< 10, CONCAT(0,MONTH(TODAY())), MONTH(TODAY())), '-',IF(DAY(TODAY())< 10, CONCAT(0,DAY(TODAY())), DAY(TODAY())))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "SVInput",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/SVCambioNumero"
+}

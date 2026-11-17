@@ -1,0 +1,61 @@
+{
+    "Description": "IF(%DRgetOrderPaymentConfirmation:num_orden% && %DRgetOrderPaymentConfirmation:pago:cus%)",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CalloutOrderPaymentConfirmation",
+    "OmniProcessId": {
+        "Name": "OrderPaymentConfirmation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OrderPaymentConfirmation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRgetOrderPaymentConfirmation:num_orden% != NULL",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "description": "=IF(%CalloutOrderPaymentConfirmation%!=NULL,%CalloutOrderPaymentConfirmation%,'Ha ocurrido un error al consultar el servicio')",
+            "success": false
+        },
+        "label": "HTTPAction1",
+        "namedCredential": "CapaMediaAuthenticated",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "POST",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+            },
+            "sendBody": true,
+            "timeout": 10000,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "%SetUrlPath:pathUrl%",
+        "retryCount": 3,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "SetRequest:data",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OrderPaymentConfirmation/Procedure/CalloutOrderPaymentConfirmation"
+}

@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetRequest",
+    "OmniProcessId": {
+        "Name": "IPRequestPaymentCode",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRequestPaymentCode/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "codigoCentro": "%codigoCentro%",
+            "origenTransaccionID": "=IF(ISNOTBLANK(%origenTransaccionID%), %origenTransaccionID%, 7)",
+            "referencia": "%referencia%",
+            "tipoCodigoID": 1,
+            "tipoTransaccionID": "%tipoTransaccionID%",
+            "transaccionID": "%transaccionID%",
+            "valor": "%valor%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRequestPaymentCode/Procedure/SetRequest"
+}

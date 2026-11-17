@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_CreditScoreCheckFail",
+    "OmniProcessId": {
+        "Name": "CreditScoreCheckData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreditScoreCheckData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "codError": "=IF(%IP_CreditScoreCheck:errorDao% != NULL, %IP_CreditScoreCheck:errorDao:codifoError%, \"\")",
+            "description": "=IF(%IP_CreditScoreCheck:success% == 'true', %IP_CreditScoreCheck:errorDao:descripcion%, %IP_CreditScoreCheck:result:categoryDescription%)",
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "IP_CreditScoreCheck:success == 'false' || IP_CreditScoreCheck:historia == null",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreditScoreCheckData/Procedure/RA_CreditScoreCheckFail"
+}

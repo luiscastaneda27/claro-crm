@@ -1,0 +1,68 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "TMFCreateOrder",
+    "OmniProcessId": {
+        "Name": "FVU_CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "action": "%SetValues:action%",
+            "additionalServices": "=%additionalServices%",
+            "authorizedPersonData": "=IF((%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:PickUpData:pickupCodeDane% != \"\" && \n%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:PickUpData:pickupPointCode% != \"\" &&%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:PickUpData:pickupStoreName% != \"\" &&\n%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:PickUpData:finalPickupDate% != \"\" &&%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:PickUpData:selectedPickupDate:avaDate% != \"\" && \n%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:AuthorizedPersonData:Name% != \"\" &&\n%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:AuthorizedPersonData:SecondLastName% != \"\" &&%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:AuthorizedPersonData:Document% != \"\" &&%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:AuthorizedPersonData:LastName% != \"\" &&%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:AuthorizedPersonData:DocumentType% != \"\" &&%FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData:AuthorizedPersonData:Phone% != \"\" &&),FVU_DRTrasformInputTMFCreateOrder:authorizedPersonData%,null)",
+            "billingCycle": "%billingCycle%",
+            "channel": "%channel%",
+            "customerIdSF": "%customerIdSF%",
+            "cutoffDetailsDate": "%cutoffDetailsDate%",
+            "deliveryDetails": "%deliveryDetails%",
+            "externalAccount91": "%externalAccount91%",
+            "externalAccount92": "%externalAccount92%",
+            "externalAccount93": "%externalAccount93%",
+            "fieldsRequired": "%DREGetFieldsRequired:fieldsRequired%",
+            "financingDetails": "=%financingDetails%",
+            "migraData": "=IF(%FVU_DRTrasformInputTMFCreateOrder:migraData:ICCID% != \"\",FVU_DRTrasformInputTMFCreateOrder:migraData%,null)",
+            "orderCharacteristic": "%orderCharacteristic%",
+            "orderPayments": "%FVU_DRTrasformInputTMFCreateOrder:orderPayments%",
+            "portIn": "=IF((%FVU_DRTrasformInputTMFCreateOrder:portIn:TipoProducto% != \"\" && %FVU_DRTrasformInputTMFCreateOrder:portIn:OperadorDonante% != \"\" && %FVU_DRTrasformInputTMFCreateOrder:portIn:OperadorDonanteNombre% != \"\" && %FVU_DRTrasformInputTMFCreateOrder:portIn:NRN% != \"\"  && %FVU_DRTrasformInputTMFCreateOrder:portIn:minAPortar% != \"\" ),FVU_DRTrasformInputTMFCreateOrder:portIn%,null)",
+            "portInFieldsOrderItems": "=IF((%FVU_DRTrasformInputTMFCreateOrder:FVU_PortInFieldsOrderItems:FVU_RegReqId__c% != \"\" && %FVU_DRTrasformInputTMFCreateOrder:FVU_PortInFieldsOrderItems:FVU_NIP__c% != \"\"),FVU_DRTrasformInputTMFCreateOrder:FVU_PortInFieldsOrderItems%,null)",
+            "products": "%products%",
+            "recordTypeOrder": "%DREGetRecordTypeOrder:RecordType:Id%",
+            "salesSubtype": "%salesSubtype%",
+            "salesType": "%salesType%",
+            "storeOrderId": "%storeOrderId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "FVU_TMFCreateOrder",
+        "remoteMethod": "insertNewOrder",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreateOrder/Procedure/TMFCreateOrder"
+}

@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDocumentTypeCode",
+    "OmniProcessId": {
+        "Name": "FIN_RegisterIMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/RegisterIMEI/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DocumentTypeCode": "=IF(%GetAccountFromOrder:AccountDocumentType% == 'CC', 1, IF(%GetAccountFromOrder:AccountDocumentType% ==  'PP', 5, IF(%GetAccountFromOrder:AccountDocumentType% == 'CE', 4, IF(%GetAccountFromOrder:AccountDocumentType% == 'NIT', 3, \"\"))))",
+            "PersonTypeCode": "=IF(%GetAccountFromOrder:AccountPersonType% == 'Natural', 1, 2)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/RegisterIMEI/Procedure/SVDocumentTypeCode"
+}

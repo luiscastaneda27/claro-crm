@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVOrderItemId",
+    "OmniProcessId": {
+        "Name": "IPCambioDeEquipoPorCasoFIN",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioDeEquipoPorCasoFIN/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetPurchaseDate": "%DRGetCase:AssetPurchaseDate%",
+            "IMEINumber": "=IF(%DRGetCase:AssetImei%!='',%DRGetCase:Serial%,' ')",
+            "OrderItemId": "=IF(%SVInput:CodigoCierre% = 'Cambio de equipo',IF(%SVOrderData:IsAssetType% = 'normal', %IPDisconnectPostCartItems:OrderItemId%,IF(%SVOrderData:IsAssetType% = 'promo',%IPDisconnectAndPostCartPromoItems:OrderItemId%,'')),%SVOrderData:OrderItemToDisconect%)",
+            "OrderSAP": "%DRGetCase:OrderSAP%",
+            "Serial": "=IF(%DRGetCase:AssetImei%=='',%DRGetCase:Serial%,' ')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioDeEquipoPorCasoFIN/Procedure/SVOrderItemId"
+}

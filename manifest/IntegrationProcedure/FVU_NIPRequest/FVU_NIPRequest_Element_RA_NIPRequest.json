@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_NIPRequest",
+    "OmniProcessId": {
+        "Name": "FVU_NIPRequest",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/NIPRequest/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_SendNIP",
+        "OmniProcessId": {
+            "Name": "FVU_NIPRequest",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/NIPRequest/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/NIPRequest/Procedure/CB_SendNIP",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_SendNIP",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "SendRequest": {
+                "estado": "%IP_MsNuPoReqPortabilityNIPRequest:estado%",
+                "mensaje": "%IP_MsNuPoReqPortabilityNIPRequest:mensaje%",
+                "regReqId": "%formulaRegReqId%",
+                "success": "%IP_MsNuPoReqPortabilityNIPRequest:success%"
+            },
+            "count": "=count",
+            "retryLimitReached": "=retryLimitReached",
+            "showResendToast": true,
+            "showSendNIP": false,
+            "showStatusToast": false,
+            "showToastStep": true,
+            "statusNIP": "=IF(isResend, \"resend\", \"send\")"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/NIPRequest/Procedure/RA_NIPRequest"
+}

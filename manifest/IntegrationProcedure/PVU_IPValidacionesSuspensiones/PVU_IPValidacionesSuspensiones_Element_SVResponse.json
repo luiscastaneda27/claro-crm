@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "IPValidacionesSuspensiones",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesSuspensiones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountId": "%suspensiones:Asset:AccountId%",
+            "DiasDeSuspensionRoboPerdidaUltimoAnio": "= IF(ISNOTBLANK(%diffDiasRoboPerdida%),%diffDiasRoboPerdida%,0)",
+            "DiasDeSuspensionVoluntariaUltimoAnio": "=IF(ISNOTBLANK(%diffDiasTemporal%),%diffDiasTemporal%,0)",
+            "DiasDisponiblesParaSuspender": "=60 - %diffDiasTemporal%",
+            "DiasDisponiblesParaSuspenderAllSuspension": "= %SVCalculos:DiasDisponiblesParaSuspender%",
+            "DiasDisponiblesParaSuspenderSinDiasRestantesUltimaSusp": "=%SVCalculos:DiasRestantesUltimaSuspension% + %SVCalculos:DiasDisponiblesParaSuspender%",
+            "DiasDisponiblesParaSuspenderUltimaSuspension": "=%SVCalculos:DiasRestantesUltimaSuspension%",
+            "Email": "%suspensiones:Account:Email%",
+            "MedioNotificacionPreferido": "%suspensiones:Account:MedioNotificacionPreferido%",
+            "Mensajes": "%IPMensajesPorGestion%",
+            "Nombre": "%suspensiones:Account:Name%",
+            "NumeroLineaAsset": "=TOSTRING(%suspensiones:Subscription:MSISDN%)",
+            "RootAssetId": "%suspensiones:ParentAsset:RootItemId%",
+            "Subcausal": "%suspensiones:Subscription:SubStatus%",
+            "SubscriptionId": "%suspensiones:Asset:SubscriptionId%",
+            "Suspensiones": "%SuspensionesOrdered%",
+            "SuspensionesRoboPerdida": "=LIST(%suspensionesRoboPerdida%)",
+            "SuspensionesVoluntarias": "=LIST(%suspensionesVoluntarias%)",
+            "Telefono": "=\"57\" + TOSTRING(%suspensiones:Account:Phone%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesSuspensiones/Procedure/SVResponse"
+}

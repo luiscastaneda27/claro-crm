@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRL_UpdatePricesItemRoot",
+    "OmniProcessId": {
+        "Name": "FVU_AdvancePaymentAdjustment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AdvancePaymentAdjustment/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "EffectiveOneTimeTotalIncTaxes": "=IF(%DR_HasDiscount:HasDiscount% = true, %LA_DicountListProductMobile|1:EffectiveOneTimeTotalIncTaxes% ,%LA_ListProductMobile|1:EffectiveOneTimeTotalIncTaxes%)",
+            "OneTimeChargeIncTaxes": "=IF(%DR_HasDiscount:HasDiscount% = true, %LA_DicountListProductMobile|1:OneTimeChargeIncTaxes% , %LA_ListProductMobile|1:OneTimeChargeIncTaxes%)",
+            "OrderItemId": "=IF(%DR_HasDiscount:HasDiscount% = true, %LA_DicountListProductMobile|1:OrderItemId%, %LA_ListProductMobile|1:OrderItemId%",
+            "orderItemEffectiveOneTimeTotal": "=IF(%DR_HasDiscount:HasDiscount% = true , %LA_DicountListProductMobile|1:orderItemEffectiveOneTimeTotal% , %LA_ListProductMobile|1:orderItemEffectiveOneTimeTotal%)",
+            "orderItemOneTimeCharge": "=IF(%DR_HasDiscount:HasDiscount% = true, %LA_DicountListProductMobile|1:orderItemOneTimeCharge%  ,%LA_ListProductMobile|1:orderItemOneTimeCharge%)",
+            "orderItemRecurringChargeIncDiscount": "=IF(%DR_HasDiscount:HasDiscount% = true, %IP_CalculateCFM:detalle:cfmTotal%, 0)"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpdateOrderItemPrices",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AdvancePaymentAdjustment/Procedure/DRL_UpdatePricesItemRoot"
+}

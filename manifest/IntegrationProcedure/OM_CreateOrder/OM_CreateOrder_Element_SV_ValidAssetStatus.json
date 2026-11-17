@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ValidAssetStatus",
+    "OmniProcessId": {
+        "Name": "CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "estatusDesactivacion": "=IF(%orderType% = 'Cancelacion',  IF((%responseRoot:AssetRoot:Status% = 'Suspended' || %responseRoot:AssetRoot:Status% = 'Active'),\"success\",\"El Asset debe tener estatus activo o suspendido para una Cancelación\"  ),\"false\")\n",
+            "estatusReactivacion": "=IF(%orderType% = 'Reconexion',IF(%responseRoot:AssetRoot:Status% = 'Suspended',\"success\",\"El Asset debe tener estatus suspendido para una Reactivación\"),\"false\")",
+            "estatusReinstalacion": "=IF(%orderType% = 'Reinstalacion',IF(ISBLANK(%responseRoot%)&&%DME_getDeactivatedSubscription:AssetRoot:Status% = 'Deactivated',\"success\",\"El Asset debe tener estatus cancelado para una Reinstalacion\"),\"false\")",
+            "estatusSuspension": "=IF(%orderType% = 'Suspension',IF((%responseRoot:AssetRoot:Status% = 'Suspended' ||%responseRoot:AssetRoot:Status% = 'Active'),\"success\",\"El Asset debe tener estatus activo o suspendido para una suspensión\"),\"false\")",
+            "genral": "=IF(%estatusSuspension% = \"success\" || %estatusDesactivacion% = \"success\" || %estatusReactivacion% = \"success\" ||%estatusReinstalacion% = \"success\",true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/SV_ValidAssetStatus"
+}

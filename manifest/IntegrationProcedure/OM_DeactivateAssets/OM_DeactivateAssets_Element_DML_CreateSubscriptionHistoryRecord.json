@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DML_CreateSubscriptionHistoryRecord",
+    "OmniProcessId": {
+        "Name": "DeactivateAssets",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/DeactivateAssets/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "AccountId": "%DME_GetDataToDeactivate:lstSubscriptionOld:%vlocity_namespace%__AccountId__c%",
+            "MSISDN": "%DME_GetDataToDeactivate:lstSubscriptionOld:OM_MSISDN__c%",
+            "Status": "%DME_GetDataToDeactivate:lstSubscriptionOld:%vlocity_namespace%__Status__c%",
+            "billingAccountId": "%DME_GetDataToDeactivate:lstSubscriptionOld:%vlocity_namespace%__BillingAccountId__c%",
+            "reasonCode": "%DME_GetDataToDeactivate:lstSubscriptionOld:OM_ReasonCode__c%",
+            "serviceAccountId": "%DME_GetDataToDeactivate:lstSubscriptionOld:%vlocity_namespace%__ServiceAccountId__c%",
+            "statusEndDate": "=NOW()",
+            "statusStartDate": "%DME_GetDataToDeactivate:lstSubscriptionOld:OM_StatusStartDate__c%",
+            "subReasonCode": "%DME_GetDataToDeactivate:lstSubscriptionOld:OM_SubReasonCode__c%",
+            "subscriptionId": "%DME_GetDataToDeactivate:lstSubscriptionOld:Id%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_SubscriptionHistory",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%error% != \"OK\"",
+        "failureResponse": {
+            "result": {
+                "description": "Falló al crear el historial de suscripción"
+            },
+            "success": false
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/DeactivateAssets/Procedure/DML_CreateSubscriptionHistoryRecord"
+}

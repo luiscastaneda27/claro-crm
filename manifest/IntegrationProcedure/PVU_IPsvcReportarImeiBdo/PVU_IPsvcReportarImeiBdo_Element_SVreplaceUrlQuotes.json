@@ -1,0 +1,31 @@
+{
+    "Description": "El request espera comillas simples, entonces se reemplazan las comillas dobles que se generan naturalmente en el nodo json",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVreplaceUrlQuotes",
+    "OmniProcessId": {
+        "Name": "IPsvcReportarImeiBdo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcReportarImeiBdo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "repalcedUrl": "=FUNCTION('CustomOmniStudioFunctions','replace', %SVsetUrl:url%,'%22','%27')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcReportarImeiBdo/Procedure/SVreplaceUrlQuotes"
+}

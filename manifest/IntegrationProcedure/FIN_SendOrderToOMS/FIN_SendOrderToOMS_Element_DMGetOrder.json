@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DMGetOrder",
+    "OmniProcessId": {
+        "Name": "SendOrderToOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendOrderToOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalInput": {
+            "Id": "%Id%"
+        },
+        "additionalOutput": {
+            "opportunityId": "%DMGetOrder:OpportunityId%",
+            "quoteId": "%DMGetOrder:Quote:Id%",
+            "serviceCondition": "%DMGetOrder:ServiceCondition%"
+        },
+        "bundle": "FINGetOrder",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+        ],
+        "disOnTplt": false,
+        "failOnStepError": true,
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataMapperExtractAction1",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendOnlyAdditionalInput": true,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendOrderToOMS/Procedure/DMGetOrder"
+}

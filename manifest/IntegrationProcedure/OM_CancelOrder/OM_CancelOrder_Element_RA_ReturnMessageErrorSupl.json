@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ReturnMessageErrorSupl",
+    "OmniProcessId": {
+        "Name": "OM_ValidatePONRAndCancelOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CancelOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "Details": {
+                    "message": "%CreateSupplementalOrder:messages|1:message%"
+                },
+                "EndProcess": "Error"
+            }
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%CreateSupplementalOrder:messages|1:severity% == \"ERROR\" || %CreateSupplementalOrder:messages|1:severity% == \"WARN\"",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CancelOrder/Procedure/RA_ReturnMessageErrorSupl"
+}

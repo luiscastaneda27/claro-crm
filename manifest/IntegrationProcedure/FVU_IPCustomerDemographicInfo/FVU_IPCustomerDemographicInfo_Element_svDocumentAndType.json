@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "svDocumentAndType",
+    "OmniProcessId": {
+        "Name": "FVU_IPCustomerDemographicInfo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCustomerDemographicInfo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_Validation_DocumentAndType",
+        "OmniProcessId": {
+            "Name": "FVU_IPCustomerDemographicInfo",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCustomerDemographicInfo/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCustomerDemographicInfo/Procedure/CB_Validation_DocumentAndType",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_Validation_DocumentAndType",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountId": "=IF(AND(NOT(ISBLANK(%DRTransformDemographicData:idSF%)),%DRTransformDemographicData:idSF% <> \"\"),%DRTransformDemographicData:idSF%,%DRT_CreateAccountDaughterDocumentAndType:Account_1:Id%)",
+            "RecordType": "=IF(NOT(ISBLANK(%DRE_GetRecodType:nodeAddressRTypeIdSF%)), %DRE_GetRecodType:nodeAddressRTypeIdSF%,%DRE_GetRecodType:nodeAddressRTypeId%)",
+            "RecordTypeName": "=IF(NOT(ISBLANK(%DRE_GetRecodType:nodeAddressNameRTypeIdSF%)), %DRE_GetRecodType:nodeAddressNameRTypeIdSF%,%DRE_GetRecodType:nodeAddressNameRType%)",
+            "valCtaNew": "%DRT_CreateAccountDaughterDocumentAndType:Account_1:Id%",
+            "valIdSF": "%DRTransformDemographicData:idSF%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCustomerDemographicInfo/Procedure/svDocumentAndType"
+}

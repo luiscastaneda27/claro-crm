@@ -1,0 +1,63 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRL_CreateNotificationFailureLog",
+    "OmniProcessId": {
+        "Name": "FVU_SendNotificationEcommerce",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SendNotificationEcommerce/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_Notifications",
+        "OmniProcessId": {
+            "Name": "FVU_SendNotificationEcommerce",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SendNotificationEcommerce/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SendNotificationEcommerce/Procedure/CB_Notifications",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_Notifications",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "CancelReason": "%SV_Request:CancelReason%",
+            "ChannelOrderId": "%SV_Request:nroOrdenChannel%",
+            "ClosingReason": "%SV_Request:MotivoCierre%",
+            "OrderDeliveryStatus": "%SV_Request:EstadoOrdenEntrega%",
+            "OrderFulfilmentStatus": "%SV_Request:EstadoProvision%",
+            "OrderNumber": "%SV_Request:nroOrdenSF%",
+            "OrderStatus": "%SV_Request:Estado%",
+            "OriginatingChannel": "%SV_Request:canal%",
+            "RecordCreationDate": "%SV_Request:timestamp%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_DRCreateNotificationFailureLog",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "IP_NotificationEcommerce:success == false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SendNotificationEcommerce/Procedure/DRL_CreateNotificationFailureLog"
+}

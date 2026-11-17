@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRUpdateCaseSon",
+    "OmniProcessId": {
+        "Name": "IPValidacionesRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRetencion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCierreCasoIDClaro",
+        "OmniProcessId": {
+            "Name": "IPValidacionesRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRetencion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRetencion/Procedure/CBCierreCasoIDClaro",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCierreCasoIDClaro",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Case:CodigoCierre": "%SVCaseSon:CodigoCierre%",
+            "Case:Id": "%DRGetCaseID:SonCase:Id%",
+            "Case:RecordTypeId": "%SVCaseSon:RecordTypeId%",
+            "Case:Status": "%SVCaseSon:Estado%",
+            "Case:SubEstado": "%SVCaseSon:SubEstado%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_DRUpsertCase",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "error": "=%DRUpdateCaseParent:Case_1:UpsertError%",
+            "message": "'Error al actualizar el caso, por  favor intente de nuevo'",
+            "success": "=%DRUpdateCaseParent:Case_1:UpsertSuccess%"
+        },
+        "ignoreCache": false,
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRetencion/Procedure/DRUpdateCaseSon"
+}

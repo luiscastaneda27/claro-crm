@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequest",
+    "OmniProcessId": {
+        "Name": "IPGenerateTemporySuspensionOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBAddItems",
+        "OmniProcessId": {
+            "Name": "IPGenerateTemporySuspensionOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure/LBAddItems",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBAddItems",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Action": "%listaAccionesAdd:Action%",
+            "CartOperation": {
+                "OrderId": "%IPCrearOrderOM:result:orderId%",
+                "ParentProduct": "%listaAccionesAdd:ParentProduct%",
+                "Product": "%listaAccionesAdd:Product%"
+            },
+            "OrderId": "%IPCrearOrderOM:result:orderId%",
+            "fieldsToUpdate": "=%listaAccionesAdd:fieldsToUpdate%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "Request",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure/SVRequest"
+}

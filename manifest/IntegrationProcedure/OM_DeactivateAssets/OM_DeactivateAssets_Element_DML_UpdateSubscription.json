@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DML_UpdateSubscription",
+    "OmniProcessId": {
+        "Name": "DeactivateAssets",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/DeactivateAssets/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "%vlocity_namespace%__EndDate__c": "%DME_GetDataToDeactivate:lstSubscription:%vlocity_namespace%__EndDate__c%",
+            "%vlocity_namespace%__Status__c": "%DME_GetDataToDeactivate:lstSubscription:%vlocity_namespace%__Status__c%",
+            "OM_ReasonCode__c": "%DME_GetDataToDeactivate:lstSubscription:OM_ReasonCode__c%",
+            "OM_SubReasonCode__c": "%DME_GetDataToDeactivate:lstSubscription:OM_SubReasonCode__c%",
+            "OM_SubStatus__c": "%DME_GetDataToDeactivate:lstSubscription:OM_SubStatus__c%",
+            "id": "%DME_GetDataToDeactivate:lstSubscription:Id%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DML_UpdateSubscription",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%error% != \"OK\"",
+        "failureResponse": {
+            "result": {
+                "description": "Falló al actualizar la suscripción"
+            },
+            "success": false
+        },
+        "label": "DataMapperPostAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/DeactivateAssets/Procedure/DML_UpdateSubscription"
+}

@@ -1,0 +1,73 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_UpdateFlagsOneSubs",
+    "OmniProcessId": {
+        "Name": "OM_UpdateSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/UpdateSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_UpdateSubscription",
+        "OmniProcessId": {
+            "Name": "OM_UpdateSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/UpdateSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/UpdateSubscription/Procedure/CB_UpdateSubscription",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_UpdateSubscription",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "MSISDNList": "=LIST(%MSISDN%)",
+            "SusByCollectionsFlag": "=IF(%SusByCollectionsFlag% == $Vlocity.NULL, $Vlocity.NULL,TOSTRING(%SusByCollectionsFlag%))",
+            "SusByCustomerFlag": "=IF(%SusByCustomerFlag% == $Vlocity.NULL, $Vlocity.NULL,TOSTRING(%SusByCustomerFlag%))",
+            "SusByFraudFlag": "=IF(%SusByFraudFlag% == $Vlocity.NULL, $Vlocity.NULL,TOSTRING(%SusByFraudFlag%))",
+            "SusByLostFlag": "=IF(%SusByLostFlag% == $Vlocity.NULL, $Vlocity.NULL,TOSTRING(%SusByLostFlag%))",
+            "SusByTheftFlag": "=IF(%SusByTheftFlag% == $Vlocity.NULL, $Vlocity.NULL,TOSTRING(%SusByTheftFlag%))",
+            "SusByWarrantyFlag": "=IF(%SusByWarrantyFlag% == $Vlocity.NULL, $Vlocity.NULL,TOSTRING(%SusByWarrantyFlag%))",
+            "bloqueoRoamingCAN": "%bloqueoRoamingCAN%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%RA_UpdateFlagsOneSubs:result% == \"Error\"",
+        "failureResponse": {
+            "result": {
+                "code": "400",
+                "message": "%RA_UpdateFlagsOneSubs:Message%",
+                "status": "ERROR"
+            },
+            "success": false
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "OM_UpdateSubscriptionFlag",
+        "remoteMethod": "updateFlags",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/UpdateSubscription/Procedure/RA_UpdateFlagsOneSubs"
+}

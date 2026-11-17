@@ -1,0 +1,68 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_IPsvcRegistroImei2",
+    "OmniProcessId": {
+        "Name": "GetIMEIAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_OrderItemListConsult",
+        "OmniProcessId": {
+            "Name": "GetIMEIAndSendToBDO",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure/LB_OrderItemListConsult",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_OrderItemListConsult",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Ciudad": "%Order:City%",
+            "Departamento": "%Order:Department%",
+            "Direccion": "%Order:Address%",
+            "Name": "%Order:Name%",
+            "Serial": "%SV_OrderItemFilter:OrderItemFiltered:IMEINumber2%",
+            "TelefonoContacto": "%Order:Phone%",
+            "docNumber": "%Order:DocumentNumber%",
+            "tipoPersona": "%Order:PersonType%",
+            "tipoldentificacion": "%Order:DocumentType%"
+        },
+        "additionalOutput": {
+            "IMEIErrorRegister": "=NOT(%IP_IPsvcRegistroImei2:isValid%)",
+            "OrderItemId": "%SV_OrderItemFilter:OrderItemFiltered:OrderProductId%"
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "NOT(%SV_OrderItemFilter:OrderItemFiltered:IMEIErrorConsulta%) AND ISNOTBLANK(%SV_OrderItemFilter:OrderItemFiltered:IMEINumber2%)",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPsvcRegistroImei",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "registerIMEIResult2",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure/IP_IPsvcRegistroImei2"
+}

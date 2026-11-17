@@ -1,0 +1,70 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPPostCartItemSA",
+    "OmniProcessId": {
+        "Name": "FlujoCanalesDig",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "Activacion_Servicios_Adicionales",
+        "OmniProcessId": {
+            "Name": "FlujoCanalesDig",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/Activacion_Servicios_Adicionales",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "Activacion_Servicios_Adicionales",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "CartOperation": {
+                "OrderId": "%IP_OrdenOM:OrderId%",
+                "Product": {
+                    "Product2Code": "%CaseInfo:Producto%"
+                }
+            },
+            "Proceso": "%SVProccessName:ProccessName%",
+            "fieldsToUpdate": {
+                "%vlocity_namespace%__SubAction__c": "ChangeService-Product"
+            },
+            "parentAssetId": "%RootOrderItem:RootItemAssetReferenceId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "ISNOTBLANK(%RootOrderItem:RootItemId%)",
+        "failOnStepError": false,
+        "failureConditionalFormula": "EndProcess = \"fail\"",
+        "failureResponse": {
+            "Details": "%IPPostCartItem:Details%",
+            "EndProcess": "fail"
+        },
+        "integrationProcedureKey": "PVU_PostCartItem",
+        "label": "IntegrationProcedureAction12",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "IPPostCartItem",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/IPPostCartItemSA"
+}

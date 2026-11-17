@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_NIPStatus",
+    "OmniProcessId": {
+        "Name": "FVU_NIPRequest",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/NIPRequest/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_GetNIPStatus",
+        "OmniProcessId": {
+            "Name": "FVU_NIPRequest",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/NIPRequest/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/NIPRequest/Procedure/CB_GetNIPStatus",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_GetNIPStatus",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "GetStatus": {
+                "status": "%IP_GetPortInNipStatusList:statusList|1:status%",
+                "statusCode": "%IP_GetPortInNipStatusList:statusList|1:statusCode%",
+                "statusErrorDescription": "%IP_GetPortInNipStatusList:statusList|1:statusErrorDescription%",
+                "success": "%IP_GetPortInNipStatusList:success%"
+            },
+            "showResendToast": false,
+            "showSendNIP": true,
+            "showStatusToast": true,
+            "showToastStep": true,
+            "statusNIP": "=\"check\""
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/NIPRequest/Procedure/RA_NIPStatus"
+}

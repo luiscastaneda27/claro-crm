@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataRequest",
+    "OmniProcessId": {
+        "Name": "FVU_SendNotificationEcommerce",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SendNotificationEcommerce/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Estado": "%orden:Status%",
+            "EstadoOrdenEntrega": "%orden:OrderDeliveryStatus%",
+            "EstadoProvision": "%orden:FulfilmentStatus%",
+            "MotivoCierre": "%orden:closingReason%",
+            "canal": "%orden:OriginatingChannel%",
+            "nroOrdenChannel": "%orden:ChannelOrderId%",
+            "nroOrdenSF": "%orden:OrderNumber%",
+            "timestamp": "=NOW()"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "SV_Request",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SendNotificationEcommerce/Procedure/SV_DataRequest"
+}

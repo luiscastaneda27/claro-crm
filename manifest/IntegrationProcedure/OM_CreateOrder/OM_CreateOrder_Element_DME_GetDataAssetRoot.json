@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DME_GetDataAssetRoot",
+    "OmniProcessId": {
+        "Name": "CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "MSISDN": "%MSISDN%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DR_GetDataByExecutePortOut",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%MSISDN%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "LISTSIZE(%AssetRoot%) > 1",
+        "failureResponse": {
+            "operation": "Failed to get asset root",
+            "result": {
+                "code": "400",
+                "message": "Existe más de un asset raíz",
+                "status": "Error"
+            },
+            "success": false
+        },
+        "ignoreCache": false,
+        "label": "DataMapperExtractAction1",
+        "responseJSONNode": "responseRoot",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/DME_GetDataAssetRoot"
+}

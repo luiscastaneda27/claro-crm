@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ReservationResquest",
+    "OmniProcessId": {
+        "Name": "FVU_LandlineConsultAndReservation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/LandlineConsultAndReservation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "customerName": "%customerName%",
+            "daneCode": "%IP_LandlineConsult:listOfNumbers:numberElement:cityCode%",
+            "documentNumber": "%documentNumber%",
+            "documentType": "%documentType%",
+            "requestId": "=%IP_LandlineConsult:getNumbersResponse:transactionId%",
+            "reservationDate": "=DESERIALIZE(SERIALIZE(NOW(\"dd/MM/YYYY HH:mm:ss\"))))",
+            "reservedNumber": "=SUBSTRING(%IP_LandlineConsult:listOfNumbers:numberElement:number%, 2, 12)",
+            "transactionId": "=%IP_LandlineConsult:getNumbersResponse:transactionId%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/LandlineConsultAndReservation/Procedure/SV_ReservationResquest"
+}

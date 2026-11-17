@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCloseCaseNegacionAprobada",
+    "OmniProcessId": {
+        "Name": "IPNegacionPortabilidadByCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CloseCaseNegacionAprobada",
+        "OmniProcessId": {
+            "Name": "IPNegacionPortabilidadByCase",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure/CB_CloseCaseNegacionAprobada",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CloseCaseNegacionAprobada",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CodigoCierre": "Negación aprobada",
+            "Id": "%caseId%",
+            "RequestProcessStatus": "=IF(%IPUpdatePQRAprobadoSinOrden:EndProcess% == 'fail', 'NegPort_Error_Update_PQR_WithoutOrder', 'Procesado Exitoso')",
+            "RequestProcessStatusDetail": "%IPUpdatePQRAprobadoSinOrden%",
+            "Status": "Cerrado"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "Case",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure/SVCloseCaseNegacionAprobada"
+}

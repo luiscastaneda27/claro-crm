@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RACheckoutWithCPQ",
+    "OmniProcessId": {
+        "Name": "IPCheckoutOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCheckoutOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "ContextId": "%OrderId%",
+            "cartId": "%OrderId%",
+            "checkOrderStatus": false,
+            "orderId": "%OrderId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%isQueueOrder%) || %isQueueOrder% == false || (%isQueueOrder% == true && DATEDIFF(TODAY(), %RequestedDate%) == 0)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "messages|1:severity = \"ERROR\"",
+        "failureResponse": {
+            "Details": "=CONCAT(%RACheckoutWithCPQ:messages|1:code% ,   '-'  ,%RACheckoutWithCPQ:messages|1:message% )",
+            "EndProcess": "fail"
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "%vlocity_namespace%.CPQAppHandler",
+        "remoteMethod": "checkout",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCheckoutOrder/Procedure/RACheckoutWithCPQ"
+}

@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SendAppNotification",
+    "OmniProcessId": {
+        "Name": "SPaidOrderUpdateESim",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SPaidOrderUpdateESim/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "body": "=IF(%IPMSLogResoVirtualSIM:isInventoryAvailable% = 'fail','Ocurrió una intermitencia al realizar la reserva, por favor intenta nuevamente ','No hay disponibilidad de inventario, por favor contactar al área de soporte. o realiza la cancelación de la orden.')",
+            "customNotificationTypeName": "BulkNotifications",
+            "targetID": "%OrderId%",
+            "title": "=CONCAT(%AccountName%, \" \", %OrderNumber%)",
+            "userID": "%OwnerId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%IPMSLogResoVirtualSIM:isInventoryAvailable% = 'fail' || %IPMSLogResoVirtualSIM:isInventoryAvailable% = 'notavailable'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "CPQ_SendAppNotification",
+        "label": "IntegrationProcedureAction3",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SPaidOrderUpdateESim/Procedure/SendAppNotification"
+}

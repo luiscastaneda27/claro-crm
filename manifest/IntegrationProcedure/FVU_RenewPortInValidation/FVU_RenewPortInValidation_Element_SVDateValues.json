@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDateValues",
+    "OmniProcessId": {
+        "Name": "RenewPortInValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RenewPortInValidation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "RejectionDate": "=%DR_GetOrderPortinData:Order:RejectionDate%",
+            "constantTimeHour": "15:50",
+            "hourProcessDate": "=SUBSTRING(NOW(\"yyyy-MM-dd HH:mm:ss\"), 11, 16)",
+            "nipDueDate": "=IP_PortInConsultAndTraceability:registros|1:numeros|1:nip:fechaVencimiento",
+            "orderEndPromiseDate": "%GetOrderItems:OrderItem:OrderPromiseEndDate%",
+            "portinActivationDate": "=%GetOrderItems:OrderItem:PortinActivationDate%",
+            "processDate": "=NOW(\"yyyy-MM-dd HH:mm:ss\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RenewPortInValidation/Procedure/SVDateValues"
+}

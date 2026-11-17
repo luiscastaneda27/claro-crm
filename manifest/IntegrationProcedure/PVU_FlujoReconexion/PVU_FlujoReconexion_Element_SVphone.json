@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVphone",
+    "OmniProcessId": {
+        "Name": "FlujoReconexion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoReconexion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "content": "=%RAGetMessage:mensajeParametrizado%",
+            "contentType": "MESSAGE",
+            "deliveryReceipts": "N",
+            "description": "=IF(%subCausal% == \"Sus Revisión Protección Tecnológica\" || %subCausal% == \"Suspensión Por Consumo Inusual\",\"Reconexión Proceso Gpt\", IF(%subCausal% == \"Sus Verificación Prot al Cliente\" || %subCausal% == \"Sus Verificación Negación del servicio\", \"Reconexión Proceso Prevención Fraude\", \"Reconexión Suspensión Temporal Voluntaria\"))",
+            "messageType": "SMS",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "phone": "%Telefono%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "=IF(%subCausal% == \"Sus Revisión Protección Tecnológica\" || %subCausal% == \"Suspensión Por Consumo Inusual\",\"Reconexión Proceso Gpt\", IF(%subCausal% == \"Sus Verificación Prot al Cliente\" || %subCausal% == \"Sus Verificación Negación del servicio\", \"Reconexión Proceso Prevención Fraude\", \"Reconexión Suspensión Temporal Voluntaria\"))",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "%MetodoNotif% == \"SMS - Teléfono de contacto\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "DataNotif",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoReconexion/Procedure/SVphone"
+}

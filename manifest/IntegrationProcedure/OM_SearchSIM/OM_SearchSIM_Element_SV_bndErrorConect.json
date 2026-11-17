@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_bndErrorConect",
+    "OmniProcessId": {
+        "Name": "SearchSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/SearchSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "bErrorConn": "=IF(ISNOTBLANK(%DRTransformResponse:error%) OR ISBLANK(%HTTPSearchSim%) OR (%HTTPSearchSimInfo:statusCode% > 400), true, false)",
+            "connErrorCode": "ERROR_CONN",
+            "httpErrorConnResponse": "=IF(ISNOTBLANK(%HTTPSearchSimInfo:statusCode%), %HTTPSearchSimInfo:statusCode%, '000')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues12",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/SearchSIM/Procedure/SV_bndErrorConect"
+}

@@ -1,0 +1,56 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpdateOrderBlocked",
+    "OmniProcessId": {
+        "Name": "IPOMSMilestone",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ResourceFoundOrder",
+        "OmniProcessId": {
+            "Name": "IPOMSMilestone",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/ResourceFoundOrder",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ResourceFoundOrder",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Order:DeliveryStatus": "=IF(%DRE_IPGetDetailsProductOrder:PurchaseType% = \"POR\", 'PortabilityBlocked', 'BlockedDueToIssue')",
+            "Order:Id": "%DRE_IPGetDetailsProductOrder:orderId%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertOrder",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DM_OrderWithAnIssue|1:Action% = \"Block\" && %DRE_IPGetDetailsProductOrder:orderDeliveryMethod% = \"Delivery\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/DR_UpdateOrderBlocked"
+}

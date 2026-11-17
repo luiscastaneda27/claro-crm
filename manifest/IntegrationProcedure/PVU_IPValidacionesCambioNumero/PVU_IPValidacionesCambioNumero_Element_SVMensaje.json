@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVMensaje",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCambioNumero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCambioNumero/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "mensajeValidaciones": "=IF(%RACasesValidations:openCasesSize% > 0,%Mensajes:CAMBNUM002%,IF(%RACasesValidations:openCasesPortabilidadSize% > 0,%Mensajes:CAMBNUM005%,IF(%RACasesValidations:closedCases30daysListSize% > 0,%Mensajes:CAMBNUM003%,\"SUCCESS\")))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "mensajeValidaciones",
+        "responseJSONPath": "mensajeValidaciones",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCambioNumero/Procedure/SVMensaje"
+}

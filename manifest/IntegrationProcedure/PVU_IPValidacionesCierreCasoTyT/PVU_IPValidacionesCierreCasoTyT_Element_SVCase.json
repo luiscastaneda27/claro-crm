@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCase",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCierreCasoTyT",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCierreCasoTyT/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBTieneServicios",
+        "OmniProcessId": {
+            "Name": "IPValidacionesCierreCasoTyT",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCierreCasoTyT/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCierreCasoTyT/Procedure/CBTieneServicios",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBTieneServicios",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CodigoCierre": "=IF(\r\n    %SVValores:CantidadTotal% == %SVValores:CantidadNoFavorables%,\r\n    %SVCodigosCierre:CC1%,\r\n    IF(  \r\n        (OR(\r\n            %SVValores:CantidadFavorablesTerminalesImei% == %SVValores:CantidadFavorablesTerminales%,\r\n            %SVValores:CantidadFavorableTecnologia% == %SVValores:CantidadFavorableTecnologiaFraude%\r\n        ) AND (%SVValores:CantidadFavorableTerminalesNotImei% == 0 && %SVValores:CantidadNoFavorables%  == 0)),\r\n        %SVCodigosCierre:CC2%,\r\n        IF(\r\n            AND (\r\n %SVValores:CantidadFavorablesTerminales% != %SVValores:CantidadFavorablesTerminalesImei%,%SVValores:CantidadNoFavorables% = 0 \r\n),\r\n            %SVCodigosCierre:CC3%,\r\n            IF(\r\n                OR(\r\n                    %SVValores:CantidadFavorablesTerminalesImei% == %SVValores:CantidadTerminales%,\r\n                    %SVValores:CantidadTecnologia% == %SVValores:CantidadFavorableTecnologiaFraude%\r\n                ),\r\n                %SVCodigosCierre:CC4%,\r\n                IF(               \r\n                    AND(               \r\n                    %SVValores:CantidadFavorablesTerminales% > %SVValores:CantidadFavorablesTerminalesImei%,\r\n                    %SVValores:CantidadFavorableTecnologia% == %SVValores:CantidadFavorableTecnologiaFraude%),               \r\n                %SVCodigosCierre:CC5%,\r\n                '-'\r\n            )\r\n            )\r\n        )\r\n    )\r\n)",
+            "Estado": "Cerrado",
+            "RecordTypeId": "%DRGetRT:RecordType:Id%",
+            "SubEstado": "-"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues12",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCierreCasoTyT/Procedure/SVCase"
+}

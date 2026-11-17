@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV8oMasDuplas",
+    "OmniProcessId": {
+        "Name": "ValidarDuplasAdicion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcValidarDuplasAdicion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "adicionar": true,
+            "mensajeAdicionar": "Ya existen 8 elementos en el Listado de duplas. Se debe agregar eliminar un dupla para para permitir una nueva adición."
+        },
+        "executionConditionalFormula": "%consultaDuplicadosResponse:cantDuplas% >= 8 ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "adicionarCriterios",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcValidarDuplasAdicion/Procedure/SV8oMasDuplas"
+}

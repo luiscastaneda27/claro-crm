@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSetDatePaquete",
+    "OmniProcessId": {
+        "Name": "IPRoamingValidacionesDesactivacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBPaqueteConPeriodo",
+        "OmniProcessId": {
+            "Name": "IPRoamingValidacionesDesactivacion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/CBPaqueteConPeriodo",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBPaqueteConPeriodo",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "expirityDate": "=SUBSTRING(%SVGetExpirityDateStringPaquete:expirityDateString|1%, 0, 4) + '-' + SUBSTRING(%SVGetExpirityDateStringPaquete:expirityDateString|1%, 4, 6) + '-' + SUBSTRING(%SVGetExpirityDateStringPaquete:expirityDateString|1%, 6, 8)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/SVSetDatePaquete"
+}

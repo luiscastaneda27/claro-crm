@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAMensajeAceptacionActMod",
+    "OmniProcessId": {
+        "Name": "PVU_EnviarAceptacionRoaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/EnviarAceptacionRoaming/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "mensaje": "=IF(%VozCliente% = \"Activación de servicio y paquetes\", %Mensajes:ROAMACT008%, %Mensajes:ROAMMOD001%)",
+            "parametros": [
+                "%SVData:fechaInicioPaq%",
+                "%SVData:fechaFinPaq%",
+                "%nombPaquete%"
+            ]
+        },
+        "additionalOutput": {
+            "contenido": "%RAMensajeAceptacionActMod:mensajeParametrizado%"
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%VozCliente% = \"Activación de servicio y paquetes\" || %VozCliente% = \"Modificación de vigencia\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_CustomMessageHandler",
+        "remoteMethod": "setParametrosEnMensaje",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/EnviarAceptacionRoaming/Procedure/RAMensajeAceptacionActMod"
+}

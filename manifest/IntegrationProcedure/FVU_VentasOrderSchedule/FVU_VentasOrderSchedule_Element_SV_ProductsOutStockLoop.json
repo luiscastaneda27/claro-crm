@@ -1,0 +1,32 @@
+{
+    "Description": "Lista los productos que NO tienen disponibilidad de inventario, según la cantidad solicitada en el carrito. Nodo \"abnormalProdList\"",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ProductsOutStockLoop",
+    "OmniProcessId": {
+        "Name": "FVU_VentasOrderSchedule",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/VentasOrderSchedule/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DeliveryMethod": "=LIST(%LB_ForProducts:ResultLoop:prodDelivMethod%)",
+            "ProductsOutStock": "=LIST(%LB_ForProducts:ResultLoop%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues13",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/VentasOrderSchedule/Procedure/SV_ProductsOutStockLoop"
+}

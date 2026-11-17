@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CanceledAndNOTDeliveryAndActivated",
+    "OmniProcessId": {
+        "Name": "IPOMSMilestone",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_ForbiddenRequest",
+        "OmniProcessId": {
+            "Name": "IPOMSMilestone",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/CB_ForbiddenRequest",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_ForbiddenRequest",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "code": "=403",
+            "message": "=IF(orderProductItem:status != 'CANCELED', '', IF((DRE_IPGetDetailsProductOrder:orderStatus != 'DeliveryAndActivated' && DRE_IPGetDetailsProductOrder:orderStatus != 'InPayment'), 'Order status is incorrect. If Item status is CANCELED, Order Status must be DeliveryAndActivated or InPayment.', IF((DRE_IPGetDetailsProductOrder:orderItems|1:orderItemProductDeliveryStatus = 'DeliveredAgent' || DRE_IPGetDetailsProductOrder:orderItems|1:orderItemProductDeliveryStatus = 'DeliveredCustomer' || DRE_IPGetDetailsProductOrder:orderItems|1:orderItemProductDeliveryStatus = 'Pendiente Devolucion Producto a Bodega' || DRE_IPGetDetailsProductOrder:orderItems|1:orderItemProductDeliveryStatus = 'Returned'), CONCAT('The order item is already in a final delivery/return status (', DRE_IPGetDetailsProductOrder:orderItems|1:orderItemProductDeliveryStatus, '). Deactivation is not possible.'), IF((DRE_GetCaseInfo:caseStatusInboundOMS != 'DeliveredAgent' && ISNOTBLANK(DRE_GetCaseInfo:caseStatusInboundOMS)), 'The OMS Case status is reported but is not the required final delivery status (DeliveredAgent).', 'No explicit deactivation prohibition condition was met. Process may proceed.'))))",
+            "reason": "='Request forbidden'",
+            "status": "='Failed'"
+        },
+        "executionConditionalFormula": "SV_CanceledOrder:DeactivateProcess",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "SetForbiddenRequest",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/CanceledAndNOTDeliveryAndActivated"
+}

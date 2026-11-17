@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ActiveDeliveryMethods",
+    "OmniProcessId": {
+        "Name": "FilterAvailableProductsImmediateDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_DeliveryMethods",
+        "OmniProcessId": {
+            "Name": "FilterAvailableProductsImmediateDelivery",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/CB_DeliveryMethods",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_DeliveryMethods",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ActiveDeliveryMethods": "=LIST(%SV_GetOnlyDeliveryActive:Delivery%, %SV_GetOnlyDeliveryActive:PickUp%, %SV_GetOnlyDeliveryActive:ImmediatePickUp%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues24",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/SV_ActiveDeliveryMethods"
+}

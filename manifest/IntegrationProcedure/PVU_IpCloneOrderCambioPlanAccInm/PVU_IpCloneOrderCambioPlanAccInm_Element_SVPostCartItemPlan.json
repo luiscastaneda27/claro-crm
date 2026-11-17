@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVPostCartItemPlan",
+    "OmniProcessId": {
+        "Name": "IpCloneOrderCambioPlanAccInm",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CartOperation": {
+                "OrderId": "%NewOrderId%",
+                "Product": {
+                    "Product2Code": "%getOrderItems:productCodePlan%"
+                }
+            },
+            "OrderId": "%NewOrderId%",
+            "fieldsToUpdate": {
+                "%vlocity_namespace%__SubAction__c": "ChangePlan-Add"
+            }
+        },
+        "executionConditionalFormula": "source = \"addPostCart\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "Request",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure/SVPostCartItemPlan"
+}

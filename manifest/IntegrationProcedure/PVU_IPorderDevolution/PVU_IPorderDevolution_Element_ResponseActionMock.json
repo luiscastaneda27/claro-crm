@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionMock",
+    "OmniProcessId": {
+        "Name": "IPorderDevolution",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPorderDevolution/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": "Servicio Mockeado",
+            "EndProcess": "=IF(ISNOTBLANK(%IPGetMock:Response:E_PEDIDO_NC%), \"success\", \"fail\")",
+            "almacer": "%IPGetMock:Response:EX_DATOS_PEDDEV:ALMACEN%",
+            "centro": "%IPGetMock:Response:EX_DATOS_PEDDEV:CENTRO%",
+            "facturaNotaCredito": "%IPGetMock:Response:E_FACTURA_NC%",
+            "fechaFactura": "%IPGetMock:Response:E_FECHA_FACTURA%",
+            "fechaNotaCredito": "%IPGetMock:Response:E_FECHA_FACTURA_NC%",
+            "numeroDocumentoMaterial": "%IPGetMock:Response:E_ENTRADA_MCIA%",
+            "numeroEntregaDevolucion": "%IPGetMock:Response:E_ENTREGA_DEVOL%",
+            "numeroMaterial": "%IPGetMock:Response:EX_DATOS_PEDDEV:MATERIAL%",
+            "numeroNotaCredito": "%IPGetMock:Response:E_PEDIDO_NC%",
+            "numeroSerie": "%IPGetMock:Response:EX_DATOS_PEDDEV:SERIAL%",
+            "valorDevolucion": "%IPGetMock:Response:EX_DATOS_PEDDEV:VALOR_DEVOLUCION%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "IPGetMock:ModoTest = \"true\" && ISNOTBLANK(%IPGetMock:Response:E_PEDIDO_NC%)",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPorderDevolution/Procedure/ResponseActionMock"
+}

@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ConditionsCancel",
+    "OmniProcessId": {
+        "Name": "ObtieneDatosCondicionesBoton",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ObtieneDatosCondicionesBoton/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "cond1": "=IF(%IP_GetOrderbyPlanId:Order:orchPlanState% = 'In Progress',true,false)",
+            "cond2": "%DME_GetUserInfo:UserInfo:bCustomPermission%",
+            "cond3": "=IF(%IP_GetOrderbyPlanId:Order:tipo% = 'Portabilidad',true,false)",
+            "cond4": "=IF(%IP_GetOrderbyPlanId:Order:tipo% = 'PortIn',true,false)",
+            "cond5": "=IF(%IP_GetOrderbyPlanId:Order:bSuperseded%!= true, true, false)",
+            "cond6": "=IF(%IP_GetOrderbyPlanId:Order:orchPlanState% != 'In Progress',true,false)",
+            "cond7": "=ISNOTBLANK(%DM_GetRootAsset:Asset:Id%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ObtieneDatosCondicionesBoton/Procedure/SV_ConditionsCancel"
+}

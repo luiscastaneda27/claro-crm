@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "IPValidacionesReconexion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesReconexion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Account": "%DRGetAccountDocument%",
+            "TodayDate": "%IPDateFormat:fechaGuionYYYYMMDD%",
+            "aplicaReconexion": "=IF(%suspensionesDetail:Details:Subcausal% = 'Temporal Voluntaria' || %suspensionesDetail:Details:Subcausal% = 'Sus Revisión Protección Tecnológica' ||\r\n%suspensionesDetail:Details:Subcausal% = 'Suspensión Por Consumo Inusual' || \r\n%suspensionesDetail:Details:Subcausal% = 'Sus Verificación Prot al Cliente' ||\r\n%suspensionesDetail:Details:Subcausal% = 'Sus Verificación Negación del servicio' , true, false)",
+            "openCases": "%RACaseValidations:openCases%",
+            "openCasesSize": "%RACaseValidations:openCasesSize%",
+            "saldoMora": "=IF(%IPSaldoMora:Estado% == \"Mora\", %IPSaldoMora:billingAccountDefault|1:defaultAmount%, 0)",
+            "suspensionesInfo": "%suspensionesDetail:Details%",
+            "suspensionesInfo:temporalvoluntaria": "=IF(ISNOTBLANK(%suspensionesDetail:Details:Suspensiones%), FILTER(LIST(%suspensionesDetail:Details:Suspensiones%), 'SubStatus == \"Temporal Voluntaria\"')|1:OM_FutureOrderId, \"\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesReconexion/Procedure/SVResponse"
+}

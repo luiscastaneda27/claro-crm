@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_SetData",
+    "OmniProcessId": {
+        "Name": "OM_ObtieneInfoAttrsDiff",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ObtieneInfoAttrsDiff/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "bGeneraJSONSOM": "=IF(%LA_FiltraOrqItem|1:Name%!=null,IF(%LA_FiltraOrqItem|1:State%=='Completed', true, false), false)",
+            "orderId": "=IF(%LA_FiltraOrden|1:id%!=null,%LA_FiltraOrden|1:id%, %DME_GetOrderId:Order:id%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ObtieneInfoAttrsDiff/Procedure/SV_SetData"
+}

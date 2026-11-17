@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "IPValidacionesRoaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRoaming/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DerivacionGPT": "%IPGetGPTCases:DerivacionGPT%",
+            "DesacRoamingOrderDetail": "=IF(ISNOTBLANK(%DRGetFDOByAsset%) && LISTSIZE(%DRGetFDOByAsset%) > 0, %DRGetFDOByAsset:Order%, '')",
+            "InfoConsumo": "=%SVSumConsumos%",
+            "Message": "=IF(%DRGetAssetInfo:Asset:Status% != 'Active', %Mensajes:ROAMACT003%, IF(%IPGetPaymentReferences:Estado% != 'Al día',%RAMessageP1:mensajeParametrizado%,IF(%RACasesValidations:openCasesPortabilidadSize% > 0,%RAMessageP1:mensajeParametrizado%,IF(%RACasesValidations:openCasesSize% > 0, %Mensajes:ROAMACT002%, 'SUCCESS'))))",
+            "PaquetesActivos": "=%infoPaquetes:paquetesActivosSize%",
+            "PaquetesActivosNames": "=%infoPaquetes:paquetesActivosOnlyNames%",
+            "PasaporteAmerica": "=%infoPaquetes:paquetesPasaporteAmerica%",
+            "ShowmsgConsumoA": "=IF(  %SVSumConsumos:HaveCapacidadConsumo% || %SVSumConsumos:vigenciadiasPaquete%, true, false)",
+            "ShowmsgConsumoB": "=IF(  %SVSumConsumos:HaveCapacidadConsumo% || %SVSumConsumos:vigenciadiasPaquete%, true, false)",
+            "isValid": "=IF(%DRGetAssetInfo:Asset:Status% != 'Active', false, IF(%IPGetPaymentReferences:Estado% != 'Al día',false,IF(%RACasesValidations:openCasesPortabilidadSize% > 0,false,IF(%RACasesValidations:openCasesSize% > 0, false, true)))",
+            "passAmericaName": "=%infoPaquetes:passAmericaName%",
+            "valid_hasDesacRoamingOrder": "=IF( ISNOTBLANK(%DRGetFDOByAsset%) && LISTSIZE(%DRGetFDOByAsset%) > 0, true, false)",
+            "validationAssetActivo": "=IF(%DRGetAssetInfo:Asset:Status% != 'Active', true, false)",
+            "validationOpenCases": "=IF(%RACasesValidations:openCasesSize% > 0, true, false)",
+            "validationPagoFacturas": "=IF(%IPGetPaymentReferences:Estado% != 'Al día', true, false)",
+            "validationPortOut": "=IF(%RACasesValidations:openCasesPortabilidadSize% > 0, true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRoaming/Procedure/SVResponse"
+}

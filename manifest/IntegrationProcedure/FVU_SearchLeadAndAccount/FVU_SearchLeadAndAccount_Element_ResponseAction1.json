@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction1",
+    "OmniProcessId": {
+        "Name": "SearchLeadAndAccount",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SearchLeadAndAccount/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Accounts": "%IP_ShearchAccount:Accounts%",
+            "CrearProspecto": "%RAAccessProcess:CrearProspecto%",
+            "Leads": "%IP_SearchLead:Leads%",
+            "TotalAccounts": "=IF(ISNOTBLANK(%IP_ShearchAccount:Accounts%),LISTSIZE(%IP_ShearchAccount:Accounts%),0)",
+            "TotalLeads": "=IF(ISNOTBLANK(%IP_SearchLead:Leads%),LISTSIZE(%IP_SearchLead:Leads%),0)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SearchLeadAndAccount/Procedure/ResponseAction1"
+}

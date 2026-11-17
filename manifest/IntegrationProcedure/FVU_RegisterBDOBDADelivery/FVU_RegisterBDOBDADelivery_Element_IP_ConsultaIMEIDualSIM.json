@@ -1,0 +1,68 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_ConsultaIMEIDualSIM",
+    "OmniProcessId": {
+        "Name": "RegisterBDOBDADelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_OrderItemListConsult",
+        "OmniProcessId": {
+            "Name": "RegisterBDOBDADelivery",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/LB_OrderItemListConsult",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_OrderItemListConsult",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "channel": "IMEICOMCEL",
+            "imei": "%OrderLB:OrderItem:OrderProductIMEI%"
+        },
+        "additionalOutput": {
+            "IMEIErrorConsulta": "=IF(OR(%IP_ConsultaIMEIDualSIM:piCode%==0, %IP_ConsultaIMEIDualSIM:piCode%==1), false,true)",
+            "IMEINumber": "%OrderLB:OrderItem:OrderProductIMEI%",
+            "IMEINumber2": "%IP_ConsultaIMEIDualSIM:imei2%",
+            "OrderItemId": "%OrderLB:OrderItem:OrderProductId%",
+            "OrderProductBrand": "%OrderLB:OrderItem:OrderProductBrand%",
+            "OrderProductCode": "%OrderLB:OrderItem:OrderProductCode%",
+            "OrderProductName": "%OrderLB:OrderItem:ProductName%",
+            "isDualSIM": "=IF(ISNOTBLANK(%IP_ConsultaIMEIDualSIM:imei2%), true, false)",
+            "orderProductId": "%OrderLB:OrderItem:OrderProductId%"
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_ConsultaIMEIDualSIM",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "consultaIMEIResult",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/IP_ConsultaIMEIDualSIM"
+}

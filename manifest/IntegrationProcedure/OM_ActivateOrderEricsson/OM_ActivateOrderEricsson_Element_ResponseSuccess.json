@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseSuccess",
+    "OmniProcessId": {
+        "Name": "ActivateOrderEricsson",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ActivateOrderEricsson/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "request": "=DESERIALIZE(%ericssonJson%)",
+            "response:customerOrderId": "=IF(ISNOTBLANK(%HTTPActivateOrderEricsson:id%),%HTTPActivateOrderEricsson:id%,%OM_DRE_GetOrderDetail:Order:CustomerOrderId%)",
+            "response:description": "=%HTTPActivateOrderEricsson:description%",
+            "response:responseStatus:code": 200,
+            "response:responseStatus:message": "",
+            "response:responseStatus:status": "OK",
+            "response:state": "=%HTTPActivateOrderEricsson:state%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ActivateOrderEricsson/Procedure/ResponseSuccess"
+}

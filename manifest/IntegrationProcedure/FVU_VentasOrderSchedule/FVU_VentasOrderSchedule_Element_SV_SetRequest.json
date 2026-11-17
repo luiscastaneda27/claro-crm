@@ -1,0 +1,33 @@
+{
+    "Description": "deliveryAddrId  =  IF(%AddressId% <> null, %AddressId%, SUBSTRING(%DREInputOrderSchedule:deliveryAddrId%,0,5))",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_SetRequest",
+    "OmniProcessId": {
+        "Name": "FVU_VentasOrderSchedule",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/VentasOrderSchedule/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "channelCode": "=CONCAT(%DREInputOrderSchedule:channelCode%, %DR_GetMdtInterfaceSettings:Descripcion%)",
+            "deliveryAddrId": "=IF(%AddressId% <> null, %AddressId%, SUBSTRING(%DREInputOrderSchedule:deliveryAddrId%,0,5))",
+            "productList": "=LIST(LA_SetProductList)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "SV_SetRequest",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/VentasOrderSchedule/Procedure/SV_SetRequest"
+}

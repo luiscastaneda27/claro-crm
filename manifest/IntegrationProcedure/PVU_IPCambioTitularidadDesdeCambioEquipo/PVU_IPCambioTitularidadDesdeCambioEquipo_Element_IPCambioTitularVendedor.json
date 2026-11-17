@@ -1,0 +1,58 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPCambioTitularVendedor",
+    "OmniProcessId": {
+        "Name": "IPCambioTitularidadDesdeCambioEquipo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioTitularidadDesdeCambioEquipo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "direccionAutorizado": "%DRGetCase:AssetFullBillingAddress%",
+            "direccionPropietario": "%IPSAPInventory:saleAddressPoint%",
+            "imei": "%DRGetCase:AssetImei%",
+            "imsi": 901100495211772,
+            "msisdn": "%DRGetCase:msisdn%1",
+            "nombreAutorizado": "%DRGetAccountHeaderData:AccountDoc|1:Name%",
+            "nombrePropietario": "%IPSAPInventory:distributorSocialName%",
+            "numIdAutorizado": "%DRGetAccountHeaderData:AccountDoc|1:FVU_DocumentNumber__c%",
+            "numIdPropietario": "%SVDocumentType:NumeroVendedor%",
+            "telContactoAutorizado": "%DRGetAccountHeaderData:AccountDoc|1:Phone%",
+            "telContactoPropietario": "%IPSAPInventory:businessDocumentNumber%",
+            "tipoDocAutorizado": "%SVDocumentType:TipoDocCliente%",
+            "tipoDocPropietario": "%SVDocumentType:TipoDocVendedor%",
+            "tipoUsuarioAutorizado": "=TOSTRING(1)",
+            "tipoUsuarioPropietario": "=TOSTRING(2)"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%DRGetCase:AssetImei% != ''",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPsvcCambioTitularidad",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioTitularidadDesdeCambioEquipo/Procedure/IPCambioTitularVendedor"
+}

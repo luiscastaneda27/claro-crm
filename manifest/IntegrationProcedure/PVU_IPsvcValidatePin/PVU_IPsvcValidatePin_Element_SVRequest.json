@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequest",
+    "OmniProcessId": {
+        "Name": "ValidatePin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcValidatePin/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "clientID": "=IF(%IsLeadConversion% != true, %FVU_DRTGetCustomerData:accountDocument%, %DocumentNumber%)",
+            "imei": "=%imei%",
+            "name": "=\"communicationOrigin\"",
+            "nombre_profileId": "=\"profileId\"",
+            "opertionId": "=%FVU_DRTGetCustomerData:metadataValidate:operationId__c%",
+            "pin": "=%pin%",
+            "requestDate": "=DESERIALIZE(SERIALIZE(NOW()))",
+            "system": "=\"Salesforce\"",
+            "systemId": "=%FVU_DRTGetCustomerData:metadataValidate:systemId__c%",
+            "value": "=%FVU_DRTGetCustomerData:metadataValidate:communicationOrigin__c%",
+            "value_profileId": "=IF(%isEmail% = true,%FVU_DRTGetCustomerData:metadataValidate:profileIdEmail__c%,%FVU_DRTGetCustomerData:metadataValidate:profileIdSMS__c%)",
+            "vchUser": "=%FVU_DRTGetCustomerData:userName%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcValidatePin/Procedure/SVRequest"
+}

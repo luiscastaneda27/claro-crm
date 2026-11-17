@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccess",
+    "OmniProcessId": {
+        "Name": "IPorderDevolution",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPorderDevolution/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": "=IF(ISNOTBLANK(%OrderDevolutionResponse:E_PEDIDO_NC%), \"\", %CallOutCaseCreationSettingsManager:message%)",
+            "EndProcess": "=IF(ISNOTBLANK(%OrderDevolutionResponse:E_PEDIDO_NC%), \"success\", \"fail\")",
+            "almacer": "%OrderDevolutionResponse:EX_DATOS_PEDDEV:ALMACEN%",
+            "centro": "%OrderDevolutionResponse:EX_DATOS_PEDDEV:CENTRO%",
+            "existeFacturaNC": "=IF(%DTNotaCreditoExistefactura:flagNotaCredito%=true, true, false)",
+            "facturaNotaCredito": "=IF(%DTNotaCreditoExistefactura:flagNotaCredito%=true,%DTNotaCreditoExistefactura:facturaNotaCredito%,%OrderDevolutionResponse:E_FACTURA_NC%)",
+            "fechaFactura": "=IF(%DTNotaCreditoExistefactura:flagNotaCredito%=true,%DTNotaCreditoExistefactura:fechaFactura%,%OrderDevolutionResponse:E_FECHA_FACTURA%)",
+            "fechaNotaCredito": "=IF(%DTNotaCreditoExistefactura:flagNotaCredito%=true,%DTNotaCreditoExistefactura:fechaNotaCredito%,%OrderDevolutionResponse:E_FECHA_FACTURA_NC%)",
+            "numeroDocumentoMaterial": "%OrderDevolutionResponse:E_ENTRADA_MCIA%",
+            "numeroEntregaDevolucion": "%OrderDevolutionResponse:E_ENTREGA_DEVOL%",
+            "numeroMaterial": "%OrderDevolutionResponse:EX_DATOS_PEDDEV:MATERIAL%",
+            "numeroNotaCredito": "=IF(%DTNotaCreditoExistefactura:flagNotaCredito%=true,%DTNotaCreditoExistefactura:numeroNotaCredito%,%OrderDevolutionResponse:E_PEDIDO_NC%)",
+            "numeroSerie": "%OrderDevolutionResponse:EX_DATOS_PEDDEV:SERIAL%",
+            "valorDevolucion": "=IF(%DTNotaCreditoExistefactura:flagNotaCredito%=true,%DTNotaCreditoExistefactura:valorDevolucion%,%OrderDevolutionResponse:EX_DATOS_PEDDEV:VALOR_DEVOLUCION%)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPorderDevolution/Procedure/ResponseActionSuccess"
+}

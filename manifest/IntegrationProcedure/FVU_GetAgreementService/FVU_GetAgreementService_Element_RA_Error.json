@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Error",
+    "OmniProcessId": {
+        "Name": "GetAgreementService",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetAgreementService/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "description": "=IF(ISBLANK(HTTP_GetAgreemeCustomeB2B:description),HTTP_GetAgreemeCustomeB2B,HTTP_GetAgreemeCustomeB2B:description)",
+            "existsAgreement": false,
+            "success": "=IF(HTTP_GetAgreemeCustomeB2B:code = 0,true,false)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%HTTP_GetAgreemeCustomeB2B:code% != 0",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetAgreementService/Procedure/RA_Error"
+}

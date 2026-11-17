@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_FilterIMEI2",
+    "OmniProcessId": {
+        "Name": "GetIMEINumbersAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "FilterIMEI2Error": "=FILTER(LIST(%SV_RegisterIMEIError:IMEIError%), 'IMEINumber2 !=\"\"')",
+            "FilterIMEI2Success": "=FILTER(LIST(%SV_RegisterIMEISuccess:IMEISuccess%), 'IMEINumber2 !=\"\"')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure/SV_FilterIMEI2"
+}

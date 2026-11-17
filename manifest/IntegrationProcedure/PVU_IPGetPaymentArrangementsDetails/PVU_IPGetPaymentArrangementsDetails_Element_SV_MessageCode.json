@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_MessageCode",
+    "OmniProcessId": {
+        "Name": "IPGetPaymentArrangementsDetails",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetPaymentArrangementsDetails/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "NoActiveMock",
+        "OmniProcessId": {
+            "Name": "IPGetPaymentArrangementsDetails",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetPaymentArrangementsDetails/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetPaymentArrangementsDetails/Procedure/NoActiveMock",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "NoActiveMock",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "chainOnStep": true,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "messageCode": "=IF(%DRTransformResponseHttp:response:responseCode% == \"faul:NKERR.30024\", \"PVU013\",\"PVU016\")"
+        },
+        "executionConditionalFormula": "%DRTransformResponseHttp:response:responseCode% != \"FS_ESB_0\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetPaymentArrangementsDetails/Procedure/SV_MessageCode"
+}

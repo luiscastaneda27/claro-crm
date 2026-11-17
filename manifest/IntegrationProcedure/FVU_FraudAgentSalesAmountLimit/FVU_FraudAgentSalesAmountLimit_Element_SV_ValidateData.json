@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ValidateData",
+    "OmniProcessId": {
+        "Name": "FVU_FraudAgentSalesAmountLimit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FraudAgentSalesAmountLimit/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AgentDailyProductAmountLimit": "=%SV_TotalOrderItems:TotalProductsDaily% >= %DR_GetSalesSetup:ProductValueDailyLimit%",
+            "AgentDailyServiceAmountLimit": "=%SV_TotalOrderItems:TotalServicesDaily% >= %DR_GetSalesSetup:ServiceValueDailyLimit%",
+            "AgentMonthlyProductAmountLimit": "=%SV_TotalOrderItems:TotalProductsMonthly% >= %DR_GetSalesSetup:ProductValueMonthlyLimit%",
+            "AgentMonthlyServiceAmountLimit": "=%SV_TotalOrderItems:TotalServicesMonthly% >= %DR_GetSalesSetup:ServiceValueMonthlyLimit%",
+            "AgentWeeklyProductAmountLimit": "=%SV_TotalOrderItems:TotalProductsWeekly% >= %DR_GetSalesSetup:ProductValueWeeklyLimit%",
+            "AgentWeeklyServiceAmountLimit": "=%SV_TotalOrderItems:TotalServicesWeekly% >= %DR_GetSalesSetup:ServiceValueWeeklyLimit%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FraudAgentSalesAmountLimit/Procedure/SV_ValidateData"
+}

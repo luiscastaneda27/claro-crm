@@ -1,0 +1,45 @@
+{
+    "Description": "IF(%HTTPRequestPrePostInfo:statusCode% ==201% && ISBLANK(%HTTPRequestPortability:errorCode%)FUNCIONAL.ERROR, )",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ErrorCode",
+    "OmniProcessId": {
+        "Name": "MigratePrepaidToPostpaid",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/MigratePrepaidToPostpaid/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_FailureHTTPRequest",
+        "OmniProcessId": {
+            "Name": "MigratePrepaidToPostpaid",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/MigratePrepaidToPostpaid/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/MigratePrepaidToPostpaid/Procedure/CB_FailureHTTPRequest",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_FailureHTTPRequest",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ErrorCode": "=IF(%HTTPRequestPrePostInfo:statusCode% == 201, 'FUNCIONAL.ERROR', 'TECHNICAL.ERROR')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/MigratePrepaidToPostpaid/Procedure/SV_ErrorCode"
+}

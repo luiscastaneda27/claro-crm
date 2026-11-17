@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFechaSAPMessage",
+    "OmniProcessId": {
+        "Name": "IPCalculoFechaSAP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCalculoFechaSAP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "anio": "=TOSTRING(YEAR(TODAY())) ",
+            "dia": "=IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(DAY(TODAY()))) == 1, '0' + TOSTRING(DAY(TODAY())),TOSTRING(DAY(TODAY())))",
+            "fechaSAPCaso": "%SVFechaSap:fechaSAP%",
+            "fechaSAPSplit": "=SPLIT(%fechaSAP%,'-')",
+            "mes": "=IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(MONTH(TODAY()))) == 1, '0' + TOSTRING(MONTH(TODAY())),TOSTRING(MONTH(TODAY())))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCalculoFechaSAP/Procedure/SVFechaSAPMessage"
+}

@@ -1,0 +1,25 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LBAddOrderItemsReliesOn",
+    "OmniProcessId": {
+        "Name": "IpCloneOrderCambioPlanAccInm",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "source = \"addPostCartItem\"",
+        "label": "LoopBlock1",
+        "loopList": "getOrderItems:OrderItemsAdd",
+        "loopOutput": {
+            "outputPostCartItemsReliesOn": "%PostCartItemsReliesOnAdd:Details%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure/LBAddOrderItemsReliesOn"
+}

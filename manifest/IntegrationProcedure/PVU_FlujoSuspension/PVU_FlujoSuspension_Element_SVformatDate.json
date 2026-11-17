@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVformatDate",
+    "OmniProcessId": {
+        "Name": "SuspensionVoluntaria",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoSuspension/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "FechaFin": "=CONCAT(IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(DAY(%Case:FechaFinSusp%))) == 1, '0' + TOSTRING(DAY(%Case:FechaFinSusp%)),TOSTRING(DAY(%Case:FechaFinSusp%))),\"/\", IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(MONTH(%Case:FechaFinSusp%))) == 1, '0' + TOSTRING(MONTH(%Case:FechaFinSusp%)),TOSTRING(MONTH(%Case:FechaFinSusp%))),\"/\", YEAR(%Case:FechaFinSusp%))",
+            "FechaIni": "=CONCAT(IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(DAY(%Case:FechaInicioSusp%))) == 1, '0' + TOSTRING(DAY(%Case:FechaInicioSusp%)),TOSTRING(DAY(%Case:FechaInicioSusp%))),\"/\", IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(MONTH(%Case:FechaInicioSusp%))) == 1, '0' + TOSTRING(MONTH(%Case:FechaInicioSusp%)),TOSTRING(MONTH(%Case:FechaInicioSusp%))),\"/\", YEAR(%Case:FechaInicioSusp%))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoSuspension/Procedure/SVformatDate"
+}

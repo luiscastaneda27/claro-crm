@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateNewOrderItemsReliesOn",
+    "OmniProcessId": {
+        "Name": "IpCloneOrderCambioPlanAccInm",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBUpdateNewOrderItemsReliesOn",
+        "OmniProcessId": {
+            "Name": "IpCloneOrderCambioPlanAccInm",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure/LBUpdateNewOrderItemsReliesOn",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBUpdateNewOrderItemsReliesOn",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "listOldOrderItemsSubAction": "=FILTER(LIST(%getOrderItems:OrderItemsAll%), 'Product2Code == \"' + NewOrderItems:OrderItemsAll:Product2Code + '\"' + '&&' +'Action== \"' + NewOrderItems:OrderItemsAll:Action+ '\"'  )"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "orderItemsToUpdate",
+        "responseJSONPath": "listOldOrderItemsSubAction",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure/SVUpdateNewOrderItemsReliesOn"
+}

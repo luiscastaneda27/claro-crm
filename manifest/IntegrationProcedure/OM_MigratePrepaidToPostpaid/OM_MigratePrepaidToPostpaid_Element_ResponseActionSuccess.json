@@ -1,0 +1,49 @@
+{
+    "Description": "%HTTPRequestPrePost:statusId% == 100",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccess",
+    "OmniProcessId": {
+        "Name": "MigratePrepaidToPostpaid",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/MigratePrepaidToPostpaid/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "request:OrderId": "%OrderId%",
+            "request:attrs": "=IF(ISBLANK(Attrs_For_HTTPRequest),true,LIST(%Attrs_For_HTTPRequest%))",
+            "request:customerId": "%DMExtractOrderRequestBody:customerId%",
+            "request:externalId": "%DMExtractOrderRequestBody:externalId%",
+            "request:fulfilmentRequestLineId": "%FulfilmentRequestLineId%",
+            "request:iccid": "%DME_GetICCID_OrderItem:attrICCID%",
+            "request:msisdn": "%DME_GetMSISDN_OrderItem:attrMSISDN%",
+            "request:orderNumber": "ORDSF%DMExtractOrderRequestBody:salesForceOrderId%",
+            "request:requestDate": "=NOW()",
+            "request:requestTargetId": "%DME_OMGetOMEricsonMappingMetadata:DefaultValue%",
+            "response": "%SV_DeserializeResponse:DeserializeResponse%",
+            "response:responseStatus:code": 200,
+            "response:responseStatus:status": "OK"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%HTTPRequestPrePostInfo:statusCode% ==201",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/MigratePrepaidToPostpaid/Procedure/ResponseActionSuccess"
+}

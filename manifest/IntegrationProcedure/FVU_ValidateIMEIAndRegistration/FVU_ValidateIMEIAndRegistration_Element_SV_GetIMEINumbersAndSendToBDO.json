@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_GetIMEINumbersAndSendToBDO",
+    "OmniProcessId": {
+        "Name": "ValidateIMEIAndRegistration",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidateIMEIAndRegistration/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_SendToBDO",
+        "OmniProcessId": {
+            "Name": "ValidateIMEIAndRegistration",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidateIMEIAndRegistration/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidateIMEIAndRegistration/Procedure/CB_SendToBDO",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_SendToBDO",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Order": {
+                "Account": "%GetOrderData:Order:Account%",
+                "OrderItem": "%SV_FilterOrderItem:OrderItem%",
+                "PurchaseType": "%GetOrderData:Order:PurchaseType%"
+            },
+            "OrderItemFiltered": "=LIST(%OrderItemDeviceFiltered:OrderItemDevice%)",
+            "outputFields": "message,IMEIError2,IMEIError,OrderProductCode,OrderProductName,IMEINumber2,IMEINumber,OrderItemId"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidateIMEIAndRegistration/Procedure/SV_GetIMEINumbersAndSendToBDO"
+}

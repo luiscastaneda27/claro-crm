@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFecha",
+    "OmniProcessId": {
+        "Name": "IPValidacionesRoaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRoaming/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "expiryDate": "=SUBSTRING((%IPMSPrBuUsaCons:Details:consumos|1:expiryDate%),0,4) + \"-\" + SUBSTRING((%IPMSPrBuUsaCons:Details:consumos|1:expiryDate%),4,6)) + \"-\" + SUBSTRING((%IPMSPrBuUsaCons:Details:consumos|1:expiryDate%),6,8)"
+        },
+        "executionConditionalFormula": "%SVConsumos:HaveDate% == true",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "onlyDate",
+        "responseJSONPath": "expiryDate",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRoaming/Procedure/SVFecha"
+}

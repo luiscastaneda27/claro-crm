@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRT_RequestDataPinLink",
+    "OmniProcessId": {
+        "Name": "FVU_DataPINPagos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataPINPagos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "DeliveryMethod": "DeliveryMethod",
+            "OrderData": "=OrderData",
+            "OrderItemGeneral": "=GetOrderItemByOrderId:OrderItemGeneral",
+            "PaymentIndicator": "=SV_PaymentIndicator:IndPago",
+            "codigoCentro": "=%mobileCode%",
+            "conceptoPago": "=SV_InitialConceptoPagoRequest:conceptoPagoList",
+            "idOrder": "%orderId%",
+            "referencia": "=%orderNumber%",
+            "referenciaPagoMotor": "=SV_PaymentIndicator:refPagoMotor",
+            "tipoTransaccionID": "=TOSTRING(DM_MatrizDetallesConceptosPagos:codigoPreproductivo)",
+            "valor": "=IF((DM_MatrizDetallesConceptosPagos:codigoPreproductivo == 14 OR DM_MatrizDetallesConceptosPagos:codigoPreproductivo == 15),effectiveOneTimeTotalIncTaxes, SUM(SV_InitialConceptoPagoRequest:conceptoPagoList:valor))"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_DRTRequestDataPinLink",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataMapperTransformAction1",
+        "responseJSONNode": "RequestData",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Transform Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataPINPagos/Procedure/DRT_RequestDataPinLink"
+}

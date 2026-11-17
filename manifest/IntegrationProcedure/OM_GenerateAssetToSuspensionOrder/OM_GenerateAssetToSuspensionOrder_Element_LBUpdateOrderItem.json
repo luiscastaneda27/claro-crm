@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LBUpdateOrderItem",
+    "OmniProcessId": {
+        "Name": "GenerateAssetToSuspensionOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/GenerateAssetToSuspensionOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_OthersProcesses",
+        "OmniProcessId": {
+            "Name": "GenerateAssetToSuspensionOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/GenerateAssetToSuspensionOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/GenerateAssetToSuspensionOrder/Procedure/CB_OthersProcesses",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_OthersProcesses",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock2",
+        "loopList": "DRExtractOrderItemToSuspendByOrderId:OrderItem",
+        "loopOutput": {
+            "OrderItemActionUpdated": "%DRTransformOrderItemAction:OrderItemUpdated%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/GenerateAssetToSuspensionOrder/Procedure/LBUpdateOrderItem"
+}

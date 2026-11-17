@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_OrderItemCurrent",
+    "OmniProcessId": {
+        "Name": "IPOMSMilestone",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ListOrderItemForMerge",
+        "OmniProcessId": {
+            "Name": "IPOMSMilestone",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/ListOrderItemForMerge",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ListOrderItemForMerge",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "OrderEndDate": "=IF(%orderProductItem:status% = 'CANCELED', NOW(), $Vlocity.NULL)",
+            "closingReason": "=IF(%orderProductItem:status% = \"CANCELED\" && %DRE_IPGetDetailsProductOrder:OrderDeliveryStatus% = \"PendingOMSCancelled\", \"Desistimiento del cliente antes de entrega\", $Vlocity.NULL)",
+            "deliveryOrderId": "=orderProductItem:deliveryOrderId",
+            "deliveryStatus": "=IF(%orderProductItem:status% = 'CANCELED', 'Canceled', $Vlocity.NULL)",
+            "orderItemId": "=DRE_IPGetDetailsProductOrder:orderItems:orderItemId",
+            "orderProductItemStatus": "=IF(%orderProductItem:status% != 'NOT_DELIVERED', %DM_OrderWithoutAnIssue|1:Description%, %orderProductItem:status%)",
+            "orderProductItemSubstatus": "=IF(%DM_OrderWithoutAnIssue|1:Action% != 'NotAction', %orderProductItem:subStatus%, $Vlocity.NULL)",
+            "orderProductItemTypeIMEI": "=IF(%DRE_IPGetDetailsProductOrder:orderItems:productType% = \"Handset\",\r\n   IF(%orderProductItem:status% = \"READY_FOR_PICKUP\" || %orderProductItem:status% = \"COMPLETED\",\r\n      %orderProductItem:serials%,\r\n      \"\"),\r\n   \"\")",
+            "orderProductItemTypeSerial": "=IF(%DRE_IPGetDetailsProductOrder:productType% = \"Tech\" || %DRE_IPGetDetailsProductOrder:productType% = \"SIM Card\",   IF(%orderProductItem:status% = \"READY_FOR_PICKUP\" || %orderProductItem:status% = \"COMPLETED\" || %orderProductItem:status% = \"DeliveredAgent\",      %orderProductItem:serials%,      \"\"),   \"\")",
+            "orderStatus": "=IF(%orderProductItem:status% = 'CANCELED', 'Cerrada Perdida', $Vlocity.NULL)",
+            "position": "=CONCAT(DRE_IPGetDetailsProductOrder:orderItems:position, \"\")",
+            "productAttributeSerial": "=IF(%DRE_IPGetDetailsProductOrder:productType% = \"SIM Card\",   IF(%orderProductItem:status% = \"READY_FOR_PICKUP\" || %orderProductItem:status% = \"COMPLETED\" || %orderProductItem:status% = \"DeliveredAgent\",      %orderProductItem:serials%,      \"\"),   \"\")",
+            "productType": "=DRE_IPGetDetailsProductOrder:orderItems:productType",
+            "sapBillingNbr": "=orderProductItem:sapBillingNbr",
+            "sapDeliveryId": "=orderProductItem:sapDeliveryId",
+            "sapFreightBillingNbr": "=orderProductItem:sapFreightBillingNbr",
+            "status": "=orderProductItem:status",
+            "subStatus": "=IF(%DM_OrderWithAnIssue|1:Action% = \"\", orderProductItem:subStatus, \"\")",
+            "vlocityOrderStatus": "=IF(%orderProductItem:status% = 'CANCELED', 'Cancelled', $Vlocity.NULL)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/SV_OrderItemCurrent"
+}

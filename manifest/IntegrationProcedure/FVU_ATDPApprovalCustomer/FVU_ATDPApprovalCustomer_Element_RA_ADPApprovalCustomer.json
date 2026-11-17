@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ADPApprovalCustomer",
+    "OmniProcessId": {
+        "Name": "FVU_ATDPApprovalCustomer",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ATDPApprovalCustomer/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "=IF(HTTP_ATDPApprovalCustomer:data:isValid, HTTP_ATDPApprovalCustomer:data:message, HTTP_ATDPApprovalCustomer:data:Exceptions|1:description)",
+            "success": "=HTTP_ATDPApprovalCustomer:success",
+            "transactionID": "=HTTP_ATDPApprovalCustomer:data:transactionID"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ATDPApprovalCustomer/Procedure/RA_ADPApprovalCustomer"
+}

@@ -1,0 +1,37 @@
+{
+    "Description": "R5.1 Se ajusta formula para retracto de compra, se incluye validacion de financiado y canales e-commerce",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFiltered",
+    "OmniProcessId": {
+        "Name": "IPGetCustomerVoice",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetCustomerVoice/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "NoConformingFinal": "%RA_PVUBusnessHoursUtil:NoConformingFinal%",
+            "RetractoCompra": "=IF(DATEDIFF(TODAY(),%RA_PVUBusnessHoursUtil:RetractoCompraFinal%)>0,IF(ISBLANK(%DRGetAssetById:FIN_NumeroDeCredito%),IF((%DRGetAssetById:CanalVenta% == 'TELEFONICO VENTA'||%DRGetAssetById:CanalVenta% == 'DIGITAL'||%DRGetAssetById:CanalVenta% == 'ECOMMERCE'||%DRGetAssetById:CanalVenta% == 'TMK'),'Retracto de compra',''),IF(%DRGetAssetById:CanalVenta% == 'CAV','Retracto de compra','')),'')",
+            "RetractoCompraFinal": "%RA_PVUBusnessHoursUtil:RetractoCompraFinal%",
+            "Warranty": "=IF(%SVParameters:IsWarranty%==true,'Falla de Equipo Garantia','Falla de Equipo Fuera de Garantía')",
+            "diferencia": "=DATEDIFF(%RA_PVUBusnessHoursUtil:RetractoCompraFinal%,TODAY())",
+            "flagAfterDateThreeDays": "%RA_PVUBusnessHoursUtil:isWithinThreeBusinessDays%",
+            "notConforming": "=IF(DATEDIFF(TODAY(),%RA_PVUBusnessHoursUtil:NoConformingFinal%)>0,'No Conforme (Falla cosmética o faltante)','')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetCustomerVoice/Procedure/SVFiltered"
+}

@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "setAditionalDescriptionBundle",
+    "OmniProcessId": {
+        "Name": "RequestBodyContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RequestBodyContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "loopBundleDescription",
+        "OmniProcessId": {
+            "Name": "RequestBodyContract",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RequestBodyContract/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RequestBodyContract/Procedure/loopBundleDescription",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "loopBundleDescription",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DescripcionBudle": "=IF(%requestBody:DescripcionBudle% == null,  %DR_GetRecords:BundleItems:Description%, %requestBody:DescripcionBudle% + \" \" + %DR_GetRecords:BundleItems:Description%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues12",
+        "responseJSONNode": "requestBody",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RequestBodyContract/Procedure/setAditionalDescriptionBundle"
+}

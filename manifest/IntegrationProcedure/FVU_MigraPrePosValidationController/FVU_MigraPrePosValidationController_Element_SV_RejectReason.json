@@ -1,0 +1,49 @@
+{
+    "Description": "HDU663777: Cuando el usuario es de recuperaciones 'SVUserContext:esReversion' no se consideran ciertas validaciones como ser: hasActiveFinancing, commercialPlan",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_RejectReason",
+    "OmniProcessId": {
+        "Name": "MigraPrePosValidationController",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MigraPrePosValidationController/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CantProceed",
+        "OmniProcessId": {
+            "Name": "MigraPrePosValidationController",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MigraPrePosValidationController/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MigraPrePosValidationController/Procedure/CantProceed",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CantProceed",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "HasPostpaidActive": "=IF(%DR_GetAssetsByLineNumber:HasPostpaidActive% == true, \"Línea se encuentra activa en Pospago en Salesforce\", \"\")",
+            "commercialPlan": "=IF(ISNOTBLANK(%DR_GetInterfaceSettings%) && %SVUserContext:esReversion% == false, \"La línea no esta activa en legado con plan prepago para migración.\", \"\")",
+            "hasActiveFinancing": "=IF(%IP_MigraPrePosValidation:data:hasActiveFinancing% == true && %SVUserContext:esReversion% == false, \"La línea tiene asociado un  crédito de Kit Prepago Financiado\", \"\")",
+            "hasPortOut": "=IF(%IP_MigraPrePosValidation:data:hasPortOut% == true, \"La línea se encuentra en un proceso de portout y no podrá ser migrada a pospago en Claro\", \"\")",
+            "isLineActive": "=IF(%IP_MigraPrePosValidation:data:isLineActive% == false, \"La línea no se encuentra activa en legado\", \"\")"
+        },
+        "executionConditionalFormula": "%SV_CanProceed:CanProceed% == false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MigraPrePosValidationController/Procedure/SV_RejectReason"
+}

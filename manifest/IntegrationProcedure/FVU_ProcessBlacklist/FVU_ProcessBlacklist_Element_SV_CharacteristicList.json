@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CharacteristicList",
+    "OmniProcessId": {
+        "Name": "ProcessBlacklist",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ProcessBlacklist/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_DataTransformation",
+        "OmniProcessId": {
+            "Name": "ProcessBlacklist",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ProcessBlacklist/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ProcessBlacklist/Procedure/CB_DataTransformation",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_DataTransformation",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "accion": "=FILTER(LIST(%characteristic%), 'name== \"ACCION\"')",
+            "codigo_accion": "=FILTER(LIST(%characteristic%), 'name== \"CODIGO_ACCION\"')",
+            "codigo_motivo": "=FILTER(LIST(%characteristic%), 'name== \"CODIGO_MOTIVO\"')",
+            "lista": "=FILTER(LIST(%characteristic%), 'name== \"LISTA\"')",
+            "motivo": "=FILTER(LIST(%characteristic%), 'name== \"MOTIVO\"')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues11",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ProcessBlacklist/Procedure/SV_CharacteristicList"
+}

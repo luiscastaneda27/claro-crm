@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPPostCartPromoItems",
+    "OmniProcessId": {
+        "Name": "IPDisconnectAndPostCartPromoItems",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPDisconnectAndPostCartPromoItems/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "PricebookEntryId": "%SVInput:PriceBookEntryId%",
+            "cartId": "%SVInput:cartId%",
+            "items": [
+                {
+                    "itemId": "%SVInput:PriceBookEntryId%"
+                }
+            ],
+            "promotionId": "%SVInput:PriceBookEntryId%"
+        },
+        "additionalOutput": {
+            "OrderItemId": "%IPPostCartPromoItems:OrderItemId%"
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%SVInput:CodigoCierre% = 'Cambio de equipo'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "CPQ_PostCartPromoItems",
+        "label": "IntegrationProcedureAction6",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPDisconnectAndPostCartPromoItems/Procedure/IPPostCartPromoItems"
+}

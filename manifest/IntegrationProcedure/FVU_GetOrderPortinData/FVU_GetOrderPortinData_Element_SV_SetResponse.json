@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_SetResponse",
+    "OmniProcessId": {
+        "Name": "FVU_GetOrderPortinData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetOrderPortinData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "BusinessChannel": "=DR_GetOrderPortinData:User:BusinessChannel",
+            "ChannelName": "=DR_GetOrderPortinData:User:Channel",
+            "CodigoMovil": "=DR_GetOrderPortinData:User:CodigoMovil",
+            "MIN": "=DR_GetOrderPortinData:Order:minAPortar",
+            "OperadorDonante": "=DR_GetOrderPortinData:Order:OperadorDonanteNombre",
+            "PortinDateTime": "=FORMATDATETIME(%IP_PortInConsultAndTraceability:registros|1:numeros|1:executedDate%,\"dd/MM/yyyy HH:mm:ss\",\"GMT\")",
+            "ProcessId": "=IP_PortInConsultAndTraceability:registros|1:idProceso",
+            "PuntoVenta": "=DR_GetOrderPortinData:User:PuntoVenta",
+            "RejectionReason": "=IP_PortInConsultAndTraceability:registros|1:numeros|1:number:causalesRechazo:descripcion",
+            "RejectionResponsible": "=IP_PortInConsultAndTraceability:registros|1:numeros|1:number:causalesRechazo:causalesRechazo",
+            "RequestDateTime": "=FORMATDATETIME(%IP_PortInConsultAndTraceability:registros|1:fechaSolicitud%,\"dd/MM/yyyy HH:mm:ss\",\"GMT\")",
+            "RequestId": "=IP_PortInConsultAndTraceability:registros|1:idSolicitud",
+            "State": "=IP_PortInConsultAndTraceability:registros|1:estado",
+            "StateDateTime": "=FORMATDATETIME(%IP_PortInConsultAndTraceability:registros|1:fechaCambioEstado%,\"dd/MM/yyyy HH:mm:ss\",\"GMT\")",
+            "StateDescription": "=IF(%IP_PortInConsultAndTraceability:registros|1:estado% == \"Enviado al ABD\", \"Port IN (entrante) correcto en el proceso , viajó al ABD y se encuentra en validaciones.\", IF(%IP_PortInConsultAndTraceability:registros|1:estado% == \"Aprobada\",\"Port IN (entrante) aprobada y con fecha de ventana de cambio (FVC).\", IF(%IP_PortInConsultAndTraceability:registros|1:estado% == \"Rechazado ABD\",\"Port IN (entrante) rechazado por el ABD o por el operador donante.\", IF(%IP_PortInConsultAndTraceability:registros|1:estado% == \"Anulado\",\"Port IN (entrante) que se encuentra anulada.\", IF(%IP_PortInConsultAndTraceability:registros|1:estado% == \"Negación Portabilidad\",\"Port IN (entrante) que presento negación de portabilidad.\",\"\")))))",
+            "UserCode": "=DR_GetOrderPortinData:User:usuarioConsulta",
+            "UserName": "=DR_GetOrderPortinData:User:Name",
+            "showComponent": "=IF(%IP_GetAccessByPSG:accessProcess:isAdmin% == true,true,IF(%IP_GetAccessByPSG:accessProcess:fVU_OrderPortinDetail% == true,true,false))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "SV_SetResponse",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetOrderPortinData/Procedure/SV_SetResponse"
+}

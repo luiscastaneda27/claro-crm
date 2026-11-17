@@ -1,0 +1,46 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpdateCase",
+    "OmniProcessId": {
+        "Name": "FlujoReconexion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoReconexion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Case": {
+                "Id": "%IPCreateCase:Details:CaseId%",
+                "SubCausal": "%DRGetAssetById:subCausal%",
+                "SubEstado": "Pendiente de aprobación",
+                "VozCliente": "%SVVozCliente:vozClienteGPT%"
+            }
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_DRUpsertCase",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "DRGetAssetById:subCausal == \"Sus Revisión Protección Tecnológica\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "Case_1|1:UpsertSuccess != \"true\"\n",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoReconexion/Procedure/DR_UpdateCase"
+}

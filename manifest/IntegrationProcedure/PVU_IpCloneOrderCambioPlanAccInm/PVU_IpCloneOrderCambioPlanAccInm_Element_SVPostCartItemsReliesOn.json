@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVPostCartItemsReliesOn",
+    "OmniProcessId": {
+        "Name": "IpCloneOrderCambioPlanAccInm",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBAddOrderItemsReliesOn",
+        "OmniProcessId": {
+            "Name": "IpCloneOrderCambioPlanAccInm",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure/LBAddOrderItemsReliesOn",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBAddOrderItemsReliesOn",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CartOperation": {
+                "OrderId": "%NewOrderId%",
+                "Product": {
+                    "Product2Code": "%getOrderItems:OrderItemsAdd:Product2Code%"
+                }
+            },
+            "Proceso": "%proceso%",
+            "fieldsToUpdate": {
+                "%vlocity_namespace%__SubAction__c": "ChangePlan-Add"
+            },
+            "parentAssetId": "%LAAssetReferenceIdNewOrder:AssetReferenceId%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%ISBLANK(LAAssetReferenceIdNewOrder:AssetReferenceId)%",
+        "label": "SetValues2",
+        "responseJSONNode": "RequestReliesOn",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure/SVPostCartItemsReliesOn"
+}

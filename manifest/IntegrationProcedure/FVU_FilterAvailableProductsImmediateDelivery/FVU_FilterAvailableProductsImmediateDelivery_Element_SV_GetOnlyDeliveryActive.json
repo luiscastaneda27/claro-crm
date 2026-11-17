@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_GetOnlyDeliveryActive",
+    "OmniProcessId": {
+        "Name": "FilterAvailableProductsImmediateDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_DeliveryActive",
+        "OmniProcessId": {
+            "Name": "FilterAvailableProductsImmediateDelivery",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/CB_DeliveryActive",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_DeliveryActive",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Delivery": "=IF(%DR_GroupProductsInStock:GroupingProductsByStock:Delivery%,LIST(%SV_FilterRange:FilterDelivery%), NULL)",
+            "ImmediatePickUp": "=IF(%DR_GroupProductsInStock:GroupingProductsByStock:ImmediatePickUp%,LIST(%SV_FilterRange:FilterImmediatePickUp%), NULL)",
+            "PickUp": "=IF(%DR_GroupProductsInStock:GroupingProductsByStock:PickUp%,LIST(%SV_FilterRange:FilterPickUp%), {})"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues20",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/SV_GetOnlyDeliveryActive"
+}

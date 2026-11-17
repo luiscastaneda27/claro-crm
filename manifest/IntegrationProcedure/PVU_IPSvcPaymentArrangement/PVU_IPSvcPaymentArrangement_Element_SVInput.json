@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVInput",
+    "OmniProcessId": {
+        "Name": "PaymentArrangementWrapper",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPSvcPaymentArrangement/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "channel": "=\"WEB\"",
+            "idApplication": "=\"app\"",
+            "identificationNumber": "=%accountDataResponse:AccountData|1:FVU_DocumentNumber__c%",
+            "identificationType": "=%tipoIdentificacionResponse:TipoIdentificacion%",
+            "startDate": "=DESERIALIZE(SERIALIZE(NOW()))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPSvcPaymentArrangement/Procedure/SVInput"
+}

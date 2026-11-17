@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_DemographicAddressDocumentAndType",
+    "OmniProcessId": {
+        "Name": "FVU_IPCustomerDemographicInfo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCustomerDemographicInfo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_Validation_idSF_DocumentAndType",
+        "OmniProcessId": {
+            "Name": "FVU_IPCustomerDemographicInfo",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCustomerDemographicInfo/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCustomerDemographicInfo/Procedure/CB_Validation_idSF_DocumentAndType",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_Validation_idSF_DocumentAndType",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "Is required type and addressNode and addressStatus and addressType and daneCode and merId and city and municipality and streetAndNumber and state",
+            "responseCode": 400
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "((%DRTransformDemographicData:type% == null OR %DRTransformDemographicData:type% == \"\") OR (%DRTransformDemographicData:addressNode% == null ) OR (%DRTransformDemographicData:addressStatus% == null OR %DRTransformDemographicData:addressStatus% == \"\") OR (%DRTransformDemographicData:addressType% == null OR %DRTransformDemographicData:addressType% == \"\") OR (%DRTransformDemographicData:daneCode% == null OR %DRTransformDemographicData:daneCode% == \"\") OR (%DRTransformDemographicData:merId% == null OR %DRTransformDemographicData:merId% == \"\") OR (%DRTransformDemographicData:city% == null OR %DRTransformDemographicData:city% == \"\") OR (%DRTransformDemographicData:municipality% == null OR %DRTransformDemographicData:municipality% == \"\") OR (%DRTransformDemographicData:streetAndNumber% == null OR %DRTransformDemographicData:streetAndNumber% == \"\") OR (%DRTransformDemographicData:state% == null OR %DRTransformDemographicData:state% == \"\"))",
+        "label": "ResponseAction4",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCustomerDemographicInfo/Procedure/RA_DemographicAddressDocumentAndType"
+}

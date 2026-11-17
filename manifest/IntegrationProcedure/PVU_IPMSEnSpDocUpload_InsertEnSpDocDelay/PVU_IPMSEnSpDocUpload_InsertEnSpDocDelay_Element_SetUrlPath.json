@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetUrlPath",
+    "OmniProcessId": {
+        "Name": "IPMSEnSpDocUpload_InsertEnSpDocDelay",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPMSEnSpDocUpload_InsertEnSpDocDelay/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "dateNow": "=FORMATDATETIME(NOW(),\"yyyy-MM-dd' 'HH:mm:ss'Z'\")",
+            "nombrePunto": "=IF(ISBLANK(%document:xdNombrePunto%),QUERY( \"SELECT FVU_PuntoVenta__c FROM User WHERE Id = '{0}'\",$Vlocity.UserId ),%document:xdNombrePunto%)",
+            "pathUrl": "=\"/MS/RES/Resource/RsResourceEnSpDocUpload/V1/InsertEnSpDocDelay\"",
+            "validateRequiredField": "=IF(ISBLANK(%xdIdProceso%), false, true)",
+            "xdIdCliente": "=IF(ISBLANK(%document:xdIdCliente%),QUERY( \"SELECT AccountId FROM Case WHERE CaseNumber = '{0}'\",%document:xdIdSalesforce% ),%document:xdIdCliente%)",
+            "xdTipoDocumental": "=IF(%document:xdTipoDocumental% == \"CONTRATO\", \"CARTA_PERFILAMIENTO\",%document:xdTipoDocumental%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPMSEnSpDocUpload_InsertEnSpDocDelay/Procedure/SetUrlPath"
+}

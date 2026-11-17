@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSuccess",
+    "OmniProcessId": {
+        "Name": "IPGenerateTemporySuspensionOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "result": {
+                "code": "200",
+                "message": "Orden Creada Correctamente",
+                "orderId": "%IPCrearOrderOM:result:orderId%",
+                "status": "Success"
+            }
+        },
+        "executionConditionalFormula": "IF(%IPCrearOrderOM:success% == true && ISNOTBLANK(%IPCrearOrderOM:result:orderId%) , true, false)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure/SVSuccess"
+}

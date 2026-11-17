@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFormatData",
+    "OmniProcessId": {
+        "Name": "IPChargesNotificationCobroErrado",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationCobroErrado/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "accountNumber": "=TOSTRING(%DRGetCase:NumeroCuentaFacturador%)",
+            "amountIva": "=CONCAT(\"-\"+TOSTRING(DRGetCase:TotalAjuste * %IVA% / 100))",
+            "amountValorTotal": "=CONCAT(\"-\"+TOSTRING(%DRGetCase:TotalAjuste%))",
+            "fechaHoy": "=TODAY()",
+            "fechaHoyBKP": "=%SVGetInput:anio% + \"-\" + %SVGetInput:dia% + \"-\" + %SVGetInput:mes%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationCobroErrado/Procedure/SVFormatData"
+}

@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFiltradoValores",
+    "OmniProcessId": {
+        "Name": "IPGetConsumos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetConsumos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "datosConsumidoPlan": "=FILTER(LIST(%DRTransformConsumos:Datos%), 'code == \"' + %consumoMDT:Response:datosConsumidoPlan% + '\"')",
+            "datosDisponible": "=FILTER(LIST(%DRTransformConsumos:Disponibles%), 'cfs== \"' + %consumoMDT:Response:datosDisponible% + '\"')",
+            "datosVideollamadas": "=FILTER(LIST(%DRTransformConsumos:Datos%), 'code == \"' + %consumoMDT:Response:datosVideollamadas% + '\"')",
+            "saLlamadasIntSms": "=FILTER(LIST(%DRTransformConsumos:Mensaje%), 'code == \"' + %consumoMDT:Response:saLlamadasIntSms% + '\"')",
+            "saLlamadasIntVoz": "=FILTER(LIST(%DRTransformConsumos:VozServicio%), 'code == \"' + %consumoMDT:Response:saLlamadasIntVoz% + '\"')",
+            "saroamingInDatos": "=FILTER(LIST(%DRTransformConsumos:Datos%), 'code == \"' + %consumoMDT:Response:saroamingInDatos% + '\"')",
+            "saroamingInSms": "=FILTER(LIST(%DRTransformConsumos:Mensaje%), 'code == \"' + %consumoMDT:Response:saroamingInSms% + '\"')",
+            "saroamingIntVoz": "=FILTER(LIST(%DRTransformConsumos:VozServicio%), 'code == \"' + %consumoMDT:Response:saroamingIntVoz% + '\"')",
+            "smsConsumoActual": "=FILTER(LIST(%DRTransformConsumos:Mensaje%), 'code== \"' + %consumoMDT:Response:smsConsumoActual% + '\"')",
+            "smsDisponible": "=FILTER(LIST(%DRTransformConsumos:Disponibles%), 'cfs== \"' + %consumoMDT:Response:smsDisponible% + '\"')",
+            "smsNumerosEspeciales": "=FILTER(LIST(%DRTransformConsumos:Mensaje%), 'code== \"' + %consumoMDT:Response:smsNumerosEspeciales% + '\"')",
+            "vozConsumoActual": "=FILTER(LIST(%DRTransformConsumos:VozServicio%), 'code == \"' + %consumoMDT:Response:vozConsumoActual% + '\"')",
+            "vozConsumoLlamadasFijo": "=FILTER(LIST(%DRTransformConsumos:VozServicio%), 'code == \"' + %consumoMDT:Response:vozConsumoLlamadasFijo% + '\"')",
+            "vozConsumoLlamadasMovil": "=FILTER(LIST(%DRTransformConsumos:VozServicio%), 'code == \"' + %consumoMDT:Response:vozConsumoLlamadasMovil% + '\"')",
+            "vozConsumoTotalFijo": "=FILTER(LIST(%DRTransformConsumos:VozServicio%), 'code == \"' + %consumoMDT:Response:vozConsumoTotalFijo% + '\"')",
+            "vozDisponible": "=FILTER(LIST(%DRTransformConsumos:Disponibles%), 'cfs== \"' + %consumoMDT:Response:vozDisponible% + '\"')",
+            "vozDisponibleEspeciales": "=FILTER(LIST(%DRTransformConsumos:VozServicio%), 'code == \"' + %consumoMDT:Response:vozDisponibleEspeciales% + '\"')",
+            "vozDisponibleLlamadas": "=FILTER(LIST(%DRTransformConsumos:VozServicio%), 'code == \"' + %consumoMDT:Response:vozDisponibleLlamadas% + '\"')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetConsumos/Procedure/SVFiltradoValores"
+}

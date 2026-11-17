@@ -1,0 +1,67 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpsertSubscriptionActivated",
+    "OmniProcessId": {
+        "Name": "IPUpdateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBSubscription",
+        "OmniProcessId": {
+            "Name": "IPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateOrder/Procedure/CBSubscription",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBSubscription",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "account": "",
+            "billingAccount": "",
+            "contract": "",
+            "id": "=%DRGetDatosAsset:Asset:SubscriptionId%",
+            "msisdn": "=IF(ISNOTBLANK(%DRGetDatosAsset:Subscription:MSISDN%), %DRGetDatosAsset:Subscription:MSISDN% , %MSISDN%)",
+            "portationStatus": "%DR_GetSubscriptionInfo:Subscription:portationStatus%",
+            "reasonCode": "ACT",
+            "serviceAccount": "",
+            "status": "Active",
+            "statusStartDate": "=NOW()",
+            "subReasonCode": "ACT",
+            "subscriptionNumber": "=GENERATEGLOBALKEY(SUB)",
+            "subscriptionStartDate": "=NOW()"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_CreateSubscriptionRecord",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "proccessName = 'MOCK_ACTIVAR_ASSET'",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction10",
+        "responseJSONNode": "DR_UpsertSubscription",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateOrder/Procedure/DR_UpsertSubscriptionActivated"
+}

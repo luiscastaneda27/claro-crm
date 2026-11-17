@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPUpdateOrder",
+    "OmniProcessId": {
+        "Name": "FlujoReconexion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoReconexion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "CaseInfo": {
+                "Id": "%IPCreateCase:Details:CaseId%",
+                "fechaInicioSusp": "%RequestedDate%"
+            },
+            "FutureOrderId": "%FutureOrderId%",
+            "RequestedDate": "%RequestedDate%",
+            "proccessName": "Reconexion"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "EndProcess == \"fail\"",
+        "failureResponse": {
+            "Details": "%IPUpdateOrder:Details%",
+            "EndProcess": "fail"
+        },
+        "integrationProcedureKey": "PVU_IPUpdateOrder",
+        "label": "IntegrationProcedureAction4",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoReconexion/Procedure/IPUpdateOrder"
+}

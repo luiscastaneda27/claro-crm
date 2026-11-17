@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_SendFailFIN",
+    "OmniProcessId": {
+        "Name": "PreliminaryContractController",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreliminaryContractController/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_ContractCreate",
+        "OmniProcessId": {
+            "Name": "PreliminaryContractController",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreliminaryContractController/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreliminaryContractController/Procedure/CB_ContractCreate",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_ContractCreate",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "action": "Create",
+            "message": "=IF(%IP_SendingPreliminaryContractFIN:message% == \"Tipo de venta no existe\", %IP_GetMessagesFIN045:message:MainMessage%,%IP_SendingPreliminaryContractFIN:result:message%)",
+            "status": "ERROR",
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%purchaseType% = \"FIN\" && (IP_SendingPreliminaryContractFIN:false || IP_SendingPreliminaryContractFIN <> true)",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreliminaryContractController/Procedure/RA_SendFailFIN"
+}

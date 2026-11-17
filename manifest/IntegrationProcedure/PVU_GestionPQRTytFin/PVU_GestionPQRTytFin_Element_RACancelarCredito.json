@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RACancelarCredito",
+    "OmniProcessId": {
+        "Name": "GestionPQRTytFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GestionPQRTytFin/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ImeiOut": "%GetAssetByImei:Imei%",
+            "IsFraude": "=IF(%IPGetFinancingInfo:status% = 'X - FRAUDE', true, false)",
+            "creditNumber": "%GetAssetByImei:creditNumber%",
+            "creditoCancelado": false,
+            "equipo": "%GetAssetByImei:Type%",
+            "msjCancelacion": "=CONCAT(\"Señor back office nivel 1 PQRs Debe solicitar la cancelación del financiamiento del cliente \", %SVMessagesValues:messageAccountName% , \" y crédito número \" ,  %SVMessagesValues:messageCreditNumber%)",
+            "reportarImeiResponseValid": "=IF(%GetAssetByImei:Type% = 'Handset',%IPsvcReportarImeiBdo:isValid%,'NA')",
+            "statusCredito": "%IPGetFinancingInfo:status%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPGetFinancingInfo:status% != 'X - FRAUDE' && %Respuesta% = 'Favorable'",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GestionPQRTytFin/Procedure/RACancelarCredito"
+}

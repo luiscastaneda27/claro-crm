@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CanRegister",
+    "OmniProcessId": {
+        "Name": "ValidateIMEIAndRegistration",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidateIMEIAndRegistration/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "BDA": "%OrderItemDeviceFiltered:OrderItemDevice%",
+            "canRegister": "=IF(%OrderItemDeviceFiltered:OrderItemDevice:canRegister% == true, true,false)",
+            "showMessage": "=IF(%OrderItemDeviceFiltered:OrderItemDevice:showMessage% == true, true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidateIMEIAndRegistration/Procedure/SV_CanRegister"
+}

@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSimplificada",
+    "OmniProcessId": {
+        "Name": "FIN_SimulacionSimplificadaIP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SImulacionSimplificada/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "FIN_City": "%UserInfo:FVU_CiudadCAV__c%",
+            "FIN_DownPaymentCondition": "P",
+            "FIN_InterestRate": "%DRE_GetIntRate:IntRate%",
+            "FIN_InterestType": "AE",
+            "FIN_Monto": "%Monto%",
+            "FIN_ProductDescription": "SIMULACION",
+            "FIN_Region": "=UserInfo:FVU_GVDIVISION__c",
+            "FIN_ResellerCode": "=UserInfo:FVU_CodigoD__c",
+            "FIN_ResellerName": "=UserInfo:FVU_PuntoVenta__c",
+            "FIN_SalesChannel": "%UserInfo:FVU_BusinessChannel__c%",
+            "FIN_SalesProcess": "VENTA",
+            "FIN_SalesSegment": "FINANCIACION",
+            "FIN_State": "=UserInfo:FVU_Departamento__c",
+            "FIN_Term": "%Plazo%"
+        },
+        "executionConditionalFormula": "%SimulacionDetallada% != true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SImulacionSimplificada/Procedure/SVSimplificada"
+}

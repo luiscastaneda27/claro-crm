@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_BillingAccountInformationSinServicio",
+    "OmniProcessId": {
+        "Name": "AssignBillingCycle",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AssignBillingCycle/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "BillCycle": "=IF(%DMGetOrder:serviceCondition% == 'No Incluye Servicio' ,%DMGetOrder:cicloDeFacturacion%, %IP_GetBillCycleManagement:billCycleId%)",
+            "BillCycleCutoff": "=IF(%DMGetOrder:serviceCondition% == 'No Incluye Servicio' ,SUBSTRING(%DMGetOrder:simulationDate%,8,10), SUBSTRING(ADDDAY(%IP_GetBillCycleManagement:bchRunDate%, -1),8,10))",
+            "BillDeliveryMethod": "='Electronico'"
+        },
+        "executionConditionalFormula": "%DMGetOrder:serviceCondition% == 'No Incluye Servicio'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "SV_BillingAccountInformation",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AssignBillingCycle/Procedure/SV_BillingAccountInformationSinServicio"
+}

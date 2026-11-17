@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "GetSummaryData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetSummaryData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Resumen:DocumentType": "%SV_DataExtra:AuthPersonDocType%",
+            "Resumen:EndPromiseDate": "%SV_FormattedDates:FormattedEndPromiseDate%",
+            "Resumen:Facturacion:FechaLimite": "%SV_FormattedLimitDate:FormattedLimitDate%",
+            "Resumen:HasAddons": "%SV_Addons:HasAddons%",
+            "Resumen:ListaAddons": "%DR_GetAddons%",
+            "Resumen:ListaProductos:NoPromotion": "%SV_Promos:NoPromotion%",
+            "Resumen:ListaProductos:PriceBase": "%GetOrderSummaryDataByOrder:Resumen:ListaProductos:PriceBase%",
+            "Resumen:ListaProductos:PriceIncTaxes": "%GetOrderSummaryDataByOrder:Resumen:ListaProductos:PriceIncTaxes%",
+            "Resumen:ListaProductos:RecurringIncTaxesMovil": "%GetOrderSummaryDataByOrder:Resumen:ListaProductos:TotalRecurringIncTaxesMovil%",
+            "Resumen:ListaProductos:RecurringTotalMovil": "%GetOrderSummaryDataByOrder:Resumen:ListaProductos:RecurringTotalMovil%",
+            "Resumen:StartPromiseDate": "%SV_FormattedDates:FormattedStartPromiseDate%",
+            "Resumen:TotalAPagar:CargoEnvio": "%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:CargoEnvio%",
+            "Resumen:TotalAPagar:TotalAPagarMovil:RecurringTotalIncTaxes": "%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:TotalAPagarMovil:RecurringTotalIncTaxes%",
+            "Resumen:TotalAPagar:TotalAPagarMovil:SimTotal": "%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:TotalAPagarMovil:SimTotal%",
+            "Resumen:TotalAPagar:TotalAPagarTyT:BaseOneTimeTotal": "%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:TotalAPagarTyT:BaseOneTimeTotal%",
+            "Resumen:TotalAPagar:TotalAPagarTyT:Discount": "%SV_CurrencyFormat:FormmatedDiscount%",
+            "Resumen:TotalAPagar:TotalAPagarTyT:FinalPriceIncDiscount": "%SV_CurrencyFormat:FormattedFinalPriceIncDiscount%",
+            "Resumen:TotalAPagar:TotalAPagarTyT:Total": "%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:TotalAPagarTyT:Total%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "GetOrderSummaryDataByOrder",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetSummaryData/Procedure/ResponseAction"
+}

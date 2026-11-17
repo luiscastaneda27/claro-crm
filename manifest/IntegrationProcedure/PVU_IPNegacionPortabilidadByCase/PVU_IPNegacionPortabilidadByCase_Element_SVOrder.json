@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVOrder",
+    "OmniProcessId": {
+        "Name": "IPNegacionPortabilidadByCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CreateOrderReinstalacion",
+        "OmniProcessId": {
+            "Name": "IPNegacionPortabilidadByCase",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure/CB_CreateOrderReinstalacion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CreateOrderReinstalacion",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetId": "%GetRootAssetId:assetRootId%",
+            "CaseInfo": {
+                "Id": "%caseId%",
+                "fechaInicioSusp": "%SVFechaOrder:today%"
+            },
+            "OrderValidateId": "=%GetAssetInfoByCaseId:orderId%",
+            "PortabilityProcessId": "=%GetAssetInfoByCaseId:casePortIdProceso%",
+            "ProcessName": "Reinstalacion_Negacion_Portout"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure/SVOrder"
+}

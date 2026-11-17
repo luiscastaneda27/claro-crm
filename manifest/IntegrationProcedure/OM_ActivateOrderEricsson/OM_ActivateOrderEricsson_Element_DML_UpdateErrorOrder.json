@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DML_UpdateErrorOrder",
+    "OmniProcessId": {
+        "Name": "ActivateOrderEricsson",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ActivateOrderEricsson/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "FailureHTTPRequest",
+        "OmniProcessId": {
+            "Name": "ActivateOrderEricsson",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ActivateOrderEricsson/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ActivateOrderEricsson/Procedure/FailureHTTPRequest",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "FailureHTTPRequest",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "errorCode": "=IF(%SV_bndErrorConect:bErrorConn% == true,%SV_ErrorConnResponse:responseErrorConn:message%,%HTTPActivateOrderEricsson:errorCode%)",
+            "orderErrorInfo": "=IF(%SV_bndErrorConect:bErrorConn% == true,%SV_ErrorConnResponse:responseErrorConn%,%HTTPActivateOrderEricsson:reason%)",
+            "orderId": "%OrderId%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_Order",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ActivateOrderEricsson/Procedure/DML_UpdateErrorOrder"
+}

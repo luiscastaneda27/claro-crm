@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_InputValidations",
+    "OmniProcessId": {
+        "Name": "ExecutePortabilityReject",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortabilityReject/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "isValidAction": "=IF(ISNOTBLANK(%action%),\"success\", \"El campo action es mandatorio \")",
+            "isValidIdOrder": "=IF(ISNOTBLANK(%idOrder%),\"success\", \"El campo idOrder es mandatorio \")",
+            "isValidMSISDN": "=IF(ISNOTBLANK(%MSISDN%),\"success\", \"El campo MSISDN es mandatorio \")",
+            "isValidTypePort": "=IF(ISNOTBLANK(%typePort%),\"success\", \"El campo typePort es mandatorio \")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortabilityReject/Procedure/SV_InputValidations"
+}

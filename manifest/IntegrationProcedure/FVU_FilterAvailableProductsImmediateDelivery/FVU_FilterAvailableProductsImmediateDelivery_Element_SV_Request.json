@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "FilterAvailableProductsImmediateDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "channelCode": "=IF(%DR_GetOrder:IsOrder%,%DR_GetOrder:UserChannel%, %DR_GetQuote:UserChannel%)",
+            "delivMethod": "",
+            "deliveryAddrId": "=IF(ISNOTBLANK(%AddressId%),%AddressId%,SUBSTRING(IF(%DR_GetOrder:IsOrder% == true, %DR_GetAddress:serviceDaneCode%, %DR_GetQuote:QuoteDaneCode%), 0, 5))",
+            "productList": "%LA_Products%",
+            "storeId": "=IF(%DR_GetOrder:UserChannel% == \"SF_CAV\", %DR_GetOrder:UserCAV%, IF( %DR_GetQuote:UserChannel% == \"SF_CAV\", %DR_GetQuote:UserCav% , $Vlocity.NULL))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/SV_Request"
+}

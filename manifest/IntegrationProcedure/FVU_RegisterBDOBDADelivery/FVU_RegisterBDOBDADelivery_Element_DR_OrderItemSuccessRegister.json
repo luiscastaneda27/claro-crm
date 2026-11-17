@@ -1,0 +1,58 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_OrderItemSuccessRegister",
+    "OmniProcessId": {
+        "Name": "RegisterBDOBDADelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_UpdateOrderItemSuccessRegister",
+        "OmniProcessId": {
+            "Name": "RegisterBDOBDADelivery",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/LB_UpdateOrderItemSuccessRegister",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_UpdateOrderItemSuccessRegister",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "OrderItem:IMEIErrorConsulta": "%SV_RegisterIMEISuccess:IMEISuccess:IMEIErrorConsulta%",
+            "OrderItem:IMEIErrorRegister": "%SV_RegisterIMEISuccess:IMEISuccess:IMEIErrorRegister%",
+            "OrderItem:IMEINumber2": "%SV_RegisterIMEISuccess:IMEISuccess:IMEINumber2%",
+            "OrderItem:OrderItemId": "%SV_RegisterIMEISuccess:IMEISuccess:OrderItemId%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertOrderItem",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "DR_OrderItemSuccessRegister",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/DR_OrderItemSuccessRegister"
+}

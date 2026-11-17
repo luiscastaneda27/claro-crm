@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCallCenter",
+    "OmniProcessId": {
+        "Name": "InfoGestionPorFallecimiento",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/InfoGestionPorFallecimiento/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CallCenter": "=IF(%SVRole:Name%=='Backoffice Call Center'||%SVRole:Name%=='Asesor SAC Aliado'||%SVRole:Name%=='Asesor SAC Directo'||%SVRole:Name%=='BackOffice TMK'||%SVRole:Name%=='Asesor TMK',true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/InfoGestionPorFallecimiento/Procedure/SVCallCenter"
+}

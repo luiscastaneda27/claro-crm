@@ -1,0 +1,29 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_DiscountUpdatePaymentPrice",
+    "OmniProcessId": {
+        "Name": "FVU_AdvancePaymentAdjustment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AdvancePaymentAdjustment/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DR_HasDiscount:HasDiscount% = true",
+        "label": "LoopBlock1",
+        "loopList": "ListProductMobile",
+        "loopOutput": {
+            "EffectiveOneTimeTotalIncTaxes": "=SV_DiscountUpdatePaymentPrice:EffectiveOneTimeTotalIncTaxes",
+            "OneTimeChargeIncTaxes": "=SV_DiscountUpdatePaymentPriceHelper:OneTimeChargeIncTaxes",
+            "OrderItemId": "%ListProductMobile:OrderItemId%",
+            "orderItemEffectiveOneTimeTotal": "=SV_DiscountUpdatePaymentPrice:orderItemEffectiveOneTimeTotal",
+            "orderItemOneTimeCharge": "=SV_DiscountUpdatePaymentPriceHelper:orderItemOneTimeCharge"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AdvancePaymentAdjustment/Procedure/LB_DiscountUpdatePaymentPrice"
+}

@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVData",
+    "OmniProcessId": {
+        "Name": "InsertEnSpDocDelay",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/InsertEnSpDocDelay/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "dataToSend": {
+                "docContent": "%FVU_GetFile:CV:VersionData%",
+                "docName": "%SVFunctions:funcDocName%",
+                "document": {
+                    "xdEmpresa": "COMCEL",
+                    "xdIdCliente": "%FVU_GetFile:CV:IdCliente%",
+                    "xdIdSalesForce": "%SVFunctions:funcxdIdSalesForce%",
+                    "xdNombrePunto": "%SVFunctions:funcxdNombrePunto%",
+                    "xdNumeroContrato": "%SVFunctions:funcxdNumeroContrato%",
+                    "xdNumeroIdentificacion": "%FVU_GetFile:CV:DocumentNumber%",
+                    "xdTipoDocumental": "%SVFunctions:funcxdTipoDocumental%",
+                    "xdTipoIdentificacion": "%FVU_GetFile:CV:DocumentType%"
+                },
+                "serieDocumental": 1,
+                "target": "1"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/InsertEnSpDocDelay/Procedure/SVData"
+}

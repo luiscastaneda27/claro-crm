@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseFailGetPaymentReferences",
+    "OmniProcessId": {
+        "Name": "DunningLimitRange",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DunningLimitRange/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "TryCatchGetPaymentReferences",
+        "OmniProcessId": {
+            "Name": "DunningLimitRange",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DunningLimitRange/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DunningLimitRange/Procedure/TryCatchGetPaymentReferences",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "TryCatchGetPaymentReferences",
+    "ParentElementType": "Try Catch Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Message": "Error en la validación de Mora. Consulta tu administrador para seguir con la venta.",
+            "Status": "ERROR"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "(%IP_GetPaymentReferences:Status% == 'ERROR' && %IP_GetPaymentReferences:Message% != \"Data not found\") || %IP_GetPaymentReferences:success% == 'false'",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DunningLimitRange/Procedure/ResponseFailGetPaymentReferences"
+}

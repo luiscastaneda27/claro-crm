@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ProductListPromiseGetSKUFailed",
+    "OmniProcessId": {
+        "Name": "FilterAvailableProductsImmediateDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_ProductSIMCard",
+        "OmniProcessId": {
+            "Name": "FilterAvailableProductsImmediateDelivery",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/CB_ProductSIMCard",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_ProductSIMCard",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ProductDescription": "=IF(ISBLANK(%DR_AllProducts:Description%),%DR_AllProducts:Description%,TOSTRING(%DR_AllProducts:Description%))",
+            "ProductName": "=TOSTRING(%DR_AllProducts:Name%)",
+            "UserChannel": "=DR_GetOrder:UserChannel",
+            "availableDeliveryMethods": {
+                "Delivery": false,
+                "Immediatepickup": false,
+                "PickUp": false
+            },
+            "deliveryQuantity": 0,
+            "fewProductsName": "",
+            "immediatePickUpQuantity": 0,
+            "isAvailable": false,
+            "pickUpQuantity": 0,
+            "productCode": "",
+            "quantity": 0,
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "IP_ProductListPromiseGetSKU:successService == FALSE",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "ProductAvailability",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/RA_ProductListPromiseGetSKUFailed"
+}

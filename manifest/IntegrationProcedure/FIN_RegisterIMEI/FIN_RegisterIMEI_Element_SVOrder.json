@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVOrder",
+    "OmniProcessId": {
+        "Name": "FIN_RegisterIMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/RegisterIMEI/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Order": {
+                "Account": {
+                    "Address": "%GetAccountFromOrder:AccountAddress%",
+                    "City": "%GetAccountFromOrder:AccountCity%",
+                    "Department": "%GetAccountFromOrder:AccountDepartment%",
+                    "DocumentNumber": "%GetAccountFromOrder:AccountDocumentNumber%",
+                    "DocumentType": "%SVDocumentTypeCode:DocumentTypeCode%",
+                    "Name": "%GetAccountFromOrder:AccountName%",
+                    "PersonType": "%SVDocumentTypeCode:PersonTypeCode%",
+                    "Phone": "%GetAccountFromOrder:AccountPhone%"
+                },
+                "OrderItem": "%GetAccountFromOrder:OrderItem%",
+                "PurchaseType": "%GetAccountFromOrder:OrderPurchaseType%"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/RegisterIMEI/Procedure/SVOrder"
+}

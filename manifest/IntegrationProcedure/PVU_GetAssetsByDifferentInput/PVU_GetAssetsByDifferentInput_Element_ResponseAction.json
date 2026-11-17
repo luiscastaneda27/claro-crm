@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "GetAssetsByDifferentInput",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetAssetsByDifferentInput/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "documentNumber": "=IF(ISNOTBLANK(%documentNumber%) && ISNOTBLANK(%documentType%),%DRgetAssetInforByDocumentAndType:documentNumber%, IF(ISNOTBLANK(%mobileNumber%), %DRGetAllAssetsByMobileNumber:documentNumber%,%DRgetAssetsByeExtCustomerId:documentNumber%))",
+            "documentType": "=IF(ISNOTBLANK(%documentNumber%) && ISNOTBLANK(%documentType%),%DRgetAssetInforByDocumentAndType:documentType%, IF(ISNOTBLANK(%mobileNumber%), %DRGetAllAssetsByMobileNumber:documentType%,%DRgetAssetsByeExtCustomerId:documentType%))"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "SetValuesResultsAssets",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetAssetsByDifferentInput/Procedure/ResponseAction"
+}

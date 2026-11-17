@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParams",
+    "OmniProcessId": {
+        "Name": "GestionCusInstallRefundFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GestionCusInstallRefundFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "caseId": "%caseId%",
+            "chargeService": "%chargeServiceAjusteFianza%",
+            "numeroCredito": "%numeroCredito%",
+            "user": "%usuarioRed%",
+            "validDate": "=CONCAT(   YEAR(TODAY()), '-',   IF(MONTH(TODAY()) < 10, CONCAT('0', MONTH(TODAY())), MONTH(TODAY())), '-',   IF(DAY(TODAY()) < 10, CONCAT('0', DAY(TODAY())), DAY(TODAY())) )",
+            "valueFianza": "%valueFianza%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GestionCusInstallRefundFianza/Procedure/SVParams"
+}

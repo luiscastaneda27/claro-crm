@@ -1,0 +1,23 @@
+{
+    "Description": "Solo se ejecutara desde el proceso de retención, según HU.593995\nR6 - Retención / Retoma de Gestión de Caso de Cancelación y Recuperación, cerrará la orden del caso padre.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CBCloseOrder",
+    "OmniProcessId": {
+        "Name": "IPCheckoutOrdersRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCheckoutOrdersRetencion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SVCantidad:CantidadOrdenesProcesadasPadre% > 0 && %UserRole% == \"Backoffice_Nivel_1_Recuperacion\" ",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock1",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCheckoutOrdersRetencion/Procedure/CBCloseOrder"
+}

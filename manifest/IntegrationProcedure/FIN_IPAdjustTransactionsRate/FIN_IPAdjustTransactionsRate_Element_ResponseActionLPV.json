@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionLPV",
+    "OmniProcessId": {
+        "Name": "IPAdjustTransactionsRate",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPAdjustTransactionsRate/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBAdjustmentVATInterestArrears",
+        "OmniProcessId": {
+            "Name": "IPAdjustTransactionsRate",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPAdjustTransactionsRate/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPAdjustTransactionsRate/Procedure/CBAdjustmentVATInterestArrears",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBAdjustmentVATInterestArrears",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ajusteFail": "Ajuste Iva Intereses Mora",
+            "errorFail": "%IPFinancingAdjustTransactionsLPV:Response%",
+            "responseFail": "Error código de ajuste LPV",
+            "successTransactions": "%IPFinancingAdjustTransactionsLPV:success%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPFinancingAdjustTransactionsLPV:success% = $Vlocity.FALSE",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPAdjustTransactionsRate/Procedure/ResponseActionLPV"
+}

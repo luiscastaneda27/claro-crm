@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetErrorEngagementInteraction",
+    "OmniProcessId": {
+        "Name": "FVU_ EngagementInteractionValidationProcess",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/EngagementInteractionValidationProcess/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "EngagementInteraction": {
+                "Id": "%DR_GetEngagementInteraction:EngagementInteraction|1:Id%"
+            },
+            "ShowErrorEngagementInteraction": "=IF(%DR_GetEngagementInteraction:EngagementInteraction:Id|1% == null, true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/EngagementInteractionValidationProcess/Procedure/SetErrorEngagementInteraction"
+}

@@ -1,0 +1,68 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGetInput",
+    "OmniProcessId": {
+        "Name": "IPsvcRegistroImeiv2",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPsvcRegistroImeiv2/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "body": {
+                "@baseType": "ProductOrder",
+                "@type": "ProductOrder",
+                "category": "registroIMEI",
+                "channel": [
+                    {
+                        "@type": "RelatedChannel",
+                        "channel": {
+                            "id": "SF",
+                            "name": "SALESFORCE"
+                        },
+                        "role": "VENTAS"
+                    }
+                ],
+                "description": "Solicitud de registro de IMEI",
+                "productOrderItem": [
+                    {
+                        "@type": "ProductOrderItem",
+                        "action": null,
+                        "id": "1",
+                        "note": [
+                            {
+                                "@type": "Note",
+                                "text": null
+                            }
+                        ],
+                        "product": {
+                            "@type": "Product",
+                            "productCharacteristic": "%Parametros%",
+                            "productSpecification": {
+                                "@type": "ProductSpecificationRef",
+                                "name": "Registro de IMEI"
+                            }
+                        }
+                    }
+                ],
+                "relatedParty": [
+                ]
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPsvcRegistroImeiv2/Procedure/SVGetInput"
+}

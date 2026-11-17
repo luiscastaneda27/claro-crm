@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataForRequest",
+    "OmniProcessId": {
+        "Name": "ActivatedOrdersNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ActivatedOrdersNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ContentACT": "Hola %DR_GetDataForNotification:Account:Name%, te informamos que tu línea %DR_GetDataForNotification:OrderItem:LineNumber% - Orden %DR_GetDataForNotification:Order:OrderNumber%  ha finalizado satisfactoriamente.",
+            "ContentATT": "Hola %DR_GetDataForNotification:Account:Name% te informamos que tu solicitud de equipo y activación de línea Claro %DR_GetDataForNotification:OrderItem:LineNumber% - Orden %DR_GetDataForNotification:Order:OrderNumber% finalizó satisfactoriamente.",
+            "ContentMIG": "Hola %DR_GetDataForNotification:Account:Name% te informamos que tu solicitud de cambio a plan pospago sobre la línea Claro %DR_GetDataForNotification:OrderItem:LineNumber% - Orden %DR_GetDataForNotification:Order:OrderNumber% ha finalizado satisfactoriamente.",
+            "ContentPOR": "Hola %DR_GetDataForNotification:Account:Name%, te informamos que tu solicitud de portabilidad  %DR_GetDataForNotification:OrderItem:LineNumber% - Orden %DR_GetDataForNotification:Order:OrderNumber% ha finalizado satisfactoriamente.",
+            "ReceiverEmail": {
+                "mail": "%DR_GetDataForNotification:Account:Email%"
+            },
+            "ReceiverPhone": "%DR_GetDataForNotification:Account:Phone%"
+        },
+        "executionConditionalFormula": "ISBLANK(%DR_GetAddons:AddonsListNoBundle%) && %DR_GetDataForNotification:Order:Channel% != \"ECOMMERCE\"",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ActivatedOrdersNotification/Procedure/SV_DataForRequest"
+}

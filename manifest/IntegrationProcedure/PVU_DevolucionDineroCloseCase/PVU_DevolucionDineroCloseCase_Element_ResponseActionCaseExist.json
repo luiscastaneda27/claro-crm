@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionCaseExist",
+    "OmniProcessId": {
+        "Name": "DevolucionDineroCloseCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDineroCloseCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "cases": "%RACasesValidations:CasesClosed%",
+            "casessize": "%RACasesValidations:CasesClosedSize%",
+            "message": "El proceso no puede continuar porque ya se generó un caso cerrado devolución de dinero para este producto."
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "NOT(ISBLANK(%RACasesValidations:CasesClosed%))",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDineroCloseCase/Procedure/ResponseActionCaseExist"
+}

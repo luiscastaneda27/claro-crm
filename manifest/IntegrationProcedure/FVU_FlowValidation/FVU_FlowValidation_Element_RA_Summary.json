@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Summary",
+    "OmniProcessId": {
+        "Name": "FlowValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FlowValidation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "CanProceed": "=IF(%GetData:validateOrder:Status% == \"Draft\" && %SV_ProductItemChanges:productItemChanges% == null || %GetData:validateOrder:Status% == \"Closed\" && %SV_ProductItemChanges:productItemChanges% == null || %GetData:validateOrder:Status% == \"InPayment\" && %SV_ProductItemChanges:productItemChanges% == null, true, false)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "flow == \"Summary\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FlowValidation/Procedure/RA_Summary"
+}

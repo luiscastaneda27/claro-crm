@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_GetOrderCheckoutData",
+    "OmniProcessId": {
+        "Name": "SalesSetupProductTimePurchase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesSetupProductTimePurchase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+            "OrderIsValid": "=%DR_GetOrderCheckoutData:Order:IsValid%",
+            "accountId": "=%DR_GetOrderCheckoutData:Order:AccId%",
+            "productId": "=%DR_GetOrderCheckoutData:OrderItem:ProductId%"
+        },
+        "bundle": "FVU_GetOrderCheckoutData",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+            {
+                "element": "OrderId",
+                "inputParam": "OrderId"
+            }
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataRaptorExtractAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesSetupProductTimePurchase/Procedure/DR_GetOrderCheckoutData"
+}

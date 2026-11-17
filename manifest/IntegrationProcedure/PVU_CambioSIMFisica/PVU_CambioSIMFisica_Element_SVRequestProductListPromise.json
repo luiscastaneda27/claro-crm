@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequestProductListPromise",
+    "OmniProcessId": {
+        "Name": "CambioSIMFisica",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CambioSIMFisica/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "channelCode": "%DRGetUserInfo:UserData|1:FVU_Canal__c%",
+            "delivMethod": "%delivMethod%",
+            "deliveryAddrId": "=SUBSTRING(%DRGetUserInfo:UserData|1:FVU_DANE_Punto_de_Venta__c%, 0, 5)",
+            "productList": [
+                {
+                    "prodGroup": "SALESFORCE",
+                    "prodProfile": [
+                        ""
+                    ],
+                    "prodTec": [
+                        ""
+                    ],
+                    "prodType": [
+                        ""
+                    ],
+                    "salesType": [
+                        "POS"
+                    ]
+                }
+            ],
+            "storeId": "%DRGetUserInfo:UserData|1:FVU_CAV__c%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CambioSIMFisica/Procedure/SVRequestProductListPromise"
+}

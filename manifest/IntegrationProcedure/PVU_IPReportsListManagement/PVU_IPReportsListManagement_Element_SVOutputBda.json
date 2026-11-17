@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVOutputBda",
+    "OmniProcessId": {
+        "Name": "IPReportsListManagement",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPReportsListManagement/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "SVOutput": [
+                {
+                    "esOperadorClaro": "%SVInputFunctionBda:esOperadorClaro%",
+                    "fechaReporte": "%SVInputFunctionBda:fechaReporte%",
+                    "msisdn": "%SVInputFunctionBda:msisdn%",
+                    "operador": "%IPBdaNegativa:bdaNegativaMesssage:operador%",
+                    "tipoReporteBlock": "%IPConsultaTipoReporteBda:NombreReporte%"
+                }
+            ]
+        },
+        "executionConditionalFormula": "IPBdaNegativa:bdaNegativaMesssage:isReported = true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPReportsListManagement/Procedure/SVOutputBda"
+}

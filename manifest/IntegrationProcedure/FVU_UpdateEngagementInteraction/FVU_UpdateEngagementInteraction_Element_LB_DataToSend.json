@@ -1,0 +1,27 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_DataToSend",
+    "OmniProcessId": {
+        "Name": "IP_UpdateEngagementInteraction",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateEngagementInteraction/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "SV_Input:EngagementInteraction",
+        "loopOutput": {
+            "Id": "%SV_Input:EngagementInteraction:Id%",
+            "Reason": "%SetValues4:Reason%",
+            "ValidationErrors": "%SetValues4:ValidationErrors%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateEngagementInteraction/Procedure/LB_DataToSend"
+}

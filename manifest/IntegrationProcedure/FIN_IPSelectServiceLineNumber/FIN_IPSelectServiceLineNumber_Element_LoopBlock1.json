@@ -1,0 +1,27 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LoopBlock1",
+    "OmniProcessId": {
+        "Name": "IPSelectServiceLineNumber",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPSelectServiceLineNumber/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%IPGetPaymentReferences:billingAccountDefault%)",
+        "label": "LoopBlock1",
+        "loopList": "IPGetPaymentReferences:billingAccountDefault",
+        "loopOutput": {
+            "93IsActive": "%SetValues1:93IsActive%",
+            "Response": "%SetValues1:Response%",
+            "defaultBillingAccount": "%SetValues1:defaultBillingAccount%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPSelectServiceLineNumber/Procedure/LoopBlock1"
+}

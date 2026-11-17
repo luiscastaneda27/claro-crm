@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetRequest",
+    "OmniProcessId": {
+        "Name": "IPManageCustomPayment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPManageCustomPayment/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "consultType": "T",
+            "documentNumber": "%documentNumber%",
+            "documentType": "=IF(%documentType% == \"PP\", 3, IF(%documentType% == \"CC\", 1, IF(%documentType% == \"CE\", 4, 0)))",
+            "ipApplication": "%ipApplication%",
+            "password": "%password%",
+            "requestDate": "=NOW()",
+            "system": "T",
+            "target": "%target%",
+            "traceabilityId": "%traceabilityId%",
+            "user": "%user%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPManageCustomPayment/Procedure/SetRequest"
+}

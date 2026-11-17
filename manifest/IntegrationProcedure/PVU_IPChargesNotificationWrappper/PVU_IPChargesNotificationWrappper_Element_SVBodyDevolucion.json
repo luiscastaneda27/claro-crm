@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVBodyDevolucion",
+    "OmniProcessId": {
+        "Name": "IPChargesNotificationWrappper",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationWrappper/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBChargesNotification",
+        "OmniProcessId": {
+            "Name": "IPChargesNotificationWrappper",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationWrappper/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationWrappper/Procedure/CBChargesNotification",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBChargesNotification",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "chargeServiceDevolucion": "=IF(%DRGetCase:CaseNumeroCredito% != NULL,FILTER(LIST(%DRGetChargesValues%), 'chargeService == \"AJU1017\"'),FILTER(LIST(%DRGetChargesValues%), 'chargeService == \"ADM000379\"'))"
+        },
+        "executionConditionalFormula": "%DRGetCase:SubCategoria% = 'Devolución de dinero'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationWrappper/Procedure/SVBodyDevolucion"
+}

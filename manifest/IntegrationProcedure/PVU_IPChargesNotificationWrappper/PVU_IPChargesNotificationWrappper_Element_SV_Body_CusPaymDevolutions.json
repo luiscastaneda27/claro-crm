@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Body_CusPaymDevolutions",
+    "OmniProcessId": {
+        "Name": "IPChargesNotificationWrappper",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationWrappper/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCusPaymDevolutionsFianza",
+        "OmniProcessId": {
+            "Name": "IPChargesNotificationWrappper",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationWrappper/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationWrappper/Procedure/CBCusPaymDevolutionsFianza",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCusPaymDevolutionsFianza",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "body": {
+                "billingAccount": "%DRGetCase:AssetReferenciaPagoCredito%",
+                "chargeService": "%DMExtParams|1:Params:Valor%",
+                "financingCode": "%DRGetCase:CaseNumeroCredito%",
+                "remark": "Devolución de dinero financiación",
+                "suretyChargeService": "%DMExtParams|2:Params:Valor%",
+                "suretyId": "%FIN_GetFianzaByCreditNumber:suretyId%",
+                "target": "%DRExtractHeaderRequest:Target%",
+                "user": "%FIN_GetFianzaByCreditNumber:User:UsuarioRed%"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationWrappper/Procedure/SV_Body_CusPaymDevolutions"
+}

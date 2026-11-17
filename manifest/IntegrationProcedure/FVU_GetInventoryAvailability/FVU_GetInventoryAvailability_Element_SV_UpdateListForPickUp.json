@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_UpdateListForPickUp",
+    "OmniProcessId": {
+        "Name": "GetInventoryAvailability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetInventoryAvailability/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_UpdateListPickUp",
+        "OmniProcessId": {
+            "Name": "GetInventoryAvailability",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetInventoryAvailability/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetInventoryAvailability/Procedure/CB_UpdateListPickUp",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_UpdateListPickUp",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ProductAvailability": {
+                "FewUnitsAllFlag": "%ProductAvailability:FewUnitsAllFlag%",
+                "LowQuantityProductsMsg": "%ProductAvailability:LowQuantityProductsMsg%",
+                "ProductDescription": "%ProductAvailability:ProductDescription%",
+                "ProductName": "%ProductAvailability:ProductName%",
+                "UserChannel": "%ProductAvailability:UserChannel%",
+                "availableDeliveryMethods": {
+                    "Delivery": "%ProductAvailability:availableDeliveryMethods:Delivery%",
+                    "Immediatepickup": "%ProductAvailability:availableDeliveryMethods:Immediatepickup%",
+                    "PickUp": "%IP_FilterAvailableProductsImmediateDelivery:ProductAvailability:availableDeliveryMethods:PickUp%"
+                },
+                "deliveryQuantity": "%ProductAvailability:deliveryQuantity%",
+                "immediatePickUpQuantity": "%ProductAvailability:immediatePickUpQuantity%",
+                "isAvailable": "%ProductAvailability:isAvailable%",
+                "pickUpQuantity": "%IP_FilterAvailableProductsImmediateDelivery:ProductAvailability:pickUpQuantity%",
+                "productCode": "%ProductAvailability:productCode%",
+                "quantity": "%SV_QuantityUpdate:quantity%",
+                "success": "%ProductAvailability:success%"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetInventoryAvailability/Procedure/SV_UpdateListForPickUp"
+}

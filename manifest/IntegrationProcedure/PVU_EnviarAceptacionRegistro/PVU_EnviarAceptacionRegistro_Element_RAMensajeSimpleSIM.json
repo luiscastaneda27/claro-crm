@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAMensajeSimpleSIM",
+    "OmniProcessId": {
+        "Name": "PVU_EnviarAceptacionRegistro",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/EnviarAceptacionRegistro/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SimpleSIM",
+        "OmniProcessId": {
+            "Name": "PVU_EnviarAceptacionRegistro",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/EnviarAceptacionRegistro/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/EnviarAceptacionRegistro/Procedure/SimpleSIM",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SimpleSIM",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "mensaje": "%REGIMEI008%",
+            "parametros": [
+                "%SVData:NombreCliente%",
+                "%DRGetUserDetails:NombreUsuario%",
+                "%SVData:NombreCliente%",
+                "%SVData:TipoDocumento%",
+                "%SVData:NumeroDocumento%",
+                "%SVData:city%",
+                "%marcaFromContext%",
+                "%modeloFromContext%",
+                "%imeiFromContext%"
+            ]
+        },
+        "additionalOutput": {
+            "contenido": "%RAMensajeSimpleSIM:mensajeParametrizado%"
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_CustomMessageHandler",
+        "remoteMethod": "setParametrosEnMensaje",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/EnviarAceptacionRegistro/Procedure/RAMensajeSimpleSIM"
+}

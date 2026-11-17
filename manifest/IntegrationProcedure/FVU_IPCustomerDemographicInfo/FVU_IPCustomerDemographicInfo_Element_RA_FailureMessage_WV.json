@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_FailureMessage_WV",
+    "OmniProcessId": {
+        "Name": "FVU_IPCustomerDemographicInfo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCustomerDemographicInfo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "WhiteValidation",
+        "OmniProcessId": {
+            "Name": "FVU_IPCustomerDemographicInfo",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCustomerDemographicInfo/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCustomerDemographicInfo/Procedure/WhiteValidation",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "WhiteValidation",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "DocumentType and documentNumber or billingAccount or lineNumber or email is required.",
+            "responseCode": 400
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "((%documentNumber% == null OR %documentNumber% == \"\") AND (%documentType% == null OR %documentType% == \"\") AND (%billingAccount% == null OR %billingAccount% == \"\") AND (%lineNumber% == null OR %lineNumber% == \"\") AND (%email% == null OR %email% == \"\"))",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCustomerDemographicInfo/Procedure/RA_FailureMessage_WV"
+}

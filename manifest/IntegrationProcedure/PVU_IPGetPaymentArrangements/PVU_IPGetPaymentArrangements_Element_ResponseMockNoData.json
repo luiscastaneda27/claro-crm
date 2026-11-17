@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseMockNoData",
+    "OmniProcessId": {
+        "Name": "IPGetPaymentArrangements",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetPaymentArrangements/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "HasMockActive",
+        "OmniProcessId": {
+            "Name": "IPGetPaymentArrangements",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetPaymentArrangements/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetPaymentArrangements/Procedure/HasMockActive",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "HasMockActive",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "%FIN_IPGetMessagesMock:message:MainMessage%",
+            "response:payArrangements:codeMessage": "=IF(%DRT_MockResponse:responseCode% == \"faul:NKERR.30022\", \"PVU013\",\"PVU016\")",
+            "response:payArrangements:message": "%FIN_IPGetMessagesMock:message:MainMessage%",
+            "response:payArrangements:responseCode": "%DRT_MockResponse:responseCode%",
+            "response:responseCode": "%DRT_MockResponse:responseCode%",
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRT_MockResponse:responseCode% != \"FS_ESB_0\"",
+        "label": "ResponseAction5",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "DRTransformResponse",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetPaymentArrangements/Procedure/ResponseMockNoData"
+}

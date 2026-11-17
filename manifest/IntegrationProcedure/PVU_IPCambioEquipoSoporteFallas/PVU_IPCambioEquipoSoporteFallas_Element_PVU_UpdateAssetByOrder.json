@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PVU_UpdateAssetByOrder",
+    "OmniProcessId": {
+        "Name": "IPCambioEquipoSoporteFallas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioEquipoSoporteFallas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock1",
+        "OmniProcessId": {
+            "Name": "IPCambioEquipoSoporteFallas",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioEquipoSoporteFallas/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioEquipoSoporteFallas/Procedure/ConditionalBlock1",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock1",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Canal": "%DMGetAssetOrder:Canal%",
+            "FechaDeEntrega": "%DMGetAssetOrder:PurchaseDate%",
+            "Garantia": "=ADDMONTH(%DMGetAssetOrder:PurchaseDate%, %DMGetAssetOrder:WarrantyPeriod%)",
+            "GarantiaVigente": true,
+            "Id": "%DMGetAssetOrder:AssetId%",
+            "NumeroDeCuenta": "%DMGetOrder:NumeroDeCuenta%",
+            "PrecioDeVenta": "%DMGetOrder:PrecioDeVenta%",
+            "SoporteYFallas": true
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_UpdateAssetByOrder",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioEquipoSoporteFallas/Procedure/PVU_UpdateAssetByOrder"
+}

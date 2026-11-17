@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_error500",
+    "OmniProcessId": {
+        "Name": "RiskAssessmentLists",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RiskAssessmentLists/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "message": "Los reintentos fueron superados y no se obtuvo respuesta exitosa",
+            "status": "%HTTP_ListVerificationInfo:status%",
+            "statusCode": "%HTTP_ListVerificationInfo:statusCode%"
+        },
+        "executionConditionalFormula": "%HTTP_ListVerificationInfo:statusCode% >= 500 && %HTTP_ListVerificationInfo:statusCode% <= 504",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "httpResult",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RiskAssessmentLists/Procedure/SV_error500"
+}

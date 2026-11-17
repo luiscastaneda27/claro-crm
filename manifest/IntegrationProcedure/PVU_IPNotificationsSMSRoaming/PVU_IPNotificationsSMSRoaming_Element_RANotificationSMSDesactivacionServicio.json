@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RANotificationSMSDesactivacionServicio",
+    "OmniProcessId": {
+        "Name": "IPNotificationsSMSRoaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNotificationsSMSRoaming/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "mensaje": "%Mensajes:ROAMING007%",
+            "parametros": [
+                "%SVRoamingActive:dia%",
+                "%DRGetApplicationSetting:Setting:PhoneFromOutside%",
+                "%DRGetApplicationSetting:Setting:URLWhatsApp%"
+            ]
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "DRE_GetCaseInfo:PVU_Level3__c = 'Desactivación de servicios y paquetes' && DRE_GetCaseInfo:NombreProceso = 'RoamingDesactivacion_ServicioYpaquetes'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_CustomMessageHandler",
+        "remoteMethod": "setParametrosEnMensaje",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNotificationsSMSRoaming/Procedure/RANotificationSMSDesactivacionServicio"
+}

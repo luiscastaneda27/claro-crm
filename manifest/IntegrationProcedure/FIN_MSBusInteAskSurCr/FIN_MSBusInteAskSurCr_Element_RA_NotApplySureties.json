@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_NotApplySureties",
+    "OmniProcessId": {
+        "Name": "MSBusInteAskSurCr",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/MSBusInteAskSurCr/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "responseCode": "%HA_CallSureties:responseCode%",
+            "result": {
+                "Descripcion": "Faltan parámetros obligatorios financingAmount,channel,monthlyTerm o afianzador no aplica",
+                "Name": "MSBusInteAskSurCr",
+                "enpoint": "/MSBusInteAskSurCr/SVC/BusinessInteraction/RSBusInteAskSurCr/V1/askSurety",
+                "metodo": "GET",
+                "request": "%SVparam%",
+                "response": "%HA_CallSureties%",
+                "statusCode": "%HA_CallSureties:responseCode%",
+                "sureties": false
+            },
+            "resultCode": "%HA_CallSureties:data:resultCode%",
+            "resultMessage": "%HA_CallSureties:message%",
+            "sureties": false,
+            "transactionId": "%HA_CallSureties:transactionId%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_ApplySureties:avaliableSurety% != true || ISBLANK(%financingAmount%) || ISBLANK(%monthlyTerm%) || ISBLANK(%channel%)",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/MSBusInteAskSurCr/Procedure/RA_NotApplySureties"
+}

@@ -1,0 +1,76 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpdateSubscriptionRecordCancel",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CancelacionProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/CancelacionProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CancelacionProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "account": "%GetSuspensionInfoCancel:Subscription:AccountId%",
+            "billingAccount": "%GetSuspensionInfoCancel:Subscription:BillingAccountId%",
+            "contract": "%GetSuspensionInfoCancel:Subscription:ContractId%",
+            "endDate": "=NOW()",
+            "id": "%GetSuspensionInfoCancel:Subscription:Id%",
+            "msisdn": "%GetSuspensionInfoCancel:Subscription:MSISDN%",
+            "msisdnTemporary": "=IF(%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:resourceNumber%!=%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:suscriberNumber%, %DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:resourceNumber%, null)",
+            "portationStatus": "%GetSuspensionInfoCancel:Subscription:portationStatus%",
+            "reasonCode": "DEACT",
+            "serviceAccount": "%GetSuspensionInfoCancel:Subscription:ServiceAccountId%",
+            "status": "Deactivated",
+            "statusStartDate": "=NOW()",
+            "subReasonCode": "=IF(%DRE_FRLInfoUsingOrchestrationPlan:Order:SubType% == \"Desactivacion pos-pre\",\"DEAPOAPRE\",\"DEACT\")",
+            "subStatus": "%GetSuspensionInfoCancel:OrderItem:SubCausal%",
+            "subscriptionNumber": "%GetSuspensionInfoCancel:Subscription:subscriptionNumber%",
+            "subscriptionStartDate": "%GetSuspensionInfoCancel:Subscription:StartDate%",
+            "susByCollections": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCollections%",
+            "susByCustomer": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCustomer%",
+            "susByFraud": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByFraud%",
+            "susByLost": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByLost%",
+            "susByTheft": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByTheft%",
+            "susByWarranty": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByWarranty%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_CreateSubscriptionRecord",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/UpdateSubscriptionRecordCancel"
+}

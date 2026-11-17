@@ -1,0 +1,24 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_UpdateOrderItem",
+    "OmniProcessId": {
+        "Name": "GetIMEINumbersAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%SV_OrderItemFilter:OrderItemFiltered:OrderProductIMEI%) || ISNOTBLANK(%SV_OrderItemFilterNewService:OrderItemFiltered:OrderProductIMEI%)",
+        "label": "LoopBlock2",
+        "loopList": "OrderItem",
+        "loopOutput": {
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure/LB_UpdateOrderItem"
+}

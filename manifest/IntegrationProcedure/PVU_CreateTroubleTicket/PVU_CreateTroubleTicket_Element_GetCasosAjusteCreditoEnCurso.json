@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "GetCasosAjusteCreditoEnCurso",
+    "OmniProcessId": {
+        "Name": "TMFInserCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CreateTroubleTicket/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CaseOpenOrDraft",
+        "OmniProcessId": {
+            "Name": "TMFInserCase",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CreateTroubleTicket/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CreateTroubleTicket/Procedure/CB_CaseOpenOrDraft",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CaseOpenOrDraft",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "numCredito": "=%SV_FinancingAndSerialNumbers:financingCode%",
+            "numDoc": "=%SVparams:numDoc%",
+            "tipoDoc": "=%SVparams:tipoDoc%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%category% == 'Facturación y pagos' AND %customerVoice% == 'Ajuste de Credito' AND %subcategory% == 'Financiación'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "AdditionalInput": "=%SVparams%",
+            "AdditionalOutPut": "=%GetCasosAjusteCreditoEnCurso%",
+            "ErrorMessage": "Ocurrio un error en la validación de casos abiertos o en curso",
+            "Name": "Validación casos abiertos o en curso",
+            "success": false
+        },
+        "integrationProcedureKey": "FIN_GetCasosAjusteCreditoEnCursoWeb",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CreateTroubleTicket/Procedure/GetCasosAjusteCreditoEnCurso"
+}

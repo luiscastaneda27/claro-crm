@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCutOffDateCalc",
+    "OmniProcessId": {
+        "Name": "PVU_GetDataOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDataOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CutOffDate",
+        "OmniProcessId": {
+            "Name": "PVU_GetDataOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDataOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDataOrder/Procedure/CB_CutOffDate",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CutOffDate",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "dateDiff": "= DATEDIFF(%SVCutOffDate:cutOffDate%, TODAY())",
+            "orderDate": "=IF(DATEDIFF(%SVCutOffDate:cutOffDate%, TODAY()) <= 0, %SVCutOffDate:cutOffDate%,  ADDMONTH(%SVCutOffDate:cutOffDate%, 1))",
+            "orderDateGTM": "=IF(DATEDIFF(%SVCutOffDate:cutOffDate%, TODAY()) <= 0, FORMATDATETIME(CONCAT(%SVCutOffDate:cutOffDate%, 'T', FORMATDATETIME(NOW(),\"HH:mm:ss\",\"GMT\")),\"yyyy-MM-dd'T'HH:mm:ss'Z'\",\"GMT\"), FORMATDATETIME(CONCAT(%SVCutOffDateAddMonth:cutOffDate%, 'T', FORMATDATETIME(NOW(),\"HH:mm:ss\",\"GMT\")),\"yyyy-MM-dd'T'HH:mm:ss'Z'\",\"GMT\") )",
+            "original": "=%SVCutOffDate:cutOffDate%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDataOrder/Procedure/SVCutOffDateCalc"
+}

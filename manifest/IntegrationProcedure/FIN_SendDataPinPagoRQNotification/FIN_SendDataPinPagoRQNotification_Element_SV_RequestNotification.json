@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_RequestNotification",
+    "OmniProcessId": {
+        "Name": "SendDataPinPagoRQNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendDataPinPagoRQNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountId": "=IP_DataDeliveryMethod:Order:OrderAccountId",
+            "CodigoPago": "=IP_DataPinPagos:codigoPago",
+            "Email": "=IP_DataDeliveryMethod:Account:AccountEmail",
+            "FechaVigencia": "=IP_DataPinPagos:fechaVigencia",
+            "MessageType": "=IF(IP_DataDeliveryMethod:Account:AccountNotificationChoice ==\"Correo electrónico\", \"Correo electrónico\",\"SMS\")",
+            "OrderId": "=IP_DataDeliveryMethod:Order:OrderId",
+            "Phone": "=IP_DataDeliveryMethod:Account:AccountPhone",
+            "Resend": "=false",
+            "TotalPayment": "=IP_DataDeliveryMethod:Order:Quote:TotalCuotaInicial"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "RequestNotification",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendDataPinPagoRQNotification/Procedure/SV_RequestNotification"
+}

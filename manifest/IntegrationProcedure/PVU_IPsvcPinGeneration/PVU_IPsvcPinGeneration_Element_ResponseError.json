@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseError",
+    "OmniProcessId": {
+        "Name": "PinGeneration",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcPinGeneration/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "OTP:Code": "",
+            "OTP:CodeOTP": "",
+            "OTP:ExceptionCode": "%SV_PinGenerationError:ResponseList|1:responsePinGenerationExceptionCode%",
+            "OTP:PinGenerationError": "Se produjo un error al intentar conectar con el servicio.",
+            "OTP:TextEmail": "=emailInput",
+            "OTP:isValid": false,
+            "OTP:medio": "=IF(isEmail == true,\"email\",\"SMS\")",
+            "OTP:messageErrorFlag": false,
+            "OTP:successSend": false,
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(DRTransformResponseXMLtoJSON:responsePinGenerationValid)",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcPinGeneration/Procedure/ResponseError"
+}

@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RemoteAction1",
+    "OmniProcessId": {
+        "Name": "IPConsultaFinFlexCards",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPConsultaFinFlexCards/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "accountId": "%accountId%",
+            "creditHistory": "=LIST(%IPcreditHistory:detalle%)",
+            "cuentaOrigen": "%cuentaOrigen%",
+            "customerCharges": "=LIST(%IPcustomerCharges:charges%)",
+            "financings": "=LIST(%IPGetFinancingInfoV1:financings:financing%)",
+            "invoices": "=LIST(%IPBillingManagementV1:financialDocuments:financialDocument%)",
+            "payments": "=LIST(%IPFinancingPaymentTransactions:transactions%)",
+            "reasonIds": "%DME_creditHistoryReasonIds:reasonIds%",
+            "transaction": "=LIST(%IPFinancingTransactionDetailsV1:transactions:transaction%)"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "FIN_ConsultaFinanciamientoController",
+        "remoteMethod": "integrateAllData",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPConsultaFinFlexCards/Procedure/RemoteAction1"
+}

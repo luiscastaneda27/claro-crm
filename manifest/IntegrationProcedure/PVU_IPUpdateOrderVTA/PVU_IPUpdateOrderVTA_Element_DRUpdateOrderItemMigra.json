@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRUpdateOrderItemMigra",
+    "OmniProcessId": {
+        "Name": "IPUpdateOrderVTA",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateOrderVTA/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopOrderItemsMigra",
+        "OmniProcessId": {
+            "Name": "IPUpdateOrderVTA",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateOrderVTA/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateOrderVTA/Procedure/LoopOrderItemsMigra",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopOrderItemsMigra",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "B2C-ATTR-ICCID": "=IF(%GetOrderItems:Product2Code% == \"B2C-MOV-OFR-SIMCARD\", %SVMigraData:ICCID%, NULL)",
+            "B2C-ATTR-MSISDN": "=IF(%GetOrderItems:Product2Code% == \"B2C-MOV-MSISDN-PS\", CONCAT('57', %SVMigraData:NumberToMigrate%), NULL)",
+            "OrderItem": "=%GetOrderItems%",
+            "ProductDeliveryStatus": "='WithoutLogistics'",
+            "ReasonCode": "=%DRGetMetadataOrderMigra:OrderConfig:ReasonCode%",
+            "SerialNumber": "=IF(%GetOrderItems:Product2Code% == \"B2C-MOV-OFR-SIMCARD\", %SVMigraData:Serial%, NULL)",
+            "SubCausal": "=%DRGetMetadataOrderMigra:OrderConfig:SubCausal%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_DR_TransformOrderItemSuspendAction",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataMapperTransformAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Transform Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateOrderVTA/Procedure/DRUpdateOrderItemMigra"
+}

@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponseSaldoFin",
+    "OmniProcessId": {
+        "Name": "DevolucionDineroTraerAssetSaldo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDineroTraerAssetSaldo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Assets": "%RACasesValidationsSaldoFin:CasesAssets%",
+            "assetInfo": "=IF(%RACasesValidationsSaldoFin:CasesAssetsSize% > 0, true, false)"
+        },
+        "executionConditionalFormula": "%SVInput:Origen% = 'SaldoFin'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "ResponseAsset",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDineroTraerAssetSaldo/Procedure/SVResponseSaldoFin"
+}

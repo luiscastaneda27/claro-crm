@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CurrencyFormat",
+    "OmniProcessId": {
+        "Name": "GetSummaryData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetSummaryData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "FormattedBaseOneTimeTotalTyT": "=formatCurrency(%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:TotalAPagarTyT:BaseOneTimeTotal%)",
+            "FormattedFinalPriceIncDiscount": "=formatCurrency(%SV_FormattedDates:FinalPriceIncDiscount%)",
+            "FormattedPriceIncTaxes": "=formatCurrency(%GetOrderSummaryDataByOrder:Resumen:ListaProductos:PriceIncTaxes%)",
+            "FormattedRecurringTotalMovil": "=formatCurrency(%GetOrderSummaryDataByOrder:Resumen:ListaProductos:RecurringTotalMovil%)",
+            "FormattedSimTotal": "=formatCurrency(%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:TotalAPagarMovil:SimTotal%)",
+            "FormattedTotalRecurringIncTaxesMovil": "=formatCurrency(%GetOrderSummaryDataByOrder:Resumen:ListaProductos:TotalRecurringIncTaxesMovil%)",
+            "FormmatedCargoEnvio": "=formatCurrency(%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:CargoEnvio%)",
+            "FormmatedDiscount": "=formatCurrency(%SV_DataExtra:Discount%)",
+            "FormmatedPriceBase": "=formatCurrency(%GetOrderSummaryDataByOrder:Resumen:ListaProductos:PriceBase%)",
+            "FormmatedTotal": "=formatCurrency(%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:TotalAPagarTyT:Total%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetSummaryData/Procedure/SV_CurrencyFormat"
+}

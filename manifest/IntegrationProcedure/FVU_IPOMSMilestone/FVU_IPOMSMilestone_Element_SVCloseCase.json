@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCloseCase",
+    "OmniProcessId": {
+        "Name": "IPOMSMilestone",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ResourceFoundCase",
+        "OmniProcessId": {
+            "Name": "IPOMSMilestone",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/ResourceFoundCase",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ResourceFoundCase",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CodigoCierre": "Cambio de Sim Card no Exitoso",
+            "DeliveryOrderId": "=IF(ISNOTBLANK(%orderProductItem:deliveryOrderId%),%orderProductItem:deliveryOrderId%,\"\")",
+            "ICCID": "=IF(%orderProductItem:status% = \"READY_FOR_PICKUP\",%orderProductItem:serials%,\"\")",
+            "Id": "%DRE_GetCaseInfo:caseId%",
+            "Status": "Cerrado",
+            "StatusInbound": "=IF(%orderProductItem:status%=\"RESERVED\", \"AssignSerial\",\r\n IF(%orderProductItem:status%=\"DELIVERED_ADVISOR\", \"DeliveredAgent\",\r\n  IF(%orderProductItem:status%=\"OUT_OF_STOCK\", \"OutOfStock\",\r\n   IF(%orderProductItem:status%=\"READY_FOR_PICKUP\", \"ReadyForPickup\",\r\n      IF(%orderProductItem:status%=\"CANCELED\", \"Canceled\",\r\n         IF(%orderProductItem:status%=\"COMPLETED\", \"DeliveredCustomer\",\r\n            IF(%orderProductItem:status%=\"NOT_RESERVED\", \"OutOfStock\",\r\n                IF(%orderProductItem:status%=\"READY_FOR_DELIVERY\", \"ReadyForDelivery\",\r\n\r\n    %orderProductItem:status%))))))))"
+        },
+        "executionConditionalFormula": "%orderProductItem:status% = \"NOT_RESERVED\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "SVCase",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/SVCloseCase"
+}

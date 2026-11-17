@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CustomBiographicInfo",
+    "OmniProcessId": {
+        "Name": "CustomerBiographicInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_StatusSuccessful",
+        "OmniProcessId": {
+            "Name": "CustomerBiographicInformation",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformation/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformation/Procedure/CB_StatusSuccessful",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_StatusSuccessful",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "nombreCompleto": "%SV_AG2:argumentss%",
+            "nombres": "%IP_Reconocer:informacion|1:nombres%",
+            "numeroDocumento": "%IP_Reconocer:informacion|1:numeroDocumento%",
+            "primerApellido": "%IP_Reconocer:informacion|1:primerApellido%",
+            "rangoEdad": "%IP_Reconocer:informacion|1:rangoEdad%",
+            "segundoApellido": "%IP_Reconocer:informacion|1:segundoApellido%",
+            "tipoDocumento": "%IP_Reconocer:informacion|1:tipoDocumento%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformation/Procedure/SV_CustomBiographicInfo"
+}

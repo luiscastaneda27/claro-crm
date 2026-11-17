@@ -1,0 +1,78 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpdateSubscriptionRecordReinstall",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ReinstallProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/ReinstallProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ReinstallProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "TemporaryMSISDN": "",
+            "account": "%GetReinstallInfo:Subscription:AccountId%",
+            "billingAccount": "%GetReinstallInfo:Subscription:BillingAccountId%",
+            "contract": "%GetReinstallInfo:Subscription:ContractId%",
+            "effectiveDate": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:effectiveDate%",
+            "id": "%GetReinstallInfo:Subscription:Id%",
+            "msisdn": "%GetReinstallInfo:Subscription:MSISDN%",
+            "portationStatus": "%GetReinstallInfo:Subscription:portationStatus%",
+            "reasonCode": "REINST",
+            "serviceAccount": "%GetReinstallInfo:Subscription:ServiceAccountId%",
+            "status": "Active",
+            "statusEndDate": "",
+            "statusStartDate": "= NOW()",
+            "subReasonCode": "REINSTCUST",
+            "subStatus": "%GetReinstallInfo:OrderItem:SubCausal%",
+            "subscriptionNumber": "%GetReinstallInfo:Subscription:subscriptionNumber%",
+            "subscriptionStartDate": "%GetReinstallInfo:Subscription:StartDate%",
+            "susByCollections": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCollections%",
+            "susByCustomer": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCustomer%",
+            "susByFraud": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByFraud%",
+            "susByLost": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByLost%",
+            "susByTheft": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByTheft%",
+            "susByWarranty": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByWarranty%",
+            "suspendDate": ""
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_CreateSubscriptionRecord",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/UpdateSubscriptionRecordReinstall"
+}

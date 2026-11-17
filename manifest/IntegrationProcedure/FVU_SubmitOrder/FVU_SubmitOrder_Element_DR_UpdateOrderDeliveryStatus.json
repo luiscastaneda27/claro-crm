@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpdateOrderDeliveryStatus",
+    "OmniProcessId": {
+        "Name": "FVU_SubmitOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SubmitOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "PortInNotBlockedOrderWithNipExpired",
+        "OmniProcessId": {
+            "Name": "FVU_SubmitOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SubmitOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SubmitOrder/Procedure/PortInNotBlockedOrderWithNipExpired",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "PortInNotBlockedOrderWithNipExpired",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Order:DeliveryDate": "=NOW()",
+            "Order:DeliveryStatus": "PortabilityBlocked",
+            "Order:Id": "=orderId"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertOrder",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "(IP_PortInConsultAndTraceability:error == 'ERROR' || ISBLANK(IP_PortInConsultAndTraceability:registros|1:numeros|1:nip:fechaVencimiento)) || %SVFunctions:fnIsExpiredNip% == true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SubmitOrder/Procedure/DR_UpdateOrderDeliveryStatus"
+}

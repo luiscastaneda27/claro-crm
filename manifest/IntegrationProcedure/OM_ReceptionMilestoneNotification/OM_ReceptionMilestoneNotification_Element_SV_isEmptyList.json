@@ -1,0 +1,45 @@
+{
+    "Description": "En caso de ser la primera respuesta recibida, se agrega el nodo a una lista nueva",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_isEmptyList",
+    "OmniProcessId": {
+        "Name": "ReceptionMilestoneNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReceptionMilestoneNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "UpdateHistoryCallback",
+        "OmniProcessId": {
+            "Name": "ReceptionMilestoneNotification",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReceptionMilestoneNotification/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReceptionMilestoneNotification/Procedure/UpdateHistoryCallback",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "UpdateHistoryCallback",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "orchestrationItemResponse": "=LIST(%JsonResponse%)"
+        },
+        "executionConditionalFormula": "ISBLANK(%DME_GetHistoryCallback:orchestrationItemResponse%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReceptionMilestoneNotification/Procedure/SV_isEmptyList"
+}

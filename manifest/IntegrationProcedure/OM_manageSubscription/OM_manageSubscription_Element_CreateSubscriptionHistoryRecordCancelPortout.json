@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CreateSubscriptionHistoryRecordCancelPortout",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "PortoutProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/PortoutProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "PortoutProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "AccountId": "%DRE_GetSuspensionInfoCancel:Subscription:AccountId%",
+            "MSISDN": "%DRE_GetSuspensionInfoCancel:Subscription:MSISDN%",
+            "Status": "%DRE_GetSuspensionInfoCancel:Subscription:Status%",
+            "billingAccountId": "%DRE_GetSuspensionInfoCancel:Subscription:BillingAccountId%",
+            "reasonCode": "%DRE_GetSuspensionInfoCancel:Subscription:reasonCode%",
+            "serviceAccountId": "%DRE_GetSuspensionInfoCancel:Subscription:ServiceAccountId%",
+            "statusEndDate": "=NOW()",
+            "statusStartDate": "%DRE_GetSuspensionInfoCancel:Subscription:statusStartDate%",
+            "subReasonCode": "%DRE_GetSuspensionInfoCancel:Subscription:subReasonCode%",
+            "subscriptionId": "%DRE_GetSuspensionInfoCancel:Subscription:Id%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_SubscriptionHistory",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRE_GetSuspensionInfoCancel:OrderItem:Status% <> %DRE_GetSuspensionInfoCancel:Asset:Status% ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/CreateSubscriptionHistoryRecordCancelPortout"
+}

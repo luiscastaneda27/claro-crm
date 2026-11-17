@@ -1,0 +1,55 @@
+{
+    "Description": "Get orchestrationPlan by Id and status == 'In Progress'",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRE_OrchestrationPlan",
+    "OmniProcessId": {
+        "Name": "ReceptionMilestoneNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReceptionMilestoneNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "": ""
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRE_OrchestrationPlan",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+            {
+                "element": "DRT_MilestoneNotification:orchestrationPlanId",
+                "inputParam": "orchestrationPlanId"
+            },
+            {
+                "element": "'In Progress'",
+                "inputParam": "status"
+            }
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "ISBLANK(%Id%)",
+        "failureResponse": {
+            "message": "Orchestration plan %DRT_MilestoneNotification:orchestrationPlanId% not found or is completed.",
+            "responseCode": 400
+        },
+        "ignoreCache": true,
+        "label": "DataRaptorExtractAction5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReceptionMilestoneNotification/Procedure/DRE_OrchestrationPlan"
+}

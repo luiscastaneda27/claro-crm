@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_listProducts",
+    "OmniProcessId": {
+        "Name": "ValidateOrderItems",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidateOrderItems/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Handset": "=LIST(FILTER(LIST(%DMGetOrderItem%), 'productType == \"Handset\"'))",
+            "Plan": "=LIST(FILTER(LIST(%DMGetOrderItem%), 'productType == \"Plan\"'))",
+            "Tech": "=LIST(FILTER(LIST(%DMGetOrderItem%), 'productType == \"Tech\"'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidateOrderItems/Procedure/SV_listProducts"
+}

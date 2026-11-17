@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ConcatIMEI",
+    "OmniProcessId": {
+        "Name": "GetIMEINumbersAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ConcatIMEI2Error": "=%SV_FilterIMEI2:FilterIMEI2Error:IMEINumber2%",
+            "ConcatIMEI2Success": "=%SV_FilterIMEI2:FilterIMEI2Success:IMEINumber2%",
+            "ConcatIMEIError": "=%SV_RegisterIMEIError:IMEIError:IMEINumber%",
+            "ConcatIMEISuccess": "=%SV_RegisterIMEISuccess:IMEISuccess:IMEINumber%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure/SV_ConcatIMEI"
+}

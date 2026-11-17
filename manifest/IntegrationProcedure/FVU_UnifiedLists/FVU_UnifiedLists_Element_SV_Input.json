@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Input",
+    "OmniProcessId": {
+        "Name": "FVU_UnifiedLists",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UnifiedLists/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "channel": "=IF(%UserDetails:CAV% == \"TMK\", \"TMK\", \"PRESENCIAL\")",
+            "document": "%SV_Document%",
+            "dv": "=SUBSTRING(1)",
+            "headerRequest": "%SV_HeaderRequest%",
+            "identification": "=SUBSTRING(%AccountDocumentNumber%)",
+            "lists": "ONU|OFAC|PEP|CSN",
+            "mail": "=%AccountEmail%",
+            "name": "=%AccountName%",
+            "observations": "SalesForce",
+            "phone": "%SV_Phone%",
+            "punctuation": "=SUBSTRING(100)",
+            "typeIdentification": "=%AccountDocumentType%",
+            "typeProcess": "=%typeProcess%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UnifiedLists/Procedure/SV_Input"
+}

@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "IPRoamingDetails",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingDetails/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "bloqueoCAN": "=IF(%DRGetAssetInfo:RoamingCANBlocking%,'Si','No')",
+            "fechaActivacion": "=%IPDateFormatActivacion:fechaSlashDDMMYY%",
+            "fechaDesactivacion": "=IF(%assetAttrValue:B2C-ATTR-ROAMING-IND% = true,\"Indefinido\",%IPDateFormatDesactivacion:fechaSlashDDMMYY%)",
+            "hoy": "=FORMATDATETIME(ADDDAY(TODAY(), 1),\"yyyy-MM-dd\",\"America/Bogota\")",
+            "name": "%DRGetAssetInfo:Asset:Name%",
+            "paquetesActivos": "=IF(%IPGetRoamingPaquetes:paquetesActivosSize% >0, \"Si\",\"No\")",
+            "status": "=IF(%assetAttrValue:B2C-ATTR-ROAMING% = true, \"Activo\", \"Desactivado\")",
+            "vencido": "=IF(%assetAttrValue:B2C-ATTR-ROAMING-IND% = true,false,IF(FORMATDATETIME(ADDDAY(%assetAttrValue:B2C-ATTR-ROAMING-DESACTIVACION%, 1),\"yyyy-MM-dd\",\"America/Bogota\") <= FORMATDATETIME(ADDDAY(TODAY(), 1),\"yyyy-MM-dd\",\"America/Bogota\"),true,false))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingDetails/Procedure/SVResponse"
+}

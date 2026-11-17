@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSaveLogs",
+    "OmniProcessId": {
+        "Name": "IP_Call_CusInstallRefund",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IP_Call_CusInstallRefund/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBSaveLog",
+        "OmniProcessId": {
+            "Name": "IP_Call_CusInstallRefund",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IP_Call_CusInstallRefund/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IP_Call_CusInstallRefund/Procedure/CBSaveLog",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBSaveLog",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Descripcion": "RQ: BAc: %SVParams:billingAccount% CI: %CaseId% TI: %tipoDeIntento% - RP: SI: %CalloutAPIAjusteDeCredito:status%%CalloutAPIAjusteDeCredito:statusId%%CalloutAPIAjusteDeCredito:errorCode% TI: %CalloutAPIAjusteDeCredito:transactionid% %CalloutAPIAjusteDeCredito:errorMessage% /",
+            "Endpoint": "%SetUrlPath:pathUrl%",
+            "Metodo": "PUT",
+            "Name": "IPCusInstallRefund",
+            "Request": "%SVParams%",
+            "Response": "%CalloutAPIAjusteDeCredito%",
+            "StatusCode": "%CalloutAPIAjusteDeCredito:status%%CalloutAPIAjusteDeCredito:statusId%%CalloutAPIAjusteDeCredito:errorCode%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IP_Call_CusInstallRefund/Procedure/SVSaveLogs"
+}

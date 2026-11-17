@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_SuccessfullyPaidOrders",
+    "OmniProcessId": {
+        "Name": "FVU_SuccessfullyPaidOrders",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SuccessfullyPaidOrders/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "NumberResourceManagement": "=FVU_NumberResourceManagement",
+            "OrderPaymentConfirmation": "=Service_OrderPaymentConfirmation",
+            "OrderPaymentMethod": "=%DR_GetActivationPlanOrderItems:Order:PaymentMethod%",
+            "SubmitOrderOMS": "=IP_SubmitOrder"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SuccessfullyPaidOrders/Procedure/RA_SuccessfullyPaidOrders"
+}

@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_getInfoToHTTPError",
+    "OmniProcessId": {
+        "Name": "ActivateOrderEricsson",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ActivateOrderEricsson/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "FailureHTTPRequest",
+        "OmniProcessId": {
+            "Name": "ActivateOrderEricsson",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ActivateOrderEricsson/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ActivateOrderEricsson/Procedure/FailureHTTPRequest",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "FailureHTTPRequest",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "ApiName": "CreateOrderEricsson",
+            "ErrorCode": "=IF(%SV_bndErrorConect:bErrorConn% = true, %SV_bndErrorConect:connErrorCode%,%HTTPActivateOrderEricsson:errorCode%)",
+            "defaultQueue": "Error Queue SOM Technical",
+            "httpCode": "=IF(ISNOTBLANK(%HTTPActivateOrderEricssonInfo:statusCode%),%HTTPActivateOrderEricssonInfo:statusCode%,'000')",
+            "orderId": "%OrderId%",
+            "process": "%OM_DRE_GetOrderDetail:Order:Type%",
+            "request": "=DESERIALIZE(%ericssonJson%)",
+            "response": "=IF(%SV_bndErrorConect:bErrorConn% = true, %SV_ErrorConnResponse:responseErrorConn%,%HTTPActivateOrderEricsson%)"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "OM_getDataQueueCMAndOrderDetails",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ActivateOrderEricsson/Procedure/IP_getInfoToHTTPError"
+}

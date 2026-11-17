@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpsertOrderItemCheckout",
+    "OmniProcessId": {
+        "Name": "AddDeliveryCost",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AddDeliveryCost/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "DeliveryCost": "%SV_DeliveryCost:DeliveryCost%",
+            "OrderItemId": "%SV_NewOrderItemId:Id|1%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertOrderItemCheckout",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_DeliveryCostProduct:HasDeliveryCostProduct% == false",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AddDeliveryCost/Procedure/DR_UpsertOrderItemCheckout"
+}

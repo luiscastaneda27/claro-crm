@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetDocumentData",
+    "OmniProcessId": {
+        "Name": "IPCancellationDueToDeath",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCancellationDueToDeath/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "xdEmpresa": "=IF(ISNOTBLANK(%empresa%),%empresa%,\"COMCEL\")",
+            "xdFechaArchivo": "=FORMATDATETIME(NOW(),\"yyyy-MM-dd ' ' HH:mm:ssZ\")",
+            "xdFechaDocumento": "=FORMATDATETIME(NOW(),\"yyyy-MM-dd ' ' HH:mm:ssZ\")",
+            "xdIdSalesForce": "%CaseNumber%",
+            "xdNumeroIdentificacion": "%documentNumber%",
+            "xdTipoDocumental": "=IF(ISNOTBLANK(%tipoDocumental%), %tipoDocumental%, \"REGISTRO_CIVIL_DE_DEFUNCION\")",
+            "xdTipoIdentificacion": "%documentType%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCancellationDueToDeath/Procedure/SetDocumentData"
+}

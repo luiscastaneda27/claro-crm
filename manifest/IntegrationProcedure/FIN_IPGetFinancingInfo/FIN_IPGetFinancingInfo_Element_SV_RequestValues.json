@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_RequestValues",
+    "OmniProcessId": {
+        "Name": "IPGetFinancingInfo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPGetFinancingInfo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "accountNumber": "%accountNumber%",
+            "billingAccount": "%billingAccount%",
+            "coId": "%coId%",
+            "equipmentIMEI": "%equipmentIMEI%",
+            "financingCode": "%financingCode%",
+            "financingId": "%financingId%",
+            "headerRequest": "%DRExtractHeaderRequest%",
+            "identificationNumber": "%identificationNumber%",
+            "identificationType": "=IF(ISNOTBLANK(DMGetDocumentTypeCode:documentTypeCode),TOSTRING(DMGetDocumentTypeCode:documentTypeCode),'')",
+            "returnActive": "=IF(%returnActive%,%returnActive%,false)",
+            "subscriberNumber": "%subscriberNumber%",
+            "suretyIds": "=IF(ISNOTBLANK(%financingCode%),IF(ISBLANK(%DMGetFianzaByCreditNumber:suretyId%),TOSTRING(-123),TOSTRING(%DMGetFianzaByCreditNumber:suretyId%)),TOSTRING(-123))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPGetFinancingInfo/Procedure/SV_RequestValues"
+}

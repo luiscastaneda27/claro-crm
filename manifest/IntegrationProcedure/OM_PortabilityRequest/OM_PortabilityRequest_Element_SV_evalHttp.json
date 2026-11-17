@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_evalHttp",
+    "OmniProcessId": {
+        "Name": "PortabilityRequest",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/PortabilityRequest/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "isBlankHttpPort": "=IF(ISBLANK(%HTTPRequestPortability%), true, false)",
+            "isErrorFuncional": "=IF(  (ISNOTBLANK(%HTTPRequestPortability:errorCode%) AND %HTTPRequestPortability:errorCode% != 'ERROR_TECNICO' AND (%HTTPRequestPortability:httpStatus% == 200 OR %HTTPRequestPortability:httpStatus% == 201 OR %HTTPRequestPortabilityInfo:statusCode% == 400)), true, false)",
+            "isErrorTecnico": "=IF(%HTTPRequestPortability:errorCode% == 'ERROR_TECNICO', true, false)",
+            "isStatusCodeGT400": "=IF(%HTTPRequestPortabilityInfo:statusCode% > 400, true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues12",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/PortabilityRequest/Procedure/SV_evalHttp"
+}

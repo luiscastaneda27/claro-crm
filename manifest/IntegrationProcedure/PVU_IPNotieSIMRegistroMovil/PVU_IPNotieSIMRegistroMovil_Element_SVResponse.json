@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "IPNotieSIMRegistroMovil",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNotieSIMRegistroMovil/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "communicationOrigin": "SF_POSTVENTAS",
+            "communicationType": "COMERCIAL",
+            "content": "=IF(%CaseDetails:Descripcion% == \"reconexion\" || %CaseDetails:OrigenCaso% == \"WhatsApp\" || %CaseDetails:OrigenCaso% == \"IVR\" ||  %CaseDetails:OrigenCaso% == \"SuperApp\",\"\", %RASetMensaje:mensajeParametrizado%)",
+            "contentType": "=IF(%CaseDetails:Descripcion% == \"reconexion\" || %CaseDetails:OrigenCaso% == \"WhatsApp\" || %CaseDetails:OrigenCaso% == \"IVR\" ||  %CaseDetails:OrigenCaso% == \"SuperApp\",\"CONTENTID\", \"MESSAGE\")",
+            "deliveryReceipts": "N",
+            "description": "Cambio de Sim Card - Registro eSIM",
+            "messageType": "SMTP",
+            "parameters": "%parameters%",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "qrCode": "%IPGenerateQRCode:Details:qrCode%",
+            "receiver": [
+                {
+                    "mail": "%AssetDetails:Account:Email%"
+                }
+            ],
+            "reenvio": "=IF(%CaseDetails:Descripcion% == \"reconexion\" || %CaseDetails:OrigenCaso% == \"WhatsApp\" || %CaseDetails:OrigenCaso% == \"IVR\" ||  %CaseDetails:OrigenCaso% == \"SuperApp\", true, false)",
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "=IF(%CaseDetails:Descripcion% == \"reconexion\" || %CaseDetails:OrigenCaso% == \"WhatsApp\" || %CaseDetails:OrigenCaso% == \"IVR\" ||  %CaseDetails:OrigenCaso% == \"SuperApp\",\"Tu Sim Virtual ya está disponible\", \"Cambio de Sim Card\")",
+            "templateid": "=IF(%CaseDetails:Descripcion% == \"reconexion\" || %CaseDetails:OrigenCaso% == \"WhatsApp\" || %CaseDetails:OrigenCaso% == \"IVR\" ||  %CaseDetails:OrigenCaso% == \"SuperApp\",\"QRAPP01\", \"\")",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNotieSIMRegistroMovil/Procedure/SVResponse"
+}

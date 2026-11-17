@@ -1,0 +1,38 @@
+{
+    "Description": "Se validan los parametros de entrada si estos no son \"success\" se mostrará un mensaje de error",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ValidateInputs",
+    "OmniProcessId": {
+        "Name": "CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "isValidCustomerId": "=IF(ISNOTBLANK(%customerId%) || (ISNOTBLANK(%MSISDN%) && ISBLANK(%customerId%)),\"success\", \"El campo customerId es mandatorio si no se tiene MSISDN\")",
+            "isValidDateExecution": "=IF(ISNOTBLANK(%dateExecution%), IF(%dateExecution% > %SV_CreateDateToday:RequestDateTime%,\"success\", \"El campo dateExecution debe ser una fecha futura\"), \"success\")",
+            "isValidMSISDN": "=IF((ISBLANK(%MSISDN%) && ISNOTBLANK(%customerId%)) || (ISNOTBLANK(%MSISDN%) && LENGTH(%MSISDN%) == 12 && SUBSTRING(%MSISDN%,0,2) == \"57\"),\"success\", \"El campo MSISDN es mandatorio si no se tiene customerId y se debe enviar en formato numérico de 12 dígitos comenzando por 57 - country code. MSISDN recibido: \" + TOSTRING(%MSISDN%))",
+            "isValidOrderSubType": "=IF(ISNOTBLANK(%orderSubType%),\"success\", \"El campo orderSubType es mandatorio\")",
+            "isValidOrderType": "=IF(ISNOTBLANK(%orderType%),\"success\", \"El campo orderType es mandatorio\")",
+            "isValidReason": "=IF(ISNOTBLANK(%motivo%) || %orderSubType% == \"Conciliacion_Asset\" ,\"success\", \"El campo motivo es mandatorio\")",
+            "isValidReasonCode": "=IF(ISNOTBLANK(%reasonCode%),\"success\", \"El campo reasonCode es mandatorio\")",
+            "isValidSuspension": "=IF(ISNOTBLANK(%origin%) && %origin%='COLLECTIONS' && ISBLANK(%suspensionLevel%) && %orderType% = 'Suspension',\"El campo suspensionLevel es mandatorio cuando es una suspensión de cobranza\",\"success\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/SV_ValidateInputs"
+}

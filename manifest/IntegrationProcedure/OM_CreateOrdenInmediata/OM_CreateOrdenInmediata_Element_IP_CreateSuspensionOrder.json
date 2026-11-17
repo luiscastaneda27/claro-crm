@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_CreateSuspensionOrder",
+    "OmniProcessId": {
+        "Name": "OM_CreateOrdenInmediata",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrdenInmediata/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "AccountId": "%OM_DRE_GetRootAssetSubscriptionId:Account:AccountId%",
+            "NegacionPortOut": true,
+            "Order:BillingAddressId": "%OM_DRE_GetRootAssetSubscriptionId:Root:BillingAccountId%",
+            "Order:ServiceAccountid": "%OM_DRE_GetRootAssetSubscriptionId:Root:ServiceAccountId%",
+            "Order:SubType": "%DRE_GetInterfaceSettingsMetadata:OrderSubtype%",
+            "Order:Type": "%DRE_GetInterfaceSettingsMetadata:OrderType%",
+            "ReliesOnAssetIds": "%ConcatString%",
+            "RootAssetId": "%OM_DRE_GetRootAssetSubscriptionId:Root:RootAssetId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%DRE_GetInterfaceSettingsMetadata% != ''",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%success% == false",
+        "failureResponse": {
+            "result": "%IPCreateOrder:result%",
+            "success": false
+        },
+        "integrationProcedureKey": "OM_GenerateAssetToSuspensionOrder",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrdenInmediata/Procedure/IP_CreateSuspensionOrder"
+}

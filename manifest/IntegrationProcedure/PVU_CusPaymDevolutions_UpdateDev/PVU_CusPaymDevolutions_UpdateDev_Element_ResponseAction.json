@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "CusPaymDevolutions_UpdateDev",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CusPaymDevolutions_UpdateDev/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "requestRefund": "%SVParams%",
+            "statusId": "%CalloutAPICusPaymDevolutions:statusId%",
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%CalloutAPICusPaymDevolutions:code% = \"-2\" || %CalloutAPICusPaymDevolutions:statusId% = \"0\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "CalloutAPIAjusteDeCredito",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CusPaymDevolutions_UpdateDev/Procedure/ResponseAction"
+}

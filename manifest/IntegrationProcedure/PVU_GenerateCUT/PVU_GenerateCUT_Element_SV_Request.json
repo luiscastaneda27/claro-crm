@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "PVUGenerateCUT",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GenerateCUT/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "EjecucionCallOut",
+        "OmniProcessId": {
+            "Name": "PVUGenerateCUT",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GenerateCUT/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GenerateCUT/Procedure/EjecucionCallOut",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "EjecucionCallOut",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "advisorDocNumber": "=IF(LISTSIZE(%GetUserInfo%>1),CONCAT(%GetUserInfo|1:UserData:FVU_NumeroDeIdentificacion__c%),null)",
+            "advisorDocType": "=IF(LISTSIZE(%GetUserInfo%>1),%GetUserInfo|1:UserData:FVU_TipoDeDocumento__c%,null)",
+            "channelCode": "=IF(LISTSIZE(%GetUserInfo%>1),%GetUserInfo|1:UserData:FVU_Canal__c%,null)",
+            "channelOrderNbr": "=IF(ISNOTBLANK(%GetCaseInfo2:NumeroCaso%),CONCAT(%GetCaseInfo2:NumeroCaso%),null)",
+            "fulfillOrderNbr": "=IF(ISNOTBLANK(%GetCaseInfo2:deliveryOrderId%),CONCAT(%GetCaseInfo2:deliveryOrderId%),null)",
+            "orderId": "=%GetCaseInfo2:OrderId%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GenerateCUT/Procedure/SV_Request"
+}

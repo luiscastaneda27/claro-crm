@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_InfoClientNotIsBlank",
+    "OmniProcessId": {
+        "Name": "CustomerBiographicInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_StatusSuccessful",
+        "OmniProcessId": {
+            "Name": "CustomerBiographicInformation",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformation/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformation/Procedure/CB_StatusSuccessful",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_StatusSuccessful",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "CustomerBiographicInformation": "%SV_CustomBiographicInfo%",
+            "Message": "=IF((%firstName% <> %IP_Reconocer:informacion|1:nombres% OR %secondLastName% <> %IP_Reconocer:informacion|1:segundoApellido%), \"Diferentes\", \"Iguales\")",
+            "Status": "SUCCESSFUL"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_ValidResponse:ResponseStatus% == 'Successful'",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformation/Procedure/RA_InfoClientNotIsBlank"
+}

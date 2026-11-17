@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponseIVA",
+    "OmniProcessId": {
+        "Name": "IPAdjustTransactionsRate",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPAdjustTransactionsRate/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBAjusteIvaInteresesCorrientes",
+        "OmniProcessId": {
+            "Name": "IPAdjustTransactionsRate",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPAdjustTransactionsRate/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPAdjustTransactionsRate/Procedure/CBAjusteIvaInteresesCorrientes",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBAjusteIvaInteresesCorrientes",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "adjustedAmount": "%IPFinancingAdjustTransactionsIVA:adjustedAmount%",
+            "financingCode": "%IPFinancingAdjustTransactionsIVA:financingCode%",
+            "responseCode": "%IPFinancingAdjustTransactionsIVA:responseCode%",
+            "success": "%IPFinancingAdjustTransactionsIVA:success%"
+        },
+        "executionConditionalFormula": "%IPFinancingAdjustTransactionsIVA:success% = $Vlocity.TRUE",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPAdjustTransactionsRate/Procedure/SVResponseIVA"
+}

@@ -1,0 +1,25 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_CalculateTerminalId",
+    "OmniProcessId": {
+        "Name": "IPGeneracionOrderOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPGeneracionOrderOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "DataRaptorGetDataForOMS:orderInfo:allPurchaseType = \"ATT\"",
+        "label": "LoopBlock3",
+        "loopList": "LA_Items",
+        "loopOutput": {
+            "terminalId": "=SV_terminalId:terminal"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPGeneracionOrderOMS/Procedure/LB_CalculateTerminalId"
+}

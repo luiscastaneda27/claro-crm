@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RespRegistro",
+    "OmniProcessId": {
+        "Name": "CaseValidationReporteImei",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCaseValidationReporteImei/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Setting": "%DRGetApplicationSetting:Setting%",
+            "assetStatus": "%DRGetAssetById:estado%",
+            "channel": "%DRGetChannel:channel%",
+            "isValidateLuhn": "%SVResultValidateLuhn:isValidateLuhn%",
+            "mensajes": "%RAGetMensajes:mensajes%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SVinput:processName% = \"registro\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "RARegistroValidations",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCaseValidationReporteImei/Procedure/RespRegistro"
+}

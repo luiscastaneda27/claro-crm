@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "OrderCancelFinancing",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OrderCancelFinancing/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "BillingAccount": "%IP_IPGetFinancingInfoV1:financings:financing:chargeBillingAccount%",
+            "accountNumber": "%DRE_FINDRGetAccountExternalID:AccountExternalID|1%",
+            "accountNumberInternal": "%DRGetCreditOrder:Order:accountNumberInternal%",
+            "chargeService": "%FIN_DRGetParam:Params:Value%",
+            "createdDateCredit": "%DRGetCreditOrder:Order:createdDateCredit%",
+            "createdDateTimeCredit": "%DRGetCreditOrder:Order:createdDateTimeCredit%",
+            "financingCode": "%DRGetCreditOrder:Order:financingCode%",
+            "isCreditCancel": "%DRGetCreditOrder:IsCreditCancel%",
+            "orderId": "%orderId%",
+            "reasonId": "%DR_CodeReason:ReasonId%",
+            "userId": "%DRGetCreditOrder:Order:accountId%",
+            "validDate": "%SVParams:validDate%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OrderCancelFinancing/Procedure/ResponseAction"
+}

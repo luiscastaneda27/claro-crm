@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequest",
+    "OmniProcessId": {
+        "Name": "IPMSEnSpDocUpload_InsertEnSpDocDelay",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPMSEnSpDocUpload_InsertEnSpDocDelay/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "docContent": "**blob idDocument**",
+            "docName": "%docName%",
+            "document": "=IF(%document:xdTipoDocumental% == 'CONSULTA_LISTAS_VINCULANTES_RESTRICTIVA_PEP_CLIMAS',   %SetDocument:docConsultasListasVinculantes%,   IF(ISBLANK(%document:xdNumeroContrato%),      %SetDocument:docWithoutNumeroContrato%,      %SetDocument:docWithNumeroContrato%   ))",
+            "document_ext": "%document_ext%",
+            "idDocument": "%idDocument%",
+            "serieDocumental": "%serieDocumental%",
+            "target": "%target%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPMSEnSpDocUpload_InsertEnSpDocDelay/Procedure/SVRequest"
+}

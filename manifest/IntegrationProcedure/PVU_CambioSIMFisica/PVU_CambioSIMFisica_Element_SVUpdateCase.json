@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateCase",
+    "OmniProcessId": {
+        "Name": "CambioSIMFisica",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CambioSIMFisica/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Id": "%caseId%",
+            "IdOMS": "=IF(ISNOTBLANK(%IP_GeneracionOrderOMS:orderId%),%IP_GeneracionOrderOMS:orderId%,\"FailGenerate\")"
+        },
+        "executionConditionalFormula": "%SVResponseProducListPromise:isAvailable% = true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "SVCase",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CambioSIMFisica/Procedure/SVUpdateCase"
+}

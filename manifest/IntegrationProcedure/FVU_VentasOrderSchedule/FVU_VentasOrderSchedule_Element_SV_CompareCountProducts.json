@@ -1,0 +1,47 @@
+{
+    "Description": "Verifico que los valores encontrados en la respuesta del HTTP, tengan el misma cantidad de Productos que los productos de mi carrito.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CompareCountProducts",
+    "OmniProcessId": {
+        "Name": "FVU_VentasOrderSchedule",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/VentasOrderSchedule/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock3",
+        "OmniProcessId": {
+            "Name": "FVU_VentasOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/VentasOrderSchedule/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/VentasOrderSchedule/Procedure/ConditionalBlock3",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock3",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "existInDelivery": "=IF(LISTSIZE(%LB_FilterAvailableAllProducts:responseLoopDelivery%) == LISTSIZE(LA_SetProductList), TRUE, FALSE)",
+            "existInImmediatepickup": "=IF(LISTSIZE(%LB_FilterAvailableAllProducts:responseLoopImmediatepickup%) == LISTSIZE(LA_SetProductList), TRUE, FALSE)",
+            "existInPickup": "=IF(LISTSIZE(%LB_FilterAvailableAllProducts:responseLoopPickup%) == LISTSIZE(LA_SetProductList), TRUE, FALSE)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues25",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/VentasOrderSchedule/Procedure/SV_CompareCountProducts"
+}

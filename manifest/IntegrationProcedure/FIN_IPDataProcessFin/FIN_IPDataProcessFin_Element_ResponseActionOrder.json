@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionOrder",
+    "OmniProcessId": {
+        "Name": "IPDataProcessFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPDataProcessFin/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Asset": {
+                "AccountId": "%SVParams:AccountId%"
+            },
+            "ObjectId": "%SVParams:AccountId%",
+            "OrderId": "%DRAccountGetOngoingOrder:Order|1:Id%",
+            "OrderNumber": "%DRAccountGetOngoingOrder:Order|1:OrderNumber%",
+            "Param1": "=IF(%DRAccountGetOngoingOrder:CantOrder%!=0,'Financiacion','')",
+            "Param2": "=IF(%DRAccountGetOngoingOrder:CantOrder%!=0,'Nueva Venta Financiacion','')",
+            "Param3": "=%DRAccountGetOngoingOrder:Order|1:Id%",
+            "Param4": "%DRAccountGetOngoingOrder:Order|1:OrderNumber%",
+            "Param5": "orden",
+            "StopProcess": "=IF(%DRAccountGetOngoingOrder:CantOrder%!=0,true,false)",
+            "TabIcon": "utility:cart",
+            "TabLabel": "Nueva Venta",
+            "codeMessage": "=IF(%DRAccountGetOngoingOrder:CantOrder%!=0,'FIN001','')"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRAccountGetOngoingOrder:CantOrder%!=0",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPDataProcessFin/Procedure/ResponseActionOrder"
+}

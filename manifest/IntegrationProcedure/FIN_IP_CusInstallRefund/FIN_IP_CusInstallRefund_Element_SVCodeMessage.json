@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCodeMessage",
+    "OmniProcessId": {
+        "Name": "IP_CusInstallRefund",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IP_CusInstallRefund/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBGetMensaje",
+        "OmniProcessId": {
+            "Name": "IP_CusInstallRefund",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IP_CusInstallRefund/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IP_CusInstallRefund/Procedure/CBGetMensaje",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBGetMensaje",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "codeMessage": "=IF(%CalloutAPIAjusteDeCredito% = $Vlocity.NULL || %CalloutAPIAjusteDeCredito:statusId% = '-1' || %CalloutAPIAjusteDeCredito:status% = '502' || %CalloutAPIAjusteDeCredito:statusId% = $Vlocity.NULL ,'FIN004',IF(%CalloutAPIAjusteDeCredito:statusId% = '-2','PVU022','PVU017'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues9",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IP_CusInstallRefund/Procedure/SVCodeMessage"
+}

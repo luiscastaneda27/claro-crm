@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA",
+    "OmniProcessId": {
+        "Name": "GestionPQRTytFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GestionPQRTytFin/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "CreditNumber": "%GetAssetByImei:creditNumber%",
+            "Equipo": "%GetAssetByImei:Type%",
+            "ImeiOut": "%GetAssetByImei:Imei%",
+            "IsFraude": "=IF(%IPGetFinancingInfo:status% = 'X - FRAUDE', true, false)",
+            "MsjErrorReporteImei": "=IF(%GetAssetByImei:Type% = 'Handset' && %succesService% != true &&  %Respuesta% = 'Favorable',\"Se ha producido un error en el reporte de IMEI, por favor generar un Ticket en MyIT\", '')",
+            "MsjReporteImei": "%IPsvcReportarImeiBdo:message%",
+            "MsjServreporteImei": "=%LoopBlock1|1:respuesta%",
+            "ReporteImeiFail": "=IF(%succesService% != true,true,false)",
+            "statusCredito": "%IPGetFinancingInfo:status%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GestionPQRTytFin/Procedure/RA"
+}

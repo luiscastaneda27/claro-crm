@@ -1,0 +1,23 @@
+{
+    "Description": "If there is Customer External Id associated with SF Account. Return Success with message so the orchestration item can complete successfully.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CustomerExternalId_Exists",
+    "OmniProcessId": {
+        "Name": "CreateAccountBSCS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateAccountBSCS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%DRExtractOrderDetail:customerExternalId%) ",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock4",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateAccountBSCS/Procedure/CustomerExternalId_Exists"
+}

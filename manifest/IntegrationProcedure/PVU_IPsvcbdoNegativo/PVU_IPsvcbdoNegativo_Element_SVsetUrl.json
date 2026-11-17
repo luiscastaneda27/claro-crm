@@ -1,0 +1,31 @@
+{
+    "Description": "Setea la url (endpoint) de la api. Por ahora harcodeado, resta analizar si se utiliza un Named Credential.\nAdemas se utiliza la funcion custom \"encodeUrl\" para transformar caracteres como la llave y las comillas",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVsetUrl",
+    "OmniProcessId": {
+        "Name": "BdoNegativo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcbdoNegativo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "url": "=FUNCTION('CustomOmniStudioFunctions','urlEncode', SERIALIZE(%SVgetInput%))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcbdoNegativo/Procedure/SVsetUrl"
+}

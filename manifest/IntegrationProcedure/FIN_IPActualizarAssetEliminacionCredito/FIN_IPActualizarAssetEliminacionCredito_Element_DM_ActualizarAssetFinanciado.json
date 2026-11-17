@@ -1,0 +1,58 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DM_ActualizarAssetFinanciado",
+    "OmniProcessId": {
+        "Name": "IPActualizarAssetEliminaciónCrédito",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPActualizarAssetEliminaciónCrédito/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CreditoDisponible",
+        "OmniProcessId": {
+            "Name": "IPActualizarAssetEliminaciónCrédito",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPActualizarAssetEliminaciónCrédito/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPActualizarAssetEliminaciónCrédito/Procedure/CreditoDisponible",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CreditoDisponible",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Asset": {
+                "Id": "%DM_ObtenerAssetDelCredito:Asset:Id%",
+                "IsFinanced": false
+            }
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FINUpdateAssetFinancing",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DM_ObtenerAssetDelCredito:Asset:Id% != null && %DM_ObtenerAssetDelCredito:Asset:Id% != ''",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPActualizarAssetEliminaciónCrédito/Procedure/DM_ActualizarAssetFinanciado"
+}

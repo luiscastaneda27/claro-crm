@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSetPostCartInput",
+    "OmniProcessId": {
+        "Name": "IPPostCartItemWrapper",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPPostCartItemWrapper/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetToOrderMetadata": "%DRGetAssetToOrderMetadata%",
+            "CartOperation": {
+                "OrderId": "%SVGetInput:orderId%",
+                "Product": {
+                    "Product2Code": "%DRGetProductDetails:Code%",
+                    "Product2Name": "%DRGetProductDetails:Name%"
+                }
+            },
+            "OrderSubAction": "=IF(OR(%Proceso% = \"Roaming\", %Proceso% = \"Cambio_de_Plan\"), \"ChangeService-Product\", \"\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPPostCartItemWrapper/Procedure/SVSetPostCartInput"
+}

@@ -1,0 +1,71 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpdateOrder",
+    "OmniProcessId": {
+        "Name": "OM_ExecutePortOut",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortOut/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CreateOrderPortOut",
+        "OmniProcessId": {
+            "Name": "OM_ExecutePortOut",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortOut/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortOut/Procedure/CreateOrderPortOut",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CreateOrderPortOut",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "BillingAccountId": "%DR_GetAssetDetails:BillingAccountId%",
+            "NRN": "%NRN%",
+            "ServiceAccountId": "%DR_GetAssetDetails:ServiceAccountId%",
+            "dateStart": "%dateStart%",
+            "idProcess": "%idProcess%",
+            "orderId": "%IP_CreateOrder:result:orderId%",
+            "orderSubType": "Portout",
+            "orderType": "Portabilidad",
+            "portation_status": "%portation_status%",
+            "recordTypeId": "%recordTypeId%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_OrderType",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%DR_UpdateOrder:error% = true",
+        "failureResponse": {
+            "operation": "Failed to update order",
+            "result": {
+                "code": "",
+                "message": "%DR_UpdateOrder:errors:OM_DRL_OrderType%",
+                "status": "Error"
+            },
+            "success": false
+        },
+        "label": "DataRaptorPostAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortOut/Procedure/DR_UpdateOrder"
+}

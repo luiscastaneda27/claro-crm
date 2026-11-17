@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_NameQueue",
+    "OmniProcessId": {
+        "Name": "OM_getDataQueueCMAndOrderDetails",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/getDataQueueCMAndOrderDetails/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "cancelacion": "=IF(ISNOTBLANK(%SV_DataFilter:dataFilter%),%SV_DataFilter:dataFilter:Cancelacion%,IF(ISNOTBLANK(%DRE_getDataApiErrorByErrorCode%),%DRE_getDataApiErrorByErrorCode:Cancelacion%,IF(ISNOTBLANK(%DRE_getDataApiErrorByHttpCode%),%DRE_getDataApiErrorByHttpCode:Cancelacion%,\"\")))",
+            "infoCustomMetadataApiError": "=IF(ISNOTBLANK(%SV_DataFilter:dataFilter%),%SV_DataFilter:dataFilter%,IF(ISNOTBLANK(%DRE_getDataApiErrorByErrorCode%),%DRE_getDataApiErrorByErrorCode%,IF(ISNOTBLANK(%DRE_getDataApiErrorByHttpCode%),%DRE_getDataApiErrorByHttpCode%,%defaultQueue%)))",
+            "nameQueue": "=IF(ISNOTBLANK(%SV_DataFilter:dataFilter%),%SV_DataFilter:dataFilter:ManualQueue%,IF(ISNOTBLANK(%DRE_getDataApiErrorByErrorCode%),%DRE_getDataApiErrorByErrorCode|1:ManualQueue%,IF(ISNOTBLANK(%DRE_getDataApiErrorByHttpCode%),%DRE_getDataApiErrorByHttpCode|1:ManualQueue%, %defaultQueue%)))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/getDataQueueCMAndOrderDetails/Procedure/SV_NameQueue"
+}

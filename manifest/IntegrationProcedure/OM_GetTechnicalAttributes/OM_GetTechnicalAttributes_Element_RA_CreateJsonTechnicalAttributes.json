@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_CreateJsonTechnicalAttributes",
+    "OmniProcessId": {
+        "Name": "GetTechnicalAttributes",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/GetTechnicalAttributes/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "InventoryItem": "=%DR_GetInventoryItemAttributes:InventoryItem%",
+            "ProductName": "%SVDataInput:ProductName%",
+            "ProductOfferingId": "=%RA_getAttributeJSON:ProductOfferingId%",
+            "listOtherProducts": "=%DR_GetInvenItemOtherFields:products%",
+            "mapAttributes": "=%DR_SetAttributesFromInventory:mapAttributes%",
+            "productId": "=%DR_GetInventoryItemAttributes:productId%",
+            "productOffering": "=%DR_GetInventoryItemAttributes:productOffering%",
+            "resourceId": "=%DR_GetInventoryItemAttributes:resourceId%",
+            "serviceId": "=%DR_GetInventoryItemAttributes:serviceId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "OM_CreateJsonTechnicalAttributes",
+        "remoteMethod": "createJSON",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "msisdnList",
+        "responseJSONPath": "msisdnList",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/GetTechnicalAttributes/Procedure/RA_CreateJsonTechnicalAttributes"
+}

@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDocumentType",
+    "OmniProcessId": {
+        "Name": "IPCambioTitularidadDesdeCambioEquipo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioTitularidadDesdeCambioEquipo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "NumeroVendedor": "=CONCAT(SUBSTRING(%IPSAPInventory:taxIdentificationNumber%,0,9), \"-\", SUBSTRING(%IPSAPInventory:taxIdentificationNumber%,9))",
+            "TipoDocCliente": "=IF(%DRGetAccountHeaderData:AccountDoc|1:FVU_DocumentType__c% == 'NI',2,IF(%DRGetAccountHeaderData:AccountDoc|1:FVU_DocumentType__c% == 'CC',1,IF(%DRGetAccountHeaderData:AccountDoc|1:FVU_DocumentType__c% == 'CE',4,IF(%DRGetAccountHeaderData:AccountDoc|1:FVU_DocumentType__c% == 'PP',5,0))))",
+            "TipoDocVendedor": "=IF(%IPSAPInventory:taxIdentificationNumberType% == 'CO_NIT',2,IF(%IPSAPInventory:taxIdentificationNumberType% == 'CÉDULA DE CIUDADANÍA',1,IF(%IPSAPInventory:taxIdentificationNumberType% == 'CEDULA DE EXTRANJERIA',4,IF(%IPSAPInventory:taxIdentificationNumberType% == 'PASAPORTE',5,0))))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioTitularidadDesdeCambioEquipo/Procedure/SVDocumentType"
+}

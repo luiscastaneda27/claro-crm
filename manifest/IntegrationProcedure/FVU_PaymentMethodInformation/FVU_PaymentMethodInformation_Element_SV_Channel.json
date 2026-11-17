@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Channel",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentMethodInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "cargoFactura": "=IF(%CargoFactura% == true, true, false)",
+            "channelAliado": "=IF(%CanalAtencion% == \"AGENTES COMERCIALES\", true, false)",
+            "channelCAV": "=IF(%CanalAtencion% == \"SF_CAV\", true, false)",
+            "channelTMK": "=IF(%CanalAtencion% == \"SF_TMK\", true, false)",
+            "pinLinkValid": "=IF(%totalTransactionValue% >= %DR_GetInterfaceSettings:IdCode%,true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/SV_Channel"
+}

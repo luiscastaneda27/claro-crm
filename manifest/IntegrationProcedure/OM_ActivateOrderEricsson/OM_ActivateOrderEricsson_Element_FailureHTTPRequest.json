@@ -1,0 +1,22 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "FailureHTTPRequest",
+    "OmniProcessId": {
+        "Name": "ActivateOrderEricsson",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ActivateOrderEricsson/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "(ISNOTBLANK(%HTTPActivateOrderEricsson:errorCode%) && %HTTPActivateOrderEricsson:errorCode% != \"TRANSACTION_DUPLICATED\") ||  ISBLANK(%HTTPActivateOrderEricsson%) || %SV_bndErrorConect:bErrorConn% == true",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock3",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ActivateOrderEricsson/Procedure/FailureHTTPRequest"
+}

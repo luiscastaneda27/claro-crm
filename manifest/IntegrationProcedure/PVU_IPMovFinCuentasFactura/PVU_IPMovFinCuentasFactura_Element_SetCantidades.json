@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetCantidades",
+    "OmniProcessId": {
+        "Name": "IPMovFinCuentasFactura",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPMovFinCuentasFactura/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CantidadCobros": "=IF(ISBLANK(CallDRTransformMovimientos:Cobros),0,LISTSIZE(CallDRTransformMovimientos:Cobros))",
+            "CantidadFacturas": "=IF(ISBLANK(CallDRTransformMovimientos:Facturas),0,LISTSIZE(CallDRTransformMovimientos:Cobros))",
+            "CantidadPagos": "=IF(ISBLANK(CallDRTransformMovimientos:Pagos),0,LISTSIZE(CallDRTransformMovimientos:Pagos))",
+            "CantidadTotal": "=SUM(CantidadFacturas,CantidadPagos,CantidadCobros)"
+        },
+        "executionConditionalFormula": "FinAccoBilling:EndProcess==\"Success\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPMovFinCuentasFactura/Procedure/SetCantidades"
+}

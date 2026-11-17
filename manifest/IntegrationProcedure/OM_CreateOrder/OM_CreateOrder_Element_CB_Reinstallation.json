@@ -1,0 +1,23 @@
+{
+    "Description": "Se va a validar si el Type es Reinstalación si es así se bucará en la ultima subscripción el campo OM_SubReasonCode__c si este en tiene un Portout  = DEAPORT, Pos a pre = DEAPOAPRE, Negacion port in = DEANEGPORT entonces no se permitirá Reinstalar",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CB_Reinstallation",
+    "OmniProcessId": {
+        "Name": "CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%orderType% = 'Reinstalacion'",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock1",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/CB_Reinstallation"
+}

@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParams",
+    "OmniProcessId": {
+        "Name": "FIN_SimulacionSimplificadaIP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SImulacionSimplificada/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "QuoteId": "%QuoteInfo:QuoteId%",
+            "downPaymentCondition": "=IF(%QuoteData:totalCuotaInicial% != 0,\"downPaymentConditionConCuotaInicial\",\"downPaymentConditionSinCuotaInicial\")",
+            "materialProduct": "%materialProduct%",
+            "pagosInicialesTecnologia": "=IF(%typeProduct%!='Terminales',TOSTRING(%pagosIniciales%),'')",
+            "pagosInicialesTerminales": "=IF(%typeProduct%=='Terminales',TOSTRING(%pagosIniciales%),'')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SImulacionSimplificada/Procedure/SVParams"
+}

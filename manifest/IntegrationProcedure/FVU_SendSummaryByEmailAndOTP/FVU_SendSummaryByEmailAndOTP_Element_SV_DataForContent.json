@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataForContent",
+    "OmniProcessId": {
+        "Name": "SendSummaryByEmailAndOTP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SendSummaryByEmailAndOTP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Address": "=IF(%AccountData:OrderDeliveryMethod% == \"PickUp\", %AccountData:PickupStoreName%, IF(%AccountData:OrderDeliveryMethod% == \"Immediatepickup\", \"la tienda/en el CAV actual\", IF(%AccountData:OrderDeliveryMethod% == \"Delivery\", %AccountData:AccountAddress% NULL))",
+            "DeliveryCost": "=IF(%AccountData:OrderDeliveryMethod% == \"Delivery\", %AccountData:DeliveryCost%, \"COP0.00\" )",
+            "DiscountCashPayment": "=%DR_Discount:sumAdjustmentValueFormat%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SendSummaryByEmailAndOTP/Procedure/SV_DataForContent"
+}

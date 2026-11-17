@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParameters",
+    "OmniProcessId": {
+        "Name": "UpdateCancelCreditError",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/UpdateCancelCreditError/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountId": "%AccountId%",
+            "ActivityDate": "=FORMATDATETIME(NOW(),\"yyyy-MM-dd\",\"America/Bogota\")",
+            "Asunto": "Orden %OrderNumber% Cerrada/Perdida con Credito pendiente de eliminar",
+            "ClosingReason": "Orden cancelada con crédito creado",
+            "Description": "%Description%",
+            "Error": "%Error%",
+            "OrderId": "%OrderId%",
+            "OrderNumber": "%OrderNumber%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/UpdateCancelCreditError/Procedure/SVParameters"
+}

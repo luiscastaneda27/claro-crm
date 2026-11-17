@@ -1,0 +1,58 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_NotificationCusChannel",
+    "OmniProcessId": {
+        "Name": "SendSummaryByEmailAndOTP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SendSummaryByEmailAndOTP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "attachment": "=IF(%summarySendPreference% == \"Correo electrónico\", %SV_Attachment%, null)",
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "content": "=IF(%summarySendPreference% == \"Correo electrónico\", %SV_Content:EmailContent%, %SV_Content:SMSContent%)",
+            "contentType": "MESSAGE",
+            "deliveryReceipts": "N",
+            "description": "Resumen de la orden",
+            "messageType": "=IF(%summarySendPreference% == \"Correo electrónico\", \"SMTP\", \"SMS\")",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": "=IF(%summarySendPreference% == \"Correo electrónico\", LIST(%SV_EmailReceiver%), LIST(%SV_PhoneReceiver%))",
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Resumen de la orden",
+            "tryTimes": 3
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%sendSummaryAndOTP% || %reSendSummary%",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPNotificationCusChannel",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "SummarySendResult",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SendSummaryByEmailAndOTP/Procedure/IP_NotificationCusChannel"
+}

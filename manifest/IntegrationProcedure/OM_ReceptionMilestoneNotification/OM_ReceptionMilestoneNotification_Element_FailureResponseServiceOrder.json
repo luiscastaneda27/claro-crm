@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "FailureResponseServiceOrder",
+    "OmniProcessId": {
+        "Name": "ReceptionMilestoneNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReceptionMilestoneNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "GenericErrorHandling",
+        "OmniProcessId": {
+            "Name": "ReceptionMilestoneNotification",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReceptionMilestoneNotification/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReceptionMilestoneNotification/Procedure/GenericErrorHandling",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "GenericErrorHandling",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "\"ServiceOrderNotification\": Accepted customerOrderStatus = C_C and serviceOrderStatus = C_C. Received customerOrderStatus: %customerOrderStatus% and ServiceOrderStatus: %serviceOrderStatus%",
+            "responseCode": 403
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%type%==\"ServiceOrderNotification\"",
+        "label": "ResponseAction9",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReceptionMilestoneNotification/Procedure/FailureResponseServiceOrder"
+}

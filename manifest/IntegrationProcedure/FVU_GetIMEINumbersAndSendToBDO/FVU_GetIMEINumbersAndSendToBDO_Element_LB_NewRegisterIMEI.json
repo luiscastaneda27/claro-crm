@@ -1,0 +1,26 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_NewRegisterIMEI",
+    "OmniProcessId": {
+        "Name": "GetIMEINumbersAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_NewServiceFlag:NewServiceFlag% == true",
+        "label": "LoopBlock3",
+        "loopList": "SV_OrderItemFilterNewService:OrderItemFiltered",
+        "loopOutput": {
+            "resultIMEI1": "%IPNewRegisterIMEI1%",
+            "resultIMEI2": "%IPNewRegisterIMEI2%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure/LB_NewRegisterIMEI"
+}

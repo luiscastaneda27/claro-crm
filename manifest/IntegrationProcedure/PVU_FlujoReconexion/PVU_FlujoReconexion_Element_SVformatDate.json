@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVformatDate",
+    "OmniProcessId": {
+        "Name": "FlujoReconexion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoReconexion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "FechaIni": "=CONCAT(IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(DAY(%Case:FechaReconexion%))) == 1, '0' + TOSTRING(DAY(%Case:FechaReconexion%)),TOSTRING(DAY(%Case:FechaReconexion%))),\"/\", IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(MONTH(%Case:FechaReconexion%))) == 1, '0' + TOSTRING(MONTH(%Case:FechaReconexion%)),TOSTRING(MONTH(%Case:FechaReconexion%))),\"/\", YEAR(%Case:FechaReconexion%))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoReconexion/Procedure/SVformatDate"
+}

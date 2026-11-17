@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ErrorOtherSuccess",
+    "OmniProcessId": {
+        "Name": "CustomerBiographicInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_StatusFailed",
+        "OmniProcessId": {
+            "Name": "CustomerBiographicInformation",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformation/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformation/Procedure/CB_StatusFailed",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_StatusFailed",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Inconsistency": false,
+            "Message": "%IP_Reconocer:fault:mensajeRespuesta%",
+            "Status": "SUCCESSFUL"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_TypeError:TypeError% == \"Other\" && (%DRGetCodes:InterfaceSettings:IdCode% == \"9\" || %DRGetCodes:InterfaceSettings:IdCode% == \"14\" || %DRGetCodes:InterfaceSettings:IdCode% == \"13\")",
+        "label": "ResponseAction5",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformation/Procedure/RA_ErrorOtherSuccess"
+}

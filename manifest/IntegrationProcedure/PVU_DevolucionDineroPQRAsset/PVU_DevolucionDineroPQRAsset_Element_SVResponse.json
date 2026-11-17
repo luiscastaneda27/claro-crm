@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "DevolucionDineroPQRAssets",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDineroPQRAsset/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Assets": "%RACasesValidationsAssets:CasesAssets%",
+            "AssetsSize": "%RACasesValidationsAssets:CasesAssetsSize%",
+            "Case": "%RACasesValidationsAssets:Cases%",
+            "assetInfo": "=IF(%RACasesValidationsAssets:CasesAssetsSize% > 0, true, false)",
+            "message": "=IF(%RACasesValidationsAssets:CasesAssetsSize% > 0,'', 'El caso PQR no tiene Productos y/o Servicios relacionados.')"
+        },
+        "executionConditionalFormula": "%SVInput:Origen% = 'PQR'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "ResponseAsset",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDineroPQRAsset/Procedure/SVResponse"
+}

@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseFailManageCustomPayment",
+    "OmniProcessId": {
+        "Name": "DunningLimitRange",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DunningLimitRange/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "TryCatchManageCustomPayment",
+        "OmniProcessId": {
+            "Name": "DunningLimitRange",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DunningLimitRange/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DunningLimitRange/Procedure/TryCatchManageCustomPayment",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "TryCatchManageCustomPayment",
+    "ParentElementType": "Try Catch Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Message": "Error en la validación de Mora. Consulta tu administrador para seguir con la venta.",
+            "Status": "ERROR"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%MSCuAcBalInfoBalance:error%",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DunningLimitRange/Procedure/ResponseFailManageCustomPayment"
+}

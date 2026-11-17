@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_GetClosureReasonLabel",
+    "OmniProcessId": {
+        "Name": "FVU_NIPRejectionReason",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/NIPRejectionReason/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ClosingReason": "=IF(IP_SaveCauseNIPRequestRejection:success,QUERY(\"SELECT Identificador__c FROM InterfaceSettings__mdt WHERE DeveloperName = '{0}' \", closureReason),\"Error de comunicación con mesa\")",
+            "Id": "=orderId",
+            "Status": "=\"Cerrada Perdida\""
+        },
+        "executionConditionalFormula": "closureReason != ''",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "SV_GetClosureReasonLabel",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/NIPRejectionReason/Procedure/SV_GetClosureReasonLabel"
+}

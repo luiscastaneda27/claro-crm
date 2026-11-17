@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataExtra",
+    "OmniProcessId": {
+        "Name": "GetSummaryData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetSummaryData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AuthPersonDocType": "=IF(%GetOrderSummaryDataByOrder:Resumen:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType%==\"CC\",\"CEDULA DE CIUDADANIA\",IF(%GetOrderSummaryDataByOrder:Resumen:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType%==\"NI\",\"NI\",IF(%GetOrderSummaryDataByOrder:Resumen:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType%==\"NE\",\"NIT DE EXTRANJERIA\",IF(%GetOrderSummaryDataByOrder:Resumen:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType%==\"CE\",\"CEDULA DE EXTRANJERIA\",IF(%GetOrderSummaryDataByOrder:Resumen:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType%==\"PP\",\"PASAPORTE\",IF(%GetOrderSummaryDataByOrder:Resumen:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType%==\"CD\",\"CARNET DIPLOMATICO\",\" \"))))))",
+            "Discount": "%GetDiscuount:sumAdjustmentValue%",
+            "EndPromise": "=%GetOrderSummaryDataByOrder:Resumen:InformacionEntrega:DeliveryData:DeliveryData:EndDate%",
+            "FormattedStartPromiseDate": "=SUBSTRING(%SV_DataExtra:StartPromise%, 4)",
+            "StartPromise": "=%GetOrderSummaryDataByOrder:Resumen:InformacionEntrega:DeliveryData:DeliveryData:StartDate%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetSummaryData/Procedure/SV_DataExtra"
+}

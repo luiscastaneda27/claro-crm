@@ -1,0 +1,61 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPGestorDocumental",
+    "OmniProcessId": {
+        "Name": "IPGestorDocumentalForContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGestorDocumentalForContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "docName": "CONT_S01%DRGetCase:NumeroCaso%.pdf",
+            "document": {
+                "xdCRM": "SALESFORCE",
+                "xdEmpresa": "COMCEL",
+                "xdIdCliente": "%DRGetCase:AccountId%",
+                "xdIdProceso": "%DRGetCase:NumeroCaso%",
+                "xdIdSalesforce": "%DRGetOrderItemMin:id%",
+                "xdMIN": "%DRGetOrderItemMin:MSISDN%",
+                "xdNombrePunto": "%GetUserDetails:UserDetails:PuntoVenta%",
+                "xdNumeroContrato": "S01%DRGetCase:NumeroCaso%",
+                "xdNumeroIdentificacion": "%DRGetCase:DocumentNumber%",
+                "xdTipoDocumental": "CONTRATO",
+                "xdTipoIdentificacion": "%DRGetCase:DocumentType%"
+            },
+            "idDocument": "%GetDocumentFromJob:DocumentContentVersionId%",
+            "serieDocumental": "1",
+            "target": "%RA_GetTargetAmb:targetCode%",
+            "xdIdProceso": "%DRGetCase:NumeroCaso%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "ISBLANK(%proceso%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPMSEnSpDocUpload_InsertEnSpDocDelay",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGestorDocumentalForContract/Procedure/IPGestorDocumental"
+}

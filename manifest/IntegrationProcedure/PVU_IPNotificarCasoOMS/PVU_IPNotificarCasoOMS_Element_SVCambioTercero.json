@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCambioTercero",
+    "OmniProcessId": {
+        "Name": "IPNotificarCasoOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNotificarCasoOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "changedInfo": {
+                "contactEmail": "%DRGetCase:EmailContacto%",
+                "contactName": "%DRGetCase:NombreTercero%",
+                "contactPhone": "%DRGetCase:TelefonoMovilContacto%"
+            }
+        },
+        "executionConditionalFormula": "%DRGetCase:PVU_Level3__c% == \"Modificación datos de la persona autorizada para la entrega\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNotificarCasoOMS/Procedure/SVCambioTercero"
+}

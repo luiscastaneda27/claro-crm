@@ -1,0 +1,69 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVValidacionesCesion",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCesion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCesion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBInitial",
+        "OmniProcessId": {
+            "Name": "IPValidacionesCesion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCesion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCesion/Procedure/CBInitial",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBInitial",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ActivoSinSaldos": "=%Listfilter91%",
+            "AlDiaInfoBalance": "=%IPMSCuAcBalInfoBalance:Estado%",
+            "AldiaSinSaldos": "=%IPGetPaymentReferences:Estado%",
+            "Antiguedad": "=DATEDIFF(%DRGetAssetById:NowDate%, %DRGetAssetById:StartDate%) * -1",
+            "Casos": "%RAVCaseValidations:openCasesSize%",
+            "CumpleActivoSinSaldos": "=IF(ISBLANK(%Listfilter91%), true, false)",
+            "CumpleAldiaSinSaldos": "=IF(%IPGetPaymentReferences:Estado% == 'Al día' && %IPMSCuAcBalInfoBalance:Estado% == 'Al Dia', true, false)",
+            "CumpleAntiguedad": "=IF((DATEDIFF(%DRGetAssetById:NowDate%, %DRGetAssetById:StartDate%) *-1) >= %DRGetApplicationSettings:Setting:AntiguedadCesion%, true, false)",
+            "CumpleConvenios": "=IF(ISBLANK(%PVUDRgetOrdersConvenios:Orders%), true, false)",
+            "CumpleOrdenesPendientes": "=IF(%IPCasesWithOrdersPendingByAsset:haveFutureOrders% == true, false, true)",
+            "CumplePlanComercial": "=IF(%RAVCaseValidations:priceListSize% == 0, false, true)",
+            "CumpleProcesoPortOut": "=IF(%IPCasesWithOrdersPendingNegContrato:haveCasesInProgress% == true, false, true)",
+            "CumplesCasos": "=IF(%RAVCaseValidations:openCasesSize% == 0, true, false)",
+            "MensajesCaso": "=CONCAT(%RAMensajes:mensajes:CESCONT001% + ' #' +  %RAVCaseValidations:caseNumber%)",
+            "OrdenesPendientes": "=%IPCasesWithOrdersPendingByAsset:haveFutureOrders%",
+            "PlanComercial": "%RAVCaseValidations:priceListSize%",
+            "ProcesoPortOut": "%IPCasesWithOrdersPendingNegContrato :haveCasesInProgress%",
+            "TextoAldiaSinSaldos": "El cedente debe estar al día con todos los servicios en asociados a su número de identificación",
+            "TextoAntiguedad": "El servicio móvil debe tener una antigüedad mayor a 91 días calendario",
+            "TextoCasos": "El servicio móvil no debe tener casos abiertos o en curso con la misma voz de cliente",
+            "TextoCumpleActivoSinSaldos": "El cedente debe estar al día con todas las líneas Salesforce asociadas a su número de identificación",
+            "TextoCumpleConvenios": "Servicio móvil no debe tener convenios activos",
+            "TextoCumplePlanComercial": "El servicio móvil debe estar en un plan comercial vigente",
+            "TextoOrdenesPendientes": "El servicio móvil no debe tener órdenes abiertas o pendientes de ejecución",
+            "TextoProcesoPortOut": "El servicio móvil no debe tener un proceso de portabilidad Port Out iniciado ni en curso",
+            "idCasoCurso": "%RAVCaseValidations:caseId%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCesion/Procedure/SVValidacionesCesion"
+}

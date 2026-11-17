@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RATMK",
+    "OmniProcessId": {
+        "Name": "FIN_GetProductAvailability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_GetProduct/Availability/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ProdAvailability": "=IF(ISBLANK(%LA_ProdAvailabilityTMK%), 0,SUM(%LA_ProdAvailabilityTMK:avaStock%))",
+            "messageNoStock": "%IP_getMessage:message:MainMessage%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%GetUserDetails:UserDetails:Channel% == 'SF_TMK'",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_GetProduct/Availability/Procedure/RATMK"
+}

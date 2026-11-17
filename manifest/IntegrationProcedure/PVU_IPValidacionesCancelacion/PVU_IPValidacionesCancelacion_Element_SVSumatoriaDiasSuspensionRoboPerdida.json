@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSumatoriaDiasSuspensionRoboPerdida",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCancelacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBDiasSuspensionRoboPerdida",
+        "OmniProcessId": {
+            "Name": "IPValidacionesCancelacion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCancelacion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCancelacion/Procedure/LBDiasSuspensionRoboPerdida",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBDiasSuspensionRoboPerdida",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "diasSuspensionRoboPerdida": "=%diffDiasRoboPerdida% + DATEDIFF(%suspensionesRoboPerdida:StatusStartDate%,%suspensionesRoboPerdida:StatusEndDate%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "diffDiasRoboPerdida",
+        "responseJSONPath": "diasSuspensionRoboPerdida",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCancelacion/Procedure/SVSumatoriaDiasSuspensionRoboPerdida"
+}

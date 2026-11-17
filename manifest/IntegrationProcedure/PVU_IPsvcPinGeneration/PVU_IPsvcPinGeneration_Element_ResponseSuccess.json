@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseSuccess",
+    "OmniProcessId": {
+        "Name": "PinGeneration",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcPinGeneration/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "OTP:Code": "",
+            "OTP:CodeOTP": "",
+            "OTP:ExceptionCode": "%SV_PinGenerationError:ResponseList|1:responsePinGenerationExceptionCode%",
+            "OTP:TextEmail": "=emailInput",
+            "OTP:isValid": false,
+            "OTP:medio": "=IF(isEmail == true,\"email\",\"SMS\")",
+            "OTP:successSend": true,
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(DRTransformResponseXMLtoJSON:responsePinGenerationValid) AND %IsLeadConversion% != true",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "%DRTransformResponseXMLtoJSON%",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcPinGeneration/Procedure/ResponseSuccess"
+}

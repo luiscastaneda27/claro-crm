@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_IMEI",
+    "OmniProcessId": {
+        "Name": "GetIMEINumbersAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ConcatIMEI2Error": "%SV_ConcatIMEI:ConcatIMEI2Error%",
+            "ConcatIMEI2Success": "%SV_ConcatIMEI:ConcatIMEI2Success%",
+            "ConcatIMEIError": "%SV_ConcatIMEI:ConcatIMEIError%",
+            "ConcatIMEISuccess": "%SV_ConcatIMEI:ConcatIMEISuccess%",
+            "hasIMEIErrorConsulta": "=EXIST(%OrderItem:IMEIErrorConsulta%, true)",
+            "hasIMEIErrorRegister": "=EXIST(%OrderItem:IMEIErrorRegister%, true)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "IMEINumbersSent",
+        "sendJSONPath": "OrderItem",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure/RA_IMEI"
+}

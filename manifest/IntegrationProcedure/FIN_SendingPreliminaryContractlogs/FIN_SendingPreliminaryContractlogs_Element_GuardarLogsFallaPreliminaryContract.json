@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "GuardarLogsFallaPreliminaryContract",
+    "OmniProcessId": {
+        "Name": "SendingPreliminaryContractlogs",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendingPreliminaryContractlogs/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Descripcion": "=IF(ISNOTBLANK(%SendingPreliminaryContract:result:response:data:Exceptions|1:description%),%SendingPreliminaryContract:result:response:data:Exceptions|1:description% ,%SendingPreliminaryContract:result:Descripcion%)",
+            "Endpoint": "%SendingPreliminaryContract:result:enpoint%",
+            "Metodo": "%SendingPreliminaryContract:result:metodo%",
+            "Name": "%SendingPreliminaryContract:result:Name%",
+            "Request": "%SendingPreliminaryContract:result:request%",
+            "Response": "%SendingPreliminaryContract:result:response%",
+            "StatusCode": "%SendingPreliminaryContract:result:statusCode%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_GuardarLogIntegracion",
+        "label": "IntegrationProcedureAction3",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendingPreliminaryContractlogs/Procedure/GuardarLogsFallaPreliminaryContract"
+}

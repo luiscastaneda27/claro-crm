@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCutOffDate",
+    "OmniProcessId": {
+        "Name": "PVU_GetDataOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDataOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CutOffDate",
+        "OmniProcessId": {
+            "Name": "PVU_GetDataOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDataOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDataOrder/Procedure/CB_CutOffDate",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CutOffDate",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "cutOffDate": "=CONCAT(YEAR(TODAY()) , '-', IF(MONTH(TODAY()) <=9, CONCAT(\"0\", MONTH(TODAY())), MONTH(TODAY())), '-', IF((%DRGetAccountBillingCycle:accountBillingCycle%) <=9, CONCAT(\"0\", %DRGetAccountBillingCycle:accountBillingCycle%), IF(%DRGetAccountBillingCycle:accountBillingCycle% > DAY(EOM(TODAY(),0)),DAY(EOM(TODAY(),0)),%DRGetAccountBillingCycle:accountBillingCycle%)))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDataOrder/Procedure/SVCutOffDate"
+}

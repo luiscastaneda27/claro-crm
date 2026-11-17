@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetActivationCauseActPostpago",
+    "OmniProcessId": {
+        "Name": "DataDeliveryMethod",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataDeliveryMethod/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "IterateProductMobile",
+        "OmniProcessId": {
+            "Name": "DataDeliveryMethod",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataDeliveryMethod/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataDeliveryMethod/Procedure/IterateProductMobile",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "IterateProductMobile",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "activationCause": 2002
+        },
+        "executionConditionalFormula": "( DRGetOrder:PurchaseType ==\"ACT\" || DRGetOrder:PurchaseType == \"ATT\") && ListActionProductMobile:productSubType == \"Postpaid\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "ListActionProductMobile:reasonCode",
+        "responseJSONPath": "activationCause",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataDeliveryMethod/Procedure/SetActivationCauseActPostpago"
+}

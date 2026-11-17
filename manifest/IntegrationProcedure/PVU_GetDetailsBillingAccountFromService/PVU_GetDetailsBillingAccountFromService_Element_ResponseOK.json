@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseOK",
+    "OmniProcessId": {
+        "Name": "GetDetailsBillingAccountFromService",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDetailsBillingAccountFromService/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Detail": {
+                "Contrato": "%getAssetAccountDetail:Contrato%",
+                "Subcausal": "%GetPaymentReferences:billingAccountDefault|1:collectionInd%",
+                "address": "%getAssetAccountDetail:Address%",
+                "billingAccountId": "%getAssetAccountDetail:AccountId%",
+                "comportamientoPago": "%CustomerPaymentBehaviour:getCustomerPaymentBehaviourResponse:paymentScoreLabel%",
+                "fechaCorteCuenta": "%CalloutBillingManagment:Detail:fechaCorteCuenta%",
+                "fechaLimitePago": "%CalloutBillingManagment:Detail:fechaLimitePago%",
+                "financialDocID": "%CalloutBillingManagment:Detail:financialDocID%",
+                "nombreServicio": "%getAssetAccountDetail:NombreServicio%",
+                "numeroLinea": "%getAssetAccountDetail:NumeroLinea%",
+                "referenciaPago": "%GetPaymentReferences:billingAccountDefault|1:paymentReferenceService%",
+                "saldo": "%CalloutBillingManagment:Detail:saldo%"
+            },
+            "EndProccess": "OK"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction4",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDetailsBillingAccountFromService/Procedure/ResponseOK"
+}

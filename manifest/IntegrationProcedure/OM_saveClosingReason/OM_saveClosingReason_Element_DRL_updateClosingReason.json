@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRL_updateClosingReason",
+    "OmniProcessId": {
+        "Name": "OM_saveClosingReason",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/saveClosingReason/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "FVU_ClosingReason": "=IF(ISBLANK(%SV_saveClosingReason:ClosingReason%),NULL,IF(ISNOTBLANK(%SV_saveClosingReason:MotivoCierre%),%SV_saveClosingReason:MotivoCierre%,%SV_saveClosingReason:ClosingReason%)",
+            "Id": "%ContextId%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRLUpdateOrders",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/saveClosingReason/Procedure/DRL_updateClosingReason"
+}

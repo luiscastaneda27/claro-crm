@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Response",
+    "OmniProcessId": {
+        "Name": "BdaPositivov2",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPsvcBdaPositivov2/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock2",
+        "OmniProcessId": {
+            "Name": "BdaPositivov2",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPsvcBdaPositivov2/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPsvcBdaPositivov2/Procedure/ConditionalBlock2",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock2",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "code": "=IF(ISNOTBLANK(%SV_ProdCharFilter%),IF(ISNOTBLANK(%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:CodigoError%),IF(%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:CodigoError%=='01','BDO_NOREG',%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:CodigoError%),IF(ISNOTBLANK(%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:Estado%),IF(OR(%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:Estado%=='01',%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:Estado%=='07'),'BDO_REG',%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:Estado%),'997')),'998')",
+            "description": "=IF(ISNOTBLANK(%SV_ProdCharFilter%),IF(ISNOTBLANK(%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:DescripcionError%),%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:DescripcionError%,''),'Error no controlado')",
+            "isValid": "=IF(ISNOTBLANK(%SV_ProdCharFilter%),IF(ISNOTBLANK(%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:CodigoError%),IF(%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:CodigoError%=='01',true,false),IF(ISNOTBLANK(%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:Estado%),IF(OR(%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:Estado%=='01',%SV_ProdCharFilter:productCharacteristic:value:bdaPositivo:Estado%=='07'),true,false),false)),false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "response",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPsvcBdaPositivov2/Procedure/SV_Response"
+}

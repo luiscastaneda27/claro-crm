@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "FVU_NumberResourceManagement",
+    "OmniProcessId": {
+        "Name": "FVU_SuccessfullyPaidOrders",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SuccessfullyPaidOrders/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "reservation": "=true",
+            "reservationDate": "%SV_ReservationDate:reservationDate%",
+            "searchCount": "=\"1\"",
+            "serviceType": "=\"3\"",
+            "userId": "=DR_GetActivationPlanOrderItems:Order:OwnerId"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "OR(ISNOTBLANK(DR_GetActivationPlanOrderItems:OrderItemPlanACT),(ISNOTBLANK(DR_GetActivationPlanOrderItems:OrderItemPlanATT)))",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "FVU_DirectoryNumbersManagement",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "FVU_NumberResourceManagement",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SuccessfullyPaidOrders/Procedure/FVU_NumberResourceManagement"
+}

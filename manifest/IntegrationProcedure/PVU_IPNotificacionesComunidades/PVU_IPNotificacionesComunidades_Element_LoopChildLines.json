@@ -1,0 +1,25 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LoopChildLines",
+    "OmniProcessId": {
+        "Name": "IPNotificacionesComunidades",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNotificacionesComunidades/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRGetCostActionAndMail:NumeroLineasHijas% > 1 && %mensajeParametrizadoHija:mensajeParametrizado% <> null && %CaseDetails:AccionHija% == 'No Aplica' ",
+        "label": "LoopBlock1",
+        "loopList": "DRGetCostActionAndMail:LineasHijas",
+        "loopOutput": {
+            "notificacionesHijas": "%IP_SMSHija%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNotificacionesComunidades/Procedure/LoopChildLines"
+}

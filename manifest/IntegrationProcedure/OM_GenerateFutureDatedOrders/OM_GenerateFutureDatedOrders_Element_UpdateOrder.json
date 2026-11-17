@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpdateOrder",
+    "OmniProcessId": {
+        "Name": "GenerateFutureDatedOrders",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/GenerateFutureDatedOrders/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "BillingAccountId": "%DR_GetAssetDetails:BillingAccountId%",
+            "ServiceAccountId": "%DR_GetAssetDetails:ServiceAccountId%",
+            "caseInfo": "%IP_DateCancellation:caseInfo%",
+            "orderId": "%IPCreateOrder:result:orderId%",
+            "orderSubType": "%orderSubType%",
+            "orderType": "%orderType%",
+            "origin": "%canal%",
+            "recordTypeId": "%recordTypeId%",
+            "usuarioGenerador": "%usuarioGenerador%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_OrderType",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/GenerateFutureDatedOrders/Procedure/UpdateOrder"
+}

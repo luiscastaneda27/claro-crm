@@ -1,0 +1,27 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_OrderItem",
+    "OmniProcessId": {
+        "Name": "UpdateDefaultAccountsOrderItem",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateDefaultAccountsOrderItem/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "SV_TransformToList:ListOrderItem",
+        "loopOutput": {
+            "OrderItemBillingAccountId": "=%DR_GetDefaultAccountsDetails:billingAccountId%",
+            "OrderItemId": "%SV_TransformToList:ListOrderItem:OrderItemId%",
+            "OrderItemServiceAccountId": "=%DR_GetDefaultAccountsDetails:serviceAccountId%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateDefaultAccountsOrderItem/Procedure/LB_OrderItem"
+}

@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPDisconnectPostCartItems",
+    "OmniProcessId": {
+        "Name": "IPCambioDeEquipoPorCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioDeEquipoPorCaso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "CodigoCierre": "%DRGetCase:CodigoCierre%",
+            "OrderItemToDisconect": "%SVOrderData:OrderItemToDisconect%",
+            "PriceBookEntryId": "%SVOrderData:PriceBookEntryId%",
+            "cartId": "%SVOrderData:cartId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": true,
+        "executionConditionalFormula": "%IPCreateOrderAndProductsQuery:IsAssetType% = 'normal' OR %IPCreateOrderAndProductsQuery:IsAssetType% = 'clon' OR %IPCreateOrderAndProductsQueryCambioEquipo:IsAssetType% = 'normal' ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPDisconnectAndPostCartItems",
+        "label": "IntegrationProcedureAction9",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioDeEquipoPorCaso/Procedure/IPDisconnectPostCartItems"
+}

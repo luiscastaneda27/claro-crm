@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_InputNewRegisterIMEI2",
+    "OmniProcessId": {
+        "Name": "GetIMEIAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_NewRegisterIMEI",
+        "OmniProcessId": {
+            "Name": "GetIMEIAndSendToBDO",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure/LB_NewRegisterIMEI",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_NewRegisterIMEI",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "NodoImei": {
+                "Category": "registroIMEI",
+                "IMEI": "%SV_OrderItemFilterNewService:OrderItemFiltered:IMEINumber2%",
+                "msisdn": "3001234567",
+                "tipoReporteAbd": "3",
+                "usuario": "%Order:CodigoCAV%"
+            }
+        },
+        "executionConditionalFormula": "%SV_OrderItemFilter:OrderItemFiltered:isDualSIM% == true AND ISNOTBLANK(%SV_OrderItemFilter:OrderItemFiltered:IMEINumber2%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SV_InputNewRegisterIMEI2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure/SV_InputNewRegisterIMEI2"
+}

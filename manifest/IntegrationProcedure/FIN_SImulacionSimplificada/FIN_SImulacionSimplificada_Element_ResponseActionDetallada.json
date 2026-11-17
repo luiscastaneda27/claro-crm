@@ -1,0 +1,56 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionDetallada",
+    "OmniProcessId": {
+        "Name": "FIN_SimulacionSimplificadaIP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SImulacionSimplificada/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SimulacionDetallada",
+        "OmniProcessId": {
+            "Name": "FIN_SimulacionSimplificadaIP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SImulacionSimplificada/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SImulacionSimplificada/Procedure/SimulacionDetallada",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SimulacionDetallada",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "CalloutResponse": "%GetSimulation:success%",
+            "IntRate": "=IF(ISBLANK(%DRE_GetIntRate:IntRate%),%DRE_GetIntRate:TasaSuperFinanciera%,%DRE_GetIntRate:IntRate%)",
+            "QuoteCreated": "%CreateSimQuoteCart:records:Id%",
+            "RDetalle": "%LASinCuotaInicial%",
+            "Resultado": "=IF(%DRT_ResultadoSimulacion|1% == nul, %DRT_ResultadoSimulacion%, %DRT_ResultadoSimulacion|1% )",
+            "SimId": "%GetSimulation:SimulationSummary:simulationID%",
+            "request": "%GetSimulation:request%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SImulacionSimplificada/Procedure/ResponseActionDetallada"
+}

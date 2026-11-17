@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_HasNotificationBroker",
+    "OmniProcessId": {
+        "Name": "IPLogisticsBroker",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPLogisticsBroker/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "HasNotificationBroker": "=IF(%IPMSCustomerOrderShipmentOMS:substate% == \"FAILED_DELIVERIES\" || %IPMSCustomerOrderShipmentOMS:substate% == \"WRONG_ADDRESS\" || %IPMSCustomerOrderShipmentOMS:substate% == \"INCOMPLETE_ADDRESS\" || %IPMSCustomerOrderShipmentOMS:substate% == \"CUSTOMER_NOT_FOUND\",true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPLogisticsBroker/Procedure/SV_HasNotificationBroker"
+}

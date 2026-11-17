@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVmail",
+    "OmniProcessId": {
+        "Name": "SuspensionVoluntaria",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoSuspension/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "contentType": "CONTENTID",
+            "deliveryReceipts": "N",
+            "description": "Suspensión",
+            "messageType": "SMTP",
+            "parameters": {
+                "_BODY_": "%RAGetMessage:mensajeParametrizado%",
+                "_NAME1_": "%Nombre%",
+                "_NUMER_LINEA_": "%Linea%",
+                "_PROCESO_": "Suspensión"
+            },
+            "profileId": "CAMBIOSERV",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "mail": "%Email%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Suspensión",
+            "templateid": "CAMBIOSERV_01",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "%MetodoNotif% == \"Correo electrónico\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "DataNotif",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoSuspension/Procedure/SVmail"
+}

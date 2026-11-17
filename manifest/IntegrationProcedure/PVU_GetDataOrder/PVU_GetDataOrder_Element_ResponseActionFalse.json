@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionFalse",
+    "OmniProcessId": {
+        "Name": "PVU_GetDataOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDataOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "AssetId": "%DRgetRootAssetId:assetRootId%",
+            "CutOffDate": "%SVCutOffDateCalc:orderDate%",
+            "CutOffDateGTM": "%SVCutOffDateCalc:orderDateGTM%",
+            "ErrorValidation": "=IF(%RAGetDataOrder:lstOrderItemsSize% < 1, true, false)",
+            "IPMensajes": "%IPMensajesPorGestion%",
+            "NumeroLinea": "%DRGetAssetInfo:Subscription:MSISDN%",
+            "OrderCaseInfo": "%SVServicios:OrderCaseInfo%",
+            "OrderRelatedCaseInfo": "=IF(ISNOTBLANK(%RAGetDataOrder:RelatedCaseInfo%), %RAGetDataOrder:RelatedCaseInfo%, $Vlocity.NULL)",
+            "QueueGPTId": "%DR_GetQueue:Id%",
+            "esRetencion": "=IF( ISNOTBLANK(%SVServicios:esRetencion%) && %SVServicios:esRetencion% == true, true, false)",
+            "servicioOTT": "%SVInitialValues:servicioOTT%",
+            "validationGPT": "%SVInitialValues:validationGPT%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "RAGetDataOrder",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDataOrder/Procedure/ResponseActionFalse"
+}

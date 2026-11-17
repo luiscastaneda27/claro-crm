@@ -1,0 +1,50 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPNotificationEMAIL",
+    "OmniProcessId": {
+        "Name": "CancelarFutureOrderMasivos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CancelarFutureOrderMasivos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "VozCliente": "%VozCliente%",
+            "asuntoCorreo": "%IPMensajesPorGestion:COBR003%",
+            "content": "%RAMessageEmail:mensajeParametrizado%",
+            "correoElectronico": "%CorreoCliente%",
+            "emailMessage": "%RAMessageEmail:mensajeParametrizado%",
+            "nombCliente": "%NombreCliente%",
+            "nroTelefono": "%NumeroLinea%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": true,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "RACancelOrdenesFuturas:status == 'success' && RACancelOrdenesFuturas:cantidadCasosCancelados > 0",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_NotificationEMAIL",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CancelarFutureOrderMasivos/Procedure/IPNotificationEMAIL"
+}

@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetAdditionalServicesValueIndexCounter",
+    "OmniProcessId": {
+        "Name": "MSAgreementMngtContract_SignContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/MSAgreementMngtContract_SignContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "index": "=SUM(%mapIndex:index%, 1)"
+        },
+        "executionConditionalFormula": "ISNOTBLANK(DR_GetRecords:AditionalOrderItem)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "mapIndex",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/MSAgreementMngtContract_SignContract/Procedure/SetAdditionalServicesValueIndexCounter"
+}

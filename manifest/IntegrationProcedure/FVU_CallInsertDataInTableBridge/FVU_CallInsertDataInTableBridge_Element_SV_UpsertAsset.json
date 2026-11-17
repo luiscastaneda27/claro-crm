@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_UpsertAsset",
+    "OmniProcessId": {
+        "Name": "CallInsertDataInTableBridge",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CallInsertDataInTableBridge/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetId": "%assetId%",
+            "ClientInBridgeTable": "%SV_ValidateData:clientInBridgeTable%",
+            "FechaVencimientoGarantia": "=SV_SetWarranty:FechaVencimientoGarantia",
+            "WarrantyPeriod": "=SV_SetWarranty:WarrantyPeriod"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CallInsertDataInTableBridge/Procedure/SV_UpsertAsset"
+}

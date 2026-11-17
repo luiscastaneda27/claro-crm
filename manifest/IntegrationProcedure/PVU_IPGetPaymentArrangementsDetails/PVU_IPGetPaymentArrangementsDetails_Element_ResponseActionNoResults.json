@@ -1,0 +1,56 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionNoResults",
+    "OmniProcessId": {
+        "Name": "IPGetPaymentArrangementsDetails",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetPaymentArrangementsDetails/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "NoActiveMock",
+        "OmniProcessId": {
+            "Name": "IPGetPaymentArrangementsDetails",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetPaymentArrangementsDetails/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetPaymentArrangementsDetails/Procedure/NoActiveMock",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "NoActiveMock",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "%FIN_IPGetMessages:message:MainMessage%",
+            "paymentArrangementDetails:codeMessage": "%SV_MessageCode:messageCode%",
+            "paymentArrangementDetails:message": "%FIN_IPGetMessages:message:MainMessage%",
+            "paymentArrangementDetails:responseCode": "%DRTransformResponseHttp:response:responseCode%",
+            "paymentArrangementDetails:sinDatosServicio": "Functional Error",
+            "paymentArrangementDetails:success": false,
+            "responseCode": "%DRTransformResponseHttp:response:responseCode%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRTransformResponseHttp:response:responseCode% == \"faul:NKERR.30024\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetPaymentArrangementsDetails/Procedure/ResponseActionNoResults"
+}

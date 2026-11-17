@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_FinanciacionFCCI",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentMethodInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_FinanciacionPM",
+        "OmniProcessId": {
+            "Name": "FVU_PaymentMethodInformation",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/CB_FinanciacionPM",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_FinanciacionPM",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "paymentType": [
+                {
+                    "channelAliado": false,
+                    "channelCAV": false,
+                    "channelTMK": true,
+                    "label": "Financiado con Cuota Inicial",
+                    "paymentMethod": [
+                        {
+                            "label": "Contado – Sistemas de Cajas",
+                            "value": "Contado"
+                        },
+                        {
+                            "label": "Pin/Link de Pagos",
+                            "value": "Pin Link de Pagos"
+                        }
+                    ],
+                    "value": "Financiado con Cuota Inicial"
+                }
+            ]
+        },
+        "executionConditionalFormula": "TotalCuotaInicial != 0",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/SV_FinanciacionFCCI"
+}

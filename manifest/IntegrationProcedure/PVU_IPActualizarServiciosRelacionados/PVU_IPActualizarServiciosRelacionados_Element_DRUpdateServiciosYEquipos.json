@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRUpdateServiciosYEquipos",
+    "OmniProcessId": {
+        "Name": "IPActualizarServiciosRelacionados",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPActualizarServiciosRelacionados/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "CasoRel": "%SVInput:casoRelacionado%",
+            "ConceptoFianza": "%SVInput:ConceptoFianza%",
+            "FacturaNotaCredito": "%SVInput:facturaNotaCredito%",
+            "FechaFactura": "%SVInput:fechaFactura%",
+            "FechaNotaCredito": "%SVInput:fechaNotaCredito%",
+            "NumNotaCredito": "%SVInput:NoNotaCredito%",
+            "ServicioYEquipoId": "%SVInput:servicioEquipoId%",
+            "ValorDevolucion": "%SVInput:vDevolucion%",
+            "ValorDevolucionFIN": "%SVInput:vDevolucionFIN%",
+            "ValorDevolucionFianza": "%SVInput:ValorDevolucionFianza%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "DR_PVU_UpdateRelacionServiciosEquipos",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "EndProcess": "fail",
+            "Message": "El sistema presentó una novedad y no es posible continuar el trámite en este momento: Intenta nuevamente más tarde."
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPActualizarServiciosRelacionados/Procedure/DRUpdateServiciosYEquipos"
+}

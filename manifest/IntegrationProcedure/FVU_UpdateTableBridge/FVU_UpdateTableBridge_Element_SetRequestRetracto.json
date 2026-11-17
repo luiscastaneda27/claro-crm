@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetRequestRetracto",
+    "OmniProcessId": {
+        "Name": "FVU_UpdateTableBridge",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateTableBridge/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "typeAssetRetracto",
+        "OmniProcessId": {
+            "Name": "FVU_UpdateTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateTableBridge/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateTableBridge/Procedure/typeAssetRetracto",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "typeAssetRetracto",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "datoActualizar": "R",
+            "datoBusqueda": "=TOSTRING(IF(%DRE_updateTableBridge:asset:productFamily% <> \"Device\",%DRE_updateTableBridge:asset:serial%,%DRE_updateTableBridge:asset:IMEI%))",
+            "idCliente": "=%DRE_updateTableBridge:asset:accountId%",
+            "motivo": "==IF(%DRE_updateTableBridge:asset:productFamily% <> \"Device\",\"2\",\"1\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateTableBridge/Procedure/SetRequestRetracto"
+}

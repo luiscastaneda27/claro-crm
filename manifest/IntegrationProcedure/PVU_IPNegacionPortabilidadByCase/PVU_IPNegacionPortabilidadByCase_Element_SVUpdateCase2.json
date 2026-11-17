@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateCase2",
+    "OmniProcessId": {
+        "Name": "IPNegacionPortabilidadByCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CreateOrderReinstalacion",
+        "OmniProcessId": {
+            "Name": "IPNegacionPortabilidadByCase",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure/CB_CreateOrderReinstalacion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CreateOrderReinstalacion",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Id": "%caseId%",
+            "RequestProcessStatus": "=IF(%IPCreateOrderReinstalacion:result:status% <> 'Success', 'NegPort_Error_CreateOrderReinstalacion', 'Procesado Exitoso')",
+            "RequestProcessStatusDetail": "=%IPCreateOrderReinstalacion%",
+            "SubEstado": "Pendiente ejecución"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "Case",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure/SVUpdateCase2"
+}

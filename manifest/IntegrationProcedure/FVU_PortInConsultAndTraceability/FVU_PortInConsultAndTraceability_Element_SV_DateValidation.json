@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DateValidation",
+    "OmniProcessId": {
+        "Name": "PortInConsultAndTraceability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PortInConsultAndTraceability/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DateNow": "=SUBSTRING(NOW(\"yyyy-MM-dd HH:mm:ss\"), 0, 10)",
+            "PlanActivationDate": "=SUBSTRING(%HTTP_PortInConsultAndTraceability:registros|1:fechaCambioEstado%, 0, 10)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PortInConsultAndTraceability/Procedure/SV_DateValidation"
+}

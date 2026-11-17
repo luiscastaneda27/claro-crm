@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVData",
+    "OmniProcessId": {
+        "Name": "PVU_EnviarAceptacionRoaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/EnviarAceptacionRoaming/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "fechaFinPaq": "=IF(%isFechaFin% = TRUE, %fechaFin:fechaSMS%, 'Indefinido')",
+            "fechaInicioPaq": "=%fechaInicio:fechaSMS%",
+            "nroCompleto": "\"57\"+%nroTelefono%",
+            "templateId": "CAMBIOSERV_01"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/EnviarAceptacionRoaming/Procedure/SVData"
+}

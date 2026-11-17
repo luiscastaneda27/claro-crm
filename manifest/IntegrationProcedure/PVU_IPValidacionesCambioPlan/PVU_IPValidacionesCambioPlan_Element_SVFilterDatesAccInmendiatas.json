@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFilterDatesAccInmendiatas",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCambioPlan",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCambioPlan/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CutOffDate",
+        "OmniProcessId": {
+            "Name": "IPValidacionesCambioPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCambioPlan/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCambioPlan/Procedure/CB_CutOffDate",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CutOffDate",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "endDateFilter": "=IF(%DRGetAccountBillingCycle:accountBillingCycle% > DAY(EOM(TODAY(),0)), EOM(ADDMONTH(%SVCutOffDate:cutOffDate%, IF(%SVCutOffDateCalc:dateDiff% >= 0, 0, -1))), ADDMONTH(%SVCutOffDate:cutOffDate%, IF(%SVCutOffDateCalc:dateDiff% >= 0, 0, -1)))",
+            "startDateFilter": "=ADDMONTH(%SVCutOffDate:cutOffDate%, IF(%SVCutOffDateCalc:dateDiff% >= 0, -1, -2))"
+        },
+        "executionConditionalFormula": "source = \"CambioPlanAccInmediatas\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCambioPlan/Procedure/SVFilterDatesAccInmendiatas"
+}

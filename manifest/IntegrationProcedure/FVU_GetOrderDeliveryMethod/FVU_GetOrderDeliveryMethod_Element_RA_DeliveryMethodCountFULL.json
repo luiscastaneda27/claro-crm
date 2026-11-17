@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_DeliveryMethodCountFULL",
+    "OmniProcessId": {
+        "Name": "GetOrderDeliveryMethod",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetOrderDeliveryMethod/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "StandardTypePromise": "=%LA_PromiseFilter%",
+            "hasDelivery": "=%IP_VentasOrderSchedule:hasDelivery%",
+            "hasImmediatePickUp": "=%IP_VentasOrderSchedule:hasImmediatePickUp%",
+            "hasPickUp": "=%IP_VentasOrderSchedule:hasPickUp%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "resp == \"full\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "IP_VentasOrderSchedule",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetOrderDeliveryMethod/Procedure/RA_DeliveryMethodCountFULL"
+}

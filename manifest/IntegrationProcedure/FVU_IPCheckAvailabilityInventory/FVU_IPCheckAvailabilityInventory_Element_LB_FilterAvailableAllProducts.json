@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_FilterAvailableAllProducts",
+    "OmniProcessId": {
+        "Name": "IPCheckAvailabilityInventory",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock2",
+        "OmniProcessId": {
+            "Name": "IPCheckAvailabilityInventory",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/ConditionalBlock2",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock2",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock3",
+        "loopList": "LA_SetProductList",
+        "loopOutput": {
+            "list": "=%SV_AvailableAllProducts:list%",
+            "responseLoopDelivery": "=%SV_AvailableAllProducts:delivery%",
+            "responseLoopImmediatepickup": "=%SV_AvailableAllProducts:immediatepickup%",
+            "responseLoopPickup": "=%SV_AvailableAllProducts:pickup%",
+            "value": "=%SV_AvailableAllProducts:value%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/LB_FilterAvailableAllProducts"
+}

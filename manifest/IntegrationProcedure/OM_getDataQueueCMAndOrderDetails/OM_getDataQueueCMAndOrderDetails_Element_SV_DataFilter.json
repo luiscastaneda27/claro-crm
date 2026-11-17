@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataFilter",
+    "OmniProcessId": {
+        "Name": "OM_getDataQueueCMAndOrderDetails",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/getDataQueueCMAndOrderDetails/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "dataFilter": "=FILTER(LIST(%DRE_getDataApiErrorByErrorCode%),'Proceso LIKE\"' + process + '\"')"
+        },
+        "executionConditionalFormula": "%SV_SizeResponseMetadata:sizeList% == true && ISNOTBLANK(FILTER(LIST(%DRE_getDataApiErrorByErrorCode%),'Proceso LIKE \"' + process + '\"'))",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/getDataQueueCMAndOrderDetails/Procedure/SV_DataFilter"
+}

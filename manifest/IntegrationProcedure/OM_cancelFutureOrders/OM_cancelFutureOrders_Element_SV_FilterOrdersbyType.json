@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_FilterOrdersbyType",
+    "OmniProcessId": {
+        "Name": "OM_CancelFutureOrders",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/cancelFutureOrders/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Cases": "=FILTER(LIST(%DRE_GetOrdersFromAsset:Cases%), 'OrderType LIKE  \"' + orderType + '\"')",
+            "Orders": "=FILTER(LIST(%DRE_GetOrdersFromAsset:Orders%), 'Type LIKE  \"' + orderType + '\"')"
+        },
+        "executionConditionalFormula": "ISNOTBLANK(%FilterProcess%) && ISNOTBLANK(FILTER(LIST(%DRE_GetOrdersFromAsset:Orders%), 'Type LIKE  \"' + orderType + '\"'))",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/cancelFutureOrders/Procedure/SV_FilterOrdersbyType"
+}

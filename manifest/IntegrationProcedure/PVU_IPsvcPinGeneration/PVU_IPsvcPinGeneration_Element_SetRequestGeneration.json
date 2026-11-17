@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetRequestGeneration",
+    "OmniProcessId": {
+        "Name": "PinGeneration",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcPinGeneration/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "clienteId": "=IF(%IsLeadConversion% != true, %FVU_DRTGetCustomerData:accountDocument%, %DocumentNumber%)",
+            "halfShipmentId": "=IF(%isEmail% = true,%FVU_DRTGetCustomerData:metadataGenerate:halfShipmentIdEmail__c%,%FVU_DRTGetCustomerData:metadataGenerate:halfShipmentIdSMS__c%)",
+            "imei": "=%imei%",
+            "nombre_communicationOrigin": "=\"communicationOrigin\"",
+            "nombre_profileId": "=\"profileId\"",
+            "operacionId": "%FVU_DRTGetCustomerData:metadataGenerate:operationId__c%",
+            "requestDate": "=DESERIALIZE(SERIALIZE(NOW()))",
+            "sistemaId": "%FVU_DRTGetCustomerData:metadataGenerate:systemId__c%",
+            "system": "=\"Salesforce\"",
+            "value_communicationOrigin": "%FVU_DRTGetCustomerData:metadataGenerate:communicationOrigin__c%",
+            "value_profileId": "=IF(%isEmail% = true,%FVU_DRTGetCustomerData:metadataGenerate:profileIdEmail__c%,%FVU_DRTGetCustomerData:metadataGenerate:profileIdSMS__c%)",
+            "vchDataHalfShipmen": "=IF(%isEmail% = true,IF(%emailInput% != null,%emailInput%,%FVU_DRTGetCustomerData:accountMail%),IF(%phoneInput% != null,%phoneInput%,%FVU_DRTGetCustomerData:accountPhone%))",
+            "vchUsuario": "%FVU_DRTGetCustomerData:userName%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcPinGeneration/Procedure/SetRequestGeneration"
+}

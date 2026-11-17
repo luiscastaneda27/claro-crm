@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_InfoClient",
+    "OmniProcessId": {
+        "Name": "CustomerBiographicInformationHDC",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_StatusSuccessful",
+        "OmniProcessId": {
+            "Name": "CustomerBiographicInformationHDC",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure/CB_StatusSuccessful",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_StatusSuccessful",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Consult": "hdc",
+            "CustomerBiographicInformation": "%IP_CreditScoreCheck:historia%",
+            "Message": "=IF(%firstName% <> %IP_CreditScoreCheck:historia:nombres% OR %lastName% <> %IP_CreditScoreCheck:historia:primerApellido% OR %documentNumber% <> %IP_CreditScoreCheck:historia:identificacionDigitada%, \"Diferentes\", \"Iguales\")",
+            "ResponseCreditScoreCheck": "%SV_CreditScore%",
+            "Status": "SUCCESSFUL"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure/RA_InfoClient"
+}

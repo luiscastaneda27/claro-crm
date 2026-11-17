@@ -1,0 +1,76 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpdSubscriptionRecordChangeNumber",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ChangeNumberProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/ChangeNumberProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ChangeNumberProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "account": "%DME_GetSubscriptionInfo:Subscription:AccountId%",
+            "billingAccount": "%DME_GetSubscriptionInfo:Subscription:BillingAccountId%",
+            "contract": "%DME_GetSubscriptionInfo:Subscription:ContractId%",
+            "id": "%DME_GetSubscriptionInfo:Subscription:Id%",
+            "msisdn": "%DME_GetOrderItem_ChangeNumber:newMSISDN%",
+            "portationStatus": 0,
+            "reasonCode": "CAMB",
+            "serviceAccount": "%DME_GetSubscriptionInfo:ServiceAccountId%",
+            "status": "%DME_GetSubscriptionInfo:Subscription:Status%",
+            "statusEndDate": "%DME_GetSubscriptionInfo:Subscription:statusEndDate%",
+            "statusStartDate": "%DME_GetSubscriptionInfo:Subscription:statusStartDate%",
+            "subReasonCode": "CAMBNUM",
+            "subStatus": "%DME_GetSubscriptionInfo:OrderItem:SubCausal%",
+            "subscriptionNumber": "%DME_GetSubscriptionInfo:Subscription:subscriptionNumber%",
+            "subscriptionStartDate": "%DME_GetSubscriptionInfo:Subscription:StartDate%",
+            "susByCollections": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCollections%",
+            "susByCustomer": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCustomer%",
+            "susByFraud": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByFraud%",
+            "susByLost": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByLost%",
+            "susByTheft": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByTheft%",
+            "susByWarranty": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByWarranty%",
+            "suspendDate": "=IF(%IsLastSuspensionChangeSim:lastSuspension% == 1, '', %GetReactivationInfoChangeSim:Subscription:statusStartDate% )"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_CreateSubscriptionRecord",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/UpdSubscriptionRecordChangeNumber"
+}

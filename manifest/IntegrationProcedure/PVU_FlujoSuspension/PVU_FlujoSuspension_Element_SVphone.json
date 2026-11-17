@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVphone",
+    "OmniProcessId": {
+        "Name": "SuspensionVoluntaria",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoSuspension/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "content": "=%RAGetMessage:mensajeParametrizado%",
+            "contentType": "MESSAGE",
+            "deliveryReceipts": "N",
+            "description": "Suspensión",
+            "messageType": "SMS",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "phone": "%Telefono%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Suspensión",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "%MetodoNotif% == \"SMS - Teléfono de contacto\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "DataNotif",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoSuspension/Procedure/SVphone"
+}

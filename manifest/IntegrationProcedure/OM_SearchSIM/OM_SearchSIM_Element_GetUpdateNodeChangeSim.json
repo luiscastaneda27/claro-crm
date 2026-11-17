@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "GetUpdateNodeChangeSim",
+    "OmniProcessId": {
+        "Name": "SearchSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/SearchSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "UpdateAttributeChangeSim",
+        "OmniProcessId": {
+            "Name": "SearchSIM",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/SearchSIM/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/SearchSIM/Procedure/UpdateAttributeChangeSim",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "UpdateAttributeChangeSim",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "SegmentValue": "=TOSTRING( IF(%JSONAttributeNodeChangeSim:GetNodes:Name% == \"TechPCnewPIN\",%DRTransformResponse:item:pin%, IF(%JSONAttributeNodeChangeSim:GetNodes:Name% == \"TechPCnewPUK\", %DRTransformResponse:item:puk%,  IF(%JSONAttributeNodeChangeSim:GetNodes:Name% == \"TechPCnewKI\", %DRTransformResponse:item:authenticationKey%,     %JSONAttributeNodeChangeSim:GetNodes:SegmentValue%))))",
+            "attributeid__c": "%JSONAttributeNodeChangeSim:GetNodes:attributeid__c%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/SearchSIM/Procedure/GetUpdateNodeChangeSim"
+}

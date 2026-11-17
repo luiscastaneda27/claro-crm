@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Response",
+    "OmniProcessId": {
+        "Name": "IPCheckAvailabilityInventory",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AvailableMethods": "%CalloutProductListPromise:orderGroupList:delivMethod%",
+            "DR_GetProduct": "%DR_GetProduct%",
+            "orderProductpickup": "%LoopBlock1:TransformDate:orderProductpickup%",
+            "promiseList": "%DRTResponseOrderSchedule:orderProductDelivery:promiseList%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/SV_Response"
+}

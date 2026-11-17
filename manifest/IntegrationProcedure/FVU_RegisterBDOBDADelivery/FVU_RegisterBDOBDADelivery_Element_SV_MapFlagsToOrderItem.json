@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_MapFlagsToOrderItem",
+    "OmniProcessId": {
+        "Name": "RegisterBDOBDADelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_OrderItemListConsult",
+        "OmniProcessId": {
+            "Name": "RegisterBDOBDADelivery",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/LB_OrderItemListConsult",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_OrderItemListConsult",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "chainOnStep": false,
+        "elementValueMap": {
+            "OrderItemId": "%DBAPositivo:orderProductId%",
+            "canRegisterIMEI": "%DBAPositivo:IMEI:canRegisterIMEI%",
+            "canRegisterIMEI2": "%DBAPositivo:IMEI2:canRegisterIMEI2%",
+            "showMessageIMEI": "%DBAPositivo:IMEI:showMessageIMEI%",
+            "showMessageIMEI2": "%DBAPositivo:IMEI2:showMessageIMEI2%"
+        },
+        "executionConditionalFormula": "%DBAPositivo:NewServiceFlag% == true",
+        "failOnStepError": true,
+        "label": "SV_MapFlagsToOrderItem",
+        "responseJSONNode": "GetOrderData:Order:OrderItem",
+        "type": "SetValues"
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/SV_MapFlagsToOrderItem"
+}

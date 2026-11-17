@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGlobal",
+    "OmniProcessId": {
+        "Name": "IPChargesNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "conditionalRequiredValues": "=LIST(\"accountNumber\", \"subscriberNumber\")",
+            "missingConditionalRequiredValues": "=ISBLANK(%Input:accountNumber%) && ISBLANK(%Input:subscriberNumber%)",
+            "missingRequiredValues": "=ISBLANK(%Input:chargeService%) || ISBLANK(%Input:amount%) || ISBLANK(%Input:userId%) || ISBLANK(%Input:accountNumber%)",
+            "path": "=\"/ChargesNotification/v1.0/\"",
+            "requiredValues": "=LIST(\"chargeService\", \"amount\", \"userId\", \"accountNumber\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotification/Procedure/SVGlobal"
+}

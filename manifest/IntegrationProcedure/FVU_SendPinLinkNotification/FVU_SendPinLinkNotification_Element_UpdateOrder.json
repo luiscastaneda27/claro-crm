@@ -1,0 +1,22 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpdateOrder",
+    "OmniProcessId": {
+        "Name": "SendPinLinkNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SendPinLinkNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "(%IP_NotificationCusChannelEmail:success% == true && %SV_DataRequest:messageType% == \"SMTP\") || (%IP_NotificationCusChannelSMS:success% == true &&  %SV_DataRequest:messageType% == \"SMS\") || (%IP_NotificationCusChannelEmail:success% == true && %IP_NotificationCusChannelSMS:success% == true && %SV_DataRequest:messageType% == \"ToAll\")",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock3",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SendPinLinkNotification/Procedure/UpdateOrder"
+}

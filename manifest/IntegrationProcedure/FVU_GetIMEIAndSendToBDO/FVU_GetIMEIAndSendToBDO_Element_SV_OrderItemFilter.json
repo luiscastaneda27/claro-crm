@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_OrderItemFilter",
+    "OmniProcessId": {
+        "Name": "GetIMEIAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "OrderItemFiltered": "=LIST(FILTER(LIST(%OrderItemFiltered%), '(canRegister == true) || (canRegisterIMEI == true) || (canRegisterIMEI2 == true)'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SV_OrderItemFilter",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null,
+        "type": "SetValues"
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure/SV_OrderItemFilter"
+}

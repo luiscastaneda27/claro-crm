@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVBody",
+    "OmniProcessId": {
+        "Name": "IPChargesNotificationCobroErrado",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationCobroErrado/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "bodyValorIVA": {
+                "accountNumber": "%SVFormatData:accountNumber%",
+                "amount": "%SVFormatData:amountIva%",
+                "chargeService": "%SVGetInput:remarkIVA:chargeService%",
+                "remark": "%SVGetInput:remarkIVA:remark%",
+                "subscriberNumber": "",
+                "userId": "%SVGetInput:userId%",
+                "validDate": "%SVFormatData:fechaHoy%"
+            },
+            "bodyValorTotal": {
+                "accountNumber": "%SVFormatData:accountNumber%",
+                "amount": "%SVFormatData:amountValorTotal%",
+                "chargeService": "%SVGetInput:remarkValorAjuste:chargeService%",
+                "remark": "%SVGetInput:remarkValorAjuste:remark%",
+                "userId": "%SVGetInput:userId%",
+                "validDate": "%SVFormatData:fechaHoy%"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationCobroErrado/Procedure/SVBody"
+}

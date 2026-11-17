@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAPostCartItemPromo",
+    "OmniProcessId": {
+        "Name": "IpCloneOrderCambioPlanAccInm",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "EndProcess": "=IF(%IPGetOldPromotionsAdded% != %IPGetNewPromotionsAdded%, \"fail\", \"success\")",
+            "NewOrderPromoItems": "=%LBAddPromos:outputPostCartItemsPromo%",
+            "NewOrderPromoSize": "=%IPGetNewPromotionsAdded%",
+            "OldOrderPromoSize": "=%IPGetOldPromotionsAdded%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "source = \"addPostCartPromo\"",
+        "label": "ResponseAction4",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "addCartPromos",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IpCloneOrderCambioPlanAccInm/Procedure/RAPostCartItemPromo"
+}

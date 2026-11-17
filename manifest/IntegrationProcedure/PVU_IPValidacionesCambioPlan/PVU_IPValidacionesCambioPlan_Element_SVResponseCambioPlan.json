@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponseCambioPlan",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCambioPlan",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCambioPlan/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetInfo": "%DRGetAssetInfo%",
+            "CutOffDate": "%SVCutOffDateCalc:orderDate%",
+            "DiffCutOffDateFromToday": "%SVCutOffDateCalc:dateDiff%",
+            "TodayCutOffDate": "%IPFormatTodayDate:fechaGuionYYYYMMDD%",
+            "accountBillingCycle": "%DRGetAccountBillingCycle:accountBillingCycle%",
+            "accountInfo": "%DRGetAccountDocument%",
+            "channel": "%DRGetChannel:channel%",
+            "hasDowngradeLast6Months": "=IF(%RACaseValidations:openCasesDownGradeSize% > 0,true,false )",
+            "mensajes": "%IPMensajesPorGestion%",
+            "openCases": "%RACaseValidations:openCases%",
+            "openCasesCambioCiclo": "%RACaseValidations:openCasesCambioCiclo%",
+            "openCasesCambioCicloSize": "%RACaseValidations:openCasesCambioCicloSize%",
+            "openCasesCancelacionServMovil": "%RACaseValidations:openCasesCancelacionServMovil%",
+            "openCasesCancelacionServMovilSize": "%RACaseValidations:openCasesCancelacionServMovilSize%",
+            "openCasesPortabilidad": "%RACaseValidations:openCasesPortabilidad%",
+            "openCasesPortabilidadSize": "%RACaseValidations:openCasesPortabilidadSize%",
+            "openCasesSize": "%RACaseValidations:openCasesSize%"
+        },
+        "executionConditionalFormula": "source <> \"CambioPlanAccInmediatas\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "ResponseValidate",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCambioPlan/Procedure/SVResponseCambioPlan"
+}

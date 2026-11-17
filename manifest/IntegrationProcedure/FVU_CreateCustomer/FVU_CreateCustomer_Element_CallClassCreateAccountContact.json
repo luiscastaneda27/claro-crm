@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CallClassCreateAccountContact",
+    "OmniProcessId": {
+        "Name": "insertCustomerTMF",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreateCustomer/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "action": "=\"Create Customer\"",
+            "addressInformation": "%addressInformation%",
+            "fieldsRequired": "%DREGetFieldsRequired:fieldsRequired%",
+            "jsonAll": "%customerInformation%",
+            "recordTypeAccount": "=%DREGetRecordTypeAccountConsumer:RecordType:Id%",
+            "recordTypeContact": "%DREGetRecordTypeContact:RecordType:Id%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "FVU_TMFCustomInsertCustomer",
+        "remoteMethod": "insertAccountAndContactTMF",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreateCustomer/Procedure/CallClassCreateAccountContact"
+}

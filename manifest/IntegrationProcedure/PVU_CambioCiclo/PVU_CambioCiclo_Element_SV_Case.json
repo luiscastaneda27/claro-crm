@@ -1,0 +1,59 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Case",
+    "OmniProcessId": {
+        "Name": "CambioCiclo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CambioCiclo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CreateCase",
+        "OmniProcessId": {
+            "Name": "CambioCiclo",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CambioCiclo/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CambioCiclo/Procedure/CreateCase",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CreateCase",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%Case:AccountId%",
+                "AssetId": "%Case:AssetId%",
+                "Categoria": "%Case:Categoria%",
+                "DatosTerceroValues": "%Case:DatosTerceroValues%",
+                "Descripcion": "Nuevo ciclo de facturación solicitado: %LoopCiclos:CheckedCycle:ciclo:desc% (id: %LoopCiclos:CheckedCycle:ciclo:id%) con fecha de corte %LoopCiclos:CheckedCycle:ciclo:bchRunDate%",
+                "FechaCiclo": "%LoopCiclos:CheckedCycle:ciclo:bchRunDate%",
+                "NumeroDocCliente": "%Case:NumeroDocCliente%",
+                "OrderId": "%Case:OrderId%",
+                "Status": "%Case:Status%",
+                "SubCategoria": "%Case:SubCategoria%",
+                "SubEstado": "%Case:SubEstado%",
+                "TerminosYCondiciones": "Acepta",
+                "TipoDocumento": "%Case:TipoDocumento%",
+                "VozCliente": "%Case:VozCliente%"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CambioCiclo/Procedure/SV_Case"
+}

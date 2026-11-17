@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesDate",
+    "OmniProcessId": {
+        "Name": "IPMovFinCuentasFactura",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPMovFinCuentasFactura/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "endDateValue": "=NOW(\"yyyy-MM-dd HH:mm:ss\")",
+            "startDateValue": "=IF(%billAdjustment% = true, FORMATDATETIME(ADDDAY(NOW(\"yyyy-MM-dd HH:mm:ss\"),       (%CallDRGetApplicationSetting:Setting:CantidadDiasMf%) * (-1) ), \"yyyy-MM-dd HH:mm:ss\"),   CONCAT(%CallDRGetApplicationSetting:Setting:startDateFinMov%, \" 00:00:00\"))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPMovFinCuentasFactura/Procedure/SetValuesDate"
+}

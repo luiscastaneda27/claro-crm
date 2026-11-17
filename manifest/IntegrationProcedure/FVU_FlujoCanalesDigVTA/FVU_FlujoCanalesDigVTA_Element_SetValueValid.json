@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValueValid",
+    "OmniProcessId": {
+        "Name": "FVU_FlujoCanalesDigVTA",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FlujoCanalesDigVTA/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "validCount": "=LISTSIZE(FILTER(LIST(LoopAdditionalService),'postCartItemAdditionalService:EndProcess == \"fail\"')",
+            "validFailAdditionalServices": "=FILTER(LIST(LoopAdditionalService),'postCartItemAdditionalService:EndProcess == \"fail\"') != null"
+        },
+        "executionConditionalFormula": "%SetValuesProduct:validFailProduct% == false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FlujoCanalesDigVTA/Procedure/SetValueValid"
+}

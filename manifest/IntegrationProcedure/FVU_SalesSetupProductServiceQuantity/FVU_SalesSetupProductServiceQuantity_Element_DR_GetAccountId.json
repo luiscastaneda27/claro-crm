@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_GetAccountId",
+    "OmniProcessId": {
+        "Name": "FVU_SalesSetupProductServiceQuantity",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesSetupProductServiceQuantity/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+            "accountId": "=%DR_GetAccountId:Order:AccId%",
+            "totalProducts": "=SUM(%DR_GetAccountId:OrderItemRootProduct:Quantity%)"
+        },
+        "bundle": "FVU_GetOrderCheckoutData",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+            {
+                "element": "OrderId",
+                "inputParam": "OrderId"
+            }
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataRaptorExtractAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesSetupProductServiceQuantity/Procedure/DR_GetAccountId"
+}

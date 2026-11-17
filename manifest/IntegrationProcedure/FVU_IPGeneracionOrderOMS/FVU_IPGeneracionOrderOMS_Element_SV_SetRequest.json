@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_SetRequest",
+    "OmniProcessId": {
+        "Name": "IPGeneracionOrderOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPGeneracionOrderOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "antiquity": "=%GetAntiquityCodeFromAccount:response:AntiquityCode%",
+            "customer": "=%DataRaptorGetDataForOMS:customer%",
+            "deliveryAddress": "=%DataRaptorGetDataForOMS:deliveryAddress%",
+            "deliveryData": "=%DataRaptorGetDataForOMS:deliveryData%",
+            "hasTaxes": "=ISNOTBLANK(%LA_HasTaxes%)",
+            "items": "=%LA_MergePositionSKU%",
+            "orderAmountSummary": "=%DataRaptorGetDataForOMS:orderAmountSummary%",
+            "orderInfo": "=%DataRaptorGetDataForOMS:orderInfo%",
+            "payment": "=%DataRaptorGetDataForOMS:payment%",
+            "productLists": "=%CL_ProductListMapper:productListMapped%",
+            "terminalIdForATT": "=%SV_CLExtraValues:terminalId%",
+            "whetherSimChanged": "=%whetherSimChanged%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "SV_SetRequest",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPGeneracionOrderOMS/Procedure/SV_SetRequest"
+}

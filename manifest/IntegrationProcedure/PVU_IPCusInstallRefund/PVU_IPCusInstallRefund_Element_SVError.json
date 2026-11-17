@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVError",
+    "OmniProcessId": {
+        "Name": "IPCusInstallRefund",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCusInstallRefund/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ErrorMessage": "=IF(ISBLANK(%CalloutAPIAjusteDeCredito:errorMessage%),'Ha ocurrido un error al consultar el servicio',%CalloutAPIAjusteDeCredito:errorMessage%)"
+        },
+        "executionConditionalFormula": "%CalloutAPIAjusteDeCredito% = $Vlocity.NULL || %CalloutAPIAjusteDeCredito:statusId% != '0' || %CalloutAPIAjusteDeCredito:status% = '502' || %CalloutAPIAjusteDeCredito:statusId% = $Vlocity.NULL ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCusInstallRefund/Procedure/SVError"
+}

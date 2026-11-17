@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_minPortDate_ImmediatePickUp",
+    "OmniProcessId": {
+        "Name": "FVU_GetPortabilityData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetPortabilityData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "DeliveryMethod_ImmediatePickUp",
+        "OmniProcessId": {
+            "Name": "FVU_GetPortabilityData",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetPortabilityData/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetPortabilityData/Procedure/DeliveryMethod_ImmediatePickUp",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "DeliveryMethod_ImmediatePickUp",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "minPortabilityDate": "=IF(BeforeCutoffTime,ADDDAY(salesSetup:today,salesSetup:DaysToStart), ADDDAY(salesSetup:today,salesSetup:DaysToStartCutoffTime))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "minPortabilityDate",
+        "responseJSONPath": "minPortabilityDate",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetPortabilityData/Procedure/SV_minPortDate_ImmediatePickUp"
+}

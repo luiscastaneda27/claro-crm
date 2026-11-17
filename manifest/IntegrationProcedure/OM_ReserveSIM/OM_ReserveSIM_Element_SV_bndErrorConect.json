@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_bndErrorConect",
+    "OmniProcessId": {
+        "Name": "ReserveSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReserveSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "bErrorConn": "=IF(ISNOTBLANK(%DRTransformResponse:error%) OR ISBLANK(%HTTPReserveSim%) OR (%HTTPReserveSimInfo:statusCode% > 400), true, false)",
+            "connErrorCode": "ERROR_CONN",
+            "httpErrorConnResponse": "=IF(ISNOTBLANK(%HTTPReserveSimInfo:statusCode%), %HTTPReserveSimInfo:statusCode%, '000')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues12",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReserveSIM/Procedure/SV_bndErrorConect"
+}

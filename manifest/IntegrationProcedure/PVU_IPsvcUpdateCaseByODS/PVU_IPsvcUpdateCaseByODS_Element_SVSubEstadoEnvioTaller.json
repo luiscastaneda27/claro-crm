@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSubEstadoEnvioTaller",
+    "OmniProcessId": {
+        "Name": "IPGetOdsUpdate",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcUpdateCaseByODS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Case": {
+                "Id": "%caseId%",
+                "SubEstado": "Equipo enviado al punto de ingreso"
+            }
+        },
+        "executionConditionalFormula": "%responseCase:PVU_Level3__c% = \"Retracto de compra\" && %responseCase:Status% = \"En curso\" && %responseCase:SubEstado% = \"Envio a Taller\" && (%DRGetEstadoFinalODS:description% = \"Retracto Aprobado por Taller\" || %DRGetEstadoFinalODS:description% = \"Retracto No Aprobado por Taller\")",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues10",
+        "responseJSONNode": "infoToUpdate",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcUpdateCaseByODS/Procedure/SVSubEstadoEnvioTaller"
+}

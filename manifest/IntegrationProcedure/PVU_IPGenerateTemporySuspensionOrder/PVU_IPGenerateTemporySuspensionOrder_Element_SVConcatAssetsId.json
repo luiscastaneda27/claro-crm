@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVConcatAssetsId",
+    "OmniProcessId": {
+        "Name": "IPGenerateTemporySuspensionOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "listAssetIds": "=IF(ISNOTBLANK(%aditionalProductAsset:AssetAdicional:Id%), %AssetId% + \",\" + JOIN(%aditionalProductAsset:AssetAdicional:Id%, \",\") , %AssetId% )",
+            "listOnlyAdicionalAssets": "=IF(ISNOTBLANK(%aditionalProductAsset:AssetAdicional:Id%), JOIN(%aditionalProductAsset:AssetAdicional:Id%, \",\") , NULL )"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure/SVConcatAssetsId"
+}

@@ -1,0 +1,25 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CasosGPT",
+    "OmniProcessId": {
+        "Name": "PVU_GetDataOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDataOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SVServicios:servicioOTT% = TRUE && %RAGetDataOrder:VozCliente% = 'Activación de servicios adicionales' &&  ISNOTBLANK(%GetGPTCases:CasesGPT%) ",
+        "label": "LoopBlock1",
+        "loopList": "RAGetDataOrder:lstOrderItems",
+        "loopOutput": {
+            "BloqueosGPT": "=%SVGpt:BloqueoGPT%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDataOrder/Procedure/CasosGPT"
+}

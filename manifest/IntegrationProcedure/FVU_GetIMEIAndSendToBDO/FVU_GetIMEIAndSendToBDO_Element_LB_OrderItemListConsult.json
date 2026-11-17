@@ -1,0 +1,26 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_OrderItemListConsult",
+    "OmniProcessId": {
+        "Name": "GetIMEIAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_NewServiceFlag:NewServiceFlag% != true",
+        "label": "LoopBlock1",
+        "loopList": "SV_OrderItemFilter:OrderItemFiltered",
+        "loopOutput": {
+            "resultIMEI1": "%registerIMEIResult1%",
+            "resultIMEI2": "%registerIMEIResult2%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEIAndSendToBDO/Procedure/LB_OrderItemListConsult"
+}

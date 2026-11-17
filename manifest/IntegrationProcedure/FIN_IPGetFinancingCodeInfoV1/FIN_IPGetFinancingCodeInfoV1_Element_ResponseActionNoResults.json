@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionNoResults",
+    "OmniProcessId": {
+        "Name": "IPGetFinancingCodeInfoV1",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPGetFinancingCodeInfoV1/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Response": "No existen financiamientos relacionados al cliente",
+            "error": true,
+            "mensaje": "Ha ocurrido un error, por favor intente más tarde.",
+            "responseCode": "%DRTransformResponse:responseCode%",
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRTransformResponse:responseCode% == \"FS_MF_02\"",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPGetFinancingCodeInfoV1/Procedure/ResponseActionNoResults"
+}

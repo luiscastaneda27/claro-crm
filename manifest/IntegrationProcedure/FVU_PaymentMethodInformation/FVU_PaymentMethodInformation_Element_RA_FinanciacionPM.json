@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_FinanciacionPM",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentMethodInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_FinanciacionPM",
+        "OmniProcessId": {
+            "Name": "FVU_PaymentMethodInformation",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/CB_FinanciacionPM",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_FinanciacionPM",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "paymentMethod": "=IF(%SV_Channel:channelTMK% = true && %selectedPaymentType% ='Financiado con Cuota Inicial',LIST(%SV_FinanciacionPMTMK:paymentMethod%), IF(%SV_Channel:channelCAV% = true &&%selectedPaymentType% ='Financiado con Cuota Inicial', LIST(%SV_FinanciacionPM:paymentMethod%),LIST(%SV_FinanciacionPMFIN:paymentMethod%)))"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%isPaymentMethod% == true",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "SV_FinanciacionPM",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/RA_FinanciacionPM"
+}

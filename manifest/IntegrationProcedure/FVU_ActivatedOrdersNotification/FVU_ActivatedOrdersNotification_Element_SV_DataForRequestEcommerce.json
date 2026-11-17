@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataForRequestEcommerce",
+    "OmniProcessId": {
+        "Name": "ActivatedOrdersNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ActivatedOrdersNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ContentACT": "¡Hola! %DR_GetDataForNotification:Account:Name% Tu línea %DR_GetDataForNotification:OrderItem:LineNumber% ya está activa. Gracias por elegirnos y ser parte de esta historia que hoy comienza con Claro. No. solicitud: %DR_GetDataForNotification:Order:ChannelOrderNumber%",
+            "ContentATT": "Hola %DR_GetDataForNotification:Account:Name% te informamos que tu solicitud de equipo y activación de línea Claro %DR_GetDataForNotification:OrderItem:LineNumber% - Orden %DR_GetDataForNotification:Order:ChannelOrderNumber% finalizó satisfactoriamente.",
+            "ContentMIG": "¡Hola! %DR_GetDataForNotification:Account:Name% Tu cambio a plan postpago para la línea %DR_GetDataForNotification:OrderItem:LineNumber% fue exitoso. No. solicitud: %DR_GetDataForNotification:Order:ChannelOrderNumber%. En Claro, nos inspira crecer contigo.",
+            "ContentPOR": "¡Hola! %DR_GetDataForNotification:Account:Name% Tu cambio a Claro fue exitoso. La línea %DR_GetDataForNotification:OrderItem:LineNumber% ya está con nosotros. Bienvenido a una experiencia que evoluciona contigo. No. Solicitud: %DR_GetDataForNotification:Order:ChannelOrderNumber%",
+            "ReceiverEmail": {
+                "mail": "%DR_GetDataForNotification:Account:Email%"
+            },
+            "ReceiverPhone": "%DR_GetDataForNotification:Account:Phone%"
+        },
+        "executionConditionalFormula": "%DR_GetDataForNotification:Order:Channel% == \"ECOMMERCE\"",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ActivatedOrdersNotification/Procedure/SV_DataForRequestEcommerce"
+}

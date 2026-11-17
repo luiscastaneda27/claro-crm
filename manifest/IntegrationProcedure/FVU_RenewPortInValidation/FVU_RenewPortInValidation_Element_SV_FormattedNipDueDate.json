@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_FormattedNipDueDate",
+    "OmniProcessId": {
+        "Name": "RenewPortInValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RenewPortInValidation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "FormattedNipDueDate": "=CONCAT(SUBSTRING(%SVDateValues:nipDueDate%, 8, 10), \"/\", SUBSTRING(%SVDateValues:nipDueDate%, 5, 7), \"/\", SUBSTRING(%SVDateValues:nipDueDate%, 0, 4), \" \", SUBSTRING(%SVDateValues:nipDueDate%, 11, 19))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RenewPortInValidation/Procedure/SV_FormattedNipDueDate"
+}

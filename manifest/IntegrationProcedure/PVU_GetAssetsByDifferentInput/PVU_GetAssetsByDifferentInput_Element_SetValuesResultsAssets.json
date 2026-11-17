@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesResultsAssets",
+    "OmniProcessId": {
+        "Name": "GetAssetsByDifferentInput",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetAssetsByDifferentInput/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "resultAssets": "=IF(ISNOTBLANK(%documentNumber%) && ISNOTBLANK(%documentType%),LIST(%DRgetAssetInforByDocumentAndType:assets%), IF(ISNOTBLANK(%mobileNumber%), LIST(%DRGetAllAssetsByMobileNumber:assets%),LIST(%DRgetAssetsByeExtCustomerId:assets%)))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetAssetsByDifferentInput/Procedure/SetValuesResultsAssets"
+}

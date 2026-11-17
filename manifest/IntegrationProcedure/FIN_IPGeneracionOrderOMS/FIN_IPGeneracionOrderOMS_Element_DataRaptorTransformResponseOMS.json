@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DataRaptorTransformResponseOMS",
+    "OmniProcessId": {
+        "Name": "IPGeneracionOrderOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPGeneracionOrderOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "antiquity": "%GetAntiquityCodeFromAccount:response:AntiquityCode%",
+            "hasTaxes": "=ISNOTBLANK(%LA_HasTaxes%)",
+            "orderId": "%Id%",
+            "sapId": "=IF(ISNOTBLANK(%DataRaptorGetDataForOMS:jsonForSapId:B2C-ATTR-MATERIAL-TERM%),%DataRaptorGetDataForOMS:jsonForSapId:B2C-ATTR-MATERIAL-TERM%, IF(ISNOTBLANK(%DataRaptorGetDataForOMS:jsonForSapId:B2C-ATTR-SIM-MATERIAL%), %DataRaptorGetDataForOMS:jsonForSapId:B2C-ATTR-SIM-MATERIAL%,%DataRaptorGetDataForOMS:jsonForSapId:B2C-ATTR-TEC-MATERIAL%))",
+            "whetherSimChanged": "%whetherSimChanged%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FINDRTransformOutputGeneracionOMS",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataRaptorTransformAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "DataRaptorGetDataForOMS",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Transform Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPGeneracionOrderOMS/Procedure/DataRaptorTransformResponseOMS"
+}

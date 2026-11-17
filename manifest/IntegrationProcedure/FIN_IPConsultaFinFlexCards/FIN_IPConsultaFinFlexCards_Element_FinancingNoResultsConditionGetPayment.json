@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "FinancingNoResultsConditionGetPayment",
+    "OmniProcessId": {
+        "Name": "IPConsultaFinFlexCards",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPConsultaFinFlexCards/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Response": "No existen financiamientos relacionados al cliente",
+            "mensaje": "Ha ocurrido un error, por favor intente más tarde",
+            "responseCode": "% IPGetFinancingDetailPay:responseCode%",
+            "success": "=IF(% IPGetFinancingDetailPay:success%== null, false, % IPGetFinancingDetailPay:success% )"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPFinancingPaymentTransactions:result:error% == true",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPConsultaFinFlexCards/Procedure/FinancingNoResultsConditionGetPayment"
+}

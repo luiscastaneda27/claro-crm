@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSumatoriaDiasSuspensionRoboPerdida",
+    "OmniProcessId": {
+        "Name": "IPValidacionesSuspensiones",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesSuspensiones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBDiasSuspensionRoboPerdida",
+        "OmniProcessId": {
+            "Name": "IPValidacionesSuspensiones",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesSuspensiones/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesSuspensiones/Procedure/LBDiasSuspensionRoboPerdida",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBDiasSuspensionRoboPerdida",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "diasSuspensionRoboPerdida": "=%diffDiasRoboPerdida% + IF( DATEDIFF(%suspensionesRoboPerdida:StatusStartDate%,%suspensionesRoboPerdida:StatusEndDate%) > 0, DATEDIFF(%suspensionesRoboPerdida:StatusStartDate%,%suspensionesRoboPerdida:StatusEndDate%) , 0)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "diffDiasRoboPerdida",
+        "responseJSONPath": "diasSuspensionRoboPerdida",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesSuspensiones/Procedure/SVSumatoriaDiasSuspensionRoboPerdida"
+}

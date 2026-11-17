@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Payment3",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentMethodInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "paymentType": [
+                {
+                    "channelCAV": true,
+                    "channelTMK": false,
+                    "label": "Contado",
+                    "paymentMethod": [
+                        {
+                            "label": "Contado – Sistemas de Cajas",
+                            "value": "Contado"
+                        }
+                    ],
+                    "value": "Contado"
+                },
+                {
+                    "cargoFactura": true,
+                    "label": "Cargo a la Factura",
+                    "paymentMethod": [
+                        {
+                            "label": "Cargo a la Factura",
+                            "value": "Cargo a la Factura"
+                        }
+                    ],
+                    "value": "Cargo a la Factura"
+                }
+            ]
+        },
+        "executionConditionalFormula": "NOT(SV_Channel:pinLinkValid) && SV_Channel:channelTMK && SV_Channel:cargoFactura",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "paymentType",
+        "responseJSONPath": "paymentType",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/SV_Payment3"
+}

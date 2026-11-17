@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSetDatosEquipo",
+    "OmniProcessId": {
+        "Name": "IPNotificarOdsATaller",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNotificarOdsATaller/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "batteryCover": "%DRGetODSData:Equipo:Tapa%",
+            "brand": "=IF(%DRGetODSData:TipoEquipo% == \"Terminal\", %DRGetODSData:Equipo:TerminalMarca%, %DRGetODSData:Equipo:TecnologiaMarca%)",
+            "case": "%DRGetODSData:Equipo:Carcasa%",
+            "color": "=IF(%DRGetODSData:TipoEquipo% == \"Terminal\", %DRGetODSData:Equipo:TerminalColor%, %DRGetODSData:Equipo:TecnologiaColor%)",
+            "connectors": "%DRGetODSData:Equipo:Conector%",
+            "freehands": "%DRGetODSData:Equipo:ManosLibres%",
+            "model": "=IF(%DRGetODSData:TipoEquipo% == \"Terminal\", %DRGetODSData:Equipo:TerminalModelo%, %DRGetODSData:Equipo:TecnologiaModelo%)",
+            "screen": "%DRGetODSData:Equipo:Pantalla%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNotificarOdsATaller/Procedure/SVSetDatosEquipo"
+}

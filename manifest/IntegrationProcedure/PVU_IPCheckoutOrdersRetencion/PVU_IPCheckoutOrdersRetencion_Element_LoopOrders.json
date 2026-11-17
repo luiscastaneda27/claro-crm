@@ -1,0 +1,27 @@
+{
+    "Description": "Hace Checkout de las ordenes relacionadas. Se corrige lista",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LoopOrders",
+    "OmniProcessId": {
+        "Name": "IPCheckoutOrdersRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCheckoutOrdersRetencion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "ListaOrdenesCheckout",
+        "loopOutput": {
+            "OrderId": "=%SV:OrdeCAse%",
+            "SVOrders": "=%PVUIPCheckoutOrders%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCheckoutOrdersRetencion/Procedure/LoopOrders"
+}

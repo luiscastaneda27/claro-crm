@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "HTTP_ObtenerBarrioListHhpp",
+    "OmniProcessId": {
+        "Name": "MERObtenerBarrioListHhpp",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MERObtenerBarrioListHhpp/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "ErrorCode": "%HTTP_ObtenerBarrioListHhpp:categoryCode%",
+            "ErrorMessage": "%HTTP_ObtenerBarrioListHhpp:categoryDescription%"
+        },
+        "label": "HTTPAction3",
+        "namedCredential": "NamedCredentialApiMER",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "PUT",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "Accept": "*/*",
+                "ApkSitSfic": "%DR_GetAuthAPIKey:ValueKey%",
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+            },
+            "sendBody": true,
+            "timeout": 100000,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "/obtenerBarrioListHhpp",
+        "retryCount": 0,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "RA_RequestObtenerBarrioListHhpp:request",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MERObtenerBarrioListHhpp/Procedure/HTTP_ObtenerBarrioListHhpp"
+}

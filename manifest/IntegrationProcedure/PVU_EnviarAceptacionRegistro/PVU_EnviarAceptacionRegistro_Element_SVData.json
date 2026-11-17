@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVData",
+    "OmniProcessId": {
+        "Name": "PVU_EnviarAceptacionRegistro",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/EnviarAceptacionRegistro/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "NombreCliente": "=IF(ISBLANK(%FormulaReconocerResponse%), %accountName%,%FormulaReconocerResponse%)",
+            "NumeroDocumento": "=IF(%TipoDocumento% == \"CC\", %NumeroDocumentoCC%, IF(%TipoDocumento% == \"NI\", %NumeroDocumentoNI%, IF(%TipoDocumento% == \"CE\", %NumeroDocumentoCE%, IF(%TipoDocumento% == \"PP\", %NumeroDocumentoPS%, %numDocFromContext%))))",
+            "TipoDocumento": "=IF(%TipoDocumento% == \"CC\", \"Cédula Ciudadanía\",IF(%TipoDocumento% == \"NI\", \"NIT\", IF(%TipoDocumento% == \"CE\",\"Cédula Extranjería\",IF(%TipoDocumento% == \"PP\", \"Pasaporte\", %TipoDocumento%))))",
+            "city": "=IF(ISBLANK(%accountCity%),%CiudadDomicilio%,%accountCity%)",
+            "contentType": "CONTENTID",
+            "mail": "%CorreoElectronicoContacto%",
+            "numeroTelefono": "%minFromContext%",
+            "templateid": "CAMBIOSERV_01"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/EnviarAceptacionRegistro/Procedure/SVData"
+}

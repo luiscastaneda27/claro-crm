@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Service_OrderPaymentConfirmation",
+    "OmniProcessId": {
+        "Name": "FVU_SuccessfullyPaidOrders",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SuccessfullyPaidOrders/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "orderNumber": "=DR_GetActivationPlanOrderItems:Order:OrderNumber"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%DR_GetActivationPlanOrderItems:Order:PaymentMethod% != \"Cargo a la factura\" && %DR_GetActivationPlanOrderItems:Order:PurchaseType% != \"MIG\" && %DR_GetActivationPlanOrderItems:Order:PurchaseType% != \"FIN\" && ISBLANK(%DR_GetActivationPlanOrderItems:OrderItemESIM:Id%) && ISBLANK(DR_GetActivationPlanOrderItems:Order:ClonedOrderParent) && %originatingChannel% != \"ECOMMERCE\"",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "Service_OrderPaymentConfirmation",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "Service_OrderPaymentConfirmation",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SuccessfullyPaidOrders/Procedure/Service_OrderPaymentConfirmation"
+}

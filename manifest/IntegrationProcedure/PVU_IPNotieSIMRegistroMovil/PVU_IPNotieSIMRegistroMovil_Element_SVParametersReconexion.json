@@ -1,0 +1,33 @@
+{
+    "Description": "R5: Este tipo de notificacion aplica también para los casos de esim con origen canales",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParametersReconexion",
+    "OmniProcessId": {
+        "Name": "IPNotieSIMRegistroMovil",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNotieSIMRegistroMovil/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "_ICCID_": "%CaseDetails:ICCIDNuevoRoot%",
+            "_IMG_QR": "%IPGenerateQRCode:Details:qrCode%",
+            "_NAME1_": "%AssetDetails:Account:Name%"
+        },
+        "executionConditionalFormula": "%CaseDetails:Descripcion% == \"reconexion\" || %CaseDetails:OrigenCaso% == \"WhatsApp\" || %CaseDetails:OrigenCaso% == \"IVR\" ||  %CaseDetails:OrigenCaso% == \"SuperApp\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "parameters",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNotieSIMRegistroMovil/Procedure/SVParametersReconexion"
+}

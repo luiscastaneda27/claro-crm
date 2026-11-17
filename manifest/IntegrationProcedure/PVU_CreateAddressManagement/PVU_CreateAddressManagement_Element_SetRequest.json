@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetRequest",
+    "OmniProcessId": {
+        "Name": "CreateAddressManagement",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CreateAddressManagement/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "partyDocumentId": "%partyDocumentId%",
+            "partyDocumentTypeCode": "=IF(ISBLANK(%partyDocumentTypeCode%), %partyDocumentTypeCode%, %DMGetPartyDocumentType:documentTypeCode%)",
+            "partyEmail": "%partyEmail%",
+            "partyFirstName": "%partyFirstName%",
+            "partyGender": "%partyGender%",
+            "partyLastName": "%partyLastName%",
+            "partyName": "%partyName%",
+            "searchDocumentId": "%searchDocumentId%",
+            "searchDocumentTypeCode": "%DMGetOriginalDocumentType:documentTypeCode%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CreateAddressManagement/Procedure/SetRequest"
+}

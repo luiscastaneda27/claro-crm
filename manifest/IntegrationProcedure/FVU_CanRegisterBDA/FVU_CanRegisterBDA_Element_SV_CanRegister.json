@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CanRegister",
+    "OmniProcessId": {
+        "Name": "CanRegisterBDA",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CanRegisterBDA/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "BDA": "%LA_MergeIMEI2IntoOrderItemDevice%",
+            "canRegister": "=IF(ISNOTBLANK(%SV_FilterCanRegister:FilterCanRegister%), true, false)",
+            "showMessage": "=IF(ISNOTBLANK(FILTER(LIST(%LA_MergeIMEI2IntoOrderItemDevice%), '(showMessage == true) || (showMessageIMEI == true) || (showMessageIMEI2 == true)')), true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SV_CanRegister",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null,
+        "type": "SetValues"
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CanRegisterBDA/Procedure/SV_CanRegister"
+}

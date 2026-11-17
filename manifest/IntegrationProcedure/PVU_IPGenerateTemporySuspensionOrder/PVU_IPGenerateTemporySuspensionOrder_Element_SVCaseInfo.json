@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseInfo",
+    "OmniProcessId": {
+        "Name": "IPGenerateTemporySuspensionOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CreateOrder",
+        "OmniProcessId": {
+            "Name": "IPGenerateTemporySuspensionOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure/CB_CreateOrder",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CreateOrder",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CasoRetencionId": "=IF(ISNOTBLANK(%CaseInfo:CasoRetencionId%), %CaseInfo:CasoRetencionId%, $Vlocity.NULL)",
+            "Id": "%CaseInfo:Id%",
+            "OriginChannel": "=IF(ISNOTBLANK(%CaseInfo:OriginChannel%), %CaseInfo:OriginChannel%, $Vlocity.NULL)",
+            "esRetencion": "=IF(ISNOTBLANK(%CaseInfo:esRetencion%) && %CaseInfo:esRetencion% == true, true, $Vlocity.NULL)",
+            "fechaFinCanc": "=IF(ISNOTBLANK(%CaseInfo:fechaFinCanc%), %CaseInfo:fechaFinCanc%, $Vlocity.NULL)",
+            "fechaFinSusp": "=IF(ISNOTBLANK(%CaseInfo:fechaFinSusp%), FORMATDATETIME(CONCAT(%CaseInfo:fechaFinSusp%, 'T', FORMATDATETIME(NOW(),\"HH:mm:ss\",\"GMT\")),\"yyyy-MM-dd'T'HH:mm:ss'Z'\",\"GMT\"), '')",
+            "fechaInicioSusp": "=IF(ISNOTBLANK(%CaseInfo:fechaInicioSusp%) && DATEDIFF(%CaseInfo:fechaInicioSusp%, TODAY()) < 0, FORMATDATETIME(CONCAT(%CaseInfo:fechaInicioSusp%, 'T', FORMATDATETIME(NOW(),\"HH:mm:ss\",\"GMT\")),\"yyyy-MM-dd'T'HH:mm:ss'Z'\",\"GMT\") ,CONCAT(SUBSTRING(FORMATDATETIMEGMT(UNIXTODATETIME(DATETIMETOUNIX(NOW()) + 10000),\"yyyy-MM-dd HH:mm:ss.SSS'Z'\"),0,10),\"T\",SUBSTRING(FORMATDATETIMEGMT(UNIXTODATETIME(DATETIMETOUNIX(NOW()) + 10000),\"yyyy-MM-dd HH:mm:ss.SSS'Z'\"),11,8),\"Z\")))",
+            "hasDowngradeLast6Months": "=IF(ISNOTBLANK(%CaseInfo:hasDowngradeLast6Months%) && %CaseInfo:hasDowngradeLast6Months% == true, true, $Vlocity.NULL)",
+            "vozCliente": "=IF(ISNOTBLANK(%CaseInfo:vozCliente%), %CaseInfo:vozCliente%, $Vlocity.NULL)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure/SVCaseInfo"
+}

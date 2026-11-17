@@ -1,0 +1,69 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CreateSubscriptionSuspensionRecord",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SuspensionProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/SuspensionProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SuspensionProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "customerAccount": "%GetSuspensionInfo:Order:Account%",
+            "orderId": "%GetSuspensionInfo:Order:Id%",
+            "reasonCode": "SUSP",
+            "status": "%GetSuspensionInfo:OrderItem:Status%",
+            "statusEndDate": "=IF(ISNOTBLANK(%GetSuspensionInfo:Order:PVU_CaseInfo:fechaFinSusp%),%GetSuspensionInfo:Order:PVU_CaseInfo:fechaFinSusp%,IF(AND(  %DRE_FRLInfoUsingOrchestrationPlan:Order:SubType% = \"Robo_Perdida\",  %DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:serviceOrderType% = \"Suspension\"),FORMATDATETIME(ADDDAY(TODAY(), %OM_DaysStatusEndDate:value%), \"yyyy-MM-dd'T'HH:mm:ss\", \"America/Bogota\"),''))",
+            "statusStartDate": "%GetSuspensionInfo:Order:PVU_CaseInfo:fechaInicioSusp%",
+            "subReasonCode": "SUSCUST",
+            "subStatus": "%GetSuspensionInfo:OrderItem:SubCausal%",
+            "subscription": "%GetSuspensionInfo:OrderItem:SubscriptionId%",
+            "susByCollections": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCollections%",
+            "susByCustomer": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCustomer%",
+            "susByFraud": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByFraud%",
+            "susByLost": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByLost%",
+            "susByTheft": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByTheft%",
+            "susByWarranty": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByWarranty%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_SubscriptionSuspensionInfo",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/CreateSubscriptionSuspensionRecord"
+}

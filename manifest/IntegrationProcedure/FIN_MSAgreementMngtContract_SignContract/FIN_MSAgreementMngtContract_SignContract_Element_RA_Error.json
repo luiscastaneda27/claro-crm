@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Error",
+    "OmniProcessId": {
+        "Name": "MSAgreementMngtContract_SignContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/MSAgreementMngtContract_SignContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "%HTT_SendingSignContract:data:Exceptions|1:description%",
+            "result": {
+                "Descripcion": "",
+                "Name": "SignContract",
+                "enpoint": "/MS/RES/Resource/V1/SignContract",
+                "metodo": "POST",
+                "request": "%SVRequestBody:bodyCompleto%",
+                "response": "%HTT_SendingSignContract%",
+                "statusCode": "%HTT_SendingSignContract:responseCode%"
+            },
+            "success": "%HTT_SendingSignContract:data:isValid%",
+            "transactionID": "%HTT_SendingSignContract:data:transactionID%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%HTT_SendingSignContract:data:isValid% = false",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/MSAgreementMngtContract_SignContract/Procedure/RA_Error"
+}

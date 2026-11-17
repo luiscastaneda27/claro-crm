@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Dates",
+    "OmniProcessId": {
+        "Name": "GetSummaryData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetSummaryBillingAndDeliveryData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CutOffDay": "=SUBSTRING(%FVU_GetDataSummary:Facturacion:FechaLimite%, 8, 10)",
+            "CutOffMin": "=SUBSTRING(%FVU_GetDataSummary:Facturacion:FechaLimite%, 5, 7)",
+            "CutOffYear": "=SUBSTRING(%FVU_GetDataSummary:Facturacion:FechaLimite%, 0, 4)",
+            "EndPromiseDay": "=SUBSTRING(%SV_DataExtra:EndPromise%, 6, 8)",
+            "EndPromiseMonth": "=SUBSTRING(%SV_DataExtra:EndPromise%, 4, 6)",
+            "EndPromiseYear": "==SUBSTRING(%SV_DataExtra:EndPromise%, 0, 4)",
+            "StartPromiseDay": "=SUBSTRING(%SV_DataExtra:StartPromise%, 6, 8)",
+            "StartPromiseMonth": "=SUBSTRING(%SV_DataExtra:StartPromise%, 4, 6)",
+            "StartPromiseYear": "=SUBSTRING(%SV_DataExtra:StartPromise%, 0, 4)",
+            "TimeEndPromise": "=SUBSTRING(%SV_DataExtra:EndPromise%, 9)",
+            "TimeStartPromise": "=SUBSTRING(%SV_DataExtra:StartPromise%, 9)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetSummaryBillingAndDeliveryData/Procedure/SV_Dates"
+}

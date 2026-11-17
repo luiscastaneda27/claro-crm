@@ -1,0 +1,37 @@
+{
+    "Description": "IF(SetUrlPath:validateRequiredField == false, true, false)",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Error",
+    "OmniProcessId": {
+        "Name": "IPMSEnSpDocFind_findDocument",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPMSEnSpDocFind_findDocument/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "errorMessage": "%DM_GetMessages:Message:MainMessage%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "IF(%postMSEnSpDocFind:data:documentResponse:statusMessage% LIKE \"No se encontraron\", true, false)",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPMSEnSpDocFind_findDocument/Procedure/RA_Error"
+}

@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ValidateData",
+    "OmniProcessId": {
+        "Name": "CallInsertDataInTableBridge",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CallInsertDataInTableBridge/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "clientInBridgeTable": "=IF(%IP_InsertDataInTableBridge:error% == '0', true, false)",
+            "isWarrantyPeriodNumber": "=FUNCTION('CustomOmniStudioFunctions', 'isNumber', DR_GetAssetDetails:Asset:WarrantyPeriodProduct)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CallInsertDataInTableBridge/Procedure/SV_ValidateData"
+}

@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction1",
+    "OmniProcessId": {
+        "Name": "CalculateCFM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CalculateCFM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Success": "%IP_IVAExemptedCustomer:success%",
+            "detalle:CFMIncDiscount": "%DR_GetDataForIVAConsult:OrderItem:CFMIncDiscount%",
+            "detalle:Discount": "%DR_GetDataForIVAConsult:OrderItem:Discount%",
+            "detalle:DiscountPercent": "%SVDiscountPercent:DiscountPercent%",
+            "detalle:HasDiscount": "%DR_GetDataForIVAConsult:Discounts:HasDiscount%",
+            "detalle:cfm": "%DR_GetDataForIVAConsult:OrderItem:cfm%",
+            "detalle:cfmTotal": "=SV_cfmTotal:cfmTotal",
+            "detalle:ico": "%IP_IVAExemptedCustomer:detalle:ico%",
+            "detalle:iva": "%IP_IVAExemptedCustomer:detalle:iva%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CalculateCFM/Procedure/ResponseAction1"
+}

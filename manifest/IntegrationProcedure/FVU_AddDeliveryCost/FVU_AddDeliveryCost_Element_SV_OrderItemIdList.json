@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_OrderItemIdList",
+    "OmniProcessId": {
+        "Name": "AddDeliveryCost",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AddDeliveryCost/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "lstOrderItemId": "=FILTER(LIST(DR_GetNewOrderItemId), 'ProductCode == \"PO_EquipoPosCostoEnvioEquiFlete\"')"
+        },
+        "executionConditionalFormula": "%SV_DeliveryCostProduct:HasDeliveryCostProduct% == false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AddDeliveryCost/Procedure/SV_OrderItemIdList"
+}

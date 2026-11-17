@@ -1,0 +1,59 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "insertDataTMF",
+    "OmniProcessId": {
+        "Name": "TMFInserCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CreateTroubleTicket/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "billingAccountCode": "%billingAccountCode%",
+            "category": "%category%",
+            "channel": "=IF(%SVOrigin:channel% != NULL, %SVOrigin:channel%, %channel%)",
+            "customerVoice": "%customerVoice%",
+            "description": "%description%",
+            "documentNumber": "%documentNumber%",
+            "documentType": "%documentType%",
+            "financingCode": "%SV_FinancingAndSerialNumbers:financingCode%",
+            "serialNumber": "%SV_FinancingAndSerialNumbers:serialNumber%",
+            "status": "%status%",
+            "subcategory": "%subcategory%",
+            "subscriberNumber": "%subscriberNumber%",
+            "troubleTicketCharacteristic": "%troubleTicketCharacteristic%",
+            "type": "%DRGetRecordType:RecordType:Id%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_TMFCustomCase",
+        "remoteMethod": "insertCaseTMF",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CreateTroubleTicket/Procedure/insertDataTMF"
+}

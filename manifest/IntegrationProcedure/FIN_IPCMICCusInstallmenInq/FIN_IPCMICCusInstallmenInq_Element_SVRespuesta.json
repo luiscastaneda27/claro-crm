@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRespuesta",
+    "OmniProcessId": {
+        "Name": "IPCMICCusInstallmenInq",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPCMICCusInstallmenInq/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Capital": "=IF(%HTTPIPCMICCusInstallmenInq:statusId% = -1, 0, %HTTPIPCMICCusInstallmenInq:Capital%)",
+            "errorMessage": "%HTTPIPCMICCusInstallmenInq:errorMessage%",
+            "interesMora": "=IF(%HTTPIPCMICCusInstallmenInq:statusId% = -1, 0, %HTTPIPCMICCusInstallmenInq:interesMora%)",
+            "interesesCorrientes": "=IF(%HTTPIPCMICCusInstallmenInq:statusId% = -1, 0,%HTTPIPCMICCusInstallmenInq:interesesCorrientes%)",
+            "ivaInteresMora": "=IF(%HTTPIPCMICCusInstallmenInq:statusId% = -1, 0, %HTTPIPCMICCusInstallmenInq:ivaInteresMora%)",
+            "ivaInteresesCorrientes": "=IF(%HTTPIPCMICCusInstallmenInq:statusId% = -1, 0, %HTTPIPCMICCusInstallmenInq:ivaInteresesCorrientes%)",
+            "pagoTotal": "=IF(%HTTPIPCMICCusInstallmenInq:statusId% = -1, 0, %HTTPIPCMICCusInstallmenInq:pagoTotal%)",
+            "statusId": "=IF(%HTTPIPCMICCusInstallmenInq:statusId% = -1,\"0\",%HTTPIPCMICCusInstallmenInq:statusId%)",
+            "transactionid": "%HTTPIPCMICCusInstallmenInq:transactionid%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPCMICCusInstallmenInq/Procedure/SVRespuesta"
+}

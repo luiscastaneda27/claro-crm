@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionError",
+    "OmniProcessId": {
+        "Name": "GetUsageThresholdsAndCounters",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetUsageThresholdsAndCounters/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "code": "%DRTransformResponseData:responseStatus:code%",
+            "message": "La consulta de límite de crédito por el momento no está disponible, por favor contacte al administrador del sistema.",
+            "status": "%DRTransformResponseData:responseStatus:status%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "DRTransformResponseData:responseStatus:status != \"OK\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetUsageThresholdsAndCounters/Procedure/ResponseActionError"
+}

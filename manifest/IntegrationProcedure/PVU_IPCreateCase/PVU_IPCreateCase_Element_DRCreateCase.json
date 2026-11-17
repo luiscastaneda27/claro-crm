@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRCreateCase",
+    "OmniProcessId": {
+        "Name": "IPCreateCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCreateCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Case": "%Case%",
+            "Case:AssetImei": "%DRGetAssetById:imei%",
+            "Case:AssetMarca": "=IF(%DRGetAssetById:marca%!=null,%DRGetAssetById:marca%,%Case:AssetMarca%)",
+            "Case:AssetModelo": "=IF(%DRGetAssetById:modelo%!=null,%DRGetAssetById:modelo%,%Case:AssetModelo%)",
+            "Case:AssetSerial": "%DRGetAssetById:serial%",
+            "Case:AutorizedData": "%SVParameters:AutorizedData%",
+            "Case:NumeroCuenta": "=IF(ISNOTBLANK(%DRGetAssetById:NumeroDeCuentaFIN%),%DRGetAssetById:NumeroDeCuentaFIN%,%Case:NumeroCuenta%)",
+            "Case:ProductId": "%DRGetAssetById:Product2Id%",
+            "Case:RecordTypeId": "%DRGetRecordType:RecordType:Id%",
+            "Case:numeroDeCredito": "%DRGetAssetById:numeroDeCredito%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_DRCreateCase",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCreateCase/Procedure/DRCreateCase"
+}

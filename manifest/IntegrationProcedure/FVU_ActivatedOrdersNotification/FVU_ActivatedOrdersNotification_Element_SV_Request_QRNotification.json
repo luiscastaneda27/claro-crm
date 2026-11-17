@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request_QRNotification",
+    "OmniProcessId": {
+        "Name": "ActivatedOrdersNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ActivatedOrdersNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "NotificacionEnvioDeQR",
+        "OmniProcessId": {
+            "Name": "ActivatedOrdersNotification",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ActivatedOrdersNotification/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ActivatedOrdersNotification/Procedure/NotificacionEnvioDeQR",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "NotificacionEnvioDeQR",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "attachment": [
+            ],
+            "communicationOrigin": "SALESFORCE-VENTAS",
+            "communicationType": "COMERCIAL",
+            "contentType": "CONTENTID",
+            "deliveryReceipts": "N",
+            "messageType": "SMTP",
+            "parameters": {
+                "_ICCID_": "%DR_GetDataForNotification:Order:ICCIDWithCheckDigit%",
+                "_IMG_QR_": "%PVU_IPMSLogResoVirtualSIMQR:Details:qrCode%",
+                "_NAME1_": "%DR_GetDataForNotification:Account:FirstName%"
+            },
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": "%DR_GetDataForNotification:Account:Email%",
+            "reenvio": false,
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Tu Sim Virtual ya está disponible",
+            "templateId": "QR01",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "RequestSentQRNotification",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ActivatedOrdersNotification/Procedure/SV_Request_QRNotification"
+}

@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ConcatListItemcCtaSel",
+    "OmniProcessId": {
+        "Name": "IPRelateAssetToCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRelateAssetToCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopBlock1",
+        "OmniProcessId": {
+            "Name": "IPRelateAssetToCase",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRelateAssetToCase/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRelateAssetToCase/Procedure/LoopBlock1",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopBlock1",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ConcatListItemcCtaSel": "=%ConcatStringCtaSel% + \",\" + IF(AND(%SVFilterAssets:filteredAssets:AssetOrderPaymentType% == \"Contado\", NOT(ISBLANK(%SVFilterAssets:filteredAssets:AssetSerial%))), \"No Aplica\", (%SVFilterAssets:filteredAssets:AssetBillingAccountNumber%))"
+        },
+        "executionConditionalFormula": "AND(ISNOTBLANK(SVFilterAssets:filteredAssets:AssetSerial), %SVFilterAssets:filteredAssets:AssetOrderPaymentType% == \"Contado\") || ISNOTBLANK(SVFilterAssets:filteredAssets:AssetBillingAccountNumber)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues11",
+        "responseJSONNode": "ConcatStringCtaSel",
+        "responseJSONPath": "ConcatListItemcCtaSel",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRelateAssetToCase/Procedure/ConcatListItemcCtaSel"
+}

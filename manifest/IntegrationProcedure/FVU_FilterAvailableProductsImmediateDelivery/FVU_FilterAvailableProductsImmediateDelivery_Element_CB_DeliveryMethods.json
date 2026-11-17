@@ -1,0 +1,22 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CB_DeliveryMethods",
+    "OmniProcessId": {
+        "Name": "FilterAvailableProductsImmediateDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "(%AvailableDeliveryMethod:pickupBool% || %AvailableDeliveryMethod:immediatepickupBool% || %AvailableDeliveryMethod:deliveryBool%) && (ISNOTBLANK(SV_GetOnlyDeliveryActive:PickUp|1:avaStock) || ISNOTBLANK(SV_GetOnlyDeliveryActive:ImmediatePickUp|1:avaStock) || ISNOTBLANK(SV_GetOnlyDeliveryActive:Delivery|1:avaStock))",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock9",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/CB_DeliveryMethods"
+}

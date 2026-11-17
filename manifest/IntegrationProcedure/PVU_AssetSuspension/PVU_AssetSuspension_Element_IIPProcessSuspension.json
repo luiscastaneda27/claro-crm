@@ -1,0 +1,61 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IIPProcessSuspension",
+    "OmniProcessId": {
+        "Name": "AssetSuspension",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/AssetSuspension/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Case": {
+                "AccountId": "%GetSuspensionDayByAssetId:Details:AccountId%",
+                "AssetId": "%SetAssetId:assetId%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "DiasRestantesSusp": "%SetRangeDays:dateSuspended%",
+                "FechaFinSusp": "%fechaFin%",
+                "FechaInicioSusp": "%fechaInicio%",
+                "RecordTypeName": "GestionCasosPosventa",
+                "Status": "Abierto",
+                "SubCategoria": "Suspensiones",
+                "VozCliente": "Suspensión Temporal Voluntaria"
+            },
+            "Email": "%GetSuspensionDayByAssetId:Details:Email%",
+            "Linea": "%GetSuspensionDayByAssetId:Details:NumeroLineaAsset%",
+            "MetodoNotif": "%GetSuspensionDayByAssetId:Details:MedioNotificacionPreferido%",
+            "Nombre": "%GetSuspensionDayByAssetId:Details:Nombre%",
+            "Telefono": "%GetSuspensionDayByAssetId:Details:Telefono%",
+            "notificationMessage": "Sr.(a), se ha recibido la solicitud de suspensión temporal del servicio la cuál quedará activa desde el día {0} hasta el {1}"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "SetValidDays:isValidDays == true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_FlujoSuspension",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/AssetSuspension/Procedure/IIPProcessSuspension"
+}

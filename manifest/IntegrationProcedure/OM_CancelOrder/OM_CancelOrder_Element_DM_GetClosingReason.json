@@ -1,0 +1,49 @@
+{
+    "Description": "Se obtiene el valor de motivo de cierre de la orden",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DM_GetClosingReason",
+    "OmniProcessId": {
+        "Name": "OM_ValidatePONRAndCancelOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CancelOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+            "MotivoCierre": "%DM_GetClosingReason:Order:MotivoCierre%"
+        },
+        "bundle": "OM_DRE_GetOrderDetail",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+            {
+                "element": "orderId",
+                "inputParam": "orderId"
+            }
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataMapperExtractAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CancelOrder/Procedure/DM_GetClosingReason"
+}

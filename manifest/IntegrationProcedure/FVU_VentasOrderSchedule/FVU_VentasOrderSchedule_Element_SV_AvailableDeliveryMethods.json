@@ -1,0 +1,47 @@
+{
+    "Description": "Si contamos con inventario completo y todos los productos existen en el método de entrega, entonces es TRUE el metodo en entrega.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AvailableDeliveryMethods",
+    "OmniProcessId": {
+        "Name": "FVU_VentasOrderSchedule",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/VentasOrderSchedule/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock3",
+        "OmniProcessId": {
+            "Name": "FVU_VentasOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/VentasOrderSchedule/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/VentasOrderSchedule/Procedure/ConditionalBlock3",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock3",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "delivery": "=IF(%SV_CompareCountProducts:existInDelivery% && %SV_DeliveryMethodOutStock:delivery% == FALSE, TRUE, FALSE)",
+            "immediatepickup": "=IF(%SV_CompareCountProducts:existInImmediatepickup% && %SV_DeliveryMethodOutStock:immediatepickup%  == FALSE, TRUE, FALSE)",
+            "pickup": "=IF(%SV_CompareCountProducts:existInPickup% && %SV_DeliveryMethodOutStock:pickup%  == FALSE, TRUE, FALSE)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues15",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/VentasOrderSchedule/Procedure/SV_AvailableDeliveryMethods"
+}

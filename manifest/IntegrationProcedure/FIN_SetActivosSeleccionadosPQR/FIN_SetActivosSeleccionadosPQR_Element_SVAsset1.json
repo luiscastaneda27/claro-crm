@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVAsset1",
+    "OmniProcessId": {
+        "Name": "FIN_SetActivosSeleccionadosPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockFianza",
+        "OmniProcessId": {
+            "Name": "FIN_SetActivosSeleccionadosPQR",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure/ConditionalBlockFianza",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockFianza",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CuentaFinSA": "=%SVListAssets1:Assetsfn:RefCredito921%",
+            "NameSA": "=%SVListAssets1:Assetsfn:Name1%",
+            "NumCredSA": "%SVListAssets1:Assetsfn:NumeroCredito%",
+            "SerialSA": "=IF(%SVListAssets1:Assetsfn:SerialEquipo%==null,%SVListAssets1:Assetsfn:IMEI%,%SVListAssets1:Assetsfn:SerialEquipo%)"
+        },
+        "executionConditionalFormula": "%SVListAssets1:AssetsCount% = 1 || %SVListAssets1:AssetsCount% < 1",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure/SVAsset1"
+}

@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSumatoriaDiasSuspensionTemporal",
+    "OmniProcessId": {
+        "Name": "IPValidacionesSuspensiones",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesSuspensiones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBDiasSuspensionTemporal",
+        "OmniProcessId": {
+            "Name": "IPValidacionesSuspensiones",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesSuspensiones/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesSuspensiones/Procedure/LBDiasSuspensionTemporal",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBDiasSuspensionTemporal",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "diasSuspensionTemporal": "=%diffDiasTemporal% + IF(DATEDIFF(%suspensionesVoluntarias:StatusStartDate%,%suspensionesVoluntarias:StatusEndDate%) > 0, DATEDIFF(%suspensionesVoluntarias:StatusStartDate%,%suspensionesVoluntarias:StatusEndDate%) , 0)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "diffDiasTemporal",
+        "responseJSONPath": "diasSuspensionTemporal",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesSuspensiones/Procedure/SVSumatoriaDiasSuspensionTemporal"
+}

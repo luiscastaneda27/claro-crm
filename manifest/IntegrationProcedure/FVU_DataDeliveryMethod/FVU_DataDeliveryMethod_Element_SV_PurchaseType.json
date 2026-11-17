@@ -1,0 +1,30 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_PurchaseType",
+    "OmniProcessId": {
+        "Name": "DataDeliveryMethod",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataDeliveryMethod/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "NewPurchaseType": "=IF(%DRGetOrder:PurchaseType% == \"FIN\",\"FIN\",IF(ISBLANK(ListActionProductMobile) && ISBLANK(ListActionProductDevice) && ISBLANK(ListActionProductTech), \"NAP\",IF(%DRGetOrder:PurchaseType% == \"POR\", \"POR\", IF(%DRGetOrder:PurchaseType% == \"MIG\", \"MIG\", IF(%DRGetOrder:PurchaseType% ==\"ATT\",\"ATT\", IF(%DRGetOrder:PurchaseType% == \"ATT\", \"ATT\", \"ACT\"))))))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataDeliveryMethod/Procedure/SV_PurchaseType"
+}

@@ -1,0 +1,67 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPNotificationCusChannelSMTP",
+    "OmniProcessId": {
+        "Name": "EnviarNotificacionDesglosePago",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/EnviarNotificacionDesglosePago/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "contentType": "CONTENTID",
+            "deliveryReceipts": "N",
+            "description": "%GetAccountNotifChoice:Case:VozCliente%",
+            "messageType": "SMTP",
+            "parameters": {
+                "_BODY_": "%SVParametros:contenido%",
+                "_NAME1_": "%SVData:nombreCliente%",
+                "_NUMER_LINEA_": "%SVData:nroCompleto%",
+                "_PROCESO_": "%GetAccountNotifChoice:Case:VozCliente%"
+            },
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "mail": "%SVData:correoElectronico%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "%SVParametros:asunto%",
+            "templateid": "CAMBIOSERV_01",
+            "tryTimes": 3
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%SVData:isEmail% = TRUE",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPNotificationCusChannel",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "respuesta",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/EnviarNotificacionDesglosePago/Procedure/IPNotificationCusChannelSMTP"
+}

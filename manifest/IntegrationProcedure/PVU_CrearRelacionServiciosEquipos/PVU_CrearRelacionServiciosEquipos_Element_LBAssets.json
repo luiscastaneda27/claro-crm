@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LBAssets",
+    "OmniProcessId": {
+        "Name": "CrearRelacionServiciosEquipos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CrearRelacionServiciosEquipos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "Assets",
+        "loopOutput": {
+            "CasoRelacionado": "=%CaseId%",
+            "ConceptoDevolucion": "=%SVConceptoDev:valor%",
+            "ConceptoDevolucionCp": "=%SVConceptoDevCp:valor%",
+            "ConceptoFianza": "=%SVConceptoFianza:valor%",
+            "CuentaFacturacion": "=%CuentaFacturacion%",
+            "CuotaInicial": "=%OrderVenta:CuotaInicial%",
+            "EsFinanciado": "=%SVDatos:isEquipoFinanciado%",
+            "ExternalAccountId": "=%SVExternalAccountID:valor%",
+            "FechaFactura": "=%OrderVenta:CreateDate%",
+            "NroCredito": "=%SVNumCredito:valor%",
+            "NroNotaCredito": "=%NoNotaCredito%",
+            "NroTtoNotaCredito": "=%NoTtoNotaCredito%",
+            "Orden": "=%OrderVenta:OrderId%",
+            "SerialImei": "=%SVDatos:serialImei%",
+            "TipoProducto": "=%SVDatos:tipoProducto%",
+            "ValorDevolucion": "=IF(%SVDatos:isEquipoFinanciado%, 0, IF(ISBLANK(%SVValorDevolucion:valor%), 0 , %SVValorDevolucion:valor%))",
+            "ValorDevolucionCp": "=IF(%SVDatos:isEquipoFinanciado%, IF(ISBLANK(%SVValorDevolucionFIN:valor%), 0 , %SVValorDevolucionFIN:valor%), 0)",
+            "ValorDevolucionFianza": "=%SVValorDevolucionFianza:valor%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CrearRelacionServiciosEquipos/Procedure/LBAssets"
+}

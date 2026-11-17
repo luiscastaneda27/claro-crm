@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValues1",
+    "OmniProcessId": {
+        "Name": "GetAssetByAccountId",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetAssetByAccountId/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopBlock1",
+        "OmniProcessId": {
+            "Name": "GetAssetByAccountId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetAssetByAccountId/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetAssetByAccountId/Procedure/LoopBlock1",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopBlock1",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetId": "%getAssetByAccountId:assets:AssetId%",
+            "AssetMin": "%DRGetAssetMin:AssetMin%",
+            "AssetcollectionFlag": "=IF(ISNOTBLANK(%getAssetByAccountId:assets:collectionFlag%) && %getAssetByAccountId:assets:collectionFlag% == 0, TRUE, FALSE)",
+            "haveCasesPort": "=ISNOTBLANK(%DRGetCasesPortaOut%)",
+            "isAdditionalData": "=ISNOTBLANK(%DRGetAdditionalServices:assets:name%)",
+            "isSelectedValues": "=ISNOTBLANK(%DRGetSelectedValues:AttributesSelected%)",
+            "paquetesRoaming": "=%IPGetRoamingPaquetes:paquetesActivosSize%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetAssetByAccountId/Procedure/SetValues1"
+}

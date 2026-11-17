@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVValidationPlazo",
+    "OmniProcessId": {
+        "Name": "FIN_PlazoSelectIP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/PlazoSelectIP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockTyT",
+        "OmniProcessId": {
+            "Name": "FIN_PlazoSelectIP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/PlazoSelectIP/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/PlazoSelectIP/Procedure/ConditionalBlockTyT",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockTyT",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "PlazosValidation": "=IF(%IPPaymentInitialTerm:terms:Numero_Mayor%<%IPValidationPlazo:ValidacionMatrizDePlazos:CuotaMax%,LIST(%IPPaymentInitialTerm:terms:Plazos_Validos_HDC%),LIST(%IPValidationPlazo:ValidacionMatrizDePlazos:PLAZOS%))",
+            "validPlazo": "=$Vlocity.TRUE"
+        },
+        "executionConditionalFormula": "IPValidationPlazo:success != $Vlocity.FALSE && IPValidationPlazo:ValidacionMatrizDePlazos:Disponible != $Vlocity.FALSE && IPValidationPlazo:ValidacionMatrizDePlazos:Financiado!= $Vlocity.FALSE",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/PlazoSelectIP/Procedure/SVValidationPlazo"
+}

@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRPCreateAccountRTBilling",
+    "OmniProcessId": {
+        "Name": "insertCustomerTMF",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreateCustomer/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "accountId": "%CallClassCreateAccountContact:accountId%",
+            "addressInformation": "%addressInformation%",
+            "name": "Dirección Secundaria de Facturación",
+            "recordType": "Billing"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_DRPCreateAccountAddressBilling",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%CallClassCreateAccountContact:status% == \"Success\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreateCustomer/Procedure/DRPCreateAccountRTBilling"
+}

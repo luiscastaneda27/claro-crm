@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVEliminarDupla",
+    "OmniProcessId": {
+        "Name": "ValidarDuplasAdicion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcValidarDuplasAdicion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "apellidos": "=%apellidos%",
+            "ciudad": "=%ciudad%",
+            "detalle": "=%detalle%",
+            "direccion": "=%direccion%",
+            "imei": "=%imei%",
+            "imsi": "=%imsi%",
+            "infoLegal": "=%infoLegal%",
+            "marca": "=%marca%",
+            "min": "=%min%",
+            "modelo": "=%modelo%",
+            "nombres": "=%nombres%",
+            "numeroDoc": "=%numeroIdentificacion%",
+            "tipoDoc": "=%tipoIdentificacion%",
+            "tipoOperacion": "=%tipoOperacion%",
+            "userId": "=%userId%"
+        },
+        "executionConditionalFormula": "%consultaDuplicadosResponse:cantDuplas% = 1 && %matchImei:coincideImei% = true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues11",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcValidarDuplasAdicion/Procedure/SVEliminarDupla"
+}

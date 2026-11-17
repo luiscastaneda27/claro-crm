@@ -1,0 +1,42 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCancelacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountId": "%suspensiones:Asset:AccountId%",
+            "DiasDeSuspensionRoboPerdidaUltimoAnio": "= IF(ISNOTBLANK(%diffDiasRoboPerdida%),%diffDiasRoboPerdida%,0)",
+            "DiasDeSuspensionVoluntariaUltimoAnio": "=IF(ISNOTBLANK(%diffDiasTemporal%),%diffDiasTemporal%,0)",
+            "DiasDisponiblesParaSuspender": "=60 - %diffDiasTemporal%",
+            "Email": "%suspensiones:Account:Email%",
+            "MedioNotificacionPreferido": "%suspensiones:Account:MedioNotificacionPreferido%",
+            "Mensajes": "%IPMensajesPorGestion%",
+            "Nombre": "%suspensiones:Account:Name%",
+            "NumeroLineaAsset": "=TOSTRING(%suspensiones:Subscription:MSISDN%)",
+            "RootAssetId": "%suspensiones:ParentAsset:RootItemId%",
+            "SuspensionesRoboPerdida": "=LIST(%suspensionesRoboPerdida%)",
+            "SuspensionesVoluntarias": "=LIST(%suspensionesVoluntarias%)",
+            "Telefono": "=\"57\" + TOSTRING(%suspensiones:Account:Phone%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCancelacion/Procedure/SVResponse"
+}

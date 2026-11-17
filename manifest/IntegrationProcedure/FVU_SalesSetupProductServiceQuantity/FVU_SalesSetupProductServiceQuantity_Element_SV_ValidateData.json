@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ValidateData",
+    "OmniProcessId": {
+        "Name": "FVU_SalesSetupProductServiceQuantity",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesSetupProductServiceQuantity/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DailyProductQuantityLimit": "==IF(%DR_QuantityLimit:ProductCountDaily% >= %DR_GetSalesSetup:ProductQuantityDailyLimit%,true,false)",
+            "DailyServiceQuantityLimit": "==IF(%DR_QuantityLimit:ServiceCountDaily% >= %DR_GetSalesSetup:ServiceQuantityDailyLimit%,true,false)",
+            "MonthlyProductQuantityLimit": "==IF(%DR_QuantityLimit:ProductCountMonthly% >= %DR_GetSalesSetup:ProductQuantityMonthlyLimit%,true,false)",
+            "MonthlyServiceQuantityLimit": "==IF(%DR_QuantityLimit:ServiceCountMonthly% >= %DR_GetSalesSetup:ServiceQuantityMonthlyLimit%,true,false)",
+            "ProductAmountLimitNew": "=IF(%DR_GetAccountId:totalProducts%  > 1,false,false)",
+            "WeeklyProductQuantityLimit": "==IF(%DR_QuantityLimit:ProductCountWeekly% >= %DR_GetSalesSetup:ProductQuantityWeeklyLimit%,true,false)",
+            "WeeklyServiceQuantityLimit": "==IF(%DR_QuantityLimit:ServiceCountWeekly% >= %DR_GetSalesSetup:ServiceQuantityWeeklyLimit%,true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesSetupProductServiceQuantity/Procedure/SV_ValidateData"
+}

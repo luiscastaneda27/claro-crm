@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVmail",
+    "OmniProcessId": {
+        "Name": "FlujoReconexion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoReconexion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "contentType": "CONTENTID",
+            "deliveryReceipts": "N",
+            "description": "=IF(%subCausal% == \"Sus Revisión Protección Tecnológica\" || %subCausal% == \"Suspensión Por Consumo Inusual\",\"Reconexión Proceso Gpt\", IF(%subCausal% == \"Sus Verificación Prot al Cliente\" || %subCausal% == \"Sus Verificación Negación del servicio\", \"Reconexión Proceso Prevención Fraude\", \"Reconexión Suspensión Temporal Voluntaria\"))",
+            "messageType": "SMTP",
+            "parameters": {
+                "_BODY_": "%RAGetMessage:mensajeParametrizado%",
+                "_NAME1_": "%Nombre%",
+                "_NUMER_LINEA_": "%Linea%",
+                "_PROCESO_": "Reconexión Suspensión Temporal Voluntaria"
+            },
+            "profileId": "CAMBIOSERV",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "mail": "%Email%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "=IF(%subCausal% == \"Sus Revisión Protección Tecnológica\" || %subCausal% == \"Suspensión Por Consumo Inusual\",\"Reconexión Proceso Gpt\", IF(%subCausal% == \"Sus Verificación Prot al Cliente\" || %subCausal% == \"Sus Verificación Negación del servicio\", \"Reconexión Proceso Prevención Fraude\", \"Reconexión Suspensión Temporal Voluntaria\"))",
+            "templateid": "CAMBIOSERV_01",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "%MetodoNotif% == \"Correo electrónico\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "DataNotif",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoReconexion/Procedure/SVmail"
+}

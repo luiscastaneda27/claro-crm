@@ -1,0 +1,47 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ShowWekMessage",
+    "OmniProcessId": {
+        "Name": "SalesFraudValidations",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesFraudValidations/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_ShowMessageWeek",
+        "OmniProcessId": {
+            "Name": "SalesFraudValidations",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesFraudValidations/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesFraudValidations/Procedure/CB_ShowMessageWeek",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_ShowMessageWeek",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "showPlan": "=IF(%SV_ListOrderSize:lstOrderPlan% + %SV_ListSizeAsset:lstPlanWeek% > %DR_GetSalesSetup:ServiceQuantityWeeklyLimit%, true, false)",
+            "showTyT": "=IF(%SV_ListOrderSize:lstOrderTyTHand% + %SV_ListOrderSize:lstOrderTyTTech% + %SV_ListSizeAsset:lstTyTTechWeek% + %SV_ListSizeAsset:lstTyTHandWeek% > %DR_GetSalesSetup:ProductQuantityWeeklyLimit% ,true, false)",
+            "showTyTHand": "=IF(%SV_ListOrderSize:lstOrderTyTHand% + %SV_ListSizeAsset:lstTyTHandWeek% > %DR_GetSalesSetup:ProductQuantityWeeklyLimit% ,true, false)",
+            "showTyTTech": "=IF(%SV_ListOrderSize:lstOrderTyTTech% + %SV_ListSizeAsset:lstTyTTechWeek% > %DR_GetSalesSetup:ProductQuantityWeeklyLimit% ,true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues9",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesFraudValidations/Procedure/SV_ShowWekMessage"
+}

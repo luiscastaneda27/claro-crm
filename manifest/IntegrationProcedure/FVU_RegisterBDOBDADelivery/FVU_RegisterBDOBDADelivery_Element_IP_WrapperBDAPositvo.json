@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_WrapperBDAPositvo",
+    "OmniProcessId": {
+        "Name": "RegisterBDOBDADelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_OrderItemListConsult",
+        "OmniProcessId": {
+            "Name": "RegisterBDOBDADelivery",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/LB_OrderItemListConsult",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_OrderItemListConsult",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "identificacion": "=%GetOrderData:Order:Account:DocumentNumber%",
+            "imei": "=IF(%OrderLB:OrderItem:OrderProductIMEI% != \"\",%OrderLB:OrderItem:OrderProductIMEI%,%OrderLB:OrderItem:IMEINumber2%)",
+            "imei2": "%consultaIMEIResult:IMEINumber2%",
+            "isDualSIM": "%consultaIMEIResult:isDualSIM%",
+            "tipoIdentificacion": "=%GetOrderData:Order:Account:DocumentType%"
+        },
+        "additionalOutput": {
+            "IMEI": "%OrderLB:OrderItem:OrderProductIMEI%",
+            "IMEI2": "%IP_ConsultaIMEIDualSIM:imei2%",
+            "orderProductId": "%OrderLB:OrderItem:OrderProductId%"
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "FVU_WrapperBDAConsult",
+        "label": "IntegrationProcedureAction4",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "DBAPositivo",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/IP_WrapperBDAPositvo"
+}

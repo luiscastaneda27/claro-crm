@@ -1,0 +1,22 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CB_CloseCaseNegacionAprobada",
+    "OmniProcessId": {
+        "Name": "IPNegacionPortabilidadByCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%GetAssetInfoByCaseId:caseEstadoPortOut% == \"Aprobada\" && (%GetAssetInfoByCaseId:assetStatus% = \"Active\" || %GetAssetInfoByCaseId:assetStatus% = \"Suspended\") && ISBLANK(%GetActiveOrderPortOutFromAsset:Orders:OrderId%)",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock1",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNegacionPortabilidadByCase/Procedure/CB_CloseCaseNegacionAprobada"
+}

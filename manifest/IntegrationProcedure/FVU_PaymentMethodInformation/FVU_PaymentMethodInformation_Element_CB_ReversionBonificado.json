@@ -1,0 +1,23 @@
+{
+    "Description": "CB para setear por defecto cargo a la factura en  el metodo de pago cuando esta bonificado(totalTransactionValue = 0) y es el proceso de Reversión",
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CB_ReversionBonificado",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentMethodInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRGetUserDetails:UserDetails:Role% = 'Backoffice Reversión' && %totalTransactionValue% = 0",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock7",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/CB_ReversionBonificado"
+}

@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetIntegrationLog",
+    "OmniProcessId": {
+        "Name": "PVU_ConsultaFacturasDeCliente_IntegrationProcedure",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ConsultaFacturasDeCliente/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Endpoint": "='/ros-rest/APIMCMICMSCuInInqConsOCC/ConsOCCCuInInq'",
+            "Metodo": "='GET'",
+            "Name": "='ConsOCCCuInInq'",
+            "Request": "=IF(%IPConsultaDeFacturas:success% == false,%IPConsultaDeFacturas:result:request%, %IPConsultaDeFacturas:request%)",
+            "Response": "=IF(%IPConsultaDeFacturas:success% == false, %IPConsultaDeFacturas:result:response%, TOSTRING(%IPConsultaDeFacturas:getInvoiceDetailsResponse%))",
+            "StatusCode": "=IF(%IPConsultaDeFacturas:success% == false, '404, '200')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ConsultaFacturasDeCliente/Procedure/SetIntegrationLog"
+}

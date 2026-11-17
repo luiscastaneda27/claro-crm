@@ -1,0 +1,87 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseSuccess",
+    "OmniProcessId": {
+        "Name": "FlujoCanalesDig",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "updateCase",
+        "OmniProcessId": {
+            "Name": "FlujoCanalesDig",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/updateCase",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "updateCase",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CargoFact": "False",
+            "Categoria": "Soporte, Fallas de Servicio y Equipos",
+            "Id": "%SVInput:CaseId%",
+            "IdProceso": "%SVProccessName:ProccessName%",
+            "OrderId": "%IP_OrdenOM:OrderId%",
+            "RequestProcessInfo": {
+                "IPCheckoutOrder": {
+                    "OrderId": "%IP_OrdenOM:OrderId%"
+                },
+                "IPCreateOrder": {
+                    "AssetId": "%SVInput:AssetId%",
+                    "CaseInfo": {
+                        "Id": "%SVInput:CaseId%"
+                    },
+                    "Motivo": "%SVInput:Motivo%",
+                    "ProcessName": "%SVProccessName:ProccessName%"
+                },
+                "IPUpdateOrder": {
+                    "CaseInfo": {
+                        "Id": "%SVInput:CaseId%"
+                    },
+                    "ICCID": "%CaseInfo:ICCID_Temporal%",
+                    "OrderId": "%IP_OrdenOM:OrderId%",
+                    "TipoSIM": "%SVInput:tipoSIM%",
+                    "proccessName": "%SVProccessName:ProccessName%"
+                },
+                "SVInputCambioESIM": {
+                    "AssetId": "%assetId%",
+                    "CaseId": "%caseid%",
+                    "ICCID": "%CaseInfo:ICCID_Temporal%",
+                    "Motivo": "%motivo%",
+                    "Reconexion": "%reconexion%",
+                    "tipoSIM": "%tipoSim%"
+                }
+            },
+            "RequestProcessStatusDetail": {
+                "IPCheckoutOrder": "%IPCheckoutOrder%",
+                "IPCreateOrder": "%IP_OrdenOM%",
+                "IPUpdateOrder": "%IPUpdateOrder%"
+            },
+            "Status": "En curso",
+            "SubCategoria": "Fallas de Servicio y Equipos",
+            "SubEstado": "Pendiente ejecución de la orden",
+            "oldICCID": "%DRGetTypeSIMAsset:iccid_old%"
+        },
+        "executionConditionalFormula": "%IPCheckoutOrder:EndProcess% == 'success'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "SVCaseUpdate",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/SVCaseSuccess"
+}

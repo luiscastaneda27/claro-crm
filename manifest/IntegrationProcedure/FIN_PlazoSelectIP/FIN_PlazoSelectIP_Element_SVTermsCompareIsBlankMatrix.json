@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVTermsCompareIsBlankMatrix",
+    "OmniProcessId": {
+        "Name": "FIN_PlazoSelectIP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/PlazoSelectIP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockTecnologia",
+        "OmniProcessId": {
+            "Name": "FIN_PlazoSelectIP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/PlazoSelectIP/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/PlazoSelectIP/Procedure/ConditionalBlockTecnologia",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockTecnologia",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "PlazosCompareIsBlankMatrix": "=IF(%IPPaymentInitialTerm:terms:Numero_Mayor%<%IPPriceTermValidation:RemoteAction:numeroMayor%,LIST(%IPPaymentInitialTerm:terms:Plazos_Validos_HDC%),LIST(%IPPriceTermValidation:RemoteAction:Plazos%))"
+        },
+        "executionConditionalFormula": "%IPValidationPlazo:success% = $Vlocity.false || %IPValidationPlazo:ValidacionMatrizDePlazos:Disponible% = $Vlocity.false || %IPValidationPlazo:ValidacionMatrizDePlazos:Financiado% = $Vlocity.false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/PlazoSelectIP/Procedure/SVTermsCompareIsBlankMatrix"
+}

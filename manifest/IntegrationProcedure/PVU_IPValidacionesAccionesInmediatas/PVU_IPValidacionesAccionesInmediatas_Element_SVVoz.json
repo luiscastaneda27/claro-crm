@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVVoz",
+    "OmniProcessId": {
+        "Name": "IPValidacionesAccionesInmediatas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesAccionesInmediatas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "IsBackOffice": "=IF(FILTER(LIST(%PVU_DRE_GetPermSetGroup:PermSetGroup%),'DeveloperName == \"PVU_operacionesBackOfficeNivel2\"'),true,false)",
+            "VozCliente": "=IF(%SVInput:Context% = 'Case',%DRE_GetCaseInfo:Case:PVU_Level3__c%,%VozCliente%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesAccionesInmediatas/Procedure/SVVoz"
+}

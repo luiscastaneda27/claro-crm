@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "IPChargesNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Log:Descripcion": "%SVGetInput% // %HTTPChargesNotification:message%%DRTSetJsonResponse:fault:errorMessage%%DRTSetJsonResponse:responseStatus:message% ////",
+            "Log:Endpoint": "%SVGlobal:path%",
+            "Log:Metodo": "POST",
+            "Log:Name": "IPChargesNotification",
+            "Log:Request": "%DRTSetXMLRequest%",
+            "Log:RequestData": "%SVGetInput%",
+            "Log:Response": "%HTTPChargesNotification%",
+            "httpCode": "%HTTPChargesNotificationInfo:statusCode%",
+            "httpStatus": "%HTTPChargesNotificationInfo:status%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "DRTSetJsonResponse",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotification/Procedure/ResponseAction"
+}

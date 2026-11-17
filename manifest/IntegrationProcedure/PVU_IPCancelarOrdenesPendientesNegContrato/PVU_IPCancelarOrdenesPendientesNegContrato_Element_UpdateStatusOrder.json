@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpdateStatusOrder",
+    "OmniProcessId": {
+        "Name": "IPCancelarOrdenesPendientesNegContrato",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCancelarOrdenesPendientesNegContrato/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_UpdateStatusOrder",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "SVSize:SizeListOrders > 0",
+        "failOnStepError": true,
+        "failureConditionalFormula": "UpdateStatusOrder:Order_1|1:UpsertSuccess == false",
+        "failureResponse": {
+            "Details": "=\"Error al actualizar Order -%PVU_UpdateStatusOrder:Order_1|1:UpsertError%\"",
+            "EndProcess": "fail"
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "LBListOrdenes:orderUpdate",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCancelarOrdenesPendientesNegContrato/Procedure/UpdateStatusOrder"
+}

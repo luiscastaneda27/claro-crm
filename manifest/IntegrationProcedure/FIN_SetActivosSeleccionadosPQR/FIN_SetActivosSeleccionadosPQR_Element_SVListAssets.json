@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVListAssets",
+    "OmniProcessId": {
+        "Name": "FIN_SetActivosSeleccionadosPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockEquipoFinanciado",
+        "OmniProcessId": {
+            "Name": "FIN_SetActivosSeleccionadosPQR",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure/ConditionalBlockEquipoFinanciado",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockEquipoFinanciado",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetsCount": "=IF(ISBLANK(FILTER(LIST(%Assets%), 'CheckboxAssetFin == true')),0,LISTSIZE(FILTER(LIST(%Assets%), 'CheckboxAssetFin == true')))",
+            "Assetsfn": "=FILTER(LIST(%Assets%), 'CheckboxAssetFin == true')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure/SVListAssets"
+}

@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccess",
+    "OmniProcessId": {
+        "Name": "MSLogResoVirtualSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPMSLogResoVirtualSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "iccid": "%CallOutMSLogResoVirtualSIM:data%",
+                "message": "%CallOutMSLogResoVirtualSIM:message%",
+                "responseCode": "%CallOutMSLogResoVirtualSIM:responseCode%"
+            },
+            "EndProcess": "Success",
+            "isInventoryAvailable": "=IF(%CallOutMSLogResoVirtualSIM:responseCode% = '200', 'available', IF(%CallOutMSLogResoVirtualSIM:responseCode% = '404','notavailable','fail'))"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPMSLogResoVirtualSIM/Procedure/ResponseActionSuccess"
+}

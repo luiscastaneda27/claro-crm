@@ -1,0 +1,80 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LA_FormatFRLAttributeValuesReactivateChangeSIM",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ReactivationProcessChangeSim",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/ReactivationProcessChangeSim",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ReactivationProcessChangeSim",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": false,
+        "advancedMergeMap": [
+        ],
+        "allowMergeNulls": true,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "",
+        "executionConditionalFormula": "%IsLastSuspensionChangeSim:lastSuspension% == 1",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "",
+        "hasPrimary": false,
+        "label": "ListAction6",
+        "mergeFields": [
+        ],
+        "mergeListsOrder": [
+            "DMT_SetFRLAttributeValuesReactivateChangeSIM"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+            "TechPCsusByCollections": "=IF(TechPCsusByCollections != null, TOSTRING(TechPCsusByCollections), \"\")",
+            "TechPCsusByCustomer": "=IF(TechPCsusByCustomer != null, TOSTRING(TechPCsusByCustomer), \"\") ",
+            "TechPCsusByFraud": "=IF(TechPCsusByFraud != null, TOSTRING(TechPCsusByFraud), \"\")",
+            "TechPCsusByLost": "=IF(TechPCsusByLost != null, TOSTRING(TechPCsusByLost), \"\")",
+            "TechPCsusByTheft": "=IF(TechPCsusByTheft != null, TOSTRING(TechPCsusByTheft), \"\")",
+            "TechPCsusByWarranty": "=IF(TechPCsusByWarranty != null, TOSTRING(TechPCsusByWarranty), \"\")"
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/LA_FormatFRLAttributeValuesReactivateChangeSIM"
+}

@@ -1,0 +1,56 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_InitialValueConceptoPago",
+    "OmniProcessId": {
+        "Name": "FVU_DataPINPagos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataPINPagos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "JSON": "=LIST(DESERIALIZE(DM_MatrizDetallesConceptosPagos:JSON))",
+            "conceptoPago": [
+                {
+                    "conceptoPagoID": "1",
+                    "valor": "%GetOrderItemByOrderId:SIMCard:cfmValue%"
+                },
+                {
+                    "conceptoPagoID": "2",
+                    "valor": "%GetOrderItemByOrderId:SIMCard:simcardValue%"
+                },
+                {
+                    "conceptoPagoID": "3",
+                    "valor": "%GetOrderItemByOrderId:DeliveryCharge:deliveryValue%"
+                },
+                {
+                    "conceptoPagoID": "4",
+                    "valor": "%GetOrderItemByOrderId:Tech:technologyValue%"
+                },
+                {
+                    "conceptoPagoID": "5",
+                    "valor": "%GetOrderItemByOrderId:Handset:handsetValue%"
+                },
+                {
+                    "conceptoPagoID": "6",
+                    "valor": "%GetOrderItemByOrderId:Financiacion|1:value%"
+                }
+            ]
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "SV_InitialValueConceptoPago",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataPINPagos/Procedure/SV_InitialValueConceptoPago"
+}

@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccess",
+    "OmniProcessId": {
+        "Name": "SearchSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/SearchSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "manualQueId": "",
+            "request": "%DRTransformRequest%",
+            "response:iccid": "%DRTransformResponse:item:iccid%",
+            "response:id": "%DRTransformResponse:item:id%",
+            "response:imsi": "%DRTransformResponse:item:imsi%",
+            "response:ki": "%DRTransformResponse:item:authenticationKey%",
+            "response:pin": "%DRTransformResponse:item:pin%",
+            "response:puk": "%DRTransformResponse:item:puk%",
+            "response:responseStatus:code": "%DRTransformResponse:code%",
+            "response:responseStatus:message": "%DRTransformResponse:message%",
+            "response:responseStatus:status": "%DRTransformResponse:status%",
+            "response:status": "%DRTransformResponse:item:status%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRTransformResponse:status% == \"OK\" ",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/SearchSIM/Procedure/ResponseActionSuccess"
+}

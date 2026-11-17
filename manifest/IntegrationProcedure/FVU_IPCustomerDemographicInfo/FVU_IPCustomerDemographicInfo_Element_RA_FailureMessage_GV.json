@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_FailureMessage_GV",
+    "OmniProcessId": {
+        "Name": "FVU_IPCustomerDemographicInfo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCustomerDemographicInfo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "GeneralValidation",
+        "OmniProcessId": {
+            "Name": "FVU_IPCustomerDemographicInfo",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCustomerDemographicInfo/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCustomerDemographicInfo/Procedure/GeneralValidation",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "GeneralValidation",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "Fill in only DocumentType and documentNumber or billingAccount or lineNumber. or email",
+            "responseCode": 400
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "(((%documentNumber% <> null AND %documentNumber% <> \"\") AND (%documentType% <> null AND %documentType% <> \"\")AND (%billingAccount% <> null AND %billingAccount% <> \"\") AND (%lineNumber% == null OR %lineNumber% == \"\") AND (%email% == null OR %email% == \"\"))OR ((%documentNumber% <> null AND %documentNumber% <> \"\") AND (%documentType% <> null AND %documentType% <> \"\")AND (%billingAccount% == null OR %billingAccount% == \"\") AND (%lineNumber% <> null AND %lineNumber% <> \"\") AND (%email% == null OR %email% == \"\"))OR ((%documentNumber% <> null AND %documentNumber% <> \"\") AND (%documentType% <> null AND %documentType% <> \"\") AND (%billingAccount% == null OR %billingAccount% == \"\") AND (%lineNumber% == null OR %lineNumber% == \"\") AND (%email% <> null AND %email% <> \"\"))OR ((%documentNumber% <> null AND %documentNumber% <> \"\") AND (%documentType% <> null AND %documentType% <> \"\") AND (%billingAccount% <> null AND %billingAccount% <> \"\") AND (%lineNumber% <> null AND %lineNumber% <> \"\") AND (%email% == null OR %email% == \"\"))OR ((%documentNumber% <> null AND %documentNumber% <> \"\") AND (%documentType% <> null AND %documentType% <> \"\") AND (%billingAccount% <> null AND %billingAccount% <> \"\") AND (%email% <> null AND %email% <> \"\") AND (%lineNumber% == null OR %lineNumber% == \"\"))OR ((%documentNumber% <> null AND %documentNumber% <> \"\") AND (%documentType% <> null AND %documentType% <> \"\") AND (%lineNumber% <> null AND %lineNumber% <> \"\") AND (%email% <> null AND %email% <> \"\") AND (%billingAccount% == null OR %billingAccount% == \"\")))",
+        "label": "ResponseAction13",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCustomerDemographicInfo/Procedure/RA_FailureMessage_GV"
+}

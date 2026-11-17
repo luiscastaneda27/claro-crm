@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_SummaryAndOTPSend",
+    "OmniProcessId": {
+        "Name": "SendSummaryByEmailAndOTP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SendSummaryByEmailAndOTP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "exceptionOTP": {
+                "exceptionCode": "%OTPGenerationResult:responsePinGenerationExceptionCode%",
+                "exceptionDescription": "%OTPGenerationResult:responsePinGenerationDescription%"
+            },
+            "isOTPSent": "=%OTPGenerationResult:responsePinGenerationValid% == \"true\"",
+            "isSummarySent": "=%SummarySendResult:status% == 200",
+            "notificationPreference": "%AccountData:AccountNotificationChoice%",
+            "reSendOTP": "%reSendOTP%",
+            "reSendSummary": "%reSendSummary%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SendSummaryByEmailAndOTP/Procedure/RA_SummaryAndOTPSend"
+}

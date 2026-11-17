@@ -1,0 +1,77 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpdateSubscriptionRecordCancelPortout",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "PortoutProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/PortoutProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "PortoutProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "LastSuspension": "%DRE_GetSubscriptionSuspInfo:SubscriptionSuspInfo:Substatus%",
+            "account": "%DRE_GetSuspensionInfoCancel:Subscription:AccountId%",
+            "billingAccount": "%DRE_GetSuspensionInfoCancel:Subscription:BillingAccountId%",
+            "contract": "%DRE_GetSuspensionInfoCancel:Subscription:ContractId%",
+            "endDate": "=NOW()",
+            "id": "%DRE_GetSuspensionInfoCancel:Subscription:Id%",
+            "msisdn": "%DRE_GetSuspensionInfoCancel:Subscription:MSISDN%",
+            "msisdnTemporary": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:resourceNumber%",
+            "portationStatus": "%DRE_GetSuspensionInfoCancel:Subscription:portationStatus%",
+            "reasonCode": "DEACT",
+            "serviceAccount": "%DRE_GetSuspensionInfoCancel:Subscription:ServiceAccountId%",
+            "status": "Deactivated",
+            "statusStartDate": "=NOW()",
+            "subReasonCode": "DEAPORT",
+            "subStatus": "Portout",
+            "subscriptionNumber": "%DRE_GetSuspensionInfoCancel:Subscription:subscriptionNumber%",
+            "subscriptionStartDate": "%DRE_GetSuspensionInfoCancel:Subscription:StartDate%",
+            "susByCollections": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCollections%",
+            "susByCustomer": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByCustomer%",
+            "susByFraud": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByFraud%",
+            "susByLost": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByLost%",
+            "susByTheft": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByTheft%",
+            "susByWarranty": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:productCharacteristics:susByWarranty%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_CreateSubscriptionRecord",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/UpdateSubscriptionRecordCancelPortout"
+}

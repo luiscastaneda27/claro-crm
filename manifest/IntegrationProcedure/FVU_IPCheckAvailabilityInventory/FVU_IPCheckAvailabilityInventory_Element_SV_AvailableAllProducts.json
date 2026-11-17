@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AvailableAllProducts",
+    "OmniProcessId": {
+        "Name": "IPCheckAvailabilityInventory",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_FilterAvailableAllProducts",
+        "OmniProcessId": {
+            "Name": "IPCheckAvailabilityInventory",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/LB_FilterAvailableAllProducts",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_FilterAvailableAllProducts",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "delivery": "=FILTER(LIST(%SV_MethodGroup:delivery:productList%), 'productCode == \"' + LA_SetProductList:productCode + '\"')",
+            "immediatepickup": "=FILTER(LIST(%SV_MethodGroup:immediatepickup:productList%), 'productCode == \"' + LA_SetProductList:productCode + '\"')",
+            "list": "=LIST(%SV_MethodGroup:pickup:productList%)",
+            "pickup": "=FILTER(LIST(%SV_MethodGroup:pickup:productList%), 'productCode == \"' + LA_SetProductList:productCode + '\"')",
+            "value": "=%LA_SetProductList:productCode%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues12",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/SV_AvailableAllProducts"
+}

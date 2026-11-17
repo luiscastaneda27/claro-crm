@@ -1,0 +1,69 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_IPsvcRegistroImei1",
+    "OmniProcessId": {
+        "Name": "GetIMEINumbersAndSendToBDO",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_OrderItemListConsult",
+        "OmniProcessId": {
+            "Name": "GetIMEINumbersAndSendToBDO",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure/LB_OrderItemListConsult",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_OrderItemListConsult",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Ciudad": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_Ciudad__c%,%Order:Account:City%)",
+            "Departamento": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_Departamento__c%,%Order:Account:Department%)",
+            "Direccion": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_Direccion__c%,%Order:Account:Address%)",
+            "Name": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_Name__c%,%Order:Account:Name%)",
+            "Serial": "%SV_OrderItemFilter:OrderItemFiltered:OrderProductIMEI%",
+            "TelefonoContacto": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_TelefonoContacto__c%,%Order:Account:Phone%)",
+            "docNumber": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_DocNumber__c%,%Order:Account:DocumentNumber%)",
+            "tipoPersona": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_TipoPersona__c%,%Order:Account:PersonType%)",
+            "tipoldentificacion": "=IF(%Order:PurchaseType% = \"FIN\",%ClaroData|1:FIN_Tipoldentificacion__c%,%Order:Account:DocumentType%)"
+        },
+        "additionalOutput": {
+            "IMEIErrorRegister": "=NOT(%IP_IPsvcRegistroImei1:isValid%)",
+            "IMEIErrorRegisterDescripcion": "=IF(%IP_IPsvcRegistroImei1:isValid% = false,\"IMEI 1: \" + %IP_IPsvcRegistroImei1:RegistrarImeiMessage:descripcion%, \"\")",
+            "OrderItemId": "%SV_OrderItemFilter:OrderItemFiltered:OrderProductId%"
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "ISNOTBLANK(%SV_OrderItemFilter:OrderItemFiltered:OrderProductIMEI%)",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPsvcRegistroImei",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "registerIMEIResult1",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetIMEINumbersAndSendToBDO/Procedure/IP_IPsvcRegistroImei1"
+}

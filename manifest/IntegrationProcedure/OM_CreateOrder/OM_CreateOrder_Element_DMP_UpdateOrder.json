@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DMP_UpdateOrder",
+    "OmniProcessId": {
+        "Name": "CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "BillingAccountId": "%DME_GetAssetDetails:BillingAccountId%",
+            "ServiceAccountId": "%DME_GetAssetDetails:ServiceAccountId%",
+            "caseInfo": "%DRT_CreateJsonCaseInfo:caseInfo%",
+            "motivo": "%motivo%",
+            "orderId": "%IP_CreateOrder:result:orderId%",
+            "orderSubType": "%orderSubType%",
+            "orderType": "%orderType%",
+            "origin": "%origin%",
+            "recordTypeId": "%recordTypeId%",
+            "suspensionLevel": "%suspensionLevel%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_OrderType",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%DMP_UpdateOrder:error% = true",
+        "failureResponse": {
+            "operation": "Failed to update order",
+            "result": {
+                "code": "400",
+                "message": "%DMP_UpdateOrder:errors:OM_DRL_OrderType%",
+                "status": "Error"
+            },
+            "success": false
+        },
+        "label": "DataRaptorPostAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/DMP_UpdateOrder"
+}

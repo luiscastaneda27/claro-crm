@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_LimitExceeded",
+    "OmniProcessId": {
+        "Name": "SalesSetupProductTimePurchase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesSetupProductTimePurchase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_ProductWithPurchaseLimit",
+        "OmniProcessId": {
+            "Name": "SalesSetupProductTimePurchase",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesSetupProductTimePurchase/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesSetupProductTimePurchase/Procedure/CB_ProductWithPurchaseLimit",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_ProductWithPurchaseLimit",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "OrderIsValid": "%DR_GetOrderCheckoutData:OrderIsValid%",
+            "ProductTimePurchase:LimitExceeded": "=IF(%DR_GetAssetAccountProduct:ProductsPurchasedByAccount% >= %DR_GetProductAttribute:OrderItem:AllowedPurchaseAmount%, true, false)",
+            "ProductTimePurchase:ProductWithLimitation": true,
+            "ProductTimePurchase:PurchaseMaxTime": "%DR_GetSalesSetup:PurchaseMaxTime%",
+            "ProductTimePurchase:PurchasedProducts": "%DR_GetAssetAccountProduct:ProductsPurchasedByAccount%",
+            "ProductTimePurchase:SaleLimit": "%DR_GetProductAttribute:OrderItem:AllowedPurchaseAmount%",
+            "ProductTimePurchase:UnitsAvailable": "=%DR_GetProductAttribute:OrderItem:AllowedPurchaseAmount% - %DR_GetAssetAccountProduct:ProductsPurchasedByAccount% "
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesSetupProductTimePurchase/Procedure/SV_LimitExceeded"
+}

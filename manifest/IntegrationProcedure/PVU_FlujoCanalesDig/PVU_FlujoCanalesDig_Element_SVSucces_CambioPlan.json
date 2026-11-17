@@ -1,0 +1,99 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSucces_CambioPlan",
+    "OmniProcessId": {
+        "Name": "FlujoCanalesDig",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "updateCase_CambioPlan",
+        "OmniProcessId": {
+            "Name": "FlujoCanalesDig",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/updateCase_CambioPlan",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "updateCase_CambioPlan",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CargoFact": "False",
+            "Categoria": "Solicitud de información y modificaciones",
+            "DescripcionC": "Upgrade",
+            "Id": "%SVInput:CaseId%",
+            "IdProceso": "%SVProccessName:ProccessName%",
+            "OrderId": "%IP_OrdenOM:OrderId%",
+            "RequestProcessInfo": {
+                "DRGetRootOrderItemByType": {
+                    "orderId": "%IP_OrdenOM:OrderId%",
+                    "productSubType": "Postpaid",
+                    "productType": "Plan"
+                },
+                "IPCheckoutOrder": {
+                    "OrderId": "%IP_OrdenOM:OrderId%",
+                    "RequestedDate": "%SVFechaCheckout:requestDate%",
+                    "isQueueOrder": "%SVFechaCheckout:isqueueOrder%"
+                },
+                "IPCreateOrder": {
+                    "AssetId": "%SVInput:AssetId%",
+                    "CaseInfo": {
+                        "Id": "%SVInput:CaseId%"
+                    },
+                    "ProcessName": "%SVProccessName:ProccessName%"
+                },
+                "IPPostCartItem": {
+                    "CartOperation": {
+                        "OrderId": "%IP_OrdenOM:OrderId%",
+                        "Product": {
+                            "Product2Code": "%CaseInfo:nuevoPlanComprado%"
+                        }
+                    },
+                    "PlanOrderItemId": "%RootOrderItem:RootItemId%",
+                    "Proceso": "%SVProccessName:ProccessName%",
+                    "fieldsToUpdate": {
+                        "%vlocity_namespace%__SubAction__c": "ChangeService-Product"
+                    }
+                },
+                "IPUpdateOrder": {
+                    "CaseInfo": {
+                        "Id": "%SVInput:CaseId%",
+                        "fechaInicioSusp": "%CaseInfo:fechaDeCambio%"
+                    },
+                    "OrderId": "%IP_OrdenOM:OrderId%",
+                    "proccessName": "%SVProccessName:ProccessName%"
+                }
+            },
+            "RequestProcessStatusDetail": {
+                "DRGetRootOrderItemByType": "%RootOrderItem%",
+                "IPCheckoutOrder": "%IPCheckoutOrder%",
+                "IPCreateOrder": "%IP_OrdenOM%",
+                "IPPostCartItem": "%IPPostCartItemCambioPlan%",
+                "IPUpdateOrder": "%IPUpdateOrder%"
+            },
+            "Status": "En curso",
+            "SubCategoria": "Cambio de plan",
+            "SubEstado": "Pendiente ejecución de la orden"
+        },
+        "executionConditionalFormula": "%IPCheckoutOrder:EndProcess% == 'success'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "SVCaseUpdate",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/SVSucces_CambioPlan"
+}

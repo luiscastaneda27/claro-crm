@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_DataSuccess",
+    "OmniProcessId": {
+        "Name": "FVU_DataPinLinkNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataPinLinkNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Account": "=AccountDetails",
+            "IsNullProductMobile": "=ISBLANK(%LA_MobileProducts%)",
+            "ListProduct": "=IF(ISBLANK(%LA_TangibleProducts%),LIST(%LA_EsimProducts%),LIST(%LA_TangibleProducts%))",
+            "ListProductMobile": "=LA_MobileProducts",
+            "NotificationChoiceIsEmail": "=IF(%AccountDetails:AccountNotificationChoice% ==\"Correo electrónico\", true,false)",
+            "NotificationChoiceIsSMS": "=IF(%AccountDetails:AccountNotificationChoice% ==\"SMS - Teléfono de contacto\", true,false)",
+            "TypeNotificationFlag": "=IF(%AccountDetails:AccountNotificationChoice% ==\"Correo electrónico\", \"Correo electrónico\",\"SMS\")"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "DRE_GetAccountDetails",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataPinLinkNotification/Procedure/RA_DataSuccess"
+}

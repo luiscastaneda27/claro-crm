@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseRetencion",
+    "OmniProcessId": {
+        "Name": "IPValidacionesRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRetencion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBActualizaCaso",
+        "OmniProcessId": {
+            "Name": "IPValidacionesRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRetencion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRetencion/Procedure/CBActualizaCaso",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBActualizaCaso",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CodigoCierre": "=IF(\r\n    %SVCriterio:CantidadOrdenesEjecutadas% == %SVConteo:CantidadOrdenesExitosas%,\r\n    %SVConteo:SVCC1%,\r\n    IF(\r\n        (%SVConteo:CantidadOrdenesFallidas% > 0) AND (%SVCriterio:CantidadOrdenesEjecutadas% > %SVConteo:CantidadOrdenesFallidas%),\r\n        %SVConteo:SVCC2%,\r\n        IF(\r\n            %SVCriterio:CantidadOrdenesEjecutadas% == %SVConteo:CantidadOrdenesFallidas%,\r\n            %SVConteo:SVCC3%,\r\n            0\r\n        )\r\n    )\r\n)\r\n",
+            "Estado": "Cerrado",
+            "RecordTypeId": "%DRGetRTCierreCaso:RecordType:Id%",
+            "SubEstado": "No Aplica"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRetencion/Procedure/SVCaseRetencion"
+}

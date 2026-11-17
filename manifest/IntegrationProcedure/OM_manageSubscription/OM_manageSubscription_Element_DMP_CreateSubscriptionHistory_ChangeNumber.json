@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DMP_CreateSubscriptionHistory_ChangeNumber",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ChangeNumberProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/ChangeNumberProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ChangeNumberProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "AccountId": "%DME_GetSubscriptionInfo:Subscription:AccountId%",
+            "MSISDN": "%DME_GetSubscriptionInfo:Subscription:MSISDN%",
+            "NRN": "%DRT_FRLProvisioningData:FulfilmentRequestLine:ProvisioningData:NRN%",
+            "Status": "%DME_GetSubscriptionInfo:Subscription:Status%",
+            "billingAccountId": "%DME_GetSubscriptionInfo:Subscription:BillingAccountId%",
+            "reasonCode": "%DME_GetSubscriptionInfo:Subscription:reasonCode%",
+            "serviceAccountId": "%DME_GetSubscriptionInfo:Subscription:ServiceAccountId%",
+            "statusEndDate": "=NOW()",
+            "statusStartDate": "%DME_GetSubscriptionInfo:Subscription:statusStartDate%",
+            "subReasonCode": "%DME_GetSubscriptionInfo:Subscription:subReasonCode%",
+            "subscriptionId": "%DME_GetSubscriptionInfo:Subscription:Id%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_SubscriptionHistory",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/DMP_CreateSubscriptionHistory_ChangeNumber"
+}

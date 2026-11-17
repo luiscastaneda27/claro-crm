@@ -1,0 +1,75 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DTUpdateSupentionOrder",
+    "OmniProcessId": {
+        "Name": "IPGenerateTemporySuspensionOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "updateOrder",
+        "OmniProcessId": {
+            "Name": "IPGenerateTemporySuspensionOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure/updateOrder",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "updateOrder",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "BillingAccountId": "%DRGetAccountByAsset:assetAccount:BillingAccountId%",
+            "CaseInfo": "%SVCaseInfo%",
+            "Channel": "%GetUserDetail:UserDetails:BusinessChannel%",
+            "DaneCode": "%GetUserDetail:UserDetails:DaneCode%",
+            "DeliveryMethod": "=IF(%GetUserDetail:UserDetails:Channel% = 'SF_CAV','Immediatepickup','Delivery')",
+            "OrderId": "%IPCrearOrderOM:result:orderId%",
+            "OriginalChannel": "=%SVCaseInfo:OriginChannel%",
+            "OriginatingChannel": "=%SVCaseInfo:OriginChannel%",
+            "PortabilityProcessId": "=%PortabilityProcessId%",
+            "RecordTypeId": "%DRGetRTOrder:RecordType:Id%",
+            "RespAddonsPayment": "%DRGetAccountByAsset:assetAccount:RespAddonsPayment%",
+            "Retencion": "==IF(ISNOTBLANK(%CaseInfo:esRetencion%) && %CaseInfo:esRetencion% == true, true, IF(ISNOTBLANK(%Retencion%), %Retencion%, $Vlocity.NULL))",
+            "ServiceAccountId": "%DRGetAccountByAsset:assetAccount:ServiceAccountId%",
+            "SubType": "=IF(ISBLANK(%SubType%), %DRGetAssetToOrderMetadata:OrderConfig:SubType%, %SubType%)",
+            "Type": "%DRGetAssetToOrderMetadata:OrderConfig:Type%",
+            "hasDowngradeLast6Months": "=%SVCaseInfo:hasDowngradeLast6Months%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_DR_UpdateSupentionOrder",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "Order_1|1:UpsertSuccess != \"true\"",
+        "failureResponse": {
+            "result": {
+                "code": "004",
+                "message": "Error al actualizar Order- %DTUpdateSupentionOrder:Order_1|1:UpsertError%",
+                "status": "Error"
+            }
+        },
+        "label": "DataRaptorPostAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure/DTUpdateSupentionOrder"
+}

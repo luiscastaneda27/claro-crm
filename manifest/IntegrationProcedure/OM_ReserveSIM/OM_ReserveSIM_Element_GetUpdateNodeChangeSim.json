@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "GetUpdateNodeChangeSim",
+    "OmniProcessId": {
+        "Name": "ReserveSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReserveSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "UpdateAttributeChangeSim",
+        "OmniProcessId": {
+            "Name": "ReserveSIM",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReserveSIM/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReserveSIM/Procedure/UpdateAttributeChangeSim",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "UpdateAttributeChangeSim",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "SegmentValue": "=TOSTRING( IF(%JSONAttributeNodeChangeSim:GetNodes:Name% == \"TechPCnewIMSI\",%DRTransformResponse:item:imsi%, IF(%JSONAttributeNodeChangeSim:GetNodes:Name% == \"TechPCnewSm_id\",  %DRTransformResponse:item:id%,  IF(%JSONAttributeNodeChangeSim:GetNodes:Name% == \"TechPCnewsimCardClass\", %DRTransformResponse:item:smClass%,  IF(%JSONAttributeNodeChangeSim:GetNodes:Name% == \"TechPCnewelectricalProfile\", %DRTransformResponse:item:smProfileReference%,  IF( %JSONAttributeNodeChangeSim:GetNodes:Name% == \"TechPChnewlrcode\", %DRTransformResponse:item:physicalHlrCode%,%JSONAttributeNodeChangeSim:GetNodes:SegmentValue%))))))",
+            "attributeid__c": "=%JSONAttributeNodeChangeSim:GetNodes:attributeid__c%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReserveSIM/Procedure/GetUpdateNodeChangeSim"
+}

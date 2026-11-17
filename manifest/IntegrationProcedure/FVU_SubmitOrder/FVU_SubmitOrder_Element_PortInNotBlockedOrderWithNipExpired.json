@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PortInNotBlockedOrderWithNipExpired",
+    "OmniProcessId": {
+        "Name": "FVU_SubmitOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SubmitOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_PortIn",
+        "OmniProcessId": {
+            "Name": "FVU_SubmitOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SubmitOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SubmitOrder/Procedure/CB_PortIn",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_PortIn",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "GetOrderItems:OrderItem:OrderDeliveryStatus != \"PortabilityBlocked\" && (%SVFunctions:fnIsExpiredNip% == true || IP_PortInConsultAndTraceability:error == 'ERROR' || ISBLANK(IP_PortInConsultAndTraceability:registros|1:numeros|1:nip:fechaVencimiento))",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock3",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SubmitOrder/Procedure/PortInNotBlockedOrderWithNipExpired"
+}

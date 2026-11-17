@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCambioTitularidad",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCambioTitularidad/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DRGetChannel:channel": "%DRGetChannel:channel%",
+            "EsTitular": "=IF(%RAValidationsVendidoClaroMismoTit:AccountId%=%AccountId%,true,false)",
+            "Imsi": "%DRGetIMSI:Imsi%",
+            "NumeroFactura": "%RAValidationsVendidoClaroMismoTit:NumeroFactura%",
+            "account": "%DRGetAccountDocument%",
+            "accountInfo": "%PVU_GetAccountInfoIMEI:Details%",
+            "businnesInfo": "%DRGetApplicationSetting:Setting%",
+            "cantidadCambios": "%IPsvcConsultaHistorico:Details:cantidadCambios%",
+            "isVendidoClaro": "%RAValidationsVendidoClaroMismoTit:isVendidoClaro%",
+            "mensajes": "%IPMensajesPorGestion%",
+            "openCases": "%RACaseValidations:openCases%",
+            "openCasesSize": "%RACaseValidations:openCasesSize%",
+            "tieneMas2CambiosTitularidad": "=IF(%IPsvcConsultaHistorico:Details:cantidadCambios% > 2, true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCambioTitularidad/Procedure/SVResponse"
+}

@@ -1,0 +1,51 @@
+{
+    "Description": "%DRGetCase:CodigoCierre% == 'Cambio de equipo'",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRUpsertOrderItem",
+    "OmniProcessId": {
+        "Name": "IPCambioDeEquipoPorCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioDeEquipoPorCaso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "CambiadoPorSoporteyFallas": true,
+            "OrderItem": {
+                "AssetNumFacturaDeVenta": "%DRGetCase:AssetNumDeFacturaDeVenta%",
+                "BillingAccountId": "%DRGetCase:BillingAccountId%",
+                "IMEINumber": "%SVOrderItemId:IMEINumber%",
+                "NumeroDeFactura": "%DRGetCase:NumeroDeFactura%",
+                "OrderItemId": "%SVOrderItemId:OrderItemId%",
+                "Serial": "%SVOrderItemId:Serial%",
+                "ServiceAccountId": "%DRGetCase:AssetServiceAccountId%"
+            }
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertOrderItem",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioDeEquipoPorCaso/Procedure/DRUpsertOrderItem"
+}

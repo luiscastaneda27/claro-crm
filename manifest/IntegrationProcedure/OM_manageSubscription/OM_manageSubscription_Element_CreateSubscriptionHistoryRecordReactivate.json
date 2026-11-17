@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CreateSubscriptionHistoryRecordReactivate",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ReactivationProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/ReactivationProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ReactivationProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "AccountId": "%GetReactivationInfo:Subscription:AccountId%",
+            "MSISDN": "%GetReactivationInfo:Subscription:MSISDN%",
+            "Status": "%GetReactivationInfo:Subscription:Status%",
+            "billingAccountId": "%GetReactivationInfo:Subscription:BillingAccountId%",
+            "reasonCode": "%GetReactivationInfo:Subscription:reasonCode%",
+            "serviceAccountId": "%GetReactivationInfo:Subscription:ServiceAccountId%",
+            "statusEndDate": "=NOW()",
+            "statusStartDate": "%GetReactivationInfo:Subscription:statusStartDate%",
+            "subReasonCode": "%GetReactivationInfo:Subscription:subReasonCode%",
+            "subscriptionId": "%GetReactivationInfo:Subscription:Id%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_SubscriptionHistory",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%GetReactivationInfo:OrderItem:Status% <> %GetReactivationInfo:Asset:Status% ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/CreateSubscriptionHistoryRecordReactivate"
+}

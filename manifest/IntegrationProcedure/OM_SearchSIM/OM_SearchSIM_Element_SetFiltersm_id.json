@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetFiltersm_id",
+    "OmniProcessId": {
+        "Name": "SearchSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/SearchSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "sm_idJSON": "=IF((%DRExtractFRLJSON:SubAction% == \"Resume-Reactivate-ChangeSim\" || %DRExtractFRLJSON:SubAction% == \"ChangeSim-Modify\"), FILTER(LIST(%DRExtractFRLJSON:223541c2-e1cb-fe89-a86d-b07a65470f1b%), 'Name == \"TechPCnewSm_id\"'), FILTER(LIST(%DRExtractFRLJSON:223541c2-e1cb-fe89-a86d-b07a65470f1b%), 'Name == \"TechRCsm_id\"'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/SearchSIM/Procedure/SetFiltersm_id"
+}

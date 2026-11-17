@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVValidateByCausal",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCancelacionByCausal",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCancelacionByCausal/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "validCancelacionCambPosPre": "=IF(%VozCliente% == \"Cambio de pospago a prepago\" && (%DRGetAssetInfo:Asset:Status% == \"Active\" || (%DRGetAssetInfo:Asset:Status% == \"Suspended\" && (%SuspensionesOrdered|1:SusByTheftFlag% == \"3\" || %SuspensionesOrdered|1:SusByCollectionsFlag% == \"1\" || %SuspensionesOrdered|1:SusByCollectionsFlag% == \"2\") )),true,false)",
+            "validCancelacionFallecimiento": "true",
+            "validCancelacionVoluntaria": "=IF(%VozCliente% == \"Cancelación Voluntaria\"  && (%DRGetAssetInfo:Asset:Status% == \"Active\" || (%DRGetAssetInfo:Asset:Status% == \"Suspended\" && (%SuspensionesOrdered|1:SusByTheftFlag% == \"3\" || %SuspensionesOrdered|1:SusByCollectionsFlag% == \"1\" || %SuspensionesOrdered|1:SusByCollectionsFlag% == \"2\") )) ,true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCancelacionByCausal/Procedure/SVValidateByCausal"
+}

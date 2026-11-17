@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Transaction",
+    "OmniProcessId": {
+        "Name": "FVU_FraudTransactionValidationProcess",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FraudTransactionValidationProcess/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CustomerTransactionLimit": "=IF(%IP_FraudCustomerTransactionLimit:CustomerDailyTransactionLimit% == true && %IP_FraudCustomerTransactionLimit:CustomerWeeklyTransactionLimit% == true && %IP_FraudCustomerTransactionLimit:CustomerMonthlyTransactionLimit%==true,\"diaria, semanal y mensual\",IF(%IP_FraudCustomerTransactionLimit:CustomerWeeklyTransactionLimit% == true && %IP_FraudCustomerTransactionLimit:CustomerMonthlyTransactionLimit% == true,\"semanal y mensual\",IF(%IP_FraudCustomerTransactionLimit:CustomerDailyTransactionLimit% == true && %IP_FraudCustomerTransactionLimit:CustomerMonthlyTransactionLimit% == true,\"diaria y mensual\",IF(%IP_FraudCustomerTransactionLimit:CustomerDailyTransactionLimit% == true && %IP_FraudCustomerTransactionLimit:CustomerWeeklyTransactionLimit% == true,\"diaria y semanal\",IF(%IP_FraudCustomerTransactionLimit:CustomerMonthlyTransactionLimit%==true,\"mensual\",IF(%IP_FraudCustomerTransactionLimit:CustomerWeeklyTransactionLimit%==true,\"semanal\",IF(%IP_FraudCustomerTransactionLimit:CustomerDailyTransactionLimit%==true,\"diarias\",NULL)))))))",
+            "Today": "=TODAY(${1:condition})",
+            "ValueTransaction": "=IF(%IP_FraudAgentSalesTransactionLimit:DailyTransactionLimit% == true && %IP_FraudAgentSalesTransactionLimit:WeeklyTransactionLimit% == true && %IP_FraudAgentSalesTransactionLimit:MonthlyTransactionLimit%==true,\"diaria, semanal y mensual\",IF(%IP_FraudAgentSalesTransactionLimit:WeeklyTransactionLimit% == true && %IP_FraudAgentSalesTransactionLimit:MonthlyTransactionLimit% == true,\"semanal y mensual\",IF(%IP_FraudAgentSalesTransactionLimit:DailyTransactionLimit% == true && %IP_FraudAgentSalesTransactionLimit:MonthlyTransactionLimit% == true,\"diaria y mensual\",IF(%IP_FraudAgentSalesTransactionLimit:DailyTransactionLimit% == true && %IP_FraudAgentSalesTransactionLimit:WeeklyTransactionLimit% == true,\"diaria y semanal\",IF(%IP_FraudAgentSalesTransactionLimit:MonthlyTransactionLimit%==true,\"mensual\",IF(%IP_FraudAgentSalesTransactionLimit:WeeklyTransactionLimit%==true,\"semanal\",IF(%IP_FraudAgentSalesTransactionLimit:DailyTransactionLimit%==true,\"diarias\",NULL)))))))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FraudTransactionValidationProcess/Procedure/SV_Transaction"
+}

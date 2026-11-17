@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseSuccess",
+    "OmniProcessId": {
+        "Name": "MigraPrePosValidationController",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MigraPrePosValidationController/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "CanProceed": "%SV_CanProceed:CanProceed%",
+            "IgnoreCallHDC": "=IF(%SV_DateDiff:dateDiff% < %GetSalesSetup:DaysUntilDeadline% && %FVU_GetUserDetails:Role% == 'Backoffice Reversión', true, false)",
+            "PreToPosReversed": "=IF((%IP_MigraPrePosValidation:data:activationReason% == \"Act Postpago a Prepago\" && %SV_DateDiff% < 180 ) || %SVUserContext:esReversion% == true, true, false)",
+            "esReversion": "=%SVUserContext:esReversion%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_CanProceed:CanProceed%",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "IP_MigraPrePosValidation",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MigraPrePosValidationController/Procedure/ResponseSuccess"
+}

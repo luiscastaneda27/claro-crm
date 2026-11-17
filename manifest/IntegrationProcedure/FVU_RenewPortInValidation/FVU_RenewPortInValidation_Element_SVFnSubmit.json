@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFnSubmit",
+    "OmniProcessId": {
+        "Name": "RenewPortInValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RenewPortInValidation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "fnCanSubmit": "=IF(SVFunctions:fnIsClaroOperator,IF(SVFunctions:fnIsExpiredNip,false,IF(SVFunctions:daysForWindow > 1,true,IF(SVFunctions:daysForWindow = 1 && SVFunctions:lowerTime,true,false))),IF(SVFunctions:daysForWindow > 1,true,IF(SVFunctions:daysForWindow = 1 && SVFunctions:lowerTime,true,false)))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RenewPortInValidation/Procedure/SVFnSubmit"
+}

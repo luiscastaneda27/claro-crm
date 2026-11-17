@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVMessages",
+    "OmniProcessId": {
+        "Name": "PVU_EnviarAceptacionRoaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/EnviarAceptacionRoaming/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "asunto": "=IF(%VozCliente% = 'Activación de servicio y paquetes', %Mensajes:ROAMING005%, IF(%VozCliente% = 'Desactivación de servicios y paquetes',%Mensajes:ROAMING005%,IF(%VozCliente% = 'Habilitación Servicio - Línea con bloqueo CAN',%Mensajes:ROAMING005%,IF(%VozCliente% = 'Modificación de vigencia',%Mensajes:ROAMING005%,'SUCCESS')))",
+            "contenido": "=IF(%VozCliente% = 'Activación de servicio y paquetes', %RAMensajeAceptacionActMod:contenido%, IF(%VozCliente% = 'Desactivación de servicios y paquetes',%RAMensajeAceptacionDesact:contenido%,IF(%VozCliente% = 'Habilitación Servicio - Línea con bloqueo CAN',%RAMensajeAceptacionCAN:contenido%,IF(%VozCliente% = 'Modificación de vigencia',%RAMensajeAceptacionActMod:contenido%,'SUCCESS')))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/EnviarAceptacionRoaming/Procedure/SVMessages"
+}

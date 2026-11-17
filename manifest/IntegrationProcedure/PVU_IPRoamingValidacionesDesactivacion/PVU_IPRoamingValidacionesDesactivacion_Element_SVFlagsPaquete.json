@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFlagsPaquete",
+    "OmniProcessId": {
+        "Name": "IPRoamingValidacionesDesactivacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBPaqueteAdicional",
+        "OmniProcessId": {
+            "Name": "IPRoamingValidacionesDesactivacion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/CBPaqueteAdicional",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBPaqueteAdicional",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "esDeRenovacionAutomaticaPaquete": "=ISBLANK(%IPConsultaConsumoPaquete:consumos|1:expiryDate%)",
+            "inicioConsumoDatosPaquete": "=IF(ISNOTBLANK(%LAConsumoDatosPaqueteIniciado%), IF(LISTSIZE(LIST(%LAConsumoDatosPaqueteIniciado%)) > 0, true, false), false)",
+            "inicioConsumoPaquete": "=IF(ISNOTBLANK(%LAHayConsumosIniciadosPaquete%), IF(LISTSIZE(LIST(%LAHayConsumosIniciadosPaquete%)) > 0, true, false), false)",
+            "tieneConsumoDatosDisponiblePaquete": "=IF(ISNOTBLANK(%LAConsumoDatosPaqueteDisponible%), IF(LISTSIZE(LIST(%LAConsumoDatosPaqueteDisponible%)) > 0, true, false), false)",
+            "tieneConsumosFinalizadosPaquete": "=IF(ISNOTBLANK(%LAHayConsumosAl100Paquete%), IF(LISTSIZE(LIST(%LAHayConsumosAl100Paquete%)) > 0, true, false), false)",
+            "tienePeriodoVigenciaPaquete": "=ISNOTBLANK(%IPConsultaConsumoPaquete:consumos|1:expiryDate%)",
+            "vigenciaVencidaPaquete": "=TODAY() > %SVSetDatePaquete:expirityDate%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/SVFlagsPaquete"
+}

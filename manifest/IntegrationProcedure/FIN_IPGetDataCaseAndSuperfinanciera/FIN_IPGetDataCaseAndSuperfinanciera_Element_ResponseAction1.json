@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction1",
+    "OmniProcessId": {
+        "Name": "IPGetDataCaseAndSuperfinanciera",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPGetDataCaseAndSuperfinanciera/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Case": "%IPGetCaseDetails:Case%",
+            "IntRate": "%DRGetTasaPlazo:TasaSuperFinanciera%",
+            "RoleSaveSimulateRefinancing": "%DRGetParametros:RoleSaveSimulateRefinancing%",
+            "Valor": "%RA_convertToCurrency:currencyStr%",
+            "currencyNumber": "=%RA_convertToNumber:currencyNumber%",
+            "currentFianzaTotal": "=CONCAT('$',FUNCTION('CustomOmniStudioFunctions','formatCurrency',%IPGetFinancingInfo:financings|1:surety:monthSuretyQuoteValue%))",
+            "deviceType": "=TOSTRING(%IPGetFinancingInfo:financings|1:financing:financingTypeId%)",
+            "financingTerm": "=TOSTRING(%IPGetFinancingInfo:financings|1:financing:term%)",
+            "interestRate": "=TOSTRING(%IPGetFinancingInfo:financings|1:financing:interestRate%)",
+            "monthlyFee": "%RA_convertToCurrencyMonthlyFee:currencyStr%",
+            "remainingTerm": "=TOSTRING(%IPGetFinancingInfo:financings|1:financing:remainingTerm%)",
+            "valorCuotaActualFianza": "=CONCAT('$',FUNCTION('CustomOmniStudioFunctions','formatCurrency',%IPGetFinancingInfo:financings|1:surety:finTotalAmount%))"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPGetDataCaseAndSuperfinanciera/Procedure/ResponseAction1"
+}

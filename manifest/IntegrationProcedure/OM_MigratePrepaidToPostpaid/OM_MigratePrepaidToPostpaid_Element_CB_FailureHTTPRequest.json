@@ -1,0 +1,23 @@
+{
+    "Description": "Se toma el atributo errorMessage y si la no hay conexión en el HTTP esto no regresará nada y lo consideraremos como falla",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CB_FailureHTTPRequest",
+    "OmniProcessId": {
+        "Name": "MigratePrepaidToPostpaid",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/MigratePrepaidToPostpaid/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%HTTPRequestPrePost:errorMessage%) || ISBLANK(%HTTPRequestPrePost%) || %SV_bndErrorConect:bErrorConn% == true",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock1",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/MigratePrepaidToPostpaid/Procedure/CB_FailureHTTPRequest"
+}

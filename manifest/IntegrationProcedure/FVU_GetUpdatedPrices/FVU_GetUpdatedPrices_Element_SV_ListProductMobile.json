@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ListProductMobile",
+    "OmniProcessId": {
+        "Name": "FVU_GetUpdatedPrices",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetUpdatedPrices/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ListProductMobileUpdatedPrices": [
+                {
+                    "EffectiveOneTimeTotalIncTaxes": "%DR_GetOrderItemEffectiveOneTimeIncTaxesTotal:EffectiveOneTimeTotalIncTaxes%",
+                    "OrderItemId": "%DR_GetOrderItemEffectiveOneTimeIncTaxesTotal:OrderItemId%"
+                }
+            ]
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetUpdatedPrices/Procedure/SV_ListProductMobile"
+}

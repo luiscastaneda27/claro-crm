@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParams",
+    "OmniProcessId": {
+        "Name": "ManageDebtAndRefinance",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/ManageDebtAndRefinance/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AjustmentCapital": "=IF(%AjustmentCapital%!='',%AjustmentCapital%,0)",
+            "CreditNumber": "%CreditNumber%",
+            "CurrentRate": "%CurrentRate%",
+            "CurrentTerm": "%CurrentTerm%",
+            "FinancingRate": "%FinancingRate%",
+            "FinancingTerm": "%FinancingTerm%",
+            "NewRate": "=IF(%NewRate%!='',SUBSTRING(%NewRate%,0,'%'),%FinancingRate%)",
+            "NewTerm": "=IF(%NewTerm%!='',%NewTerm%,%RemainingTerm%)",
+            "RoleSaveSimulateRefinancing": "%RoleSaveSimulateRefinancing%",
+            "StartDate": "=FORMATDATETIMEGMT($Vlocity.NOW,\"America/Colombia\",\"yyyy-MM-dd'T'HH:mm:ss\")",
+            "StartDateRestructure": "=FORMATDATETIMEGMT($Vlocity.NOW,\"America/Colombia\",\"yyyy-MM-dd' 'HH:mm:ss\")",
+            "ValidateAjustmentValue": "%ValidateAjustmentValue%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/ManageDebtAndRefinance/Procedure/SVParams"
+}

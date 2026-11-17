@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDuplaEliminadaExitosamente",
+    "OmniProcessId": {
+        "Name": "ValidarDuplasAdicion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcValidarDuplasAdicion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "adicionar": true,
+            "mensajeAdicionar": ""
+        },
+        "executionConditionalFormula": "%consultaDuplicadosResponse:cantDuplas% = 1 && %matchImei:coincideImei% = true && %eliminarDuplaResponse:isValid% = true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "adicionarCriterios",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcValidarDuplasAdicion/Procedure/SVDuplaEliminadaExitosamente"
+}

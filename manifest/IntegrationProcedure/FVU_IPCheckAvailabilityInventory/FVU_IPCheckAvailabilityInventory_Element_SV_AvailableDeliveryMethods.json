@@ -1,0 +1,47 @@
+{
+    "Description": "Si contamos con inventario completo y todos los productos existen en el método de entrega, entonces es TRUE el metodo en entrega.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AvailableDeliveryMethods",
+    "OmniProcessId": {
+        "Name": "IPCheckAvailabilityInventory",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock2",
+        "OmniProcessId": {
+            "Name": "IPCheckAvailabilityInventory",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/ConditionalBlock2",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock2",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "delivery": "=IF(%SV_CompareCountProducts:existInDelivery% && %SV_DeliveryMethodOutStock:delivery% == FALSE, TRUE, FALSE)",
+            "immediatepickup": "=IF(%SV_CompareCountProducts:existInImmediatepickup% && %SV_DeliveryMethodOutStock:immediatepickup%  == FALSE, TRUE, FALSE)",
+            "pickup": "=IF(%SV_CompareCountProducts:existInPickup% && %SV_DeliveryMethodOutStock:pickup%  == FALSE, TRUE, FALSE)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues15",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/SV_AvailableDeliveryMethods"
+}

@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_FunctionShowMessage",
+    "OmniProcessId": {
+        "Name": "WrapperBDAConsult",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/WrapperBDAConsult/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "elementValueMap": {
+            "showMessageIMEI": "=IF(%DBAPositivo_IMEI:finalResponse:bdaPositivoMessage:Estado% == \"01\", true, false)",
+            "showMessageIMEI2": "=IF(%DBAPositivo_IMEI2:finalResponse:bdaPositivoMessage:Estado% == \"01\", true, false)"
+        },
+        "executionConditionalFormula": "%SV_NewServiceFlag:NewServiceFlag% == true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SV_FunctionShowMessage",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "type": "SetValues"
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/WrapperBDAConsult/Procedure/SV_FunctionShowMessage"
+}

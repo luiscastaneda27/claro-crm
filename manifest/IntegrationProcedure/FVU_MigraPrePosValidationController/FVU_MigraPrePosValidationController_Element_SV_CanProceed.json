@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CanProceed",
+    "OmniProcessId": {
+        "Name": "MigraPrePosValidationController",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MigraPrePosValidationController/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CanProceed": "=IF(%IP_MigraPrePosValidation:data:isLineActive% == true && %IP_MigraPrePosValidation:data:hasPortOut% == false && %IP_MigraPrePosValidation:data:hasActiveFinancing% == false && ISBLANK(%DR_GetInterfaceSettings%) && %DR_GetAssetsByLineNumber:HasPostpaidActive% == false, true, false)"
+        },
+        "executionConditionalFormula": "%SVUserContext:esReversion% == false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "SV_CanProceed",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MigraPrePosValidationController/Procedure/SV_CanProceed"
+}

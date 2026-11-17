@@ -1,0 +1,57 @@
+{
+    "Description": "Se compara si la orden existente en la org tiene el mismo OrderNumber que el valor recibido en la interfaz",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ResponseErrorDoesntMatchIdOrderPortIn",
+    "OmniProcessId": {
+        "Name": "ExecutePortabilityReject",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortabilityReject/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CancelPortIn",
+        "OmniProcessId": {
+            "Name": "ExecutePortabilityReject",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortabilityReject/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortabilityReject/Procedure/CB_CancelPortIn",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CancelPortIn",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "code": "404",
+                "idOrder": "%idOrder%",
+                "message": "MSISDN %MSISDN% no tiene orden de PortIn en curso",
+                "reason": "El idOrder %idOrder% no tiene relación con el MSISDN %MSISDN%",
+                "status": "Failed"
+            }
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%MSISDN% != %DM_GetMSISDNFromOrderItem:attrMSISDN%",
+        "label": "ResponseAction5",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortabilityReject/Procedure/RA_ResponseErrorDoesntMatchIdOrderPortIn"
+}

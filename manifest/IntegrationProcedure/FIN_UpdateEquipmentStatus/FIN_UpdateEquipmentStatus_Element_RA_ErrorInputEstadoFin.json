@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ErrorInputEstadoFin",
+    "OmniProcessId": {
+        "Name": "UpdateEquipmentStatus",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/UpdateEquipmentStatus/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "code": 400,
+                "message": "%SV_InputValidation:isEmptyEstadoFinanciacion%",
+                "status": "ERROR"
+            },
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_InputValidation:isEmptyEstadoFinanciacion% <> \"success\" ",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/UpdateEquipmentStatus/Procedure/RA_ErrorInputEstadoFin"
+}

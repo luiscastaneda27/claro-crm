@@ -1,0 +1,65 @@
+{
+    "Description": "Se obtiene el JSON de respuestas almacenado en el pushEvent",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DME_GetHistoryCallback",
+    "OmniProcessId": {
+        "Name": "ReceptionMilestoneNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReceptionMilestoneNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "UpdateHistoryCallback",
+        "OmniProcessId": {
+            "Name": "ReceptionMilestoneNotification",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReceptionMilestoneNotification/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReceptionMilestoneNotification/Procedure/UpdateHistoryCallback",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "UpdateHistoryCallback",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "name1": "=IF(%type% == \"ServiceOrderNotification\", \"OM Service Order Completion\", \"\")",
+            "name2": "=IF(%type% == \"ServiceOrderNotification\", \"OM Service Order Completion Posventa\", \"\")",
+            "name3": "=IF(%type% == \"MigrateOrderNotification\", \"OM Migrate Order Completion\", \"\")",
+            "name4": "=IF(OR(%type% == \"CustomerOrderNotification\",%type% == \"SuplementaryNotification\"), \"OM COM Orden Fin\", \"\")",
+            "planId": "%DRT_MilestoneNotification:orchestrationPlanId%"
+        },
+        "additionalOutput": {
+            "orchestrationItemId": "%DME_GetHistoryCallback:orchestrationItemId%",
+            "orchestrationItemResponse": "=DESERIALIZE(%DME_GetHistoryCallback:orchestrationItemResponse%)"
+        },
+        "bundle": "OM_DME_GetHistoryCallback",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataMapperExtractAction10",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReceptionMilestoneNotification/Procedure/DME_GetHistoryCallback"
+}

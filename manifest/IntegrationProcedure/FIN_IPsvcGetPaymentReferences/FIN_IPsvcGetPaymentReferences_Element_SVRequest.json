@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequest",
+    "OmniProcessId": {
+        "Name": "GetPaymentReferences",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPsvcGetPaymentReferences/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "accountNumber": "%ExtractDocumentData:AccountExternalId%",
+            "additionalNode": "=\"\"",
+            "channel": "%DRSetHeader:channel%",
+            "idApplication": "%DRSetHeader:idApplication%",
+            "idBusinessTransaction": "= \"\"",
+            "idESBTransaction": "=\"\"",
+            "identificationNumber": "=%documentNumber%",
+            "identificationType": "=IF(%documentType% == \"PP\", 5, IF(%documentType% == \"CC\", 1, IF(%documentType% == \"CE\", 4, \"\")))",
+            "password": "=\"\"",
+            "paymentReference": "=\"\"",
+            "startDate": "%DRSetHeader:startDate%",
+            "subscriberNumber": "%extractAssetSubscriberNumber:subscriberNumber%",
+            "target": "=\"\"",
+            "userApplication": "=\"\"",
+            "userSession": "=\"\""
+        },
+        "executionConditionalFormula": "IPGetMock:ModoTest = \"false\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPsvcGetPaymentReferences/Procedure/SVRequest"
+}

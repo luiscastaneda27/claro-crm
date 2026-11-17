@@ -1,0 +1,58 @@
+{
+    "Description": "Update Ericsson Billing account code related to services (9100.......) and Ericsson internal billing account code related to services ( 5 digit number) on Account (RT: Billing Account)",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRUpdateBillingExternalId",
+    "OmniProcessId": {
+        "Name": "CreateAccountBSCS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateAccountBSCS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CustomerExternalId_DoesNotExist",
+        "OmniProcessId": {
+            "Name": "CreateAccountBSCS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateAccountBSCS/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateAccountBSCS/Procedure/CustomerExternalId_DoesNotExist",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CustomerExternalId_DoesNotExist",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "DefafultBillingAccountId": "%DRExtractOrderDetail:DefaultBillingAccoundId%",
+            "billingExternalId": "%DRTransformResponseXMLToJSON:bscsBillingAccount%",
+            "bscsBillingAccountInternalId": "%DRTransformResponseXMLToJSON:bscsBillingAccountInternalId%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "DR_OM_UpdateAccountExternalId",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRTransformResponseXMLToJSON:responseStatus:code% == 'FS_ESB_0'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateAccountBSCS/Procedure/DRUpdateBillingExternalId"
+}

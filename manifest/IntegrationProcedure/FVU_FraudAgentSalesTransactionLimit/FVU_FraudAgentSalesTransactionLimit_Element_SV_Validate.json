@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Validate",
+    "OmniProcessId": {
+        "Name": "FraudAgentSalesTransactionLimit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FraudAgentSalesTransactionLimit/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DailyTransactionLimit": "=IF(%DR_CounterFraudAgentSalesTransaction:FraudToday% >= %DR_GetSalesSetup:TransactionDailyLimit%,true,false)",
+            "MonthlyTransactionLimit": "=IF(%DR_CounterFraudAgentSalesTransaction:FraudMonth% >= %DR_GetSalesSetup:TransactionMonthlyLimit%,true,false) ",
+            "WeeklyTransactionLimit": "=IF(%DR_CounterFraudAgentSalesTransaction:FraudWeek% >= %DR_GetSalesSetup:TransactionWeeklyLimit%,true,false)\r\n "
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FraudAgentSalesTransactionLimit/Procedure/SV_Validate"
+}

@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionError",
+    "OmniProcessId": {
+        "Name": "GetbillcyclesService",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetbillcyclesService/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "billCycles": "%DMTGetbillcyclesDaysEstimatedError:billCycles%",
+            "billCycles:bchRunDate": "%SVErrorFechaDefault:referenceDate%",
+            "error": "Ok",
+            "message": "%callOutGetbillcyclesService:errorMessage%",
+            "messageDefault": "%IPGetMessagesError:message:MainMessage%",
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%callOutGetbillcyclesService:billCycles%)",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "callOutGetbillcyclesService",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetbillcyclesService/Procedure/ResponseActionError"
+}

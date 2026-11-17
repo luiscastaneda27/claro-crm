@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetCreditLimit",
+    "OmniProcessId": {
+        "Name": "IPPostCartItemWrapper",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPPostCartItemWrapper/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CreditLimit": "=IF(%GetCreditLimitType% == 'Límite Nacional Servicios', %GetCreditLimitsOrderItemPlan:CreditLimitServicios%, IF(%GetCreditLimitType% == 'Límite Nacional Roaming', %GetCreditLimitsOrderItemPlan:CreditLimitRoaming%, IF(%GetCreditLimitType% == 'Límite Nacional Paquetes', %GetCreditLimitsOrderItemPlan:CreditLimitPaquetes%,'Límite no identificado')))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "CreditLimit",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPPostCartItemWrapper/Procedure/SetCreditLimit"
+}

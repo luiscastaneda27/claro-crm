@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesDataWhere",
+    "OmniProcessId": {
+        "Name": "GetAssociationCharacteristics",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetAssociationCharacteristics/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "whereData": [
+                {
+                    "field": "PVU_caso_relacionado__r.Account.FVU_DocumentNumber__c",
+                    "operater": "AND",
+                    "value": "%documentNumber%"
+                },
+                {
+                    "field": "PVU_caso_relacionado__r.Account.FVU_DocumentType__c",
+                    "operater": "AND",
+                    "value": "%documentType%"
+                },
+                {
+                    "field": "PVU_caso_relacionado__r.Status",
+                    "operater": "AND",
+                    "value": "%status%"
+                },
+                {
+                    "field": "PVU_caso_relacionado__r.PVU_Sub_Estado__c",
+                    "operater": "AND",
+                    "value": "%caseSubStatus%"
+                }
+            ]
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetAssociationCharacteristics/Procedure/SetValuesDataWhere"
+}

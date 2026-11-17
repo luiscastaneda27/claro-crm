@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Response",
+    "OmniProcessId": {
+        "Name": "FVU_VentasOrderSchedule",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/VentasOrderSchedule/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "consultOrderSchedule": "=IF(%HTTPAction:code% == \"999\", FALSE, TRUE)",
+            "hasDelivery": "=IF(%SV_AvailableDeliveryMethods:delivery% && ISNOTBLANK(%HTTPAction:orderGroupList:promiseInfor:promiseList:availableDateList%), LISTSIZE(%HTTPAction:orderGroupList:promiseInfor:promiseList:availableDateList%), 0)",
+            "hasImmediatePickUp": "=IF(%SV_AvailableDeliveryMethods:immediatepickup% AND ISNOTBLANK(%HTTPAction:orderGroupList%),1,0)",
+            "hasPickUp": "=IF(%SV_AvailableDeliveryMethods:pickup% && ISNOTBLANK(%HTTPAction:orderGroupList:pickupPointList%), LISTSIZE(%HTTPAction:orderGroupList:pickupPointList%), 0)",
+            "orderProductDelivery": "=IF(%SV_AvailableDeliveryMethods:delivery%, %DR_ResponseOrderSchedule:orderProductDelivery%,'')",
+            "orderProductImmediatepickup": "=IF(%SV_AvailableDeliveryMethods:immediatepickup% AND ISNOTBLANK(%HTTPAction:orderGroupList%), \"1\", \"0\")",
+            "orderProductpickup": "=IF(%SV_AvailableDeliveryMethods:pickup% && ISNOTBLANK(%SetInitialAndFinalDatePickup%), LIST(%SetInitialAndFinalDatePickup%), '')",
+            "productGroupInStock": "=IF(ISNOTBLANK(%HTTPAction:orderGroupList%), TRUE, FALSE)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/VentasOrderSchedule/Procedure/Response"
+}

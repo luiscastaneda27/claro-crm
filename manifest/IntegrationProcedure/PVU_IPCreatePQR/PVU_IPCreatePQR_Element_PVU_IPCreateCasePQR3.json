@@ -1,0 +1,63 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PVU_IPCreateCasePQR3",
+    "OmniProcessId": {
+        "Name": "IPCreatePQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCreatePQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "caso": "%SVInput:caso%",
+            "caso:MedioNotificacionPQR": "%SVData:MedioNotificacionPQR%",
+            "caso:MedioRadicacion": "%SVData:MedioRadicacionPQR%",
+            "caso:asesorRadicadorPQR": "%IPGetDetailsUser:UserDetails:usuarioConsulta%",
+            "caso:categoryCode": "%GetCodigosPQR:CodificacionPQR:CodigoCategoria__c%",
+            "caso:clientVoiceCode": "%GetCodigosPQR:CodificacionPQR:CodigoVozCliente__c%",
+            "caso:cuentaBA": "",
+            "caso:cuentaSeleccionada": "",
+            "caso:description": "Fallas con el servicio, No esta conforme con los servicios",
+            "caso:equipoFinanciado": {
+                "cuentaFinanciamiento": "",
+                "nombreEquipo": "",
+                "numeroCredito": "",
+                "serialEquipo": ""
+            },
+            "caso:interaction": "%SVInput:CaseNew:Details:CaseNumber%",
+            "caso:notificationSource": "%SVData:MedioNotificacionPQR%",
+            "caso:origin": "%SVData:Origin%",
+            "caso:originS": "CRM-B2CQA",
+            "caso:subcategoryCode": "%GetCodigosPQR:CodificacionPQR:CodigoSubCategoria__c%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%CreateCasePQR:status% != 'Success'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPCreateCasePQR",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "CreateCasePQR",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCreatePQR/Procedure/PVU_IPCreateCasePQR3"
+}

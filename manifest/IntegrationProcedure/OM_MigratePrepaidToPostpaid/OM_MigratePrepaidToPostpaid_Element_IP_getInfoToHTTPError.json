@@ -1,0 +1,73 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_getInfoToHTTPError",
+    "OmniProcessId": {
+        "Name": "MigratePrepaidToPostpaid",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/MigratePrepaidToPostpaid/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_FailureHTTPRequest",
+        "OmniProcessId": {
+            "Name": "MigratePrepaidToPostpaid",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/MigratePrepaidToPostpaid/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/MigratePrepaidToPostpaid/Procedure/CB_FailureHTTPRequest",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_FailureHTTPRequest",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "ApiName": "MigratePrepaidToPostpaid",
+            "ErrorCode": "%SV_ErrorCode:ErrorCode%",
+            "httpCode": "=IF(ISNOTBLANK(%HTTPRequestPrePostInfo:statusCode%),%HTTPRequestPrePostInfo:statusCode%,'000')",
+            "orderId": "%OrderId%",
+            "process": "%OM_DRE_GetOrderDetail:Order:Type%",
+            "request:attrs": "=IF(ISBLANK(Attrs_For_HTTPRequest),true,LIST(%Attrs_For_HTTPRequest%))",
+            "request:customerId": "%DMExtractOrderRequestBody:customerId%",
+            "request:externalId": "%DMExtractOrderRequestBody:externalId%",
+            "request:fulfilmentRequestLineId": "%FulfilmentRequestLineId%",
+            "request:iccid": "%DME_GetICCID_OrderItem:attrICCID%",
+            "request:msisdn": "%DME_GetMSISDN_OrderItem:attrMSISDN%",
+            "request:orderNumber": "ORDSF%DMExtractOrderRequestBody:salesForceOrderId%",
+            "request:requestDate": "=NOW()",
+            "request:requestTargetId": "%DME_OMGetOMEricsonMappingMetadata:DefaultValue%",
+            "response": "=IF(%SV_bndErrorConect:bErrorConn% = true, %SV_ErrorConnResponse:responseErrorConn%,%HTTPRequestPrePost%)",
+            "response:status": "ERROR"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "OM_getDataQueueCMAndOrderDetails",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/MigratePrepaidToPostpaid/Procedure/IP_getInfoToHTTPError"
+}

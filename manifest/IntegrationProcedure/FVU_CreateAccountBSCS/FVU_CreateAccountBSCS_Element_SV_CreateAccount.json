@@ -1,0 +1,69 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CreateAccount",
+    "OmniProcessId": {
+        "Name": "CreateAccountBSCS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreateAccountBSCS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SetBillingAccount",
+        "OmniProcessId": {
+            "Name": "CreateAccountBSCS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreateAccountBSCS/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreateAccountBSCS/Procedure/SetBillingAccount",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SetBillingAccount",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "BSCSCreateBillingAccount": {
+                "BSCBillingAccountNumberId": "%DRTransformResponseXMLToJSON:bscBillingAccountNumberId%",
+                "BSCSBillingAccountId": "%DRTransformResponseXMLToJSON:bscsBillingAccount%",
+                "BSCSCustomerId": "%DRTransformResponseXMLToJSON:bscsBillingAccountInternalId%",
+                "BSCSServiceAccountId": "%DRTransformResponseXMLToJSON:bscsCustomerId%",
+                "billCycle": "%billCycle%",
+                "billCycleCutoff": "%billCycleCutoff%",
+                "billDeliveryMethod": "Electronico",
+                "billingAddressNode": "%DREGetServiceAccountDetails:ServiceAddressNode%",
+                "billingAddressType": "%DREGetServiceAccountDetails:ServiceAddressType%",
+                "billingDaneCode": "%DREGetServiceAccountDetails:ServiceDaneCode%",
+                "billingDetailFlag": false,
+                "billingFullAddress": "%DREGetServiceAccountDetails:FullServiceAddress%",
+                "billingMerId": "%DREGetServiceAccountDetails:ServiceMerId%",
+                "billingMiniCity": "%DREGetServiceAccountDetails:ServiceMiniCity%",
+                "billingMunicipality": "%DREGetServiceAccountDetails:ServiceMunicipality%",
+                "billingShortAddress": "%DREGetServiceAccountDetails:ServiceShortAddress%",
+                "billingState": "%DREGetServiceAccountDetails:ServiceState%",
+                "name": "%DRTransformResponseXMLToJSON:bscsCustomerId%",
+                "parentId": "%DRExtractOrderDetail:AccountId%",
+                "recordTypeId": "%DRTransformResponseXMLToJSON:recordTypeId%",
+                "region": "%DREGetServiceAccountDetails:ServiceRegion%",
+                "serviceAccountRelated": "%DRExtractOrderDetail:DefaultServiceAccountId%",
+                "serviceExtract": "%DREGetServiceAccountDetails:ServiceExtract%",
+                "status": "Active"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "SV_AccountFinal",
+        "responseJSONPath": "BSCSCreateBillingAccount",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreateAccountBSCS/Procedure/SV_CreateAccount"
+}

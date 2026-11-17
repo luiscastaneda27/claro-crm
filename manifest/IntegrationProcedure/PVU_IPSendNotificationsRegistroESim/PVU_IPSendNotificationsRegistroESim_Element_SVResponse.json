@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "IPSendNotificationsRegistroESim",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPSendNotificationsRegistroESim/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "SendNotificationCustomer": "=IF(%IPSendEmail:success%,'success','fail')",
+            "SentEmailMessage": "%IPSendEmail:value:data:message%",
+            "SentEmailValid": "%IPSendEmail:value:data:isValid%",
+            "SentSMSMessage": "%IPSendSMS:value:data:message%",
+            "SentSMSValid": "%IPSendSMS:value:data:isValid%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPSendNotificationsRegistroESim/Procedure/SVResponse"
+}

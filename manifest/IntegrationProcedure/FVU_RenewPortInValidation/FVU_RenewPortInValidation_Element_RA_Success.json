@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Success",
+    "OmniProcessId": {
+        "Name": "RenewPortInValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RenewPortInValidation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ActionDueToIssue": "=%DM_ActionStateAndSubState:Action% = 'Notify' || %DM_ActionStateAndSubState:Action% = 'Block'",
+            "CanSubmit": true,
+            "DeliveryMethod": "%DR_GetOrderPortinData:Order:DeliveryMethod%",
+            "EndPromiseDate": "%DR_GetOrderPortinData:Order:PromiseEndDate%",
+            "NipOrderItem": "%GetOrderItems:OrderItem:NIP%",
+            "OrderNumber": "%DR_GetOrderPortinData:Order:OrderNumber%",
+            "OrderStatus": "%GetOrderItems:OrderItem:OrderStatus%",
+            "PortinActivationDate": "%GetOrderItems:OrderItem:PortinActivationDate%",
+            "ProductDeliverStatus": "%GetOrderItems:OrderItem:ProductDeliverStatus%",
+            "message": "La orden de portabilidad será retomada, con las condiciones previamente acordadas con el cliente. Si deseas realizar alguna modificación debes contactar al cliente y realizar una nueva solicitud de portación"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "SVFnSubmit:fnCanSubmit",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RenewPortInValidation/Procedure/RA_Success"
+}

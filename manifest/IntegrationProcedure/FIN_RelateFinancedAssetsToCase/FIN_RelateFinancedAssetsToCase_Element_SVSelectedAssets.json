@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSelectedAssets",
+    "OmniProcessId": {
+        "Name": "IPRelateFinancedAssetsToCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockEquipoFinanciado",
+        "OmniProcessId": {
+            "Name": "IPRelateFinancedAssetsToCase",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure/ConditionalBlockEquipoFinanciado",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockEquipoFinanciado",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetsCount": "=IF(ISBLANK(FILTER(LIST(%Assets%), 'CheckboxAssetFin == true')),0,LISTSIZE(FILTER(LIST(%Assets%), 'CheckboxAssetFin == true')))",
+            "SelectedAssets": "=LIST(FILTER(LIST(%Assets%),'CheckboxAssetFin == true'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure/SVSelectedAssets"
+}

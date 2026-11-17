@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFechaMessageFormat",
+    "OmniProcessId": {
+        "Name": "IPDateFormat",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPDateFormat/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "fechaGuionDDMMYYYY": "=%SVFechaMessage:fechaSplit|3% + '-' + %SVFechaMessage:fechaSplit|2% + '-' + %SVFechaMessage:fechaSplit|1%",
+            "fechaGuionYYYYMMDD": "=%fechaDateFormat%",
+            "fechaSMS": "=%SVFechaMessage:fechaSplit|3% + '/' + %SVFechaMessage:fechaSplit|2% + '/' + %SVFechaMessage:fechaSplit|1%",
+            "fechaSlashDDMMYY": "=%SVFechaMessage:fechaSplit|3% + '/' + %SVFechaMessage:fechaSplit|2% + '/' + SUBSTRING(%SVFechaMessage:fechaSplit|1%,2)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPDateFormat/Procedure/SVFechaMessageFormat"
+}

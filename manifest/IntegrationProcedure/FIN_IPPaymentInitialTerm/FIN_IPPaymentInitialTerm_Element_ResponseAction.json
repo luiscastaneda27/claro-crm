@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "IPPaymentInitialTerm",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPPaymentInitialTerm/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "channel": "%DRFINGetQuoteItemById:User:Canal%",
+            "cicloDeFacturacionMaster": "%DRFINGetQuoteItemById:Quote:cicloDeFacturacion%",
+            "cityDaneCode": "=%DRFINGetQuoteItemById:Quote:cityDaneCode%",
+            "clientType": "=%DRFINGetQuoteItemById:Quote:clientType%",
+            "count": "%FIN_DRGetParam:Params:Valor%",
+            "creditHistoryQuota": "%DRFINGetQuoteItemById:Quote:creditHistoryQuota%",
+            "creditQuota": "%DRFINGetQuoteItemById:Quote:creditQuota%",
+            "customerAvailable": true,
+            "customerType": "%FIN_DRGetParam:Params:Value%",
+            "materialProduct": "%DRFINGetQuoteItemById:Product:Material%",
+            "nameProduct": "%DRFINGetQuoteItemById:Product:Name%",
+            "pagosIniciales": "=IF(%DRFINGetQuoteItemById:Product:TipoDeProducto% == \"Terminales\",%DRFINTransformPagosIniciales:Quote:PagosInicialesTerminales%,%DRFINTransformPagosIniciales:Quote:PagosInicialesTecnologia%)",
+            "phone": "=%DRFINGetQuoteItemById:Quote:Phone%",
+            "productType": "%DRFINGetQuoteItemById:Product:Type%",
+            "salesAmount": "%DRFINGetQuoteItemById:Product:EffectiveOneTimeIncTaxesTotal%",
+            "serviceCondition": "%DRFINGetQuoteItemById:Quote:ServiceCondition%",
+            "terms": "%RemoteAction%",
+            "typeProduct": "%DRFINGetQuoteItemById:Product:TipoDeProducto%",
+            "userChannel": "=IF(%DRFINGetQuoteItemById:User:Canal%==\"TELEFONICO VENTA\",\"TMK\",%DRFINGetQuoteItemById:User:Canal%)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPPaymentInitialTerm/Procedure/ResponseAction"
+}

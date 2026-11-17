@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_SizeTyTOrderAndAsset",
+    "OmniProcessId": {
+        "Name": "SalesFraudValidations",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesFraudValidations/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "lstAssetTyTDay": "=SUM(%SV_ListSizeAsset:lstTyTHandNow%,%SV_ListSizeAsset:lstTyTTechNow%)",
+            "lstAssetTyTMonth": "=SUM(%SV_ListSizeAsset:lstTyTHandMonth%,%SV_ListSizeAsset:lstTyTTechMonth%)",
+            "lstAssetTyTWeek": "=SUM(%SV_ListSizeAsset:lstTyTHandWeek%,%SV_ListSizeAsset:lstTyTTechWeek%)",
+            "lstOrderTyT": "=SUM(%SV_ListOrderSize:lstOrderTyTHand%,%SV_ListOrderSize:lstOrderTyTTech%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues15",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesFraudValidations/Procedure/SV_SizeTyTOrderAndAsset"
+}

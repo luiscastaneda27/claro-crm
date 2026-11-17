@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LBGetAmounts",
+    "OmniProcessId": {
+        "Name": "IPPaquetesAdicionalesPorGestion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPPaquetesAdicionalesPorGestion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBWithSubType",
+        "OmniProcessId": {
+            "Name": "IPPaquetesAdicionalesPorGestion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPPaquetesAdicionalesPorGestion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPPaquetesAdicionalesPorGestion/Procedure/CBWithSubType",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBWithSubType",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "LAGetProductIds",
+        "loopOutput": {
+            "AmountWithTaxes": "%DRGetAmountWithTax:Price:AmountWithTaxes%",
+            "ProductId": "%DRGetAmountWithTax:Price:ProductId%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPPaquetesAdicionalesPorGestion/Procedure/LBGetAmounts"
+}

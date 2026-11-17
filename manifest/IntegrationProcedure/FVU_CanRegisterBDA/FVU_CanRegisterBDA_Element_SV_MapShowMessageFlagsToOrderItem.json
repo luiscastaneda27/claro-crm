@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_MapShowMessageFlagsToOrderItem",
+    "OmniProcessId": {
+        "Name": "CanRegisterBDA",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CanRegisterBDA/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_OrderItemListConsult",
+        "OmniProcessId": {
+            "Name": "CanRegisterBDA",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CanRegisterBDA/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CanRegisterBDA/Procedure/LB_OrderItemListConsult",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_OrderItemListConsult",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "chainOnStep": false,
+        "elementValueMap": {
+            "showMessageIMEI": "%DBAPositivo:IMEI:showMessageIMEI%",
+            "showMessageIMEI2": "%DBAPositivo:IMEI2:showMessageIMEI2%"
+        },
+        "executionConditionalFormula": "%DBAPositivo:NewServiceFlag% == true",
+        "failOnStepError": true,
+        "label": "SV_MapShowMessageFlagsToOrderItem",
+        "responseJSONNode": "GetOrderData:Order:OrderItem",
+        "type": "SetValues"
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CanRegisterBDA/Procedure/SV_MapShowMessageFlagsToOrderItem"
+}

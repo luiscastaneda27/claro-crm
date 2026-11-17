@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_MethodGroup",
+    "OmniProcessId": {
+        "Name": "IPCheckAvailabilityInventory",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_AvailableDeliveryMethods",
+        "OmniProcessId": {
+            "Name": "IPCheckAvailabilityInventory",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/CB_AvailableDeliveryMethods",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_AvailableDeliveryMethods",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "delivery": "=FILTER(LIST(%CalloutProductListPromise:orderGroupList%), 'delivMethod == 2')",
+            "immediatepickup": "=FILTER(LIST(%CalloutProductListPromise:orderGroupList%), 'delivMethod == 9')",
+            "pickup": "=FILTER(LIST(%CalloutProductListPromise:orderGroupList%), 'delivMethod == 3')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues10",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/SV_MethodGroup"
+}

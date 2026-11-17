@@ -1,0 +1,31 @@
+{
+    "Description": "Cuando el usuario es de recuperaciones no se considera el flag hasActiveFinancing en las validaciones",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CanProceedReversion",
+    "OmniProcessId": {
+        "Name": "MigraPrePosValidationController",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MigraPrePosValidationController/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CanProceed": "=IF(%IP_MigraPrePosValidation:data:isLineActive% == true && %IP_MigraPrePosValidation:data:hasPortOut% == false && %DR_GetAssetsByLineNumber:HasPostpaidActive% == false, true, false)"
+        },
+        "executionConditionalFormula": "%SVUserContext:esReversion% == true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "SV_CanProceed",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MigraPrePosValidationController/Procedure/SV_CanProceedReversion"
+}

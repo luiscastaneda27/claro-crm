@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_MappingFilter",
+    "OmniProcessId": {
+        "Name": "UpdateSerialOrderItem",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateSerialOrderItem/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_ListOrderItems",
+        "OmniProcessId": {
+            "Name": "UpdateSerialOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateSerialOrderItem/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateSerialOrderItem/Procedure/LB_ListOrderItems",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_ListOrderItems",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "imei": "=LA_ListOrderItems:imei",
+            "orderItemId": "=LA_ListOrderItems:orderItemId",
+            "orderProductItemStatus": "=LA_ListOrderItems:orderProductItemStatus",
+            "serialNumber": "=LA_ListOrderItems:serialNumber",
+            "serialNumberAttribute": "=LA_ListOrderItems:serialNumberAttribute",
+            "valorDelSerial": "=LA_ListOrderItems:valorDelSerial"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateSerialOrderItem/Procedure/SV_MappingFilter"
+}

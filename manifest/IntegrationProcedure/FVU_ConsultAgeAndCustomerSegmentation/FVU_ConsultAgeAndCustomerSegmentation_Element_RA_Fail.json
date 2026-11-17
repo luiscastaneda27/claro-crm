@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Fail",
+    "OmniProcessId": {
+        "Name": "ConsultAgeAndCustomerSegmentation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ConsultAgeAndCustomerSegmentation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "antiquityBefore": "=%DRE_GetAccountDetails:oldAntiquity%",
+            "message": "=%HTTP_ConsultAgeAndCustomerSegmentation:message|1%",
+            "save": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "HTTP_ConsultAgeAndCustomerSegmentation:data:consultSegment == null",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "HTTP_ConsultAgeAndCustomerSegmentation",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ConsultAgeAndCustomerSegmentation/Procedure/RA_Fail"
+}

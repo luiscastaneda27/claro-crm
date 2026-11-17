@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCase",
+    "OmniProcessId": {
+        "Name": "IPConsultarDataProvidenceByAccount",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPConsultarDataProvidenceByAccount/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCreateCase",
+        "OmniProcessId": {
+            "Name": "IPConsultarDataProvidenceByAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPConsultarDataProvidenceByAccount/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPConsultarDataProvidenceByAccount/Procedure/CBCreateCase",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCreateCase",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CAV": "%DRGetUserDetailsCes:UserDetails:BusinessChannel%",
+            "Categoria": "Solicitud de información y modificaciones",
+            "CodigoCierre": "Cesión de contrato no exitosa",
+            "CuentaCesionario": "%accountCesionarioId%",
+            "Observaciones": "=JOIN(%Lista:Lista:list%,',')",
+            "RecordTypeId": "%DRGetRT:RecordType:Id%",
+            "RequestProcessInfo": "=JOIN(%Lista:ListaCompleta:list%,',')",
+            "Status": "Cerrado",
+            "SubCategoria": "Cesión de contrato",
+            "SubEstado": "No Aplica",
+            "VozCliente": "Cesión de contrato",
+            "accountId": "%accountId%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPConsultarDataProvidenceByAccount/Procedure/SVCase"
+}

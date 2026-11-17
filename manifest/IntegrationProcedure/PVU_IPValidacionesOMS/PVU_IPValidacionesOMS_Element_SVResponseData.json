@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponseData",
+    "OmniProcessId": {
+        "Name": "IPValidacionesOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Cuenta": {
+                "AccountId": "%DRGetOrderData:OrderAccountId%",
+                "DocumentNumber": "%DRGetOrderData:NumeroDocumento%",
+                "DocumentType": "%DRGetOrderData:TipoDocumento%",
+                "Email": "%DRGetOrderData:CuentaEmail%",
+                "Telefono": "%DRGetOrderData:CuentaTelefono%"
+            },
+            "Orden": {
+                "DeliveryData": "%SVDeserializeDeliveryData:DeliveryData%",
+                "OMSId": "%DRGetOrderData:OrderOMSId%",
+                "OrderNumber": "%DRGetOrderData:OrderNumber%",
+                "TerceroNombreCompleto": "%SVDeserializeDeliveryData:DeliveryData:AuthorizedPersonData:Name% %SVDeserializeDeliveryData:DeliveryData:AuthorizedPersonData:LastName% %SVDeserializeDeliveryData:DeliveryData:AuthorizedPersonData:SecondLastName%",
+                "fulfillOrderNbr": "%IPCallCustomerOrderShipment|1:fulfillOrderNbr%"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesOMS/Procedure/SVResponseData"
+}

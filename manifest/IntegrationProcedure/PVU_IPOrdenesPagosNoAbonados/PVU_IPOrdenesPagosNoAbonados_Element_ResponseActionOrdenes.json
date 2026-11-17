@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionOrdenes",
+    "OmniProcessId": {
+        "Name": "IPOrdenesPagosNoAbonados",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPOrdenesPagosNoAbonados/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Messages": "%GetMessages%",
+            "OrdenesDisponibles": "%RAGetOrders:Ordenes%",
+            "hayOrdenes": "True"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%RAGetOrders:Ordenes%)",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPOrdenesPagosNoAbonados/Procedure/ResponseActionOrdenes"
+}

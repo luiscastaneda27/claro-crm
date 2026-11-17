@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_ATDPApprovalCustomer",
+    "OmniProcessId": {
+        "Name": "FVU_CallATDP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CallATDP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "accountDocumentNumber": "accountDocumentNumber",
+            "accountDocumentType": "accountDocumentType",
+            "accountId": "=accountId",
+            "accountName": "accountName",
+            "mailEnvio": "=mailEnvio",
+            "numeroEnvio": "=IF(%SaleType% = \"MIG\", %MINNumber%, %numeroEnvio%)",
+            "tipoEnvio": "=IF(%SaleType% = \"MIG\", \"sms\", %tipoEnvio%)"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "(IP_IPsValidationStructureEmail:isValid == true && SV_ValidateChanges:emailChanged == true) || SV_ValidateChanges:emailChanged == false",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "FVU_ATDPApprovalCustomer",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CallATDP/Procedure/IP_ATDPApprovalCustomer"
+}

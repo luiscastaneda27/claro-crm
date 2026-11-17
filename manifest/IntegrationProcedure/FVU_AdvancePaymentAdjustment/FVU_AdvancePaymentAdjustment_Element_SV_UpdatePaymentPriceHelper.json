@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_UpdatePaymentPriceHelper",
+    "OmniProcessId": {
+        "Name": "FVU_AdvancePaymentAdjustment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AdvancePaymentAdjustment/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_UpdatePaymentPrice",
+        "OmniProcessId": {
+            "Name": "FVU_AdvancePaymentAdjustment",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AdvancePaymentAdjustment/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AdvancePaymentAdjustment/Procedure/LB_UpdatePaymentPrice",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_UpdatePaymentPrice",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "OneTimeChargeIncTaxes": "=IF(ListProductMobile:OneTimeChargeIncTaxes == 0, ListProductMobile:EffectiveRecurringTotalIncTaxes* SV_AdvancePaymentAdjustment:AdvancePayment, ListProductMobile:OneTimeChargeIncTaxes)",
+            "orderItemOneTimeCharge": "=IF(ListProductMobile:orderItemOneTimeCharge == 0,ListProductMobile:orderItemEffectiveRecurringTotal* SV_AdvancePaymentAdjustment:AdvancePayment, ListProductMobile:orderItemOneTimeCharge)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AdvancePaymentAdjustment/Procedure/SV_UpdatePaymentPriceHelper"
+}

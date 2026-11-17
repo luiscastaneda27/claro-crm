@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Detalle",
+    "OmniProcessId": {
+        "Name": "IPAPIMCMICProOrdeMan",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPAPIMCMICProOrdeMan/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBSaveLogs",
+        "OmniProcessId": {
+            "Name": "IPAPIMCMICProOrdeMan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPAPIMCMICProOrdeMan/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPAPIMCMICProOrdeMan/Procedure/CBSaveLogs",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBSaveLogs",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DetalleFailed": "RP EC: %CallAPIMCMICProOrdeMan:error:code% ER: %CallAPIMCMICProOrdeMan:error:reason% TI: %CallAPIMCMICProOrdeMan:error:details:details% TD: %CallAPIMCMICProOrdeMan:error:details:transactionDate%",
+            "DetalleRQ": "//RQ Cat: %Category% IMEI: %IMEI% /",
+            "DetalleSuccess": "RP ST: %CallAPIMCMICProOrdeMan:state% TD: %CallAPIMCMICProOrdeMan:externalId:id%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPAPIMCMICProOrdeMan/Procedure/SV_Detalle"
+}

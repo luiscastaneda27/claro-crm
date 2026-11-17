@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_InfoResponseMovil",
+    "OmniProcessId": {
+        "Name": "GetSummaryTotal",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetSummaryTotal/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "1erCFM": "=formatCurrency(%IP_CalculateCFM:detalle:cfm%)",
+            "Discount": "=SV_InitialValues:Discount",
+            "IVA": "=formatCurrency(%IP_CalculateCFM:detalle:iva%)",
+            "Promos": "=LIST(DR_GetSummaryTotal:TotalAPagar:TotalAPagarMovil:Promos)",
+            "RecurringTotalIncTaxes": "=TOSTRING(DR_GetSummaryTotal:TotalAPagar:TotalAPagarMovil:RecurringTotalIncTaxes)",
+            "SimTotal": "=formatCurrency(%DR_GetSummaryTotal:TotalAPagar:TotalAPagarMovil:SimTotal%)",
+            "Total1erCFM": "=formatCurrency(%SV_InitialValues:Total1erCFM%)",
+            "ico": "=formatCurrency(%IP_CalculateCFM:detalle:ico%)"
+        },
+        "executionConditionalFormula": "DR_GetSummaryTotal:PurchaseType != 'NAP' && DR_GetSummaryTotal:PurchaseType != 'FIN'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "TotalAPagarMovil",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetSummaryTotal/Procedure/SV_InfoResponseMovil"
+}

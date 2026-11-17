@@ -1,0 +1,22 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CB_FailureHTTPRequest",
+    "OmniProcessId": {
+        "Name": "PortabilityRequest",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/PortabilityRequest/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%HTTPRequestPortability%) || (%HTTPRequestPortabilityInfo:statusCode% > 400)  || %HTTPRequestPortability:errorCode% == \"ERROR_TECNICO\" ||( ISNOTBLANK(%HTTPRequestPortability:errorCode%) &&(%HTTPRequestPortability:httpStatus% == 200 ||%HTTPRequestPortability:httpStatus% == 201 ||%HTTPRequestPortabilityInfo:statusCode% == 400)) || %SV_bndErrorConect:bErrorConn% == true",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock2",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/PortabilityRequest/Procedure/CB_FailureHTTPRequest"
+}

@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CreateSubscriptionHistoryRecord",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SuspensionProcess",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/SuspensionProcess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SuspensionProcess",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "AccountId": "%GetSuspensionInfo:Subscription:AccountId%",
+            "MSISDN": "%GetSuspensionInfo:Subscription:MSISDN%",
+            "Status": "%GetSuspensionInfo:Subscription:Status%",
+            "billingAccountId": "%GetSuspensionInfo:Subscription:BillingAccountId%",
+            "reasonCode": "%GetSuspensionInfo:Subscription:reasonCode%",
+            "serviceAccountId": "%GetSuspensionInfo:Subscription:ServiceAccountId%",
+            "statusEndDate": "=NOW()",
+            "statusStartDate": "%GetSuspensionInfo:Subscription:statusStartDate%",
+            "subReasonCode": "%GetSuspensionInfo:Subscription:subReasonCode%",
+            "subscriptionId": "%GetSuspensionInfo:Subscription:Id%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_SubscriptionHistory",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%GetSuspensionInfo:OrderItem:Status% <> %GetSuspensionInfo:Asset:Status% ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/CreateSubscriptionHistoryRecord"
+}

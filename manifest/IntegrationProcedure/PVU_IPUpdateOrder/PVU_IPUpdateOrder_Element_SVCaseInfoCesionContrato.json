@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseInfoCesionContrato",
+    "OmniProcessId": {
+        "Name": "IPUpdateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCesionContrato",
+        "OmniProcessId": {
+            "Name": "IPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateOrder/Procedure/CBCesionContrato",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCesionContrato",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Id": "%CaseInfo:Id%",
+            "causalDesactivacionCedente": "%CaseInfo:causalDesactivacionCedente%",
+            "cedenteAssetId": "%CaseInfo:cedenteAssetId%",
+            "cedenteBillingAccount": "%CaseInfo:cedenteBillingAccount%",
+            "cedenteCustomerAccount": "%CaseInfo:cedenteCustomerAccount%",
+            "cedenteServiceAccount": "%CaseInfo:cedenteServiceAccount%",
+            "fechaFinSusp": "=IF(ISNOTBLANK(%CaseInfo:fechaFinSusp%), FORMATDATETIME(CONCAT(%CaseInfo:fechaFinSusp%, 'T', FORMATDATETIME(NOW(),\"HH:mm:ss\",\"GMT\")),\"yyyy-MM-dd'T'HH:mm:ss'Z'\",\"GMT\"), '')",
+            "fechaInicioSusp": "=IF(ISNOTBLANK(%CaseInfo:fechaInicioSusp%) && DATEDIFF(%CaseInfo:fechaInicioSusp%, TODAY()) < 0, FORMATDATETIME(CONCAT(%CaseInfo:fechaInicioSusp%, 'T', FORMATDATETIME(NOW(),\"HH:mm:ss\",\"GMT\")),\"yyyy-MM-dd'T'HH:mm:ss'Z'\",\"GMT\") ,FORMATDATETIME(NOW(),\"YYYY-MM-dd'T'HH:mm:ss'Z'\", 'GTM'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateOrder/Procedure/SVCaseInfoCesionContrato"
+}

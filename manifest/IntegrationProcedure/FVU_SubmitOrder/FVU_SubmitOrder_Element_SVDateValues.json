@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDateValues",
+    "OmniProcessId": {
+        "Name": "FVU_SubmitOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SubmitOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_PortIn",
+        "OmniProcessId": {
+            "Name": "FVU_SubmitOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SubmitOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SubmitOrder/Procedure/CB_PortIn",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_PortIn",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "constantTimeHour": "15:50",
+            "hourProcessDate": "=SUBSTRING(NOW(\"yyyy-MM-dd HH:mm:ss\"), 11, 16)",
+            "nipDueDate": "=IP_PortInConsultAndTraceability:registros|1:numeros|1:nip:fechaVencimiento",
+            "orderEndPromiseDate": "%GetOrderItems:OrderItem:OrderPromiseEndDate%",
+            "portinActivationDate": "=%GetOrderItems:OrderItem:PortinActivationDate%",
+            "processDate": "=NOW(\"yyyy-MM-dd HH:mm:ss\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SubmitOrder/Procedure/SVDateValues"
+}

@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFunctions",
+    "OmniProcessId": {
+        "Name": "FVU_SubmitOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SubmitOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_PortIn",
+        "OmniProcessId": {
+            "Name": "FVU_SubmitOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SubmitOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SubmitOrder/Procedure/CB_PortIn",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_PortIn",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "daysForWindow": "=DATEDIFF(SVDateValues:processDate ,SVDateValues:portinActivationDate)",
+            "fnIsClaroOperator": "=IP_PortInConsultAndTraceability:registros|1:numeros|1:nip:generadoEnClaro",
+            "fnIsExpiredNip": "=IF(%SVDateValues:processDate% > CONCAT(SUBSTRING(%SV_FormattedNipDueDate:FormattedNipDueDate%, 6, 10), \"-\", SUBSTRING(%SV_FormattedNipDueDate:FormattedNipDueDate%, 3, 5), \"-\", SUBSTRING(%SV_FormattedNipDueDate:FormattedNipDueDate%, 0, 2), \" \", SUBSTRING(%SV_FormattedNipDueDate:FormattedNipDueDate%, 11, 19)), true, false)",
+            "fndaysForWindow": "=IF(ISBLANK(SVFunctions:daysForWindow),false,true)",
+            "fnlowerTime": "=IF(ISBLANK(SVFunctions:lowerTime),false,true)",
+            "fnnipDueDate": "=IF(ISBLANK(SVDateValues:nipDueDate),false,true)",
+            "fnprocessDate": "=IF(ISBLANK(SVDateValues:processDate),false,true)",
+            "lowerTime": "=IF(SVDateValues:hourProcessDate <= SVDateValues:constantTimeHour,true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SubmitOrder/Procedure/SVFunctions"
+}

@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_RequestDataPinPago",
+    "OmniProcessId": {
+        "Name": "SendDataPinPagoRQNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendDataPinPagoRQNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DeliveryMethod": "=IP_DataDeliveryMethod:Order:DeliveryMethodName",
+            "ListProductTangible": "=IP_DataDeliveryMethod:ListProductTangible",
+            "cargoAnticipado": "=IP_DataDeliveryMethod:Order:cargoAnticipado",
+            "effectiveOneTimeTotalIncTaxes": "=IP_DataDeliveryMethod:Order:Quote:TotalCuotaInicial",
+            "esAgente": "=IF(userProfile == 'Usuario Aliado Claro',true,false)",
+            "isEmail": "=IF(IP_DataDeliveryMethod:Account:AccountNotificationChoice ==\"Correo electrónico\", true,false)",
+            "isPhone": "=IF(IP_DataDeliveryMethod:Account:AccountNotificationChoice ==\"SMS - Teléfono de contacto\", true,false)",
+            "mobileCode": "=IP_DataDeliveryMethod:Order:MobileCode",
+            "orderId": "=IP_DataDeliveryMethod:Order:OrderId",
+            "orderNumber": "=IP_DataDeliveryMethod:Order:OrderNumber",
+            "referenciaPagoMotor": "=IP_DataDeliveryMethod:Order:BillingAccountExternalID"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "RequestDataPinPago",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendDataPinPagoRQNotification/Procedure/SV_RequestDataPinPago"
+}

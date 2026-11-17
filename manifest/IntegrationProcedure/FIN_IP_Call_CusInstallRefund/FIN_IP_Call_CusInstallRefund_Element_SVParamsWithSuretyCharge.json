@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParamsWithSuretyCharge",
+    "OmniProcessId": {
+        "Name": "IP_Call_CusInstallRefund",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IP_Call_CusInstallRefund/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "amount": "=%amount%",
+            "billingAccount": "=%billingAccount%",
+            "calculateAmount": "%calculateAmount%",
+            "chargeService": "%chargeService%",
+            "financingCode": "%financingCode%",
+            "remark": "%remark%",
+            "suretyChargeService": "%suretyChargeService%",
+            "suretyId": "%suretyId%",
+            "target": "%DRExtractHeaderRequest:Target%",
+            "user": "%user%",
+            "validDate": "=CONCAT(   YEAR(TODAY()), '-',   IF(MONTH(TODAY()) < 10, CONCAT('0', MONTH(TODAY())), MONTH(TODAY())), '-',   IF(DAY(TODAY()) < 10, CONCAT('0', DAY(TODAY())), DAY(TODAY())) )"
+        },
+        "executionConditionalFormula": "ISNOTBLANK(%suretyChargeService%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "SVParams",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IP_Call_CusInstallRefund/Procedure/SVParamsWithSuretyCharge"
+}

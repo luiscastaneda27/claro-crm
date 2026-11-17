@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "IPGetCodigosPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetCodigosPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "peticiones": "%LAMergeList%",
+            "quejas": "%LASortQuejas%",
+            "requerimientosLegales": "%LASortRequerimientoLegal%",
+            "sizePeticiones": "=IF(ISBLANK(%SVFilerList:peticiones%),0,LISTSIZE(%SVFilerList:peticiones%))",
+            "sizeQuejas": "=IF(ISBLANK(%SVFilerList:quejas%),0,LISTSIZE(%SVFilerList:quejas%))",
+            "sizeReqLegal": "=IF(ISBLANK(%SVFilerList:requerimientosLegales%),0,LISTSIZE(%SVFilerList:requerimientosLegales%))"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetCodigosPQR/Procedure/ResponseAction"
+}

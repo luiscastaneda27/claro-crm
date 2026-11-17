@@ -1,0 +1,27 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LoopBlock1",
+    "OmniProcessId": {
+        "Name": "GestionPQRTytFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GestionPQRTytFin/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "GetAssetByImei:Type = 'Handset' && %IPGetFinancingInfo:status% = 'X - FRAUDE' && %Respuesta% = 'Favorable'",
+        "label": "LoopBlock1",
+        "loopList": "SVIni:attempts",
+        "loopOutput": {
+            "FailCount": "%retryCount%",
+            "Succes": "%SuccesService%",
+            "respuesta": "%SVRespuesta:respuesta%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GestionPQRTytFin/Procedure/LoopBlock1"
+}

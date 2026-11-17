@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ISCambioSIM",
+    "OmniProcessId": {
+        "Name": "IPUpdateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ISCambioSIM": "=IF(STRINGINDEXOF(%proccessName%, 'eSIM_To_eSIM') !=-1 || STRINGINDEXOF(%proccessName%, 'eSIM_To_SIM') !=-1 || STRINGINDEXOF(%proccessName%, 'SIM_To_eSIM') !=-1 || STRINGINDEXOF(%proccessName%, 'SIM_To_SIM') !=-1, true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "ISCambioSIM",
+        "responseJSONPath": "ISCambioSIM",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateOrder/Procedure/SV_ISCambioSIM"
+}

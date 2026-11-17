@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVValores",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCierreCasoTyT",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCierreCasoTyT/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBTieneServicios",
+        "OmniProcessId": {
+            "Name": "IPValidacionesCierreCasoTyT",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCierreCasoTyT/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCierreCasoTyT/Procedure/CBTieneServicios",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBTieneServicios",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CantidadFavorableTecnologia": "=IF(ISNOTBLANK(%ListarFavorablesTecnologia%),LISTSIZE(%ListarFavorablesTecnologia%),0 )",
+            "CantidadFavorableTecnologiaFraude": "=IF(ISNOTBLANK(%ListarFavorablesTecnologiaFraude%),LISTSIZE(%ListarFavorablesTecnologiaFraude%),0 )",
+            "CantidadFavorableTerminalesNotImei": "=IF(ISNOTBLANK(%ListarFavorablesTerminalesNotImei%),LISTSIZE(%ListarFavorablesTerminalesNotImei%),0 )",
+            "CantidadFavorables": "=IF(ISNOTBLANK(%ListarFavorables%), LISTSIZE(%ListarFavorables%),0)",
+            "CantidadFavorablesTerminales": "=IF(ISNOTBLANK(%ListarFavorablesTerminales%),LISTSIZE(%ListarFavorablesTerminales%),0 )",
+            "CantidadFavorablesTerminalesImei": "=IF(ISNOTBLANK(%ListarFavorablesTerminalesImei%),LISTSIZE(%ListarFavorablesTerminalesImei%),0 )",
+            "CantidadNoFavorables": "=IF(ISNOTBLANK(%ListarNoFavorables%),LISTSIZE(%ListarNoFavorables%),0 )",
+            "CantidadTecnologia": "=IF(ISNOTBLANK(%ListarTecnologia%),LISTSIZE(%ListarTecnologia%),0 )",
+            "CantidadTerminales": "=IF(ISNOTBLANK(%ListarTerminales%),LISTSIZE(%ListarTerminales%),0 )",
+            "CantidadTotal": "=IF(ISNOTBLANK(%ListarTodas%), LISTSIZE(%ListarTodas%),0)",
+            "TotalSeriales": "=%SVCaseInfo:CaseCantidadSeriales%",
+            "TotalTerminales": "=%SVCaseInfo:CaseCantidadTerminales%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues11",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCierreCasoTyT/Procedure/SVValores"
+}

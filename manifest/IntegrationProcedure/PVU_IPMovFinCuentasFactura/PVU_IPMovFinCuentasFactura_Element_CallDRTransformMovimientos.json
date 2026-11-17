@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CallDRTransformMovimientos",
+    "OmniProcessId": {
+        "Name": "IPMovFinCuentasFactura",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPMovFinCuentasFactura/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Details": "%FinAccoBilling:Details%",
+            "OM_BSCSID": "%CallDRGetAccountPubId:OM_BSCSID%",
+            "accessProcess": "%RAAccessProcess:accessProcess%",
+            "customerIdPub": "%CallDRGetAccountPubId:customerIdPub%",
+            "parentAccountId": "%CallDRGetAccountPubId:parentAccountId%",
+            "userProfile": "%PVU_IPGetDetailsUser:UserDetails:Profile%",
+            "userRole": "%PVU_IPGetDetailsUser:UserDetails:Role%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "DRTransformMovimientos",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "FinAccoBilling:EndProcess==\"Success\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataMapperTransformAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Transform Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPMovFinCuentasFactura/Procedure/CallDRTransformMovimientos"
+}

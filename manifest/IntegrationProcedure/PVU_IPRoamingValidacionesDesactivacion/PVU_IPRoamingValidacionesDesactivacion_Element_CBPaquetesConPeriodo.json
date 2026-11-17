@@ -1,0 +1,37 @@
+{
+    "Description": "El consumo de datos es para paquetes con periodo de finalizacion (no renovacion automatica)",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CBPaquetesConPeriodo",
+    "OmniProcessId": {
+        "Name": "IPRoamingValidacionesDesactivacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBPaquetes",
+        "OmniProcessId": {
+            "Name": "IPRoamingValidacionesDesactivacion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/LBPaquetes",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBPaquetes",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%IPConsultaConsumos:consumos|1:expiryDate%)",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock1",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/CBPaquetesConPeriodo"
+}

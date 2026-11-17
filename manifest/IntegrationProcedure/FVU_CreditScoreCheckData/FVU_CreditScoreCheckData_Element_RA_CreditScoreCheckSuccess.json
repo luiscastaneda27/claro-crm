@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_CreditScoreCheckSuccess",
+    "OmniProcessId": {
+        "Name": "CreditScoreCheckData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreditScoreCheckData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "canalVenta": "=%DR_GetUserDetails:userBusinessChannel%",
+            "codigoConsultor": "=%DR_GetUserDetails:userRed%",
+            "codigoMovil": "=%DR_GetUserDetails:userCodigoMovil%",
+            "cupoDisponible": "=%IP_CreditScoreCheck:matrizPersonaVenta:montoServicio%",
+            "cupoLabel": "=%DRTransfomCupoDisponible:cupoDisponible%",
+            "fechaActual": "=NOW(\"yyyy-MM-dd\")",
+            "fechaVigencia": "=CONCAT(\"Desde \",FORMATDATETIME(SUBSTRING(%IP_CreditScoreCheck:historia:fechaSolicitudCalificacion%,0,10), \"dd-MM-yyyy\", \"GMT\"),\" hasta \",FORMATDATETIME(SUBSTRING(%IP_CreditScoreCheck:historia:fechaVencimientoCalificacion%,0,10), \"dd-MM-yyyy\", \"GMT\"))",
+            "fechaVigenciaFin": "=CONCAT(\"Desde \",FORMATDATETIME(SUBSTRING(%IP_CreditScoreCheck:historia:fechaSolicitudCalificacion%,0,10), \"dd-MM-yyyy\", \"GMT\"),\" hasta \",FORMATDATETIME(SUBSTRING(%IP_CreditScoreCheck:historia:fechaVencimientoCalificacion%,0,10), \"dd-MM-yyyy\", \"GMT\"))",
+            "nombre": "=%IP_CreditScoreCheck:historia:nombres%",
+            "primerApellido": "=%IP_CreditScoreCheck:historia:primerApellido%",
+            "segundoApellido": "=%IP_CreditScoreCheck:historia:segundoApellido%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "IP_CreditScoreCheck",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreditScoreCheckData/Procedure/RA_CreditScoreCheckSuccess"
+}

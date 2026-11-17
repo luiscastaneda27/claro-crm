@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPCallPlatformEventError",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCambioSim",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCambioSim/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "correlationId": "%SetInput:AssetId%",
+            "payload": {
+                "Ipresponse": {
+                    "Details": {
+                        "Message": "No se pudo crear la orden correctamente, favor comunicarse con el administrador.",
+                        "accountName": "- ",
+                        "assetId": "%SetInput:AssetId%",
+                        "creacionOrdenStatus": "- ",
+                        "iccid_old": "- ",
+                        "newOrderId": "- ",
+                        "processName": " - "
+                    },
+                    "EndProcess": "fail"
+                }
+            }
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%CreateOrder:EndProcess% != \"success\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction3",
+        "remoteClass": "PVU_PlatformEventInteface",
+        "remoteMethod": "publishCompletionEvent",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCambioSim/Procedure/IPCallPlatformEventError"
+}

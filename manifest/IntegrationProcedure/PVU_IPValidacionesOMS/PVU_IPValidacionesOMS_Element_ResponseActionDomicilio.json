@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionDomicilio",
+    "OmniProcessId": {
+        "Name": "IPValidacionesOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "Cuenta": "%SVResponseData:Cuenta%",
+                "ErrorMessage": "",
+                "Orden": "%SVResponseData:Orden%",
+                "VozCliente": "Modificación dirección de entrega a domicilio"
+            },
+            "EndProcess": "success"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SVFlags:ordenAbierta% && %SVFlags:tienePagoAsociado% && %SVFlags:noRecibeProducto%  && %SVFlags:hayNovedad% && %DRGetOrderData:DeliveryMethod% == \"Entrega en domicilio\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesOMS/Procedure/ResponseActionDomicilio"
+}

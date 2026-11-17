@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetResponse",
+    "OmniProcessId": {
+        "Name": "IPManageCustomPayment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPManageCustomPayment/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Estado": "=IF(ISNOTBLANK(%DRtransformResponseXMLtoJSON:billingAccountDefault:defaultAmount%), \"Mora\", \"Al Dia\")",
+            "billingAccountDefault": "=IF(ISNOTBLANK(%DRtransformResponseXMLtoJSON:billingAccountDefault%), LIST(%DRtransformResponseXMLtoJSON:billingAccountDefault%), LIST())"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPManageCustomPayment/Procedure/SetResponse"
+}

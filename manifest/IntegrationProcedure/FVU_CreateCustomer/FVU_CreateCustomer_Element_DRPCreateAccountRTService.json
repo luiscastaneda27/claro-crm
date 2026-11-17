@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRPCreateAccountRTService",
+    "OmniProcessId": {
+        "Name": "insertCustomerTMF",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreateCustomer/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "accountId": "%CallClassCreateAccountContact:accountId%",
+            "addressInformation": "%addressInformation%",
+            "name": "Dirección Secundaria de Servicio",
+            "recordType": "Service"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_DRPCreateAccountAddressService",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%CallClassCreateAccountContact:status% == \"Success\" && %addressInformation:@type% ==\"Service\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreateCustomer/Procedure/DRPCreateAccountRTService"
+}

@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_OrdersCasesToUpd",
+    "OmniProcessId": {
+        "Name": "OM_CancelFutureOrders",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/cancelFutureOrders/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Cases": "=IF(ISNOTBLANK(%SV_FilterOrdersbyType:Cases%),%SV_FilterOrdersbyType:Cases%,%DRE_GetOrdersFromAsset:Cases%)",
+            "Orders": "=IF(ISNOTBLANK(%SV_FilterOrdersbyType:Orders%),%SV_FilterOrdersbyType:Orders%,%DRE_GetOrdersFromAsset:Orders%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/cancelFutureOrders/Procedure/SV_OrdersCasesToUpd"
+}

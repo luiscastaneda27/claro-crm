@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SuccessRA",
+    "OmniProcessId": {
+        "Name": "FIN_ValidacionPagoNoAbonado",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/ValidacionPagoNoAbonado/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Account": "%DRE_GetAccountInfo%",
+            "Case": "%DRE_GetCaseDetails%",
+            "Success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRE_GetCaseDetails:Case:PVU_Level3__c% == \"Pagos No Abonados Financiación\" && %DRE_GetUserRole:Role:DeveloperName% == \"Backoffice_Nivel_1_Pagos_No_Abonados\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/ValidacionPagoNoAbonado/Procedure/SuccessRA"
+}

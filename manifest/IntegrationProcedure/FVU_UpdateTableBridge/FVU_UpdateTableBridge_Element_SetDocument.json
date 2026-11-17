@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetDocument",
+    "OmniProcessId": {
+        "Name": "FVU_UpdateTableBridge",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateTableBridge/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "typeAccount",
+        "OmniProcessId": {
+            "Name": "FVU_UpdateTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateTableBridge/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateTableBridge/Procedure/typeAccount",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "typeAccount",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "documentType": "==IF(%DRE_updateDocument:account:documentType% ==\"CC\",\"1\",IF(%DRE_updateDocument:account:documentType% ==\"CI\", \"2\",IF(%DRE_updateDocument:account:documentType% ==\"NE\", \"3\",IF(%DRE_updateDocument:account:documentType% ==\"CE\", \"4\",IF(%DRE_updateDocument:account:documentType% ==\"PS\", \"5\",IF(%DRE_updateDocument:account:documentType% ==\"CD\", \"6\",IF(%DRE_updateDocument:account:documentType% ==\"TI\", \"7\",IF(%DRE_updateDocument:account:documentType% ==\"TE\", \"8\",IF(%DRE_updateDocument:account:documentType% ==\"RN\", \"9\",IF(%DRE_updateDocument:account:documentType% ==\"SI\", \"10\",IF(%DRE_updateDocument:account:documentType% ==\"PEP\", \"11\",\"\"\r\n)))))))))))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateTableBridge/Procedure/SetDocument"
+}

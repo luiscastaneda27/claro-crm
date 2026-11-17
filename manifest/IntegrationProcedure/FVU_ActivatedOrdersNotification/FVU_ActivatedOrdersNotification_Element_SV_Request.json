@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "ActivatedOrdersNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ActivatedOrdersNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "attachment": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "content": "=IF(%DR_GetDataForNotification:Order:Channel% == \"ECOMMERCE\", IF(%DR_GetDataForNotification:Order:PurchaseType% == \"ACT\", %SV_DataForRequestEcommerce:ContentACT%, IF(%DR_GetDataForNotification:Order:PurchaseType% == \"POR\", %SV_DataForRequestEcommerce:ContentPOR%, IF(%DR_GetDataForNotification:Order:PurchaseType% == \"MIG\", %SV_DataForRequestEcommerce:ContentMIG%, %SV_DataForRequestEcommerce:ContentATT%))), IF(ISBLANK(%DR_GetAddons:AddonsListNoBundle%), IF(%DR_GetDataForNotification:Order:PurchaseType% == \"ACT\", %SV_DataForRequest:ContentACT%, IF(%DR_GetDataForNotification:Order:PurchaseType% == \"POR\", %SV_DataForRequest:ContentPOR%, IF(%DR_GetDataForNotification:Order:PurchaseType% == \"MIG\", %SV_DataForRequest:ContentMIG%, %SV_DataForRequest:ContentATT%))), IF(%DR_GetDataForNotification:Order:PurchaseType% == \"ACT\", %SV_DataForRequestAddons:ContentACT%, IF(%DR_GetDataForNotification:Order:PurchaseType% == \"POR\", %SV_DataForRequestAddons:ContentPOR%, IF(%DR_GetDataForNotification:Order:PurchaseType% == \"MIG\", %SV_DataForRequestAddons:ContentMIG%, %SV_DataForRequestAddons:ContentATT%)))))",
+            "contentType": "MESSAGE",
+            "deliveryReceipts": "N",
+            "description": "Notificación de venta exitosa",
+            "messageType": "=IF(%DR_GetDataForNotification:Order:Channel% == \"ECOMMERCE\", \"SMS\", IF(%DR_GetDataForNotification:Account:NotificationMethod% == \"Correo electrónico\", \"SMTP\", \"SMS\"))",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": "=IF(%DR_GetDataForNotification:Order:Channel% == \"ECOMMERCE\", LIST(%DR_GetDataForNotification:Account:Phone%), IF(%DR_GetDataForNotification:Account:NotificationMethod% == \"Correo electrónico\", %DR_GetDataForNotification:Account:Email%, LIST(%DR_GetDataForNotification:Account:Phone%)))",
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Finalización exitosa de venta",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ActivatedOrdersNotification/Procedure/SV_Request"
+}

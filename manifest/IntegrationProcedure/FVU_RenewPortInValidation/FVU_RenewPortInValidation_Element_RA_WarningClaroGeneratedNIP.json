@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_WarningClaroGeneratedNIP",
+    "OmniProcessId": {
+        "Name": "RenewPortInValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RenewPortInValidation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ActionDueToIssue": "=%DM_ActionStateAndSubState:Action% = 'Notify' || %DM_ActionStateAndSubState:Action% = 'Block'",
+            "Continue": true,
+            "DeliveryMethod": "%DR_GetOrderPortinData:Order:DeliveryMethod%",
+            "EndPromiseDate": "%DR_GetOrderPortinData:Order:PromiseEndDate%",
+            "OrderNumber": "%DR_GetOrderPortinData:Order:OrderNumber%",
+            "OrderStatus": "%GetOrderItems:OrderItem:OrderStatus%",
+            "ProductDeliverStatus": "%GetOrderItems:OrderItem:ProductDeliverStatus%",
+            "message": "La orden de portabilidad no se puede gestionar automáticamente, por favor contacta al cliente para registro de NIP y acordar fecha de ventana de cambio"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "SVFnSubmit:fnCanSubmit == false",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RenewPortInValidation/Procedure/RA_WarningClaroGeneratedNIP"
+}

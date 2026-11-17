@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Content",
+    "OmniProcessId": {
+        "Name": "SendSummaryByEmailAndOTP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SendSummaryByEmailAndOTP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "EmailContent": "=CONCAT(\"Gracias por comprar en Claro, te informamos que se ha generado la Orden \", %AccountData:OrderNumber% \" para la adquisición de \", \n%AccountData:PurchaseProductsName%, \". Puedes revisar el documento adjunto con la oferta seleccionada y si estas de acuerdo con las condiciones, continua con la aceptación de tu oferta a través del código enviado.\")",
+            "SMSContent": "=CONCAT(\"Estimado Cliente, Claro te informa que se ha generado la Orden \", %AccountData:OrderNumber% ,\" para la adquisición de \", %AccountData:PurchaseProductsName%, IF(%AccountData:IsMultiItem%, \", los cuales serán entregados en \", \", el cual será entregado en \"), %SV_DataForContent:Address%, \" por un valor de \",%AccountData:OrderPurchasePrice%, \". Descuento por pago de contado \",%SV_DataForContent:DiscountCashPayment%, \". Cargo de envío \", %SV_DataForContent:DeliveryCost%, \". Total a pagar \",%AccountData:OrderTotalPrice%, \". Si estás de acuerdo con esta información, continua con la aceptación de la oferta a través del código enviado.\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SendSummaryByEmailAndOTP/Procedure/SV_Content"
+}

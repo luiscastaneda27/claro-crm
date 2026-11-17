@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccess",
+    "OmniProcessId": {
+        "Name": "PortabilityRequest",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/PortabilityRequest/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "manualQueueId": "",
+            "request:claroRequestId": "%DRExtractRequestBody:claroRequestId%",
+            "request:salesForceOrderId": "ORDSF%DRExtractRequestBody:salesForceOrderId%",
+            "response:responseStatus:code": "",
+            "response:responseStatus:error": "",
+            "response:responseStatus:message": "Mensaje 1001 Enviado con exito",
+            "response:responseStatus:status": "OK"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%HTTPRequestPortability:status% == true",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/PortabilityRequest/Procedure/ResponseActionSuccess"
+}

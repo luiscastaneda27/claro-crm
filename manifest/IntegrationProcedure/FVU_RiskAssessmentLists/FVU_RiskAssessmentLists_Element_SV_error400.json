@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_error400",
+    "OmniProcessId": {
+        "Name": "RiskAssessmentLists",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RiskAssessmentLists/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "message": "El servicio de listas no esta disponible",
+            "status": "%HTTP_ListVerificationInfo:status%",
+            "statusCode": "%HTTP_ListVerificationInfo:statusCode%"
+        },
+        "executionConditionalFormula": "%HTTP_ListVerificationInfo:statusCode% >= 400 && %HTTP_ListVerificationInfo:statusCode% <= 404",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "httpResult",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RiskAssessmentLists/Procedure/SV_error400"
+}

@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ResponseAction",
+    "OmniProcessId": {
+        "Name": "ReqPaymentPinExpiration",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ReqPaymentPinExpiration/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "description": "=IF(ISBLANK(%HTTPAction_PaymentPinExpiration%),\"Servicio '/MS/ENP/PartyRevenue/RSPayMethManagmentPin/V1/codePaymentCancel' sin respuesta\", %HTTPAction_PaymentPinExpiration%)",
+            "expiration": "=IF(%HTTPAction_PaymentPinExpiration:codigoError% == 200,true,false)",
+            "success": "=IF(%HTTPAction_PaymentPinExpiration:codigoError% == 200,true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ReqPaymentPinExpiration/Procedure/SV_ResponseAction"
+}

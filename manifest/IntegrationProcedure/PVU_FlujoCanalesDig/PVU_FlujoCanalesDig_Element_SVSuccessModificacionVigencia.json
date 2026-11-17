@@ -1,0 +1,77 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSuccessModificacionVigencia",
+    "OmniProcessId": {
+        "Name": "FlujoCanalesDig",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "updateCaseModificacionVigencia",
+        "OmniProcessId": {
+            "Name": "FlujoCanalesDig",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/updateCaseModificacionVigencia",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "updateCaseModificacionVigencia",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CargoFact": "False",
+            "Categoria": "Solicitud de información y modificaciones",
+            "CodigoCierre": "Se realiza modificación",
+            "Id": "%SVInput:CaseId%",
+            "IdProceso": "%SVInput:ProcessName%",
+            "OrderId": "%OrderFutura:Order:Id%",
+            "RequestProcessInfo": {
+                "IPUpdateOrderFechaVigencia": {
+                    "CaseInfo": {
+                        "fechaFinSusp": "%CaseInfo:FechaFin%"
+                    },
+                    "OrderId": "%OrderFutura:Order:Id%",
+                    "RequestedDate": "%CaseInfo:FechaFin%",
+                    "proccessName": "%SVInput:ProcessName%"
+                },
+                "IpCancelOrderFutura": {
+                    "Estado": "Cerrada Perdida",
+                    "EstadoOrden": "Cancelled",
+                    "OrderId": "%OrderFutura:Order:Id%"
+                },
+                "IpCheckoutOrderModifcacionVigencia": {
+                    "OrderId": "%OrderFutura:Order:Id%",
+                    "RequestedDate": "%CaseInfo:FechaFin%",
+                    "isQueueOrder": "%SVInput:isQueuOrder%"
+                }
+            },
+            "RequestProcessStatusDetail": {
+                "IPCreateOrder": "%IP_OrdenOM%",
+                "IpCancelOrderFutura": "%IpCancelOrderFutura%",
+                "IpCheckoutOrderModifcacionVigencia": "%IPCheckoutOrder%"
+            },
+            "Status": "Cerrado",
+            "SubCategoria": "Roaming Internacional",
+            "SubEstado": "Modificación vigencia Roaming realizada"
+        },
+        "executionConditionalFormula": "%IPCheckoutOrder:EndProcess% == 'success' || %IpCancelOrderFutura:EndProcess% == 'Success'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "SVCaseUpdate",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/SVSuccessModificacionVigencia"
+}

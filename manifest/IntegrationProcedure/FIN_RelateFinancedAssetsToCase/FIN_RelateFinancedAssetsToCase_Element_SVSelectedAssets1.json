@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSelectedAssets1",
+    "OmniProcessId": {
+        "Name": "IPRelateFinancedAssetsToCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockFianza",
+        "OmniProcessId": {
+            "Name": "IPRelateFinancedAssetsToCase",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure/ConditionalBlockFianza",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockFianza",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetsCount": "=IF(ISBLANK(FILTER(LIST(%Assets%), 'CheckboxAssetFin1 == true')),0,LISTSIZE(FILTER(LIST(%Assets%), 'CheckboxAssetFin1 == true')))",
+            "SelectedAssets": "=LIST(FILTER(LIST(%Assets%),'CheckboxAssetFin1 == true'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure/SVSelectedAssets1"
+}

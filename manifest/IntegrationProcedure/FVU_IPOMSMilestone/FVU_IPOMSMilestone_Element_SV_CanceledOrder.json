@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CanceledOrder",
+    "OmniProcessId": {
+        "Name": "IPOMSMilestone",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DeactivateProcess": "=orderProductItem:status = 'CANCELED' && ((DRE_IPGetDetailsProductOrder:orderStatus != 'DeliveryAndActivated' && DRE_IPGetDetailsProductOrder:orderStatus != 'InPayment') || (DRE_IPGetDetailsProductOrder:orderItems|1:orderItemProductDeliveryStatus = 'DeliveredAgent' || DRE_IPGetDetailsProductOrder:orderItems|1:orderItemProductDeliveryStatus = 'DeliveredCustomer' || DRE_IPGetDetailsProductOrder:orderItems|1:orderItemProductDeliveryStatus = 'Pendiente Devolucion Producto a Bodega' || DRE_IPGetDetailsProductOrder:orderItems|1:orderItemProductDeliveryStatus = 'Returned') || (DRE_GetCaseInfo:caseStatusInboundOMS != 'DeliveredAgent' && ISNOTBLANK(DRE_GetCaseInfo:caseStatusInboundOMS)))",
+            "serialsExist": "=NOT(ISBLANK(orderProductItem:serials))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues10",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/SV_CanceledOrder"
+}

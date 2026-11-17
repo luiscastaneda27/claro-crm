@@ -1,0 +1,63 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRUpdateFianza",
+    "OmniProcessId": {
+        "Name": "ManageDebtAndRefinance",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/ManageDebtAndRefinance/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBUpdateFianza",
+        "OmniProcessId": {
+            "Name": "ManageDebtAndRefinance",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/ManageDebtAndRefinance/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/ManageDebtAndRefinance/Procedure/CBUpdateFianza",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBUpdateFianza",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Id": "%DRGetFianza:Id%",
+            "appliedRate": "=%IPSimualteRefinancing:result:response:surety:appliedRate%",
+            "channel": "=%IPSimualteRefinancing:result:response:surety:idChannel%",
+            "simulationId": "=%IPSimualteRefinancing:result:response:surety:idFinSimulation%",
+            "suretyEntId": "=%IPSimualteRefinancing:result:response:surety:idSuretyEnt%",
+            "suretyQuoteValue": "=%IPSimualteRefinancing:result:response:surety:suretyQuoteValue%",
+            "suretyTotalAmount": "=%IPSimualteRefinancing:result:response:surety:suretyTotalAmount%",
+            "totalQuoteValue": "=%IPSimualteRefinancing:result:response:surety:totalQuoteValue%",
+            "vatTax": "=%IPSimualteRefinancing:result:response:surety:vatTax%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FIN_UpdateFianza",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/ManageDebtAndRefinance/Procedure/DRUpdateFianza"
+}

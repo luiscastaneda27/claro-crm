@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionFAIL_",
+    "OmniProcessId": {
+        "Name": "DevolucionDineroVentaNoFinalizada",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcDevolucionDineroVentaNoFinalizada/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Orders:message": "No es posible realizar la devolución, ya que no existe un caso anterior aprobado para la devolución o el saldo solicitado ya no se encuentra disponible para entregar."
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%RAOrderCases:openOrders%)",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcDevolucionDineroVentaNoFinalizada/Procedure/ResponseActionFAIL_"
+}

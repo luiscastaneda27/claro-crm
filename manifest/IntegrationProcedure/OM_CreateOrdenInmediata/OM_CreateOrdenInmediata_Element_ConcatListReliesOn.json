@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ConcatListReliesOn",
+    "OmniProcessId": {
+        "Name": "OM_CreateOrdenInmediata",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrdenInmediata/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_GetReliesOnAndRootProduct",
+        "OmniProcessId": {
+            "Name": "OM_CreateOrdenInmediata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrdenInmediata/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrdenInmediata/Procedure/LB_GetReliesOnAndRootProduct",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_GetReliesOnAndRootProduct",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Concat": "=IF(ISNOTBLANK(%OM_DRE_GetRootAssetSubscriptionId:ReliesOn:AssetId%), %ConcatString% + \",\" + %OM_DRE_GetRootAssetSubscriptionId:ReliesOn:AssetId%,%OM_DRE_GetRootAssetSubscriptionId:Root:RootAssetId%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "ConcatString",
+        "responseJSONPath": "Concat",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrdenInmediata/Procedure/ConcatListReliesOn"
+}

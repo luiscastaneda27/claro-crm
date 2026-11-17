@@ -1,0 +1,66 @@
+{
+    "Description": "As this is functional error (Some required input missing). Get the functional queue name associated with the returned error code",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRGetManuelQueueNameFunctional",
+    "OmniProcessId": {
+        "Name": "CreateAccountBSCS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateAccountBSCS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalFailureBSCSInterface",
+        "OmniProcessId": {
+            "Name": "CreateAccountBSCS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateAccountBSCS/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateAccountBSCS/Procedure/ConditionalFailureBSCSInterface",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalFailureBSCSInterface",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DR_Extract_ManualQueueError",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+            {
+                "element": "DRTransformResponseXMLToJSON:responseStatus:code",
+                "inputParam": "ErrorCode"
+            },
+            {
+                "element": "'CreateAccountBSCS'",
+                "inputParam": "ApiName"
+            }
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%DRTransformResponseXMLToJSON:responseStatus:status% ) AND %DRTransformResponseXMLToJSON:responseStatus:code% <> 'FS_ESB_0'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataRaptorExtractAction6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateAccountBSCS/Procedure/DRGetManuelQueueNameFunctional"
+}

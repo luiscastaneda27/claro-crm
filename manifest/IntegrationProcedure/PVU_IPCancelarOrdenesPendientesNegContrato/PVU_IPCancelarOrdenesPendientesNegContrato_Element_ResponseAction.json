@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "IPCancelarOrdenesPendientesNegContrato",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCancelarOrdenesPendientesNegContrato/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "ListCancelOrder": "%listOrders%",
+                "Message": "Se cerraron las ordenes y casos",
+                "SizeListOrders": "%SVSize:SizeListOrders%"
+            },
+            "EndProcess": "success"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "DRUpsertCase:Case_1|1:UpsertSuccess == true && ( SVSize:SizeListOrders = 0 || (SVSize:SizeListOrders > 0 && UpdateStatusOrder:Order_1|1:UpsertSuccess ==  true))",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCancelarOrdenesPendientesNegContrato/Procedure/ResponseAction"
+}

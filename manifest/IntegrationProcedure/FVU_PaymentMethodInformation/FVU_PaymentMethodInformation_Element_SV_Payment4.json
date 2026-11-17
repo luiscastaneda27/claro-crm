@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Payment4",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentMethodInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "paymentType": [
+                {
+                    "channelCAV": false,
+                    "channelTMK": true,
+                    "label": "Contado",
+                    "paymentMethod": [
+                        {
+                            "label": "Pin/Link de Pagos",
+                            "value": "Pin Link de Pagos"
+                        }
+                    ],
+                    "value": "Contado"
+                }
+            ]
+        },
+        "executionConditionalFormula": "NOT(SV_Channel:pinLinkValid) && SV_Channel:channelTMK && NOT(SV_Channel:cargoFactura)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "paymentType",
+        "responseJSONPath": "paymentType",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/SV_Payment4"
+}

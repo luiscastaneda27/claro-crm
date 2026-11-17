@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_bndErrorConect",
+    "OmniProcessId": {
+        "Name": "OrderCancelEricsson",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/OrderCancelEricsson/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "bErrorConn": "=IF( ISBLANK(%HTTPOrderCancelEricsson%) OR (%HTTPOrderCancelEricssonInfo:statusCode% > 400), true, false)",
+            "connErrorCode": "ERROR_CONN",
+            "httpErrorConnResponse": "=IF(ISNOTBLANK(%HTTPOrderCancelEricssonInfo:statusCode%), %HTTPOrderCancelEricssonInfo:statusCode%, '000')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues12",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/OrderCancelEricsson/Procedure/SV_bndErrorConect"
+}

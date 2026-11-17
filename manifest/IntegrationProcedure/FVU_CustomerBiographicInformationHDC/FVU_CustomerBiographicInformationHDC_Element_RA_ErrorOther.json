@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ErrorOther",
+    "OmniProcessId": {
+        "Name": "CustomerBiographicInformationHDC",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_StatusFailed",
+        "OmniProcessId": {
+            "Name": "CustomerBiographicInformationHDC",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure/CB_StatusFailed",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_StatusFailed",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Consult": "hdc",
+            "Inconsistency": false,
+            "Message": "Estimado asesor, los datos del cliente presentan una novedad, para poder continuar con la venta por favor continuar por el legado correspondiente.",
+            "ResponseCreditScoreCheck:success": "%IP_CreditScoreCheck:success%",
+            "Status": "ERROR"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_TypeError:TypeError% == 'Other' && ISBLANK(%IP_CreditScoreCheck:result:technicalDescription:error%) && %IP_CreditScoreCheck:errorDao:codifoError% == '-2'",
+        "label": "ResponseAction5",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure/RA_ErrorOther"
+}

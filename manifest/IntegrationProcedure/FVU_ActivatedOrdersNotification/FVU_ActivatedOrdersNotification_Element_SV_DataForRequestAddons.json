@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataForRequestAddons",
+    "OmniProcessId": {
+        "Name": "ActivatedOrdersNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ActivatedOrdersNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ContentACT": "Hola %DR_GetDataForNotification:Account:Name%, te informamos que tu línea Claro %DR_GetDataForNotification:OrderItem:LineNumber% - Orden %DR_GetDataForNotification:Order:OrderNumber% ha finalizado satisfactoriamente. Su servicio incluye servicio de streaming %DR_GetAddons:AddonsListNoBundle:AddonName%. Para disfrutar de este servicio recuerda realizar la activación a través del enlace enviado a tu correo electrónico o a través de Mi Claro App.",
+            "ContentATT": "Hola %DR_GetDataForNotification:Account:Name% te informamos que tu solicitud de equipo y activación de línea Claro %DR_GetDataForNotification:OrderItem:LineNumber% - Orden %DR_GetDataForNotification:Order:OrderNumber% finalizó exitosamente. Tu plan incluye el servicio de streaming %DR_GetAddons:AddonsListNoBundle:AddonName%. Para disfrutar de este servicio recuerda realizar la activación a través del enlace enviado a tu correo electrónico o a través de Mi Claro App.",
+            "ContentMIG": "Hola %DR_GetDataForNotification:Account:Name% te informamos que tu solicitud de cambio a plan pospago sobre la línea Claro %DR_GetDataForNotification:OrderItem:LineNumber% - Orden %DR_GetDataForNotification:Order:OrderNumber% ha finalizado satisfactoriamente. Tu plan incluye el servicio de streaming %DR_GetAddons:AddonsListNoBundle:AddonName%. Para disfrutar de este servicio recuerda realizar la activación a través del enlace enviado a tu correo electrónico o a través de Mi Claro App.",
+            "ContentPOR": "Hola %DR_GetDataForNotification:Account:Name%, te informamos que tu solicitud de portabilidad  %DR_GetDataForNotification:OrderItem:LineNumber% - Orden %DR_GetDataForNotification:Order:OrderNumber% ha finalizado satisfactoriamente. Su servicio incluye servicio de streaming %DR_GetAddons:AddonsListNoBundle:AddonName%. Para disfrutar de este servicio recuerda realizar la activación a través del enlace enviado a tu correo electrónico o a través de Mi Claro App.",
+            "ReceiverEmail": {
+                "mail": "%DR_GetDataForNotification:Account:Email%"
+            },
+            "ReceiverPhone": "%DR_GetDataForNotification:Account:Phone%"
+        },
+        "executionConditionalFormula": "ISNOTBLANK(%DR_GetAddons:AddonsListNoBundle%) && %DR_GetDataForNotification:Order:Channel% != \"ECOMMERCE\"",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ActivatedOrdersNotification/Procedure/SV_DataForRequestAddons"
+}

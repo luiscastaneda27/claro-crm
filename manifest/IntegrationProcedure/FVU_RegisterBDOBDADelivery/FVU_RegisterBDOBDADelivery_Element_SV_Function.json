@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Function",
+    "OmniProcessId": {
+        "Name": "RegisterBDOBDADelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "canRegister": "=FILTER(LIST(%LA_OrderItemMergedIMEI%), '(canRegister == true) || (canRegisterIMEI == true) || (canRegisterIMEI2 == true)')",
+            "showMessage": "=FILTER(LIST(%LA_OrderItemMergedIMEI%), '(showMessage == true) || (showMessageIMEI == true) || (showMessageIMEI2 == true)')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SV_Function",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null,
+        "type": "SetValues"
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/SV_Function"
+}

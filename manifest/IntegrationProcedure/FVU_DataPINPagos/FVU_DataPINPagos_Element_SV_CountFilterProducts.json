@@ -1,0 +1,33 @@
+{
+    "Description": "Se cuenta  la cantidad de productos por tipo (ProductFamily).",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CountFilterProducts",
+    "OmniProcessId": {
+        "Name": "FVU_DataPINPagos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataPINPagos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DevicesCount": "=IF(ISBLANK(%SV_ProductList:DevicesList%),0,LISTSIZE(%SV_ProductList:DevicesList%))",
+            "DevicesSimCardCount": "=IF(%SV_ProductList:DevicesSimCardList% <> NULL, LISTSIZE(LIST(%SV_ProductList:DevicesSimCardList%)),0)",
+            "MobilesCount": "=IF(ISBLANK(%SV_ProductList:MobilesList%),0,LISTSIZE(%SV_ProductList:MobilesList%))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataPINPagos/Procedure/SV_CountFilterProducts"
+}

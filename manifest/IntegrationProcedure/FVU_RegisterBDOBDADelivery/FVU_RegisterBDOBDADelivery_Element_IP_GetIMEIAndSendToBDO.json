@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_GetIMEIAndSendToBDO",
+    "OmniProcessId": {
+        "Name": "RegisterBDOBDADelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Order": "%GetOrderData:Order:Account%",
+            "OrderItemFiltered": "%LA_OrderItemMergedIMEI%",
+            "outputFields": "message,IMEIError2,IMEIError,OrderProductCode,OrderProductName,IMEINumber2,IMEINumber,OrderItemId",
+            "resultConsulta": {
+                "IMEIErrorConsulta": "%LB_OrderItemListConsult:resultConsulta:IMEIErrorConsulta%",
+                "IMEINumber": "%LB_OrderItemListConsult:resultConsulta:IMEINumber%",
+                "IMEINumber2": "%LB_OrderItemListConsult:resultConsulta:IMEINumber2%",
+                "OrderItemId": "%LB_OrderItemListConsult:resultConsulta:OrderItemId%"
+            }
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": true,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%SV_CanRegister:canRegister% && %SV_ShowMessage:showMessage% == false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "FVU_GetIMEIAndSendToBDO",
+        "label": "IntegrationProcedureAction5",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/IP_GetIMEIAndSendToBDO"
+}

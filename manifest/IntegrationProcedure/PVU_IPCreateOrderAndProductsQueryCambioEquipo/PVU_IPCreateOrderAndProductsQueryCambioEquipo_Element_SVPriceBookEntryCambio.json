@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVPriceBookEntryCambio",
+    "OmniProcessId": {
+        "Name": "IPCreateOrderAndProductsQueryCambioEquipo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCreateOrderAndProductsQueryCambioEquipo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "IsAssetType": "=IF(%IPGetCartProducts:productsSize% > 0,'normal',IF(%IPGetCartProducts:promotionsSize% >0,'promo',IF(%IPGetPromotionsAppliedToCart:response:records|1:Id:value%!=null,'promo','normal')))",
+            "IsAssetType2": "=IF(%IPGetCartProducts:productsSize% > 0,'normal',IF(%IPGetCartProducts:promotionsSize% >0,'promo','clon'))",
+            "OrderItemToDisconect": "%GetLineItemSFIdsUsingAssetIds:itemsToProcessList|1%",
+            "PriceBookEntryId": "=IF(%IPGetCartProducts:productsSize%>0,%IPGetCartProducts:data|1:Id:value%,%IPGetCartProducts:data|1:Id%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCreateOrderAndProductsQueryCambioEquipo/Procedure/SVPriceBookEntryCambio"
+}

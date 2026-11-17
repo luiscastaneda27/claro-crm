@@ -1,0 +1,31 @@
+{
+    "Description": "Parceamos a List en caso que solo venga un resultado",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVListOrder",
+    "OmniProcessId": {
+        "Name": "IPCheckoutOrdersRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCheckoutOrdersRetencion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "value": "=LIST(%DRGetOrdersRetencion:OrderCases%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "ListaOrdenesCheckout",
+        "responseJSONPath": "value",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCheckoutOrdersRetencion/Procedure/SVListOrder"
+}

@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVData",
+    "OmniProcessId": {
+        "Name": "PVU_AceptacionIMEIDuplicado",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/AceptacionIMEIDuplicado/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CiudadDomicilio": "=IF(ISBLANK(%accountCity%),%CiudadDomicilio%,%accountCity%)",
+            "DuplasResultAdd": "=LIST(%Adicion%)",
+            "DuplasResultDelete": "%DuplasDeleteLst%",
+            "NoAutoriza": "=IF(%Autoriza% == \"NO\", \"X\", \"\")",
+            "NombreCliente": "=%Nombre%+\" \"+%Apellidos%",
+            "SiAutoriza": "=IF(%Autoriza% == \"SI\", \"X\", \"\")",
+            "TipoDocumento": "=IF(%TipoDocumentoSoloLectura% == \"CC\", \"Cédula Ciudadanía\",IF(%TipoDocumentoSoloLectura% == \"NI\", \"NIT\", IF(%TipoDocumentoSoloLectura% == \"CE\",\"Cédula Extranjería\",IF(%TipoDocumentoSoloLectura% == \"PP\", \"Pasaporte\", %TipoDocumentoSoloLectura%))))",
+            "contentType": "CONTENTID",
+            "numeroTelefono": "%msisdn%",
+            "templateid": "CAMBIOSERV_01"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/AceptacionIMEIDuplicado/Procedure/SVData"
+}

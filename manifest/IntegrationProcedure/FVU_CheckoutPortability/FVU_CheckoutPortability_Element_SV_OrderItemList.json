@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_OrderItemList",
+    "OmniProcessId": {
+        "Name": "FVU_CheckoutPortability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CheckoutPortability/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_RegRegIdIsNULL",
+        "OmniProcessId": {
+            "Name": "FVU_CheckoutPortability",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CheckoutPortability/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CheckoutPortability/Procedure/CB_RegRegIdIsNULL",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_RegRegIdIsNULL",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "MobileNumberOrderItem": "=LIST(DR_PortabilityRequest:MobileNumberOrderItem)",
+            "RootOrderItemList": [
+                {
+                    "ClaroRequestId": "%FVU_SolicitudPortabilidadEntrante:claroRequestId%",
+                    "DonorOperator": "%DR_PortabilityRequest:RootOrderItem:DonorOperator%",
+                    "DonorProductType": "%DR_PortabilityRequest:RootOrderItem:DonorProductType%",
+                    "InitialRegReqId": "%FVU_SolicitudPortabilidadEntrante:minPortinInfo|1:regulatoryRequest:regulatoryRequestId%",
+                    "NRN": "%DR_PortabilityRequest:RootOrderItem:NRN%",
+                    "OrderItemId": "%DR_PortabilityRequest:RootOrderItem:OrderItemId%"
+                }
+            ]
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CheckoutPortability/Procedure/SV_OrderItemList"
+}

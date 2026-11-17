@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequestGenerationOMS",
+    "OmniProcessId": {
+        "Name": "CambioSIMFisica",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CambioSIMFisica/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Id": "%orderId%",
+            "caseNumber": "%caseNumber%",
+            "motivoCambioSIM": "%motivoCambioSIM%",
+            "orderStatus": "%orderStatus%",
+            "paymentType": "%paymentType%",
+            "processName": "%processName%",
+            "prodDelivMethod": "%delivMethod%",
+            "productCode": "%SVResponseProducListPromise:codeSKU%",
+            "simCardForm": {
+                "amountCondition": "%amountCondition%",
+                "conditionClass": "%conditionClass%",
+                "hasDiscount": "%hasDiscount%",
+                "quantityCondition": "%quantityCondition%"
+            },
+            "whetherSimChanged": "Y"
+        },
+        "executionConditionalFormula": "%IP_ProductListPromise:success% = true && ISNOTBLANK(%SVResponseProducListPromise:codeSKU%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CambioSIMFisica/Procedure/SVRequestGenerationOMS"
+}

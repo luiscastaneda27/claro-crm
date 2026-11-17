@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "NoResultsConditionFinancing",
+    "OmniProcessId": {
+        "Name": "IPConsultaFinFlexCards",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPConsultaFinFlexCards/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "error": "%IPGetFinancingInfoV1:result:error%",
+            "mensaje": "%IPGetFinancingInfoV1:result:mensaje%",
+            "responseCode": "%IPGetFinancingInfoV1:result:responseCode%",
+            "success": "=IF(% IPGetFinancingInfoV1:success%== null, false, % IPGetFinancingInfoV1:success% )"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPGetFinancingInfoV1:result:error% == true",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPConsultaFinFlexCards/Procedure/NoResultsConditionFinancing"
+}

@@ -1,0 +1,57 @@
+{
+    "Description": "Responde: No se encuentra la Orden o está en estado incorrecto",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_DoesntExistOrderInprogressPortIn",
+    "OmniProcessId": {
+        "Name": "ExecutePortabilityReject",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortabilityReject/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_CancelPortIn",
+        "OmniProcessId": {
+            "Name": "ExecutePortabilityReject",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortabilityReject/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortabilityReject/Procedure/CB_CancelPortIn",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_CancelPortIn",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "code": "404",
+                "idOrder": "%idOrder%",
+                "message": "No se encuentra la Orden %idOrder% o está en estado incorrecto",
+                "reason": "El idOrder %idOrder% no se encuentra en SF o tiene un estado incorrecto",
+                "status": "Failed"
+            }
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DR_GetSuptypeOrderPortIn:Subtipo% != \"PortIn\" && %DR_GetSuptypeOrderPortIn:OrderType% != \"Portabilidad\" && %DR_GetSuptypeOrderPortIn:OrderStatus% != \"In Progress\"",
+        "label": "ResponseAction4",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortabilityReject/Procedure/RA_DoesntExistOrderInprogressPortIn"
+}

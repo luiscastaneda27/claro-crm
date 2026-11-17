@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVError",
+    "OmniProcessId": {
+        "Name": "IPFreightCostGenerator",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPFreightCostGenerator/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "errorMessage": "=IF(ISBLANK(%IPFinancingOtherCharges:statusId%),'Cobro envio a domiclio no exitoso',%IPFinancingOtherCharges:ErrorMessage%)",
+            "statusId": "=IF(ISBLANK(%IPFinancingOtherCharges:statusId%),'-1',%IPFinancingOtherCharges:statusId%)",
+            "success": false
+        },
+        "executionConditionalFormula": "IPFinancingOtherCharges:success == false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPFreightCostGenerator/Procedure/SVError"
+}

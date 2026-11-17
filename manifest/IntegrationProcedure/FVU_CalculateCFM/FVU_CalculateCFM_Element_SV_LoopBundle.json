@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_LoopBundle",
+    "OmniProcessId": {
+        "Name": "CalculateCFM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CalculateCFM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopBlockBundle",
+        "OmniProcessId": {
+            "Name": "CalculateCFM",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CalculateCFM/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CalculateCFM/Procedure/LoopBlockBundle",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopBlockBundle",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "svloopEffectiveOneTimeTotal": "=IF(%SVDiscountPercent:DiscountPercent% > 0,SUM(%DR_GetDataForIVAConsultOrderItem:OrderItem:EffectiveOneTimeTotal% - %DR_GetDataForIVAConsultOrderItem:OrderItem:EffectiveOneTimeTotal% * %SVDiscountPercent:DiscountPercent%),%DR_GetDataForIVAConsultOrderItem:OrderItem:EffectiveOneTimeTotal%)",
+            "svloopEffectiveOneTimeTotalIncTaxes": "=IF(%SVDiscountPercent:DiscountPercent% > 0,SUM(%DR_GetDataForIVAConsultOrderItem:OrderItem:EffectiveOneTimeTotalIncTaxes% - %DR_GetDataForIVAConsultOrderItem:OrderItem:EffectiveOneTimeTotalIncTaxes% * %SVDiscountPercent:DiscountPercent%),%DR_GetDataForIVAConsultOrderItem:OrderItem:EffectiveOneTimeTotalIncTaxes%)",
+            "svloopEffectiveRecurringTotalIncTaxes": "=IF(%SVDiscountPercent:DiscountPercent% > 0,SUM(%DR_GetDataForIVAConsultOrderItem:OrderItem:EffectiveRecurringTotalIncTaxes% - %DR_GetDataForIVAConsultOrderItem:OrderItem:EffectiveRecurringTotalIncTaxes% * %SVDiscountPercent:DiscountPercent%),%DR_GetDataForIVAConsultOrderItem:OrderItem:EffectiveRecurringTotalIncTaxes%)",
+            "svloopOneTimeCharge": "=IF(%SVDiscountPercent:DiscountPercent% > 0,SUM(%DR_GetDataForIVAConsultOrderItem:OrderItem:OneTimeCharge% - %DR_GetDataForIVAConsultOrderItem:OrderItem:OneTimeCharge% * %SVDiscountPercent:DiscountPercent%),%DR_GetDataForIVAConsultOrderItem:OrderItem:OneTimeCharge%)",
+            "svloopOneTimeChargeIncTaxes": "=IF(%SVDiscountPercent:DiscountPercent% > 0,SUM(%DR_GetDataForIVAConsultOrderItem:OrderItem:OneTimeChargeIncTaxes% - %DR_GetDataForIVAConsultOrderItem:OrderItem:OneTimeChargeIncTaxes% * %SVDiscountPercent:DiscountPercent%),%DR_GetDataForIVAConsultOrderItem:OrderItem:OneTimeChargeIncTaxes%)",
+            "svloopOrderItemId": "%DR_GetDataForIVAConsultOrderItem:OrderItem:Id%",
+            "svloopRecurringChargeIncDiscount": "=IF(%SVDiscountPercent:DiscountPercent% > 0,SUM(%DR_GetDataForIVAConsultOrderItem:OrderItem:RecurringChargeIncDiscount% - %DR_GetDataForIVAConsultOrderItem:OrderItem:RecurringChargeIncDiscount% * %SVDiscountPercent:DiscountPercent%),%DR_GetDataForIVAConsultOrderItem:OrderItem:RecurringChargeIncDiscount%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CalculateCFM/Procedure/SV_LoopBundle"
+}

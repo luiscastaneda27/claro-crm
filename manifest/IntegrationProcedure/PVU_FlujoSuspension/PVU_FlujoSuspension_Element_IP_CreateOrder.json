@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_CreateOrder",
+    "OmniProcessId": {
+        "Name": "SuspensionVoluntaria",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoSuspension/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "AssetId": "%assetRootId%",
+            "CaseInfo": {
+                "Id": "%IPCreateCase:Details:CaseId%",
+                "fechaFinSusp": "%Case:FechaFinSusp%",
+                "fechaInicioSusp": "%Case:FechaInicioSusp%"
+            },
+            "ProcessName": "suspend_temp_voluntaria"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "status == \"Error\"",
+        "failureResponse": {
+            "Details": {
+                "ErrorMessage": "%IP_CreateOrder:message%"
+            },
+            "EndProcess": "fail"
+        },
+        "integrationProcedureKey": "PVU_IPGenerateTemporySuspensionOrder",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "result",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoSuspension/Procedure/IP_CreateOrder"
+}

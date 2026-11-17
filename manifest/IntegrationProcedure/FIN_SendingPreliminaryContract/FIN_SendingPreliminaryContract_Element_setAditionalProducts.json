@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "setAditionalProducts",
+    "OmniProcessId": {
+        "Name": "SendingPreliminaryContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendingPreliminaryContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "loopAditionalProducts",
+        "OmniProcessId": {
+            "Name": "SendingPreliminaryContract",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendingPreliminaryContract/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendingPreliminaryContract/Procedure/loopAditionalProducts",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "loopAditionalProducts",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "concatAditionalName": "=IF(aditionalProds:concatAditionalName == null, DR_GetRecords:AditionalOrderItem:Name + \" ($\" + formatCurrency(DR_GetRecords:AditionalOrderItem:Value) + \")\", aditionalProds:concatAditionalName + \", \" + DR_GetRecords:AditionalOrderItem:Name + \" ($\" + formatCurrency(DR_GetRecords:AditionalOrderItem:Value) + \")\")",
+            "sumAditionalValue": "=IF(aditionalProds:sumAditionalValue == null, DR_GetRecords:AditionalOrderItem:Value, aditionalProds:sumAditionalValue + DR_GetRecords:AditionalOrderItem:Value)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues12",
+        "responseJSONNode": "aditionalProds",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendingPreliminaryContract/Procedure/setAditionalProducts"
+}

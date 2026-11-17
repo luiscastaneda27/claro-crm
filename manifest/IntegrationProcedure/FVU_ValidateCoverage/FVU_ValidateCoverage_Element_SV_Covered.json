@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Covered",
+    "OmniProcessId": {
+        "Name": "ValidateCoverage",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidateCoverage/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_Coverage",
+        "OmniProcessId": {
+            "Name": "ValidateCoverage",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidateCoverage/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidateCoverage/Procedure/LB_Coverage",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_Coverage",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "IsCovered": "=INCLUDES(\"1;14;15;59\", %SV_ListCoverage:listHhpps:ccmmState%) && INCLUDES(\"PO;PR;DE\", %SV_ListCoverage:listHhpps:state%) && %SV_ListCoverage:listHhpps:nodeState% == \"A\"",
+            "hasInvalidActiveNode": "=NOT(INCLUDES(\"1;14;15;59\", %SV_ListCoverage:listHhpps:ccmmState%)) && INCLUDES(\"PO;PR;DE\", %SV_ListCoverage:listHhpps:state%) && %SV_ListCoverage:listHhpps:nodeState% == \"A\""
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidateCoverage/Procedure/SV_Covered"
+}

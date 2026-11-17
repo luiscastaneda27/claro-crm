@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "FilterAvailableSIMCard",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableSIMCard/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "channelCode": "%UserDetailsChannel%",
+            "delivMethod": "",
+            "deliveryAddrId": "=SUBSTRING(%DR_GetAddress:serviceDaneCode%, 0, 5)",
+            "productList": "=LIST(%SV_Product%)",
+            "storeId": "=IF(%UserDetailsChannel% == \"SF_CAV\", %DR_GetUserDetails:UserDetails:CAV%, $Vlocity.NULL)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableSIMCard/Procedure/SV_Request"
+}

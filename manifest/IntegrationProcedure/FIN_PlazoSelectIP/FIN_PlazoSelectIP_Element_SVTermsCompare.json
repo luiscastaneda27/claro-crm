@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVTermsCompare",
+    "OmniProcessId": {
+        "Name": "FIN_PlazoSelectIP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/PlazoSelectIP/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockTecnologia",
+        "OmniProcessId": {
+            "Name": "FIN_PlazoSelectIP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/PlazoSelectIP/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/PlazoSelectIP/Procedure/ConditionalBlockTecnologia",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockTecnologia",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "PlazosCompare": "=IF(%IPPaymentInitialTerm:terms:Numero_Mayor%<%IPPriceTermValidation:RemoteAction:numeroMayor% && %IPPaymentInitialTerm:terms:Numero_Mayor%<%IPValidationPlazo:ValidacionMatrizDePlazos:CuotaMax%,LIST(%IPPaymentInitialTerm:terms:Plazos_Validos_HDC%),IF(%IPPriceTermValidation:RemoteAction:numeroMayor%<%IPValidationPlazo:ValidacionMatrizDePlazos:CuotaMax%,LIST(%IPPriceTermValidation:RemoteAction:Plazos%),LIST(%IPValidationPlazo:ValidacionMatrizDePlazos:PLAZOS%)))",
+            "compareTrue": true
+        },
+        "executionConditionalFormula": "%IPValidationPlazo:success% != $Vlocity.false && %IPValidationPlazo:ValidacionMatrizDePlazos:Disponible% = $Vlocity.true && %IPValidationPlazo:ValidacionMatrizDePlazos:Financiado% = $Vlocity.true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/PlazoSelectIP/Procedure/SVTermsCompare"
+}

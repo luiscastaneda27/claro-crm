@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVLists",
+    "OmniProcessId": {
+        "Name": "IPCancelarOrdenesPendientesNegContrato",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCancelarOrdenesPendientesNegContrato/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "listOrdersFull": "=LIST(FILTER(LIST(%ListCasos%), 'OrderId != NULL'))"
+        },
+        "executionConditionalFormula": "ISNOTBLANK(SVFilter:resultFilter)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "listOrders",
+        "responseJSONPath": "listOrdersFull",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCancelarOrdenesPendientesNegContrato/Procedure/SVLists"
+}

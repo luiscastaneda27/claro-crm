@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_InitialData",
+    "OmniProcessId": {
+        "Name": "FVU_DataPINPagos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataPINPagos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "cargoAnticipado": "=IF(ListProductTangible|1:PurchaseType == 'NAP','N/A',IF(cargoAnticipado > 0,'VERDADERO','FALSO'))",
+            "domicilio": "=IF(DeliveryMethod == 'Delivery' && ListProductTangible|1:PurchaseType != 'FIN','VERDADERO','FALSO')",
+            "esAgente": "=IF(esAgente, 'VERDADERO','FALSO')",
+            "intencionDeCompra": "=ListProductTangible|1:PurchaseType",
+            "simCardBonificada": "=IF(ListProductTangible|1:PurchaseType == 'NAP','N/A',IF(GetOrderItemByOrderId:SIMCard:simcardValue > 0,'FALSO','VERDADERO'))",
+            "tipoDeEquipo": "=IF(ListProductTangible|1:PurchaseType == 'NAP',ListProductTangible|1:productType,'N/A')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataPINPagos/Procedure/SV_InitialData"
+}

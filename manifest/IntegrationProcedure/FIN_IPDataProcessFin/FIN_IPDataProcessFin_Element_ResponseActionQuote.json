@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionQuote",
+    "OmniProcessId": {
+        "Name": "IPDataProcessFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPDataProcessFin/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Asset": {
+                "AccountId": "%SVParams:AccountId%"
+            },
+            "ObjectId": "%SVParams:AccountId%",
+            "Param1": "=IF(%DRGetAccountOngoingQuote:CantQuote%!=0,'Financiacion','')",
+            "Param2": "=IF(%DRGetAccountOngoingQuote:CantQuote%!=0,'Nueva Venta Financiacion','')",
+            "Param3": "=%DRGetAccountOngoingQuote:Quote|1:Id%",
+            "Param4": "%DRGetAccountOngoingQuote:Quote|1:QuoteNumber%",
+            "Param5": "presupuesto",
+            "QuoteId": "%DRGetAccountOngoingQuote:Quote|1:Id%",
+            "QuoteNumber": "%DRGetAccountOngoingQuote:Quote|1:QuoteNumber%",
+            "StopProcess": "=IF(%DRGetAccountOngoingQuote:CantQuote%!=0,true,false)",
+            "TabIcon": "utility:cart",
+            "TabLabel": "Nueva Venta",
+            "codeMessage": "=IF(%DRGetAccountOngoingQuote:CantQuote%!=0,'FIN001','')"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRGetAccountOngoingQuote:CantQuote%!=0",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPDataProcessFin/Procedure/ResponseActionQuote"
+}

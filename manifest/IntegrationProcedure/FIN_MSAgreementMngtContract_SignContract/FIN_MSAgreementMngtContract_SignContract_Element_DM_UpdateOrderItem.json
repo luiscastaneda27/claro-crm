@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DM_UpdateOrderItem",
+    "OmniProcessId": {
+        "Name": "MSAgreementMngtContract_SignContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/MSAgreementMngtContract_SignContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "OrderItem:ContractCreatedDate": "=NOW()",
+            "OrderItem:ContractEmail": "=%DR_GetRecords:requestBody:mailEnvio%",
+            "OrderItem:ContractId": "=%DR_GetRecords:requestBody:NumeroContrato%",
+            "OrderItem:ContractType": "=\"Digital\"",
+            "OrderItem:OrderItemId": "=%DR_GetRecords:requestBody:ItemOrderId%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertOrderItem",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%HTT_SendingSignContract:data:isValid% = true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/MSAgreementMngtContract_SignContract/Procedure/DM_UpdateOrderItem"
+}

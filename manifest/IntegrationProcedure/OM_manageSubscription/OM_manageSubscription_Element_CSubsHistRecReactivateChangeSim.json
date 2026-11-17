@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CSubsHistRecReactivateChangeSim",
+    "OmniProcessId": {
+        "Name": "manageSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ReactivationProcessChangeSim",
+        "OmniProcessId": {
+            "Name": "manageSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/manageSubscription/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/ReactivationProcessChangeSim",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ReactivationProcessChangeSim",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "AccountId": "%GetReactivationInfoChangeSim:Subscription:AccountId%",
+            "MSISDN": "%GetReactivationInfoChangeSim:Subscription:MSISDN%",
+            "Status": "%GetReactivationInfoChangeSim:Subscription:Status%",
+            "billingAccountId": "%GetReactivationInfoChangeSim:Subscription:BillingAccountId%",
+            "reasonCode": "%GetReactivationInfoChangeSim:Subscription:reasonCode%",
+            "serviceAccountId": "%GetReactivationInfoChangeSim:Subscription:ServiceAccountId%",
+            "statusEndDate": "=NOW()",
+            "statusStartDate": "%GetReactivationInfoChangeSim:Subscription:statusStartDate%",
+            "subReasonCode": "%GetReactivationInfoChangeSim:Subscription:subReasonCode%",
+            "subscriptionId": "%GetReactivationInfoChangeSim:Subscription:Id%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_SubscriptionHistory",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%GetReactivationInfoChangeSim:OrderItem:Status% <> %GetReactivationInfoChangeSim:Asset:Status% ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/manageSubscription/Procedure/CSubsHistRecReactivateChangeSim"
+}

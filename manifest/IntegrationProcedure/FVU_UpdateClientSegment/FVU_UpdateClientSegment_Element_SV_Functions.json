@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Functions",
+    "OmniProcessId": {
+        "Name": "FVU_UpdateClientSegment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateClientSegment/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Category": "=IF(SUBSTRING(%IP_ConsultAgeAndCustomerSegmentation:ConsultAgeAndCustomerSegmentation:codSegmento%, 0, 1) = \"1\", \"Fundadores\", IF(SUBSTRING(%IP_ConsultAgeAndCustomerSegmentation:ConsultAgeAndCustomerSegmentation:codSegmento%, 0, 1) = \"2\", \"Diamante\", IF(SUBSTRING(%IP_ConsultAgeAndCustomerSegmentation:ConsultAgeAndCustomerSegmentation:codSegmento%, 0, 1) = \"3\", \"Plata\", \"\")))",
+            "ServiceType": "=IF(SUBSTRING(%IP_ConsultAgeAndCustomerSegmentation:ConsultAgeAndCustomerSegmentation:codSegmento%, 1, 2) = \"1\", \"Personas\", IF(SUBSTRING(%IP_ConsultAgeAndCustomerSegmentation:ConsultAgeAndCustomerSegmentation:codSegmento%, 1, 2) = \"2\", \"Hogar\", IF(SUBSTRING(%IP_ConsultAgeAndCustomerSegmentation:ConsultAgeAndCustomerSegmentation:codSegmento%, 1, 2) = \"3\", \"Convergente\", IF(SUBSTRING(%IP_ConsultAgeAndCustomerSegmentation:ConsultAgeAndCustomerSegmentation:codSegmento%, 1, 2) = \"0\", \"Potenciales\", \"\"))))"
+        },
+        "executionConditionalFormula": "%IP_ConsultAgeAndCustomerSegmentation:ConsultAgeAndCustomerSegmentation:codSegmento% != \"\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateClientSegment/Procedure/SV_Functions"
+}

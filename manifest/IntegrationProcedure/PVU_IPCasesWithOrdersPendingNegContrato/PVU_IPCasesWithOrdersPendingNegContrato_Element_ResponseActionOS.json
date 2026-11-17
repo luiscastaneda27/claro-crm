@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionOS",
+    "OmniProcessId": {
+        "Name": "IPCasesWithOrdersPendingNegContrato",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCasesWithOrdersPendingNegContrato/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "haveCasesInProgress": "=IF(%SVCheckData:haveFutureOrders% && (%assetStatus% == \"Active\" || %assetStatus% == \"Suspended\"), true, false)",
+            "haveOrdersPortabilidad": "=%SVCheckData:haveOrdersPortabilidad%",
+            "msgErrorFutureOrders": "%DRGetMensajesGestionesPorCodigo:mensaje%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "source == \"OS\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCasesWithOrdersPendingNegContrato/Procedure/ResponseActionOS"
+}

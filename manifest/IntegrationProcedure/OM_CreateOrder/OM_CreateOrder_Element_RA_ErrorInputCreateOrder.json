@@ -1,0 +1,43 @@
+{
+    "Description": "Si en la validación hay uno de los parametros que no sea exitoso se mostrara este componente en la variable que falló",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ErrorInputCreateOrder",
+    "OmniProcessId": {
+        "Name": "CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "operation": "Failed to create order",
+            "result": {
+                "code": "400",
+                "message": "%SV_ValidateInputs%",
+                "status": "Error"
+            },
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_ValidateInputs:isValidMSISDN% <> \"success\" || %SV_ValidateInputs:isValidCustomerId% <> \"success\" || \r\n%SV_ValidateInputs:isValidOrderType% <> \"success\" || %SV_ValidateInputs:isValidOrderSubType% <> \"success\" || \r\n%SV_ValidateInputs:isValidReasonCode% <> \"success\" || %SV_ValidateInputs:isValidReason% <> \"success\" || %SV_ValidateInputs:isValidSuspension% <> \"success\" || %SV_ValidateInputs:isValidDateExecution% <> \"success\" ",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/RA_ErrorInputCreateOrder"
+}

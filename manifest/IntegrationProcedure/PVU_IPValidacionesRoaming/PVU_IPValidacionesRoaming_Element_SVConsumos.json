@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVConsumos",
+    "OmniProcessId": {
+        "Name": "IPValidacionesRoaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesRoaming/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Consumos": "=%IPMSPrBuUsaCons:Details:consumos:cfss%",
+            "HaveConsumos": "=IF(ISBLANK(%IPMSPrBuUsaCons:Details:consumos:cfss%), false,true)",
+            "HaveDate": "=IF (ISNOTBLANK(%IPMSPrBuUsaCons:Details:consumos|1:expiryDate%),true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesRoaming/Procedure/SVConsumos"
+}

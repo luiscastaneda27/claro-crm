@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_LoopCanRegister",
+    "OmniProcessId": {
+        "Name": "RegisterBDOBDADelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_OrderItemListConsult",
+        "OmniProcessId": {
+            "Name": "RegisterBDOBDADelivery",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterBDOBDADelivery/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/LB_OrderItemListConsult",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_OrderItemListConsult",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "OrderProductId": "%DBAPositivo:orderProductId%",
+            "canRegister": "=IF(%DBAPositivo:bdaPositivoMessage:isReported% == false && %DBAPositivo:bdaPositivoMessage:codigoError% == \"01\" || %DBAPositivo:bdaPositivoMessage:descripcionError% == \"Registro no asociado al numero de identificacion personal indicado\" || %DBAPositivo:bdaPositivoMessage:descripcionError% == \"No Registrado\" || %DBAPositivo:bdaPositivoMessage:codigo% == \"07\", true,false)",
+            "showMessage": "=IF(%DBAPositivo:bdaPositivoMessage:isReported% == false && %DBAPositivo:bdaPositivoMessage:codigoError% == \"02\", true,false)"
+        },
+        "executionConditionalFormula": "%DBAPositivo:NewServiceFlag% != true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "GetOrderData:Order:OrderItem",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterBDOBDADelivery/Procedure/SV_LoopCanRegister"
+}

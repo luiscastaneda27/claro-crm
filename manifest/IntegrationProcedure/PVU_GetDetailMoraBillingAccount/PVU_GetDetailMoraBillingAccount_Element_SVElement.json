@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVElement",
+    "OmniProcessId": {
+        "Name": "GetDetailMoraBillingAccount",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDetailMoraBillingAccount/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopBlockCamp",
+        "OmniProcessId": {
+            "Name": "GetDetailMoraBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDetailMoraBillingAccount/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDetailMoraBillingAccount/Procedure/LoopBlockCamp",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopBlockCamp",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "code": "=FILTER(LIST(%getCampanas:values%), 'characteristicId == \"code\"')",
+            "descriptionPromotion": "=FILTER(LIST(%getCampanas:values%), 'characteristicId == \"DescripcionPromocion\"')",
+            "porcentajeDescuento": "=FILTER(LIST(%getCampanas:values%), 'characteristicId == \"PorcentajeDescuento\"')",
+            "porcentajePago": "=FILTER(LIST(%getCampanas:values%), 'characteristicId == \"PorcentajePago\"')",
+            "rangoEdadCartera": "=FILTER(LIST(%getCampanas:values%), 'characteristicId == \"RangoEdadCartera\"')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDetailMoraBillingAccount/Procedure/SVElement"
+}

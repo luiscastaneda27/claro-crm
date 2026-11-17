@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_condiciones",
+    "OmniProcessId": {
+        "Name": "ObtieneDatosCondicionesBoton",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ObtieneDatosCondicionesBoton/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "condAsset": "=IF((%SV_ConditionsCancel:cond2% && %SV_ConditionsCancel:cond6% && %SV_ConditionsCancel:cond7%), true, false)",
+            "condBotonCancelar": "=%SV_ConditionsCancel:cond5% AND %SV_ConditionsCancel:cond1% AND ((NOT(%SV_ConditionsCancel:cond3%) AND NOT(%SV_ConditionsCancel:cond4%)) OR (%SV_ConditionsCancel:cond2% AND (%SV_ConditionsCancel:cond3% OR %SV_ConditionsCancel:cond4%)))",
+            "orderId": "%IP_GetOrderbyPlanId:Order:id%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ObtieneDatosCondicionesBoton/Procedure/RA_condiciones"
+}

@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SendApprovalProcess",
+    "OmniProcessId": {
+        "Name": "DerivationCaseServicioGPT",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DerivationCaseServicioGPT/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "ApprovalProccessName": "%approvalProcessName%",
+            "CaseId": "%caseId%",
+            "NextApproverId": "%DR_GetQueue:Id%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "isSuccess == false",
+        "failureResponse": {
+            "Details": "%ApprovalResp:error%",
+            "EndProcess": "fail"
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_ApprovalProccessInterface",
+        "remoteMethod": "approvalCaseDuplicadoIMEI",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "ApprovalResp",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DerivationCaseServicioGPT/Procedure/SendApprovalProcess"
+}

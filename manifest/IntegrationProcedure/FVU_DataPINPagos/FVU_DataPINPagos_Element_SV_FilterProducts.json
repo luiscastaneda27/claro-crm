@@ -1,0 +1,33 @@
+{
+    "Description": "Se filtran los productos por su ProductFamily.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_FilterProducts",
+    "OmniProcessId": {
+        "Name": "FVU_DataPINPagos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataPINPagos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Devices": "=FILTER(LIST(%GetOrderItemByOrderId:AllOrderItems%), 'ProductFamily == \"Device\"')",
+            "DevicesSimCard": "=FILTER(LIST(%GetOrderItemByOrderId:AllOrderItems%), 'ProductFamily == \"Device\" && ProductType == \"SIM Card\" ')",
+            "Mobiles": "=FILTER(LIST(%GetOrderItemByOrderId:AllOrderItems%), 'ProductFamily == \"Mobile\"')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataPINPagos/Procedure/SV_FilterProducts"
+}

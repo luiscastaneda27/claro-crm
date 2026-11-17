@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionPaquete",
+    "OmniProcessId": {
+        "Name": "IPRoamingValidacionesDesactivacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBPaqueteAdicional",
+        "OmniProcessId": {
+            "Name": "IPRoamingValidacionesDesactivacion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/CBPaqueteAdicional",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBPaqueteAdicional",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "puedeDesactivar": "=NOT(%SVFlagsPaquete:inicioConsumoPaquete%) && (IF(ISNOTBLANK(%IPConsultaConsumoPaquete:consumos|1:expiryDate%),%SVFlagsPaquete:vigenciaVencidaPaquete%,true)) && (NOT(%SVFlagsPaquete:inicioConsumoDatosPaquete%) || %SVFlagsPaquete:tieneConsumoDatosDisponiblePaquete%)",
+            "validationFlags": "%SVFlagsPaquete%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/ResponseActionPaquete"
+}

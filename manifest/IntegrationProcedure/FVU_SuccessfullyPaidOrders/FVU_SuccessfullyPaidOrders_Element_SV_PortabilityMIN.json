@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_PortabilityMIN",
+    "OmniProcessId": {
+        "Name": "FVU_SuccessfullyPaidOrders",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SuccessfullyPaidOrders/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "PortabilityMIN": "=VALUELOOKUP(DESERIALIZE(DR_GetActivationPlanOrderItems:OrderItemPlanPOR:vlocity_AttributeSelectedValues), \"B2C-ATTR-MSISDN\")"
+        },
+        "executionConditionalFormula": "DR_GetActivationPlanOrderItems:Order:PurchaseType == 'POR'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SuccessfullyPaidOrders/Procedure/SV_PortabilityMIN"
+}

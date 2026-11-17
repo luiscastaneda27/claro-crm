@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ValidationErrors",
+    "OmniProcessId": {
+        "Name": "MigraPrePosValidationController",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MigraPrePosValidationController/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CantProceed",
+        "OmniProcessId": {
+            "Name": "MigraPrePosValidationController",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MigraPrePosValidationController/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MigraPrePosValidationController/Procedure/CantProceed",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CantProceed",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ValidationErrors": "=CONCAT(IF(ISBLANK(%SV_RejectReason:isLineActive%), \"\", CONCAT(%SV_RejectReason:isLineActive%, \" - \")), IF(ISBLANK(%SV_RejectReason:hasPortOut%), \"\", CONCAT(%SV_RejectReason:hasPortOut%, \" - \")), IF(ISBLANK(%SV_RejectReason:hasActiveFinancing%), \"\", CONCAT(%SV_RejectReason:hasActiveFinancing%, \" - \")), IF(ISBLANK(%SV_RejectReason:HasPostpaidActive%), \"\", CONCAT(%SV_RejectReason:HasPostpaidActive%, \" - \")), %SV_RejectReason:commercialPlan%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MigraPrePosValidationController/Procedure/SV_ValidationErrors"
+}

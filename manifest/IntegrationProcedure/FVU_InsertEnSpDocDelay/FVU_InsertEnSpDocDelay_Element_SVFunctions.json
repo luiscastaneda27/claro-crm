@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFunctions",
+    "OmniProcessId": {
+        "Name": "InsertEnSpDocDelay",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/InsertEnSpDocDelay/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "funcDocName": "=CONCAT(%FVU_GetFile:CV:OrderNumber%,\"_\",%FVU_GetFile:CV:Title%,\".\",%FVU_GetFile:CV:FileExtension%)",
+            "funcxdIdSalesForce": "=IF(ISNOTBLANK(%FVU_GetFile:CV:salesforceID%),%FVU_GetFile:CV:salesforceID%,%FVU_GetFile:CV:OrderItemId%)",
+            "funcxdNombrePunto": "=CONCAT(\"S\",IF(%FVU_GetFile:CV:PurchaseType% == \"POR\" || %FVU_GetFile:CV:PurchaseType% == \"ACT\",\"01\",IF(%FVU_GetFile:CV:PurchaseType% == \"FIJA\",\"02\",\"03\")),%FVU_GetFile:CV:OrderNumber%)",
+            "funcxdNumeroContrato": "=CONCAT(\"S\",IF(%FVU_GetFile:CV:PurchaseType% == \"POR\" || %FVU_GetFile:CV:PurchaseType% == \"ACT\",\"01\",IF(%FVU_GetFile:CV:PurchaseType% == \"FIJA\",\"02\",\"03\")),%FVU_GetFile:CV:OrderNumber%)",
+            "funcxdTipoDocumental": "=IF(%flagConvenio% == \"taxi\",\"VERIFICACION_REQUISITOS\",\"CERTIFICACION_MINISTERIO_DEFENSA_LEY_1699\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/InsertEnSpDocDelay/Procedure/SVFunctions"
+}

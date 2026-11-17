@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_FraudCustomerOrder",
+    "OmniProcessId": {
+        "Name": "FVU_FraudTransactionValidationProcess",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FraudTransactionValidationProcess/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Order": {
+                "AccountId": "%AccountId%",
+                "ClosingReason": "Cliente cumplió la cantidad de transacciones",
+                "EffectiveDate": "%SV_Transaction:Today%",
+                "EngagementInteraction": "%EngagementInteraction|1:Id%",
+                "Status": "Cerrada Perdida"
+            }
+        },
+        "executionConditionalFormula": "%SV_Transaction:CustomerTransactionLimit% <> Null",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FraudTransactionValidationProcess/Procedure/SV_FraudCustomerOrder"
+}

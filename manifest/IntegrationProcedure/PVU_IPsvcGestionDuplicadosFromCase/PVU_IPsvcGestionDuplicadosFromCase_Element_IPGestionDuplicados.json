@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPGestionDuplicados",
+    "OmniProcessId": {
+        "Name": "IPsvcGestionDuplicadosFromCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcGestionDuplicadosFromCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "ISNOTBLANK(%DRGetCase:RequestProcessInfo%)",
+        "failOnStepError": false,
+        "failureConditionalFormula": "isValid <> true || message:codigo <> \"1\"",
+        "failureResponse": {
+            "Details": "%IPGestionDuplicados:message:descripcion%",
+            "EndProcess": "fail"
+        },
+        "integrationProcedureKey": "PVU_IPsvcGestionDuplicados",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "%SVCreatePayload2%",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcGestionDuplicadosFromCase/Procedure/IPGestionDuplicados"
+}

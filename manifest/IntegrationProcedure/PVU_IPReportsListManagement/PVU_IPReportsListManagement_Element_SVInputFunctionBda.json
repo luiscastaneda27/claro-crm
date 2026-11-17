@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVInputFunctionBda",
+    "OmniProcessId": {
+        "Name": "IPReportsListManagement",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPReportsListManagement/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "esOperadorClaro": "=IF(%IPBdaNegativa:bdaNegativaMesssage:operador% == 'Comcel S.A', TRUE, FALSE)",
+            "fechaReporte": "=CONCAT(SUBSTRING(%IPBdaNegativa:bdaNegativaMesssage:fechaReporte%,6,8),'/',SUBSTRING(%IPBdaNegativa:bdaNegativaMesssage:fechaReporte%,4,6),'/',SUBSTRING(%IPBdaNegativa:bdaNegativaMesssage:fechaReporte%,0,4),' ',SUBSTRING(%IPBdaNegativa:bdaNegativaMesssage:fechaReporte%,8,10),':'SUBSTRING(%IPBdaNegativa:bdaNegativaMesssage:fechaReporte%,10,12),':',SUBSTRING(%IPBdaNegativa:bdaNegativaMesssage:fechaReporte%,12,14))",
+            "fechaoriginal": "%IPBdaNegativa:bdaNegativaMesssage:fechaReporte%",
+            "msisdn": "=FUNCTION('CustomOmniStudioFunctions', 'replaceAtStart', %SVInputFunctionBda:input%)"
+        },
+        "executionConditionalFormula": "IPBdaNegativa:bdaNegativaMesssage:isReported = true",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPReportsListManagement/Procedure/SVInputFunctionBda"
+}

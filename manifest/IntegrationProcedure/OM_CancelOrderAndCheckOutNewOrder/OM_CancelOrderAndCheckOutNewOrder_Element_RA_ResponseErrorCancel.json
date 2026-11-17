@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ResponseErrorCancel",
+    "OmniProcessId": {
+        "Name": "OM_CancelOrderAndCheckOutNewOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CancelOrderAndCheckOutNewOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "code": "404",
+                "idOrder": "%orderId%",
+                "message": "La cancelación tuvo el siguiente error: %SuplementalProcess:result:Details:message%",
+                "reason": "Error: No se pudo continuar con la cacelación",
+                "status": "Failed"
+            }
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IP_CancelOrder:success% = false",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CancelOrderAndCheckOutNewOrder/Procedure/RA_ResponseErrorCancel"
+}

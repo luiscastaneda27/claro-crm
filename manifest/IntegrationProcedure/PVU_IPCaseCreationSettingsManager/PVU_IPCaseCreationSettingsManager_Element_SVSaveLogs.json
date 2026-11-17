@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSaveLogs",
+    "OmniProcessId": {
+        "Name": "IPCaseCreationSettingsManager",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCaseCreationSettingsManager/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Descripcion": "CASO: %SetRequest:campo:numeroCasoSF% DNI: %SetRequest:campo:numeroDocumento% // Resp CASO: %CallOutCaseCreationSettingsManager:nr% NR: %CallOutCaseCreationSettingsManager:createdDate% Status: %CallOutCaseCreationSettingsManager:status%////",
+            "Endpoint": "%SetPath:pathURL%",
+            "Metodo": "POST",
+            "Name": "IPCaseCreationSettingsManager",
+            "Request": "'body': %SetRequest%",
+            "Response": "%CallOutCaseCreationSettingsManager%",
+            "StatusCode": "%CallOutCaseCreationSettingsManager:status%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCaseCreationSettingsManager/Procedure/SVSaveLogs"
+}

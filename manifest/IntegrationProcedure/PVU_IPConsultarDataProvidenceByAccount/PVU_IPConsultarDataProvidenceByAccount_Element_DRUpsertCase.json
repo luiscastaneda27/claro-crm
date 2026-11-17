@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRUpsertCase",
+    "OmniProcessId": {
+        "Name": "IPConsultarDataProvidenceByAccount",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPConsultarDataProvidenceByAccount/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCreateCase",
+        "OmniProcessId": {
+            "Name": "IPConsultarDataProvidenceByAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPConsultarDataProvidenceByAccount/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPConsultarDataProvidenceByAccount/Procedure/CBCreateCase",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCreateCase",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Case:AccountId": "%SVCase:accountId%",
+            "Case:CAV": "%SVCase:CAV%",
+            "Case:Categoria": "%SVCase:Categoria%",
+            "Case:CodigoCierre": "%SVCase:CodigoCierre%",
+            "Case:CuentaCesionario": "%SVCase:CuentaCesionario%",
+            "Case:Observaciones": "%SVCase:Observaciones%",
+            "Case:RecordTypeId": "%SVCase:RecordTypeId%",
+            "Case:RequestProcessInfo": "%SVCase:RequestProcessInfo%",
+            "Case:Status": "%SVCase:Status%",
+            "Case:SubCategoria": "%SVCase:SubCategoria%",
+            "Case:SubEstado": "%SVCase:SubEstado%",
+            "Case:VozCliente": "%SVCase:VozCliente%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_DRUpsertCase",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "%type% = \"listPresent\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "error": "=%DRUpdateCase:Case_1:UpsertError%",
+            "message": "'Error al actualizar el caso, por  favor intente de nuevo'",
+            "success": "=%DRUpdateCase:Case_1:UpsertSuccess%"
+        },
+        "ignoreCache": false,
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPConsultarDataProvidenceByAccount/Procedure/DRUpsertCase"
+}

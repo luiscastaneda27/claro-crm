@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataOrderItem",
+    "OmniProcessId": {
+        "Name": "FVU_SPaidOrderUpdate",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SPaidOrderUpdate/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_UpdateOrderAnItems",
+        "OmniProcessId": {
+            "Name": "FVU_SPaidOrderUpdate",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SPaidOrderUpdate/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SPaidOrderUpdate/Procedure/CB_UpdateOrderAnItems",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_UpdateOrderAnItems",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "OrderItem": [
+                {
+                    "AttributeSelectedValues": {
+                        "B2C-ATTR-MSISDN": "%MIN%"
+                    },
+                    "Id": "%OrderItemId%",
+                    "IdSalesforce": "%IdSalesforce%",
+                    "dnId": "%dnId%",
+                    "sdpId": "%sdpId%"
+                }
+            ]
+        },
+        "executionConditionalFormula": "DR_GetActivationPlanOrderItems:Order:PurchaseType == 'ACT' || DR_GetActivationPlanOrderItems:Order:PurchaseType == 'ATT'|| DR_GetActivationPlanOrderItems:Order:PurchaseType == 'MIG' || ISNOTBLANK(%DR_GetActivationPlanOrderItems:OrderItemESIM% || (DR_GetActivationPlanOrderItems:Order:CanalPropietario = 'Tercero' AND DR_GetActivationPlanOrderItems:Order:PurchaseType == 'POR')",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SPaidOrderUpdate/Procedure/SV_DataOrderItem"
+}

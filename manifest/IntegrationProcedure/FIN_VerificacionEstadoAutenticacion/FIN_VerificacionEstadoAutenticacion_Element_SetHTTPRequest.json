@@ -1,0 +1,58 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetHTTPRequest",
+    "OmniProcessId": {
+        "Name": "FIN_VerificacionEstadoAutenticacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/VerificacionEstadoAutenticacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "accessKey": "%input:accessKey%",
+            "application": "%input:aplication%",
+            "company": "%input:company%",
+            "documentClient": "=%input:documentClient%",
+            "ipApplication": "string",
+            "password": "string",
+            "requestDate": "%input:headerRequest:requestDate%",
+            "system": "SalesForce",
+            "target": "CAV",
+            "trace": true,
+            "traceabilityId": "string",
+            "transactionId": "%input:headerRequest:transactionId%",
+            "user": "string"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "FVU_IdClaroVerifyInterface",
+        "remoteMethod": "generateRequest",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "request",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/VerificacionEstadoAutenticacion/Procedure/SetHTTPRequest"
+}

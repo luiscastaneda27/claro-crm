@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetDescripcionPlan",
+    "OmniProcessId": {
+        "Name": "MSAgreementMngtContract_SignContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/MSAgreementMngtContract_SignContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "key": "DescripcionPlan",
+            "value": "=IF(ISNOTBLANK(DR_GetRecords:BundleItems),\"Cargo Fijo Mensual: $\" + formatCurrency(%DR_GetRecords:requestBody:planValue%) + \". Incluye: \" + %requestBody:DescripcionBudle%, \"Cargo Fijo Mensual: $\" + formatCurrency(%DR_GetRecords:requestBody:planValue%) + \". Incluye: \" + %requestBody:DescripcionPlan%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "body:map:mapEntry|%mapIndex:index%",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/MSAgreementMngtContract_SignContract/Procedure/SetDescripcionPlan"
+}

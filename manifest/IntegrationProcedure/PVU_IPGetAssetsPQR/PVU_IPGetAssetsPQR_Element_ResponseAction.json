@@ -1,0 +1,47 @@
+{
+    "Description": "Lineas, Planes y PlanesNegContrato es lo mismo, necesitamos el nodo con distinto nombre para poder levantar el EditBlock en el OS",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "IPGetAssetsPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetAssetsPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Assets": "%LATermTecList%",
+            "AssetsSize": "=IF(ISBLANK(%LATermTecList%), 0, LISTSIZE(%LATermTecList%))",
+            "Fechas": "%SVDates%",
+            "Lineas": "%LAPlanesList%",
+            "LineasSize": "=IF(ISBLANK(%LAPlanesList%), 0, LISTSIZE(%LAPlanesList%))",
+            "Planes": "%LAPlanesList%",
+            "PlanesNegContrato": "%ListPlanesNegContrato%",
+            "PlanesNegContratoSize": "=IF(ISBLANK(%ListPlanesNegContrato%), 0, LISTSIZE(%ListPlanesNegContrato%))",
+            "PlanesNegacionFIN": "=LIST(%LAProductFin%)",
+            "PlanesNegacionFINSize": "=IF(ISBLANK(%LAProductFin%), 0, LISTSIZE(%LAProductFin%))",
+            "PlanesSize": "=IF(ISBLANK(%LAPlanesList%), 0, LISTSIZE(%LAPlanesList%))"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetAssetsPQR/Procedure/ResponseAction"
+}

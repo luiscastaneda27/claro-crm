@@ -1,0 +1,49 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DM_CodigoCAV",
+    "OmniProcessId": {
+        "Name": "IPCaseApprovalIMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCaseApprovalIMEI/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "defaultMatrixResult": {
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "ISBLANK(%DM_CodigoCAV:Cola%) || %DM_CodigoCAV:Cola% = 'NA'",
+        "failureResponse": {
+            "Details": "Código Móvil configurado en usuario: %SVInput:CodigoMovil%, no encontrado en Desicion Matriz (CodigoCAV))",
+            "EndProcess": "fail"
+        },
+        "label": "DecisionMatrixAction1",
+        "matrix Input Parameters": [
+            {
+                "name": "SVInput:CodigoMovil",
+                "value": "CodigoCAV"
+            }
+        ],
+        "remoteOptions": {
+            "matrixName": "PVUCodigoCAV"
+        },
+        "responseJSONNode": "CAVDetails",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Matrix Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCaseApprovalIMEI/Procedure/DM_CodigoCAV"
+}

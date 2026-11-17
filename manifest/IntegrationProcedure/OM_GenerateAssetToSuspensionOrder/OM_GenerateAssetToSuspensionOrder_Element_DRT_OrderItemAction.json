@@ -1,0 +1,61 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRT_OrderItemAction",
+    "OmniProcessId": {
+        "Name": "GenerateAssetToSuspensionOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/GenerateAssetToSuspensionOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_UpdateOrderItem",
+        "OmniProcessId": {
+            "Name": "GenerateAssetToSuspensionOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/GenerateAssetToSuspensionOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/GenerateAssetToSuspensionOrder/Procedure/LB_UpdateOrderItem",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_UpdateOrderItem",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "OrderItem": "%DRE_OrderItemByOrderID:OrderItem%",
+            "TypeSuspension": "%TypeSuspension%",
+            "UpdateActionValue": "Suspend",
+            "UpdateReason": "%DRE_GetInterfaceSettingsMetadata:IdCode%",
+            "UpdateSubActionValue": "Suspend-Deactivate",
+            "UpdateSubCausal": "%DRE_GetInterfaceSettingsMetadata:OM_Subcausal%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DR_TransformOrderItemAction",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataRaptorTransformAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Transform Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/GenerateAssetToSuspensionOrder/Procedure/DRT_OrderItemAction"
+}

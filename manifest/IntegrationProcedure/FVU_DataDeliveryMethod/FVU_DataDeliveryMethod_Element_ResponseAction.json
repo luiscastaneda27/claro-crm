@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "DataDeliveryMethod",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataDeliveryMethod/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ListProductFlag": "=IF(ISBLANK(%ListActionTangibleProducts%),LIST(%ListActionESIM%),LIST(%ListActionTangibleProducts%))",
+            "ListProductMobile": "%ListActionProductMobile%",
+            "ListProductTangible": "%ListActionTangibleProducts%",
+            "Order:PurchaseType": "%DRGetOrder:PurchaseType%",
+            "OrderItemSIMCard": "=IF(ISNOTBLANK(ListActionESIM), %ListActionESIM|1:OrderItemId%, IF(%ListActionTangibleProducts|1:productType% == \"SIM Card\" ,%ListActionTangibleProducts|1:OrderItemId%, IF(%SV_PurchaseType:NewPurchaseType% == \"ATT\", %ItemRecordIdForATTSIM%, \"\")))",
+            "isESim": "=NOT(ISBLANK(ListActionESIM))",
+            "isNullListProductMobile": "=ISBLANK(%ListActionProductMobile%)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "DRTramformData:Data",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataDeliveryMethod/Procedure/ResponseAction"
+}

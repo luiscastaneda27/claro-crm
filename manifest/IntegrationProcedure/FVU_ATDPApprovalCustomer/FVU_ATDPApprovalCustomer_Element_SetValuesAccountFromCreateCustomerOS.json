@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesAccountFromCreateCustomerOS",
+    "OmniProcessId": {
+        "Name": "FVU_ATDPApprovalCustomer",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ATDPApprovalCustomer/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "NombrePersonaNatural": "%accountName%",
+            "NumeroDocumentoPersonaNatural": "%accountDocumentNumber%",
+            "TipoDocumentoPersonaNatural": "%accountDocumentType%"
+        },
+        "executionConditionalFormula": "accountId == NULL || accountId == ''",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "valueInfoAccount",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ATDPApprovalCustomer/Procedure/SetValuesAccountFromCreateCustomerOS"
+}

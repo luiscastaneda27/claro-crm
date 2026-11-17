@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFIN",
+    "OmniProcessId": {
+        "Name": "IPGetFinancingInfoV1",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPGetFinancingInfoV1/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "returnA": "=IF(ISNOTBLANK(%BodyRequest:returnActive%), %BodyRequest:returnActive%, IF(%FinCode%<>false && ISBLANK(%returnADevolucionDinero%), true, false))",
+            "searchCriteria": "=IF(%FinCode1%<>true,%BodyRequest%,%SVFlowTask:BodyRequest%)",
+            "searchT": "=IF(ISNOTBLANK(%BodyRequest:searchType%), %BodyRequest:searchType%, IF(%FinCode%==true, 'FinancingCode', 'DocumentID'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPGetFinancingInfoV1/Procedure/SVFIN"
+}

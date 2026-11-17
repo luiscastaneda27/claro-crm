@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataRequest",
+    "OmniProcessId": {
+        "Name": "SendPinLinkNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SendPinLinkNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "contentSMS": "=CONCAT(\"Estimado cliente, Claro le informa que su PIN de pago es el \", %CodigoPago% , \" por valor de \", %DR_TransformValueToCurrency:currencyValue% , \" con fecha límite \",  SUBSTRING(%FechaVigencia%,0,10) , \" \", %DR_GetSaleSetup:PaymentLink%)",
+            "contenteMAIL": "=CONCAT(\"Estimado cliente, <br><br> Claro le informa que su PIN de pago es el \", %CodigoPago% , \" por valor de \", %DR_TransformValueToCurrency:currencyValue% , \" con fecha límite \", SUBSTRING(%FechaVigencia%,0,10) , \" \", %DR_GetSaleSetup:PaymentLink%)",
+            "description": "Notificación de Pin/Link de pago",
+            "email": "=%Email%",
+            "messageType": "=IF(%MessageType% == \"Correo Electrónico\", \"SMTP\", IF(%MessageType% == \"SMS\", \"SMS\", IF(%MessageType% == \"Correo Electrónico;SMS\" || %MessageType% == \"SMS;Correo Electrónico\" , \"ToAll\", \" \")))",
+            "phone": "=IF(ISNOTBLANK(%Phone%), CONCAT(\"57\", %Phone%),'')",
+            "subject": "Notificación de Pin/Link de pago"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SendPinLinkNotification/Procedure/SV_DataRequest"
+}

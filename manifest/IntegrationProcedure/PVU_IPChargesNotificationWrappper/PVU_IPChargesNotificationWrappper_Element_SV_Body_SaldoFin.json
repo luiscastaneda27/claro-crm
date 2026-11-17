@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Body_SaldoFin",
+    "OmniProcessId": {
+        "Name": "IPChargesNotificationWrappper",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationWrappper/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCusPaymDevolutionsSaldoFin",
+        "OmniProcessId": {
+            "Name": "IPChargesNotificationWrappper",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationWrappper/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationWrappper/Procedure/CBCusPaymDevolutionsSaldoFin",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCusPaymDevolutionsSaldoFin",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "body": {
+                "amount": "%DRGetCase:ValorTotalDevolucion%",
+                "billingAccount": "%DM_ObtenerRelacionDeServiciosYEquipos:cuentaFinanciamiento92%",
+                "chargeService": "%FIN_DRGetParam:Params:Valor%",
+                "financingCode": "%DRGetCase:CaseNumeroCredito%",
+                "remark": "Devolución de dinero financiación",
+                "target": "%DRExtractHeaderRequest:Target%",
+                "user": "%FIN_GetFianzaByCreditNumber:User:UsuarioRed%"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationWrappper/Procedure/SV_Body_SaldoFin"
+}

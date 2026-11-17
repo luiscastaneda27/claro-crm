@@ -1,0 +1,42 @@
+{
+    "Description": "consulta para todos los paquetes adicioanales activos asociados al plan",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LBPaquetes",
+    "OmniProcessId": {
+        "Name": "IPRoamingValidacionesDesactivacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock2",
+        "loopList": "DRGetAdicionales:Adicionales",
+        "loopOutput": {
+            "consumoDatosDisponible": "=%LAConsumoDatosDisponible%",
+            "consumoDatosIniciados": "=%LAConsumoDatosIniciado%",
+            "consumosFinalizados": "%LAHayConsumosAl100%",
+            "consumosIniciados": "%LAHayConsumosIniciados%",
+            "descripcionCortaPaquete": "%DRGetAdicionales:Adicionales:DescripcionCorta%",
+            "descripcionPaquete": "%DRGetAdicionales:Adicionales:Descripcion%",
+            "fechaVigencia": "=IF(ISNOTBLANK(%SVSetDate:expirityDate%), %SVSetDate:expirityDate%, 'No aplica')",
+            "hayConsumoDatosDisponible": "=IF(ISNOTBLANK(%LAConsumoDatosDisponible%), LISTSIZE(%LAConsumoDatosDisponible%), 0)",
+            "hayConsumoDatosIniciados": "=IF(ISNOTBLANK(%LAConsumoDatosIniciado%), LISTSIZE(%LAConsumoDatosIniciado%), 0)",
+            "hayConsumosFinalizados": "=IF(ISNOTBLANK(%LAHayConsumosAl100%), LISTSIZE(%LAHayConsumosAl100%), 0)",
+            "hayConsumosIniciados": "=IF(ISNOTBLANK(%LAHayConsumosIniciados%), LISTSIZE(%LAHayConsumosIniciados%), 0)",
+            "idPaquete": "%DRGetAdicionales:Adicionales:Id%",
+            "nombrePaquete": "%DRGetAdicionales:Adicionales:Nombre%",
+            "productCode": "%DRGetAdicionales:Adicionales:ProductCode%",
+            "tienePeriodoVigencia": "=ISNOTBLANK(%IPConsultaConsumos:consumos|1:expiryDate%)",
+            "valorPaquete": "%DRGetAdicionales:Adicionales:ImporteConImpuestos%",
+            "vigenciaVencida": "=TODAY() > %SVSetDate:expirityDate%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/LBPaquetes"
+}

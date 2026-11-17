@@ -1,0 +1,25 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LoopDuplasporId",
+    "OmniProcessId": {
+        "Name": "ValidarDuplasAdicion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcValidarDuplasAdicion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%consultaDuplicadosResponse:cantDuplas% = 1",
+        "label": "LoopBlock1",
+        "loopList": "consultaDuplasporIdResponse:consultaDuplasPorIdMessage:listadoBDOPositiva",
+        "loopOutput": {
+            "SVMatchImeiTrue": "=%SVMatchImeiTrue%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcValidarDuplasAdicion/Procedure/LoopDuplasporId"
+}

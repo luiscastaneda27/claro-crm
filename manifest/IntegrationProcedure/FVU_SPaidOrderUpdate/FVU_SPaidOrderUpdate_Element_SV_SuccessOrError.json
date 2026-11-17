@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_SuccessOrError",
+    "OmniProcessId": {
+        "Name": "FVU_SPaidOrderUpdate",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SPaidOrderUpdate/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DR_GetTangibleProduct": "=DR_GetTangibleProduct:TangibleOrderItem:Id",
+            "DR_UpsertTangibleOrderItem": "=DR_UpsertTangibleOrderItem:error",
+            "FVU_UpdateOrder": "=FVU_UpdateOrder:error",
+            "FVU_UpdateOrderAndItems": "=FVU_UpdateOrderAndItems:error",
+            "SV_AlreadyPaid": "=SV_AlreadyPaid:AlreadyPaid"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SPaidOrderUpdate/Procedure/SV_SuccessOrError"
+}

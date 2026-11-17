@@ -1,0 +1,49 @@
+{
+    "Description": "Voz Cliente Falla de Equipo (Fuera de Garantía) o Voz Cliente Falla de Equipo (En Garantía) \nOR \nVoz Cliente Falla de Equipo (Fuera de Garantía) + Productos de Tecnologia \n>>> Se derivan a Taller a traves del sub-estado",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPUpdateCaseTaller",
+    "OmniProcessId": {
+        "Name": "CreacionODSCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CreacionODSCaso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Case": {
+                "Id": "%CaseId%",
+                "SubEstado": "Envio a Taller"
+            }
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%DRGetODSData:Caso:PVU_Level3__c% == \"Falla de Equipo Fuera de Garantía\" || %DRGetODSData:Caso:PVU_Level3__c% == \"Falla de Equipo Garantia\" || (%DRGetODSData:Caso:PVU_Level3__c% == \"Falla técnica en la entrega (Muerto en Caja-DOA)\" && %DRGetODSData:Tecnologia% == true) || (%DRGetODSData:Caso:PVU_Level3__c% == \"Retracto de compra\" && %DRGetODSData:Tecnologia% == true)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPUpsertCase",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+            "": ""
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CreacionODSCaso/Procedure/IPUpdateCaseTaller"
+}

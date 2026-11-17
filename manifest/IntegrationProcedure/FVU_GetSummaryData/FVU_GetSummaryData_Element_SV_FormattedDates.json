@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_FormattedDates",
+    "OmniProcessId": {
+        "Name": "GetSummaryData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetSummaryData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "FinalPriceIncDiscount": "=%GetOrderSummaryDataByOrder:Resumen:TotalAPagar:TotalAPagarTyT:Total% - %SV_DataExtra:Discount%",
+            "FomattedCutOff": "=CONCAT(%SV_Dates:CutOffDay%, '/', %SV_Dates:CutOffMin%, '/', %SV_Dates:CutOffYear%)",
+            "FormattedEndPromiseDate": "=CONCAT(%SV_Dates:EndPromiseDay%, '/', %SV_Dates:EndPromiseMonth%, '/', %SV_Dates:EndPromiseYear%, ' - ', %SV_Dates:TimeEndPromise%)",
+            "FormattedStartPromiseDate": "=CONCAT(%SV_Dates:StartPromiseDay%, '/', %SV_Dates:StartPromiseMonth%, '/', %SV_Dates:StartPromiseYear%, ' - ', %SV_Dates:TimeStartPromise%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetSummaryData/Procedure/SV_FormattedDates"
+}

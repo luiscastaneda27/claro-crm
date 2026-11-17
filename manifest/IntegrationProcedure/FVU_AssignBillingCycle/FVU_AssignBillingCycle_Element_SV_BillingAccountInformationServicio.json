@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_BillingAccountInformationServicio",
+    "OmniProcessId": {
+        "Name": "AssignBillingCycle",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AssignBillingCycle/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "BillCycle": "%IP_GetBillCycleManagement:billCycleId%",
+            "BillCycleCutoff": "=SUBSTRING(ADDDAY(%IP_GetBillCycleManagement:bchRunDate%, -1),8,10)",
+            "BillDeliveryMethod": "='Electronico'"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "SV_BillingAccountInformation",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AssignBillingCycle/Procedure/SV_BillingAccountInformationServicio"
+}

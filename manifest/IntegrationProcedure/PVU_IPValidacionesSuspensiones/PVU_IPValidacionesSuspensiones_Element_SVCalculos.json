@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCalculos",
+    "OmniProcessId": {
+        "Name": "IPValidacionesSuspensiones",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesSuspensiones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DiasDisponiblesParaSuspender": "=60 - (%diffDiasTemporal% + %diffDiasRoboPerdida%)",
+            "DiasRestantesUltimaSuspension": "= IF(DATEDIFF(TODAY(), SUBSTRING(SuspensionesOrdered|1:StatusEndDate,0,10)) > 0 , DATEDIFF(TODAY(), SUBSTRING(SuspensionesOrdered|1:StatusEndDate,0,10)) , 0)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesSuspensiones/Procedure/SVCalculos"
+}

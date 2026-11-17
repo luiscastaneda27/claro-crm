@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction1",
+    "OmniProcessId": {
+        "Name": "IPGetAssetFinancing",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPGetAssetFinancing/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ActiveFinancing": "=IF(%SVResponse:listLineActiveFinancing%==1,true,false)",
+            "OneFinanced": "=IF(%SVResponse:listLineActive% == 1,true,false)",
+            "accessFin": "%RASecurityProcess:accessFin%",
+            "activeLines": "%DRTransformActiveLine:activeLines%",
+            "activeLinesTrue": "%DRTransformActiveLineFinancing:activeLines%",
+            "errorSelectLineNumberMsj": "%IPObtenerMensajes4:message:MainMessage%",
+            "infoSelectLineNumberMsj": "%IPObtenerMensajes3:message:MainMessage%",
+            "intencion": {
+                "description": "%IPObtenerMensajes:message:MainMessage%",
+                "label": "%IPObtenerMensajes:label%"
+            },
+            "selectLineNumberMsj": "%IPObtenerMensajes2:message:MainMessage%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPGetAssetFinancing/Procedure/ResponseAction1"
+}

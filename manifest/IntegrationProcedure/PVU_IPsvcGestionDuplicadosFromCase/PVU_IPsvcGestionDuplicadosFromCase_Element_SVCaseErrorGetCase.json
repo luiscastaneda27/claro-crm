@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseErrorGetCase",
+    "OmniProcessId": {
+        "Name": "IPsvcGestionDuplicadosFromCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcGestionDuplicadosFromCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Case": {
+                "Case": {
+                    "Categoria": "Solicitud de información y modificaciones",
+                    "CodigoCierre": "No se realiza trámite IMEI Duplicado",
+                    "Id": "%CaseId%",
+                    "RequestProcessStatus": "Procesado con Error",
+                    "RequestProcessStatusDetail": "Error en el request guardado en el caso. Revisar el campo (RequestProcessStatusDetail)",
+                    "Status": "Cerrado",
+                    "SubCategoria": "Gestión de IMEI",
+                    "SubEstado": "Adición Supervisor y/o jefe de Cav",
+                    "VozCliente": "Gestión de IMEI duplicado"
+                },
+                "RecordTypeName": "GestionCasosPosventa"
+            }
+        },
+        "executionConditionalFormula": "ISBLANK(%DRGetCase:RequestProcessInfo%)",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "SVCase",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcGestionDuplicadosFromCase/Procedure/SVCaseErrorGetCase"
+}

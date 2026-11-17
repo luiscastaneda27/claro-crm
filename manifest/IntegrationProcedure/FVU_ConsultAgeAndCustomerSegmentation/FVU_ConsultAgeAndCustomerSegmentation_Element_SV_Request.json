@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "ConsultAgeAndCustomerSegmentation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ConsultAgeAndCustomerSegmentation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "numeroIdentificacion": "%DRE_GetAccountDetails:documentNumber%",
+            "tipoIdentificacion": "=IF(DRE_GetAccountDetails:documentType == 'CC', \"1\", IF(DRE_GetAccountDetails:documentType == 'NI', \"2\", IF(DRE_GetAccountDetails:documentType == 'PP', \"3\", IF(DRE_GetAccountDetails:documentType == 'CE', \"4\", ''))))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ConsultAgeAndCustomerSegmentation/Procedure/SV_Request"
+}

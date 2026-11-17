@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "FVU_UpdateOrderItemRoot",
+    "OmniProcessId": {
+        "Name": "FVU_SuccessfullyPaidOrders",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SuccessfullyPaidOrders/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "OrderItem:ContractCreatedDate": "=IF(%IP_SendDigitalContract:success% == true, NOW(), \"\")",
+            "OrderItem:ContractEmail": "=IF(%IP_SendDigitalContract:success% == true, %DR_GetActivationPlanOrderItems:Order:AccountEmail%, \"\")",
+            "OrderItem:ContractId": "=IF(%IP_SendDigitalContract:success% == true , %SV_UpdateValues:IdContrato%, \"\")",
+            "OrderItem:ContractRequestSent": "=IF(%IP_SendDigitalContract:success% == true, \"Si\", \"No\")",
+            "OrderItem:ContractType": "=IF(%IP_SendDigitalContract:success% == true, \"Digital\", \"\")",
+            "OrderItem:OrderItemId": "=%DR_GetActivationPlanOrderItems:RootOrderItem:Id%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertOrderItem",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_VerifyPayment:PaymentConfirmation% && (%DR_GetActivationPlanOrderItems:Order:PurchaseType% = \"ACT\" || %DR_GetActivationPlanOrderItems:Order:PurchaseType% = \"ATT\" || %DR_GetActivationPlanOrderItems:Order:PurchaseType% = \"POR\") || %DR_GetActivationPlanOrderItems:Order:PurchaseType% = \"MIG\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SuccessfullyPaidOrders/Procedure/FVU_UpdateOrderItemRoot"
+}

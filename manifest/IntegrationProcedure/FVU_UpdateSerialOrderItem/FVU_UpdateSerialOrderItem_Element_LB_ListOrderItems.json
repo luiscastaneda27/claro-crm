@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_ListOrderItems",
+    "OmniProcessId": {
+        "Name": "UpdateSerialOrderItem",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateSerialOrderItem/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "SV_initialData:existOrderItem",
+        "label": "LoopBlock1",
+        "loopList": "LA_ListOrderItems",
+        "loopOutput": {
+            "imei": "=SV_MappingFilter:imei",
+            "orderItemId": "=SV_MappingFilter:orderItemId",
+            "orderProductItemStatus": "=SV_MappingFilter:orderProductItemStatus",
+            "serialNumber": "=SV_MappingFilter:serialNumber",
+            "serialNumberAttribute": "=SV_MappingFilter:serialNumberAttribute",
+            "valorDelSerial": "=SV_MappingFilter:valorDelSerial"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateSerialOrderItem/Procedure/LB_ListOrderItems"
+}

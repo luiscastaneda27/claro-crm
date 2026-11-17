@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVOrderData",
+    "OmniProcessId": {
+        "Name": "IPCambioDeEquipoPorCasoFIN",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioDeEquipoPorCasoFIN/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "IsAssetType": "=IF(%SVInput:CodigoCierre% != 'Cambio de equipo',%IPCreateOrderAndProductsQuery:IsAssetType%,%IPCreateOrderAndProductsQueryCambioEquipo:IsAssetType%)",
+            "OrderItemToDisconect": "=IF(%SVInput:CodigoCierre% != 'Cambio de equipo',%IPCreateOrderAndProductsQuery:OrderItemToDisconect%,%IPCreateOrderAndProductsQueryCambioEquipo:OrderItemToDisconect%)",
+            "PriceBookEntryId": "=IF(%SVInput:CodigoCierre% != 'Cambio de equipo',%IPCreateOrderAndProductsQuery:PriceBookEntryId%,%IPCreateOrderAndProductsQueryCambioEquipo:PriceBookEntryId%)",
+            "cartId": "=IF(%SVInput:CodigoCierre% != 'Cambio de equipo',%IPCreateOrderAndProductsQuery:cartId%,%IPCreateOrderAndProductsQueryCambioEquipo:cartId%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioDeEquipoPorCasoFIN/Procedure/SVOrderData"
+}

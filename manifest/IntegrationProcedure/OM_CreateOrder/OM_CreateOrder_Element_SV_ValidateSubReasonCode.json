@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ValidateSubReasonCode",
+    "OmniProcessId": {
+        "Name": "CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_Reinstallation",
+        "OmniProcessId": {
+            "Name": "CreateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/CB_Reinstallation",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_Reinstallation",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CesionContrato": "=IF(%DME_getLastSubscription:SubStatus% = \"Act Cesion Post-Post\", \"No se puede tener una reinstalación de una linea que tiene una cesión de contrato\",false)",
+            "MigracionPosPre": "=IF(%DME_getLastSubscription:SubStatus% = \"Desactivacion pos-pre\", \"No se puede tener una reinstalación de una linea en migración de pos a pre\",false)",
+            "NegacionPortIn": "=IF(%DME_getLastSubscription:SubStatus% = \"Negacion Port In\", \"No se puede tener una reinstalación de una linea en una negación de portIn\",false)",
+            "Portout": "=IF(%DME_getLastSubscription:SubStatus% = 'Portout', \"No se puede tener una reinstalación de una linea en PORTOUT\",false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/SV_ValidateSubReasonCode"
+}

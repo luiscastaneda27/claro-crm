@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponse",
+    "OmniProcessId": {
+        "Name": "IPConsumoDatos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPConsumoDatos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "assetName": "%DRGetAssetDetails:Name%",
+            "errorData": "%IPWrapperGetUsageThresholdsAndCounters:errorData%",
+            "mensajes": "%IPMensajesPorGestion%",
+            "usageCounterMonetary": "=IF(%IPWrapperGetUsageThresholdsAndCounters:usageCounterMonetary% > 0,%IPWrapperGetUsageThresholdsAndCounters:usageCounterMonetary%/1073741824,%IPWrapperGetUsageThresholdsAndCounters:usageCounterMonetary%)",
+            "usageThresholdMonetary": "=%IPWrapperGetUsageThresholdsAndCounters:usageThresholdMonetary%/1073741824"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPConsumoDatos/Procedure/SVResponse"
+}

@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Products",
+    "OmniProcessId": {
+        "Name": "FilterAvailableProductsImmediateDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Products": "=IF(ISNOTBLANK(%DR_GetProductsFromOrder%),LIST(%DR_GetProductsFromOrder%),LIST(%DR_GetProduct%))"
+        },
+        "executionConditionalFormula": "(ISNOTBLANK(DR_GetProduct) && ISBLANK(DR_GetProductsFromOrder)) || (ISBLANK(DR_GetProduct) && ISNOTBLANK(DR_GetProductsFromOrder))",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues24",
+        "responseJSONNode": "DR_AllProducts",
+        "responseJSONPath": "Products",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/SV_Products"
+}

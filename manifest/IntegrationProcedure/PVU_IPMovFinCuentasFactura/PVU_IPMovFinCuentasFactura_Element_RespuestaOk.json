@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RespuestaOk",
+    "OmniProcessId": {
+        "Name": "IPMovFinCuentasFactura",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPMovFinCuentasFactura/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Cantidad": "%SetCantidades:CantidadTotal%",
+            "Datos": "%ListAction2%",
+            "EndProcess": "%FinAccoBilling:EndProcess%",
+            "accessProcess": "%RAAccessProcess:accessProcess%",
+            "customerIdPub": "%CallDRGetAccountPubId:customerIdPub%",
+            "parentAccountId": "%CallDRGetAccountPubId:parentAccountId%",
+            "userProfile": "%PVU_IPGetDetailsUser:UserDetails:Profile%",
+            "userRole": "%PVU_IPGetDetailsUser:UserDetails:Role%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "FinAccoBilling:EndProcess==\"Success\" && %CallDRGetAccountPubId:haveValue% == true ",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPMovFinCuentasFactura/Procedure/RespuestaOk"
+}

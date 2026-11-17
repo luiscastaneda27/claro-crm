@@ -1,0 +1,22 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ConditionalBlockCustomPayment",
+    "OmniProcessId": {
+        "Name": "DunningLimitRange",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DunningLimitRange/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IP_ValidationFormat:result:InvalidFormat% != true  && (%SV_ValidateDataPaymentReferences:statusPaymentReferences% == \"Al Dia\" || %IP_GetPaymentReferences:Message% == \"Data not found\")",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock1",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DunningLimitRange/Procedure/ConditionalBlockCustomPayment"
+}

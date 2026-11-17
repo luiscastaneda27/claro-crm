@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Error",
+    "OmniProcessId": {
+        "Name": "SendingPreliminaryContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendingPreliminaryContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "%HTT_SendingPreliminaryContract:data:Exceptions|1:description%",
+            "result": {
+                "Descripcion": "%HTT_SendingPreliminaryContract:data:Exceptions|1:description%",
+                "Name": "ApprovalContract",
+                "Response": "Ha ocurrido un error al consultar el servicio",
+                "enpoint": "/MS/RES/Resource/V1/ApprovalContract",
+                "metodo": "POST",
+                "request": "%SVRequestBody:bodyCompleto%",
+                "response": "%HTT_SendingPreliminaryContract%",
+                "statusCode": "404",
+                "success": false
+            },
+            "success": "%HTT_SendingPreliminaryContract:data:isValid%",
+            "transactionID": "%HTT_SendingPreliminaryContract:data:transactionID%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%HTT_SendingPreliminaryContract:data:isValid% = false",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendingPreliminaryContract/Procedure/RA_Error"
+}

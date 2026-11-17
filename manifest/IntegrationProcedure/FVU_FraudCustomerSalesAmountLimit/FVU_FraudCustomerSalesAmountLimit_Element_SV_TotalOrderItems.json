@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_TotalOrderItems",
+    "OmniProcessId": {
+        "Name": "FVU_FraudCustomerSalesAmountLimit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FraudCustomerSalesAmountLimit/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "TotalProductsDaily": "=SUM(LA_Products:orderItemOneTimeTotal) + SUM(LA_Products:orderItemRecurrentPrice) + %RA_GetOrderTotal:OrderTotalProduct:orderTotalToday%",
+            "TotalProductsMonthly": "=SUM(LA_Products:orderItemOneTimeTotal) + SUM(LA_Products:orderItemRecurrentPrice) + %RA_GetOrderTotal:OrderTotalProduct:orderTotalMonth%",
+            "TotalProductsWeekly": "=SUM(LA_Products:orderItemOneTimeTotal) + SUM(LA_Products:orderItemRecurrentPrice) + %RA_GetOrderTotal:OrderTotalProduct:orderTotalWeek%",
+            "TotalServicesDaily": "=SUM(LA_Services:orderItemOneTimeTotal) + SUM(LA_Services:orderItemRecurrentPrice) + %RA_GetOrderTotal:OrderTotalService:orderTotalToday%",
+            "TotalServicesMonthly": "=SUM(LA_Services:orderItemOneTimeTotal) + SUM(LA_Services:orderItemRecurrentPrice) + %RA_GetOrderTotal:OrderTotalService:orderTotalMonth%",
+            "TotalServicesWeekly": "=SUM(LA_Services:orderItemOneTimeTotal) + SUM(LA_Services:orderItemRecurrentPrice) + %RA_GetOrderTotal:OrderTotalService:orderTotalWeek%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FraudCustomerSalesAmountLimit/Procedure/SV_TotalOrderItems"
+}

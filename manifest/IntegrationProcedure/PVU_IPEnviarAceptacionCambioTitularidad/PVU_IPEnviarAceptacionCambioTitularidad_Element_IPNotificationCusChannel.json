@@ -1,0 +1,67 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPNotificationCusChannel",
+    "OmniProcessId": {
+        "Name": "IPEnviarAceptacionCambioTitularidad",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPEnviarAceptacionCambioTitularidad/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "contentType": "%SVData:contentType%",
+            "deliveryReceipts": "N",
+            "description": "Enviar Aceptación de Cambio de Titularidad de IMEI",
+            "messageType": "SMTP",
+            "parameters": {
+                "_BODY_": "%SVParametros:contenido%",
+                "_NAME1_": "%SVData:NombreCliente%",
+                "_NUMER_LINEA_": "%SVData:min%",
+                "_PROCESO_": "Cambio de titularidad de IMEI"
+            },
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "mail": "%SVData:mail%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "%SVParametros:asunto%",
+            "templateid": "%SVData:templateid%",
+            "tryTimes": 3
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPNotificationCusChannel",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPEnviarAceptacionCambioTitularidad/Procedure/IPNotificationCusChannel"
+}

@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVData",
+    "OmniProcessId": {
+        "Name": "IPCreateNewCasePQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCreateNewCasePQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CanalAtencionPQR": "=IF(%SVInput:caso:UserChannel% == 'SF_TMK','MKT','CAV')",
+            "MedioNotificacionPQR": "=IF(%SVInput:caso:UserChannel%  == 'SF_TMK','Llamada telefónica','Correo Electrónico')",
+            "MedioRadicacionPQR": "=IF(%SVInput:caso:UserChannel%  == 'SF_TMK','Verbal','Presencial Verbal')",
+            "Origin": "=IF(%SVInput:caso:UserChannel%='SF_TMK', 'Phone','Presencial')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCreateNewCasePQR/Procedure/SVData"
+}

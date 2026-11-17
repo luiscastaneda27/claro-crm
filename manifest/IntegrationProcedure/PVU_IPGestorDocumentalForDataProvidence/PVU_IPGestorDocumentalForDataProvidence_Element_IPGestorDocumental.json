@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPGestorDocumental",
+    "OmniProcessId": {
+        "Name": "IPGestorDocumentalForDataProvidence",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGestorDocumentalForDataProvidence/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "docName": "%GetDocumentFromJob:Title%.pdf",
+            "document": {
+                "xdCRM": "SALESFORCE",
+                "xdEmpresa": "COMCEL",
+                "xdFechaArchivo": "%SVInput:today%",
+                "xdFechaDocumento": "%SVInput:today%",
+                "xdIdCliente": "%DRGetCase:AccountId%",
+                "xdIdProceso": "%DRGetCase:NumeroCaso%",
+                "xdIdSalesforce": "%SVInput:CaseId%",
+                "xdNumeroIdentificacion": "%DRGetCase:DocumentNumber%",
+                "xdTipoDocumental": "CONSULTA_LISTAS_VINCULANTES_RESTRICTIVA_PEP_CLIMAS",
+                "xdTipoIdentificacion": "%DRGetCase:DocumentType%"
+            },
+            "document_ext": {
+                "serie": "EVRIESGOSCLIENTMASI"
+            },
+            "idDocument": "%GetDocumentFromJob:DocumentContentVersionId%",
+            "serieDocumental": 4,
+            "target": "%RA_GetTargetAmb:targetCode%",
+            "xdIdCliente": "%DRGetCase:AccountId%",
+            "xdIdProceso": "%DRGetCase:NumeroCaso%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPMSEnSpDocUpload_InsertEnSpDocDelay",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGestorDocumentalForDataProvidence/Procedure/IPGestorDocumental"
+}

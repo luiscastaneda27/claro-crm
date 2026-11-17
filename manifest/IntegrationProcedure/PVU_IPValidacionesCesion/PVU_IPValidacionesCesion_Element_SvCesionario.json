@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SvCesionario",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCesion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCesion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCesionario",
+        "OmniProcessId": {
+            "Name": "IPValidacionesCesion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCesion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCesion/Procedure/CBCesionario",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCesionario",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AlDiaInfoBalance": "=%IPMSCuAcBalInfoBalanceCesionario:Estado%",
+            "AldiaSinSaldos": "=%IPgetPaymentCesionario:Estado%",
+            "CumpleAldiaSinSaldos": "=IF((%IPgetPaymentCesionario:Estado% == 'Al día' && %IPMSCuAcBalInfoBalanceCesionario:Estado% == 'Al Dia' && %SVConteoServicios:TieneServiciosActivos% == true) ||(%SVConteoServicios:TieneServiciosActivos% == false),true, false)",
+            "CumpleListas": "=IF(ISBLANK(%IPConsultarDataProvidenceByAccount:unifiedLists:Lista%), true, false)",
+            "CumpleListasServicio": "=%IPConsultarDataProvidenceByAccount:unifiedListsSuccess%",
+            "TextoAldiaSinSaldos": "El cesionario debe estar al día con todos los servicios en asociados a su número de identificación",
+            "TextoListas": "=%RAmessages:mensajes:CESCONT016%",
+            "TextoListasServicio": "=%RAmessages:mensajes:CESCONT017%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCesion/Procedure/SvCesionario"
+}

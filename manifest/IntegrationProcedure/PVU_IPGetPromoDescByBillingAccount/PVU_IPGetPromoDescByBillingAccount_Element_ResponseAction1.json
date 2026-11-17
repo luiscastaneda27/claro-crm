@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction1",
+    "OmniProcessId": {
+        "Name": "IPGetPromoDescByBillingAccount",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetPromoDescByBillingAccount/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "code": "%IPGetPromoService:code%",
+            "descPercent": "%IPGetPromoService:descPercent%",
+            "endPromotionDate": "%IPDateEndPromo:fechaSMS%",
+            "initPromotionDate": "%IPDateStartPromo:fechaSMS%",
+            "message": "=IF(%IPGetPromoService:code% = \"1\",%IPGetPromoService:message%,%RASetMessageParam:mensajeParametrizado%)",
+            "payAmountPromo": "%IPGetPromoService:payAmountPromo%",
+            "payAmountPromoRound": "%IPGetPromoService:payAmountPromoRound%",
+            "payPercent": "%IPGetPromoService:payPercent%",
+            "promotionCode": "%IPGetPromoService:promotionCode%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetPromoDescByBillingAccount/Procedure/ResponseAction1"
+}

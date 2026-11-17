@@ -1,0 +1,23 @@
+{
+    "Description": "Check if the Account (record type Service) has associated customerExternalId. This is Ericsson customer id (9300.....). If this Id is associated with the service account we do not have to create another Ericsson account",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CustomerExternalId_DoesNotExist",
+    "OmniProcessId": {
+        "Name": "CreateAccountBSCS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateAccountBSCS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%DRExtractOrderDetail:customerExternalId%)",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock3",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateAccountBSCS/Procedure/CustomerExternalId_DoesNotExist"
+}

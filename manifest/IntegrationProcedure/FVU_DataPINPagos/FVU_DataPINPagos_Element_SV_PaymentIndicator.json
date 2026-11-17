@@ -1,0 +1,32 @@
+{
+    "Description": "(IngPago = M) -> NAP (Sin Financiar)\n(IngPago = T) -> FIN (Con Financiacion)\n(IngPago = S) -> ACT, POR, MIGA (Sin \"Cargo anticipado\")\n(IngPago = C) -> ACT, POR, MIGA (Con \"Cargo anticipado\")",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_PaymentIndicator",
+    "OmniProcessId": {
+        "Name": "FVU_DataPINPagos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DataPINPagos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "IndPago": "=IF(%SV_CountFilterProducts:MobilesCount% == 0 && %SV_CountFilterProducts:DevicesCount%>0 && %OrderData:PurchaseType% == \"FIN\",\"M\",IF(%SV_CountFilterProducts:MobilesCount% == 0 && %SV_CountFilterProducts:DevicesCount%>0 && %OrderData:PurchaseType% != \"FIN\",\"T\",IF(%SV_CountFilterProducts:MobilesCount%>0 && %SV_CountFilterProducts:DevicesSimCardCount%>0,\"S\",\"\")))",
+            "refPagoMotor": "=IF(%SV_CountFilterProducts:MobilesCount% > 0 && %SV_CountFilterProducts:DevicesSimCardCount% > 0 && %SV_CountFilterProducts:DevicesCount% > 0 && %cargoAnticipado% == 0 && ((%DeliveryMethod% == \"Delivery\" && %GetOrderItemByOrderId:OrderItemGeneral:DeliveryFlete% > 0) || %DeliveryMethod% == \"PickUp\"),\"\",%referenciaPagoMotor%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues8",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DataPINPagos/Procedure/SV_PaymentIndicator"
+}

@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_CountPaymentList",
+    "OmniProcessId": {
+        "Name": "SaveOrderAndItemForPayment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SaveOrderAndItemForPayment/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "SV_DataPaymentList:PaymentList",
+        "loopOutput": {
+            "MeansPayment": "=%SV_DataPaymentList:PaymentList:MeansPayment%",
+            "PaymentMethods": "=%SV_DataPaymentList:PaymentList:PaymentMethods%",
+            "PaymentPosition": "=%SV_DataPaymentList:PaymentList:PaymentPosition%",
+            "amount": "=%SV_DataPaymentList:PaymentList:amount%",
+            "approvalNumber": "=%SV_DataPaymentList:PaymentList:approvalNumber%",
+            "bankAccNumber": "=%SV_DataPaymentList:PaymentList:bankAccNumber%",
+            "cardType": "=%SV_DataPaymentList:PaymentList:cardType%",
+            "checkNumber": "=%SV_DataPaymentList:PaymentList:checkNumber%",
+            "countIndex": "=%index%",
+            "dafonoCode": "=%SV_DataPaymentList:PaymentList:dafonoCode%",
+            "name": "=CONCAT(\"Recaudo pago \",%index% ,\" - \", %orderNumber%)",
+            "nameBank": "=%SV_DataPaymentList:PaymentList:nameBank%",
+            "nameBankOfCheck": "=%SV_DataPaymentList:PaymentList:nameBankOfCheck%",
+            "paymentDate": "=%SV_DataPaymentList:PaymentList:paymentDate%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SaveOrderAndItemForPayment/Procedure/LB_CountPaymentList"
+}

@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_GetOrderItemEffectiveOneTimeIncTaxesTotal",
+    "OmniProcessId": {
+        "Name": "FVU_GetUpdatedPrices",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetUpdatedPrices/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+            "EffectiveOneTimeTotalIncTaxes": "%DR_GetOrderItemEffectiveOneTimeIncTaxesTotal:EffectiveOneTimeTotalIncTaxes%",
+            "OrderItemId": "%DR_GetOrderItemEffectiveOneTimeIncTaxesTotal:OrderItemId%"
+        },
+        "bundle": "FVU_GetOrderItem",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+            {
+                "element": "ListProductMobile|1:OrderItemId",
+                "inputParam": "orderItemId"
+            }
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataMapperExtractAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetUpdatedPrices/Procedure/DR_GetOrderItemEffectiveOneTimeIncTaxesTotal"
+}

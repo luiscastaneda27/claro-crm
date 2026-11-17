@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_bndErrorConect",
+    "OmniProcessId": {
+        "Name": "PortabilityRequest",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/PortabilityRequest/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "bErrorConn": "=(%SV_evalHttp:isBlankHttpPort% OR %SV_evalHttp:isStatusCodeGT400%) AND NOT (%SV_evalHttp:isErrorFuncional% OR %SV_evalHttp:isErrorTecnico%)",
+            "connErrorCode": "ERROR_CONN",
+            "httpErrorConnResponse": "=IF(ISNOTBLANK(%HTTPRequestPortabilityInfo:statusCode%), %HTTPRequestPortabilityInfo:statusCode%, '000')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/PortabilityRequest/Procedure/SV_bndErrorConect"
+}

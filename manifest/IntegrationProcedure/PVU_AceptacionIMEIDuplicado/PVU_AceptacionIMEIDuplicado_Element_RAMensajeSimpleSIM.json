@@ -1,0 +1,58 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAMensajeSimpleSIM",
+    "OmniProcessId": {
+        "Name": "PVU_AceptacionIMEIDuplicado",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/AceptacionIMEIDuplicado/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "index": 8,
+            "mensaje": "%RAMensajeSimpleSIMParte1:contenido%",
+            "parametros": [
+                "%MarcaModelo%",
+                "%DRSetListMINFinal:LstMIN%",
+                "%NombrePuntoVenta%",
+                "%CiudadAdquisicion%",
+                "%DireccionAdquisicion%",
+                "%ContactoPersonaProporciona%",
+                "%SVData:SiAutoriza%",
+                "%SVData:NoAutoriza%"
+            ]
+        },
+        "additionalOutput": {
+            "contenido": "%RAMensajeSimpleSIM:mensajeParametrizado%"
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_CustomMessageHandler",
+        "remoteMethod": "setParametrosEnMensajeIndex",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/AceptacionIMEIDuplicado/Procedure/RAMensajeSimpleSIM"
+}

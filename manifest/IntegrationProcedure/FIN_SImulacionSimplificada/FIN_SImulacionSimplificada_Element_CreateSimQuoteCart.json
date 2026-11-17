@@ -1,0 +1,155 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CreateSimQuoteCart",
+    "OmniProcessId": {
+        "Name": "FIN_SimulacionSimplificadaIP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SImulacionSimplificada/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "TryCatchInsert",
+        "OmniProcessId": {
+            "Name": "FIN_SimulacionSimplificadaIP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SImulacionSimplificada/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SImulacionSimplificada/Procedure/TryCatchInsert",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "TryCatchInsert",
+    "ParentElementType": "Try Catch Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "fields": "Id,Name",
+            "inputFields": [
+                {
+                    "OpportunityId": "%QuoteInfo:OpportunityId%"
+                },
+                {
+                    "Name": "%QuoteInfo:ProductName%"
+                },
+                {
+                    "Status": "Borrador"
+                },
+                {
+                    "Pricebook2Id": "%QuoteInfo:QuotePricebook%"
+                },
+                {
+                    "CAT_DeliveryMethod__c": "%QuoteData:DeliveryMethod%"
+                },
+                {
+                    "FVU_Channel__c": "%QuoteData:Channel%"
+                },
+                {
+                    "%vlocity_namespace%__PriceListId__c": "%QuoteInfo:QuotePriceList%"
+                },
+                {
+                    "FIN_CreditQuota__c": "%QuoteInfo:QuoteCreditQuote%"
+                },
+                {
+                    "FIN_IDDeSimulacion__c": "%GetSimulation:SimulationSummary:simulationID%"
+                },
+                {
+                    "FVU_DaneCiudadCAVOrden__c": "%QuoteInfo:QuoteDaneCode%"
+                },
+                {
+                    "%vlocity_namespace%__DefaultServiceAccountId__c": "%QuoteInfo:DefaultServiceAccountId%"
+                },
+                {
+                    "FIN_tipoDeVenta__c": "%QuoteData:TipoDeVenta%"
+                },
+                {
+                    "FIN_TipoDeCuota__c": "%QuoteData:TipoDeCuota%"
+                },
+                {
+                    "FIN_PlazoMeses__c": "%DRT_CreateSimQuoteCart:FIN_PlazoMeses__c%"
+                },
+                {
+                    "FIN_ValorDeCuotaMensual__c": "%DRT_CreateSimQuoteCart:FIN_ValorDeCuotaMensual__c%"
+                },
+                {
+                    "FIN_TasaDeInteresMensual__c": "%DRT_CreateSimQuoteCart:FIN_TasaDeInteresMensual__c|1%"
+                },
+                {
+                    "FIN_SaldoADiferir__c": "%DRT_CreateSimQuoteCart:FIN_SaldoADiferir__c%"
+                },
+                {
+                    "FIN_TasaDeInteresEA__c": "%DRT_CreateSimQuoteCart:FIN_TasaDeInteresEA__c%"
+                },
+                {
+                    "FIN_TasaMaximaLegalVigente__c": "%DRT_CreateSimQuoteCart:FIN_TasaMaximaLegalVigente__c%"
+                },
+                {
+                    "FIN_TotalDeIntereses__c": "%DRT_CreateSimQuoteCart:FIN_TotalDeIntereses__c%"
+                },
+                {
+                    "FIN_ValorTotal__c": "%DRT_CreateSimQuoteCart:FIN_ValorTotal__c%"
+                },
+                {
+                    "FIN_TotalIVAIntereses__c": "%DRT_CreateSimQuoteCart:FIN_TotalIVAIntereses__c%"
+                },
+                {
+                    "RecordTypeId": "%DRE_GetRecordType:RecordTypeId%"
+                },
+                {
+                    "FIN_AccountExternalID__c": "%QuoteInfo:QuoteBillingAccount%"
+                },
+                {
+                    "%vlocity_namespace%__DefaultBillingAccountId__c": "%DRTE_GetBillingAccountId:BillingAccount:Id%"
+                },
+                {
+                    "FIN_CuotaInicial__c": "%QuoteData:cuotaInicial%"
+                },
+                {
+                    "FIN_CuotaInicialVoluntaria__c": "%QuoteData:cuotaInicialVoluntaria%"
+                },
+                {
+                    "FIN_TasaInteresMoratoria__c": "%GetSimulation:SimulationSummary:latePaymentInterestRate%"
+                },
+                {
+                    "FIN_PagosInicialesTerminales__c": "%SVParams:pagosInicialesTerminales%"
+                },
+                {
+                    "FIN_PagosInicialesTecnologia__c": "%SVParams:pagosInicialesTecnologia%"
+                }
+            ],
+            "methodName": "createCart",
+            "objectType": "Quote",
+            "subaction": "createQuote"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction2",
+        "remoteClass": "CpqAppHandler",
+        "remoteMethod": "createCart",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SImulacionSimplificada/Procedure/CreateSimQuoteCart"
+}

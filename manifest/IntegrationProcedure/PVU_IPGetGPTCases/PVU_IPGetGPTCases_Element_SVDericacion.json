@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDericacion",
+    "OmniProcessId": {
+        "Name": "IPGetGPTCases",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetGPTCases/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CasesFraude": "=FILTER(LIST(%GetGPTCases:Case%), 'pvu_level3__c == \"Proceso Prevención Fraude\"')",
+            "CasesGPT": "=FILTER(LIST(%GetGPTCases:Case%), 'pvu_level3__c == \"Proceso Gpt\"')",
+            "DerivacionGPT_old": "=IF(ISBLANK(%GetGPTCases:Case:Id%), false, true)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetGPTCases/Procedure/SVDericacion"
+}

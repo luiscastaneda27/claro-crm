@@ -1,0 +1,63 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LA_PromiseFilter",
+    "OmniProcessId": {
+        "Name": "GetOrderDeliveryMethod",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetOrderDeliveryMethod/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": false,
+        "advancedMergeMap": [
+        ],
+        "allowMergeNulls": true,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "",
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "",
+        "hasPrimary": false,
+        "label": "ListAction1",
+        "mergeFields": [
+        ],
+        "mergeListsOrder": [
+            "IP_VentasOrderSchedule:orderProductDelivery:promiseList"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+            null
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+            "EndDateInitForm": "=CONCAT( SUBSTRING(promiseEndDate,6,8), \"/\", SUBSTRING(promiseEndDate,4,6), \"/\", SUBSTRING(promiseEndDate,0,4), SUBSTRING(promiseEndDate,8))",
+            "StartDateInitForm": "=CONCAT( SUBSTRING(promiseStartDate,6,8), \"/\", SUBSTRING(promiseStartDate,4,6), \"/\", SUBSTRING(promiseStartDate,0,4), SUBSTRING(promiseStartDate,8))"
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetOrderDeliveryMethod/Procedure/LA_PromiseFilter"
+}

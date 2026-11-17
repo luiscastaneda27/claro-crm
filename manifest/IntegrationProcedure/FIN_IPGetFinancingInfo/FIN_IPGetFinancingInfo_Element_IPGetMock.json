@@ -1,0 +1,44 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPGetMock",
+    "OmniProcessId": {
+        "Name": "IPGetFinancingInfo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPGetFinancingInfo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "IPName": "=IF( OR(%identificationNumber% = \"915787768\",%financingCode% = \"CRED00000003002\" ),\"FIN_GetFinancingInfoReplace\", IF(     %identificationNumber% = \"766601251\",\"FIN_GetFinancingInfoSinFianza\", IF(       %identificationNumber% = \"642515234\",\"FIN_GetFinancingInfoMixto\", IF( %identificationNumber% == \"723543105\",\"FIN_GetFinancingInfoVariado\" , IF( %identificationNumber% == \"774528669\",\"FIN_GetFinancingInfoThreeStatusCredit\" , IF( %financingCode% == \"CRED00000003003\",\"FIN_GetFinancingInfoStatusTerminoNormal\" , IF( %financingCode% == \"CRED00000002997\",\"FIN_GetFinancingInfoStatusPagadoTercero\" , IF( %identificationNumber% == \"334061971\",\"FIN_GetFinancingInfoVariadoR\" ,''))))))))"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%FinCode% != true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPGetMock",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPGetFinancingInfo/Procedure/IPGetMock"
+}

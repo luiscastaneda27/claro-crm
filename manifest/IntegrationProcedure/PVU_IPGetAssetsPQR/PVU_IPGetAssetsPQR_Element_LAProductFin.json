@@ -1,0 +1,67 @@
+{
+    "Description": "Set list de productos financiados para la voz de cliente negación de contrato",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LAProductFin",
+    "OmniProcessId": {
+        "Name": "IPGetAssetsPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetAssetsPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": false,
+        "advancedMergeMap": [
+        ],
+        "allowMergeNulls": true,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "SVField:output",
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "",
+        "hasPrimary": false,
+        "label": "ListAction4",
+        "mergeFields": [
+        ],
+        "mergeListsOrder": [
+            "DRGetAssetFinanciados:AssetFin"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+            "IdAssetNegacionFIN": "=%Id%",
+            "NameAssetNegacionFIN": "=%Name%",
+            "NumeroCreditoNegacionFIN": "=%NumeroCredito%",
+            "RefCredito92NegacionFIN": "=%RefCredito92%",
+            "SerialAssetNegacionFIN": "=IF(%SerialEquipo% != null, SUBSTRING(%SerialEquipo%),SUBSTRING(%IMEI%))",
+            "ValorVentaNegacionFIN": "=%ValorVenta%"
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetAssetsPQR/Procedure/LAProductFin"
+}

@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ResponseNewDBAPositivo_IMEI",
+    "OmniProcessId": {
+        "Name": "WrapperBDAConsult",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/WrapperBDAConsult/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "finalResponse": {
+                "bdaPositivoMessage": {
+                    "Estado": "%DBAPositivo_IMEI:consultaImei:customer:product|1:productCharacteristic:value:bdaPositivo:Estado%",
+                    "codigoError": "%DBAPositivo_IMEI:consultaImei:customer:product|1:productCharacteristic:value:bdaPositivo:CodigoError%",
+                    "descripcionError": "%DBAPositivo_IMEI:consultaImei:customer:product|1:productCharacteristic:value:bdaPositivo:DescripcionError%",
+                    "isReported": "%DBAPositivo_IMEI:consultaImei:customer:product|1:productCharacteristic:value:bdaPositivo:isReported%"
+                },
+                "isValid": "%DBAPositivo_IMEI:consultaImei:customer:product:productCharacteristic|4:value%"
+            }
+        },
+        "executionConditionalFormula": "%SV_NewServiceFlag:NewServiceFlag% == true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SV_ResponseNewDBAPositivo_IMEI",
+        "responseJSONNode": "DBAPositivo_IMEI",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/WrapperBDAConsult/Procedure/SV_ResponseNewDBAPositivo_IMEI"
+}

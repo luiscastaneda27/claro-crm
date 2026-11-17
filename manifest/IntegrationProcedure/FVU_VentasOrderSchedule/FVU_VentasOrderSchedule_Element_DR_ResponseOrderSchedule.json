@@ -1,0 +1,46 @@
+{
+    "Description": "Reestructura la data, para enviarlas al OS.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_ResponseOrderSchedule",
+    "OmniProcessId": {
+        "Name": "FVU_VentasOrderSchedule",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/VentasOrderSchedule/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "code": "%HTTPAction:code%",
+            "message": "%HTTPAction:message%",
+            "orderGroupList": "%SV_MethodGroup%",
+            "userCentralLog": "%DREInputOrderSchedule:user:centralLog%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_DRTResponseOrderSchedule",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%HTTPAction:orderGroupList%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataRaptorTransformAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Transform Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/VentasOrderSchedule/Procedure/DR_ResponseOrderSchedule"
+}

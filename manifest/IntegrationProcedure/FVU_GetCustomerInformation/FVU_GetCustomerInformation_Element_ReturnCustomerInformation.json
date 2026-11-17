@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ReturnCustomerInformation",
+    "OmniProcessId": {
+        "Name": "GetCustomerInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetCustomerInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SuccessWay",
+        "OmniProcessId": {
+            "Name": "GetCustomerInformation",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetCustomerInformation/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetCustomerInformation/Procedure/SuccessWay",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SuccessWay",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "CreatedBy:href": "=\"/services/data/v57.0/sobjects/User/\"+%SetValuesDRInformation:datosResponse:Id:CreatedById%",
+            "LastModifiedBy:href": "=\"/services/data/v57.0/sobjects/User/\"+%SetValuesDRInformation:datosResponse:Id:LastModifiedById%",
+            "Owner:href": "=\"/services/data/v57.0/sobjects/User/\"+%SetValuesDRInformation:datosResponse:Id:OwnerId%",
+            "url": "=%GetUrlOrg:instance_url%+\"/lightning/r/Account/\"+%SetValuesDRInformation:datosResponse:Id:AccountId%+\"/view\""
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "DRTransformResponseCustomerInformation",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetCustomerInformation/Procedure/ReturnCustomerInformation"
+}

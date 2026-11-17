@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParametersCambioSimNoReconexion",
+    "OmniProcessId": {
+        "Name": "IPNotieSIMRegistroMovil",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNotieSIMRegistroMovil/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "_BODY_": "%RASetMensajeSMS:mensajeParametrizado%",
+            "_NAME1_": "%AssetDetails:Account:Name%",
+            "_NUMER_LINEA_": "%AssetDetails:Subscription:MSISDN%",
+            "_PHONE_": "%AssetDetails:Account:Phone%",
+            "_PROCESO_": "Cambio de Sim Card"
+        },
+        "executionConditionalFormula": "%CaseDetails:Descripcion% != \"reconexion\" && %CaseDetails:OrigenCaso% != \"WhatsApp\" && %CaseDetails:OrigenCaso% != \"IVR\" && %CaseDetails:OrigenCaso% != \"SuperApp\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "parameters",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNotieSIMRegistroMovil/Procedure/SVParametersCambioSimNoReconexion"
+}

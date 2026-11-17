@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_SaveLogs",
+    "OmniProcessId": {
+        "Name": "IPAPIMCMICProOrdeMan",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPAPIMCMICProOrdeMan/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBSaveLogs",
+        "OmniProcessId": {
+            "Name": "IPAPIMCMICProOrdeMan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPAPIMCMICProOrdeMan/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPAPIMCMICProOrdeMan/Procedure/CBSaveLogs",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBSaveLogs",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Descripcion": "=IF(%CallAPIMCMICProOrdeMan:state%= 'Success',%SV_Detalle:DetalleRQ% + %SV_Detalle:DetalleSuccess%,%SV_Detalle:DetalleRQ% &&%SV_Detalle:DetalleFailed%)",
+            "Endpoint": "%SV_SetPath:pathURL%",
+            "Metodo": "POST",
+            "Name": "IPAPIMCMICProOrdeMan-%Category%",
+            "Request": "%SV_Body:body%",
+            "Response": "%CallAPIMCMICProOrdeMan%",
+            "StatusCode": "=IF(%CallAPIMCMICProOrdeMan:state%= 'Success',200,%CallAPIMCMICProOrdeMan:error:code%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPAPIMCMICProOrdeMan/Procedure/SV_SaveLogs"
+}

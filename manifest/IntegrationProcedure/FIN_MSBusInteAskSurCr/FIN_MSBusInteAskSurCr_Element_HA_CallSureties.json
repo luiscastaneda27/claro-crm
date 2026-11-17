@@ -1,0 +1,89 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "HA_CallSureties",
+    "OmniProcessId": {
+        "Name": "MSBusInteAskSurCr",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/MSBusInteAskSurCr/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "TryCatchBlock",
+        "OmniProcessId": {
+            "Name": "MSBusInteAskSurCr",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/MSBusInteAskSurCr/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/MSBusInteAskSurCr/Procedure/TryCatchBlock",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "TryCatchBlock",
+    "ParentElementType": "Try Catch Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "Details": "%HA_CallSureties%",
+            "responseCode": "%HA_CallSureties:responseCode%"
+        },
+        "label": "HTTPAction1",
+        "namedCredential": "CapaMediaAuthenticated",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "GET",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "AdditionalNode": "%DR_ExtractHeaderRequest:AdditionalNode%",
+                "Channel": "%DR_ExtractHeaderRequest:Channel%",
+                "IdApplication": "%DR_ExtractHeaderRequest:IdApplication%",
+                "IdBusinessTransaction": "%DR_ExtractHeaderRequest:IdBusinessTransaction%",
+                "IdESBTransaction": "%DR_ExtractHeaderRequest:IdESBTransaction%",
+                "IpApplication": "%DR_ExtractHeaderRequest:IpApplication%",
+                "StartDate": "%DR_ExtractHeaderRequest:StartDate%",
+                "UserApplication": "%DR_ExtractHeaderRequest:UserApplication%",
+                "UserSession": "%DR_ExtractHeaderRequest:UserSession%",
+                "target": "%IP_GetEnvironmentCode:target%"
+            },
+            "isCompressed": false,
+            "params": {
+                "channel": "%DR_GetParamMSBusInteAskSurCr:channel%",
+                "cityDaneCode": "%SVparam:cityDaneCode%",
+                "clientType": "%DR_GetParamMSBusInteAskSurCr:clientType%",
+                "financingAmount": "%financingAmount%",
+                "monthlyTerm": "%monthlyTerm%",
+                "productType": "%DR_GetParamMSBusInteAskSurCr:productType%"
+            },
+            "sendBody": true,
+            "timeout": 120000,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "%SV_SetUrlPath:pathUrl%",
+        "retryCount": 3,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/MSBusInteAskSurCr/Procedure/HA_CallSureties"
+}

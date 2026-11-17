@@ -1,0 +1,26 @@
+{
+    "Description": "Indica si tenemos productos que NO tienen disponibilidad de inventario, según la cantidad solicitada en el carrito.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_ForProducts",
+    "OmniProcessId": {
+        "Name": "IPCheckAvailabilityInventory",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock2",
+        "loopList": "LA_SetProductList",
+        "loopOutput": {
+            "ResultLoop": "=%SV_NotStockForProducts:FilterForProducts%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPCheckAvailabilityInventory/Procedure/LB_ForProducts"
+}

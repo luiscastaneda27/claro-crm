@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVsetCodigoTipoDoc",
+    "OmniProcessId": {
+        "Name": "IPsvcGetODS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcGetODS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "codigoTipoDoc": "=IF(%DRgetAccountData:AccountData|1:FVU_DocumentType__c% == 'CC', 1, IF(%DRgetAccountData:AccountData|1:FVU_DocumentType__c% == 'NIT', 2, IF(%DRgetAccountData:AccountData|1:FVU_DocumentType__c% == 'CE', 4, IF(%DRgetAccountData:AccountData|1:FVU_DocumentType__c% == 'PS', 5, 0))))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcGetODS/Procedure/SVsetCodigoTipoDoc"
+}

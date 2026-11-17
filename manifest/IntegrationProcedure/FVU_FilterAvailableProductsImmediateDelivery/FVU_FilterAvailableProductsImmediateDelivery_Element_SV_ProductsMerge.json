@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ProductsMerge",
+    "OmniProcessId": {
+        "Name": "FilterAvailableProductsImmediateDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Products": "=LISTMERGE(\"Id\", LIST(%DR_GetProduct%),LIST(%DR_GetProductsFromOrder%))"
+        },
+        "executionConditionalFormula": "ISNOTBLANK(DR_GetProduct) && ISNOTBLANK(DR_GetProductsFromOrder)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues24",
+        "responseJSONNode": "DR_AllProducts",
+        "responseJSONPath": "Products",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/SV_ProductsMerge"
+}

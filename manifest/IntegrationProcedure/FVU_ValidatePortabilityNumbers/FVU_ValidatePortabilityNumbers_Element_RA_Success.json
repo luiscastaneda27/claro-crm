@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Success",
+    "OmniProcessId": {
+        "Name": "ValidatePortabilityNumbers",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidatePortabilityNumbers/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "estado": "=%IP_ValidationNumberAPortar:estado%",
+            "mensaje": "=%IP_ValidationNumberAPortar:mensaje%",
+            "nrn": "=%IP_ValidationNumberAPortar:nrn%",
+            "operadorDonante": "=%IP_ValidationNumberAPortar:operadorDonante%",
+            "operadorDonanteNombre": "=%DR_GetOperatorLabel:Operador%",
+            "retry": "=%retry%",
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "=%IP_ValidationNumberAPortar:success% == null",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+            "": ""
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidatePortabilityNumbers/Procedure/RA_Success"
+}

@@ -1,0 +1,70 @@
+{
+    "Description": "Create Subscription",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRL_Subscription",
+    "OmniProcessId": {
+        "Name": "ReceptionMilestoneNotification",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReceptionMilestoneNotification/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ServiceOrderProcessing",
+        "OmniProcessId": {
+            "Name": "ReceptionMilestoneNotification",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReceptionMilestoneNotification/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReceptionMilestoneNotification/Procedure/ServiceOrderProcessing",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ServiceOrderProcessing",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "account": "%DRE_GetOrderDetail:Order:accountId%",
+            "billingAccount": "%DRE_GetOrderDetail:Order:billingAccount%",
+            "contract": "%DRT_MilestoneNotification:contractId%",
+            "msisdn": "%DRT_MilestoneNotification:suscriberNumber%",
+            "portationStatus": "%IP_getValueByNameAttribute:valueAttribute%",
+            "reasonCode": "ACTV",
+            "serviceAccount": "%DRE_GetOrderDetail:Order:serviceAccount%",
+            "status": "Active",
+            "statusStartDate": "%DRT_MilestoneNotification:effectiveDate%",
+            "subReasonCode": "=IF(%DRE_GetOrderDetail:Order:SubType% == \"Act_migracion_Pre_Pos\", \"ACTPREAPO\", IF(%DRE_GetOrderDetail:Order:SubType% == \"Contract Handover\", \"ACTCES\", \"ACTV\"))",
+            "subStatus": "%LA_filterSubCausal|1:SubCausal%",
+            "subscriptionNumber": "=CONCAT(%DRE_GetOrderDetail:Order:serviceAccount%, %DRT_MilestoneNotification:contractId%)",
+            "subscriptionStartDate": "%DRT_MilestoneNotification:effectiveDate%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_CreateSubscriptionRecord",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRT_MilestoneNotification:serviceOrderType% == 'Activation' || (%DRT_MilestoneNotification:serviceOrderType% == 'Portability' && %DRT_MilestoneNotification:serviceOrderSubType% == 'PortIn') || %DRT_MilestoneNotification:serviceOrderSubType% == 'Contract Handover'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "message": "Failed to create Subscription",
+            "responseCode": 400
+        },
+        "label": "DataRaptorPostAction6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReceptionMilestoneNotification/Procedure/DRL_Subscription"
+}

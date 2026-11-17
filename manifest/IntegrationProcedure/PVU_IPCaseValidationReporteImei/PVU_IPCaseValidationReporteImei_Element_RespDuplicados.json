@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RespDuplicados",
+    "OmniProcessId": {
+        "Name": "CaseValidationReporteImei",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCaseValidationReporteImei/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "FacturaCoincidente": "=IF(%RAValitionFacturaMismoTitular:AccountId%=%AccountId%,true,false)",
+            "VendidoClaro": "%IPVerificaOrigen:IsVendidoClaro%",
+            "VendidoClaroLegados": "%IPVerificaOrigen:IsVendidoClaro%",
+            "assetStatus": "%DRGetAssetById:estado%",
+            "isVendidoClaroMismoTitular": "=%RAValidationDuplicadoImeiAccount:isVendidoClaroMismoTitular%",
+            "isVendidoClaroSalesforce": "=%RAValidationDuplicadoImeiAccount:isVendidoClaroMismoTitular%",
+            "mensajes": "=%RAGetMensajes:mensajes%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SVinput:processName% = \"duplicado\"",
+        "label": "ResponseAction4",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "RADuplicadoValidations",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCaseValidationReporteImei/Procedure/RespDuplicados"
+}

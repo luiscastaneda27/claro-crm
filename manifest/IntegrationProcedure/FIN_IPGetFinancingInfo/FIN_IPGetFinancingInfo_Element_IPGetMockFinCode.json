@@ -1,0 +1,44 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPGetMockFinCode",
+    "OmniProcessId": {
+        "Name": "IPGetFinancingInfo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPGetFinancingInfo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "IPName": "=IF( %BodyRequest:searchCriteria% == 'CRED00000002690','FIN_IPGetFinancingCodeTerminado', IF( %BodyRequest:searchCriteria% == 'CRED00000002684','FIN_IPGetFinancingCodeNormal', IF( %BodyRequest:searchCriteria% == 'CRED00000002977','FIN_IPGetFinancingCodeGTPC', IF( %BodyRequest:searchCriteria% == 'CRED00000002982','FIN_IPGetFinancingCodeGTNC', IF( %BodyRequest:searchCriteria% == 'CRED00000002980','FIN_IPGetFinancingCodeGTPT', IF( %BodyRequest:searchCriteria% == 'CRED00000002839','FIN_IPGetFinancingCodeGTNqpr', 'FIN_IPGetFinancingCodeFianza'))))))"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%FinCode% == true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPGetMock",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPGetFinancingInfo/Procedure/IPGetMockFinCode"
+}

@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "FVU_GenerateCUT",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GenerateCUT/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "advisorDocNumber": "%NumeroDeIdentificacion%",
+            "advisorDocType": "%TipoDeDocumento%",
+            "channelCode": "%GetOrderDetails:Channel%",
+            "channelOrderNbr": "%GetOrderDetails:OrderNumber%",
+            "fulfillOrderNbr": "=IF(LISTSIZE(%GetOrderItem:DeliveryOrderId%>1), %GetOrderItem:DeliveryOrderId|1%, %GetOrderItem:DeliveryOrderId%)",
+            "orderId": "%GetOrderDetails:OrderOMSId%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GenerateCUT/Procedure/SV_Request"
+}

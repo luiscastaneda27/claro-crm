@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVmailMessage",
+    "OmniProcessId": {
+        "Name": "IPNotificacionNegacionPortOut",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNotificacionNegacionPortOut/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "contentType": "CONTENTID",
+            "deliveryReceipts": "N",
+            "description": "Negación Portabilidad",
+            "messageType": "SMTP",
+            "parameters": {
+                "_BODY_": "%RAGetMessage:mensajeParametrizado%",
+                "_NAME1_": "%DRGetCase:Account:Name%",
+                "_NUMER_LINEA_": "%LAGetMin|1:Min%",
+                "_PROCESO_": "Negación Portabilidad"
+            },
+            "profileId": "CAMBIOSERV",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "mail": "%DRGetCase:Account:Email%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Consulta el detalle de tu solicitud Claro",
+            "templateid": "CAMBIOSERV_01",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "%DRGetCase:Account:NotificationChoice% == \"Correo electrónico\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "DataNotif",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNotificacionNegacionPortOut/Procedure/SVmailMessage"
+}

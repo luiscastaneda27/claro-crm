@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ListOrderItemForMerge",
+    "OmniProcessId": {
+        "Name": "IPOMSMilestone",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ResourceFoundOrder",
+        "OmniProcessId": {
+            "Name": "IPOMSMilestone",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IPOMSMilestone/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/ResourceFoundOrder",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ResourceFoundOrder",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "DRE_IPGetDetailsProductOrder:orderItems",
+        "loopOutput": {
+            "OrderEndDate": "=SV_OrderItemCurrent:OrderEndDate",
+            "closingReason": "=SV_OrderItemCurrent:closingReason",
+            "deliveryOrderId": "=SV_OrderItemCurrent:deliveryOrderId",
+            "deliveryStatus": "=SV_OrderItemCurrent:deliveryStatus",
+            "orderItemId": "=SV_OrderItemCurrent:orderItemId",
+            "orderProductItemStatus": "=SV_OrderItemCurrent:orderProductItemStatus",
+            "orderProductItemSubstatus": "=SV_OrderItemCurrent:orderProductItemSubstatus",
+            "orderProductItemTypeIMEI": "=SV_OrderItemCurrent:orderProductItemTypeIMEI",
+            "orderProductItemTypeSerial": "=SV_OrderItemCurrent:orderProductItemTypeSerial",
+            "orderStatus": "=SV_OrderItemCurrent:orderStatus",
+            "position": "=TOSTRING(SV_OrderItemCurrent:position)",
+            "productAttributeSerial": "=SV_OrderItemCurrent:productAttributeSerial",
+            "productType": "=SV_OrderItemCurrent:productType",
+            "sapBillingNbr": "=TOSTRING(SV_OrderItemCurrent:sapBillingNbr)",
+            "sapDeliveryId": "=TOSTRING(SV_OrderItemCurrent:sapDeliveryId)",
+            "sapFreightBillingNbr": "=TOSTRING(SV_OrderItemCurrent:sapFreightBillingNbr)",
+            "status": "=SV_OrderItemCurrent:status",
+            "subStatus": "=SV_OrderItemCurrent:subStatus",
+            "vlocityOrderStatus": "=SV_OrderItemCurrent:vlocityOrderStatus"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IPOMSMilestone/Procedure/ListOrderItemForMerge"
+}

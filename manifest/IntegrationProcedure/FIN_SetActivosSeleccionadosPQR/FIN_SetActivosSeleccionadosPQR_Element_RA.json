@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA",
+    "OmniProcessId": {
+        "Name": "FIN_SetActivosSeleccionadosPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockEquipoFinanciado",
+        "OmniProcessId": {
+            "Name": "FIN_SetActivosSeleccionadosPQR",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure/ConditionalBlockEquipoFinanciado",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockEquipoFinanciado",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "cuentaFinanciamiento": "=IF(%SVListAssets:AssetsCount% > 1  , %SV:TrimProdCredito92%, %SVAsset:CuentaFinSA%)",
+            "nombreEquipo": "=IF(%SVListAssets:AssetsCount% > 1, %SV:TrimProdName%, %SVAsset:NameSA%)",
+            "numeroCredito": "=IF(%SVListAssets:AssetsCount% > 1  , %SV:TrimProdNumeroCredito%, %SVAsset:NumCredSA%)",
+            "serialEquipo": "=IF( %SVListAssets:AssetsCount% > 1,%SV:TrimProdSerial%,  %SVAsset:SerialSA%)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SetActivosSeleccionadosPQR/Procedure/RA"
+}

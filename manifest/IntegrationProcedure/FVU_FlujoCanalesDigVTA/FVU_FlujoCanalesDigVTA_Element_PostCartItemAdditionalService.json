@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PostCartItemAdditionalService",
+    "OmniProcessId": {
+        "Name": "FVU_FlujoCanalesDigVTA",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FlujoCanalesDigVTA/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopAdditionalService",
+        "OmniProcessId": {
+            "Name": "FVU_FlujoCanalesDigVTA",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FlujoCanalesDigVTA/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FlujoCanalesDigVTA/Procedure/LoopAdditionalService",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopAdditionalService",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "CartOperation:OrderId": "%orderId%",
+            "CartOperation:Product:Product2Code": "%DREGetFieldsOrder:additionalService:additionalServiceCode%",
+            "Proceso": "%DREGetFieldsOrder:typeAndSubType%",
+            "fieldsToUpdate:%vlocity_namespace%__SubAction__c": "==IF(%DREGetFieldsOrder:typeAndSubType% == \"VTA_ActivationActivation\", \"Activation-Add\", \"\")",
+            "parentAssetId": "%DRGetRootOrderItemByType:RootItemAssetReferenceId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%SetValuesProduct:validFailProduct% == false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_PostCartItem",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FlujoCanalesDigVTA/Procedure/PostCartItemAdditionalService"
+}

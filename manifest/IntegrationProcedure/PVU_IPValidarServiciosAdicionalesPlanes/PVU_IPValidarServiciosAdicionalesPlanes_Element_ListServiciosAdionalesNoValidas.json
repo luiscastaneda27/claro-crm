@@ -1,0 +1,63 @@
+{
+    "Description": "%ListServiciosAdionalesValidas%",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ListServiciosAdionalesNoValidas",
+    "OmniProcessId": {
+        "Name": "IPValidarServiciosAdicionalesPlanes",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidarServiciosAdicionalesPlanes/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "PlanesAdicionales",
+        "OmniProcessId": {
+            "Name": "IPValidarServiciosAdicionalesPlanes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidarServiciosAdicionalesPlanes/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidarServiciosAdicionalesPlanes/Procedure/PlanesAdicionales",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "PlanesAdicionales",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "campo": "productId",
+            "promos": "%PlanesActuales%",
+            "validas": "%LBListaCompatibles:lista%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_FilterList",
+        "remoteMethod": "promoNoValida",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidarServiciosAdicionalesPlanes/Procedure/ListServiciosAdionalesNoValidas"
+}

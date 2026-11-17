@@ -1,0 +1,31 @@
+{
+    "Description": "20240923 - Se agrega validacion por si en el atributo llega el literal null",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSetIndefinido",
+    "OmniProcessId": {
+        "Name": "IPGetRoamingServiceAddons",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetRoamingServiceAddons/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "indefinido": "Indefinido"
+        },
+        "executionConditionalFormula": "%AttributesValues:B2C-ATTR-ROAMING-IND% == true && (ISBLANK(%AttributesValues:B2C-ATTR-ROAMING-DESACTIVACION%) || %AttributesValues:B2C-ATTR-ROAMING-DESACTIVACION% == \"null\")",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "fechaFinServicio",
+        "responseJSONPath": "indefinido",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetRoamingServiceAddons/Procedure/SVSetIndefinido"
+}

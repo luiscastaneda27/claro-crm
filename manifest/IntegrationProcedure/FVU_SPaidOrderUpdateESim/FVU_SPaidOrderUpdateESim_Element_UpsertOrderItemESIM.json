@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpsertOrderItemESIM",
+    "OmniProcessId": {
+        "Name": "SPaidOrderUpdateESim",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SPaidOrderUpdateESim/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "OrderItem:B2C-ATTR-ICCID": "=SUBSTRING(%IPMSLogResoVirtualSIM:Details:iccid%,0,19)",
+            "OrderItem:B2C-ATTR-ICCID-20": "%IPMSLogResoVirtualSIM:Details:iccid%",
+            "OrderItem:OrderItemId": "%OrderItemIdESIM%",
+            "OrderItem:ProductDeliveryStatus": "WithoutLogistics",
+            "OrderItem:Serial": "=SUBSTRING(%IPMSLogResoVirtualSIM:Details:iccid%,0,19)"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertOrderItem",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPMSLogResoVirtualSIM:isInventoryAvailable% = 'available'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SPaidOrderUpdateESim/Procedure/UpsertOrderItemESIM"
+}

@@ -1,0 +1,61 @@
+{
+    "Description": "Filtro la lista de paquetes que cumplan con algunas de las condiciones en HU 343349. Si el tamanio de la lista filtrada = a la lista de paquetes entonces todos los paquetes cumplen alguna condicion",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LAFlags",
+    "OmniProcessId": {
+        "Name": "IPRoamingValidacionesDesactivacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": false,
+        "advancedMergeMap": [
+        ],
+        "allowMergeNulls": true,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "",
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "=(hayConsumosFinalizados > 0 || hayConsumosIniciados == 0) || vigenciaVencida || (fechaVigencia != 'No aplica' && hayConsumoDatosDisponible == 0) || NOT(tienePeriodoVigencia)",
+        "hasPrimary": false,
+        "label": "ListAction9",
+        "mergeFields": [
+        ],
+        "mergeListsOrder": [
+            "LBPaquetes"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPRoamingValidacionesDesactivacion/Procedure/LAFlags"
+}

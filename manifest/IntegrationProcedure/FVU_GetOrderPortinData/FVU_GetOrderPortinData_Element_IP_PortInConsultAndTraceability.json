@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_PortInConsultAndTraceability",
+    "OmniProcessId": {
+        "Name": "FVU_GetOrderPortinData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetOrderPortinData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "accountId": "",
+            "min": "=DR_GetOrderPortinData:Order:minAPortar",
+            "numOfR": "=1",
+            "pag": "=0",
+            "regReqId": "=DR_GetOrderPortinData:OrderItem:RegReqId"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "(%IP_GetAccessByPSG:accessProcess:isAdmin% == true OR %IP_GetAccessByPSG:accessProcess:fVU_OrderPortinDetail% == true) AND ISNOTBLANK(DR_GetOrderPortinData:OrderItem:RegReqId)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "FVU_PortInConsultAndTraceability",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "IP_PortInConsultAndTraceability",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetOrderPortinData/Procedure/IP_PortInConsultAndTraceability"
+}

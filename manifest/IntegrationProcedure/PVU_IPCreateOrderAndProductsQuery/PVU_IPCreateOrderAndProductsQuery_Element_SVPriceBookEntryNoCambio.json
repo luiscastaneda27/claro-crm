@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVPriceBookEntryNoCambio",
+    "OmniProcessId": {
+        "Name": "IPCreateOrderAndProductsQuery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCreateOrderAndProductsQuery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "IsAssetType": "=IF(%IPGetPromotionsAppliedToCart:response:records|1:Id:value%!=null,'promo','normal')))",
+            "OrderItemToDisconect": "%GetLineItemSFIdsUsingAssetIds:itemsToProcessList|1%",
+            "PriceBookEntryId": "=IF(%IPGetPromotionsAppliedToCart:response:records|1:Id:value%!=null,%IPGetPromotionsAppliedToCart:response:records|1:Id:value%,IF(%IPGetCartProducts:productsSize%>0,%IPGetCartProducts:data|1:Id:value%,%IPGetCartProducts:data|1:Id%))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCreateOrderAndProductsQuery/Procedure/SVPriceBookEntryNoCambio"
+}

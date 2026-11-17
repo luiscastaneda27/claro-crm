@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSubEstadoEquipoDisponible",
+    "OmniProcessId": {
+        "Name": "IPGetOdsUpdate",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcUpdateCaseByODS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Case": {
+                "Id": "%caseId%",
+                "SubEstado": "Equipo disponible en punto de Ingreso"
+            }
+        },
+        "executionConditionalFormula": "(%responseCase:PVU_Level3__c% = \"Falla de Equipo Garantia\" || %responseCase:PVU_Level3__c%  = \"Falla de Equipo Fuera de Garantía\" || %responseCase:PVU_Level3__c% = \"Falla técnica en la entrega (Muerto en Caja-DOA)\") &&(%DRGetEstadoFinalODS:description% = \"Cambio de equipo\" || %DRGetEstadoFinalODS:description% = \"Fuera de Garantía Irreparable\" || %DRGetEstadoFinalODS:description% = \"Fuera de Garantía Reparada\" || %DRGetEstadoFinalODS:description% = \"Enviado a punto de origen\" || %DRGetEstadoFinalODS:description% = \"Entregado al cliente\")",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues9",
+        "responseJSONNode": "infoToUpdate",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcUpdateCaseByODS/Procedure/SVSubEstadoEquipoDisponible"
+}

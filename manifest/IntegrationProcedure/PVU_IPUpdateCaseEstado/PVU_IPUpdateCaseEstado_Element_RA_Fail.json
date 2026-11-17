@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Fail",
+    "OmniProcessId": {
+        "Name": "IPUpdateCaseEstado",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateCaseEstado/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "CaseUpdated": true,
+            "Details": "",
+            "EndProcess": "fail",
+            "ErrorMessage": "%DRL_CaseUpdate:Case_1|1:UpsertError%",
+            "smsMessage": "=\"Sr (a) \" + %DRE_GetAccountInfo:Account:Name% + \" \" + %Message%",
+            "smsPhone": "=\"57\"+%DRE_GetAccountInfo:Account:Phone%",
+            "test": "%DRL_CaseUpdate:Case_1|1:UpsertSuccess%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRL_CaseUpdate:Case_1|1:UpsertSuccess% == false",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateCaseEstado/Procedure/RA_Fail"
+}

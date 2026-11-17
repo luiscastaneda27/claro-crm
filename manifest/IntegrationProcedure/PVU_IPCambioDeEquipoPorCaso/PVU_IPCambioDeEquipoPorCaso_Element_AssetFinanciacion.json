@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "AssetFinanciacion",
+    "OmniProcessId": {
+        "Name": "IPCambioDeEquipoPorCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCambioDeEquipoPorCaso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AssetCanal": "%DRGetCase:AssetCanal%",
+            "AssetFechaEntrega": "%DRGetCase:AssetFechaEntrega%",
+            "AssetFormaDePago": "%DRGetCase:AssetFormaPago%",
+            "AssetNumeroDeCredito": "%DRGetCase:AssetNumDeCredito%",
+            "AssetNumeroDeFacturaDeVenta": "%DRGetCase:AssetNumDeFacturaDeVenta%",
+            "AssetReferenciaDePagoCredito": "%DRGetCase:AssetReferenciaPagoCredito%",
+            "AssetSoporteFallas": "=IF(%DRGetCase:CodigoCierre% ='Cambio de equipo',true,false)",
+            "AssetValorDeCredito": "%DRGetCase:AssetValorDeCredito%",
+            "OrderId": "%SVOrderData:cartId%",
+            "OrderSapId": "%SVOrderItemId:OrderSAP%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCambioDeEquipoPorCaso/Procedure/AssetFinanciacion"
+}

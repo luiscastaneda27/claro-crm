@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_GetPortInNipStatusListSoapOrTimeoutFail",
+    "OmniProcessId": {
+        "Name": "FVU_GetPortInNipStatusList",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetPortInNipStatusList/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "error": "ERROR",
+            "mensaje": "No se logró comunicar con el sistema responsable. Si persiste el error busque por su administrador",
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%HTTPAction_GetPortInNipStatusList%) || %HTTPAction_GetPortInNipStatusList:tipoError% == \"INTERNOS\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "HTTPAction_GetPortInNipStatusList",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetPortInNipStatusList/Procedure/RA_GetPortInNipStatusListSoapOrTimeoutFail"
+}

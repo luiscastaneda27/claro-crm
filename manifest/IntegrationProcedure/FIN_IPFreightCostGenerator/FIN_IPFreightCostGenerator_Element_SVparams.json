@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVparams",
+    "OmniProcessId": {
+        "Name": "IPFreightCostGenerator",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/IPFreightCostGenerator/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "amount": "=%DM_GetOrderDataForOMS:deliveryData:DeliveryData:selectedPromise:deliveryCost%",
+            "billingAccount": "=%DM_GetOrderDataForOMS:ReferenciaDelCredito92%",
+            "chargeService": "=IF(%DM_GetOrderDataForOMS:hasTaxes% == true,%DM_chargeServiceWithIVA:chargeService%,%DM_chargeServiceWithOutIVA:chargeService%)",
+            "expirationDate": "=SUBSTRING(%DM_GetOrderDataForOMS:deliveryData:DeliveryData:EndDate%, 0, 4) + \"-\" + SUBSTRING(%DM_GetOrderDataForOMS:deliveryData:DeliveryData:EndDate%, 4, 6) + \"-\" + SUBSTRING(%DM_GetOrderDataForOMS:deliveryData:DeliveryData:EndDate%, 6, 8)+\"T\"+SUBSTRING(%DM_GetOrderDataForOMS:deliveryData:DeliveryData:EndDate%,9)+\".000Z\")",
+            "financingCode": "=%DM_GetOrderDataForOMS:NumeroCredito%",
+            "userId": "=%DM_GetOrderDataForOMS:CreatedById%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/IPFreightCostGenerator/Procedure/SVparams"
+}

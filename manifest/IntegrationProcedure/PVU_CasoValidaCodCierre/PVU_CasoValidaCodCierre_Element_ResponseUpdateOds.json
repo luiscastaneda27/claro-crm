@@ -1,0 +1,37 @@
+{
+    "Description": "20251226 - JM: Se anexa el Rol de asesor logístico, debido a renombre del Rol previo\n20231124 - FM: se hace referencia al elemento LA para evaluar el grupo publico\nValidar: \nSub-estado\nCola",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseUpdateOds",
+    "OmniProcessId": {
+        "Name": "CasoValidaCodCierre",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CasoValidaCodCierre/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "UpdateOds": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "IF((%Caso:SubEstado% == \"Equipo en Diagnóstico por Almacén\" && AND(%LAalmacen|1:DeveloperName% == \"Control_Almacen\" || %LAalmacen|1:DeveloperName% == \"Asesor_Logostica\" || %LAalmacen|1:DeveloperName% == \"PVU_Asesor_Logistico_Role\") && %Caso:PVU_Level3__c% == \"No Conforme (Falla cosmética o faltante)\" && %Caso:Terminales% == true),true,false)",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CasoValidaCodCierre/Procedure/ResponseUpdateOds"
+}

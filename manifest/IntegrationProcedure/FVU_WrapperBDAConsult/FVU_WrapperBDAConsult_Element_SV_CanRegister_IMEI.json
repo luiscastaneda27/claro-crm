@@ -1,0 +1,28 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CanRegister_IMEI",
+    "OmniProcessId": {
+        "Name": "WrapperBDAConsult",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/WrapperBDAConsult/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "chainOnStep": false,
+        "elementValueMap": {
+            "finalResponse": {
+                "canRegisterIMEI": "%SV_FunctionCanRegister:canRegisterIMEI%"
+            }
+        },
+        "executionConditionalFormula": "%SV_NewServiceFlag:NewServiceFlag% == true",
+        "failOnStepError": true,
+        "label": "SV_CanRegister_IMEI",
+        "responseJSONNode": "DBAPositivo_IMEI",
+        "type": "SetValues"
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/WrapperBDAConsult/Procedure/SV_CanRegister_IMEI"
+}

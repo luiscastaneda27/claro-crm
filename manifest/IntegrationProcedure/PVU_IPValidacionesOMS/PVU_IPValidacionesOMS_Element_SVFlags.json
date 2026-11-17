@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFlags",
+    "OmniProcessId": {
+        "Name": "IPValidacionesOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "debugState": "%IPCallCustomerOrderShipment|1:state%",
+            "debugSubstate": "%IPCallCustomerOrderShipment|1:substate%",
+            "hayNovedad": "=%IPCallCustomerOrderShipment|1:state% == \"NOT_DELIVERED\" && (%IPCallCustomerOrderShipment|1:substate% == \"FAILED_DELIVERIES\" || %IPCallCustomerOrderShipment|1:substate% == \"WRONG_ADDRESS\" || %IPCallCustomerOrderShipment|1:substate% == \"INCOMPLETE_ADDRESS\" || %IPCallCustomerOrderShipment|1:substate% == \"CUSTOMER_NOT_FOUND\")",
+            "noRecibeProducto": "=%IPCallCustomerOrderShipment|1:state% != \"COMPLETED\" && %IPCallCustomerOrderShipment|1:state% != \"CANCELED\"",
+            "ordenAbierta": "=%DRGetOrderData:StatusLabel% != \"Oferta Cerrada\" && %DRGetOrderData:StatusLabel% != \"Cerrada Ganada\" && %DRGetOrderData:StatusLabel% != \"Cerrada Perdida\"",
+            "tienePagoAsociado": "=%DRGetOrderData:PaymentStatus% == \"PE\""
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesOMS/Procedure/SVFlags"
+}

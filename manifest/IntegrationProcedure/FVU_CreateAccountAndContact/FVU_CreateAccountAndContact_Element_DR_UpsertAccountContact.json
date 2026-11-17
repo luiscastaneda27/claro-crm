@@ -1,0 +1,45 @@
+{
+    "Description": "Acá volvemos a la cuenta creada para relacionar el Id del contacto creado.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpsertAccountContact",
+    "OmniProcessId": {
+        "Name": "CreateAccountAndContact",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreateAccountAndContact/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Account": {
+                "ContactId": "%DR_UpsertContact:Contact_1|1:Id%",
+                "Id": "%DR_SearchAccountConsumer:Accounts|1:Id%"
+            }
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FVU_UpsertAccount",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreateAccountAndContact/Procedure/DR_UpsertAccountContact"
+}

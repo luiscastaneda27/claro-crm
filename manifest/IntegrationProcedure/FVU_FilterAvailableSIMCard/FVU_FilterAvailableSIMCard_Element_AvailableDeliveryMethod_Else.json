@@ -1,0 +1,80 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "AvailableDeliveryMethod_Else",
+    "OmniProcessId": {
+        "Name": "FilterAvailableSIMCard",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableSIMCard/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_TMKorELSE",
+        "OmniProcessId": {
+            "Name": "FilterAvailableSIMCard",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableSIMCard/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableSIMCard/Procedure/CB_TMKorELSE",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_TMKorELSE",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": false,
+        "advancedMergeMap": [
+        ],
+        "allowMergeNulls": true,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "",
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "",
+        "hasPrimary": false,
+        "label": "ListAction2",
+        "mergeFields": [
+        ],
+        "mergeListsOrder": [
+            "AvailableProductsResponse:productPromise|1:avaStockByDeliveryMethod"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "AvailableDeliveryMethod",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "AvailableProductsResponse",
+        "sendJSONPath": "AvailableProductsResponse",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+            "deliveryBool": "=IF(%delivMethod% == \"2\", TRUE, NULL)",
+            "deliveryQuantity": "=IF(%delivMethod% == \"2\", %avaStock%, 0)",
+            "immediatePickUpQuantity": "=IF(%delivMethod% == \"9\", %avaStock%, 0)",
+            "immediatepickupBool": "=IF(%delivMethod% == \"9\", TRUE, NULL)",
+            "pickUpQuantity": "=IF(%delivMethod% == \"3\", %avaStock%, 0)",
+            "pickupBool": "=IF(%delivMethod% == \"3\", TRUE, NULL)"
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableSIMCard/Procedure/AvailableDeliveryMethod_Else"
+}

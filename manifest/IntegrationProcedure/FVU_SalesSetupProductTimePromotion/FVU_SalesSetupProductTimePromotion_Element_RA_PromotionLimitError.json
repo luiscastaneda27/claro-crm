@@ -1,0 +1,53 @@
+{
+    "Description": "El número de órdenes adquiridas por el cliente, devuelve NULL",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_PromotionLimitError",
+    "OmniProcessId": {
+        "Name": "SalesSetupProductTimePromotion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesSetupProductTimePromotion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_OrderWithPromotion",
+        "OmniProcessId": {
+            "Name": "SalesSetupProductTimePromotion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesSetupProductTimePromotion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesSetupProductTimePromotion/Procedure/CB_OrderWithPromotion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_OrderWithPromotion",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "OrderPromotion:Information": "=IF(DR_GetSalesSetup == '', \"Sin límite de promociones en la Configuración de Ventas - SalesSetup\", \"Error en la consulta de ordenes\")",
+            "OrderPromotion:LimitExceeded": false,
+            "OrderPromotion:OrderWithPromotion": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK( DR_CountOrdersAppliedPromotions:CountOrdersAppliedPromotions )",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesSetupProductTimePromotion/Procedure/RA_PromotionLimitError"
+}

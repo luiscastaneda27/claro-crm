@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetMetadataFieldIndex",
+    "OmniProcessId": {
+        "Name": "RequestBodyContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RequestBodyContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "loopMetadataFields",
+        "OmniProcessId": {
+            "Name": "RequestBodyContract",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RequestBodyContract/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RequestBodyContract/Procedure/loopMetadataFields",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "loopMetadataFields",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "index": "=SUM(%mapIndex:index%, 1)"
+        },
+        "executionConditionalFormula": "%DRGetMetadataInterfaceSettings:InterfaceSettings:DeveloperName% <> \"nota\" ||\n(%DRGetMetadataInterfaceSettings:InterfaceSettings:DeveloperName% == \"nota\" && %DR_GetRecords:Order:PurchaseType% = \"POR\")",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "mapIndex",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RequestBodyContract/Procedure/SetMetadataFieldIndex"
+}

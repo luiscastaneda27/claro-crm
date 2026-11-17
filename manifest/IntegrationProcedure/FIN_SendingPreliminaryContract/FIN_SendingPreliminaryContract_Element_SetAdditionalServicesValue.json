@@ -1,0 +1,32 @@
+{
+    "Description": "body:map:mapEntry|%mapIndex:index% - =CONCAT(\"$\", formatCurrency(%aditionalProds:sumAditionalValue%))",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetAdditionalServicesValue",
+    "OmniProcessId": {
+        "Name": "SendingPreliminaryContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/SendingPreliminaryContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "key": "Adicionales",
+            "value": "=IF(ISNOTBLANK(%aditionalProds:concatAditionalName%), %aditionalProds:concatAditionalName%, '')"
+        },
+        "executionConditionalFormula": "ISNOTBLANK(DR_GetRecords:AditionalOrderItem)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "body:map:mapEntry|8",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/SendingPreliminaryContract/Procedure/SetAdditionalServicesValue"
+}

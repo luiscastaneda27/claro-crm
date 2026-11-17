@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DML_UpdateAssets",
+    "OmniProcessId": {
+        "Name": "DeactivateAssets",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/DeactivateAssets/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "UpdateAssets",
+        "OmniProcessId": {
+            "Name": "DeactivateAssets",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/OM/DeactivateAssets/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/OM/DeactivateAssets/Procedure/UpdateAssets",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "UpdateAssets",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "%vlocity_namespace%__Action__c": "%DME_GetDataToDeactivate:lstAsset:%vlocity_namespace%__Action__c%",
+            "%vlocity_namespace%__DisconnectDate__c": "%DME_GetDataToDeactivate:lstAsset:%vlocity_namespace%__DisconnectDate__c%",
+            "Id": "%DME_GetDataToDeactivate:lstAsset:Id%",
+            "Status": "%DME_GetDataToDeactivate:lstAsset:Status%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DML_UpdateAsset",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "%error% != \"OK\"",
+        "failureResponse": {
+            "result": {
+                "description": "Falló al actualizar los activos"
+            },
+            "success": false
+        },
+        "label": "DataMapperPostAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/DeactivateAssets/Procedure/DML_UpdateAssets"
+}

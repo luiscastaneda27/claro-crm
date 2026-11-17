@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_RequestPlanParent",
+    "OmniProcessId": {
+        "Name": "UpdateDataMigration",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateDataMigration/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ClaroRequestId": "%DR_GetOrderItemData:Order:PortInData:FVU_ClaroRequestId__c%",
+            "DonorOperator": "%DR_GetOrderItemData:Order:PortInData:OperadorDonante%",
+            "DonorProductType": "%DR_GetOrderItemData:Order:PortInData:TipoProducto%",
+            "InitialRegReqId": "%DR_GetOrderItemData:Order:PortInData:FVU_InitialRegReqId__c%",
+            "NIP": "%DR_GetOrderItemData:Order:PortInData:FVU_NIP__c%",
+            "NRN": "%DR_GetOrderItemData:Order:PortInData:NRN%",
+            "OrderItemId": "%SV_FilteredOrderItems:OrderItemPlanRoot:OrderItemId%",
+            "PortinActivationDate": "%DR_GetOrderItemData:Order:PortInData:FVU_PortinActivationDate__c%",
+            "RegReqId": "%DR_GetOrderItemData:Order:PortInData:FVU_RegReqId__c%",
+            "minAPortar": "%DR_GetOrderItemData:Order:PortInData:minAPortar%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateDataMigration/Procedure/SV_RequestPlanParent"
+}

@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGetInput",
+    "OmniProcessId": {
+        "Name": "IPChargesNotificationCobroErrado",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPChargesNotificationCobroErrado/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "anio": "=TOSTRING(YEAR(TODAY()))",
+            "caseId": "=%CaseId%",
+            "dia": "=IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(DAY(TODAY()))) == 1, '0' + TOSTRING(DAY(TODAY())),TOSTRING(DAY(TODAY())))",
+            "mes": "=IF(FUNCTION('CustomOmniStudioFunctions','length',TOSTRING(MONTH(TODAY()))) == 1, '0' + TOSTRING(MONTH(TODAY())),TOSTRING(MONTH(TODAY())))",
+            "remarkIVA": "=FILTER(LIST(%DRGetChargesValues%), 'chargeService == \"AJUSTE_IVA_01\"')",
+            "remarkValorAjuste": "=FILTER(LIST(%DRGetChargesValues%), 'chargeService == \"ADM000381\"')",
+            "userId": "=%UserId%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPChargesNotificationCobroErrado/Procedure/SVGetInput"
+}

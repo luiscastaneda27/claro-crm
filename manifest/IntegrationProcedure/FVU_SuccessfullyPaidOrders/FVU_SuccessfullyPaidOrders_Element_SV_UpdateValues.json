@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_UpdateValues",
+    "OmniProcessId": {
+        "Name": "FVU_SuccessfullyPaidOrders",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SuccessfullyPaidOrders/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountName": "=%DR_GetActivationPlanOrderItems:Order:AccountName%",
+            "AttributeSelectedValues": "=IF(DR_GetActivationPlanOrderItems:Order:PurchaseType == 'ACT', DESERIALIZE(DR_GetActivationPlanOrderItems:OrderItemPlanACT:vlocity_AttributeSelectedValues), IF(DR_GetActivationPlanOrderItems:Order:PurchaseType == 'ATT', DESERIALIZE(DR_GetActivationPlanOrderItems:OrderItemPlanATT:vlocity_AttributeSelectedValues), IF(DR_GetActivationPlanOrderItems:Order:PurchaseType == 'MIG', DESERIALIZE(DR_GetActivationPlanOrderItems:OrderItemMIG:vlocity_AttributeSelectedValues), DESERIALIZE(DR_GetActivationPlanOrderItems:OrderItemPlanPOR:vlocity_AttributeSelectedValues))))",
+            "AttributeSelectedValuesESIM": "=DESERIALIZE(DR_GetActivationPlanOrderItems:OrderItemESIM:vlocity_AttributeSelectedValues)",
+            "DeliveryStatus": "=IF(ISNOTBLANK(%DR_GetActivationPlanOrderItems:Order:ClonedOrderParent%) || %DR_GetActivationPlanOrderItems:Order:PurchaseType% == \"MIG\" || ISNOTBLANK(%DR_GetActivationPlanOrderItems:OrderItemESIM%),\"Closed\",IF(SV_VerifyPayment:PaymentConfirmation,\"PaymentNotified\",$Vlocity.NULL))",
+            "IdContrato": "=CONCAT(\"S01\", %DR_GetActivationPlanOrderItems:Order:OrderNumber%)",
+            "IdSalesforce": "=%DR_GetActivationPlanOrderItems:RootOrderItem:Id%",
+            "MIN": "=IF(DR_GetActivationPlanOrderItems:Order:PurchaseType == 'ACT', TOSTRING(FVU_NumberResourceManagement:resource:number), IF(DR_GetActivationPlanOrderItems:Order:PurchaseType == 'ATT', TOSTRING(FVU_NumberResourceManagement:resource:number), IF(DR_GetActivationPlanOrderItems:Order:PurchaseType == 'MIG', IF(LENGTH(SV_MigrationMIN:MigrationMIN) = 10, CONCAT(\"57\",TOSTRING(SV_MigrationMIN:MigrationMIN)), TOSTRING(SV_MigrationMIN:MigrationMIN)), TOSTRING(SV_PortabilityMIN:PortabilityMIN)))",
+            "OrderId": "=orderId",
+            "OrderItemId": "=IF(DR_GetActivationPlanOrderItems:Order:PurchaseType == 'ACT', DR_GetActivationPlanOrderItems:OrderItemPlanACT:Id, IF(DR_GetActivationPlanOrderItems:Order:PurchaseType == 'ATT', DR_GetActivationPlanOrderItems:OrderItemPlanATT:Id, IF(DR_GetActivationPlanOrderItems:Order:PurchaseType == 'MIG', DR_GetActivationPlanOrderItems:OrderItemMIG:Id, DR_GetActivationPlanOrderItems:OrderItemPlanPOR:Id)))",
+            "OrderNumber": "=%DR_GetActivationPlanOrderItems:Order:OrderNumber%",
+            "OwnerId": "=%DR_GetActivationPlanOrderItems:Order:OwnerId%",
+            "dnId": "=IF(FVU_NumberResourceManagement:success == true,TOSTRING(FVU_NumberResourceManagement:resource:dnId), $Vlocity.NULL)",
+            "sdpId": "=IF(FVU_NumberResourceManagement:success == true,TOSTRING(FVU_NumberResourceManagement:resource:sdpId), $Vlocity.NULL)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SuccessfullyPaidOrders/Procedure/SV_UpdateValues"
+}

@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesDate",
+    "OmniProcessId": {
+        "Name": "GetDetailMoraBillingAccountFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GetDetailMoraBillingAccountFin/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "endDateValue": "=NOW(\"yyyy-MM-dd HH:mm:ss\")",
+            "startDateValue": "=FORMATDATETIME(ADDMONTH(NOW(\"yyyy-MM-dd HH:mm:ss\"), (%CallDRGetApplicationSetting:Setting:CantidadMesesMf%)*(-1))  , \"yyyy-MM-dd HH:mm:ss\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GetDetailMoraBillingAccountFin/Procedure/SetValuesDate"
+}

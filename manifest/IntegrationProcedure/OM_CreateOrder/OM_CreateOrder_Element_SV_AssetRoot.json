@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AssetRoot",
+    "OmniProcessId": {
+        "Name": "CreateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CreateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountId": "=IF(%orderType%='Reinstalacion',%DME_getDeactivatedSubscription:AssetRoot:AccountId%,%responseRoot:AssetRoot:AccountId%)",
+            "AssetReferenceParent": "=IF(%orderType%='Reinstalacion',%DME_getDeactivatedSubscription:AssetRoot:AssetReferenceParent%,%responseRoot:AssetRoot:AssetReferenceParent%)",
+            "RootAssetId": "=IF(%orderType%='Reinstalacion',%DME_getDeactivatedSubscription:AssetRoot:AssetId%,%responseRoot:AssetRoot:AssetId%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CreateOrder/Procedure/SV_AssetRoot"
+}

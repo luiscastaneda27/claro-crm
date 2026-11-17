@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVValidateByCausal",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidacionesCancelacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "validCancelacion": "=IF(%RACaseValidations:openCasesSize% == 0 && %haveCasesPort% == false && (%DRGetAssetInfo:Subscription:SubStatus%!= 'Sus Verificación Negación del servicio' && %DRGetAssetInfo:Subscription:SubStatus% != 'Sus Verificación Prot al Cliente' ),true,false)",
+            "validCancelacionCase": "=IF(%RACaseValidations:openCasesSize% == 0 ,true,false)",
+            "validCancelacionPort": "=IF( %haveCasesPort% == false ,true,false)",
+            "validCancelacionSus": "=IF(%DRGetAssetInfo:Subscription:SubStatus%!= 'Sus Verificación Negación del servicio' && %DRGetAssetInfo:Subscription:SubStatus% != 'Sus Verificación Prot al Cliente' ,true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidacionesCancelacion/Procedure/SVValidateByCausal"
+}

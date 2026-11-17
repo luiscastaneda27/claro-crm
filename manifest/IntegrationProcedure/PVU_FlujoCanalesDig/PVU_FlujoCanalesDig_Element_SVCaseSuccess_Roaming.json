@@ -1,0 +1,110 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseSuccess_Roaming",
+    "OmniProcessId": {
+        "Name": "FlujoCanalesDig",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "updateCase_Roaming",
+        "OmniProcessId": {
+            "Name": "FlujoCanalesDig",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCanalesDig/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/updateCase_Roaming",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "updateCase_Roaming",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CargoFact": "False",
+            "Categoria": "Solicitud de información y modificaciones",
+            "Id": "%SVInput:CaseId%",
+            "IdProceso": "%SVProccessName:ProccessName%",
+            "OrderId": "%IP_OrdenOM:OrderId%",
+            "RequestProcessInfo": {
+                "DRGetOrderItemByProductCode": {
+                    "orderId": "%IP_OrdenOM:OrderId%",
+                    "productCode": "%CaseInfo:Producto%"
+                },
+                "DRGetRootOrderItemByType": {
+                    "orderId": "%IP_OrdenOM:OrderId%",
+                    "productSubType": "Postpaid",
+                    "productType": "Plan"
+                },
+                "IPCheckoutOrder": {
+                    "OrderId": "%IP_OrdenOM:OrderId%",
+                    "RequestedDate": "%IPDateFormat:fechaGuionYYYYMMDD%",
+                    "isQueueOrder": false
+                },
+                "IPCreateOrder": {
+                    "AssetId": "%SVInput:AssetId%",
+                    "CaseInfo": {
+                        "Id": "%SVInput:CaseId%"
+                    },
+                    "ProcessName": "%SVProccessName:ProccessName%"
+                },
+                "IPDisconnectLineItem": {
+                    "cartId": "%IP_OrdenOM:OrderId%",
+                    "id": "%OrderItem:Id%"
+                },
+                "IPPostCartItem": {
+                    "CartOperation": {
+                        "OrderId": "%IP_OrdenOM:OrderId%",
+                        "Product": {
+                            "Product2Code": "%CaseInfo:Producto%"
+                        }
+                    },
+                    "PlanOrderItemId": "%RootOrderItem:RootItemId%",
+                    "Proceso": "%SVProccessName:ProccessName%",
+                    "fieldsToUpdate": {
+                        "%vlocity_namespace%__SubAction__c": "ChangeService-Product"
+                    }
+                },
+                "IPUpdateOrder": {
+                    "CaseInfo": {
+                        "Id": "%SVInput:CaseId%"
+                    },
+                    "OrderId": "%IP_OrdenOM:OrderId%",
+                    "proccessName": "%SVProccessName:ProccessName%"
+                }
+            },
+            "RequestProcessStatusDetail": {
+                "DRGetOrderItemByProductCode": "%OrderItem%",
+                "DRGetRootOrderItemByType": "%RootOrderItem%",
+                "IPCheckoutOrder": "%IPCheckoutOrder%",
+                "IPCreateOrder": "%IP_OrdenOM%",
+                "IPDisconnectLineItem": {
+                    "message": "%IPDisconnectLineItem:messages%",
+                    "totalSize": "%IPDisconnectLineItem:totalSize%"
+                },
+                "IPPostCartItem": "%IPPostCartItem%",
+                "IPUpdateOrder": "%IPUpdateOrder%"
+            },
+            "Status": "En curso",
+            "SubCategoria": "Roaming Internacional",
+            "SubEstado": "Pendiente ejecución de la orden"
+        },
+        "executionConditionalFormula": "%IPCheckoutOrder:EndProcess% == 'success'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "SVCaseUpdate",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCanalesDig/Procedure/SVCaseSuccess_Roaming"
+}

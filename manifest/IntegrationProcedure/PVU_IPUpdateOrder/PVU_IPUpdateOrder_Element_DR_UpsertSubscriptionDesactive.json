@@ -1,0 +1,73 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_UpsertSubscriptionDesactive",
+    "OmniProcessId": {
+        "Name": "IPUpdateOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBSubscription",
+        "OmniProcessId": {
+            "Name": "IPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUpdateOrder/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateOrder/Procedure/CBSubscription",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBSubscription",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "StartDate": "%DR_GetSubscriptionInfo:Subscription:StartDate%",
+            "account": "",
+            "billingAccount": "",
+            "contract": "",
+            "id": "=%DRGetDatosAsset:Asset:SubscriptionId%",
+            "msisdn": "=IF(ISNOTBLANK(%DRGetDatosAsset:Subscription:MSISDN%), %DRGetDatosAsset:Subscription:MSISDN% , %MSISDN%)",
+            "portationStatus": "%DR_GetSubscriptionInfo:Subscription:portationStatus%",
+            "reasonCode": "DEACT",
+            "serviceAccount": "",
+            "status": "Deactivated",
+            "statusEndDate": "=NOW()",
+            "statusStartDate": "%DR_GetSubscriptionInfo:Subscription:StartDate%",
+            "subReasonCode": "DEACT",
+            "subStatus": "=IF(%SubCausal% == 'Voluntaria', 'Des Voluntaria',  'Des por fallecimiento')",
+            "subscriptionEndDate": "=NOW()",
+            "subscriptionNumber": "=GENERATEGLOBALKEY(SUB)",
+            "subscriptionStartDate": "%DR_GetSubscriptionInfo:Subscription:StartDate%",
+            "susByCustomer": 3,
+            "suspendDate": "=NOW()"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "OM_DRL_CreateSubscriptionRecord",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": " proccessName = 'MOCK_DESACT_ASSET'",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction10",
+        "responseJSONNode": "DR_UpsertSubscription",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUpdateOrder/Procedure/DR_UpsertSubscriptionDesactive"
+}

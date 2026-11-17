@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetBody",
+    "OmniProcessId": {
+        "Name": "ConsultCasesAPis",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsConsultCasesAPis/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "consultarSoloPqrCerradas": "%consultarSoloPqrCerradas%",
+            "cun": "%cun%",
+            "fechaFin": "=IF(%tipoCaso% = \"PQR\", %fechaFin%, null)",
+            "fechaInicio": "=IF(%tipoCaso% = \"PQR\", %fechaInicio%, null)",
+            "nr": "%nr%",
+            "numeroDocumento": "%numeroDocumento%",
+            "origenCaso": "%origenCaso%",
+            "tipoCaso": "%tipoCaso%",
+            "tipoDocumento": "%tipoDocumento%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsConsultCasesAPis/Procedure/SetBody"
+}

@@ -1,0 +1,70 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LA_ProductoSIM",
+    "OmniProcessId": {
+        "Name": "FilterAvailableProductsImmediateDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": false,
+        "advancedMergeMap": [
+        ],
+        "allowMergeNulls": true,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "SV_DynamicListRequest:dynamicProductListPromiseSIMCardRequestFields",
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "=ISNOTBLANK(prodGroup)",
+        "hasPrimary": false,
+        "label": "ListAction6",
+        "mergeFields": [
+        ],
+        "mergeListsOrder": [
+            "DR_AllProducts"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "LA_ProductoSIM",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+            "flowType": "=IF(%OrderPurchaseType% = \"POR\", \"POR\", IF(%OrderPurchaseType% = \"ACT\" || %OrderPurchaseType% = \"ATT\", \"LINEA_NUEVA\", \"\"))",
+            "groupSalesType": "=LIST(\"POS\")",
+            "isPreSale": "N",
+            "preorderFullfillDate": "=\"\"",
+            "prodGroup": "=IF(%Type% == \"SIM Card\" && %SubType% == \"SIM Card\", %channelProdCode:B2C-ATTR-SIM-GRUPO%, $Vlocity.NULL)",
+            "prodProfile": "=LIST(\"\")",
+            "prodTec": "=LIST(\"\")",
+            "prodType": "=LIST(\"\")",
+            "salesProcess": "=IF(%OrderPurchaseType% = \"POR\", \"POR\", IF(%OrderPurchaseType% = \"ACT\" || %OrderPurchaseType% = \"ATT\", \"ACT\", \"\"))",
+            "salesType": "=IF(%OrderPurchaseType% = \"POR\" || %OrderPurchaseType% = \"ACT\" || %OrderPurchaseType% = \"ATT\", \"POSTPAGO\", \"\")"
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/LA_ProductoSIM"
+}

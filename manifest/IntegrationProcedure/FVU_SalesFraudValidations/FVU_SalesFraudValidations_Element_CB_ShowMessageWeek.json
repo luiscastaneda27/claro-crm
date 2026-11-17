@@ -1,0 +1,22 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CB_ShowMessageWeek",
+    "OmniProcessId": {
+        "Name": "SalesFraudValidations",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/SalesFraudValidations/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "IF((SUM(%SV_SizeTyTOrderAndAsset:lstAssetTyTWeek%,%SV_SizeTyTOrderAndAsset:lstOrderTyT%) > %DR_GetSalesSetup:ProductQuantityWeeklyLimit%) || (SUM(%SV_ListSizeAsset:lstPlanWeek%,%SV_ListOrderSize:lstOrderPlan%) > %DR_GetSalesSetup:ServiceQuantityWeeklyLimit%),true,false)",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock1",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/SalesFraudValidations/Procedure/CB_ShowMessageWeek"
+}

@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVLogRequest",
+    "OmniProcessId": {
+        "Name": "CusPaymDevolutions",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CusPaymDevolutions/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Endpoint": "/ros-rest/CusPaymDevolutions/queryDev",
+            "Metodo": "GET",
+            "Name": "CusPaymDevolutions",
+            "RequestParams": "%SVRequestParams%",
+            "RequestUrl": "=CONCAT('/ros-rest/CusPaymDevolutions/queryDev?devolutionId=', %devolutionId%, '&suretyId=', %suretyId%, '&financingCode=', %financingCode%, '&billingAccount=', %billingAccount%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "SVLogRequest",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CusPaymDevolutions/Procedure/SVLogRequest"
+}

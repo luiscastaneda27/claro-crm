@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CreditScore",
+    "OmniProcessId": {
+        "Name": "CustomerBiographicInformationHDC",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_StatusSuccessful",
+        "OmniProcessId": {
+            "Name": "CustomerBiographicInformationHDC",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure/CB_StatusSuccessful",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_StatusSuccessful",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "canalVenta": "=%DR_GetUserDetails:userBusinessChannel%",
+            "codigoConsultor": "=%DR_GetUserDetails:userRed%",
+            "codigoMovil": "=%DR_GetUserDetails:userCodigoMovil%",
+            "cupoDisponible": "=%IP_CreditScoreCheck:matrizPersonaVenta:montoServicio%",
+            "fechaActual": "=NOW(\"dd-MM-yyyy\")",
+            "fechaVigencia": "=CONCAT(\"Desde \",FORMATDATETIME(SUBSTRING(%IP_CreditScoreCheck:historia:fechaSolicitudCalificacion%,0,10), \"dd-MM-yyyy\", \"GMT\"),\" hasta \",FORMATDATETIME(SUBSTRING(%IP_CreditScoreCheck:historia:fechaVencimientoCalificacion%,0,10), \"dd-MM-yyyy\", \"GMT\"))",
+            "matrizPersonaVenta": "%IP_CreditScoreCheck:matrizPersonaVenta%",
+            "success": "%IP_CreditScoreCheck:success%",
+            "tipoDocumento": "%IP_CreditScoreCheck:tipoDocumento%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "SV_CreditScore",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CustomerBiographicInformationHDC/Procedure/SV_CreditScore"
+}

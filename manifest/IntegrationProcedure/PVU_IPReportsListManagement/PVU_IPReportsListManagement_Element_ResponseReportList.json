@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseReportList",
+    "OmniProcessId": {
+        "Name": "IPReportsListManagement",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPReportsListManagement/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "isReporteOtrosOperadores": "=IF(%LoopReportsList:SVDuplicadoValidate:isReporteOtroOperador% <> true, false,%LoopReportsList:SVDuplicadoValidate:isReporteOtroOperador%)",
+            "mensajes": "%RAGetMensajes:mensajes%",
+            "minLiberacion": "=IF(%LoopReportsList:SVMinLiberacion:minLiberacion% <> true, false,%LoopReportsList:SVMinLiberacion:minLiberacion%)",
+            "mostrarBotonLiberacion": "=IF(%LoopReportsList:SVMostrarBotonLiberacion:mostrarBotonLiberacion% <> true, false, %LoopReportsList:SVMostrarBotonLiberacion:mostrarBotonLiberacion%)",
+            "mostrarMsnMinNoCoincide": "=IF(%LoopReportsList:SVMostrarMsnMinNoCoincide:minNoCoincide% <> true, false, %LoopReportsList:SVMostrarMsnMinNoCoincide:minNoCoincide%)",
+            "operadorReporte": "=IF(ISNOTBLANK(%LoopReportsList:SVDuplicadoValidate:operadorReporte%), %LoopReportsList:SVDuplicadoValidate:operadorReporte%,'')",
+            "reincidente": "=IF(%LoopReportsList:SVReincidente:reincidente% <> true, false,%LoopReportsList:SVReincidente:reincidente%)",
+            "reincidenteReportedByClaro": "=IF(%LoopReportsList:SVReincidente:operador% = \"Comcel S.A\", true, false)",
+            "reportListOutput": "%ListOutput:List%",
+            "tipoReporte": "=IF(%LoopReportsList:SVReincidente:reincidente% = true, \"7\",%LoopReportsList:SVMinLiberacion:tipoReporteLiberacion%)",
+            "validacionesLiberacion": "%CallPVU_habilitaLiberacion%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "ListOutput:List",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPReportsListManagement/Procedure/ResponseReportList"
+}

@@ -1,0 +1,71 @@
+{
+    "Description": "En el caso de listas internas únicamente considera como valores validos de Canal: PRESENCIAL o DIGITAL (Definiciones del servicio CLARO). Solución: EL channel siempre debe estár en PRESENCIAL para que el servicio de listas internas responda correctamente.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "HTTP_ListVerification",
+    "OmniProcessId": {
+        "Name": "RiskAssessmentLists",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RiskAssessmentLists/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "IF(%HTTP_ListVerificationInfo:statusCode% >= 400 && %HTTP_ListVerificationInfo:statusCode% <= 404, FALSE, IF(%HTTP_ListVerificationInfo:statusCode% >= 500 && %HTTP_ListVerificationInfo:statusCode% <= 504, TRUE, FALSE))",
+        "failureResponse": {
+        },
+        "label": "HTTPAction3",
+        "namedCredential": "CapaMediaAuthenticated",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "GET",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "Accept": "*/*",
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+                "areaCode": 57,
+                "channel": "PRESENCIAL",
+                "dv": 1,
+                "lists": "ONU|OFAC|PEP|CSN",
+                "mail": "%AccountEmail%",
+                "name": "%AccountName%",
+                "observations": "SALESFORCE",
+                "partyRole": "%AccountDocumentType%%AccountDocumentNumber%",
+                "phone": "%AccountPhone%",
+                "punctuation": 100,
+                "typeProcess": "%typeProcess%"
+            },
+            "sendBody": true,
+            "timeout": 30000,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "/ros-rest/APIMCMICRiskMngList/partyListRiskAssessmentTMF",
+        "retryCount": 2,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "SV_Request",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RiskAssessmentLists/Procedure/HTTP_ListVerification"
+}

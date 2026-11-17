@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataExtra",
+    "OmniProcessId": {
+        "Name": "GetSummaryData",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetSummaryBillingAndDeliveryData/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AuthPersonDocType": "=IF(%FVU_GetDataSummary:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType% == \"CC\",\"CEDULA DE CIUDADANIA\",IF(%FVU_GetDataSummary:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType% == \"NI\",\"NI\",IF(%FVU_GetDataSummary:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType% == \"NE\",\"NIT DE EXTRANJERIA\",IF(%FVU_GetDataSummary:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType% == \"CE\",\"CEDULA DE EXTRANJERIA\",IF(%FVU_GetDataSummary:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType% == \"PP\",\"PASAPORTE\",IF(%FVU_GetDataSummary:InformacionEntrega:DeliveryData:AuthorizedPersonData:DocumentType% == \"CD\",\"CARNET DIPLOMATICO\",\" \"))))))",
+            "EndPromise": "=%FVU_GetDataSummary:InformacionEntrega:DeliveryData:DeliveryData:EndDate%",
+            "StartPromise": "=%FVU_GetDataSummary:InformacionEntrega:DeliveryData:DeliveryData:StartDate%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetSummaryBillingAndDeliveryData/Procedure/SV_DataExtra"
+}

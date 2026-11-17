@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_InputValidation",
+    "OmniProcessId": {
+        "Name": "OM_UpdateSubscription",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/UpdateSubscription/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "isValidBloqueoRoamingCAN": "=IF(ISBLANK(%bloqueoRoamingCAN%) || TOSTRING(%bloqueoRoamingCAN%) == \"false\" || TOSTRING(%bloqueoRoamingCAN%) == \"true\", \"success\", \"Los valores validos para roamingCAN son true y false\")",
+            "isValidMSISDN": "=IF(ISBLANK(%MSISDN%) || (ISNOTBLANK(%MSISDN%) && LENGTH(%MSISDN%) == 12 && SUBSTRING(%MSISDN%,0,2) == \"57\"),\"success\", \"El campo MSISDN es mandatorio y se debe enviar en formato numérico de 12 dígitos comenzando por 57 - country code. MSISDN recibido: \" + TOSTRING(%MSISDN%))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/UpdateSubscription/Procedure/SV_InputValidation"
+}

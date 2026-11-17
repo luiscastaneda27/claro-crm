@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetRequest",
+    "OmniProcessId": {
+        "Name": "IPNotificationCusChannelMultiplePDF",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPNotificationCusChannelMultiplePDF/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "attachment": "%attachment%",
+            "communicationOrigin": "%communicationOrigin%",
+            "communicationType": "%communicationType%",
+            "content": "%content%",
+            "contentType": "%contentType%",
+            "deliveryReceipts": "%deliveryReceipts%",
+            "description": "%description%",
+            "messageType": "%messageType%",
+            "parameters": "=IF(ISBLANK(%parameters%),DESERIALIZE(\"{}\"), %parameters%)",
+            "priority": "=IF(ISBLANK(%priority%),1, %priority%)",
+            "profileId": "%profileId%",
+            "pushType": "%pushType%",
+            "receiver": "=LIST(%receiver%)",
+            "sendTime": "=NOW()",
+            "sendTimes": "%sendTimes%",
+            "state": "%state%",
+            "subject": "=IF(ISNOTBLANK(%subject%), %subject%, \"''\")",
+            "templateId": "=IF(ISNOTBLANK(%templateid%), %templateid%, \"\")",
+            "tryTimes": "%tryTimes%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPNotificationCusChannelMultiplePDF/Procedure/SetRequest"
+}

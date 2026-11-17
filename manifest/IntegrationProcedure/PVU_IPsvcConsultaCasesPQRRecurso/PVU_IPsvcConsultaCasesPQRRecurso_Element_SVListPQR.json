@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVListPQR",
+    "OmniProcessId": {
+        "Name": "ConsultaCasesPQRRecurso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcConsultaCasesPQRRecurso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "quejas": "=FILTER(LIST(%RAPQRList:CasosSF%), \"casoTipo == 'QUEJA' || casoTipo == 'PETICION'\")",
+            "requerimientos": "=FILTER(LIST(%RAPQRList:CasosSF%),    \"casoTipo = 'REQUERIMIENTOS LEGALES' && casoFechaCreacion >= '\" + %SVDateRequerimiento:varFechaHaceUnAnio% + \"'\" )"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcConsultaCasesPQRRecurso/Procedure/SVListPQR"
+}

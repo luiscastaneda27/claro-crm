@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RASubmitOrder",
+    "OmniProcessId": {
+        "Name": "IPGenerateTemporySuspensionOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "ContextId": "%IPCrearOrderOM:result:orderId%",
+            "cartId": "%IPCrearOrderOM:result:orderId%",
+            "checkOrderStatus": false,
+            "orderId": "%IPCrearOrderOM:result:orderId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPCrearOrderOM:success% == true && ISNOTBLANK(%IPCrearOrderOM:result:orderId%) && (%DRGetAssetToOrderMetadata:OrderConfig:OrderType% == \"SUBMIT_INMEDIATE\" || (%DRGetAssetToOrderMetadata:OrderConfig:OrderType% == \"FDO\" && DATEDIFF(%CaseInfo:fechaInicioSusp%, TODAY()) = 0))",
+        "failOnStepError": true,
+        "failureConditionalFormula": "messages|1:severity = \"ERROR\"",
+        "failureResponse": {
+            "result": {
+                "code": "004",
+                "message": "=CONCAT(%RASubmitOrder:messages|1:code%, %RASubmitOrder:messages|1:message% )",
+                "status": "Error"
+            }
+        },
+        "label": "RemoteAction2",
+        "remoteClass": "%vlocity_namespace%.CPQAppHandler",
+        "remoteMethod": "checkout",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGenerateTemporySuspensionOrder/Procedure/RASubmitOrder"
+}

@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVModificacionFianza",
+    "OmniProcessId": {
+        "Name": "GestionCusInstallRefundFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GestionCusInstallRefundFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "amount": "%SVParams:valueFianza%",
+            "billingAccount": "%IP_IPGetFinancingInfoV1:financings|1:financing:paymentReference%",
+            "calculateAmount": false,
+            "chargeService": "%SVParams:chargeService%",
+            "financingCode": "%SVParams:numeroCredito%",
+            "remark": "Ajuste de fianza por back de ajuste",
+            "target": "%RAGetTargetCode:targetCode%",
+            "user": "%SVParams:user%",
+            "validDate": "%SVParams:validDate%"
+        },
+        "executionConditionalFormula": "%proceso%='ModificacionFianza'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "SVRequest",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GestionCusInstallRefundFianza/Procedure/SVModificacionFianza"
+}

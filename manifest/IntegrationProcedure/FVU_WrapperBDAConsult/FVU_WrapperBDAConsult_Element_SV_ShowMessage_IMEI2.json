@@ -1,0 +1,28 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ShowMessage_IMEI2",
+    "OmniProcessId": {
+        "Name": "WrapperBDAConsult",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/WrapperBDAConsult/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "chainOnStep": false,
+        "elementValueMap": {
+            "finalResponse": {
+                "showMessageIMEI2": "%SV_FunctionShowMessage:showMessageIMEI2%"
+            }
+        },
+        "executionConditionalFormula": "%isDualSIM% == true AND %SV_NewServiceFlag:NewServiceFlag% == true",
+        "failOnStepError": true,
+        "label": "SV_ShowMessage_IMEI2",
+        "responseJSONNode": "DBAPositivo_IMEI2_Resolved",
+        "type": "SetValues"
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/WrapperBDAConsult/Procedure/SV_ShowMessage_IMEI2"
+}

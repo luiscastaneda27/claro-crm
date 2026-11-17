@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LBRelateAssetsToCase",
+    "OmniProcessId": {
+        "Name": "IPRelateFinancedAssetsToCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockEquipoFinanciado",
+        "OmniProcessId": {
+            "Name": "IPRelateFinancedAssetsToCase",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure/ConditionalBlockEquipoFinanciado",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockEquipoFinanciado",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SVSelectedAssets% != 0",
+        "label": "LoopBlock1",
+        "loopList": "SVSelectedAssets:SelectedAssets",
+        "loopOutput": {
+            "AssetToCaseResult": "=IF(%DMP_AddAssetToCase:PVU_CasesAssets__c_1:UpsertSuccess% == true, 'Success', 'Error' )",
+            "IdAsset": "=IF(%DMP_AddAssetToCase:PVU_CasesAssets__c_1:UpsertSuccess% == true, %DMP_AddAssetToCase:PVU_CasesAssets__c_1:PVU_RelatedAsset__c%, 'Error' )",
+            "IdCase": "=IF(%DMP_AddAssetToCase:PVU_CasesAssets__c_1:UpsertSuccess% == true, %DMP_AddAssetToCase:PVU_CasesAssets__c_1:PVU_RelatedCase__c%, 'Error' )"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/RelateFinancedAssetsToCase/Procedure/LBRelateAssetsToCase"
+}

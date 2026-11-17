@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RACallOutSpDocUpload",
+    "OmniProcessId": {
+        "Name": "IPMSEnSpDocUpload_InsertEnSpDocDelay",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPMSEnSpDocUpload_InsertEnSpDocDelay/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "apiKey": "%apiKey:ValueKey%",
+            "docName": "%docName%",
+            "document": "=IF(%document:xdTipoDocumental% == 'CONSULTA_LISTAS_VINCULANTES_RESTRICTIVA_PEP_CLIMAS',\n   %SetDocument:docConsultasListasVinculantes%,\n   IF(ISBLANK(%document:xdNumeroContrato%),\n      %SetDocument:docWithoutNumeroContrato%,\n      %SetDocument:docWithNumeroContrato%\n   )\n)",
+            "document_ext": "%document_ext%",
+            "idDocument": "%idDocument%",
+            "serieDocumental": "%serieDocumental%",
+            "target": "%target%",
+            "urlPath": "%SetUrlPath:pathUrl%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_CalloutHandlerDocument",
+        "remoteMethod": "getCallOutHandlerDocument",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPMSEnSpDocUpload_InsertEnSpDocDelay/Procedure/RACallOutSpDocUpload"
+}

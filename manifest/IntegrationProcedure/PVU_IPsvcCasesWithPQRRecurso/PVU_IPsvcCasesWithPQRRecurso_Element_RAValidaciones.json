@@ -1,0 +1,48 @@
+{
+    "Description": "20230926 - Si hay casos favorables paso la lista de casos, sino null. Esto luego se evalua en la clase apex, para evitar excepción en el código cuando no hay casos o hay uno solo caso",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAValidaciones",
+    "OmniProcessId": {
+        "Name": "CasesWithPQRRecurso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPsvcCasesWithPQRRecurso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "AccountId": "=%accountId%",
+            "Casos": "=IF(ISNOTBLANK(%DRTransformCaseJSON:Casos%), LIST(%DRTransformCaseJSON:Casos%), null)"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "CasesValidations",
+        "remoteMethod": "DevolucionDineroPQR",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPsvcCasesWithPQRRecurso/Procedure/RAValidaciones"
+}

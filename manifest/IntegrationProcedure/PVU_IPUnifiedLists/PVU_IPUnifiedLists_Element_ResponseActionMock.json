@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionMock",
+    "OmniProcessId": {
+        "Name": "IPUnifiedLists",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPUnifiedLists/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Cantidad": "=IF(ISBLANK(%LFListafiltrarMock%),0,LISTSIZE(%LFListafiltrarMock%))",
+            "Lista": "%LFListafiltrarMock%",
+            "ListaCompleta": "%IPGetMock:Response:lists%",
+            "Status": "=IF(ISBLANK(%IPGetMock:Response:lists%),false,true)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "IPGetMock:ModoTest == \"true\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+            "": ""
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPUnifiedLists/Procedure/ResponseActionMock"
+}

@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetData",
+    "OmniProcessId": {
+        "Name": "GetProductOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/Inbound/GetProductOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "dataOrder": "=IF(ISNOTBLANK(%DRGetProductOrderSerice:ProductOrder:href%), %DRGetProductOrderSerice%, IF(ISNOTBLANK(%DRgetProductOrderServiceByStatus:ProductOrder:href%),%DRgetProductOrderServiceByStatus%, IF(ISBLANK(%DRgetProductOrderServiceByStatusInPayment:ProductOrder:href%),\"Error\",%DRgetProductOrderServiceByStatusInPayment%)))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/Inbound/GetProductOrder/Procedure/SetData"
+}

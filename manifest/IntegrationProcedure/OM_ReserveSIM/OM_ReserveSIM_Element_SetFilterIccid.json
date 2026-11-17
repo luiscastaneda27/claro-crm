@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetFilterIccid",
+    "OmniProcessId": {
+        "Name": "ReserveSIM",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ReserveSIM/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "iccidJSON": "=IF(%DRExtractFRLJSON:SubAction% == \"ChangeSim-Modify\" || %DRExtractFRLJSON:SubAction% == \"Resume-Reactivate-ChangeSim\", FILTER(LIST(%DRExtractFRLJSON:223541c2-e1cb-fe89-a86d-b07a65470f1b%), 'Name == \"TechPCnewICCID\"'), FILTER(LIST(%DRExtractFRLJSON:223541c2-e1cb-fe89-a86d-b07a65470f1b%), 'Name == \"TechRCiccid\"'))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ReserveSIM/Procedure/SetFilterIccid"
+}

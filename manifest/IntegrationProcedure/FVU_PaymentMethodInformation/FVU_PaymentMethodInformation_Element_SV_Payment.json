@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Payment",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentMethodInformation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentMethodInformation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "paymentType": [
+                {
+                    "channelAliado": false,
+                    "channelCAV": true,
+                    "channelTMK": false,
+                    "label": "Contado",
+                    "paymentMethod": [
+                        {
+                            "label": "Contado – Sistemas de Cajas",
+                            "value": "Contado"
+                        },
+                        {
+                            "label": "Pin/Link de Pagos",
+                            "value": "Pin Link de Pagos"
+                        }
+                    ],
+                    "value": "Contado"
+                },
+                {
+                    "channelAliado": false,
+                    "channelCAV": false,
+                    "channelTMK": true,
+                    "label": "Contado",
+                    "paymentMethod": [
+                        {
+                            "label": "Pin/Link de Pagos",
+                            "value": "Pin Link de Pagos"
+                        }
+                    ],
+                    "value": "Contado"
+                },
+                {
+                    "cargoFactura": true,
+                    "label": "Cargo a la Factura",
+                    "paymentMethod": [
+                        {
+                            "label": "Cargo a la Factura",
+                            "value": "Cargo a la Factura"
+                        }
+                    ],
+                    "value": "Cargo a la Factura"
+                }
+            ]
+        },
+        "executionConditionalFormula": "SV_Channel:pinLinkValid",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "paymentType",
+        "responseJSONPath": "paymentType",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentMethodInformation/Procedure/SV_Payment"
+}

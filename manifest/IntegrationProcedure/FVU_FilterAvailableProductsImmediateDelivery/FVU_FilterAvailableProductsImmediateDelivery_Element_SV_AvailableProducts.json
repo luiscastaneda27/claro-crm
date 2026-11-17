@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AvailableProducts",
+    "OmniProcessId": {
+        "Name": "FilterAvailableProductsImmediateDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "FewUnitsAllFlag": "=%SV_LowQuantityPorductsName%",
+            "LowQuantityProductsMsg": "Quedan pocas unidades disponibles de los siguientes productos %SV_LowQuantityPorductsName:productName%",
+            "ProductDescription": "=IF(ISBLANK(%DR_GetProduct:Description%),%DR_GetProduct:Description%,TOSTRING(%DR_GetProduct:Description%))",
+            "ProductName": "=TOSTRING(%DR_GetProduct:Name%)",
+            "UserChannel": "=DR_GetOrder:UserChannel",
+            "availableDeliveryMethods": "=AvailableDeliveryMethods",
+            "deliveryQuantity": "=SUM(%AvailableDeliveryMethod:deliveryQuantity%)",
+            "immediatePickUpQuantity": "=SUM(%AvailableDeliveryMethod:immediatePickUpQuantity%)",
+            "isAvailable": "=SUM(%AvailableDeliveryMethod:deliveryQuantity%) || SUM(%AvailableDeliveryMethod:immediatePickUpQuantity%) || SUM(%AvailableDeliveryMethod:pickUpQuantity%)",
+            "pickUpQuantity": "=SUM(%AvailableDeliveryMethod:pickUpQuantity%)",
+            "productCode": "=%DR_GroupProductsInStock:ProductsCode%",
+            "quantity": "= SUM(%AvailableDeliveryMethod:deliveryQuantity%,%AvailableDeliveryMethod:immediatePickUpQuantity%,%AvailableDeliveryMethod:pickUpQuantity%)",
+            "success": "=IF(ISNOTBLANK(%LA_ProductoSIM%)&&%IP_ProductListPromiseGetSKU:success%,TRUE,IF(ISNOTBLANK(%SV_Request:productList%)&&%IP_ProductPromise:success%,TRUE,IF(ISNOTBLANK(%LA_ProductoSIM%)&&ISNOTBLANK(%SV_Request:productList%),TRUE,FALSE)))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableProductsImmediateDelivery/Procedure/SV_AvailableProducts"
+}

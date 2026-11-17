@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AvailableProducts",
+    "OmniProcessId": {
+        "Name": "FilterAvailableSIMCard",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/FilterAvailableSIMCard/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ProductDescription": "=TOSTRING(Product2:Description)",
+            "ProductName": "=TOSTRING(Product2:Name)",
+            "UserChannel": "%UserDetailsChannel%",
+            "availableDeliveryMethods": "=AvailableDeliveryMethods",
+            "channelProdCode": "=%AvailableProductsResponse:productPromise|1:channelProdCode%",
+            "deliveryQuantity": "=SUM(%AvailableDeliveryMethod:deliveryQuantity%)",
+            "immediatePickUpQuantity": "=SUM(%AvailableDeliveryMethod:immediatePickUpQuantity%)",
+            "isAvailable": "=SUM(%AvailableDeliveryMethod:deliveryQuantity%) || SUM(%AvailableDeliveryMethod:immediatePickUpQuantity%) || SUM(%AvailableDeliveryMethod:pickUpQuantity%)",
+            "pickUpQuantity": "=SUM(%AvailableDeliveryMethod:pickUpQuantity%)",
+            "productCode": "=%AvailableProductsResponse:productPromise|1:productCode%",
+            "quantity": "=IF(%AvailableProductsResponse:productPromise|1:totalAvaStock% > 0, %AvailableProductsResponse:productPromise|1:totalAvaStock%, 0)",
+            "success": "=IF(%AvailableProductsResponse:success% == true, true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/FilterAvailableSIMCard/Procedure/SV_AvailableProducts"
+}

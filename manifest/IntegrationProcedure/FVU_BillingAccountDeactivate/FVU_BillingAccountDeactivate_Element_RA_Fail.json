@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Fail",
+    "OmniProcessId": {
+        "Name": "BillingAccountDeactivate",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/BillingAccountDeactivate/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "BillingAccountIsNotBlank",
+        "OmniProcessId": {
+            "Name": "BillingAccountDeactivate",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/BillingAccountDeactivate/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/BillingAccountDeactivate/Procedure/BillingAccountIsNotBlank",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "BillingAccountIsNotBlank",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "%DRT_BillingAccountDeactivateResponse:message%",
+            "result": {
+                "Descripcion": "",
+                "Name": "BillingAccountDeactivate",
+                "enpoint": "/UpdateAccountManagement/v1.0",
+                "metodo": "POST",
+                "request": "%DRT_BillingAccountDeactivateRequest%",
+                "response": "%HTTP_BillingAccountDeactivate%",
+                "statusId": "%DRT_BillingAccountDeactivateResponse:code%"
+            },
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "DRT_BillingAccountDeactivateResponse:code != 'FS_ESB_0'",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "DRT_BillingAccountDeactivateResponse",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/BillingAccountDeactivate/Procedure/RA_Fail"
+}

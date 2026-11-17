@@ -1,0 +1,69 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LA_SetProductList",
+    "OmniProcessId": {
+        "Name": "FVU_VentasOrderSchedule",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/VentasOrderSchedule/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": false,
+        "advancedMergeMap": [
+        ],
+        "allowMergeNulls": true,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "dynamicRequestOutputFields",
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "",
+        "hasPrimary": false,
+        "label": "ListAction2",
+        "mergeFields": [
+            "ProductCode"
+        ],
+        "mergeListsOrder": [
+            "DREInputOrderSchedule:OrderItems",
+            "LA_SetProductList"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "LA_SetProductList",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+            "flowType": "=IF(PurchaseType=='POR'&&ProductType=='SIM Card', 'POR', IF(PurchaseType=='ACT'&& ProductType=='SIM Card', 'LINEA_NUEVA', IF(PurchaseType=='ATT' && hasESIM == false, 'KIT', IF(ProductType=='Handset' && ( PurchaseType=='NAP' || (hasESIM == true && PurchaseType=='ATT' )), 'TERM_LIBRE', IF(ProductType=='Tech' && ( PurchaseType=='NAP' || (hasESIM == true && PurchaseType=='ATT' )), 'TEC', ''))))",
+            "groupId": "=IF(PurchaseType=='ATT' && hasESIM == false, TOSTRING(groupId), '')",
+            "productCode": "=CONCAT(%B2C-ATTR-MATERIAL-TERM%, %B2C-ATTR-SIM-MATERIAL%, %B2C-ATTR-TEC-MATERIAL%)",
+            "quantity": "=TOSTRING(COUNTQUERY(\"SELECT COUNT() FROM OrderItem WHERE OrderId = '{0}' AND Product2.ProductCode  = '{1}'\", OrderId, ProductCode))",
+            "salesProcess": "=IF(PurchaseType=='POR'&&ProductType=='SIM Card','POR',IF(PurchaseType=='ACT'&&ProductType=='SIM Card','ACT',IF(PurchaseType=='NAP'&&ProductType=='Handset','NAP',IF(PurchaseType=='NAP'&&ProductType=='Tech','TEC',IF(PurchaseType=='ATT','NAP','')))))",
+            "salesType": "=IF(PurchaseType=='POR'&&ProductType=='SIM Card','POSTPAGO',IF(PurchaseType=='ACT'&&ProductType=='SIM Card','POSTPAGO',IF((PurchaseType=='NAP'||PurchaseType=='ATT')&&ProductType=='Handset','LIBRE',IF((PurchaseType=='NAP'||PurchaseType=='ATT')&&ProductType=='Tech','LIBRE',IF(PurchaseType=='ATT'&&ProductType=='SIM Card','SIM','')))))",
+            "storeId": "=IF(Channel == \"SF_CAV\", CodigoCAV, \"\")"
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/VentasOrderSchedule/Procedure/LA_SetProductList"
+}

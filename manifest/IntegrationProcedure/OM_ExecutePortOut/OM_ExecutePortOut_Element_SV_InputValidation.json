@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_InputValidation",
+    "OmniProcessId": {
+        "Name": "OM_ExecutePortOut",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/ExecutePortOut/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "isValidDateStart": "=IF( ISNOTBLANK(%dateStart%), IF( STRINGINDEXOF(%dateStart%, \"-\") == 4 && STRINGINDEXOF(%dateStart%, \"T\") == 10 && STRINGINDEXOF(%dateStart%, \":\") == 13 && STRINGINDEXOF(%dateStart%, \"Z\") == 19, \"sucess\", \"El formato aceptado para dateStart es yyyy-MM-ddTHH:mm:ssZ\"), \"sucess\")",
+            "isValidIdProcess": "=IF( ISNOTBLANK(%idProcess%), \"sucess\", \"idProcess es mandatorio\")",
+            "isValidMSISDN": "=IF( ISNOTBLANK(%MSISDN%) && LENGTH(%MSISDN%) == 12 && SUBSTRING(%MSISDN%,0,2) == \"57\" ,\"sucess\", \"El campo MSISDN es mandatorio y se debe enviar en formato numérico de 12 dígitos comenzando por 57 - country code. MSISDN recibido: \" + TOSTRING(%MSISDN%))",
+            "isValidNRN": "=IF( ISNOTBLANK(%NRN%), \"sucess\", \"NRN es mandatorio\")",
+            "isValidPortation_status": "=IF( ISNOTBLANK(%portation_status%), \"sucess\", \"portation_status es mandatorio\")",
+            "isValidReasonCode": "=IF( ISNOTBLANK(%reasonCode%), \"sucess\", \"reasonCode es mandatorio\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/ExecutePortOut/Procedure/SV_InputValidation"
+}

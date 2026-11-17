@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_MSPrBuUsaCons",
+    "OmniProcessId": {
+        "Name": "GetAdditionalServices",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetAdditionalServices/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopServices",
+        "OmniProcessId": {
+            "Name": "GetAdditionalServices",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetAdditionalServices/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetAdditionalServices/Procedure/LoopServices",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopServices",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "canal": "'CAV'",
+            "detalleConsumo": false,
+            "msisdn": "%DRGetAdditionalServices:assets:numeroTelefono%",
+            "poId_E": "%DRGetAdditionalServices:assets:productCode%"
+        },
+        "additionalOutput": {
+            "datosDisponibles": "%IP_MSPrBuUsaCons:Details:consumos|1:cfss|1:available%",
+            "msisdn": "%IP_MSPrBuUsaCons:Details:msisdn%",
+            "productCode": "%IP_MSPrBuUsaCons:Details:consumos|1:poId%",
+            "tieneDatos": "=%IP_MSPrBuUsaCons:Details:consumos|1:cfss|1:available% > 0"
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%DRGetAdditionalServices:assets:Subtipo%==\"Datos\" || %DRGetAdditionalServices:assets:Subtipo%==\"LDI\" || %DRGetAdditionalServices:assets:Subtipo%==\"Roaming Internacional\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_MSPrBuUsaCons",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetAdditionalServices/Procedure/IP_MSPrBuUsaCons"
+}

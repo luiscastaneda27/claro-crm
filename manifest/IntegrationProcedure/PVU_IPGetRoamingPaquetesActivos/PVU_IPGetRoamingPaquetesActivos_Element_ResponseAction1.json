@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction1",
+    "OmniProcessId": {
+        "Name": "IPGetRoamingPaquetesActivos",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPGetRoamingPaquetesActivos/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "paquetesActivos": "%RAAssetUtils:assets%",
+            "paquetesActivosOnlyNames": "%RAAssetUtils:paquetesActivos%",
+            "paquetesActivosSize": "%RAAssetUtils:assetsSize%",
+            "paquetesPasaporteAmerica": "%RAAssetUtils:passAmericaSize%",
+            "passAmericaName": "%RAAssetUtils:passAmericaName%",
+            "productCode": "%SvProductCode:assetProductCode%",
+            "status": "=IF(%assetAttrValue:B2C-ATTR-ROAMING% = true, \"Activo\", \"Desactivado\")"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPGetRoamingPaquetesActivos/Procedure/ResponseAction1"
+}

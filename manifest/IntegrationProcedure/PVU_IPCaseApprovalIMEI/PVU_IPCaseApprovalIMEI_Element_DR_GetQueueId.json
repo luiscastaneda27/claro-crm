@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_GetQueueId",
+    "OmniProcessId": {
+        "Name": "IPCaseApprovalIMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPCaseApprovalIMEI/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "GroupName": "%CAVDetails:Codigo|1:Cola__c%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_GetGroupInfo",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%CAVDetails:Codigo|1:Cola__c%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "ISBLANK(Id)",
+        "failureResponse": {
+            "Details": "Cola configurada (%CAVDetails:Codigo|1:Cola__c%) no encontrada.",
+            "EndProcess": "fail"
+        },
+        "ignoreCache": false,
+        "label": "DataRaptorExtractAction2",
+        "responseJSONNode": "QueueDetail",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPCaseApprovalIMEI/Procedure/DR_GetQueueId"
+}

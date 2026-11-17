@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "GetDataSummary",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GetDataSummary/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ExtraData": "%IP_GetSummaryExtraData%",
+            "ExtraData:OTTexists": "%IP_GetSummaryProductList:OTTexists%",
+            "ExtraData:PurchaseType": "%IP_GetSummaryProductList:ListaProductos:TipoDeCompra%",
+            "HasAddons": "%IP_GetSummaryProductList:ListaProductos:HasAddons%",
+            "PaymentTotals": "%IP_GetSummaryTotal%",
+            "ProductList": "%IP_GetSummaryProductList%",
+            "ProductList:ListaProductos:NoPromotion": "%IP_GetSummaryTotal:TotalAPagar:NoPromotion%",
+            "PurchaseType": "=%IP_GetSummaryTotal:PurchaseType%",
+            "TaxDetailsError": "=IF(%IP_GetSummaryTotal:success% == false || %IP_GetSummaryTotal:success% == \"\", true, false)\n",
+            "labelCFM": "Cargo Fijo Mensual",
+            "labelPagoInmediato": "=IF(\n    %IP_GetSummaryTotal:PurchaseType% == 'ACT' OR \n    %IP_GetSummaryTotal:PurchaseType% == 'POR' OR \n    %IP_GetSummaryTotal:PurchaseType% == 'MIG',\n    'Valor primera factura',\n    IF(%IP_GetSummaryTotal:PurchaseType% == 'FIN','Total',\n    'Valor pago de Contado')\n)",
+            "mensajePlantillaContrato": "%DR_Get_Plantilla_Contrato:PlantillaContrato:mensajePlantilla%",
+            "mensajePlantillaURL": "%DR_Get_Plantilla_Contrato:PlantillaContrato:urlPlantilla%",
+            "valuehelptextCFM": "Valor Servicios Principales + Adicionales",
+            "valuehelptextPagoInmediato": "=IF(\n    %IP_GetSummaryTotal:PurchaseType% == 'ACT' OR \n    %IP_GetSummaryTotal:PurchaseType% == 'POR' OR \n    %IP_GetSummaryTotal:PurchaseType% == 'MIG',\n    'Monto inicial que el cliente debe abonar para iniciar el servicio.',\n    IF(%IP_GetSummaryTotal:PurchaseType% == 'FIN','Valor total a pagar',\n    'Monto que el cliente debe abonar para adquirir los productos.')\n)"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GetDataSummary/Procedure/ResponseAction"
+}
