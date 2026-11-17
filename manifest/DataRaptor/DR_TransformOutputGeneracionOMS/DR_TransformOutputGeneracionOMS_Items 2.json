@@ -1,0 +1,1436 @@
+[
+    {
+        "FormulaExpression": "IF(COUNTQUERY(\"SELECT id,%vlocity_namespace%__OrderId__c,%vlocity_namespace%__PromotionId__r.name  from %vlocity_namespace%__OrderAppliedPromotion__c where %vlocity_namespace%__PromotionId__r.CAT_Type__c = 'TodoClaro' and %vlocity_namespace%__PromotionId__r.name <> 'Claro video sin consumo de datos' and %vlocity_namespace%__OrderId__c = '{0}'\", orderId) > 0, \"CCV\", \"\")",
+        "FormulaResultPath": "sapInfo:cust_grp2",
+        "FormulaSequence": 10,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom2215",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ISNOTBLANK(deliveryData:AuthorizedPersonData:Name), deliveryData:AuthorizedPersonData:Name + ' ' + deliveryData:AuthorizedPersonData:LastName + ' ' + deliveryData:AuthorizedPersonData:SecondLastName, '')",
+        "FormulaResultPath": "formulaFullName",
+        "FormulaSequence": 9,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom7738",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(PurchaseType='FIN' && hasTaxes='true', 1, '')",
+        "FormulaResultPath": "hasTaxesFormulaFin",
+        "FormulaSequence": 7,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom6184",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(hasTaxes, 1, 0)",
+        "FormulaResultPath": "hasTaxesFormula",
+        "FormulaSequence": 1,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom8250",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(items:productInfo:salesProcess <> \"NAP\" && items:productInfo:salesProcess <> \"TEC\", items:simCard, \"\")",
+        "FormulaResultPath": "simCardForm",
+        "FormulaSequence": 4,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom5062",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(orderInfo:allPurchaseType = \"ATT\" && (orderInfo:deliveryMethod = \"Delivery\" || orderInfo:deliveryMethod = \"PickUp\"), orderAmountSummary:orderAmount, \"\")",
+        "FormulaResultPath": "formulaOrderAmount",
+        "FormulaSequence": 8,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom7189",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(orderPaymentMethod == \"Cargo a la factura\", \"1000\", \"1099\" )",
+        "FormulaResultPath": "orderStatusForm",
+        "FormulaSequence": 3,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom398",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(paymentTypeQuota > 0 && paymentTypeQuota <= 6,'06',IF(paymentTypeQuota > 6 && paymentTypeQuota <= 12, '12', IF(paymentTypeQuota > 12 && paymentTypeQuota <= 18, '18',IF(paymentTypeQuota > 18 && paymentTypeQuota <= 24, '24',IF(paymentTypeQuota > 24 && paymentTypeQuota <= 36, '36', '')))))",
+        "FormulaResultPath": "paymentTypeQuotaForm",
+        "FormulaSequence": 5,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom632",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(paymentTypeQuotaForm,'0','')",
+        "FormulaResultPath": "inicialFee",
+        "FormulaSequence": 6,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom3246",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "TODAY(YYYY-MM-DD)",
+        "FormulaResultPath": "priceDateForm",
+        "FormulaSequence": 2,
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom199",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom6305",
+        "InputFieldName": "customer:href",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:custId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom20",
+        "InputFieldName": "customer:documentNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:docNumber",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom9755",
+        "InputFieldName": "customer:documentType",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:docType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom1595",
+        "InputFieldName": "customer:email",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:email",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom6752",
+        "InputFieldName": "customer:name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:name",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom203",
+        "InputFieldName": "customer:telephone1",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:telephone1",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom1401",
+        "InputFieldName": "customer:telephone2",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:telephone2",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom9767",
+        "InputFieldName": "customer:title",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:title",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom3601",
+        "InputFieldName": "deliveryAddress:addressCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:addressCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom7126",
+        "InputFieldName": "deliveryAddress:addressLine",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:addressLine",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom4865",
+        "InputFieldName": "deliveryAddress:city",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:city",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom1163",
+        "InputFieldName": "formulaFullName",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:contactName",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom2201",
+        "InputFieldName": "deliveryData:AuthorizedPersonData:Phone",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:contactPhone",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom874",
+        "InputFieldName": "deliveryAddress:place",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:place",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom6298",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "items",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom766",
+        "InputFieldName": "whetherSimChanged",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:extInfor:whetherSimChanged",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom4966",
+        "InputFieldName": "items:fulfillGroup",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:fulfillGroup",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom7063",
+        "InputFieldName": "terminalIdForATT",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "items:groupId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom584",
+        "InputFieldName": "items:orderGroupNo",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:orderGroupNo",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom2003",
+        "InputFieldName": "deliveryData:PickUpData:pickupPointCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:pickupPointCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom494",
+        "InputFieldName": "items:position",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:position",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom9910",
+        "InputFieldName": "items:price",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:price",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom5634",
+        "InputFieldName": "items:prodDelivMethod",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:prodDelivMethod",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom862",
+        "InputFieldName": "items:prodFlowType",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:prodFlowType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom4347",
+        "InputFieldName": "items:productInfo:productDescription",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:productInfo:productDescription",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom2744",
+        "InputFieldName": "items:productId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "items:productInfo:productId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom4668",
+        "InputFieldName": "items:salesProcess",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:productInfo:salesProcess",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom3531",
+        "InputFieldName": "items:salesType",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:productInfo:salesType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom2508",
+        "InputFieldName": "items:quantity",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Integer",
+        "OutputFieldName": "items:quantity",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom5384",
+        "InputFieldName": "deliveryData:PickUpData:selectedPickupDate:avaDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:selectedPickupDate:avaDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom1726",
+        "InputFieldName": "items:simCardNode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:simCard",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom4234",
+        "InputFieldName": "items:storeId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:storeId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom3933",
+        "InputFieldName": "items:subtotalAmount",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:subtotalAmount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom3931",
+        "InputFieldName": "orderAmountSummary:discountAmount",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderAmountSummary:discountAmount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom6526",
+        "InputFieldName": "orderAmountSummary:logisticsFee",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderAmountSummary:logisticsFee",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom672",
+        "InputFieldName": "formulaOrderAmount",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderAmountSummary:orderAmount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom1738",
+        "InputFieldName": "orderAmountSummary:taxFee",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderAmountSummary:taxFee",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom621",
+        "InputFieldName": "orderAmountSummary:totalAmount",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderAmountSummary:totalAmount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom6827",
+        "InputFieldName": "orderInfo:channelCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:channelCode",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom9107",
+        "InputFieldName": "orderInfo:OrderProductNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:channelOrderNbr",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom2915",
+        "InputFieldName": "deliveryType",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:deliveryType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom1180",
+        "InputFieldName": "flowType",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:flowType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom5491",
+        "InputFieldName": "orderInfo:orderStatus",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:orderStatus",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom564",
+        "InputFieldName": "orderInfo:orderType",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:orderType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom4032",
+        "InputFieldName": "payment",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "payment",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom5755",
+        "InputFieldName": "antiquity",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "sapInfo:antiquity",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom9074",
+        "InputFieldName": "orderInfo:OrderProductNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:channelOrderId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom2717",
+        "InputFieldName": "hasTaxesFormula",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:clasifFiscal",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom4618",
+        "InputFieldName": "sapInfo:cust_grp2",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:cust_grp2",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom3735",
+        "InputFieldName": "inicialFee",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:inicialFee",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom8016",
+        "InputFieldName": "hasTaxesFormulaFin",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:isFinancedTax",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom7094",
+        "InputFieldName": "paymentTypeQuotaForm",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:payment_type",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom1138",
+        "InputFieldName": "priceDateForm",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:priceDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom9650",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom7817",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:fulfillGroup",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:fulfillGroup",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom6220",
+        "InputFieldName": "productLists",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "selectedPromise:productList",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom7379",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "selectedPromise:productList",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom4963",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:productList:groupId",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:productList:groupId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom2540",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:productList:productCode",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:productList:productCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom3311",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:productList:productNum",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:productList:productNum",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom8422",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:promiseCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:promiseCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom8424",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:promiseEndDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:promiseEndDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom5381",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:promiseId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:promiseId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_TransformOutputGeneracionOMSCustom2763",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:promiseStartDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_TransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "DR_TransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_TransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:promiseStartDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

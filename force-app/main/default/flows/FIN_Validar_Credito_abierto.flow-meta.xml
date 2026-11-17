@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <name>Caso_abierto_path</name>
+        <label>Caso abierto</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>El crédito aun se encuentra activo por favor garantiza la eliminación del crédito</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Error_credito_no_liberado</name>
+        <label>Error credito no liberado</label>
+        <locationX>578</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>El crédito {!GetOrder.FIN_NumeroCredito__c} aún se encuentra creado. Por favor, garantiza la eliminación del crédito antes de continuar.</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <name>Decisi_n_1</name>
+        <label>Decisión 1</label>
+        <locationX>710</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>Credito_no_liberado</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetOrder.FIN_IsCreditCancel__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_credito_no_liberado</targetReference>
+            </connector>
+            <label>Credito no liberado</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Estado_del_caso</name>
+        <label>Estado del caso</label>
+        <locationX>182</locationX>
+        <locationY>503</locationY>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>Caso_abierto</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Obtener_caso_relacionado.Status</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Cerrado</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Caso_abierto_path</targetReference>
+            </connector>
+            <label>Caso abierto</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Relacionado_a_caso_u_orden</name>
+        <label>Relacionado a caso u orden</label>
+        <locationX>446</locationX>
+        <locationY>287</locationY>
+        <defaultConnector>
+            <targetReference>GetOrder</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>Es_caso</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Curso con crédito pendiente de eliminar</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Obtener_caso_relacionado</targetReference>
+            </connector>
+            <label>Es caso</label>
+        </rules>
+    </decisions>
+    <description>GP - SP 55 - HU 591547 - POSV-Evolutivo Eliminación Automática de Financiamiento con Nota de Crédito y cierre de caso - servicio técnico</description>
+    <environments>Default</environments>
+    <interviewLabel>FIN_Validar Credito abierto {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Validar Credito abierto</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>GetOrder</name>
+        <label>GetOrder</label>
+        <locationX>710</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Decisi_n_1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Order</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>FIN_NumeroCredito__c</queriedFields>
+        <queriedFields>FIN_IsCreditCancel__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Obtener_caso_relacionado</name>
+        <label>Obtener caso relacionado</label>
+        <locationX>182</locationX>
+        <locationY>395</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Estado_del_caso</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Status</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Relacionado_a_caso_u_orden</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Description</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Fallo registro de los subprocesos de Fianza, Enrolamiento, y actualizacion de serial en credito, Por favor ingrese a la orden y relance el proceso</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

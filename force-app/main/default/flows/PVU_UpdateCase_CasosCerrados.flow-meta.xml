@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>20250512 - PV - HU 538922 - Cierre del Caso Beneficio Todo Claro</description>
+    <environments>Default</environments>
+    <interviewLabel>PVU UpdateCase CasosCerrados {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PVU_UpdateCase_CasosCerrados</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Activaci_n_exitosa</name>
+        <label>Activación exitosa</label>
+        <locationX>176</locationX>
+        <locationY>1187</locationY>
+        <connector>
+            <targetReference>DesactivacionNoExitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activación Roaming realizada</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activación de servicio y paquetes</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Roaming Internacional</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Se realiza activación</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Activacion_Desactivacion_Todo_Claro_no_exitosa</name>
+        <label>Activacion/Desactivacion Todo Claro no exitosa</label>
+        <locationX>176</locationX>
+        <locationY>2159</locationY>
+        <connector>
+            <targetReference>CambiosdeEquipoApple</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>No Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Beneficio Todo Claro</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activación/ desactivación Todo claro</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Falla de ejecución</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Activacion_no_exitosa</name>
+        <label>Activación no exitosa</label>
+        <locationX>176</locationX>
+        <locationY>1079</locationY>
+        <connector>
+            <targetReference>Activaci_n_exitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>No Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activación Roaming No realizada</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activación de servicio y paquetes</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Roaming Internacional</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Falla de ejecución</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Activación Roaming No realizada</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Activacion_Todo_Claro_exitosa</name>
+        <label>Activacion Todo Claro exitosa</label>
+        <locationX>176</locationX>
+        <locationY>1943</locationY>
+        <connector>
+            <targetReference>Actualizar_Caso</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Beneficio Todo Claro</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activación/ desactivación Todo claro</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_TipoSolicitudMasivos__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>ACTIVATE_TC</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Activación Beneficio Todo Claro</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Actualizar_Caso</name>
+        <label>Actualizar Caso</label>
+        <locationX>176</locationX>
+        <locationY>2051</locationY>
+        <connector>
+            <targetReference>Activacion_Desactivacion_Todo_Claro_no_exitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Beneficio Todo Claro</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Activación/ desactivación Todo claro</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_TipoSolicitudMasivos__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>DEACTIVATE_TC</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Desactivación Beneficio Todo Claro</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>CambiosdeEquipoApple</name>
+        <label>Cambios de Equipo Apple</label>
+        <locationX>176</locationX>
+        <locationY>2267</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cambio de equipo</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>En curso</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cambio por fabricante equipo financiado Apple</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Desactivacion_exitosa</name>
+        <label>Desactivacion exitosa</label>
+        <locationX>176</locationX>
+        <locationY>1403</locationY>
+        <connector>
+            <targetReference>modificacion_no_exitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Desactivación Roaming realizada</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Desactivación de servicios y paquetes</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Roaming Internacional</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Se realiza desactivación</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>DesactivacionNoExitosa</name>
+        <label>Desactivación no exitosa</label>
+        <locationX>176</locationX>
+        <locationY>1295</locationY>
+        <connector>
+            <targetReference>Desactivacion_exitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>No Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Desactivación Roaming No realizada</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Desactivación de servicios y paquetes</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Roaming Internacional</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Falla de ejecución</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Desactivación Roaming No realizada</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Escenario para cuando se asigna Nota de crédito con código de cierre Aplica Muerto en Caja</description>
+        <name>DevoAplicaMuertoEnCaja</name>
+        <label>DevoAplicaMuertoEnCaja</label>
+        <locationX>176</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>DevoDevolucionDeDinero</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Aplica Devolucion de dinero</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>En curso</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Soporte, fallas de servicio y equipos</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_NoNotaCredito__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Aplica Muerto en Caja</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Escenario para cuando se asigna Nota de crédito con código de cierre Devolución de dinero</description>
+        <name>DevoDevolucionDeDinero</name>
+        <label>DevoDevolucionDeDinero</label>
+        <locationX>176</locationX>
+        <locationY>971</locationY>
+        <connector>
+            <targetReference>Activacion_no_exitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Aplica Devolucion de dinero</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>En curso</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Soporte, fallas de servicio y equipos</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_NoNotaCredito__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Devolución de dinero</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Escenario para cuando se asigna Nota de crédito con código de cierre No Conforme Aprobado</description>
+        <name>DevoNoConformeAprobado</name>
+        <label>DevoNoConformeAprobado</label>
+        <locationX>176</locationX>
+        <locationY>755</locationY>
+        <connector>
+            <targetReference>DevoAplicaMuertoEnCaja</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Aplica Devolucion de dinero</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>En curso</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Soporte, fallas de servicio y equipos</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_NoNotaCredito__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>No Conforme Aprobado</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Habilitacion_exitosa</name>
+        <label>Habilitacion exitosa</label>
+        <locationX>176</locationX>
+        <locationY>1835</locationY>
+        <connector>
+            <targetReference>Activacion_Todo_Claro_exitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cliente acepta condiciones</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Habilitación Servicio - Línea con bloqueo CAN</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Roaming Internacional</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Se habilita Servicio - Línea con bloqueo CAN</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Habilitacion_no_exitosa</name>
+        <label>Habilitacion no exitosa</label>
+        <locationX>176</locationX>
+        <locationY>1727</locationY>
+        <connector>
+            <targetReference>Habilitacion_exitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>No Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Habilitación Servicio - Roaming CAN No realizado</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Habilitación Servicio - Línea con bloqueo CAN</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Roaming Internacional</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Falla de ejecución</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>-</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>modificacion_no_exitosa</name>
+        <label>Modificacion no exitosa</label>
+        <locationX>176</locationX>
+        <locationY>1511</locationY>
+        <connector>
+            <targetReference>ModificacionExitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>No Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Modificación Roaming No realizada</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Modificación de vigencia</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Roaming Internacional</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Falla de ejecución</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>-</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>ModificacionExitosa</name>
+        <label>Modificacion exitosa</label>
+        <locationX>176</locationX>
+        <locationY>1619</locationY>
+        <connector>
+            <targetReference>Habilitacion_no_exitosa</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OM_Orden_Procesada__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Exitosa</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Modificación vigencia Roaming realizada</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Modificación de vigencia</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Roaming Internacional</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level1__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solicitud de información y modificaciones</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Se realiza modificación</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>PVU_DevoDineroRealizada</name>
+        <label>DevoDineroRealizada</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>PVU_DevoDineroRechazada</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND (3 OR 4) AND 5</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>En curso</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pendiente de aprobación</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Devolución dinero por transferencia</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Devolución dinero en efectivo</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Se realiza devolución</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Dinero entregado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>PVU_DevoDineroRechazada</name>
+        <label>DevoDineroRechazada</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>Retracto_de_Compra</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND (3 OR 4) AND 5</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>En curso</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pendiente de aprobación</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Devolución dinero por transferencia</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Devolución dinero en efectivo</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Devolución no realizada</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Rechazado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>cerrar caso, no ingresa equipo</description>
+        <name>Retracto_de_Compra</name>
+        <label>Retracto de Compra</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Retracto_de_Compra_Devolucion</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>No ingresa equipo</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Retracto de compra</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Cliente no desea ingresar equipo</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>cerrar caso, Retracto aprobado</description>
+        <name>Retracto_de_Compra_Devolucion</name>
+        <label>Retracto de Compra Devolucion</label>
+        <locationX>176</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>DevoNoConformeAprobado</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Aplica Devolucion de dinero</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Retracto de compra</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <value>
+                <stringValue>Retracto Aprobado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>PVU_DevoDineroRealizada</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <triggerOrder>2000</triggerOrder>
+</Flow>

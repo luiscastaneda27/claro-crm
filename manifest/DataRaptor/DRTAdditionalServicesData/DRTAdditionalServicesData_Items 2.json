@@ -1,0 +1,126 @@
+[
+    {
+        "FormulaExpression": "DATEDIFF(FORMATDATETIME(assets:activationDate,\"yyyy-MM-dd\",\"America/Bogota\"), FORMATDATETIME(ADDDAY(TODAY(), 1),\"yyyy-MM-dd\",\"America/Bogota\"))",
+        "FormulaResultPath": "assets:consumoDias",
+        "FormulaSequence": 3,
+        "GlobalKey": "DRTAdditionalServicesDataCustom6611",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DRTAdditionalServicesData",
+        "OmniDataTransformationId": {
+            "Name": "DRTAdditionalServicesData",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DRTAdditionalServicesData",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FORMATDATETIME(ADDDAY(TODAY(), 1),\"yyyy-MM-dd\",\"America/Bogota\")",
+        "FormulaResultPath": "assets:hoy",
+        "FormulaSequence": 5,
+        "GlobalKey": "DRTAdditionalServicesDataCustom2669",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DRTAdditionalServicesData",
+        "OmniDataTransformationId": {
+            "Name": "DRTAdditionalServicesData",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DRTAdditionalServicesData",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF((DATEDIFF(FORMATDATETIME(assets:activationDate,\"yyyy-MM-dd\",\"America/Bogota\"), FORMATDATETIME(ADDDAY(TODAY(), 1),\"yyyy-MM-dd\",\"America/Bogota\"))) > (IF(assets:Subtipo == \"Datos\" OR assets:Subtipo == \"Roaming Internacional\",IF(assets:vigenciaOtros == \"5 días\",5,IF(assets:vigenciaOtros == \"7 días\",7,IF(assets:vigenciaOtros == \"15 días\",15,IF(assets:vigenciaOtros == \"30 días\",30,(DATEDIFF(FORMATDATETIME(assets:activationDate,\"yyyy-MM-dd\",\"America/Bogota\"), FORMATDATETIME(ADDDAY(TODAY(), 1),\"yyyy-MM-dd\",\"America/Bogota\")))+1)))),assets:vigenciaLDI)),true,false)",
+        "FormulaResultPath": "assets:vencido",
+        "FormulaSequence": 4,
+        "GlobalKey": "DRTAdditionalServicesDataCustom3969",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DRTAdditionalServicesData",
+        "OmniDataTransformationId": {
+            "Name": "DRTAdditionalServicesData",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DRTAdditionalServicesData",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(assets:Subtipo == \"Datos\" OR assets:Subtipo == \"Roaming Internacional\",IF(assets:vigenciaOtros == \"5 días\",5,IF(assets:vigenciaOtros == \"7 días\",7,IF(assets:vigenciaOtros == \"15 días\",15,IF(assets:vigenciaOtros == \"30 días\",30,(DATEDIFF(FORMATDATETIME(assets:activationDate,\"yyyy-MM-dd\",\"America/Bogota\"), FORMATDATETIME(ADDDAY(TODAY(), 1),\"yyyy-MM-dd\",\"America/Bogota\")))+1)))),assets:vigenciaLDI)",
+        "FormulaResultPath": "assets:vigenciaReal",
+        "FormulaSequence": 2,
+        "GlobalKey": "DRTAdditionalServicesDataCustom3308",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DRTAdditionalServicesData",
+        "OmniDataTransformationId": {
+            "Name": "DRTAdditionalServicesData",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DRTAdditionalServicesData",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(assets:Subtipo == \"LDI\", TOSTRING( assets:vigenciaLDI), assets:vigenciaOtros)",
+        "FormulaResultPath": "assets:vigencia",
+        "FormulaSequence": 1,
+        "GlobalKey": "DRTAdditionalServicesDataCustom1666",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DRTAdditionalServicesData",
+        "OmniDataTransformationId": {
+            "Name": "DRTAdditionalServicesData",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DRTAdditionalServicesData",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DRTAdditionalServicesDataCustom6972",
+        "InputFieldName": "assets",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DRTAdditionalServicesData",
+        "OmniDataTransformationId": {
+            "Name": "DRTAdditionalServicesData",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DRTAdditionalServicesData",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "assets",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

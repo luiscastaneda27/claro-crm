@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>obtiene el valor del Subtype del producto en el order item que disparó el flujo</description>
+        <name>Familia_de_Producto</name>
+        <label>Familia de Producto</label>
+        <locationX>1106</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>productFamily</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Product2.Family</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Tipo_de_Producto</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Almacena en una variable el valor a ser usado en el OrderItem que identifica el producto como una eSIM</description>
+        <name>Guardar_eSIM</name>
+        <label>Guardar eSIM</label>
+        <locationX>1590</locationX>
+        <locationY>935</locationY>
+        <assignmentItems>
+            <assignToReference>orderItemProductType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>eSIM</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Copy_1_of_Tipo_de_Intenci_n_de_Compra_Orden</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Almacena en una variable el valor a ser usado en el OrderItem que indica que el producto es desconocido para el flujo</description>
+        <name>Guardar_Producto_Desconocido</name>
+        <label>Guardar Producto Desconocido</label>
+        <locationX>2162</locationX>
+        <locationY>935</locationY>
+        <assignmentItems>
+            <assignToReference>orderItemProductType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>No Categorizado</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Almacena en una variable el valor a ser usado en el OrderItem que identifica el producto como Fee</description>
+        <name>Guardar_Producto_Fee</name>
+        <label>Guardar Producto Fee</label>
+        <locationX>1898</locationX>
+        <locationY>935</locationY>
+        <assignmentItems>
+            <assignToReference>orderItemProductType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Cargo Administrativo</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Almacena en una variable el valor a ser usado en el OrderItem que identifica el producto como un Paquete Adicional de Móviles</description>
+        <name>Guardar_Producto_Paquete_Adicional</name>
+        <label>Guardar Producto Paquete Adicional</label>
+        <locationX>314</locationX>
+        <locationY>935</locationY>
+        <assignmentItems>
+            <assignToReference>orderItemProductType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Paq Adicional Móviles</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Almacena en una variable el valor a ser usado en el OrderItem que identifica el producto como un Plan Móvil Pospago</description>
+        <name>Guardar_Producto_Plan_Movil_Pospago</name>
+        <label>Guardar Producto Plan Móvil Pospago</label>
+        <locationX>50</locationX>
+        <locationY>935</locationY>
+        <assignmentItems>
+            <assignToReference>orderItemProductType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Plan Móvil Pospago</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Almacena en una variable el valor a ser usado en el OrderItem que identifica el producto como Tecnología</description>
+        <name>Guardar_Producto_Tecnologia</name>
+        <label>Guardar Producto Tecnología</label>
+        <locationX>1194</locationX>
+        <locationY>935</locationY>
+        <assignmentItems>
+            <assignToReference>orderItemProductType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>TyT</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Almacena en una variable el valor a ser usado en el OrderItem que identifica el producto como un Terminal</description>
+        <name>Guardar_Producto_Terminal</name>
+        <label>Guardar Producto Terminal</label>
+        <locationX>864</locationX>
+        <locationY>935</locationY>
+        <assignmentItems>
+            <assignToReference>orderItemProductType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>TyT</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Tipo_de_Intencion_de_Compra_Orden</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Intencion_de_Compra_Orden</name>
+        <label>Intencion de Compra Orden</label>
+        <locationX>1106</locationX>
+        <locationY>719</locationY>
+        <assignmentItems>
+            <assignToReference>orderPurchaseType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Order.FVU_PurchaseType__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Categorizacion_del_Producto</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Numero_de_Contador</name>
+        <label>Numero de Terminales</label>
+        <locationX>710</locationX>
+        <locationY>1259</locationY>
+        <assignmentItems>
+            <assignToReference>TerminalesCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>terminalesEnOrden</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Numero_de_terminales</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Valor de SubType almacenado en el OrderItem</description>
+        <name>Subtipo_de_Producto</name>
+        <label>Subtipo de Producto</label>
+        <locationX>1106</locationX>
+        <locationY>503</locationY>
+        <assignmentItems>
+            <assignToReference>productSubType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Product2.vlocity_cmt__SubType__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Tipo_de_Orden</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Almacena el tipo de orden para identificar si corresponde a Venta o Posventa</description>
+        <name>Tipo_de_Orden</name>
+        <label>Tipo de Orden</label>
+        <locationX>1106</locationX>
+        <locationY>611</locationY>
+        <assignmentItems>
+            <assignToReference>orderType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Order.Type</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Intencion_de_Compra_Orden</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Tipo de Producto almacenado en el OrderItem</description>
+        <name>Tipo_de_Producto</name>
+        <label>Tipo de Producto</label>
+        <locationX>1106</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>productType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Product2.vlocity_cmt__Type__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Subtipo_de_Producto</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <name>Error_en_orden_multi_item_cuando_se_agrega_eSIM</name>
+        <label>Error en orden multi item cuando se agrega eSIM</label>
+        <locationX>1458</locationX>
+        <locationY>1151</locationY>
+        <connector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>En una orden Plan + Terminal no es posible agregar eSIM</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <name>Mas_de_un_terminal_esta_siendo_agregado</name>
+        <label>Más de un terminal está siendo agregado</label>
+        <locationX>578</locationX>
+        <locationY>1475</locationY>
+        <connector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </connector>
+        <customErrorMessages>
+            <errorMessage>En una orden de Plan + Terminal no se puede agregar más de un terminal</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Cada path del elemento de decisión corresponde a un tipo de producto</description>
+        <name>Categorizacion_del_Producto</name>
+        <label>Categorización del Producto</label>
+        <locationX>1106</locationX>
+        <locationY>827</locationY>
+        <defaultConnector>
+            <targetReference>Guardar_Producto_Desconocido</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Producto Desconocido</defaultConnectorLabel>
+        <rules>
+            <name>Plan_Movil_Pospago</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>productFamily</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Mobile</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>productType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Plan</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>productSubType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Postpaid</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Guardar_Producto_Plan_Movil_Pospago</targetReference>
+            </connector>
+            <label>Plan Móvil Pospago</label>
+        </rules>
+        <rules>
+            <name>Paquete_Adicional</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>productFamily</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Mobile</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>productType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Add On</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Guardar_Producto_Paquete_Adicional</targetReference>
+            </connector>
+            <label>Paquete Adicional Móvil</label>
+        </rules>
+        <rules>
+            <name>Terminal</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>productFamily</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Device</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>productType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Handset</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Guardar_Producto_Terminal</targetReference>
+            </connector>
+            <label>Terminal</label>
+        </rules>
+        <rules>
+            <name>Tecnologia</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>productFamily</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Device</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>productType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Tech</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Guardar_Producto_Tecnologia</targetReference>
+            </connector>
+            <label>Tecnología</label>
+        </rules>
+        <rules>
+            <name>eSIM</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Product2.vlocity_cmt__SubType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>eSIM</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Guardar_eSIM</targetReference>
+            </connector>
+            <label>eSIM</label>
+        </rules>
+        <rules>
+            <name>Fee</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>productType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Fee</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Guardar_Producto_Fee</targetReference>
+            </connector>
+            <label>Fee</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_1_of_Tipo_de_Intenci_n_de_Compra_Orden</name>
+        <label>Tipo de Intención de Compra - Orden</label>
+        <locationX>1590</locationX>
+        <locationY>1043</locationY>
+        <defaultConnector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Cualquier Tipo de Intención de Compra en Orden</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_Intenci_n_Orden_de_tipo_Multi_Item</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>orderPurchaseType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>ATT</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_en_orden_multi_item_cuando_se_agrega_eSIM</targetReference>
+            </connector>
+            <label>Intención Orden de tipo Multi-Item</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Numero_de_terminales</name>
+        <label>Número de terminales</label>
+        <locationX>710</locationX>
+        <locationY>1367</locationY>
+        <defaultConnector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Mas_de_1_terminal</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TerminalesCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mas_de_un_terminal_esta_siendo_agregado</targetReference>
+            </connector>
+            <label>Más de 1 terminal</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Tipo_de_Intencion_de_Compra_Orden</name>
+        <label>Tipo de Intención de Compra - Orden</label>
+        <locationX>864</locationX>
+        <locationY>1043</locationY>
+        <defaultConnector>
+            <targetReference>Almacena_Tipo_de_Producto</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Cualquier Tipo de Intención de Compra en Orden</defaultConnectorLabel>
+        <rules>
+            <name>Intencion_Orden_de_tipo_Multi_Item</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>orderPurchaseType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>ATT</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Consultar_Terminales_en_el_carrito</targetReference>
+            </connector>
+            <label>Intención Orden de tipo Multi-Item</label>
+        </rules>
+    </decisions>
+    <description>Este flujo lee el producto que está almacenado en un root OrderItem, lee el tipo de producto y lo almacena en el campo CAT_ProductType__c</description>
+    <environments>Default</environments>
+    <interviewLabel>CAT Tipo de Producto en OrderItem {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CAT Tipo de Producto en OrderItem</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Consultar_Terminales_en_el_carrito</name>
+        <label>Consultar Terminales en el carrito</label>
+        <locationX>710</locationX>
+        <locationY>1151</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Numero_de_Contador</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CAT_ProductType__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>TyT</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OrderId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.OrderId</elementReference>
+            </value>
+        </filters>
+        <object>OrderItem</object>
+        <outputReference>terminalesEnOrden</outputReference>
+        <queriedFields>Id</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <description>Guarda en el order item el valor del producto ya categorizado</description>
+        <name>Almacena_Tipo_de_Producto</name>
+        <label>Almacena Tipo de Producto</label>
+        <locationX>1106</locationX>
+        <locationY>1835</locationY>
+        <inputAssignments>
+            <field>CAT_ProductType__c</field>
+            <value>
+                <elementReference>orderItemProductType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>980</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Familia_de_Producto</targetReference>
+        </connector>
+        <object>OrderItem</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Esta variable almacena el tipo de producto final que se va a almacenar en el OrderItem</description>
+        <name>orderItemProductType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>orderPurchaseType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Tipo de Orden (diferencia entre procesos de venta y posventa)</description>
+        <name>orderType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Familia del producto</description>
+        <name>productFamily</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Valor de SubType almacenado en el OrderItem</description>
+        <name>productSubType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Valor de Type almacenado en el OrderItem</description>
+        <name>productType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>TerminalesCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <name>terminalesEnOrden</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OrderItem</objectType>
+    </variables>
+</Flow>

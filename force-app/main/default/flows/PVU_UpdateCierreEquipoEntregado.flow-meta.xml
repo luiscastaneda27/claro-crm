@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Caso Cerrado equipo entregado</description>
+    <environments>Default</environments>
+    <interviewLabel>PVU_UpdateCierreEquipoEntregado {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PVU_UpdateCierreEquipoEntregado</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Actualizar_activo</name>
+        <label>Actualizar activo</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>PVU_CambiadoPorSoporteyFallas__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PVU_CambioEquipo__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Obsolete</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Asset</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Actualizar_activo</targetReference>
+        </connector>
+        <filterLogic>1 AND (4 OR 5 OR 6 OR 7) AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Equipo Entregado al Cliente</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Equipo entregado a domicilio</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cambio de equipo</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Aplica Muerto en Caja</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>No Conforme Aprobado</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Codigo_de_Cierre__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Devolución de dinero</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <triggerOrder>1540</triggerOrder>
+</Flow>

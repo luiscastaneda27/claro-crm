@@ -1,0 +1,53 @@
+<!--
+  @description       : 
+  @author            :
+  @group             : 
+  @last modified on  : 02-28-2024
+  @last modified by  : SALESFORCE
+  Modifications Log
+  Ver   Date         Author                                                Modification
+  1.0   02-20-2024    SALESFORCE     Initial Version
+  2.0   02-28-2024    SALESFORCE     Second Version                           Se incluye la FlexCard para el componente del mensaje <c-cf-p-v-u-message-case-port>
+  2.1   05-09-2024    SALESFORCE     version 2.1                              Se cambia Servicios adicionales para que la condicion de vista sea desde la flexcard
+  2.2   06-11-2024    Luis Mendoza   version 2.2                              Se incluye la FlexCard para mensaje collection <c-cf-p-v-u-message-case-collection>
+  2.3   27-01-2025    Hector Machuca  version 2.2                             Se chainable dentro de las options para el call del IP y se agrega Spinner en html.   
+ -->
+
+
+<template>
+    <template if:true={showSpinner}>
+        <div class="slds-is-relative">
+            <lightning-spinner
+                alternative-text="Loading"
+                size="x-small"
+            ></lightning-spinner>
+        </div>
+    </template>
+    <lightning-layout multiple-rows>        
+            <template for:each={assetList} for:item="item" for:index="index">
+            <lightning-layout-item size="12" key={item.AssetId} padding="around-small" class="item-style-custom">
+                <c-cf-p-v-u-message-case-port if:true={item.haveCasesPort} ></c-cf-p-v-u-message-case-port>
+                <c-cf-p-v-u-message-case-collection  if:true={item.AssetcollectionFlag} ></c-cf-p-v-u-message-case-collection>
+                <lightning-card  variant="Narrow"  title={item.AssetName} icon-name="custom:custom28"> 
+                    <lightning-tabset>
+                        <lightning-tab label="Información">               
+                            <c-cf-p-v-u-services-information record-id={item.AssetId} ></c-cf-p-v-u-services-information> 
+                        </lightning-tab>
+                        <lightning-tab label="Servicios Adicionales" >              
+                            <c-cf-p-v-u-additional-services cf-is-assigne-user={isAssignUser} cf-is-addition-services-active={item.isAdditionalServices} cf-have-cases-port={item.haveCasesPort}  cf-asset-id={item.AssetId} cf-asset-reference={item.AssetParent} cf-phone-number={item.AssetMin} cf-asset-status={item.AssetStatus} cf-paquetes-roaming={item.PaquetesRoaming} ></c-cf-p-v-u-additional-services>
+                        </lightning-tab>
+                        <lightning-tab label="Funcionalidades y Bloqueos">                   
+                            <c-cf-p-v-u-gestionar-funcionalidades  cf-is-assigne-user={isAssignUser} record-id={item.RootItemId} cf-asset-status={item.AssetStatus} cf-have-cases-port={item.haveCasesPort} cf-asset-id={item.AssetId} cf-account-id={item.AssetAccountId}></c-cf-p-v-u-gestionar-funcionalidades>
+                        </lightning-tab>
+                        <lightning-tab label="Gestiones">                        
+                            <c-cf-p-v-u-f-c-gestiones-servicios cf-is-assigne-user={isAssignUser} record-id={item.AssetId} cf-min={item.AssetMin}  cf-account-id={item.AssetAccountId} cf-imei={item.AssetImei} cf-imsi={item.AssetIMSI} cf-asset-status={item.AssetStatus} cf-have-cases-port={item.haveCasesPort} cf-asset-reference={item.AssetParent}></c-cf-p-v-u-f-c-gestiones-servicios>
+                        </lightning-tab>
+                        <lightning-tab label="Promociones">                        
+                            <c-cf-p-v-u-promociones cf-is-assigne-user={isAssignUser} cf-is-addition-services-active={item.isAdditionalServices} cf-have-cases-port={item.haveCasesPort}  cf-asset-id={item.AssetId} cf-asset-reference={item.AssetParent} cf-phone-number={item.AssetMin} cf-asset-status={item.AssetStatus}  ></c-cf-p-v-u-promociones>
+                        </lightning-tab>
+                    </lightning-tabset>
+                </lightning-card> 
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>          
+</template>

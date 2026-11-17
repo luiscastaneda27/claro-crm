@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Guarda la cantidad de promociones asociadas con el order item</description>
+        <name>Almacenar_cantidad_de_Promociones</name>
+        <label>Almacenar cantidad de Promociones</label>
+        <locationX>380</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>CantidadPromociones</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>PromocionesDelOrderItem</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Inicializa_lista_de_Order_Applied_Promotion_Ids</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Se guarda el OrderAppliedPromotionId en el record variable</description>
+        <name>Guardar_OrderAppliedPromotionIds</name>
+        <label>Guardar OrderAppliedPromotionIds</label>
+        <locationX>270</locationX>
+        <locationY>971</locationY>
+        <assignmentItems>
+            <assignToReference>ListadoDeClasesDeBeneficioPromociones</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Guardar_la_lista_de_OrderAppliedPromotion_IDs.vlocity_cmt__OrderAppliedPromotionId__r.vlocity_cmt__PromotionId__r.CAT_PromotionClass__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Guardar_la_lista_de_OrderAppliedPromotion_IDs</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Inicializa_lista_de_Order_Applied_Promotion_Ids</name>
+        <label>Inicializa lista de Order Applied Promotion Ids</label>
+        <locationX>380</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>ListadoDeClasesDeBeneficioPromociones</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Order_Item_tiene_promocion</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Lee el ID que se está insertando como Relies-On</description>
+        <name>Leer_ReliesOn_ID</name>
+        <label>Leer ReliesOn ID</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <assignmentItems>
+            <assignToReference>orderItemReliesOnId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.vlocity_cmt__ReliesOnItemId__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Obtener_promociones_de_order_item</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Evalúa si alguna de las promociones asociadas al order item es de clase Bundle</description>
+        <name>alguna_promocion_es_bundle</name>
+        <label>Alguna Promoción es Bundle?</label>
+        <locationX>182</locationX>
+        <locationY>1163</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Alguna_promocion_si_es_Bundle</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ListadoDeClasesDeBeneficioPromociones</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Bundle</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Actualizar_Agrupar_Factura_en_AddOn</targetReference>
+            </connector>
+            <label>Si</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Se evalúa si el order item está asociado con una promoción aplicada a la orden</description>
+        <name>Order_Item_tiene_promocion</name>
+        <label>Order Item tiene promoción?</label>
+        <locationX>380</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>No tiene promociones asociadas</defaultConnectorLabel>
+        <rules>
+            <name>Si_tiene_promociones_asociadas</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CantidadPromociones</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Guardar_la_lista_de_OrderAppliedPromotion_IDs</targetReference>
+            </connector>
+            <label>Si tiene promociones asociadas</label>
+        </rules>
+    </decisions>
+    <description>Este flujo marca el campo CAT_GroupCharges__c con true en los order items asociados a una promoción de clase Bundle cuando esta se agrega a una orden.</description>
+    <environments>Default</environments>
+    <interviewLabel>CAT Marca Campo Agrupar Factura {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CAT Marca Campo Agrupar CFM</label>
+    <loops>
+        <description>Hace un ciclo sobre las promociones asociadas a un Order Item y almacena una lista con los IDs de Order Applied Promotion que luego será utilizada para consultar información de las promociones.</description>
+        <name>Guardar_la_lista_de_OrderAppliedPromotion_IDs</name>
+        <label>Guardar la lista de OrderAppliedPromotion IDs</label>
+        <locationX>182</locationX>
+        <locationY>863</locationY>
+        <collectionReference>PromocionesDelOrderItem</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Guardar_OrderAppliedPromotionIds</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>alguna_promocion_es_bundle</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Consulta las promociones asociadas al order item que disparó el flujo</description>
+        <name>Obtener_promociones_de_order_item</name>
+        <label>Obtener promociones de order item</label>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Almacenar_cantidad_de_Promociones</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>vlocity_cmt__OrderItemId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <object>vlocity_cmt__OrderAppliedPromotionItem__c</object>
+        <outputReference>PromocionesDelOrderItem</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>vlocity_cmt__OrderAppliedPromotionId__c</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <name>Actualizar_Agrupar_Factura_en_AddOn</name>
+        <label>Actualizar Agrupar Factura en AddOn</label>
+        <locationX>50</locationX>
+        <locationY>1271</locationY>
+        <connector>
+            <targetReference>Actualizar_Agrupar_Factura_en_Plan</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>CAT_GroupCharges__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Actualiza el campo CAT_GroupCharges__c con true en el order item correspondiente al plan que está relacionado con el Add On que disparó el flujo</description>
+        <name>Actualizar_Agrupar_Factura_en_Plan</name>
+        <label>Actualizar Agrupar Factura en Plan</label>
+        <locationX>50</locationX>
+        <locationY>1379</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>vlocity_cmt__AssetReferenceId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.vlocity_cmt__ReliesOnItemId__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CAT_GroupCharges__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>OrderItem</object>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Leer_ReliesOn_ID</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>vlocity_cmt__ReliesOnItemId__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>OrderItem</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Almacena la cantidad de promociones asociadas al order item</description>
+        <name>CantidadPromociones</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Almacena la lista de clases de beneficio de las promociones asociadas a los order items</description>
+        <name>ListadoDeClasesDeBeneficioPromociones</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Almacena la lista de Order Applied Promotion IDs</description>
+        <name>OrderAppliedPromotionIDs</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>orderItemReliesOnId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Almacena las promociones asociadas al order item</description>
+        <name>PromocionesDelOrderItem</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>vlocity_cmt__OrderAppliedPromotionItem__c</objectType>
+    </variables>
+</Flow>

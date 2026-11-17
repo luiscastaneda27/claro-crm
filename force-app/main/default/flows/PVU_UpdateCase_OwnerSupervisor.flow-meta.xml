@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>actualizar el propietario del caso para que sea el supervisor del propietario del caso actual, V4 Devo SubEstada Cambio. Supervisor When voz Devol Dinero Efectivo o Reverso de Page</description>
+    <environments>Default</environments>
+    <interviewLabel>PVU_UpdateCase_OwnerSupervisor {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PVU_UpdateCase_OwnerSupervisor</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Devolucion_Efectivo_EnCurso</name>
+        <label>Devolucion Efectivo EnCurso</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <connector>
+            <targetReference>UpdateOwnerSupervisor</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Devolución dinero en efectivo</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>En curso</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Pendiente de aprobación</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Estado_De_Caja</name>
+        <label>Estado De Caja</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <connector>
+            <targetReference>Devolucion_Efectivo_EnCurso</targetReference>
+        </connector>
+        <filterLogic>1</filterLogic>
+        <filters>
+            <field>PVU_EstadoCaja__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Caja abierta</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Pendiente de aprobación</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>actualizar propietario a supervisor de el dueño de el caso recién</description>
+        <name>UpdateOwnerSupervisor</name>
+        <label>UpdateOwnerSuperisor</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>PVU_Sub_Estado__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Pendiente de aprobación</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Devolución dinero en efectivo</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PVU_Level3__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Reverso de pago</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.ManagerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Estado_De_Caja</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>En curso</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <triggerOrder>1480</triggerOrder>
+</Flow>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>StatusUpdate</name>
+        <label>StatusUpdate</label>
+        <locationX>768</locationX>
+        <locationY>423</locationY>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>AssignarSerial</name>
+            <conditionLogic>1 OR 2 OR 3 OR 4</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.FVU_ProductDeliveryStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>AssignSerial</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.CAT_ProductType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>eSIM</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Order.FVU_PurchaseType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>MIG</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.FVU_ProductDeliveryStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>assignedSerial</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_and_Send_PinLink</targetReference>
+            </connector>
+            <label>AssignarSerial</label>
+        </rules>
+        <rules>
+            <name>SinInventario</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.FVU_ProductDeliveryStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>OutOfStock</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateOrder</targetReference>
+            </connector>
+            <label>SinInventario</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Update_and_Send_PinLink</name>
+        <label>Update and Send PinLink</label>
+        <locationX>448</locationX>
+        <locationY>525</locationY>
+        <defaultConnector>
+            <targetReference>Update_Order_Status</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Cargo_a_la_Factura</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Order.FVU_PaymentMethod__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Cargo a la factura</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Records_Cargo_Factura</targetReference>
+            </connector>
+            <label>Cargo a la Factura</label>
+        </rules>
+    </decisions>
+    <description>BUG 763286 R6-E2E-COBRANZA FIANZA -Al realizar una venta financiada, queda en proceso de pago</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>AmountToPay</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.Order.FVU_EffectiveOneTimeIncTaxesTotal__c} &lt; 0, &quot;(&quot;, &quot;&quot;) &amp; &quot;COP &quot; &amp; 
+IF(ABS({!$Record.Order.FVU_EffectiveOneTimeIncTaxesTotal__c}) &gt;= 1000000000, TEXT(FLOOR(ABS({!$Record.Order.FVU_EffectiveOneTimeIncTaxesTotal__c}) / 1000000000)) &amp; &quot;.&quot;, &quot;&quot;) &amp;
+IF(ABS({!$Record.Order.FVU_EffectiveOneTimeIncTaxesTotal__c}) &gt;= 1000000, RIGHT(TEXT(FLOOR(ABS({!$Record.Order.FVU_EffectiveOneTimeIncTaxesTotal__c}) / 1000000)), 3) &amp; &quot;.&quot;, &quot;&quot;) &amp; 
+IF(ABS({!$Record.Order.FVU_EffectiveOneTimeIncTaxesTotal__c}) &gt;= 1000, RIGHT(TEXT(FLOOR(ABS({!$Record.Order.FVU_EffectiveOneTimeIncTaxesTotal__c}) / 1000)), 3) &amp; &quot;.&quot;, &quot;&quot;) &amp; RIGHT(TEXT(FLOOR(ABS({!$Record.Order.FVU_EffectiveOneTimeIncTaxesTotal__c}))), 3) &amp; IF({!$Record.Order.FVU_EffectiveOneTimeIncTaxesTotal__c}&lt; 0, &quot;)&quot;, &quot;&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>RequestContentMail</name>
+        <dataType>String</dataType>
+        <expression>&quot;Estimado cliente, &lt;br&gt;&lt;br&gt; Claro le informa que su PIN de pago es el &quot;&amp; {!$Record.Order.FVU_CodigoPago__c} &amp;&quot; por valor de &quot;&amp;  {!AmountToPay} &amp;&quot; con fecha límite &quot;&amp; 
+ TEXT( DAY( DATEVALUE({!$Record.Order.FVU_FechaVigencia__c}))) &amp;&quot;/&quot;&amp; TEXT( MONTH( DATEVALUE({!$Record.Order.FVU_FechaVigencia__c}))) &amp;&quot;/&quot;&amp;
+ TEXT( YEAR( DATEVALUE({!$Record.Order.FVU_FechaVigencia__c}))) &amp;&quot;  &lt;a href=&apos;&quot;&amp; {!RequestPaymentURL} &amp;&quot;&apos;&gt;&quot;&amp; {!RequestPaymentURL} &amp;&quot;&lt;/a&gt;&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>RequestMessageType</name>
+        <dataType>String</dataType>
+        <expression>IF( {!SendSMS} &amp;&amp; {!SendEmail}, &quot;ToAll&quot;, IF({!SendSMS}, &quot;SMS&quot;, IF({!SendEmail},  &quot;SMTP&quot;, NULL)))</expression>
+    </formulas>
+    <formulas>
+        <name>ResquestContentSMS</name>
+        <dataType>String</dataType>
+        <expression>&quot;Estimado cliente, Claro le informa que su PIN de pago es el &quot;&amp; {!$Record.Order.FVU_CodigoPago__c} &amp;&quot; por valor de &quot;&amp; {!AmountToPay}  &amp;&quot; con fecha límite &quot;&amp; 
+ TEXT( DAY( DATEVALUE({!$Record.Order.FVU_FechaVigencia__c}))) &amp;&quot;/&quot;&amp; TEXT( MONTH( DATEVALUE({!$Record.Order.FVU_FechaVigencia__c}))) &amp;&quot;/&quot;&amp;
+ TEXT( YEAR( DATEVALUE({!$Record.Order.FVU_FechaVigencia__c}))) &amp;&quot; &quot;&amp; {!RequestPaymentURL}</expression>
+    </formulas>
+    <formulas>
+        <name>SendEmail</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( INCLUDES({!$Record.Order.FVU_MedioEnvio__c}, &quot;Correo Electrónico&quot;),  true , false)</expression>
+    </formulas>
+    <formulas>
+        <name>SendSMS</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( INCLUDES({!$Record.Order.FVU_MedioEnvio__c}, &quot;SMS&quot;),  true , false)</expression>
+    </formulas>
+    <interviewLabel>FVU Update Order Status InPayment {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>FVU Update Order Status</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Order_Status</name>
+        <label>Update Order Status</label>
+        <locationX>578</locationX>
+        <locationY>635</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>FVU_PurchaseType__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>FIN</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>InPayment</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Order</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Records_Cargo_Factura</name>
+        <label>Update Records Cargo Factura</label>
+        <locationX>314</locationX>
+        <locationY>635</locationY>
+        <inputAssignments>
+            <field>FVU_PaymentDate__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FVU_PaymentStatus__c</field>
+            <value>
+                <stringValue>PE</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Order</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateOrder</name>
+        <label>UpdateOrder</label>
+        <locationX>842</locationX>
+        <locationY>526</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrada Perdida</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Order</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>(NOT(ISNULL({!$Record.Order.FVU_OrderOMSId__c})) &amp;&amp; ISPICKVAL({!$Record.FVU_ProductDeliveryStatus__c}, &quot;AssignSerial&quot;) ) 
+|| 
+(ISPICKVAL({!$Record.Order.FVU_OrderDeliveryStatus__c}, &quot;PendingOMSNotification&quot;) &amp;&amp; ISPICKVAL({!$Record.FVU_ProductDeliveryStatus__c}, &quot;WithoutLogistics&quot;) &amp;&amp; 
+(INCLUDES({!$Record.Order.FVU_PurchaseType__c}, &quot;MIG&quot;) ||  {!$Record.CAT_ProductType__c} == &quot;eSIM&quot;) )
+||
+(ISPICKVAL({!$Record.FVU_ProductDeliveryStatus__c}, &quot;assignedSerial&quot;))</filterFormula>
+        <object>OrderItem</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>StatusUpdate</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>currentItem_Has_Pending_Items</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OrderItem</objectType>
+    </variables>
+    <variables>
+        <name>currentItemFromSourceCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OrderItem</objectType>
+    </variables>
+    <variables>
+        <name>notUpdate</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>RecordTypeId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>RequestDescription</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Notificación de Pin/Link de pago</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>RequestEmail</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.Order.Account.FVU_Email__c</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>RequestPaymentURL</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>RequestPhone</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.Order.Account.Phone</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>RequestSubject</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Notificación de Pin/Link de pago</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>ResponseNotifications</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ResponseSMTP</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>SendNotificationResult</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

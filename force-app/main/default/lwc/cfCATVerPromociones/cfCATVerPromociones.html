@@ -1,0 +1,61 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative ">
+            <div style="position: fixed;z-index: 999999;top: 0;right: 0;">
+  <vlocity_cmt-toast class="flexcard-toast-element" theme="slds" title="" message="" styletype=""> </vlocity_cmt-toast>
+</div>
+            <div if:true={showLoader} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: transparent; z-index: 99;">
+  <div>
+   <vlocity_cmt-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></vlocity_cmt-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                      <vlocity_cmt-flex-card-state   data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><vlocity_cmt-output-field data-style-id="state0element0_child"   record={record}  card={card}  merge-field="%3Ch4%20class=%22slds-text-heading_medium%20slds-text-align_center%22%3E%3Cspan%20class=%22slds-text-heading_medium%22%3ENo%20se%20encontraron%20resultados%3C/span%3E%3C/h4%3E%0A%3Cp%20class=%22slds-text-heading_medium%20slds-text-align_center%22%3E%3Cspan%20class=%22slds-text-heading_medium%20slds-text-body_regular%20slds-text-color_default%22%20style=%22font-size:%2012pt;%22%3EEste%20producto%20no%20cuenta%20con%20ninguna%20promoci&oacute;n%20compatible.%3C/span%3E%3C/p%3E"  theme="slds"  ></vlocity_cmt-output-field>
+      </div>
+        </div>
+      </vlocity_cmt-flex-card-state><vlocity_cmt-flex-card-state   data-statue="true"  data-index="1" data-rindex={rindex} class="cf-vlocity-state-1 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state1element0" class="slds-col  slds-text-align_left  slds-size_12-of-12  condition-element" data-rindex={rindex} style="      
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' ><vlocity_cmt-flex-datatable data-style-id="state1element0_child"   record={record}  card={card}  cell-level-edit="true"  columns='\[{"fieldName":"name","label":"Nombre","searchable":true,"sortable":true,"userSelectable":"false","visible":"true"},{"fieldName":"description","label":"Descripción","searchable":true,"sortable":true,"userSelectable":"true","visible":"true"},{"fieldName":"DiscountAmount","label":"Descuento","searchable":true,"sortable":true,"userSelectable":"true","visible":"true"}]'  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  group-order="asc"  issearchavailable="false"  issortavailable="true"  pagelimit="3"  records={records}  search-datatable=""  styles='\{"cellMargin":[],"cellPadding":[]}'  tablename="Promociones"  theme="slds"  ></vlocity_cmt-flex-datatable>
+      </div>
+        </div>
+      </vlocity_cmt-flex-card-state>
+                </template>
+                <template if:false={hasRecords}>
+                      <vlocity_cmt-flex-card-state   data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><vlocity_cmt-output-field data-style-id="state0element0_child"   record={record}  card={card}  merge-field="%3Ch4%20class=%22slds-text-heading_medium%20slds-text-align_center%22%3E%3Cspan%20class=%22slds-text-heading_medium%22%3ENo%20se%20encontraron%20resultados%3C/span%3E%3C/h4%3E%0A%3Cp%20class=%22slds-text-heading_medium%20slds-text-align_center%22%3E%3Cspan%20class=%22slds-text-heading_medium%20slds-text-body_regular%20slds-text-color_default%22%20style=%22font-size:%2012pt;%22%3EEste%20producto%20no%20cuenta%20con%20ninguna%20promoci&oacute;n%20compatible.%3C/span%3E%3C/p%3E"  theme="slds"  ></vlocity_cmt-output-field>
+      </div>
+        </div>
+      </vlocity_cmt-flex-card-state><vlocity_cmt-flex-card-state   data-statue="false"  data-index="1" data-rindex={rindex} class="cf-vlocity-state-1 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state1element0" class="slds-col  slds-text-align_left  slds-size_12-of-12  condition-element" data-rindex={rindex} style="      
+         "  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}' ><vlocity_cmt-flex-datatable data-style-id="state1element0_child"   record={record}  card={card}  cell-level-edit="true"  columns='\[{"fieldName":"name","label":"Nombre","searchable":true,"sortable":true,"userSelectable":"false","visible":"true"},{"fieldName":"description","label":"Descripción","searchable":true,"sortable":true,"userSelectable":"true","visible":"true"},{"fieldName":"DiscountAmount","label":"Descuento","searchable":true,"sortable":true,"userSelectable":"true","visible":"true"}]'  data-conditions='\{"group":[],"id":"state-condition-object","isParent":true}'  group-order="asc"  issearchavailable="false"  issortavailable="true"  pagelimit="3"  records={records}  search-datatable=""  styles='\{"cellMargin":[],"cellPadding":[]}'  tablename="Promociones"  theme="slds"  ></vlocity_cmt-flex-datatable>
+      </div>
+        </div>
+      </vlocity_cmt-flex-card-state>
+                </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <vlocity_cmt-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+      
+      </vlocity_cmt-action>
+  
+            <vlocity_cmt-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+            
+            </vlocity_cmt-action>
+            </div>
+          </template>

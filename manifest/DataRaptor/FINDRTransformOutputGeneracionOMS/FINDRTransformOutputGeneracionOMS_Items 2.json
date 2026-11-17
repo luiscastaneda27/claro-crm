@@ -1,0 +1,1278 @@
+[
+    {
+        "FormulaExpression": "IF(COUNTQUERY(\"SELECT id,%vlocity_namespace%__OrderId__c,%vlocity_namespace%__PromotionId__r.name  from %vlocity_namespace%__OrderAppliedPromotion__c where %vlocity_namespace%__PromotionId__r.CAT_Type__c = 'TodoClaro' and %vlocity_namespace%__PromotionId__r.name <> 'Claro video sin consumo de datos' and %vlocity_namespace%__OrderId__c = '{0}'\", orderId) > 0, \"CCV\", \"\")",
+        "FormulaResultPath": "sapInfo:cust_grp2",
+        "FormulaSequence": 8,
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom2129",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(PurchaseType='FIN' && hasTaxes='true', 1, '')",
+        "FormulaResultPath": "hasTaxesFormulaFin",
+        "FormulaSequence": 7,
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem7",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(hasTaxes, 1, 0)",
+        "FormulaResultPath": "hasTaxesFormula",
+        "FormulaSequence": 1,
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem0",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(items:productInfo:salesProcess <> \"NAP\" && items:productInfo:salesProcess <> \"TEC\", items:simCard , \"\")",
+        "FormulaResultPath": "simCardForm",
+        "FormulaSequence": 5,
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem2",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(orderPaymentMethod == \"Cargo a la factura\", \"1000\", \"1099\" )",
+        "FormulaResultPath": "orderStatusForm",
+        "FormulaSequence": 4,
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem3",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(paymentTypeQuota > 0 && paymentTypeQuota <= 6,'06',IF(paymentTypeQuota > 6 && paymentTypeQuota <= 12, '12', IF(paymentTypeQuota > 12 && paymentTypeQuota <= 18, '18',IF(paymentTypeQuota > 18 && paymentTypeQuota <= 24, '24',IF(paymentTypeQuota > 24 && paymentTypeQuota <= 36, '36', '')))))",
+        "FormulaResultPath": "paymentTypeQuotaForm",
+        "FormulaSequence": 6,
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem1",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "TODAY(YYYY-MM-DD)",
+        "FormulaResultPath": "priceDateForm",
+        "FormulaSequence": 2,
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem5",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "\"00010\"",
+        "FormulaResultPath": "positionFix",
+        "FormulaSequence": 3,
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem6",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem56",
+        "InputFieldName": "customer:href",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:custId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem57",
+        "InputFieldName": "customer:documentNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:docNumber",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem58",
+        "InputFieldName": "customer:documentType",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:docType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem59",
+        "InputFieldName": "customer:email",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:email",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem60",
+        "InputFieldName": "customer:name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:name",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem61",
+        "InputFieldName": "customer:telephone1",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:telephone1",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem62",
+        "InputFieldName": "customer:telephone2",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:telephone2",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem63",
+        "InputFieldName": "customer:title",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "customer:title",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem8",
+        "InputFieldName": "deliveryAddress:addressCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:addressCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem9",
+        "InputFieldName": "deliveryAddress:addressLine",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:addressLine",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem10",
+        "InputFieldName": "deliveryAddress:city",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:city",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem11",
+        "InputFieldName": "deliveryAddress:place",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "deliveryAddress:place",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem12",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "items",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem13",
+        "InputFieldName": "whetherSimChanged",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:extInfor:whetherSimChanged",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem14",
+        "InputFieldName": "items:fulfillGroup",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:fulfillGroup",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem15",
+        "InputFieldName": "deliveryData:PickUpData:pickupPointCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:pickupPointCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem16",
+        "InputFieldName": "positionFix",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:position",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem17",
+        "InputFieldName": "items:price",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:price",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem18",
+        "InputFieldName": "items:prodDelivMethod",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:prodDelivMethod",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem19",
+        "InputFieldName": "items:prodFlowType",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:prodFlowType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem20",
+        "InputFieldName": "items:productInfo:productDescription",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:productInfo:productDescription",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem21",
+        "InputFieldName": "sapId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "items:productInfo:productId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem22",
+        "InputFieldName": "items:productInfo:salesProcess",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:productInfo:salesProcess",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem23",
+        "InputFieldName": "items:productInfo:salesType",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:productInfo:salesType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem24",
+        "InputFieldName": "items:quantity",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Integer",
+        "OutputFieldName": "items:quantity",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem25",
+        "InputFieldName": "deliveryData:PickUpData:selectedPickupDate:avaDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:selectedPickupDate:avaDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem26",
+        "InputFieldName": "simCardForm",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:simCard",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem27",
+        "InputFieldName": "items:storeId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:storeId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem28",
+        "InputFieldName": "items:subtotalAmount",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "items:subtotalAmount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem29",
+        "InputFieldName": "orderAmountSummary:discountAmount",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderAmountSummary:discountAmount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem30",
+        "InputFieldName": "orderAmountSummary:logisticsFee",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderAmountSummary:logisticsFee",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem31",
+        "InputFieldName": "orderAmountSummary:taxFee",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderAmountSummary:taxFee",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem32",
+        "InputFieldName": "orderAmountSummary:totalAmount",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderAmountSummary:totalAmount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem33",
+        "InputFieldName": "channelCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:channelCode",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem34",
+        "InputFieldName": "OrderProductNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:channelOrderNbr",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem35",
+        "InputFieldName": "deliveryType",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:deliveryType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem36",
+        "InputFieldName": "flowType",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:flowType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem37",
+        "InputFieldName": "orderStatus",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:orderStatus",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem38",
+        "InputFieldName": "orderType",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderInfo:orderType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem39",
+        "InputFieldName": "payment",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "payment",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom7454",
+        "InputFieldName": "antiquity",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "sapInfo:antiquity",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem40",
+        "InputFieldName": "OrderProductNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:channelOrderId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem41",
+        "InputFieldName": "hasTaxesFormula",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:clasifFiscal",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom7903",
+        "InputFieldName": "sapInfo:cust_grp2",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:cust_grp2",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem42",
+        "InputFieldName": "Quote:CuotaInicial",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:inicialFee",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem43",
+        "InputFieldName": "hasTaxesFormula",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "sapInfo:isFinancedTax",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem44",
+        "InputFieldName": "paymentTypeQuotaForm",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:payment_type",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem45",
+        "InputFieldName": "priceDateForm",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "sapInfo:priceDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem46",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem47",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:fulfillGroup",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:fulfillGroup",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem48",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "selectedPromise:productList",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem49",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:productList:groupId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:productList:groupId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem50",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:productList:productCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:productList:productCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem51",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:productList:productNum",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:productList:productNum",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem52",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:promiseCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:promiseCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem53",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:promiseEndDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:promiseEndDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem54",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:promiseId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:promiseId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDRTransformOutputGeneracionOMSCustom0jIdm0000000hTBEAYItem55",
+        "InputFieldName": "deliveryData:DeliveryData:selectedPromise:promiseStartDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDRTransformOutputGeneracionOMS",
+        "OmniDataTransformationId": {
+            "Name": "FINDRTransformOutputGeneracionOMS",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDRTransformOutputGeneracionOMS",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "selectedPromise:promiseStartDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

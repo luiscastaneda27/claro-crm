@@ -1,0 +1,667 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "orderId",
+        "GlobalKey": "FIN_GetOrderFianza6969911257362912",
+        "InputFieldName": "Id",
+        "InputObjectName": "Order",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Order",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "orderId",
+        "GlobalKey": "FIN_GetOrderFianza09272524212233035",
+        "InputFieldName": "OrderId",
+        "InputObjectName": "OrderItem",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrderItem",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "CONCAT(\"SE\", formCRMCustomerId)",
+        "FormulaResultPath": "formReference",
+        "FormulaSequence": 2,
+        "GlobalKey": "FIN_GetOrderFianza9699300511714563",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "DESERIALIZE(Order:FVU_DeliveryData__c)",
+        "FormulaResultPath": "Delivery",
+        "FormulaSequence": 3,
+        "GlobalKey": "FIN_GetOrderFianza8086590850272493",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "DESERIALIZE(OrderItem:Product2.%vlocity_namespace%__AttributeDefaultValues__c)",
+        "FormulaResultPath": "formAttributeDefaultValues",
+        "FormulaSequence": 10,
+        "GlobalKey": "FIN_GetOrderFianza7498660724345382",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "Delivery:DeliveryMethod",
+        "FormulaResultPath": "DeliveryType",
+        "FormulaSequence": 4,
+        "GlobalKey": "FIN_GetOrderFianza22406557653282244",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "Delivery:PickUpData:selectedPickupDate:avaDate",
+        "FormulaResultPath": "StartPickUpDate",
+        "FormulaSequence": 6,
+        "GlobalKey": "FIN_GetOrderFianza2893477439530958",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF( DeliveryType= \"Delivery\", SUBSTRING(Delivery:DeliveryData:EndDate,0,4)+\"-\"+SUBSTRING(Delivery:DeliveryData:EndDate,4,6)+\"-\"+SUBSTRING(Delivery:DeliveryData:EndDate,6,8)+\"T\"+SUBSTRING(Delivery:DeliveryData:EndDate,9) , )",
+        "FormulaResultPath": "DeliveryDate",
+        "FormulaSequence": 5,
+        "GlobalKey": "FIN_GetOrderFianza5892171736781752",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF( DeliveryType= \"ImmediatePickUp\", FORMATDATETIME( NOW,\"yyyy-MM-dd'T'HH:mm:ss\"), )",
+        "FormulaResultPath": "ImmediatePickUpDate",
+        "FormulaSequence": 8,
+        "GlobalKey": "FIN_GetOrderFianza552459993243621",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF( DeliveryType= \"PickUp\",SUBSTRING(StartPickUpDate,0,4)+\"-\"+SUBSTRING(StartPickUpDate,4,6)+\"-\"+SUBSTRING(StartPickUpDate,6,8)+\"T00:00:00\" , )",
+        "FormulaResultPath": "PickUpDate",
+        "FormulaSequence": 7,
+        "GlobalKey": "FIN_GetOrderFianza03562342639291294",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF( DeliveryType=\"Delivery\" ,DeliveryDate, IF(DeliveryType=\"ImmediatePickUp\" ,ImmediatePickUpDate  ,IF( DeliveryType=\"PickUp\", PickUpDate, \"AAqui\")))",
+        "FormulaResultPath": "formValidFrom",
+        "FormulaSequence": 9,
+        "GlobalKey": "FIN_GetOrderFianza5436389191787359",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(formType == \"Handset\", VALUELOOKUP(formAttributeDefaultValues, \"B2C-ATTR-MATERIAL-TERM\"),IF(formType == \"Tech\", VALUELOOKUP(formAttributeDefaultValues, \"B2C-ATTR-TEC-MATERIAL\"),IF(formType == \"SIM Card\", VALUELOOKUP(formAttributeDefaultValues, \"B2C-ATTR-SIM-MATERIAL\"), $Vlocity.NULL)))",
+        "FormulaResultPath": "formMaterialId",
+        "FormulaSequence": 12,
+        "GlobalKey": "FIN_GetOrderFianza16262065050630292",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(formType == \"Handset\", \"PO_Terminales\",IF(formType == \"Tech\", \"PO_Tecnologias\", $Vlocity.NULL))",
+        "FormulaResultPath": "formPoId",
+        "FormulaSequence": 14,
+        "GlobalKey": "FIN_GetOrderFianza1346893442792635",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "Order:%vlocity_namespace%__QuoteId__r.FIN_AccountExternalID__c",
+        "FormulaResultPath": "formCustomer93",
+        "FormulaSequence": 13,
+        "GlobalKey": "FIN_GetOrderFianza1510986180104198",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "OrderItem:Product2.%vlocity_namespace%__Type__c",
+        "FormulaResultPath": "formType",
+        "FormulaSequence": 11,
+        "GlobalKey": "FIN_GetOrderFianza07259822319095488",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "SUBSTRING(Order:OrderNumber, 1)",
+        "FormulaResultPath": "formCRMCustomerId",
+        "FormulaSequence": 1,
+        "GlobalKey": "FIN_GetOrderFianza9301940732888572",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza8108078099996967",
+        "InputFieldName": "formCRMCustomerId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "CRMCustomerId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza838041020721052",
+        "InputFieldName": "Order:Account.%vlocity_namespace%__PrimaryContactId__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "ContactId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza6269009976610619",
+        "InputFieldName": "Order:FIN_NumeroCredito__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "NumeroDeCredito",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza3353581699624548",
+        "InputFieldName": "Order:PVU_CaseInfo__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "NumeroDeCuenta",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza5631484266134026",
+        "InputFieldName": "Order:FVU_EffectiveOneTimeIncTaxesTotal__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "PrecioDeVenta",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza9716484862387227",
+        "InputFieldName": "Order:FIN_AlmacenamientoFianzaFallido__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "error:almacenamientoFianzaFallo",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza28004016760918105",
+        "InputFieldName": "Order:FIN_EnrolamientoFallido__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "error:enrolamientoFallo",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza8740258386751067",
+        "InputFieldName": "Order:FIN_UpdateSerial__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "error:errorUpdateCredit",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza49389514123320366",
+        "InputFieldName": "Order:OrderNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderNumber",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza14423420779708007",
+        "InputFieldName": "formPoId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "poId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza3488799530194505",
+        "InputFieldName": "formMaterialId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "profitCenter",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza9140727034467756",
+        "InputFieldName": "formCustomer93",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "publicCustomerId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza5504480897123655",
+        "InputFieldName": "formReference",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "reference",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza654582232920813",
+        "InputFieldName": "formReference",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "reference2",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza6667086490595537",
+        "InputFieldName": "Order:FIN_SimulationId__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "simulationId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "salesforce",
+        "GlobalKey": "FIN_GetOrderFianza3259635410750443",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "username",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetOrderFianza6593315978948048",
+        "InputFieldName": "formValidFrom",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetOrderFianza",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetOrderFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetOrderFianza",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "validFrom",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

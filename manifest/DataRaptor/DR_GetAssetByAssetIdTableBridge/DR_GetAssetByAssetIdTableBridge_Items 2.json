@@ -1,0 +1,247 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "assetId",
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom7901",
+        "InputFieldName": "Id",
+        "InputObjectName": "Asset",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Asset",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(Asset:Product2.Family == \"Accessories\", Asset:PVU_Serial__c, null)",
+        "FormulaResultPath": "Asset:PVUSerial",
+        "FormulaSequence": 3,
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom8320",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(Asset:Product2.Family == \"Device\", Asset:PVU_IMEI__c, null)",
+        "FormulaResultPath": "Asset:IMEI",
+        "FormulaSequence": 2,
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom9585",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(Asset:Product2.Family == \"Device\", \"1\", IF(\r\nAsset:Product2.Family == \"Accessories\",\"2\", IF(\r\nAsset:Product2.Family == \"Mobile\",\"3\",\"\")))",
+        "FormulaResultPath": "Asset:ProductFamily",
+        "FormulaSequence": 1,
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom8915",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "N",
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom9660",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "estado",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom1317",
+        "InputFieldName": "Asset:CreatedDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "fechaRegistro",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom7261",
+        "InputFieldName": "Asset:AccountId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "idCliente",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "\"\"",
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom9615",
+        "InputFieldName": "Asset:IMEI",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "imei",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom5854",
+        "InputFieldName": "Asset:Account.FVU_DocumentNumber__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "numDoc",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "\"\"",
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom9345",
+        "InputFieldName": "Asset:PVU_Serial__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "serial",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom259",
+        "InputFieldName": "Asset:Account.FVU_DocumentType__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "tipoDoc",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{\"CC\":\"1\",\"NI\":\"2\",\"NE\":\"3\",\"CE\":\"4\",\"PP\":\"5\",\"CD\":\"6\",\"TI\":\"7\",\"TE\":\"8\",\"RN\":\"9\",\"SI\":\"10\",\"PEP\":\"11\"}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "DR_GetAssetByAssetIdTableBridgeCustom2732",
+        "InputFieldName": "Asset:ProductFamily",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "DR_GetAssetByAssetIdTableBridge",
+        "OmniDataTransformationId": {
+            "Name": "DR_GetAssetByAssetIdTableBridge",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/DR_GetAssetByAssetIdTableBridge",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "tipoReg",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

@@ -1,0 +1,91 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative ">
+            <div style="position: fixed;z-index: 999999;top: 0;right: 0;">
+  <vlocity_cmt-toast class="flexcard-toast-element" theme="slds" title="" message="" styletype=""> </vlocity_cmt-toast>
+</div>
+            <div if:true={showLoader} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: transparent; z-index: 99;">
+  <div>
+   <vlocity_cmt-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></vlocity_cmt-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                        <template for:each={_records} for:item="record" for:index="rindex">
+                            <vlocity_cmt-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-size_7-of-12 " data-rindex={rindex} style="" >
+    <vlocity_cmt-custom-lwc-wrapper class="" element-name="c-fvu_show-toast" property='\{}' data-rindex={rindex} records={records} record={record} record-id={recordId} card={card} ><c-fvu_show-toast  ></c-fvu_show-toast></vlocity_cmt-custom-lwc-wrapper>
+    </div><div data-style-id="state0element1" class="slds-col   slds-p-around_x-small slds-size_7-of-12  " data-rindex={rindex} style="" >
+    <vlocity_cmt-block data-style-id="state0element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element1block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="" ><vlocity_cmt-output-field data-style-id="state0element1block_element0_child"   record={record}  card={card}  merge-field="%3Cdiv%20class=%22slds-text-align_left%22%3E%3Cspan%20style=%22font-size:%2014pt;%22%3E%3Cstrong%3E&iquest;Est&aacute;%20seguro%20de%20borrar%20la%20promoci&oacute;n%20del%20carrito?%3C/strong%3E%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_cmt-output-field>
+      </div><div data-style-id="state0element1block_element1" class="slds-col   slds-p-around_x-small slds-size_6-of-12  " data-rindex={rindex} style="" >
+    <vlocity_cmt-block data-style-id="state0element1block_element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element1block_element1block_element0" class="slds-col   slds-size_5-of-12  " data-rindex={rindex} style="" ><vlocity_cmt-flex-action data-style-id="state0element1block_element1block_element0_child"  tracking-obj={_childCardTrackingObj}  class= "state0element1block_element1block_element0_child flexActionElement" 
+        data-action-element-class="state0element1block_element1block_element0_child" data-action-key="state0element1block_element1block_element0" onexecuteaction={performAction} data-show-spinner="false"
+        data-element-label="action2"   state-obj={record}  record={record}  card={card}  action-list='\[{"actionIndex":1,"card":"{card}","draggable":true,"isOpen":false,"key":"1745983408735-ipcl5roqs","label":"Toast Info Message","stateAction":{"displayName":"Action","eventName":"fvushowtoastchannel","extraParams":{"message":"Borrando {name}...","mode":"dismissible","title":"Info","variant":"info"},"hasExtraParams":true,"id":"flex-action-1745983583162","message":"data","openUrlIn":"Current Window","subType":"PubSub","type":"Event","vlocityIcon":"standard-default"}},{"actionIndex":1,"card":"{card}","draggable":true,"isOpen":true,"key":"1745983633321-oe1ch9okm","label":"Borrar Promocion","stateAction":{"Web Page":{"targetName":"/apex"},"displayName":"Action","id":"flex-action-1745995502351","message":"{\"type\":\"IntegrationProcedures\",\"value\":{\"dsDelay\":\"\",\"ipMethod\":\"CAT_BorradoPromociones\",\"vlocityAsync\":false,\"inputMap\":{\"orderAppliedPromoId\":\"{Id.value}\",\"cartId\":\"{Parent.cartId}\",\"promoId\":\"{vlocity_cmt__PromotionId__c.value}\"},\"jsonMap\":\"{\\\"Id.value\\\":\\\"{Id.value}\\\",\\\"Parent.cartId\\\":\\\"{Parent.cartId}\\\",\\\"vlocity_cmt__PromotionId__c.value\\\":\\\"{vlocity_cmt__PromotionId__c.value}\\\"}\"},\"orderBy\":{\"name\":\"\",\"isReverse\":\"\"},\"contextVariables\":[{\"name\":\"Id.value\",\"val\":\"\",\"id\":1},{\"name\":\"Parent.cartId\",\"val\":\"\",\"id\":3},{\"name\":\"vlocity_cmt__PromotionId__c.value\",\"val\":\"\",\"id\":5}]}","openUrlIn":"Current Window","responseNode":"DeletePromoResponse","targetType":"Web Page","type":"DataAction","vlocityIcon":"standard-default"}},{"actionIndex":2,"card":"{card}","draggable":true,"isOpen":false,"key":"1745983838845-p9ee7vf0n","label":"Actualizar carrito","stateAction":{"displayName":"Action","eventName":"cpq_{recordId}","extraParams":{"cartType":"cart","input":"{\"validate\":\"false\",\"price\":\"true\",\"ipMethod\":\"\",\"pagesize\":\"10\"}","ipMethod":"CPQ_GetCartSummary","methodName":"getCartItems","responseActionEventName":""},"hasExtraParams":true,"id":"flex-action-1745983906897","message":"cpq_ui_event","openUrlIn":"Current Window","subType":"PubSub","type":"Event","vlocityIcon":"standard-default"}},{"actionIndex":3,"card":"{card}","draggable":true,"isOpen":true,"key":"1745983996078-4a6mvfjt5","label":"Toast Success Message","stateAction":{"actionConditions":{"group":[{"field":"DeletePromoResponse.error","hasMergeField":false,"id":"state-new-condition-9","operator":"==","type":"custom","value":"OK"}],"id":"state-condition-object","isParent":true},"displayName":"Action","eventName":"fvushowtoastchannel","extraParams":{"message":"{name} borrado exitosamente","mode":"dismissible","title":"Éxito","variant":"success"},"hasExtraParams":true,"id":"flex-action-1745995522685","message":"data","openUrlIn":"Current Window","subType":"PubSub","type":"Event","vlocityIcon":"standard-default"}},{"actionIndex":4,"card":"{card}","draggable":true,"isOpen":true,"key":"1745984179796-4e1qzqkq8","label":"Toast Failure Message","stateAction":{"actionConditions":{"group":[{"field":"DeletePromoResponse.error","hasMergeField":false,"id":"state-new-condition-0","operator":"!=","type":"custom","value":"OK"}],"id":"state-condition-object","isParent":true},"displayName":"Action","eventName":"fvushowtoastchannel","extraParams":{"message":"{DeletePromoResponse.errorCode}","mode":"dismissible","title":"Error","variant":"error"},"hasExtraParams":true,"id":"flex-action-1745995638499","message":"data","openUrlIn":"Current Window","subType":"PubSub","type":"Event","vlocityIcon":"standard-default"}}]'  button-variant="brand"  display-as-button="true"  flyout-details='\{}'  hide-action-icon="true"  icon-name="standard-default"  label="Sí"  theme="slds"  ></vlocity_cmt-flex-action>
+      </div>
+        </div></vlocity_cmt-block>
+    </div><div data-style-id="state0element1block_element2" class="slds-col   slds-p-around_x-small slds-size_6-of-12  " data-rindex={rindex} style="" >
+    <vlocity_cmt-block data-style-id="state0element1block_element2_child"  record={record}  card={card}  action='\null'  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element1block_element2block_element0" class="slds-col   slds-size_7-of-12  " data-rindex={rindex} style="" ><vlocity_cmt-flex-action data-style-id="state0element1block_element2block_element0_child"  tracking-obj={_childCardTrackingObj}  class= "state0element1block_element2block_element0_child flexActionElement" 
+        data-action-element-class="state0element1block_element2block_element0_child" data-action-key="state0element1block_element2block_element0" onexecuteaction={performAction} data-show-spinner="false"
+        data-element-label="action3"   state-obj={record}  record={record}  card={card}  action-list='\[{"actionIndex":0,"draggable":true,"isOpen":true,"key":"1745971497424-nq1gbxshz","label":"Action","stateAction":{"Web Page":{"targetName":"/apex"},"eventName":"remove","id":"flex-action-1745971507920","openUrlIn":"Current Window","targetType":"Web Page","type":"cardAction"}}]'  aria-label="No"  button-variant="brand"  display-as-button="true"  flyout-details='\{}'  hide-action-icon="true"  icon-name="standard-default"  label="No"  theme="slds"  ></vlocity_cmt-flex-action>
+      </div>
+        </div></vlocity_cmt-block>
+    </div>
+        </div></vlocity_cmt-block>
+    </div>
+        </div>
+      </vlocity_cmt-flex-card-state>
+                        </template>
+                      </template>
+                      <template if:false={hasRecords}>
+                            <vlocity_cmt-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-size_7-of-12 " data-rindex={rindex} style="" >
+    <vlocity_cmt-custom-lwc-wrapper class="" element-name="c-fvu_show-toast" property='\{}' data-rindex={rindex} records={records} record={record} record-id={recordId} card={card} ><c-fvu_show-toast  ></c-fvu_show-toast></vlocity_cmt-custom-lwc-wrapper>
+    </div><div data-style-id="state0element1" class="slds-col   slds-p-around_x-small slds-size_7-of-12  " data-rindex={rindex} style="" >
+    <vlocity_cmt-block data-style-id="state0element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element1block_element0" class="slds-col   slds-size_12-of-12  " data-rindex={rindex} style="" ><vlocity_cmt-output-field data-style-id="state0element1block_element0_child"   record={record}  card={card}  merge-field="%3Cdiv%20class=%22slds-text-align_left%22%3E%3Cspan%20style=%22font-size:%2014pt;%22%3E%3Cstrong%3E&iquest;Est&aacute;%20seguro%20de%20borrar%20la%20promoci&oacute;n%20del%20carrito?%3C/strong%3E%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_cmt-output-field>
+      </div><div data-style-id="state0element1block_element1" class="slds-col   slds-p-around_x-small slds-size_6-of-12  " data-rindex={rindex} style="" >
+    <vlocity_cmt-block data-style-id="state0element1block_element1_child"  record={record}  card={card}  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element1block_element1block_element0" class="slds-col   slds-size_5-of-12  " data-rindex={rindex} style="" ><vlocity_cmt-flex-action data-style-id="state0element1block_element1block_element0_child"  tracking-obj={_childCardTrackingObj}  class= "state0element1block_element1block_element0_child flexActionElement" 
+        data-action-element-class="state0element1block_element1block_element0_child" data-action-key="state0element1block_element1block_element0" onexecuteaction={performAction} data-show-spinner="false"
+        data-element-label="action2"   state-obj={record}  record={record}  card={card}  action-list='\[{"actionIndex":1,"card":"{card}","draggable":true,"isOpen":false,"key":"1745983408735-ipcl5roqs","label":"Toast Info Message","stateAction":{"displayName":"Action","eventName":"fvushowtoastchannel","extraParams":{"message":"Borrando {name}...","mode":"dismissible","title":"Info","variant":"info"},"hasExtraParams":true,"id":"flex-action-1745983583162","message":"data","openUrlIn":"Current Window","subType":"PubSub","type":"Event","vlocityIcon":"standard-default"}},{"actionIndex":1,"card":"{card}","draggable":true,"isOpen":true,"key":"1745983633321-oe1ch9okm","label":"Borrar Promocion","stateAction":{"Web Page":{"targetName":"/apex"},"displayName":"Action","id":"flex-action-1745995502351","message":"{\"type\":\"IntegrationProcedures\",\"value\":{\"dsDelay\":\"\",\"ipMethod\":\"CAT_BorradoPromociones\",\"vlocityAsync\":false,\"inputMap\":{\"orderAppliedPromoId\":\"{Id.value}\",\"cartId\":\"{Parent.cartId}\",\"promoId\":\"{vlocity_cmt__PromotionId__c.value}\"},\"jsonMap\":\"{\\\"Id.value\\\":\\\"{Id.value}\\\",\\\"Parent.cartId\\\":\\\"{Parent.cartId}\\\",\\\"vlocity_cmt__PromotionId__c.value\\\":\\\"{vlocity_cmt__PromotionId__c.value}\\\"}\"},\"orderBy\":{\"name\":\"\",\"isReverse\":\"\"},\"contextVariables\":[{\"name\":\"Id.value\",\"val\":\"\",\"id\":1},{\"name\":\"Parent.cartId\",\"val\":\"\",\"id\":3},{\"name\":\"vlocity_cmt__PromotionId__c.value\",\"val\":\"\",\"id\":5}]}","openUrlIn":"Current Window","responseNode":"DeletePromoResponse","targetType":"Web Page","type":"DataAction","vlocityIcon":"standard-default"}},{"actionIndex":2,"card":"{card}","draggable":true,"isOpen":false,"key":"1745983838845-p9ee7vf0n","label":"Actualizar carrito","stateAction":{"displayName":"Action","eventName":"cpq_{recordId}","extraParams":{"cartType":"cart","input":"{\"validate\":\"false\",\"price\":\"true\",\"ipMethod\":\"\",\"pagesize\":\"10\"}","ipMethod":"CPQ_GetCartSummary","methodName":"getCartItems","responseActionEventName":""},"hasExtraParams":true,"id":"flex-action-1745983906897","message":"cpq_ui_event","openUrlIn":"Current Window","subType":"PubSub","type":"Event","vlocityIcon":"standard-default"}},{"actionIndex":3,"card":"{card}","draggable":true,"isOpen":true,"key":"1745983996078-4a6mvfjt5","label":"Toast Success Message","stateAction":{"actionConditions":{"group":[{"field":"DeletePromoResponse.error","hasMergeField":false,"id":"state-new-condition-9","operator":"==","type":"custom","value":"OK"}],"id":"state-condition-object","isParent":true},"displayName":"Action","eventName":"fvushowtoastchannel","extraParams":{"message":"{name} borrado exitosamente","mode":"dismissible","title":"Éxito","variant":"success"},"hasExtraParams":true,"id":"flex-action-1745995522685","message":"data","openUrlIn":"Current Window","subType":"PubSub","type":"Event","vlocityIcon":"standard-default"}},{"actionIndex":4,"card":"{card}","draggable":true,"isOpen":true,"key":"1745984179796-4e1qzqkq8","label":"Toast Failure Message","stateAction":{"actionConditions":{"group":[{"field":"DeletePromoResponse.error","hasMergeField":false,"id":"state-new-condition-0","operator":"!=","type":"custom","value":"OK"}],"id":"state-condition-object","isParent":true},"displayName":"Action","eventName":"fvushowtoastchannel","extraParams":{"message":"{DeletePromoResponse.errorCode}","mode":"dismissible","title":"Error","variant":"error"},"hasExtraParams":true,"id":"flex-action-1745995638499","message":"data","openUrlIn":"Current Window","subType":"PubSub","type":"Event","vlocityIcon":"standard-default"}}]'  button-variant="brand"  display-as-button="true"  flyout-details='\{}'  hide-action-icon="true"  icon-name="standard-default"  label="Sí"  theme="slds"  ></vlocity_cmt-flex-action>
+      </div>
+        </div></vlocity_cmt-block>
+    </div><div data-style-id="state0element1block_element2" class="slds-col   slds-p-around_x-small slds-size_6-of-12  " data-rindex={rindex} style="" >
+    <vlocity_cmt-block data-style-id="state0element1block_element2_child"  record={record}  card={card}  action='\null'  collapsed-by-default="false"  collapsible="false"  label="Block"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element1block_element2block_element0" class="slds-col   slds-size_7-of-12  " data-rindex={rindex} style="" ><vlocity_cmt-flex-action data-style-id="state0element1block_element2block_element0_child"  tracking-obj={_childCardTrackingObj}  class= "state0element1block_element2block_element0_child flexActionElement" 
+        data-action-element-class="state0element1block_element2block_element0_child" data-action-key="state0element1block_element2block_element0" onexecuteaction={performAction} data-show-spinner="false"
+        data-element-label="action3"   state-obj={record}  record={record}  card={card}  action-list='\[{"actionIndex":0,"draggable":true,"isOpen":true,"key":"1745971497424-nq1gbxshz","label":"Action","stateAction":{"Web Page":{"targetName":"/apex"},"eventName":"remove","id":"flex-action-1745971507920","openUrlIn":"Current Window","targetType":"Web Page","type":"cardAction"}}]'  aria-label="No"  button-variant="brand"  display-as-button="true"  flyout-details='\{}'  hide-action-icon="true"  icon-name="standard-default"  label="No"  theme="slds"  ></vlocity_cmt-flex-action>
+      </div>
+        </div></vlocity_cmt-block>
+    </div>
+        </div></vlocity_cmt-block>
+    </div>
+        </div>
+      </vlocity_cmt-flex-card-state>
+                      </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <vlocity_cmt-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+      
+      </vlocity_cmt-action>
+  
+            <vlocity_cmt-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+            
+            </vlocity_cmt-action>
+            </div>
+          </template>

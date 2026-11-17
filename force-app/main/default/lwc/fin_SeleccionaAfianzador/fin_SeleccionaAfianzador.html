@@ -1,0 +1,172 @@
+<!--
+  @description       : HTML que muestra los afianzadores de disponibles en OS simulacion detallada por Fianza. 
+  @author            : rodrigo.olivera@nespon.com
+  @group             : 
+  @last modified on  : 18-07-2025
+  @last modified by  : rodrigo.olivera@nespon.com
+-->
+<template>
+    <template if:true={showContainer}>
+        <div class="slds-p-around_medium">
+            <lightning-card>
+                <div class="slds-p-around_medium">
+
+                    <!-- Solo se muestra si cumple las condiciones -->
+                    <template if:true={showConsultButton}>
+                        <div class="floating-button-container">
+                            <lightning-button
+                                label="Consultar Afianzador"
+                                variant="brand"
+                                onclick={handleCallIP}
+                                disabled={isLoading}>
+                            </lightning-button>
+                        </div>
+                    </template>
+                    <template if:true={isLoading}>
+                        <div class="slds-spinner_container slds-m-top_medium">
+                            <div class="slds-spinner slds-spinner_medium" role="status">
+                                <span class="slds-assistive-text">Cargando...</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <template if:true={showMessageNoSurety}>
+                    <div class="success-message slds-p-around_medium slds-m-bottom_medium">
+                        <lightning-icon
+                            icon-name="utility:success"
+                            alternative-text="success"
+                            size="small"
+                            class="success-icon"
+                        ></lightning-icon>
+                        <span class="success-text">{messageFIN039}</span>
+                    </div>
+                </template>
+                <template if:true={showWarningMessage}>
+                    <div class="warning-message slds-p-around_medium slds-m-bottom_medium">
+                        <lightning-icon
+                            icon-name="utility:warning"
+                            alternative-text="warning"
+                            size="small"
+                            class="warning-icon"
+                        ></lightning-icon>
+                        <span class="warning-text">{messageFIN040}</span>
+                    </div>
+                </template>
+                <template if:true={showLWC}>
+                    <div class="slds-p-around_medium">
+                        <lightning-radio-group
+                            name="tipoAfianzador"
+                            label="Selecciona una opción"
+                            options={mainOptions}
+                            value={optionType}
+                            onchange={handleMainOptionChange}
+                            type="radio"
+                            class="slds-m-bottom_medium">
+                        </lightning-radio-group>
+
+                        <template if:true={showSuretiesList}>
+                            <div class="sureties-list">
+                                <div class="options-container">
+                                    <template for:each={sureties} for:item="surety">
+                                        <div key={surety.suretyId} class="surety-option">
+                                            <div class="slds-form-element">
+                                                <div class="slds-radio">
+                                                    <input 
+                                                        type="radio" 
+                                                        id={surety.suretyInitials}
+                                                        name="afianzador" 
+                                                        value={surety.suretyInitials}
+                                                        onchange={handleChange}
+                                                        class="slds-radio__input" />
+                                                    <label class="slds-radio__label" for={surety.suretyInitials}>
+                                                        <span class="slds-radio_faux"></span>
+                                                        <div class="option-content">
+                                                            <div class="option-line">
+                                                                <span class="field-group initials-group">
+                                                                    <span class="field-value">{surety.suretyInitials}</span>
+                                                                </span>
+                                                                <span class="field-group name-group">
+                                                                    <span class="field-label">Nombre del Afianzador: {surety.suretyName}</span>
+                                                                </span>
+                                                                <span class="field-group quota-group">
+                                                                    <span class="field-label">Cuota Mensual Fianza: ${surety.suretyQuoteValueFormatted}</span>
+                                                                </span>
+                                                                <span class="field-group total-group">
+                                                                    <span class="field-label">Total Fianza: ${surety.suretyTotalAmountFormatted}</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>                              
+                        </template>
+                         <template if:true={showClientSection}>
+                                <div class="sureties-list">
+                                    <div class="options-container">
+                                        <div class="selected-client">
+                                            <div class="option-content">
+                                                <div class="option-line client-option">
+
+                                                    <div class="phone-button-container">
+                                                        <lightning-input
+                                                            label="SMS"
+                                                            type="tel"
+                                                            value={phone}
+                                                            maxlength="10"
+                                                            minlength="10"
+                                                            pattern="^[0-9]{10}$"
+                                                            message-when-pattern-mismatch="Debe ingresar exactamente 10 dígitos numéricos."
+                                                            message-when-too-short="Debe ingresar exactamente 10 dígitos."
+                                                            message-when-too-long="Debe ingresar exactamente 10 dígitos."
+                                                            onchange={handlePhoneChange}>
+                                                        </lightning-input>
+
+                                                        <lightning-button
+                                                            label="Enviar link"
+                                                            variant="brand"
+                                                            onclick={handleSendSMS}
+                                                            disabled={disabledSendButton}>
+                                                        </lightning-button>
+                                                    </div>
+
+                                                    <span class="field-group quota-group">
+                                                        <span class="field-label">
+                                                            <a href={urlFIN038} class="url" target="_blank">Consultar Requisitos y documentos</a>
+                                                        </span>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                         <div class="message-box slds-box">
+                                    <div class="info-icon">
+                                        <lightning-icon 
+                                            icon-name="utility:info"
+                                            alternative-text="info"
+                                            size="small">
+                                        </lightning-icon>
+                                    </div>
+
+                                    <div class="info-box">
+                                        <ul class="custom-list">
+                                            <template for:each={parsedMessage} for:item="line">
+                                                <li key={line}>{line}</li>
+                                          </template>
+                                     </ul>
+                                </div>
+                          </div>                        
+                    </div>
+                </template>
+            </lightning-card>
+        </div>
+    </template>
+</template>

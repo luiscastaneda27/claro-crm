@@ -1,0 +1,33 @@
+<template>
+    <template if:true={spinner}>
+        <lightning-spinner style="background-color: white;" alternative-text="Cargando..." size="medium"></lightning-spinner>
+    </template>
+    
+    <div class="datatable-container">
+        <template if:false={showBanner}>
+            <lightning-datatable if:false={showMessage}
+                    key-field="id"
+                    data={data}
+                    columns={columns}
+                    hide-checkbox-column
+                    onrowaction={handleRowAction}>
+            </lightning-datatable>
+            <c-cf-f-i-n-message-financing message={message} if:true={showMessage}>
+            </c-cf-f-i-n-message-financing>
+        </template>
+
+        <div class="slds-card slds-theme_shade" if:true={showBanner}>
+            <div class="slds-card__header slds-grid">
+                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert">
+                    <lightning-icon icon-name="utility:warning" 
+                                    alternative-text="Warning!" 
+                                    title="Warning" 
+                                    size="small" 
+                                    class="slds-m-right_x-small slds-icon-text-warning">
+                    </lightning-icon>
+                    <h2 class="slds-text-color_inverse">{message}&nbsp;</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

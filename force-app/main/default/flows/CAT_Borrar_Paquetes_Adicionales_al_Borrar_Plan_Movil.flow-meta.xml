@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <description>Muestra un mensaje si hay un error al momento de verificar el paquete adicional.</description>
+        <name>Mensaje_de_Error</name>
+        <label>Mensaje de Error</label>
+        <locationX>314</locationX>
+        <locationY>611</locationY>
+        <customErrorMessages>
+            <errorMessage>{!Error}</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Checamos los OrderItems que obtuvimos en el paso anterior.</description>
+        <name>Checar_OrderItems</name>
+        <label>Checar OrderItems</label>
+        <locationX>314</locationX>
+        <locationY>395</locationY>
+        <defaultConnectorLabel>OrderItems = 0</defaultConnectorLabel>
+        <rules>
+            <name>Outcome_1_of_Check_OrderItems</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Traer_OrderItem</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Eliminar_OrderItems</targetReference>
+            </connector>
+            <label>OrderItem &gt; 1</label>
+        </rules>
+    </decisions>
+    <description>Flujo en donde si hay más de un paquete adicional en un plan y este plan es borrado, entonces borre también los paquetes adicionales.</description>
+    <environments>Default</environments>
+    <interviewLabel>CAT Borrar Paquetes Adicionales al Borrar Plan Móvil {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CAT Borrar Paquetes Adicionales al Borrar Plan Móvil</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <description>Borra los OrderItems que estaban relacionados con el plan que se borró</description>
+        <name>Eliminar_OrderItems</name>
+        <label>Eliminar OrderItems</label>
+        <locationX>50</locationX>
+        <locationY>503</locationY>
+        <faultConnector>
+            <targetReference>Mensaje_de_Error</targetReference>
+        </faultConnector>
+        <inputReference>Traer_OrderItem</inputReference>
+    </recordDeletes>
+    <recordLookups>
+        <description>Trae los Order Items donde el ReliesOnItemId sea igual al AssetReferenceId del plan eliminado.</description>
+        <name>Traer_OrderItem</name>
+        <label>Traer OrderItem</label>
+        <locationX>314</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Checar_OrderItems</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>vlocity_cmt__ReliesOnItemId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.vlocity_cmt__AssetReferenceId__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>OrderItem</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Traer_OrderItem</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CAT_ProductType__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Plan Móvil Pospago</stringValue>
+            </value>
+        </filters>
+        <object>OrderItem</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Texto con el mensaje de error que se mostrará en el &apos;Fault Path&apos;</description>
+        <name>Error</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;No se pudo borrar el paquete adicional de su carrito&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

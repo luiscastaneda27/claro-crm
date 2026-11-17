@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Almacena la cantidad de promociones asociadas a la orden distintas a la promoción que está borrando.</description>
+        <name>Cantidad_de_Promociones</name>
+        <label>Cantidad de Promociones</label>
+        <locationX>402</locationX>
+        <locationY>395</locationY>
+        <assignmentItems>
+            <assignToReference>CantidadPromociones</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>PromocionesAsociadasAOrden</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Hay_Promociones_asociadas_a_la_orden</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Guarda la clase de beneficio de la promoción del loop</description>
+        <name>Guardar_Clase_de_Beneficio</name>
+        <label>Guardar Clase de Beneficio</label>
+        <locationX>138</locationX>
+        <locationY>827</locationY>
+        <assignmentItems>
+            <assignToReference>ListadoClasesBeneficioPromociones</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Recorrer_lista_de_promociones.vlocity_cmt__PromotionId__r.CAT_PromotionClass__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Recorrer_lista_de_promociones</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Se inicializa la variable collection donde se van a guardar las clases de beneficio de las promociones asociadas a la orden.</description>
+        <name>Inicializar_lista_de_clases</name>
+        <label>Inicializar lista de clases</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <assignmentItems>
+            <assignToReference>ListadoClasesBeneficioPromociones</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Recorrer_lista_de_promociones</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Se evalúa si el item es un plan, si es un plan se debe actualizar el order item para remover el flag de agrupar cargos fijos mensuales.</description>
+        <name>El_item_es_un_Plan</name>
+        <label>El item es un Plan?</label>
+        <locationX>974</locationX>
+        <locationY>827</locationY>
+        <defaultConnector>
+            <targetReference>Recorrer_Items</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No es plan</defaultConnectorLabel>
+        <rules>
+            <name>Si_es_un_plan</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Recorrer_Items.vlocity_cmt__OrderItemId__r.vlocity_cmt__Product2Id__r.vlocity_cmt__Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Plan</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Remover_flag_GroupCharges_del_Plan</targetReference>
+            </connector>
+            <label>Si es un plan</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Evalúa si en la orden existen otras promociones con clase de beneficio &quot;Bundle&quot;</description>
+        <name>Hay_otras_promociones_Bundle_en_la_orden</name>
+        <label>Hay otras promociones Bundle en la orden?</label>
+        <locationX>50</locationX>
+        <locationY>1019</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Obtener_Iitems_agregados_con_promocion</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No hay otros Bundles</defaultConnectorLabel>
+        <rules>
+            <name>Si_hay_otros_Bundles</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ListadoClasesBeneficioPromociones</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Bundle</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Si hay otros Bundles</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Evalúa si además de la promoción que se está borrando hay otras promociones asociadas a la orden</description>
+        <name>Hay_Promociones_asociadas_a_la_orden</name>
+        <label>Hay Promociones asociadas a la orden?</label>
+        <locationX>402</locationX>
+        <locationY>503</locationY>
+        <defaultConnector>
+            <targetReference>Obtener_Iitems_agregados_con_promocion</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No hay otras promociones</defaultConnectorLabel>
+        <rules>
+            <name>Si_hay_otras_promociones</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CantidadPromociones</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Inicializar_lista_de_clases</targetReference>
+            </connector>
+            <label>Si hay otras promociones</label>
+        </rules>
+    </decisions>
+    <description>Este flujo desmarca el campo CAT_GroupCharges__c del order item del plan cuando se borra una promoción de clase Bundle de la orden.
+
+La marca se mantiene en caso que existan aún otras promociones de clase Bundle en la orden.
+
+Trabaja en conjunto con la solución personalizada que borra los paquetes adicionales asociados a una promoción cuando esta se borra de la orden dejando el Plan en el carrito.</description>
+    <environments>Default</environments>
+    <interviewLabel>CAT Desmarcar Campo Agrupar Factura/Contrato {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CAT Desmarcar Campo Agrupar CFM</label>
+    <loops>
+        <description>Se recorre la lista de items que fueron agregados con la promoción que se está borrando.</description>
+        <name>Recorrer_Items</name>
+        <label>Recorrer Items</label>
+        <locationX>754</locationX>
+        <locationY>719</locationY>
+        <collectionReference>ListadoOrderAppliedPromotionItems</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>El_item_es_un_Plan</targetReference>
+        </nextValueConnector>
+    </loops>
+    <loops>
+        <description>Recorre la lista de promociones asociadas a la orden con el objetivo de guardar la lista de clases de beneficio</description>
+        <name>Recorrer_lista_de_promociones</name>
+        <label>Recorrer lista de promociones</label>
+        <locationX>50</locationX>
+        <locationY>719</locationY>
+        <collectionReference>PromocionesAsociadasAOrden</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Guardar_Clase_de_Beneficio</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Hay_otras_promociones_Bundle_en_la_orden</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Usando el Order Id en la entrada de OrderAppliedPromotion, se consultan las promociones asociadas a la orden diferentes a la promoción que se está borrando.
+
+Mas adelante se verifica la clase de beneficio de las promociones</description>
+        <name>Leer_si_la_orden_tiene_otras_promociones_de_clase_Bundle</name>
+        <label>Obtener promociones asociadas a la orden</label>
+        <locationX>402</locationX>
+        <locationY>287</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Cantidad_de_Promociones</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>vlocity_cmt__OrderId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.vlocity_cmt__OrderId__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <object>vlocity_cmt__OrderAppliedPromotion__c</object>
+        <outputReference>PromocionesAsociadasAOrden</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>vlocity_cmt__PromotionId__c</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <description>Se leen los items que se agregaron junto a la promoción que se está borrando. Mas adelante se identificará el item correspondiente al Plan</description>
+        <name>Obtener_Iitems_agregados_con_promocion</name>
+        <label>Consultar Items Agregados con la Promoción</label>
+        <locationX>754</locationX>
+        <locationY>611</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Recorrer_Items</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>vlocity_cmt__OrderAppliedPromotionId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <object>vlocity_cmt__OrderAppliedPromotionItem__c</object>
+        <outputReference>ListadoOrderAppliedPromotionItems</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>vlocity_cmt__OrderItemId__c</queriedFields>
+    </recordLookups>
+    <recordUpdates>
+        <description>Actualizar el valor del campo CAT_GroupCharges__c a &apos;false&apos; en el objeto OrderItem para el plan que está asociado a la promoción que está siendo borrada</description>
+        <name>Remover_flag_GroupCharges_del_Plan</name>
+        <label>Remover flag GroupCharges del Plan</label>
+        <locationX>842</locationX>
+        <locationY>935</locationY>
+        <connector>
+            <targetReference>Recorrer_Items</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Recorrer_Items.vlocity_cmt__OrderItemId__r.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CAT_GroupCharges__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>OrderItem</object>
+    </recordUpdates>
+    <start>
+        <locationX>276</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Leer_si_la_orden_tiene_otras_promociones_de_clase_Bundle</targetReference>
+        </connector>
+        <filterFormula>ISPICKVAL({!$Record.vlocity_cmt__PromotionId__r.CAT_PromotionClass__c}, &quot;Bundle&quot;)</filterFormula>
+        <object>vlocity_cmt__OrderAppliedPromotion__c</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>CantidadPromociones</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Almacena las clases de beneficio de las promociones asociadas a la orden</description>
+        <name>ListadoClasesBeneficioPromociones</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Listado de los items que fueron agregados con la promoción que está borrando.</description>
+        <name>ListadoOrderAppliedPromotionItems</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>vlocity_cmt__OrderAppliedPromotionItem__c</objectType>
+    </variables>
+    <variables>
+        <name>OrderItem</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>OrderItem</objectType>
+    </variables>
+    <variables>
+        <description>Almacena la lista de promociones asociadas a la misma orden donde se está borrando una promoción.</description>
+        <name>PromocionesAsociadasAOrden</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>vlocity_cmt__OrderAppliedPromotion__c</objectType>
+    </variables>
+</Flow>

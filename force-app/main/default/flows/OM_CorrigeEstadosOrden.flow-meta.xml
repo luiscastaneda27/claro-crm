@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Corrige el estado de las órdenes cerradas al hacer envío a OM a consecuencia de impacto por release de Spring 26</description>
+    <environments>Default</environments>
+    <interviewLabel>OM_CorrigeEstadoOrden {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>OM_CorrigeEstadosOrden</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Devuelve la orden a su estado original ya que el cambio no es válido</description>
+        <name>ActualizaOrden</name>
+        <label>ActualizaOrden</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>vlocity_cmt__FulfilmentStatus__c</field>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>vlocity_cmt__OrderStatus__c</field>
+            <value>
+                <stringValue>Activated</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>ActualizaOrden</targetReference>
+        </connector>
+        <filterFormula>ISPICKVAL({!$Record__Prior.vlocity_cmt__FulfilmentStatus__c}, &apos;Activated&apos;) &amp;&amp; ISPICKVAL({!$Record.vlocity_cmt__FulfilmentStatus__c}, &apos;In Progress&apos;) &amp;&amp; ISPICKVAL({!$Record__Prior.Status}, &apos;Activated&apos;) &amp;&amp; ISPICKVAL({!$Record.Status}, &apos;DeliveryAndActivated&apos;) &amp;&amp; ISPICKVAL({!$Record__Prior.vlocity_cmt__OrderStatus__c}, &apos;Activated&apos;) &amp;&amp; ISPICKVAL({!$Record.vlocity_cmt__OrderStatus__c}, &apos;In Progress&apos;)</filterFormula>
+        <object>Order</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

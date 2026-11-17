@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Acción que llama el proceso de table bridge</description>
+        <name>FVU_CloseOrderDeliveryType</name>
+        <label>FVU_CloseOrderDeliveryType</label>
+        <locationX>308</locationX>
+        <locationY>276</locationY>
+        <actionName>FVU_CloseOrderDeliveryTypeFuture</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>orderId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>FVU_CloseOrderDeliveryTypeFuture</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Flow para llamar al IP FVU_CloseOrderDeliveryType</description>
+    <environments>Default</environments>
+    <interviewLabel>FVU_CallTableBridge {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>FVU_CallTableBridge</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND({!$Record.RecordType.DeveloperName} = &quot;EnterpriseOrder&quot;, ISPICKVAL({!$Record.vlocity_cmt__DeliveryMethod__c}, &quot;Delivery&quot;), {!$Record.FVU_CloseOrder__c} = false, OR(INCLUDES({!$Record.FVU_PurchaseType__c}, &quot;NAP&quot;),INCLUDES({!$Record.FVU_PurchaseType__c}, &quot;ATT&quot;)),OR( ISPICKVAL({!$Record.vlocity_cmt__OrderStatus__c}, &quot;Activated&quot;),  ISPICKVAL({!$Record.Status}, &quot;Activated&quot;)))</filterFormula>
+        <object>Order</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>FVU_CloseOrderDeliveryType</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

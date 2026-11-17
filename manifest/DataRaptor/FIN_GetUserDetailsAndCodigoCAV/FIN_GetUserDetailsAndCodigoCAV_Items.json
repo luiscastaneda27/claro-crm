@@ -1,0 +1,571 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'$Vlocity.UserId'",
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item3",
+        "InputFieldName": "Id",
+        "InputObjectName": "User",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "UserDetails",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "UserDetails:FVU_CodigoD__c",
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom6239",
+        "InputFieldName": "CodigoCAV__c",
+        "InputObjectName": "PVUCodigoCav__c",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "CodigoCav",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "BASEURL() LIKE \".sandbox\"",
+        "FormulaResultPath": "isSandbox",
+        "FormulaSequence": 1,
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item2",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FUNCTION('CustomOmniStudioFunctions', 'currentUserHasCustomPermission', 'FVU_SkipCheckoutOpenOrdersValidation') AND isSandbox",
+        "FormulaResultPath": "currentUserHasCustomPermission",
+        "FormulaSequence": 2,
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item0",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(UserDetails:FVU_BusinessChannel__c == 'CAV',true,false)",
+        "FormulaResultPath": "isOnSiteChannel",
+        "FormulaSequence": 3,
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item1",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "SUBSTRING(UserDetails:FVU_Canal__c,3)",
+        "FormulaResultPath": "canal",
+        "FormulaSequence": 4,
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom3361",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item11",
+        "InputFieldName": "currentUserHasCustomPermission",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SkipCheckoutOpenOrdersValidation",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item12",
+        "InputFieldName": "UserDetails:FVU_BusinessChannel__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:BusinessChannel",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item13",
+        "InputFieldName": "UserDetails:FVU_CAV__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:CAV",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom5402",
+        "InputFieldName": "canal",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Canal",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item14",
+        "InputFieldName": "UserDetails:FVU_Canal__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Channel",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item15",
+        "InputFieldName": "UserDetails:FVU_CiudadCAV__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:CiudadCAV",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item16",
+        "InputFieldName": "UserDetails:FVU_CodigoD__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:CodigoMovil",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item17",
+        "InputFieldName": "UserDetails:FVU_DANE_Punto_de_Venta__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:DaneCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom4687",
+        "InputFieldName": "UserDetails:FVU_GVDIVISION__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Division",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom7574",
+        "InputFieldName": "UserDetails:FVU_Empleador__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Empleador",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom3571",
+        "InputFieldName": "UserDetails:FVU_IDArea__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:IDArea",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom5738",
+        "InputFieldName": "UserDetails:FVU_IDDistrito__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:IDDistrito",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item18",
+        "InputFieldName": "UserDetails:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Id",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item4",
+        "InputFieldName": "UserDetails:ManagerId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:ManagerId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item5",
+        "InputFieldName": "UserDetails:Name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Name",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item6",
+        "InputFieldName": "UserDetails:FVU_PuntoVenta__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:PuntoVenta",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item7",
+        "InputFieldName": "UserDetails:UserRole.Name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Role",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom3283",
+        "InputFieldName": "UserDetails:FVU_Subcanal__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Subcanal",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom8925",
+        "InputFieldName": "CodigoCav:NombreCAV__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:TiendaVenta",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item8",
+        "InputFieldName": "UserDetails:PVU_UserType__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Type",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom2318",
+        "InputFieldName": "UserDetails:FVU_GVZONE__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:Zona",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item9",
+        "InputFieldName": "isOnSiteChannel",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:isOnSiteChannel",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetUserDetailsAndCodigoCAVCustom0jIdl0000000NELEA2Item10",
+        "InputFieldName": "UserDetails:PVU_Usuario_Red__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetUserDetailsAndCodigoCAV",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetUserDetailsAndCodigoCAV",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "UserDetails:usuarioConsulta",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

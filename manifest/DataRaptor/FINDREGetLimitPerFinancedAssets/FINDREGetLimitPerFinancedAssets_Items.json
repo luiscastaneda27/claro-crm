@@ -1,0 +1,165 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'MensajeDeLimitesParaVentaFinanciada'",
+        "GlobalKey": "FINDREGetLimitPerFinancedAssetsCustom4017",
+        "InputFieldName": "DeveloperName",
+        "InputObjectName": "Fin_Parametros__mdt",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDREGetLimitPerFinancedAssets",
+        "OmniDataTransformationId": {
+            "Name": "FINDREGetLimitPerFinancedAssets",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDREGetLimitPerFinancedAssets",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "mensaje",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "COUNTQUERY(\"SELECT COUNT() FROM Asset WHERE FIN_PaymentType__c LIKE '%Financiado%' AND CreatedDate = LAST_N_DAYS:1 AND AccountId = '{0}'\",accountId)",
+        "FormulaResultPath": "countToday",
+        "FormulaSequence": 1,
+        "GlobalKey": "FINDREGetLimitPerFinancedAssetsCustom9253",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDREGetLimitPerFinancedAssets",
+        "OmniDataTransformationId": {
+            "Name": "FINDREGetLimitPerFinancedAssets",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDREGetLimitPerFinancedAssets",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "COUNTQUERY(\"SELECT COUNT() FROM Asset WHERE FIN_PaymentType__c LIKE '%Financiado%' AND CreatedDate = LAST_N_DAYS:30 AND AccountId = '{0}'\",accountId)",
+        "FormulaResultPath": "countMonth",
+        "FormulaSequence": 3,
+        "GlobalKey": "FINDREGetLimitPerFinancedAssetsCustom7169",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDREGetLimitPerFinancedAssets",
+        "OmniDataTransformationId": {
+            "Name": "FINDREGetLimitPerFinancedAssets",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDREGetLimitPerFinancedAssets",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "COUNTQUERY(\"SELECT COUNT() FROM Asset WHERE FIN_PaymentType__c LIKE '%Financiado%' AND CreatedDate = LAST_N_DAYS:7 AND AccountId = '{0}'\",accountId)",
+        "FormulaResultPath": "countWeek",
+        "FormulaSequence": 2,
+        "GlobalKey": "FINDREGetLimitPerFinancedAssetsCustom8206",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDREGetLimitPerFinancedAssets",
+        "OmniDataTransformationId": {
+            "Name": "FINDREGetLimitPerFinancedAssets",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDREGetLimitPerFinancedAssets",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDREGetLimitPerFinancedAssetsCustom5391",
+        "InputFieldName": "mensaje:FIN_LargeLabel__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDREGetLimitPerFinancedAssets",
+        "OmniDataTransformationId": {
+            "Name": "FINDREGetLimitPerFinancedAssets",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDREGetLimitPerFinancedAssets",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "errorMessage",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDREGetLimitPerFinancedAssetsCustom3104",
+        "InputFieldName": "countMonth",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDREGetLimitPerFinancedAssets",
+        "OmniDataTransformationId": {
+            "Name": "FINDREGetLimitPerFinancedAssets",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDREGetLimitPerFinancedAssets",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "monthAssets",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDREGetLimitPerFinancedAssetsCustom3462",
+        "InputFieldName": "countToday",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDREGetLimitPerFinancedAssets",
+        "OmniDataTransformationId": {
+            "Name": "FINDREGetLimitPerFinancedAssets",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDREGetLimitPerFinancedAssets",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "todayAssets",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDREGetLimitPerFinancedAssetsCustom7215",
+        "InputFieldName": "countWeek",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDREGetLimitPerFinancedAssets",
+        "OmniDataTransformationId": {
+            "Name": "FINDREGetLimitPerFinancedAssets",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDREGetLimitPerFinancedAssets",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "weekAssets",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

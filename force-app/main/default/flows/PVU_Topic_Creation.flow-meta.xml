@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>AssignName</name>
+        <label>AssignName</label>
+        <locationX>478</locationX>
+        <locationY>722</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.PVU_Reason__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Set_new_Topic_core_values</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Has_Related_Interaction</name>
+        <label>Has Related Interaction</label>
+        <locationX>704</locationX>
+        <locationY>310</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Has_Iteraction_Id</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.EngagementId</leftValueReference>
+                <operator>NotEqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Get_Related_Interaction</targetReference>
+            </connector>
+            <label>Has Iteraction Id</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Verifica si el name es vacio</description>
+        <name>NameIsEmpty</name>
+        <label>NameIsEmpty</label>
+        <locationX>703</locationX>
+        <locationY>652</locationY>
+        <defaultConnector>
+            <targetReference>Set_new_Topic_core_values</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Resultado predeterminado</defaultConnectorLabel>
+        <rules>
+            <name>IsEmpty</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Name</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignName</targetReference>
+            </connector>
+            <label>IsEmpty</label>
+        </rules>
+    </decisions>
+    <description>completa el campo name en caso de estar vacío</description>
+    <environments>Default</environments>
+    <interviewLabel>PVU Topic Creation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PVU Topic Creation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Related_Interaction</name>
+        <label>Get Related Interaction</label>
+        <locationX>713</locationX>
+        <locationY>459</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>NameIsEmpty</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.EngagementId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>EngagementInteraction</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Set_new_Topic_core_values</name>
+        <label>Set new Topic core values</label>
+        <locationX>709</locationX>
+        <locationY>842</locationY>
+        <inputAssignments>
+            <field>ProcessStatus</field>
+            <value>
+                <stringValue>En Curso</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RelatedPersonId</field>
+            <value>
+                <elementReference>Get_Related_Interaction.InitiatingAttendeeId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>586</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Has_Related_Interaction</targetReference>
+        </connector>
+        <object>EngagementTopic</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

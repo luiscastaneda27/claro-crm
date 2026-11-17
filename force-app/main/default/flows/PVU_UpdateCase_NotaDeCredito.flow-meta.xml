@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Nota_Credito_Sub_Estado_Pendiente_Nota_Credito</name>
+        <label>Nota De Credito y Suporte y Fallas;Pendiente Creacion Sub Est</label>
+        <locationX>248</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>PVU_ParVoz_SubEstado</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Cerrar_Caso</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PVU_Sub_Estado__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pendiente creación Nota Crédito</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_NoNotaCredito__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level1__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Soporte, fallas de servicio y equipos</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_StateSubState</targetReference>
+            </connector>
+            <label>Cerrar Caso</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>PVU_ParVoz_SubEstado</name>
+        <label>Suporte y Fallas, Voz De Cliente Codigo Par</label>
+        <locationX>446</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>StatusEstadoCambio</name>
+            <conditionLogic>(1 AND 2) OR (3 AND 4) OR (5 AND 6) AND 7</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Falla técnica en la entrega (Muerto en Caja-DOA)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Codigo_de_Cierre__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Aplica Muerto en Caja</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No Conforme (Falla cosmética o faltante)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Codigo_de_Cierre__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No Conforme Aprobado</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Falla de Equipo Garantia</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Codigo_de_Cierre__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Devolución de dinero</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level1__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Soporte, fallas de servicio y equipos</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Pendiente_Nota_Credito</targetReference>
+            </connector>
+            <label>StatusEstadoCambio</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Suport_Y_Fallas_o_Facturacion</name>
+        <label>Suport Y Fallas o Facturacion</label>
+        <locationX>1073</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Soporte_y_Fallas</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level1__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Soporte, fallas de servicio y equipos</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Nota_Credito_Sub_Estado_Pendiente_Nota_Credito</targetReference>
+            </connector>
+            <label>Soporte y Fallas</label>
+        </rules>
+        <rules>
+            <name>Facturacion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level1__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Facturación y pagos</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Voz_Devo_Dinero_Trans_y_Effectivo</targetReference>
+            </connector>
+            <label>Facturacion</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Voz_Devo_Dinero_Trans_y_Effectivo</name>
+        <label>Voz Devo Dinero Trans y Effectivo</label>
+        <locationX>1238</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Correct_Voz_and_PQR</name>
+            <conditionLogic>(1 OR 2) AND (3 AND 4 AND 5)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Devolución dinero en efectivo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Devolución dinero por transferencia</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_NR__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_NoNotaCredito__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>En curso</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Area_Back_y_Sub_Estado_Cambio</targetReference>
+            </connector>
+            <label>Pendiente Nota Credito</label>
+        </rules>
+        <rules>
+            <name>Pendiente_Nota_de_credito</name>
+            <conditionLogic>1 AND 2 AND (3 OR 4 OR 5)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PVU_Sub_Estado__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pendiente creación Nota Crédito</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_NoNotaCredito__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Devolución dinero en efectivo</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reverso de pago</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Actualización datos personales</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Pendiente_Aprobacion</targetReference>
+            </connector>
+            <label>Pendiente de Aprobacion</label>
+        </rules>
+        <rules>
+            <name>Area_Back_Nota_Credito_Filled</name>
+            <conditionLogic>1 AND 2 AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PVU_Level3__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Devolución dinero por transferencia</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>En curso</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PVU_NoNotaCredito__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AreaBack_SubEsta_Pendiente_Aprobacion</targetReference>
+            </connector>
+            <label>Area Back Nota Credito Filled</label>
+        </rules>
+    </decisions>
+    <description>V13 Categoria: Facturacion y Pagos Voz: Devolución de dinero por transferencia cambia SubEstado: Pendiente de Aprobacion. Manager ID for Pendiente de Aprobacion. Fix Facturacion Area back Pedendiente Aprobacion. NC</description>
+    <environments>Default</environments>
+    <interviewLabel>PVU_UpdateCase_NotaDeCredito {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PVU_UpdateCase_NotaDeCredito</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Area_Back_NC_Queue</name>
+        <label>Back Ajustes NC Queue</label>
+        <locationX>1073</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Suport_Y_Fallas_o_Facturacion</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PVU_BackAjustes_NC</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Area_Back_Queue</name>
+        <label>Area Back Queue</label>
+        <locationX>1073</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Area_Back_NC_Queue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PVU_AreaBack</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Area_Back_y_Sub_Estado_Cambio</name>
+        <label>Area Back y Sub Estado Cambio</label>
+        <locationX>842</locationX>
+        <locationY>755</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Pendiente creación Nota Crédito</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>AreaBack_SubEsta_Pendiente_Aprobacion</name>
+        <label>AreaBack SubEsta: Pendiente Aprobacion</label>
+        <locationX>1370</locationX>
+        <locationY>755</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Area_Back_Queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Pendiente de aprobación</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Pendiente_Aprobacion</name>
+        <label>Pendiente Aprobacion</label>
+        <locationX>1106</locationX>
+        <locationY>755</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.ManagerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Pendiente de aprobación</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Pendiente_Nota_Credito</name>
+        <label>Pendiente Nota Credito</label>
+        <locationX>314</locationX>
+        <locationY>863</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Area_Back_Queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Pendiente creación Nota Crédito</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>update state and substate when case has a generated nota de credito number</description>
+        <name>Update_StateSubState</name>
+        <label>Update State &amp; SubState</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <inputAssignments>
+            <field>PVU_Sub_Estado__c</field>
+            <value>
+                <stringValue>Aplica Devolucion de dinero</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cerrado</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>947</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Area_Back_Queue</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

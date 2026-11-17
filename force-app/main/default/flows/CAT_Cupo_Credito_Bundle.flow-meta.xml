@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Apex_Class_CATBundlePriceProcessor</name>
+        <label>Apex Class CATBundlePriceProcessor</label>
+        <locationX>446</locationX>
+        <locationY>1139</locationY>
+        <actionName>CATBundlePriceProcessor</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Guardar_precios_con_sin_impuestos</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>priceListEntryIdsList</name>
+            <value>
+                <elementReference>priceListEntryIdsList</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>CATBundlePriceProcessor</nameSegment>
+        <offset>0</offset>
+        <outputParameters>
+            <assignToReference>listaPreciosApexClass</assignToReference>
+            <name>output</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Asigna un número al contados para verificar que los totales de precios de la collection list se almacenen en su lugar correcto</description>
+        <name>Asigna_Contador</name>
+        <label>Asigna Contador</label>
+        <locationX>930</locationX>
+        <locationY>1355</locationY>
+        <assignmentItems>
+            <assignToReference>contadorLoop</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formulaContador</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Posici_n_del_contador</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asigna la cantidad de cupo de crédito que maneja la orden</description>
+        <name>Asignar_Cupo_de_Cr_dito</name>
+        <label>Asignar Cupo de Crédito</label>
+        <locationX>446</locationX>
+        <locationY>1847</locationY>
+        <assignmentItems>
+            <assignToReference>cupoCredito</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.vlocity_cmt__OrderId__r.FVU_CreditQuota__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Ordene_exenta_de_impuestos</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asigna los IDs de las entradas de precio de los productos relacionados a la promoción de tipo &apos;Bundle&apos;</description>
+        <name>Asignar_PLE_IDs</name>
+        <label>Asignar PLE IDs</label>
+        <locationX>534</locationX>
+        <locationY>947</locationY>
+        <assignmentItems>
+            <assignToReference>priceListEntryIdsList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Guardar_la_lista_de_PriceListEntries_IDs.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Guardar_la_lista_de_PriceListEntries_IDs</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asigna la primera entrada de la lista, la cual es un precio con impuestos</description>
+        <name>Asignar_precio_con_impuestos</name>
+        <label>Asignar precio con impuestos</label>
+        <locationX>534</locationX>
+        <locationY>1571</locationY>
+        <assignmentItems>
+            <assignToReference>precioAddOnsConImp</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Guardar_precios_con_sin_impuestos</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Guardar_precios_con_sin_impuestos</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asigna el precio con impuestos del plan móvil (aquel que no es override, ni adjustment, es decir la entrada de precio original)</description>
+        <name>Asignar_precio_con_impuestos_plan_m_vil</name>
+        <label>Asignar precio con impuestos plan móvil</label>
+        <locationX>1062</locationX>
+        <locationY>1571</locationY>
+        <assignmentItems>
+            <assignToReference>precioPlanMovilConImp</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Guardar_precios_con_sin_impuestos</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Guardar_precios_con_sin_impuestos</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asigna la segunda entrada de la lista, la cual es un precio sin impuestos</description>
+        <name>Asignar_precio_sin_impuestos</name>
+        <label>Asignar precio sin impuestos</label>
+        <locationX>798</locationX>
+        <locationY>1571</locationY>
+        <assignmentItems>
+            <assignToReference>precioAddOnsSinImp</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Guardar_precios_con_sin_impuestos</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Guardar_precios_con_sin_impuestos</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asigna el precio sin impuestos del plan móvil (aquel que no es override, ni adjustment, es decir la entrada de precio original)</description>
+        <name>Asignar_precio_sin_impuestos_plan_m_vil</name>
+        <label>Asignar precio sin impuestos plan móvil</label>
+        <locationX>1326</locationX>
+        <locationY>1571</locationY>
+        <assignmentItems>
+            <assignToReference>precioPlanMovilSinImp</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Guardar_precios_con_sin_impuestos</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Guardar_precios_con_sin_impuestos</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Asigna los IDs de los productos relacionados a la promoción de tipo &apos;Bundle&apos;</description>
+        <name>Asignar_Product_IDs</name>
+        <label>Asignar Product IDs</label>
+        <locationX>534</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>productsInPromotionsList</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Guardar_la_lista_de_Product_IDs.vlocity_cmt__ProductId__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Guardar_la_lista_de_Product_IDs</targetReference>
+        </connector>
+    </assignments>
+    <customErrors>
+        <description>Muestra error de cupo excedido</description>
+        <name>Error_Cupo_Excedido_con_imp</name>
+        <label>Error Cupo Excedido</label>
+        <locationX>50</locationX>
+        <locationY>2171</locationY>
+        <customErrorMessages>
+            <errorMessage>No es posible agregar el bundle ya que su precio total excede el cupo de crédito</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <customErrors>
+        <description>Muestra error de cupo excedido</description>
+        <name>Error_Cupo_Excedido_sin_imp</name>
+        <label>Error Cupo Excedido</label>
+        <locationX>578</locationX>
+        <locationY>2171</locationY>
+        <customErrorMessages>
+            <errorMessage>No es posible agregar el bundle ya que su precio total excede el cupo de crédito</errorMessage>
+            <isFieldError>false</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <decisions>
+        <description>Verifica si el total con impuestos (precio plan móvil + precio paquete - ajuste de precio) es mayor al cupo de crédito que tenemos. De ser así , entonces el cupo disponible no es suficiente para agregar la promoción</description>
+        <name>Excede_cupo_disponible_con_imp</name>
+        <label>Excede cupo disponible?</label>
+        <locationX>182</locationX>
+        <locationY>2063</locationY>
+        <defaultConnectorLabel>No excede cupo</defaultConnectorLabel>
+        <rules>
+            <name>Excede_cupo_con_imp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>precioTotalConImpConPromo</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>cupoCredito</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_Cupo_Excedido_con_imp</targetReference>
+            </connector>
+            <label>Excede cupo</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Verifica si el total sin impuestos (precio plan móvil + precio paquete - ajuste de precio) es mayor al cupo de crédito que tenemos. De ser así , entonces el cupo disponible no es suficiente para agregar la promoción</description>
+        <name>Excede_cupo_disponible_sin_imp</name>
+        <label>Excede cupo disponible?</label>
+        <locationX>710</locationX>
+        <locationY>2063</locationY>
+        <defaultConnectorLabel>No excede cupo</defaultConnectorLabel>
+        <rules>
+            <name>Excede_cupo_sin_imp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>precioTotalSinImpConPromo</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>cupoCredito</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_Cupo_Excedido_sin_imp</targetReference>
+            </connector>
+            <label>Excede cupo</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Verifica si la orden está exenta o no de impuestos mediante el campo FVU_IsIVAExempt de la orden</description>
+        <name>Ordene_exenta_de_impuestos</name>
+        <label>Ordene exenta de impuestos?</label>
+        <locationX>446</locationX>
+        <locationY>1955</locationY>
+        <defaultConnector>
+            <targetReference>Excede_cupo_disponible_sin_imp</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Orden sin impuestos</defaultConnectorLabel>
+        <rules>
+            <name>Orden_con_impuestos</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.vlocity_cmt__OrderId__r.FVU_IsIVAExempt__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Excede_cupo_disponible_con_imp</targetReference>
+            </connector>
+            <label>Orden con impuestos</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Posici_n_del_contador</name>
+        <label>Posición del contador</label>
+        <locationX>930</locationX>
+        <locationY>1463</locationY>
+        <defaultConnector>
+            <targetReference>Asignar_precio_sin_impuestos_plan_m_vil</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Contador = 4</defaultConnectorLabel>
+        <rules>
+            <name>Contador_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>contadorLoop</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Asignar_precio_con_impuestos</targetReference>
+            </connector>
+            <label>Contador = 1</label>
+        </rules>
+        <rules>
+            <name>Contador_2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>contadorLoop</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>2.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Asignar_precio_sin_impuestos</targetReference>
+            </connector>
+            <label>Contador = 2</label>
+        </rules>
+        <rules>
+            <name>Contador_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>contadorLoop</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>3.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Asignar_precio_con_impuestos_plan_m_vil</targetReference>
+            </connector>
+            <label>Contador = 3</label>
+        </rules>
+    </decisions>
+    <description>Flujo que muestra un error cuando el cliente intenta agregar una promoción de tipo &apos;Bundle&apos; cuyo precio total es mayor al cupo de crédito asignado</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>CurrentDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <formulas>
+        <description>Incrementa el número del contador</description>
+        <name>formulaContador</name>
+        <dataType>Number</dataType>
+        <expression>{!contadorLoop} +1</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <description>Precio total con impuestos de los productos después de que se le añadiera la promoción</description>
+        <name>precioTotalConImpConPromo</name>
+        <dataType>Currency</dataType>
+        <expression>{!precioAddOnsConImp}+{!precioPlanMovilConImp}</expression>
+        <scale>2</scale>
+    </formulas>
+    <formulas>
+        <description>Precio total sin impuestos de los productos después de que se le añadiera la promoción</description>
+        <name>precioTotalSinImpConPromo</name>
+        <dataType>Currency</dataType>
+        <expression>{!precioAddOnsSinImp}+{!precioPlanMovilSinImp}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>CAT {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>CAT Cupo Crédito Bundle</label>
+    <loops>
+        <description>Itera sobre los PriceListEntry IDs obtenidos en el GetRecords (guardados en la collection variable de PreciosDeProductos) anterior para guardarlos en la collection variable &apos;priceListEntryIdsList&apos;</description>
+        <name>Guardar_la_lista_de_PriceListEntries_IDs</name>
+        <label>Guardar la lista de PriceListEntries IDs</label>
+        <locationX>446</locationX>
+        <locationY>839</locationY>
+        <collectionReference>PreciosDeProductos</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Asignar_PLE_IDs</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Apex_Class_CATBundlePriceProcessor</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Itera sobre la record collection variable &apos;ProductosEnPromociones&apos; que contiene los productos que hacen parte de la promoción &apos;Bundle&apos; para guardarlos en la collection variable &apos;ListadoProductosEnPromociones&apos;</description>
+        <name>Guardar_la_lista_de_Product_IDs</name>
+        <label>Guardar la lista de Product IDs</label>
+        <locationX>446</locationX>
+        <locationY>431</locationY>
+        <collectionReference>ProductosEnPromociones</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Asignar_Product_IDs</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Obtener_precios_de_productos</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Guardar los precios con y sin impuestos en sus respectivas variables</description>
+        <name>Guardar_precios_con_sin_impuestos</name>
+        <label>Guardar precios con/sin impuestos</label>
+        <locationX>446</locationX>
+        <locationY>1247</locationY>
+        <collectionReference>listaPreciosApexClass</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Asigna_Contador</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Asignar_Cupo_de_Cr_dito</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Consulta las entradas de lista de precio (Price List Entries) de los productos que forman parte de la promoción tipo &apos;Bundle&apos;</description>
+        <name>Obtener_precios_de_productos</name>
+        <label>Obtener precios de productos</label>
+        <locationX>446</locationX>
+        <locationY>731</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Guardar_la_lista_de_PriceListEntries_IDs</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND (3 OR 4) AND 5 AND (6 OR 7)</filterLogic>
+        <filters>
+            <field>vlocity_cmt__ProductId__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>productsInPromotionsList</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>vlocity_cmt__IsActive__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>vlocity_cmt__EffectiveFromDate__c</field>
+            <operator>LessThanOrEqualTo</operator>
+            <value>
+                <elementReference>CurrentDate</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>vlocity_cmt__EffectiveFromDate__c</field>
+            <operator>EqualTo</operator>
+        </filters>
+        <filters>
+            <field>vlocity_cmt__EffectiveUntilDate__c</field>
+            <operator>EqualTo</operator>
+        </filters>
+        <filters>
+            <field>vlocity_cmt__PromotionId__c</field>
+            <operator>EqualTo</operator>
+        </filters>
+        <filters>
+            <field>vlocity_cmt__PromotionId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.vlocity_cmt__PromotionId__c</elementReference>
+            </value>
+        </filters>
+        <object>vlocity_cmt__PriceListEntry__c</object>
+        <outputReference>PreciosDeProductos</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>vlocity_cmt__IsOverride__c</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <description>Consulta los productos asociados a la promoción del order applied promotion que disparó el flujo</description>
+        <name>Obtener_productos_de_promoci_n</name>
+        <label>Obtener productos de promoción</label>
+        <locationX>446</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Guardar_la_lista_de_Product_IDs</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>vlocity_cmt__PromotionId__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.vlocity_cmt__PromotionId__c</elementReference>
+            </value>
+        </filters>
+        <object>vlocity_cmt__PromotionItem__c</object>
+        <outputReference>ProductosEnPromociones</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>vlocity_cmt__ProductId__c</queriedFields>
+    </recordLookups>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Obtener_productos_de_promoci_n</targetReference>
+        </connector>
+        <filterFormula>AND(
+    ISPICKVAL({!$Record.vlocity_cmt__PromotionId__r.CAT_PromotionClass__c}, &apos;Bundle&apos;),
+    NOT(ISBLANK(TEXT({!$Record.vlocity_cmt__OrderId__r.Type}))),
+    NOT(
+        OR(
+            ISPICKVAL({!$Record.vlocity_cmt__OrderId__r.Type}, &apos;Cambios&apos;),
+            ISPICKVAL({!$Record.vlocity_cmt__OrderId__r.Type}, &apos;Suspension&apos;),
+            ISPICKVAL({!$Record.vlocity_cmt__OrderId__r.Type}, &apos;Cesion&apos;),
+            ISPICKVAL({!$Record.vlocity_cmt__OrderId__r.Type}, &apos;Reactivacion&apos;),
+            ISPICKVAL({!$Record.vlocity_cmt__OrderId__r.Type}, &apos;Cancelacion&apos;),
+            ISPICKVAL({!$Record.vlocity_cmt__OrderId__r.Type}, &apos;Reinstalacion&apos;),
+            ISPICKVAL({!$Record.vlocity_cmt__OrderId__r.Type}, &apos;Cambio SIM&apos;),
+            ISPICKVAL({!$Record.vlocity_cmt__OrderId__r.Type}, &apos;Reconexion&apos;)
+        )
+    ),
+    NOT(ISPICKVAL({!$Record.vlocity_cmt__OrderId__r.vlocity_cmt__SupplementalAction__c}, &apos;Cancel&apos;))
+)</filterFormula>
+        <object>vlocity_cmt__OrderAppliedPromotion__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Ayuda a verificar en que item del loop nos encontramos</description>
+        <name>contadorLoop</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <name>cupoCredito</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <description>Lista que resulta de la clase de Apex</description>
+        <name>listaPreciosApexClass</name>
+        <dataType>Number</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <description>Guarda el precio total con impuestos de los paquetes adjuntos a la promoción bundle que regresa la clase de apex CATBundlePriceProcessor</description>
+        <name>precioAddOnsConImp</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <description>Guarda el precio total sin impuestos de los paquetes adjuntos a la promoción bundle que regresa la clase de apex CATBundlePriceProcessor</description>
+        <name>precioAddOnsSinImp</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <name>precioPlanMovilConImp</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <name>precioPlanMovilSinImp</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <name>PreciosDeProductos</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>vlocity_cmt__PriceListEntry__c</objectType>
+    </variables>
+    <variables>
+        <name>priceListEntryIdsList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Almacena los productos asociados a las promociones del order item</description>
+        <name>ProductosEnPromociones</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>vlocity_cmt__PromotionItem__c</objectType>
+    </variables>
+    <variables>
+        <description>Almacena la lista de productos asociadas a las promociones de tipo Bundle</description>
+        <name>productsInPromotionsList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

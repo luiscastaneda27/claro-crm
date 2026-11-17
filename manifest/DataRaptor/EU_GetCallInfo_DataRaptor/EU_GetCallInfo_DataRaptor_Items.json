@@ -1,0 +1,475 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "dataInput:dados:data:userData:lightningEvent:ucid",
+        "GlobalKey": "EU_GetCallInfo_DataRaptor5105711264802587",
+        "InputFieldName": "EU_ucid__c",
+        "InputObjectName": "Task",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Task",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "ORDER BY",
+        "FilterValue": "CreatedDate desc",
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom3778",
+        "InputObjectName": "Task",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Task",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FORMATDATETIME(\n  UNIXTODATETIME( %dataInput:dados:data:userData:lightningEvent:startTime% ),\n  \"MM/dd/yyyy HH:mm:ss\"\n)",
+        "FormulaResultPath": "DATESTART",
+        "FormulaSequence": 1,
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom4588",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FORMATDATETIME(\n  UNIXTODATETIME(\n    %dataInput:dados:data:userData:lightningEvent:startTime%\n    + ( %dataInput:dados:data:userData:lightningEvent:callDuration% * 1000 )\n  ),\n  \"MM/dd/yyyy HH:mm:ss\"\n)",
+        "FormulaResultPath": "DATEFINISH",
+        "FormulaSequence": 2,
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom355",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom2195",
+        "InputFieldName": "data",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom3567",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "data:IVR",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom7484",
+        "InputFieldName": "Task:EU_AccountId__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:IVR:ID_Salesforce",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom5877",
+        "InputFieldName": "Task:EU_IdAgente__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "data:LAST_AGENT",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom5975",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "data:SALESFORCE",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom1673",
+        "InputFieldName": "ACWDURATION",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Integer",
+        "OutputFieldName": "data:SALESFORCE:ACWDURATION",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptor03620528426884284",
+        "InputFieldName": "Task:EU_IdAgente__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:AGENT",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom3269",
+        "InputFieldName": "Task:EU_ANI__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:ANI",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom2886",
+        "InputFieldName": "Task:EU_CallDuration__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Integer",
+        "OutputFieldName": "data:SALESFORCE:CALLDURATION",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom3274",
+        "InputFieldName": "dataInput:dados:data:userData:lightningEvent:callDuration",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:CALLDURATION",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptor8344453423809286",
+        "InputFieldName": "Task:EU_IdLlamada__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:CALLID",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptor48496351031567675",
+        "InputFieldName": "Task:EU_Tipificacion_N3__r.Name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:COMPCODE1",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom6411",
+        "InputFieldName": "DATEFINISH",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:DATEFINISH",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom6589",
+        "InputFieldName": "DATESTART",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:DATESTART",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom7091",
+        "InputFieldName": "Task:EU_Direction__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:DIRECTION",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom8656",
+        "InputFieldName": "Task:EU_DNIS__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:DNIS",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom6375",
+        "InputFieldName": "Task:EU_Extension__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:EXTENSION",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom8853",
+        "InputFieldName": "Task:EU_Cola__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:HUNT",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptorCustom7019",
+        "InputFieldName": "Task:EU_ucid__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:UCID",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_GetCallInfo_DataRaptor05559881529391564",
+        "InputFieldName": "Task:EU_UUI__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_GetCallInfo_DataRaptor",
+        "OmniDataTransformationId": {
+            "Name": "EU_GetCallInfo_DataRaptor",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_GetCallInfo_DataRaptor",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "data:SALESFORCE:UUI",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

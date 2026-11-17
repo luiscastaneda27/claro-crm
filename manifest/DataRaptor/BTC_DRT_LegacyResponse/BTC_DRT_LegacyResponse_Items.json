@@ -1,0 +1,282 @@
+[
+    {
+        "FormulaExpression": "FILTER(LIST(ResponseQueryCustomerLegacy:ResponseQueryCustomerLegacy), 'Type== \"Fijo\"'))",
+        "FormulaResultPath": "Landline",
+        "FormulaSequence": 1,
+        "GlobalKey": "BTC_DRT_LegacyResponse6996474120127674",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FILTER(LIST(ResponseQueryCustomerLegacy:ResponseQueryCustomerLegacy), 'Type== \"Movil Prepago\"'))",
+        "FormulaResultPath": "Prepaid",
+        "FormulaSequence": 3,
+        "GlobalKey": "BTC_DRT_LegacyResponse9813499838250008",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FILTER(LIST(ResponseQueryCustomerLegacy:ResponseQueryCustomerLegacy),'Type== \"Movil Pospago\"'))",
+        "FormulaResultPath": "Postpaid",
+        "FormulaSequence": 2,
+        "GlobalKey": "BTC_DRT_LegacyResponse6583905621458963",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(EXIST(%ResponseQueryCustomerLegacy:ResponseQueryCustomerLegacy:Type%, \"Fijo\"), LISTSIZE(Landline), 0)",
+        "FormulaResultPath": "TotalLandLine",
+        "FormulaSequence": 4,
+        "GlobalKey": "BTC_DRT_LegacyResponse942380347801903",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(EXIST(%ResponseQueryCustomerLegacy:ResponseQueryCustomerLegacy:Type%, \"Movil Pospago\"), LISTSIZE(Postpaid), 0)",
+        "FormulaResultPath": "TotalPostpaid",
+        "FormulaSequence": 5,
+        "GlobalKey": "BTC_DRT_LegacyResponse361256965076469",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(EXIST(%ResponseQueryCustomerLegacy:ResponseQueryCustomerLegacy:Type%, \"Movil Prepago\"), LISTSIZE(Prepaid), 0)",
+        "FormulaResultPath": "TotalPrepaid",
+        "FormulaSequence": 6,
+        "GlobalKey": "BTC_DRT_LegacyResponse9936097738344021",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "TotalPostpaid + TotalPrepaid",
+        "FormulaResultPath": "TotalCellLine",
+        "FormulaSequence": 7,
+        "GlobalKey": "BTC_DRT_LegacyResponse02150384252797477",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "BTC_DRT_LegacyResponse10094972037973715",
+        "InputFieldName": "Landline",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "landline",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "BTC_DRT_LegacyResponse600390620910713",
+        "InputFieldName": "Postpaid",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "pospaid",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "BTC_DRT_LegacyResponse15097333437804927",
+        "InputFieldName": "Prepaid",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "prepaid",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "BTC_DRT_LegacyResponse9701784053346123",
+        "InputFieldName": "TotalPostpaid",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "total:cellLine",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "BTC_DRT_LegacyResponse7871364112742942",
+        "InputFieldName": "TotalLandLine",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "total:landline",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "BTC_DRT_LegacyResponse14384545182650021",
+        "InputFieldName": "TotalPostpaid",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "total:postpaid",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "BTC_DRT_LegacyResponse13155511033806877",
+        "InputFieldName": "TotalPrepaid",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "BTC_DRT_LegacyResponse",
+        "OmniDataTransformationId": {
+            "Name": "BTC_DRT_LegacyResponse",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/BTC_DRT_LegacyResponse",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "total:prepaid",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

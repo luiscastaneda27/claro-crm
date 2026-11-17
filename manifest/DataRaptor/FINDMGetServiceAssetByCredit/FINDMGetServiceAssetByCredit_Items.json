@@ -1,0 +1,414 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "numeroDeCredito",
+        "GlobalKey": "FINDMGetServiceAssetByCredit4613818710809239",
+        "InputFieldName": "FIN_NumeroCredito__c",
+        "InputObjectName": "Order",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Order",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Order:%vlocity_namespace%__QuoteId__r.FIN_AccountExternalID__c",
+        "GlobalKey": "FINDMGetServiceAssetByCredit7658253568228457",
+        "InputFieldName": "FVU_AccountExternalID__c",
+        "InputObjectName": "Account",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "AccountBilling",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Order:%vlocity_namespace%__QuoteId__r.FIN_AccountExternalID__c",
+        "GlobalKey": "FINDMGetServiceAssetByCredit16680891469077608",
+        "InputFieldName": "%vlocity_namespace%__BillingAccountId__r.FVU_AccountExternalID__c",
+        "InputObjectName": "Asset",
+        "InputObjectQuerySequence": 3,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Asset",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'$Vlocity.TRUE'",
+        "GlobalKey": "FINDMGetServiceAssetByCredit15406251019674277",
+        "InputFieldName": "IsFinanced__c",
+        "InputObjectName": "Asset",
+        "InputObjectQuerySequence": 3,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Asset",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "QUERY(\"SELECT %vlocity_namespace%__DefaultBillingAccountId__c from order where id = '{0}'\", %assetOrder%)",
+        "FormulaResultPath": "defaultBilling",
+        "FormulaSequence": 2,
+        "GlobalKey": "FINDMGetServiceAssetByCredit7381058990318128",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "QUERY(\"SELECT %vlocity_namespace%__OrderId__c from asset where FIN_NumeroDeCredito__c = '{0}'\", %numeroDeCredito%)",
+        "FormulaResultPath": "assetOrder",
+        "FormulaSequence": 1,
+        "GlobalKey": "FINDMGetServiceAssetByCredit6052076547642831",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "QUERY(\"SELECT FIN_NumeroDeCuenta__c from Asset where FIN_NumeroDeCredito__c = '{0}'\", %numeroDeCredito%)",
+        "FormulaResultPath": "formFinNumeroCuenta",
+        "FormulaSequence": 5,
+        "GlobalKey": "FINDMGetServiceAssetByCredit08473325926613673",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "QUERY(\"SELECT FVU_AccountExternalID__c from account where Id = '{0}'\", %defaultBilling%)",
+        "FormulaResultPath": "accountExternalId",
+        "FormulaSequence": 3,
+        "GlobalKey": "FINDMGetServiceAssetByCredit19783552416119576",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "QUERY(\"SELECT Id from Asset where FIN_NumeroDeCuenta__c = '{0}' and ProductFamily = 'Mobile' \", %formFinNumeroCuenta%)",
+        "FormulaResultPath": "FormAssetMovil",
+        "FormulaSequence": 6,
+        "GlobalKey": "FINDMGetServiceAssetByCredit5963757696915952",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "QUERY(\"SELECT Id from Asset where FIN_NumeroDeCuenta__c = '{0}'\", %accountExternalId%)",
+        "FormulaResultPath": "FormAssetMovil1",
+        "FormulaSequence": 4,
+        "GlobalKey": "FINDMGetServiceAssetByCredit10697277701461894",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCredit04963355868015351",
+        "InputFieldName": "AccountBilling:Name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Account:Cuenta93",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCredit6321687583182674",
+        "InputFieldName": "FormAssetMovil",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Asset:AssetMovil",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCredit49253301227281066",
+        "InputFieldName": "Asset:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Asset:Id",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCredit5375377051448076",
+        "InputFieldName": "Asset:IsFinanced__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Asset:IsFinanced",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCreditCustom7951",
+        "InputFieldName": "Order:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Asset:OrderId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCredit9472767685030947",
+        "InputFieldName": "Order:AccountId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Order:AccountId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCredit22071239133651166",
+        "InputFieldName": "Order:FIN_NumeroCredito__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Order:NumeroCredito",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCredit891034800758099",
+        "InputFieldName": "accountExternalId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "accountExternalId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCredit4254107947328485",
+        "InputFieldName": "assetOrder",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "assetOrder",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINDMGetServiceAssetByCredit9282607074737459",
+        "InputFieldName": "defaultBilling",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINDMGetServiceAssetByCredit",
+        "OmniDataTransformationId": {
+            "Name": "FINDMGetServiceAssetByCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINDMGetServiceAssetByCredit",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "defaultBilling",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

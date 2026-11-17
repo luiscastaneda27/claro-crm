@@ -1,0 +1,497 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "dataInput:dados:data:userData:lightningEvent:ucid",
+        "GlobalKey": "EU_DME_ObtenerDatosTarea22237511768422624",
+        "InputFieldName": "CallObject",
+        "InputObjectName": "Task",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Task",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "LIMIT",
+        "FilterValue": "1",
+        "GlobalKey": "EU_DME_ObtenerDatosTarea7364076633294127",
+        "InputObjectName": "Task",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Task",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "ORDER BY",
+        "FilterValue": "CreatedDate desc",
+        "GlobalKey": "EU_DME_ObtenerDatosTarea699888543388496",
+        "InputObjectName": "Task",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Task",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "SUBSTRING(%dataInput:dados:data:userData:lightningEvent:queue%, 2, 100)",
+        "FormulaResultPath": "skill",
+        "FormulaSequence": 1,
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom9556",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "UNIXTODATETIME(%dataInput:dados:data:userData:lightningEvent:startTime%)",
+        "FormulaResultPath": "startTime",
+        "FormulaSequence": 2,
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom8352",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "UNIXTODATETIME(\n  %dataInput:dados:data:userData:lightningEvent:startTime% +\n  (%dataInput:dados:data:userData:lightningEvent:callDuration% * 1000)\n)",
+        "FormulaResultPath": "DateFisnish",
+        "FormulaSequence": 3,
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom9266",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom1094",
+        "InputFieldName": "ACWDURATION",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "ACWDURATION",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTarea46014684177312504",
+        "InputFieldName": "dataInput:dados:data:userData:lightningEvent:ani",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_ANI__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom3412",
+        "InputFieldName": "dataInput:dados:data:userData:lightningEvent:callDuration",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "EU_CallDuration__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom3843",
+        "InputFieldName": "dataInput:dados:data:userData:lightningEvent:queue",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_Cola__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTarea5378042958384127",
+        "InputFieldName": "dataInput:dados:data:userData:lightningEvent:dnis",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_DNIS__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom2299",
+        "InputFieldName": "DateFisnish",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_DateFinish__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom6719",
+        "InputFieldName": "startTime",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_DateStart__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom9210",
+        "InputFieldName": "dataInput:dados:data:userData:lightningEvent:direction",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_Direction__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom9548",
+        "InputFieldName": "dataInput:dados:data:userData:stationId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_Extension__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom5024",
+        "InputFieldName": "dataInput:dados:data:userData:lightningEvent:agentId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_IdAgente__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom1551",
+        "InputFieldName": "dataInput:dados:data:userData:lightningEvent:callId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_IdLlamada__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom7973",
+        "InputFieldName": "skill",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_Skill__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom8426",
+        "InputFieldName": "EU_Tipificacion_N1__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_Tipificacion_N1__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom4836",
+        "InputFieldName": "EU_Tipificacion_N2__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_Tipificacion_N2__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom6943",
+        "InputFieldName": "EU_Tipificacion_N3__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_Tipificacion_N3__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTarea43157368180408084",
+        "InputFieldName": "dataInput:dados:data:userData:uui",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_UUI__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTarea136900635839185",
+        "InputFieldName": "dataInput:dados:data:userData:lightningEvent:ucid",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "EU_ucid__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTarea5908631524283877",
+        "InputFieldName": "Task:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Id",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "EU_DME_ObtenerDatosTareaCustom4287",
+        "InputFieldName": "accountId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "EU_DME_ObtenerDatosTarea",
+        "OmniDataTransformationId": {
+            "Name": "EU_DME_ObtenerDatosTarea",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/EU_DME_ObtenerDatosTarea",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "accountId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

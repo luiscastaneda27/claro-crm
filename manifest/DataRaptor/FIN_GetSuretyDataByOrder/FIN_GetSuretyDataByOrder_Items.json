@@ -1,0 +1,405 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "OrderId",
+        "GlobalKey": "FIN_GetSuretyDataByOrder6937543752481031",
+        "InputFieldName": "Id",
+        "InputObjectName": "Order",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Order",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Order:Account.FVU_DocumentType__c",
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom5658",
+        "InputFieldName": "Type__c",
+        "InputObjectName": "DocumentType__mdt",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "document",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Order:%vlocity_namespace%__QuoteId__r.FIN_CalificacionCuenta__c",
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom5470",
+        "InputFieldName": "FIN_calificacionCuenta__c",
+        "InputObjectName": "FIN_MSBusInteAskSurCr__mdt",
+        "InputObjectQuerySequence": 3,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "clientype",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Order:%vlocity_namespace%__DefaultServiceAccountId__r.FVU_ServiceDaneCode__c",
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom8413",
+        "InputFieldName": "FVU_DaneCity__c",
+        "InputObjectName": "FVU_CityMetadata__mdt",
+        "InputObjectQuerySequence": 4,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "codigoDane",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "CONCAT(\"S02\",SUBSTRING(Order:OrderNumber,1))",
+        "FormulaResultPath": "contractNumber",
+        "FormulaSequence": 1,
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom8733",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom5760",
+        "InputFieldName": "Order:%vlocity_namespace%__QuoteId__r.FIN_AccountExternalID__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:billingAccount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom5634",
+        "InputFieldName": "Order:FIN_FechaDeCorte__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:billingCycle",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom8305",
+        "InputFieldName": "codigoDane:FVU_DaneMunicipality__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:cityDaneCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom2512",
+        "InputFieldName": "clientype:FIN_clientType__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:clientType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom3514",
+        "InputFieldName": "Order:FIN_IdReferenciaDelCredito92__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:creditBillingAccount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom1692",
+        "InputFieldName": "Order:%vlocity_namespace%__QuoteId__r.%vlocity_namespace%__DefaultBillingAccountId__r.FVU_CutoffDetailsDate__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:cutOffDay",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom4234",
+        "InputFieldName": "Order:FIN_CreatedDateCredit__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Date(yyyy-MM-dd'T'HH:mm:ss)",
+        "OutputFieldName": "suretyData:dateFinCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom4009",
+        "InputFieldName": "Order:Account.FVU_DocumentNumber__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:documentNumber",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom4862",
+        "InputFieldName": "document:Code__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:documentType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom9803",
+        "InputFieldName": "Order:%vlocity_namespace%__QuoteId__r.FIN_Fianza_Id__r.FIN_Impuesto_de_IVA_exento__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:exVatTax",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom2256",
+        "InputFieldName": "contractNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:idContract",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom2427",
+        "InputFieldName": "Order:AccountId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:idExternalCustomer",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom7928",
+        "InputFieldName": "Order:FIN_NumeroCredito__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:idFinCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom5247",
+        "InputFieldName": "Order:OrderNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:idOrder",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FIN_GetSuretyDataByOrderCustom3594",
+        "InputFieldName": "Order:%vlocity_namespace%__QuoteId__r.FIN_Fianza_Id__r.FIN_Fianza_Id__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FIN_GetSuretyDataByOrder",
+        "OmniDataTransformationId": {
+            "Name": "FIN_GetSuretyDataByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FIN_GetSuretyDataByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suretyData:idPresurety",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]
