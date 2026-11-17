@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "InsertEnSPDocDelay",
+    "OmniProcessId": {
+        "Name": "ModDatosProvidenceAndContract",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ModDatosProvidenceAndContract/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "docName": "CONSULTASAGRILAF_1234.pdf",
+            "document": {
+                "xdCRM": "SALESFORCE",
+                "xdEmpresa": "COMCEL",
+                "xdFechaArchivo": "%SVInput:today%",
+                "xdFechaDocumento": "%SVInput:today%",
+                "xdIdCliente": "%DRGetCase:AccountId%",
+                "xdIdProceso": "%DRGetCase:NumeroCaso%",
+                "xdIdSalesforce": "%SVInput:CaseId%",
+                "xdNombrePunto": "%GetUserDetails:UserDetails:PuntoVenta%",
+                "xdNumeroIdentificacion": "%DRGetCase:DocumentNumber%",
+                "xdTipoDocumental": "CONSULTA_LISTAS_VINCULANTES_RESTRICTIVA_PEP_CLIMAS",
+                "xdTipoIdentificacion": "%DRGetCase:DocumentType%"
+            },
+            "document_ext": {
+                "serie": "EVRIESGOSCLIENTMASI"
+            },
+            "idDocument": "%PVUGetContentVersionByTitle:ContentVersion:Id%",
+            "serieDocumental": 1,
+            "target": "%RA_GetTargetAmb:targetCode%",
+            "xdIdProceso": "%DRGetCase:NumeroCaso%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%IPUnifiedLists:Cantidad% > 0",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPMSEnSpDocUpload_InsertEnSpDocDelay",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ModDatosProvidenceAndContract/Procedure/InsertEnSPDocDelay"
+}

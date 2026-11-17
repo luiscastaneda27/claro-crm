@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesResponseAll",
+    "OmniProcessId": {
+        "Name": "TMFGetCases",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/getTroubleTicket/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "responseData": "=IF(%GetCaseDataTMF:code% != \"200\", %GetCaseDataTMF% ,IF(ISBLANK(%fields%),LIST(%SetValuesResponseStatusOrNot:dataStatusOrCompleted%),LIST(%FilterRemoteAction:result%)))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/getTroubleTicket/Procedure/SetValuesResponseAll"
+}

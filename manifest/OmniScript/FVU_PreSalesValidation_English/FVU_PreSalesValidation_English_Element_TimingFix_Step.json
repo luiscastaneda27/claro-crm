@@ -1,0 +1,77 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "TimingFix_Step",
+    "OmniProcessId": {
+        "Name": "PreSalesValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreSalesValidation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "allowSaveForLater": true,
+        "businessCategory": "",
+        "businessEvent": "",
+        "cancelLabel": "Cancel",
+        "cancelMessage": "Are you sure?",
+        "chartLabel": null,
+        "completeLabel": "Complete",
+        "completeMessage": "Are you sure you want to complete the script?",
+        "conditionType": "Hide if False",
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "hide": true,
+        "instruction": "<p>[FIX: Bug 674164 - Conflicto de Navegaci&oacute;n 'Replace'] Este paso se incluye para resolver un conflicto de sincronizaci&oacute;n ('timing') entre el motor de navegaci&oacute;n de Vlocity y el runtime de Lightning. Cuando la casilla 'Replace' est&aacute; activa en el Navigate Action anterior (OS_NewSalesFin), el componente actual no se destruye a tiempo, lo que provoca el error de consola 'Uncaught (in promise)' (error visual y de estabilidad del flujo). El Step fuerza una pausa y una consolidaci&oacute;n del Data JSON, estabilizando el estado antes de la redirecci&oacute;n. NO ELIMINAR. Es un parche de estabilidad esencial para el flujo de navegaci&oacute;n.</p>",
+        "instructionKey": "",
+        "knowledgeOptions": {
+            "dataCategoryCriteria": "",
+            "keyword": "",
+            "language": "English",
+            "publishStatus": "Online",
+            "remoteTimeout": 30000,
+            "typeFilter": ""
+        },
+        "label": "TimingFix_Step",
+        "message": {
+        },
+        "nextLabel": "Next",
+        "nextWidth": 3,
+        "previousLabel": "Previous",
+        "previousWidth": 3,
+        "pubsub": false,
+        "remoteClass": "",
+        "remoteMethod": "",
+        "remoteOptions": {
+        },
+        "remoteTimeout": 30000,
+        "saveLabel": "Save for later",
+        "saveMessage": "Are you sure you want to save it for later?",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "PreSalesValidation:PurchaseIntention:Financiado"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": true,
+        "wpm": false
+    },
+    "Type": "Step",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreSalesValidation/English/TimingFix_Step"
+}

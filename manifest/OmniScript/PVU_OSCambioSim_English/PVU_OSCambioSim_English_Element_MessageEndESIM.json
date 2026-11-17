@@ -1,0 +1,67 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MessageEndESIM",
+    "OmniProcessId": {
+        "Name": "OSCambioSim",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioSim/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "FinESIMSuccess",
+        "OmniProcessId": {
+            "Name": "OSCambioSim",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioSim/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioSim/English/FinESIMSuccess",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "FinESIMSuccess",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "MessageEndESIM",
+        "messages": [
+            {
+                "active": true,
+                "text": "%IPSim:Details:Message%",
+                "type": "Success",
+                "value": true
+            },
+            {
+                "active": true,
+                "text": "%Mensajes:CAMBSIM011%",
+                "type": "Warning",
+                "value": false
+            }
+        ],
+        "show": null,
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "success",
+                        "field": "IPCheckoutOrder:EndProcess"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "success",
+                        "field": "IPSim:EndProcess"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioSim/English/MessageEndESIM"
+}

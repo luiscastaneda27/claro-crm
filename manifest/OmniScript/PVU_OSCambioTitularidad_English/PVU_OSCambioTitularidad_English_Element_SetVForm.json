@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetVForm",
+    "OmniProcessId": {
+        "Name": "Cambio de titularidad de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioTitularidad/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ciudadContactoPropietario": "=%ciudadForm%",
+            "consecutivoFacturaFinal": "%consecutivoFacturaForm%",
+            "departamentoPopietario": "=%departamentoForm%",
+            "direccionPropietario": "%direccionForm%",
+            "imeiFinal": "%imeiForm%",
+            "marcaFinal": "%marcaForm%",
+            "minFinal": "%minForm%",
+            "modelFinal": "%modeloForm%",
+            "nombreAutorizado": "%establecimientoForm%",
+            "nombrePropietario": "%nombreClienteForm%",
+            "numIdAutorizado": "%nitEstablecimientoForm%",
+            "numIdPropietario": "=%numeroDocumentoForm%",
+            "telContactoPropietario": "%telefonoForm%",
+            "tipoDocumentoAutorizado": "2",
+            "tipoDocumentoFinal": "%IPValidation:Details:accountInfo:accountDocumentType%",
+            "tipoDocumentoPropietario": "=IF(%IPValidation:Details:accountInfo:accountDocumentType% == 'CC', '1', IF(%IPValidation:Details:accountInfo:accountDocumentType%  == 'PP', '5', IF(%IPValidation:Details:accountInfo:accountDocumentType% == 'NI','2', '4')))"
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioTitularidad/English/SetVForm"
+}

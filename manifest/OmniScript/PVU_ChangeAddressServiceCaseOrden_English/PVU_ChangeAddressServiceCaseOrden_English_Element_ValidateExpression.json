@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ValidateExpression",
+    "OmniProcessId": {
+        "Name": "ChangeAddressServiceCaseOrden",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ChangeAddressServiceCaseOrden/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "finFlujoDireccion",
+        "OmniProcessId": {
+            "Name": "ChangeAddressServiceCaseOrden",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ChangeAddressServiceCaseOrden/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ChangeAddressServiceCaseOrden/English/finFlujoDireccion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "finFlujoDireccion",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "Messaging1",
+        "messages": [
+            {
+                "active": true,
+                "text": "Este cliente no tiene una dirección en el mismo departamento que se realizó la venta. Puedes agregar una nueva dirección a través de la vista 360.",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": null,
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "msjFinFlujo"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ChangeAddressServiceCaseOrden/English/ValidateExpression"
+}

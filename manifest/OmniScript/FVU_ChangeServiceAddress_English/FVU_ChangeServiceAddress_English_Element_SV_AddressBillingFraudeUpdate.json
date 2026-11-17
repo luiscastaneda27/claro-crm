@@ -1,0 +1,58 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AddressBillingFraudeUpdate",
+    "OmniProcessId": {
+        "Name": "ChangeServiceAddress",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ChangeServiceAddress/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Address": {
+                "AccountId": "%StepChangeServiceAddress:FlexCardAddressList:selectAddress:selectedAddress|1:Id%",
+                "AccountName": "%StepChangeServiceAddress:FlexCardAddressList:selectAddress:selectedAddress|1:name%",
+                "BillingAddressStatus": "%StepResultado:FormulaAddressStatus%"
+            }
+        },
+        "label": "SV_AddressBillingFraudeUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Billing",
+                        "field": "AddressRecordTypeNameSelected"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "AddressIdSelected"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "FormulaShowConsultaDireccion"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ChangeServiceAddress/English/SV_AddressBillingFraudeUpdate"
+}

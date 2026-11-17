@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_DataAccountModify",
+    "OmniProcessId": {
+        "Name": "UpdateCustomer",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateCustomer/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Account": {
+                "CustomerGroup": "%StepUpdateCustomer:MoreInfo:CustomerGroup%",
+                "DocumentNumber": "%DocumentNumber%",
+                "DocumentType": "%FormDocTypeModify%",
+                "Email": "%Email%",
+                "Id": "%ContextId%",
+                "Name": "%StepUpdateCustomer:ContactInfoModify:FormulaNameConcat%",
+                "NotificationChoice": "%NotificationChoiceSV%",
+                "ValidateEmail": "%ValidateEmail%"
+            },
+            "AccountPhone": "%PhoneModify%"
+        },
+        "label": "SV_DataAccountModify",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "IsCreate"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateCustomer/English/SV_DataAccountModify"
+}

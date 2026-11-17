@@ -1,0 +1,75 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "ProductoNoAgreadoMessaging",
+    "OmniProcessId": {
+        "Name": "CompletarOferta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CompletarOferta/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "AnadirPaquetesAdicionales",
+        "OmniProcessId": {
+            "Name": "CompletarOferta",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CompletarOferta/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CompletarOferta/English/AnadirPaquetesAdicionales",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "AnadirPaquetesAdicionales",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "Producto No Agregado",
+        "messages": [
+            {
+                "active": true,
+                "text": "%EscogerPaquetesAdicionales:productInfo:postCartItems:PostCartResponse:Details%",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "ProductoNoAgregadoFormula"
+                    }
+                ]
+            }
+        },
+        "showMessageAs": "toast",
+        "toastMode": "dismissible",
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "ProductoNoAgregadoFormula"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CompletarOferta/English/ProductoNoAgreadoMessaging"
+}

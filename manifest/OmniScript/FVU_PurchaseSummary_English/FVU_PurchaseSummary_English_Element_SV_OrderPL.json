@@ -1,0 +1,56 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_OrderPL",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseSummary",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseSummary/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Order2": {
+                "DeliveryData": "%SeletedPromiseLWC%",
+                "DeliveryMethod": "%StepDeliveryMethod:SelectMethod%",
+                "LoyaltyType": "%BonoType%",
+                "OrderId": "%ContextId%",
+                "OrderMotivoCierre": null,
+                "PaymentMethod": "%StepDeliveryPago:FormulaPaymentMethodSummary%",
+                "PaymentStatus": "%varPaymentStatus%",
+                "PaymentType": "%StepDeliveryPago:PaymentInformation:PaymentType%",
+                "RemoveEBilling": "%CheckboxRemoveEBilling%",
+                "ValueEmail": "%PaymentInformation:ValueEmail%",
+                "ValuePhone": "%PaymentInformation:ValuePhone%"
+            }
+        },
+        "label": "SV_OrderPL",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "PL",
+                        "field": "varPaymentStatus"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseSummary/English/SV_OrderPL"
+}

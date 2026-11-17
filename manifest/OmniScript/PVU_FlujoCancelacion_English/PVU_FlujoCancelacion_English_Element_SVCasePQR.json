@@ -1,0 +1,73 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCasePQR",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "casoPQR": {
+                "AccountId": "%IPGetCaseInformation:Details:AccountId%",
+                "AssetName": "%IPGetCaseInformation:Details:AssetName%",
+                "AssetStatus": "%IPGetCaseInformation:Details:AssetStatus%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "FechaEjecucionOrden": "%fechaGMT%",
+                "Id": "%CaseId%",
+                "MotivoCancelacion": "%IPGetCaseInformation:Details:MotivoCancelacion%",
+                "OrderId": "%GeneratedOrder:result:orderId%",
+                "Status": "Cerrado",
+                "SubCategoria": "Cancelación Servicio Móvil",
+                "SubEstado": "Pendiente ejecución de la orden",
+                "SubMotivoCancelacion": "%IPGetCaseInformation:Details:SubMotivoCancelacion%",
+                "UserChannel": "%UserDetails:Channel%",
+                "address": [
+                    {
+                        "address": "%DatosCuenta:Billing|1:Direccion%",
+                        "departmentCode": "%codigoDaneDepartamento%",
+                        "municipalityCode": "%codigoDaneCiudad%",
+                        "neighborhood": "=IF(%DatosCuenta:Billing|1:Vecindario% <> null, %DatosCuenta:Billing|1:Vecindario%, %DatosCuenta:Billing|1:CentroPoblado%)",
+                        "populatedCenterCode": "%codigoDaneCentro%"
+                    }
+                ],
+                "caseOrigin": "%IPGetCaseInformation:Details:OrigenCaso%",
+                "description": "Fallas con el servicio, No esta conforme con los servicios",
+                "docNumber": "%DatosCuenta:Cliente:NumeroDocumento%",
+                "docType": "%DatosCuenta:Cliente:TipoDocumento%",
+                "email": "%DatosCuenta:Cliente:Email%",
+                "firstName": "%DatosCuenta:Cliente:ContactoPrimerNombre%",
+                "flagCierreAutomatico": true,
+                "lastName": "%DatosCuenta:Cliente:ContactoApellido%",
+                "phone": "%DatosCuenta:Cliente:Telefono%",
+                "productosSeleccionados": "%IPGetCaseInformation:Details:AssetName%",
+                "serialE": "",
+                "subject": "%vozCliente%",
+                "typeCode": "Queja",
+                "vozCliente": "%vozCliente%"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            {
+                "vlcCart": true,
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/SVCasePQR"
+}

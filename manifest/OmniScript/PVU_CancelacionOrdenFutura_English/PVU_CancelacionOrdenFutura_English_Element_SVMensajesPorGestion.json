@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVMensajesPorGestion",
+    "OmniProcessId": {
+        "Name": "CancelacionOrdenFutura",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CancelacionOrdenFutura/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "MsgErrorValidacionIdentidad": "=IF(%IPGetCaseInformation:Details:PVU_Level3__c% == \"Suspensión Temporal Voluntaria\", %IPMensajesPorGestion:MSG009%, IF(%IPGetCaseInformation:Details:PVU_Level3__c% == \"Cancelación Voluntaria\", %IPMensajesPorGestion:CANVOL001%, IF(%IPGetCaseInformation:Details:PVU_Level3__c% == \"Cambio de plan móvil\", %IPMensajesPorGestion:CAMBPLANMOV005%, IF(%IPGetCaseInformation:Details:PVU_Level3__c% == \"Activación de servicio y paquetes\", %IPMensajesPorGestion:ROAMACT007%, \"\"))))",
+            "contenidoSMS": "=IF(%IPGetCaseInformation:Details:PVU_Level3__c% == \"Suspensión Temporal Voluntaria\", %IPMensajesPorGestion:MSG010%, IF(%IPGetCaseInformation:Details:PVU_Level3__c% == \"Cancelación Voluntaria\",%IPMensajesPorGestion:CANVOL006%, IF(%IPGetCaseInformation:Details:PVU_Level3__c% == \"Cambio de plan móvil\", %IPMensajesPorGestion:CAMBPLANMOV011%, IF(%IPGetCaseInformation:Details:PVU_Level3__c% == \"Activación de servicio y paquetes\", %IPMensajesPorGestion:ROAMACT026%, IF(%IPGetCaseInformation:Details:PVU_Level3__c% == \"Cambio de pospago a prepago\", %RA_MSJ_PRE_A_POS:mensajeParametrizado%, \"\")))))"
+        },
+        "label": "SVMensajesPorGestion",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CancelacionOrdenFutura/English/SVMensajesPorGestion"
+}

@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAErrorConsultaReintento",
+    "OmniProcessId": {
+        "Name": "ValidarAdicionDuplas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "Message": "El proceso ha concluido exitosamente",
+                "MessageError": "%%",
+                "minValid": "false"
+            },
+            "EBAdicionar": "%SVInput:ListIn%",
+            "EndProcess": "Error",
+            "MensageParametrizadoAdicion": "%SVInput:mensajes:DUPIMEI029%",
+            "MinReintento": "%ReintentoError:MinReintento%",
+            "minValidar": "",
+            "reintentos": "%ReintentoError:reintentos%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%ReintentoError:reintentos% == 0 && (%PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"500\" || %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"504\" || %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"400\" || %PVU_IPGetImeiInformationBydoc:consultaImei:status% = 400 || %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"500\" || %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"504\" || %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"400\" || %PVU_IPGetImeiInformationBydoc:consultaImei:status% = \"400\")",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/RAErrorConsultaReintento"
+}

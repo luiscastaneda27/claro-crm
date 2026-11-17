@@ -1,0 +1,95 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_Cerrar",
+    "OmniProcessId": {
+        "Name": "FVU_ATDP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ATDP/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "stepATDP",
+        "OmniProcessId": {
+            "Name": "FVU_ATDP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ATDP/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ATDP/English/stepATDP",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "stepATDP",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 2,
+        "elementValueMap": {
+            "CloseNewSales": "=true",
+            "CreateEngagementTopic": "=IF(%ATDPRequest:ATDPIntegrations:communicationStatus% == \"fail\", false, true)",
+            "EngagementInteractionMessage": "=IF(%ATDPRequest:ATDPIntegrations:FVU_ContractStatusApproval:success% != true, \"Se han superado los 3 intentos y no se recibio respuesta de aceptación por parte del Cliente\", \"Cliente no acepta la Autorización Tratamiento de Datos Personales\")"
+        },
+        "label": "Cerrar",
+        "lwcComponentOverride": "setvalue_next",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Expired",
+                        "field": "ATDPRequest:ATDPIntegrations:FVU_ContractStatusApproval:statusAccept"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "Rejected",
+                        "field": "ATDPRequest:ATDPIntegrations:FVU_ContractStatusApproval:statusAccept"
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "<>",
+                                    "data": "true",
+                                    "field": "ATDPRequest:ATDPIntegrations:FVU_ContractStatusApproval:success"
+                                },
+                                {
+                                    "condition": "<>",
+                                    "data": null,
+                                    "field": "ATDPRequest:ATDPIntegrations:FVU_ContractStatusApproval"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "fail",
+                                    "field": "ATDPRequest:ATDPIntegrations:communicationStatus"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ATDP/English/SV_Cerrar"
+}

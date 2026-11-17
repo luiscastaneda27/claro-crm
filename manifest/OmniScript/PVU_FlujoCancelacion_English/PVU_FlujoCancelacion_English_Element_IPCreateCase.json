@@ -1,0 +1,105 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPCreateCase",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "Case": "%Case%",
+            "DatosAdjunto": "%DatosAdjunto%",
+            "RecordTypeName": "GestionCasosPosventa",
+            "tieneAdjunto": "%tieneAdjunto%"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_IPCreateCase",
+        "label": "IPCreateCase",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "FAILED",
+                        "field": "Validation:status"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "ERROR",
+                        "field": "Validation:response:result"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "false",
+                        "field": "Validation:success"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "true",
+                        "field": "SkipStep"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            {
+                "vlcCart": true,
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/IPCreateCase"
+}

@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_BuildRequest",
+    "OmniProcessId": {
+        "Name": "PostCartItem",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/PostCartItem/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "fieldsToUpdate": "=IF(ISNOTBLANK(%fieldsToUpdate%), %fieldsToUpdate%, NULL) "
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "EndProcess == \"fail\"",
+        "failureResponse": {
+            "Details": "%RA_BuildRequest:request:%",
+            "EndProcess": "fail"
+        },
+        "label": "RemoteAction2",
+        "remoteClass": "PVU_CambioSimInterface",
+        "remoteMethod": "buildRequestChildItemToCart",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "PostItemRequest",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "CartOperation",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/PostCartItem/Procedure/RA_BuildRequest"
+}

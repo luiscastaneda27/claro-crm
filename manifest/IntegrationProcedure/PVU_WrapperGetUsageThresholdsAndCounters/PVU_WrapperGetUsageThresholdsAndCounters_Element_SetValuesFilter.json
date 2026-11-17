@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesFilter",
+    "OmniProcessId": {
+        "Name": "WrapperGetUsageThresholdsAndCounters",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/WrapperGetUsageThresholdsAndCounters/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "currentUsageBalanceMonetary": "=FILTER(LIST(IPGetUsageThresholdsAndCounters:currentUsageBalance), 'currentUsageBalanceId == \"' + filtroID + '\"')",
+            "usageCounterMonetary": "=FILTER(LIST(IPGetUsageThresholdsAndCounters:usageCounter), 'usageCounterID == \"' + filtroID + '\"')",
+            "usageThresholdMonetary": "=FILTER(LIST(IPGetUsageThresholdsAndCounters:usageThreshold), 'usageThresholdID == \"' + filtroID + '\"')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/WrapperGetUsageThresholdsAndCounters/Procedure/SetValuesFilter"
+}

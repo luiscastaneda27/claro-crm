@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_CreateOrderDesactivacionServ",
+    "OmniProcessId": {
+        "Name": "IPCreateOrderWrapper",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/iPCreateOrderWrapper/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBDesactivacionServicioYpaquetes",
+        "OmniProcessId": {
+            "Name": "IPCreateOrderWrapper",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/iPCreateOrderWrapper/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/iPCreateOrderWrapper/Procedure/CBDesactivacionServicioYpaquetes",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBDesactivacionServicioYpaquetes",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "AssetId": "%RootAsset:assetRootId%",
+            "CaseInfo": "%SVContext:SVCaseInfo%",
+            "ProcessName": "RoamingDesactivacion"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "result:status == \"Error\"",
+        "failureResponse": {
+            "Details": "%IP_CreateOrderDesactivacionServ:result:message%",
+            "EndProcess": "fail"
+        },
+        "integrationProcedureKey": "PVU_IPGenerateTemporySuspensionOrder",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "IPGenerateOrder",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/iPCreateOrderWrapper/Procedure/IP_CreateOrderDesactivacionServ"
+}

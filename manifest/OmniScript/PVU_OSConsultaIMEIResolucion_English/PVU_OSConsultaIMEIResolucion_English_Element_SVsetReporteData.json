@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVsetReporteData",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "reporteImei": "%imeiFinal%",
+            "reporteMIN": "=IF(%minString% == NULL, %MinFinal%, %minString%)",
+            "reporteMSISDN": "=IF(%bdoNegativo:listaReportesBean|1:msisdn% != null, %bdoNegativo:listaReportesBean|1:msisdn%, '')",
+            "reporteMarca": "=%IPGetImei:DataEquipo:Marca%",
+            "reporteModelo": "=%IPGetImei:DataEquipo:Modelo%",
+            "reporteNumeroDocumento": "%AccountData:AccountDocument|1:FVU_DocumentNumber__c%",
+            "reporteTipoDocumento": "=%TipoDocumentoApi%",
+            "reporteTipoDocumentoValor": "=IF(%ConsultaTipoIdentificacion:response:TipoDocumentoValue% != null, %ConsultaTipoIdentificacion:response:TipoDocumentoValue%, '')",
+            "usuarioRedReporte": "%UserData|1:PVU_Usuario_Red__c%"
+        },
+        "label": "SVsetReporteData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/SVsetReporteData"
+}

@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PVU_SetFinalStatus",
+    "OmniProcessId": {
+        "Name": "PVU_AprobarDevDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/AprobarDevDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Message": "=IF(%PVU_PendingApprovalTransfer% == \"Se realiza devolución\",\n\"su solicitud de devolución se encuentra aprobada por valor de \" + %PVU_Validations:Case:PVU_Valor_total_de_devolucion__c%,\nIF(%PVU_PendingApprovalTransfer% == \"Devolución no realizada\",\n\"su solicitud de devolución no se ha podido realizar porque '%PVU_SelecCodCierre:PVU_Comment%' \",\nIF(%PVU_DevolucionDineroClaroPay% ==  \"Cuenta ClaroPay no posee depósito activo\", \n\"no se ha podido realizar su solicitud de devolución de dinero por medio de su billetera ClaroPay con número \" + %PVU_Validations:Case:PVU_Numero_asociado_a_claro_pay__c% + \" debido a que no se ha creado el depósito de bajo monto, por favor cree el depósito desde la app ClaroPay. Si lo desea puede acercarse a cualquier Centro de Atención y Servicio para recibir asesoría de cómo crearlo o a través de la página web Claro.com/ClaroPay\",\nIF(%PVU_DevolucionDineroClaroPay% ==  \"Cuenta ClaroPay no se encuentra activa\",\n\"no se ha podido realizar su solicitud de devolución de dinero por medio de su billetera ClaroPay con número \" + %PVU_Validations:Case:PVU_Numero_asociado_a_claro_pay__c% + \" debido a que Cuenta ClaroPay no se encuentra activa\",\nIF(%PVU_DevolucionDineroClaroPay% ==  \"Se realiza devolución\",\n\"se ha realizado su solicitud de devolución de dinero por medio de su billetera ClaroPay con número \" + %PVU_Validations:Case:PVU_Numero_asociado_a_claro_pay__c%,\nIF(%PVU_PendingApprovalReverse% ==  \"Se realiza reverso de pago\",\n\"su solicitud de devolución se encuentra aprobada por valor de \" + %PVU_Validations:Case:PVU_Valor_total_de_devolucion__c%,\n\" \"))))))",
+            "PVU_CodCierre": "=IF( %PVU_PendingReverse% <> null, %PVU_PendingReverse%,\nIF( %PVU_PendingApprovalTransfer% <> null, %PVU_PendingApprovalTransfer%,\nIF( %PVU_PendingApprovalEffective% <> null, %PVU_PendingApprovalEffective%,\nIF( %PVU_PendingApprovalReverse% <> null, %PVU_PendingApprovalReverse%,\nIF( %PVU_DevolucionDineroClaroPay% <> null, %PVU_DevolucionDineroClaroPay%,\n\"\")))))\n\n\n\n\n\n\n\n",
+            "PVU_Status": "Cerrado",
+            "PVU_SubStatus": "=IF( %PVU_PendingReverse% == \"Se realiza reverso de pago\" ||\n%PVU_PendingApprovalReverse% == \"Se realiza reverso de pago\",\n\"Reversión realizada\",\nIF( %PVU_PendingReverse% == \"Se rechaza reversión de pago\"\n|| %PVU_PendingApprovalReverse% == \"Se rechaza reversión de pago\"\n|| %PVU_PendingApprovalTransfer% == \"Devolución no realizada\"\n|| %PVU_PendingApprovalEffective% == \"Devolución no realizada\" \n|| %PVU_DevolucionDineroClaroPay% == \"Cuenta ClaroPay no posee depósito activo\"\n|| %PVU_DevolucionDineroClaroPay% == \"Cuenta ClaroPay no se encuentra activa\", \n\"Rechazado\",\nIF( %PVU_PendingApprovalTransfer% == \"Se realiza devolución\"\n|| %PVU_PendingApprovalEffective% == \"Se realiza devolución\"\n|| %PVU_DevolucionDineroClaroPay% == \"Se realiza devolución\",\n\"Dinero entregado\", \"\")))\n"
+        },
+        "label": "PVU_SetFinalStatus",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/AprobarDevDinero/English/PVU_SetFinalStatus"
+}

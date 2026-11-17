@@ -1,0 +1,63 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "msgErrorImmediatePickUp",
+    "OmniProcessId": {
+        "Name": "FVU_CloseOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CloseOrder/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "TangibleValidation",
+        "OmniProcessId": {
+            "Name": "FVU_CloseOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CloseOrder/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CloseOrder/English/TangibleValidation",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "TangibleValidation",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 8,
+        "disOnTplt": false,
+        "hideLabel": true,
+        "label": "msgError",
+        "messages": [
+            {
+                "active": true,
+                "text": "Sr asesor, la orden no puede ser finalizada los seriales asignados pertenecen a otro CAV, por favor remitir al cliente al punto de entrega (%pickupPointCode%)",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Retiro en tienda",
+                        "field": "deliveryMethod"
+                    }
+                ]
+            }
+        },
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CloseOrder/English/msgErrorImmediatePickUp"
+}

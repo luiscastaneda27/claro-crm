@@ -1,0 +1,64 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_ATDPDataToOrderNoValidated",
+    "OmniProcessId": {
+        "Name": "FVU_ATDP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ATDP/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ATDPRequest": {
+                "ATDPIntegrations": {
+                    "FVU_CallATDP": {
+                        "mailEnvio": "=IF(%PersonalDataAgreementMethod% == \"Correo electrónico\", %AccountAuthorizationValue%, %AccountEmail%)",
+                        "numeroEnvio": "=IF(%PersonalDataAgreementMethod% == \"SMS - Teléfono de contacto\", %AccountAuthorizationValue%, %AccountPhone%)",
+                        "tipoEnvio": "%PersonalDataAgreementMethod%"
+                    },
+                    "FVU_ContractStatusApproval": {
+                        "dateAccept": "%PersonalDataAgreementDate%"
+                    }
+                }
+            },
+            "ATDPType": "=IF(%PersonalDataAgreementMethod% == \"SMS - Teléfono de contacto\", \"sms\", \"email\")",
+            "DateAcceptedATDP": "=%PersonalDataAgreementDate%",
+            "SendEmailATDP": "=IF(%PersonalDataAgreementMethod% == \"Correo electrónico\", %AccountAuthorizationValue%, %AccountEmail%)",
+            "SendPhoneATDP": "=IF(%PersonalDataAgreementMethod% == \"SMS - Teléfono de contacto\", %AccountAuthorizationValue%, %AccountPhone%)"
+        },
+        "label": "SV_ATDPDataToOrderNoValidated",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "HasATDPApproval"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "CAV",
+                        "field": "UserDetails:BusinessChannel"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ATDP/English/SV_ATDPDataToOrderNoValidated"
+}

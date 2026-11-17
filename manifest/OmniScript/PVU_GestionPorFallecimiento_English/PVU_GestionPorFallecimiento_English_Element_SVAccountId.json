@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVAccountId",
+    "OmniProcessId": {
+        "Name": "GestionPorFallecimiento",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GestionPorFallecimiento/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%AccountId%",
+            "AssetId": "%ContextId%",
+            "NumeroCredito": "%NumeroCredito%",
+            "SerialOrIMEI": "=IF(%AssetImei% != null, %AssetImei%, %AssetSerial%)",
+            "SubEstado": "IF(ISBLANK(%trataimentoNC%), \"Pendiente número tratamiento NC\", \"-\")"
+        },
+        "label": "SVAccountId",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GestionPorFallecimiento/English/SVAccountId"
+}

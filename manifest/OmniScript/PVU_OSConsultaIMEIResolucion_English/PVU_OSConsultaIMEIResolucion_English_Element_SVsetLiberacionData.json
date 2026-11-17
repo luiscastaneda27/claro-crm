@@ -1,0 +1,40 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVsetLiberacionData",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "liberacionImei": "%Step1:Text4%",
+            "liberacionMIN": "%minString%",
+            "liberacionMSISDN": "=IF(%ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:respuestaConsultaProcesoDeteccionBean|1:msisdn% != null, %ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:respuestaConsultaProcesoDeteccionBean|1:msisdn%, '')",
+            "liberacionMarca": "=IF(%QueryTac:response:headerResponse:statusCode% == 'OK', %QueryTac:response:cursor:Row:Column|2:value%, '')",
+            "liberacionModelo": "=IF(%QueryTac:response:headerResponse:statusCode% == 'OK', %QueryTac:response:cursor:Row:Column|3:value%, '')",
+            "liberacionNumeroDocumento": "%AccountData:AccountDocument|1:FVU_DocumentNumber__c%",
+            "liberacionTipoDocumento": "=IF(%ConsultaTipoIdentificacion:response:TipoDocumentoValue% != null, %ConsultaTipoIdentificacion:response:TipoDocumentoValue%, '')",
+            "liberacionTipoReporte": "%ConsultaTipoReporte:response:NombreReporte%"
+        },
+        "label": "SVsetLiberacionData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/SVsetLiberacionData"
+}

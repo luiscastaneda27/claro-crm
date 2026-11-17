@@ -1,0 +1,75 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCancelacion",
+    "OmniProcessId": {
+        "Name": "FIN_GestionCasoAjuste",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoAjuste/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CancelacionARealizar": "=IF(%Seleccionar% = false, %Case:AccionGestionar% , IF(%Case:Origen%='V360', %SelectGestionCaso:AccionRealizarV360% , %SelectGestionCaso:AccionRealizarPQR%))",
+            "SVCancelacion": true,
+            "SV_Etapa": "CancelarCredito"
+        },
+        "label": "SVCancelacion",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Eliminación de crédito con nota crédito",
+                                    "field": "SelectGestionCaso:AccionRealizarV360"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "Eliminación de Crédito PQRs",
+                                    "field": "SelectGestionCaso:AccionRealizarPQR"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "Reversión de Crédito Fraude",
+                                    "field": "SelectGestionCaso:AccionRealizarPQR"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "<>",
+                                    "data": null,
+                                    "field": "Case:IntentoDeAjuste"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoAjuste/English/SVCancelacion"
+}

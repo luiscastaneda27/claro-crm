@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_CloseOrder",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseSummary",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseSummary/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CloseOrderSummary": {
+                "EndDate": "=NOW()",
+                "OrderId": "%ContextId%",
+                "OrderMotivoCierre": "=IF(%PreliminaryContract:success% == false, \"Falla en el Servicio de Contrato Preliminar\", IF(%PreliminaryContract:documentStatus% == \"Expired\" || %PreliminaryContract:documentStatus% == \"Rejected\",\"Cliente no aceptó contrato preliminar\"))",
+                "OrderStatus": "Cerrada Perdida",
+                "OrderStatusVelocity": "Cancelled"
+            }
+        },
+        "label": "SV_CloseOrder",
+        "lwcComponentOverride": "",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "ActionClosingOrder"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": {
+            "vlcCart": true,
+            "vlcKnowledge": false
+        },
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseSummary/English/SV_CloseOrder"
+}

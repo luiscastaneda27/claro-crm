@@ -1,0 +1,68 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MessagingError",
+    "OmniProcessId": {
+        "Name": "OSGestionImeiDuplicadoResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ResultadoDuplicado",
+        "OmniProcessId": {
+            "Name": "OSGestionImeiDuplicadoResolucion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English/ResultadoDuplicado",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ResultadoDuplicado",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "MessagingError",
+        "lwcComponentOverride": "",
+        "messages": [
+            {
+                "active": true,
+                "text": "%IPCaseValidationDuplicadoImei:mensajes:DUPIMEI006%",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "DuplicadosIPAPIMCMICProOrdeManWrapper:success"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "failed",
+                        "field": "DuplicadosIPAPIMCMICProOrdeManWrapper:Response:error:status"
+                    }
+                ]
+            }
+        },
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English/MessagingError"
+}

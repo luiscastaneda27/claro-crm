@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGpt",
+    "OmniProcessId": {
+        "Name": "ValidateGPTFuncionalidades",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBCasosGPT",
+        "OmniProcessId": {
+            "Name": "ValidateGPTFuncionalidades",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure/LBCasosGPT",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBCasosGPT",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "BloqueoGPT": "=IF(%FuncionalidadesList:Active% == false, IF(ISNOTBLANK(FILTER(LIST(%GetGPTCases:CasesGPT%), 'servicio == \"' + %FuncionalidadesList:Code% + '\"' )) == true, true,false),false)\r\n",
+            "Code": "=%FuncionalidadesList:Code%",
+            "Filter": "=FILTER(LIST(%GetGPTCases:CasesGPT%), 'servicio == \"' + %FuncionalidadesList:Code% + '\"' )",
+            "SizeFilter": "=LISTSIZE(FILTER(LIST(%GetGPTCases:CasesGPT%), 'servicio == \"' + %FuncionalidadesList:Code% + '\"' ))",
+            "isNotBlank": "=ISNOTBLANK(FILTER(LIST(%GetGPTCases:CasesGPT%), 'servicio == \"' + %FuncionalidadesList:Code% + '\"' ))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure/SVGpt"
+}

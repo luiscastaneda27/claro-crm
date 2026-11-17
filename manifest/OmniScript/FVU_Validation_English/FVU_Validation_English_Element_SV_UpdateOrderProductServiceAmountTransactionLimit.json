@@ -1,0 +1,84 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_UpdateOrderProductServiceAmountTransactionLimit",
+    "OmniProcessId": {
+        "Name": "FVU_Validation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Validation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Order": {
+                "EndDate": "=NOW()",
+                "Id": "%ContextId%",
+                "MotivoCierre": "Cliente alcanzó el limite de valor y transacciones para compras",
+                "OrderStatusVelocity": "Cancelled",
+                "Status": "Cerrada Perdida"
+            }
+        },
+        "label": "SV_UpdateOrderProductServiceAmountTransactionLimit",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "CB_CancelOrder"
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "<>",
+                                    "data": null,
+                                    "field": "ProductAmountLimit"
+                                },
+                                {
+                                    "condition": "<>",
+                                    "data": null,
+                                    "field": "ServiceAmountLimit"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "<>",
+                                    "data": null,
+                                    "field": "ProductLimit"
+                                },
+                                {
+                                    "condition": "<>",
+                                    "data": null,
+                                    "field": "ServiceLimit"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Validation/English/SV_UpdateOrderProductServiceAmountTransactionLimit"
+}

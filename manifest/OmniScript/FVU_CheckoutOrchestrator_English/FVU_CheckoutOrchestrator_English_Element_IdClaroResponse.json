@@ -1,0 +1,43 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|IdClaroResponse|English",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IdClaroResponse",
+    "OmniProcessId": {
+        "Name": "FVU_CheckoutOrchestrator",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CheckoutOrchestrator/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "English",
+        "Sub Type": "IdClaroResponse",
+        "Type": "FVU",
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "FAILED",
+                        "field": "Validation:status"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "ERROR",
+                        "field": "Validation:response:result"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "Validation:success"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CheckoutOrchestrator/English/IdClaroResponse"
+}

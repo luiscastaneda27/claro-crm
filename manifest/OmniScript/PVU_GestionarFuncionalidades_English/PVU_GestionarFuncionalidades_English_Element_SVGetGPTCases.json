@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGetGPTCases",
+    "OmniProcessId": {
+        "Name": "GestionarFuncionalidades",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GestionarFuncionalidades/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "tituloStep": "=IF(%CasesGPT:validationGPT% == true, \"GPT\", \"Prevención Fraude\")",
+            "validationFraude": "=IF(%CasesGPT:validationFraude% == null || %CasesGPT:validationFraude% == '', false, %CasesGPT:validationFraude%)",
+            "validationGPT": "=IF(%CasesGPT:validationGPT% == null || %CasesGPT:validationGPT% == '', false, %CasesGPT:validationGPT%)"
+        },
+        "label": "SVGetGPTCases",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GestionarFuncionalidades/English/SVGetGPTCases"
+}

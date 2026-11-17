@@ -1,0 +1,46 @@
+{
+    "Description": "IF(%StepUpdateCustomer:ContactInfoModify:DateBirthdateModify%==null, %StepUpdateCustomer:ContactInfoModify:DateBirthdateModifyReadOnly%, %StepUpdateCustomer:ContactInfoModify:DateBirthdateModify%)",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_BirthdateModify",
+    "OmniProcessId": {
+        "Name": "UpdateCustomer",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateCustomer/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DateBirthdateMod": "=IF(%IsMinorBirthdateModify%<18,%customerWrapper.Birthdate%,IF(%StepUpdateCustomer:ContactInfo:DateBirthdateModify%==null, %StepUpdateCustomer:ContactInfo:DateBirthdateModifyReadOnly%, %StepUpdateCustomer:ContactInfo:DateBirthdateModify%))"
+        },
+        "label": "SV_BirthdateModify",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "IsCreate"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateCustomer/English/SV_BirthdateModify"
+}

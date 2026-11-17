@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "NADuplicados",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConsultaIMEI",
+        "OmniProcessId": {
+            "Name": "OSConsultaIMEIResolucion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/ConsultaIMEI",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConsultaIMEI",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 3,
+        "iconName": "",
+        "iconPosition": "left",
+        "iconVariant": "",
+        "label": "Gestión Duplicados",
+        "loginAction": "login",
+        "message": {
+        },
+        "objectAction": "home",
+        "pubsub": false,
+        "recordAction": "view",
+        "replace": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "Security:accessProcess:PVU_duplicadoDeIMEI"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "permiteDuplicados"
+                    }
+                ]
+            }
+        },
+        "ssm": false,
+        "targetFilter": "Recent",
+        "targetId": "%ContextId%",
+        "targetLWCLayout": "lightning",
+        "targetType": "Web Page",
+        "targetUrl": "/lightning/cmp/%vlocity_namespace%__vlocityLWCOmniWrapper?c__target=c:pVUOSGestionImeiDuplicadoResolucionEnglish&c__layout=lightning&c__tabIcon=custom:custom18&c__tabLabel=Gestion Duplicados&c__ContextId=%ContextId%&c__imei=%reporteImei%&c__tipoDoc=%reporteTipoDocumento%&c__tipoDocId=%duplicadoTipoId%&c__numDoc=%reporteNumeroDocumento%&c__marca=%reporteMarca%&c__modelo=%reporteModelo%&c__minContext=%reporteMIN%&c__msisdn=%minString%&c__imsiContext=%duplicadoImsi%&c__imeiLuhn=%imeiLuhn%&c__AssetId=%AssetId%&\tc__ModelBranchError=%ModelBranchError%&c__AccountId=%accountId%&c__operadorReporte=%operadorReporte%&c__nombreCliente=%AccountName%&c__isReporteOtrosOperadores=%isReporteOtrosOperadores%&c__userChannel=%UserData|1:FVU_BusinessChannel__c%&c__usuarioRed=%usuarioRedReporte%&c__titularidad=%titular%&c__existeBdoPositivo=%duplicadoExisteBdoPositivo%&c__processDetection=%duplicadoProcessDetection%&c__tipoReporte=%tipoReporte%&c__userCodigoMovil=%UserData|1:FVU_CodigoD__c%&c__tieneDuplas=%tieneDuplas%",
+        "validationRequired": "Submit",
+        "variant": "neutral",
+        "wpm": false
+    },
+    "Type": "Navigate Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/NADuplicados"
+}

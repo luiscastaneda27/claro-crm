@@ -1,0 +1,41 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCase",
+    "OmniProcessId": {
+        "Name": "FIN_GestionCasoAjuste",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoAjuste/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "CodigoCierre": "=IF(%SelectGestionCasoCancel%,%ClosingCode:SelectClosingCodeCancel%,%ClosingCode:SelectClosingCode%)",
+                "Descripcion": "%ClosingCode:Description%",
+                "Id": "%ContextId%",
+                "MessageResponseFail": "%responseFail%",
+                "ResponseFail": "=IF(%responseFail%!='',true,false)",
+                "SimulationId": "%simulationId%",
+                "Status": "Cerrado"
+            }
+        },
+        "label": "SVCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoAjuste/English/SVCase"
+}

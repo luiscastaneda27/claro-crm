@@ -1,0 +1,39 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|BDASteps|English",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "BDASteps1",
+    "OmniProcessId": {
+        "Name": "FVU_CloseOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CloseOrder/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "English",
+        "Sub Type": "BDASteps",
+        "Type": "FVU",
+        "disOnTplt": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "canRegister"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "FIN",
+                        "field": "Order:PurchaseType"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CloseOrder/English/BDASteps1"
+}

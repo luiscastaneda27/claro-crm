@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdateSuccess",
+    "OmniProcessId": {
+        "Name": "OSGestionImeiDuplicadoResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AssetMarca": "%modeloFromContext%",
+                "AssetModelo": "%modeloFromContext%",
+                "CodigoCierre": "=IF(%BotonAdicionarDupla%=='Adicionar','Adición IMEI Duplicado realizado','Borrado IMEI Duplicado realizado')",
+                "Id": "%CaseId%",
+                "PinImei": "%ClaveOTP%",
+                "Status": "Cerrado",
+                "SubEstado": "=IF(%userChannelFromContext%='CAV','-','Adición Supervisor y/o jefe de Cav')"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "lwcComponentOverride": "",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Success",
+                                    "field": "DuplicadosIPAPIMCMICProOrdeManWrapper:state"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English/SVCaseUpdateSuccess"
+}

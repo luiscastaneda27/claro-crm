@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCloseCaseV360",
+    "OmniProcessId": {
+        "Name": "FIN_GestionCasoAjuste",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoAjuste/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccionGestionar": "%SelectGestionCaso:AccionRealizarV360%",
+                "AjusteFianza": "%AjusteFianzaCurrency%",
+                "CodigoCierre": "=IF(%SVCancelacion%,%ClosingCode:SelectClosingCodeCancel%,%ClosingCode:SelectClosingCode%)",
+                "DescripcionCierre": "%ClosingCode:Description%",
+                "FianzaActual": "%SelectUpdateFianza:CurrentFianza%",
+                "FianzaNueva": "%ChangeUpdateFianza:TextFianzaNueva%",
+                "Id": "%ContextId%",
+                "MessageResponseFail": "%responseFail%",
+                "RealisarReversion": "%Reversion%",
+                "ResponseFail": "=IF(%responseFail%!='',true,false)",
+                "SimulationId": "%simulationId%",
+                "Status": "Cerrado"
+            }
+        },
+        "label": "SVCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "V360",
+                        "field": "Case:Origen"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoAjuste/English/SVCloseCaseV360"
+}

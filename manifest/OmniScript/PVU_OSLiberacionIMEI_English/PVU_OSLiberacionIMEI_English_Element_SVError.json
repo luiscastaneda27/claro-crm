@@ -1,0 +1,119 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVError",
+    "OmniProcessId": {
+        "Name": "Liberación de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSLiberacionIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "errorValidacionPIN": true
+        },
+        "label": "SVError",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": null,
+                                    "field": "IPValidarClavePINResponse:success"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "IPValidarClavePINResponse:success"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "<>",
+                                    "data": "false",
+                                    "field": "IPValidarClavePINResponse:success"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "IPValidarClavePINResponse:ResponsePin1:isValid"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "Read timed out",
+                                                "field": "IPValidarClavePINResponse:ResponsePin1:error"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "Clave1Validada"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "Read timed out",
+                                                "field": "IPValidarClavePINResponse:ResponsePin2:error"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "IPValidarClavePINResponse:ResponsePin2:isValid"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "condition": "<>",
+                                    "data": "false",
+                                    "field": "IPValidarClavePINResponse:success"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSLiberacionIMEI/English/SVError"
+}

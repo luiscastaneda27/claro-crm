@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCreateCase",
+    "OmniProcessId": {
+        "Name": "OSCambioPlanAccInmediatas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioPlanAccInmediatas/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%IPValidaciones:accountInfo:Id%",
+                "AssetId": "%ContextId%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "DescripcionC": "%lastCase:Descripcion__c%",
+                "NombreCliente": "%lastCase:PVU_Nombre_del_cliente__c%",
+                "NuevoPlan": "%lastCase:PVU_Nuevo_plan_comprado__c%",
+                "NumeroLinea": "%lastCase:PVU_NumeroLinea__c%",
+                "OwnerId": "=IF(%IPValidaciones:IsBackOffice%=true,'',%IPValidaciones:ManagerId%)",
+                "PlanActual": "%AssetInfo:Asset:Name%",
+                "Status": "En curso",
+                "SubCategoria": "Acciones inmediatas",
+                "SubEstado": "Pendiente de aprobación",
+                "TerminosYCondiciones": "Acepta",
+                "VozCliente": "Cambio de plan móvil"
+            }
+        },
+        "label": "SVCreateCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioPlanAccInmediatas/English/SVCreateCase"
+}

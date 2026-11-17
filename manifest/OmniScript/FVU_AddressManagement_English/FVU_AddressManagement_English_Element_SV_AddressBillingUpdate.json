@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AddressBillingUpdate",
+    "OmniProcessId": {
+        "Name": "AddressManagement",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AddressManagement/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "BillingAddress": {
+                "Address": {
+                    "AccountId": "%AccountData|1:Id%",
+                    "AccountName": "%AccountData|1:Name%",
+                    "BillingAddressNode": "%ResponseMER%",
+                    "BillingAddressStatus": "Validada",
+                    "BillingAddressType": "%ResponseMER:drDireccion:idTipoDireccion%",
+                    "BillingCity": "%StepCreateAddress:TypeAheadCityPopulatedCenter-Block:FVU_CentroPobladoName__c%",
+                    "BillingDaneCode": "%StepCreateAddress:TypeAheadCityPopulatedCenter-Block:FVU_DaneCity__c%",
+                    "BillingMerId": "%StepMER:BlockDirections:Addresses:selectAddress:selectedAddress|1:splitAddres:idDireccionDetallada%",
+                    "BillingMunicipality": "%StepCreateAddress:TypeAheadCity-Block:FVU_CityName__c%",
+                    "BillingNeighborhood": "%StepCreateAddress:FormulaNeighborhood%",
+                    "BillingPostalCode": "%StepCreateAddress:FormulaPostalCode%",
+                    "BillingState": "%StepCreateAddress:TypeAheadDepartment-Block:Label%",
+                    "BillingStreet": "%StepCreateAddress:FormulaStreet%",
+                    "FullBillingAddress": "%StepMER:BlockDirections:Addresses:selectAddress:selectedAddress|1:splitAddres:direccionTexto% %StepCreateAddress:TypeAheadCityPopulatedCenter-Block:FVU_CentroPobladoName__c% %StepCreateAddress:TypeAheadCity-Block:FVU_CityName__c% %StepCreateAddress:TypeAheadDepartment-Block:Label%",
+                    "ServiceExtract": "%ResponseConsultaDireccion:stratum%"
+                }
+            }
+        },
+        "label": "SV_AddressBillingUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "AccountId"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "FormulaShowConsultaDireccion"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "FormulaShowFraudeMarkExists"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AddressManagement/English/SV_AddressBillingUpdate"
+}

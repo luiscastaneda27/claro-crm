@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "sv",
+    "OmniProcessId": {
+        "Name": "ValidateGPTFuncionalidades",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "listCasosFraude": "=IF(ISBLANK(FILTER(LIST(%LBCasosFraude%), 'BloqueosFraude == true')),0,LISTSIZE(FILTER(LIST(%LBCasosFraude%), 'BloqueosFraude == true')))",
+            "listCasosGPT": "=IF(ISBLANK(FILTER(LIST(%LBCasosGPT%), 'BloqueosGPT == true')),0,LISTSIZE(FILTER(LIST(%LBCasosGPT%), 'BloqueosGPT == true')))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure/sv"
+}

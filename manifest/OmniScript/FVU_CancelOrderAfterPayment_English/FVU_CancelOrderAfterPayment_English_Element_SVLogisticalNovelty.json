@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVLogisticalNovelty",
+    "OmniProcessId": {
+        "Name": "FVU_CancelOrderAfterPayment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CancelOrderAfterPayment/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "LogisticalNovelty": "=IF(%Response_Order:Products:ProductDeliveryStatus%='Pendiente Devolucion Producto a Bodega'||%Response_Order:Products:ProductDeliveryStatus%='DeliveredAgent'||%Response_Order:Products:ProductDeliveryStatus%='Returned',true,false)"
+        },
+        "label": "SVLogisticalNovelty",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "FIN",
+                        "field": "Response_Order:PurchaseType"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CancelOrderAfterPayment/English/SVLogisticalNovelty"
+}

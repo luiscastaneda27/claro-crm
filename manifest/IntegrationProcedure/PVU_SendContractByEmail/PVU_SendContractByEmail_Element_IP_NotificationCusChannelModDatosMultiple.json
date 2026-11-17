@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_NotificationCusChannelModDatosMultiple",
+    "OmniProcessId": {
+        "Name": "SendContractByEmail",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/SendContractByEmail/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBModificacionDatosEnvioContrato",
+        "OmniProcessId": {
+            "Name": "SendContractByEmail",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/SendContractByEmail/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/SendContractByEmail/Procedure/CBModificacionDatosEnvioContrato",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBModificacionDatosEnvioContrato",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "attachment": "%LBGetDocumentContracts:documentsList%",
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "content": "%content%",
+            "contentType": "MESSAGE",
+            "deliveryReceipts": "N",
+            "description": "%subject%",
+            "messageType": "SMTP",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": "=LIST(%SVEmailReceiverModDatos%)",
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "%subject%",
+            "tryTimes": 3
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%SVDocumentsListSize:size% > 1",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPNotificationCusChannelMultiplePDF",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "SummarySendResult",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/SendContractByEmail/Procedure/IP_NotificationCusChannelModDatosMultiple"
+}

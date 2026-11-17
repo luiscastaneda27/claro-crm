@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSumAmount",
+    "OmniProcessId": {
+        "Name": "IPValidateCreditLimits",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidateCreditLimits/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "PackageAmount": "=SUM(%ListPackage:RecurringChargeIncTaxes%)",
+            "RoamingAmount": "=SUM(%ListRoaming:RecurringChargeIncTaxes%)",
+            "ServicesAmount": "=SUM(%ListServices:RecurringChargeIncTaxes%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidateCreditLimits/Procedure/SVSumAmount"
+}

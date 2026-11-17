@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Response_FAIL",
+    "OmniProcessId": {
+        "Name": "IPValidacionesCambioCiclo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidacionesCambioCiclo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "Message": "%GetMessages:CICLO002%",
+                "MessageList": "%GetMessages%",
+                "accountData": "%GetAccoutData%"
+            },
+            "EndProcess": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%RACaseValidations:openCasesSize% > 0 || %RACaseValidations:closedCasesSize% > 0 || %GetPaymentReferences:Estado% == 'Mora'",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidacionesCambioCiclo/Procedure/Response_FAIL"
+}

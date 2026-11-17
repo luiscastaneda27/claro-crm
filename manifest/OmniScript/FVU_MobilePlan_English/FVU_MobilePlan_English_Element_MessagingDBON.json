@@ -1,0 +1,62 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "MessagingDBON",
+    "OmniProcessId": {
+        "Name": "FVU_MobilePlan",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MobilePlan/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepMobilePlan",
+        "OmniProcessId": {
+            "Name": "FVU_MobilePlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/MobilePlan/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MobilePlan/English/StepMobilePlan",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepMobilePlan",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "MessagingDBON",
+        "messages": [
+            {
+                "active": true,
+                "text": "Señor usuario su equipo se encuentra reportado, por lo tanto, no es posible asociarlo como principal en la línea celular en este momento. ¿Desea continuar con la compra del plan?",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "DBON",
+                        "field": "IMEIValidationResponse"
+                    }
+                ]
+            }
+        },
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/MobilePlan/English/MessagingDBON"
+}

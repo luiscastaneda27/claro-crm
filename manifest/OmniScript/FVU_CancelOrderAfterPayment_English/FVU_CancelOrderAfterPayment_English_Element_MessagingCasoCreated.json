@@ -1,0 +1,73 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MessagingCasoCreated",
+    "OmniProcessId": {
+        "Name": "FVU_CancelOrderAfterPayment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CancelOrderAfterPayment/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "STRespuestaDevolucionFIN",
+        "OmniProcessId": {
+            "Name": "FVU_CancelOrderAfterPayment",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CancelOrderAfterPayment/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CancelOrderAfterPayment/English/STRespuestaDevolucionFIN",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "STRespuestaDevolucionFIN",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "MessagingCasoCreated",
+        "messages": [
+            {
+                "active": true,
+                "text": "%message%",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": true,
+                "text": "%message%",
+                "type": "Success",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "FIN",
+                        "field": "Response_Order:PurchaseType"
+                    }
+                ]
+            }
+        },
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "success"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CancelOrderAfterPayment/English/MessagingCasoCreated"
+}

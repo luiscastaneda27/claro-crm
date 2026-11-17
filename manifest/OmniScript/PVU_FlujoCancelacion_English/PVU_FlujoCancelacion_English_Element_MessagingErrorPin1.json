@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MessagingErrorPin1",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "NotifCancel",
+        "OmniProcessId": {
+            "Name": "FlujoCancelacion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/NotifCancel",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "NotifCancel",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": null,
+        "hideLabel": true,
+        "label": "MessagingErrorPin1",
+        "lwcComponentOverride": "",
+        "messages": [
+            {
+                "active": true,
+                "text": "Ocurrio un error al enviar el mensaje",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Fail",
+                        "field": "NotifCancelacionVoluntaria:EndProcess"
+                    }
+                ]
+            }
+        },
+        "showMessageAs": "inline",
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/MessagingErrorPin1"
+}

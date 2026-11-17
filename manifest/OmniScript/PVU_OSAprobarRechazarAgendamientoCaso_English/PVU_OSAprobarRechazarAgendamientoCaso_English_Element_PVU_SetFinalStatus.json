@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PVU_SetFinalStatus",
+    "OmniProcessId": {
+        "Name": "PVU_OSAprobarRechazarAgendamientoCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSAprobarRechazarAgendamientoCaso/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Message": "=IF(%PVU_PendingApproval% == \"exitosa\", \"le informamos que no ha sido posible realizar su solicitud\",\nIF(%PVU_PendingApproval% == \"rechazado\",\n\"solicitud rechazada\"))\n",
+            "PVU_CodCierre": "%PVU_PendingApproval%",
+            "PVU_Status": "Cerrado",
+            "PVU_SubStatus": "=IF( %PVU_PendingApproval% == \"Solicitud tramitada exitosa\", \"Gestión Realizada\",\nIF( %PVU_PendingApproval% == \"Solicitud no tramitada\", \"Rechazado\"))\n"
+        },
+        "label": "PVU_SetFinalStatus",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSAprobarRechazarAgendamientoCaso/English/PVU_SetFinalStatus"
+}

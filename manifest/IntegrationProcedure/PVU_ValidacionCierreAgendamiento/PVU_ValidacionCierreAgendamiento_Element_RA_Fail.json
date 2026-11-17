@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_Fail",
+    "OmniProcessId": {
+        "Name": "PVU_Validations",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidacionCierreAgendamiento/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": "No posee permisos para realizar esta operación.",
+            "EndProcess": "fail"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(DRE_GetGroupMember:Group) || ISBLANK(FILTER(LIST(DRE_GetGroupMember:Group), 'DeveloperName == \"PVU_GrupoPublico_Logistico\"'))",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidacionCierreAgendamiento/Procedure/RA_Fail"
+}

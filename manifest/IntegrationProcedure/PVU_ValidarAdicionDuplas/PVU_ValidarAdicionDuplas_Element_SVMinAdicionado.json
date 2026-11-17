@@ -1,0 +1,31 @@
+{
+    "Description": "%consultaDuplicadosResponse:cantDuplas% = 0 and SVImsi:imsi != ''",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVMinAdicionado",
+    "OmniProcessId": {
+        "Name": "ValidarAdicionDuplas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ListOut": "=IF(ISNOTBLANK(%SVInput:ListIn|1:minAdicion%), LIST(LISTMERGE(\"minAdicion\",LIST(%SVInput:ListIn%),LIST(%SVListaMin:listaFinal%))), LIST(%SVListaMin:listaFinal%))"
+        },
+        "executionConditionalFormula": "%SVDuplas:cantidadDuplas% = 0 && SVImsi:imsi != null",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/SVMinAdicionado"
+}

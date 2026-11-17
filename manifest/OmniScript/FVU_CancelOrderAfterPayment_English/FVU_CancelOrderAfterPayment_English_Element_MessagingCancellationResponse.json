@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MessagingCancellationResponse",
+    "OmniProcessId": {
+        "Name": "FVU_CancelOrderAfterPayment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CancelOrderAfterPayment/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "Step_CancellationNotificationOMSResponse",
+        "OmniProcessId": {
+            "Name": "FVU_CancelOrderAfterPayment",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CancelOrderAfterPayment/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CancelOrderAfterPayment/English/Step_CancellationNotificationOMSResponse",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "Step_CancellationNotificationOMSResponse",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "MessagingConfirmCancellationResponse",
+        "messages": [
+            {
+                "active": true,
+                "text": "La solicitud de cancelación de la orden fue exitosa. Recuerda que el proceso de cancelación se completa con la confirmación del sistema logístico.",
+                "type": "Success",
+                "value": true
+            },
+            {
+                "active": true,
+                "text": "Se presentó una novedad con la solicitud de cancelación de la orden.",
+                "type": "Warning",
+                "value": false
+            }
+        ],
+        "show": null,
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "EXITOSA",
+                        "field": "CancellationNotificationOMS:status"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CancelOrderAfterPayment/English/MessagingCancellationResponse"
+}

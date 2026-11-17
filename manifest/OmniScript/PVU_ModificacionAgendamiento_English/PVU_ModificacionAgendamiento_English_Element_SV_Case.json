@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Case",
+    "OmniProcessId": {
+        "Name": "ModificacionAgendamiento",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ModificacionAgendamiento/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%IPvalidaciones:Details:Cuenta:AccountId%",
+                "CarritoId": "%IPvalidaciones:Details:Orden:fulfillOrderNbr%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "ContactEmail": "%IPvalidaciones:Details:Cuenta:Email%",
+                "ContactPhone": "%Telefono%",
+                "DocumentNum": "%IPvalidaciones:Details:Orden:DeliveryData:AuthorizedPersonData:Document%",
+                "DocumentType": "%IPvalidaciones:Details:Orden:DeliveryData:AuthorizedPersonData:DocumentType%",
+                "IdOMS": "%IPvalidaciones:Details:Orden:OMSId%",
+                "NombreTercero": "%IPvalidaciones:Details:Orden:DeliveryData:AuthorizedPersonData:Name% %IPvalidaciones:Details:Orden:DeliveryData:AuthorizedPersonData:LastName% %IPvalidaciones:Details:Orden:DeliveryData:AuthorizedPersonData:SecondLastName%",
+                "OrderId": "%ContextId%",
+                "RecordTypeName": "GestionCasosPosventa",
+                "Status": "Abierto",
+                "SubCategoria": "Ordenes",
+                "VozCliente": "%IPvalidaciones:Details:VozCliente%"
+            }
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ModificacionAgendamiento/English/SV_Case"
+}

@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAErrorVTA",
+    "OmniProcessId": {
+        "Name": "PostCartPromoItem",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/PostCartPromoItem/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_VTAS",
+        "OmniProcessId": {
+            "Name": "PostCartPromoItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/PostCartPromoItem/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/PostCartPromoItem/Procedure/CB_VTAS",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_VTAS",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "ErrorCode": "%RAPostCartPromoItemVTA:messages|1:code%",
+                "Message": "%RAPostCartPromoItemVTA:messages|1:message%"
+            },
+            "EndProcess": "fail"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%RAPostCartPromoItemVTA:messages%) && %RAPostCartPromoItemVTA:messages|1:severity% == \"ERROR\"",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/PostCartPromoItem/Procedure/RAErrorVTA"
+}

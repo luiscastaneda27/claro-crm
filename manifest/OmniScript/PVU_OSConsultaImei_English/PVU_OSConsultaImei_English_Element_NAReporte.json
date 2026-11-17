@@ -1,0 +1,84 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "NAReporte",
+    "OmniProcessId": {
+        "Name": "Consulta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaImei/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConsultaIMEI",
+        "OmniProcessId": {
+            "Name": "Consulta",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaImei/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaImei/English/ConsultaIMEI",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConsultaIMEI",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 3,
+        "iconName": "",
+        "iconPosition": "left",
+        "iconVariant": "",
+        "label": "Reporte",
+        "loginAction": "login",
+        "message": {
+        },
+        "objectAction": "home",
+        "pubsub": false,
+        "recordAction": "view",
+        "replace": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "Security:accessProcess:PVU_reporteDeIMEI"
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "isReported"
+                                },
+                                {
+                                    "condition": "<>",
+                                    "data": "null",
+                                    "field": "BdoNegativo:response:bdoNegativoMessage:listaReportesBean"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "ssm": false,
+        "targetFilter": "Recent",
+        "targetId": "%ContextId%",
+        "targetLWCLayout": "lightning",
+        "targetType": "Web Page",
+        "targetUrl": "/lightning/cmp/%vlocity_namespace%__vlocityLWCOmniWrapper?c__target=c:pVUReporteIMEIEnglish&c__layout=lightning&c__tabIcon=custom:custom18&c__tabLabel=PVUReporteImei&c__ContextId=%ContextId%&c__AssetId=%AssetId%&c__AccountId=%accountId%&c__imei=%reporteImei%&c__tipoDoc=%reporteTipoDocumento%&c__numDoc=%reporteNumeroDocumento%&c__marca=%reporteMarca%&c__modelo=%reporteModelo%&c__min=%reporteMIN%&c__msisdn=%minString%&c__imeiLuhn=%imeiLuhn%&c__usuarioRed=%usuarioRedReporte%",
+        "validationRequired": "Submit",
+        "variant": "neutral",
+        "wpm": false
+    },
+    "Type": "Navigate Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaImei/English/NAReporte"
+}

@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCommunityInfo",
+    "OmniProcessId": {
+        "Name": "PVU_DetalleServicioComunidad",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DetallesServicioComunidad/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%accountId%",
+            "communityStatus": "=IF(%additionalParentInfo:communityStatus%==\"Inactiva\",\"Desactivada\", %additionalParentInfo:communityStatus%)",
+            "fechaDeActivacion": "=%additionalParentInfo:fechaDeActivacion%",
+            "fechaFin": "2024-12-17T20:00:00.000Z",
+            "fechaInicio": "2024-12-11T00:00:00.000Z",
+            "maxAllowedLines": "=%additionalParentInfo:maxAllowedLines% - %additionalParentInfo:registeredLines%",
+            "parentLine": "=NUMBER(%additionalParentInfo:parentLine%)"
+        },
+        "label": "SVCommunityInfo",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DetallesServicioComunidad/English/SVCommunityInfo"
+}

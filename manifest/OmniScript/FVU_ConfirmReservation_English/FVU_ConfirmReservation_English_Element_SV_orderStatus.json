@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_orderStatus",
+    "OmniProcessId": {
+        "Name": "FVU_ConfirmReservation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ConfirmReservation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "blockIPOMSMIlestone": "=IF(%OrderStatus%==\"DeliveryAndActivated\" || %OrderStatus%==\"Activated\" || %OrderStatus%==\"Cerrada Perdida\" , true, false)"
+        },
+        "label": "SV_orderStatus",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ConfirmReservation/English/SV_orderStatus"
+}

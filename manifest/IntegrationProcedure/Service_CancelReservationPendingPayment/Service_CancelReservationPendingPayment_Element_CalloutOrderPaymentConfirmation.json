@@ -1,0 +1,63 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CalloutOrderPaymentConfirmation",
+    "OmniProcessId": {
+        "Name": "CancelReservationPendingPayment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/Service/CancelReservationPendingPayment/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "description": "=%CalloutOrderPaymentConfirmation%",
+            "message": "=\"Failed\"",
+            "messageCode": "=404",
+            "success": false
+        },
+        "label": "HTTPAction1",
+        "namedCredential": "NamedCredentialIntegrations",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "POST",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "ApkSitSfic": "%apiKey:ValueKey%",
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+            },
+            "sendBody": true,
+            "timeout": 20000,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "%SetUrlPath:pathUrl%",
+        "retryCount": 3,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "order",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/Service/CancelReservationPendingPayment/Procedure/CalloutOrderPaymentConfirmation"
+}

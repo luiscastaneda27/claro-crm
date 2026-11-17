@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVReporteImeiData",
+    "OmniProcessId": {
+        "Name": "Liberación de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSLiberacionIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "TipoLiberacionFinal": "=IF(%LiberarIMEI:TipoLiberacionSoloEquipo% <> null,'Equipo','LineaYEquipo')",
+            "msisdnInput": "%msisdnFromContext%",
+            "tipoReporte": "=IF(%Motivo% == 1,1,2)"
+        },
+        "label": "SVReporteImeiData",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSLiberacionIMEI/English/SVReporteImeiData"
+}

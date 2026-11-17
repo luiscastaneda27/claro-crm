@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseOrderFound",
+    "OmniProcessId": {
+        "Name": "GetOMSOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/Service/GetOMSOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "codigoMaterial": "=%CalloutGetOrder:items:productInfo:productDescription%",
+            "nombreMaterial": "=%CalloutGetOrder:items:productInfo:productId%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%CalloutGetOrder:orderId%!=null",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "DR_TransformOutputGetOMSOrderIsFound",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/Service/GetOMSOrder/Procedure/ResponseOrderFound"
+}

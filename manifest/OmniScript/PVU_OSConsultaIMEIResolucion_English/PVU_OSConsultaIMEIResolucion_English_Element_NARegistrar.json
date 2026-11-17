@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "NARegistrar",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConsultaIMEI",
+        "OmniProcessId": {
+            "Name": "OSConsultaIMEIResolucion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/ConsultaIMEI",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConsultaIMEI",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 3,
+        "iconName": "",
+        "iconPosition": "left",
+        "iconVariant": "",
+        "label": "Registrar",
+        "loginAction": "login",
+        "message": {
+        },
+        "objectAction": "home",
+        "pubsub": false,
+        "recordAction": "view",
+        "replace": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "Security:accessProcess:PVU_registroIMEI"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "permiteRegistro"
+                    }
+                ]
+            }
+        },
+        "ssm": false,
+        "targetFilter": "Recent",
+        "targetId": "%ContextId%",
+        "targetLWCLayout": "lightning",
+        "targetType": "Web Page",
+        "targetUrl": "/lightning/cmp/%vlocity_namespace%__vlocityLWCOmniWrapper?c__target=c:pVUOSRegistroIMEIResolucionEnglish&c__layout=lightning&c__tabIcon=custom:custom18&c__tabLabel=Registro de IMEI&c__ContextId=%ContextId%&c__imei=%registroImei%&c__marca=%registroMarca%&c__modelo=%registroModelo%&c__min=%registroMIN%&c__msisdn=%minString%&c__AccountId=%accountId%&c__AssetId=%AssetId%",
+        "validationRequired": "Submit",
+        "variant": "neutral",
+        "wpm": false
+    },
+    "Type": "Navigate Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/NARegistrar"
+}

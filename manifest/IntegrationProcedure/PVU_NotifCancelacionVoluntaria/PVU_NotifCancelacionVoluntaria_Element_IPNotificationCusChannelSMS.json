@@ -1,0 +1,61 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPNotificationCusChannelSMS",
+    "OmniProcessId": {
+        "Name": "PVU_NotifCancelacionVoluntaria",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/NotifCancelacionVoluntaria/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "content": "%SVParametros:contenido%",
+            "contentType": "MESSAGE",
+            "deliveryReceipts": "N",
+            "description": "%SVData:proceso%",
+            "messageType": "SMS",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "phone": "%SVData:NumeroContacto%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "%SVParametros:asunto%",
+            "tryTimes": 3
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%isEmail% = FALSE",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPNotificationCusChannel",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "respuesta",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/NotifCancelacionVoluntaria/Procedure/IPNotificationCusChannelSMS"
+}

@@ -1,0 +1,116 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IntegrationProcedureAction2",
+    "OmniProcessId": {
+        "Name": "FIN_GestionCasoAjuste",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoAjuste/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "Reintento Ajuste",
+        "OmniProcessId": {
+            "Name": "FIN_GestionCasoAjuste",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoAjuste/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoAjuste/English/Reintento Ajuste",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "Reintento Ajuste",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 2,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "CaseId": "%ContextId%",
+            "IntentoReversoDePago": "%IPCusInstallRefund:IntentoReversoDePago%",
+            "billingAccount": "%BillingAccount%",
+            "calculateAmount": true,
+            "chargeService": "%chargeService%",
+            "financingCode": "%financingCode%",
+            "remark": "Ajuste de saldo por cancelación de crédito",
+            "suretyChargeService": "%FianzaData:suretyChargeService%",
+            "suretyId": "%FianzaData:suretyId%",
+            "target": "%target%",
+            "tipoDeIntento": "manuales",
+            "user": "%FianzaData:userRed%",
+            "validDate": "%validDate%"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "FIN_IP_CusInstallRefund",
+        "label": "Reintentar manual",
+        "lwcComponentOverride": "",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "IPCusInstallRefund",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "IPCusInstallRefund:success"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "SVCancelacion"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoAjuste/English/IntegrationProcedureAction2"
+}

@@ -1,0 +1,79 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MessagingErrorPin1",
+    "OmniProcessId": {
+        "Name": "OSGestionImeiDuplicadoResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "FormularioOTP",
+        "OmniProcessId": {
+            "Name": "OSGestionImeiDuplicadoResolucion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English/FormularioOTP",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "FormularioOTP",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 6,
+        "hideLabel": true,
+        "label": "MessagingErrorPin1",
+        "lwcComponentOverride": "",
+        "messages": [
+            {
+                "active": true,
+                "text": "%Msg:errorOTP%",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "NO",
+                        "field": "showPin1Response"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "Success",
+                        "field": "IPEnviarAceptacionRegistro:EndProcess"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "OTPValidado"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "IPEnviarOTP:responsePinGenerationValid"
+                    }
+                ]
+            }
+        },
+        "showMessageAs": "inline",
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English/MessagingErrorPin1"
+}

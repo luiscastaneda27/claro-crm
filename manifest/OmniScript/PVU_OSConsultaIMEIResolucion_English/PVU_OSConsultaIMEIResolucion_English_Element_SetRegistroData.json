@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetRegistroData",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "registroImei": "%imeiFinal%",
+            "registroMIN": "%IPGetImei:DataEquipo:MIN%",
+            "registroMSISDN": "=IF(%bdoNegativo:listaReportesBean|1:msisdn% != null, %bdoNegativo:listaReportesBean|1:msisdn%, '')",
+            "registroMarca": "%IPGetImei:DataEquipo:Marca%",
+            "registroModelo": "=%IPGetImei:DataEquipo:Modelo%",
+            "registroNumeroDocumento": "%AccountData:AccountDocument|1:FVU_DocumentNumber__c%",
+            "registroTipoDocumento": "=IF(%ConsultaTipoIdentificacion:response:TipoDocumentoValue% != null, %ConsultaTipoIdentificacion:response:TipoDocumentoValue%, '')"
+        },
+        "label": "SetRegistroData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/SetRegistroData"
+}

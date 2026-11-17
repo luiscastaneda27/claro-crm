@@ -1,0 +1,95 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "IP_MsAgreementMngtContract_ApprovalCustomer",
+    "OmniProcessId": {
+        "Name": "RegisterIMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "NombrePersonaNatural": "%AccountName%",
+            "NumeroDocumentoPersonaNatural": "%AccountDocumentNumber%",
+            "TipoDocumentoPersonaNatural": "%AccountDocumentType%",
+            "mailEnvio": "%AccountEmail%",
+            "numeroEnvio": "%AccountPhone%",
+            "tipoEnvio": "sms"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_IPMsAgreementMngtContract_ApprovalCustomer",
+        "invokeMode": "fireAndForget",
+        "label": "IP_MsAgreementMngtContract_ApprovalCustomer",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "hasIMEIErrorConsulta"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "hasIMEIErrorRegister"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterIMEI/English/IP_MsAgreementMngtContract_ApprovalCustomer"
+}

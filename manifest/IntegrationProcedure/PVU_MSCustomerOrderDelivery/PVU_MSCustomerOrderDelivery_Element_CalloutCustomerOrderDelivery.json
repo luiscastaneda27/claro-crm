@@ -1,0 +1,68 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CalloutCustomerOrderDelivery",
+    "OmniProcessId": {
+        "Name": "IPMSCustomerOrderDelivery",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/MSCustomerOrderDelivery/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "IF(statusCode != 200, FALSE, TRUE)",
+        "failureResponse": {
+            "description": "=%CalloutCustomerOrderDelivery%",
+            "success": false
+        },
+        "label": "HTTPAction1",
+        "namedCredential": "CapaMediaAuthenticated",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "GET",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+                "cantidad_registros_por_pagina": "%cantidad_registros_por_pagina%",
+                "fecha_final": "%fecha_final%",
+                "fecha_inicial": "%fecha_inicial%",
+                "lista_estados": "%lista_estados%",
+                "numero_documento": "%numero_documento%",
+                "numero_ordem": "%numero_ordem%",
+                "pagina": "%pagina%",
+                "tipo_documento": "%tipo_documento%"
+            },
+            "sendBody": true,
+            "timeout": 120000,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "%SetUrlPath:pathUrl%",
+        "retryCount": 0,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/MSCustomerOrderDelivery/Procedure/CalloutCustomerOrderDelivery"
+}

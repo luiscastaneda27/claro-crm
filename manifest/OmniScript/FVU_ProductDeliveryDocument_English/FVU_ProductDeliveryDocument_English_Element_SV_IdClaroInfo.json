@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_IdClaroInfo",
+    "OmniProcessId": {
+        "Name": "ProductDeliveryDocument",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ProductDeliveryDocument/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Application": "RETIRO_DE_TERMINAL_EN_TIENDA_SF",
+            "Channel": 1,
+            "IsThirdPerson": "=%StepSelectPickupPerson:PickupPersonWithAuthorizedPerson% == \"TerceroAutorizado\"",
+            "RecordId": "%ContextId%"
+        },
+        "label": "SV_IdClaroInfo",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "PickUp",
+                        "field": "DeliveryMethod"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ProductDeliveryDocument/English/SV_IdClaroInfo"
+}

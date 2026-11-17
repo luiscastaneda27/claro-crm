@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SE_ExpeditionDateError",
+    "OmniProcessId": {
+        "Name": "ValidationsSummaryTerminal",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidationsSummaryTerminal/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementErrorMap": {
+            "ExpeditionDate": "La fecha de expedición del documento debe ser mayor a la fecha de nacimiento del cliente."
+        },
+        "label": "SE_ExpeditionDateError",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "StepValidationsSummary:FormExpeditionDateError"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": {
+            "vlcCart": true,
+            "vlcKnowledge": false
+        },
+        "ssm": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Set Errors",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidationsSummaryTerminal/English/SE_ExpeditionDateError"
+}

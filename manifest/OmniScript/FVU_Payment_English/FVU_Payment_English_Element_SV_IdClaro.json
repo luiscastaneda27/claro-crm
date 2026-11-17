@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_IdClaro",
+    "OmniProcessId": {
+        "Name": "FVU_Payment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Payment/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%Account:AccountId%",
+            "Application": "=IF(%Order:PurchaseType% == \"ACT\" ||  %Order:PurchaseType% == \"POR\" || %Order:PurchaseType% == \"ATT\", \"SERVICIO_CFM_RECURRENTE_SF\", IF(%Order:PurchaseType% == \"NAP\", \"SF_TERMINALES_TECNOLOGIA\", IF(%Order:PurchaseType% == \"MIG\", \"SF_MIGRACION_PRE_POST\",IF(%Order:PurchaseType% == \"FIN\", \"SF_TERMINALES_TECNOLOGÍA_FINANCIADO\" ,\"\"))))",
+            "Channel": "%Channel%",
+            "IsThirdPerson": false,
+            "RecordId": "%Order:OrderId%",
+            "RunIdClaroValidation": "=IF(%Validation:status% == \"OK\", false, IF(%Order:PurchaseType% == \"POR\" || %Order:PurchaseType% == \"ACT\" || %Order:PurchaseType% == \"MIG\" || %Order:PurchaseType% == \"FIN\"  ||   %Order:PurchaseType% == \"ATT\" || (%Order:PurchaseType% == \"NAP\" && %PaymentInformation:MedioPagoSelect% == \"Contado\" && %Order:IdentityValidationRequired% == \"Requerido\"), true, false))"
+        },
+        "label": "SV_IdClaro",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Payment/English/SV_IdClaro"
+}

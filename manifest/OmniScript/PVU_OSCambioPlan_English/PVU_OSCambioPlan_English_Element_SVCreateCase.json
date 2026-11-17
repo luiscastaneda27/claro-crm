@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCreateCase",
+    "OmniProcessId": {
+        "Name": "OSCambioPlan",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioPlan/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%IPValidaciones:accountInfo:Id%",
+                "AssetId": "%ContextId%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "DatosTerceroValues": "%SVTercerAutorizado%",
+                "DescripcionC": "=IF(%IPGuiones:esUpgrade% == true, 'Upgrade', 'Downgrade')",
+                "FechaCambio": "%fechaInicioCambio%",
+                "NuevoPlan": "%SeleccionPlanStep:SeleccionPlanLWC:productInfo:postCartItems:Name:value%",
+                "NumeroLinea": "%minContext%",
+                "OrderId": "%IPCreateOrder:OrderId%",
+                "ParentId": "%CaseRetencionId%",
+                "PlanActual": "%IPGuiones:AssetDetails:Name%",
+                "Status": "En curso",
+                "SubCategoria": "Cambio de plan",
+                "SubEstado": "Pendiente ejecución",
+                "TerminosYCondiciones": "Acepta",
+                "VozCliente": "Cambio de plan móvil"
+            }
+        },
+        "label": "SVCreateCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioPlan/English/SVCreateCase"
+}

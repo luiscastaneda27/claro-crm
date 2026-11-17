@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseError",
+    "OmniProcessId": {
+        "Name": "DevolucionDineroNotaCredito",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDineroNotaCredito/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "CodigoCierre": "Nota crédito no exitosa",
+                "Id": "%IPObtieneInfo:ReServiceEquipos:PVU_caso_relacionado__c%",
+                "Status": "Cerrado"
+            }
+        },
+        "label": "SVCaseError",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "fail",
+                        "field": "IPNotaCredito:EndProcess"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "IPNotaCredito:existeFacturaNC"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDineroNotaCredito/English/SVCaseError"
+}

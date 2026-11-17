@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVluhnValid",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "isLuhnValid": "=IF(\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:name% == 'ValidationLuhn',\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:value%,\nIF(\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:name% == 'ValidationLuhn',\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:value%,\nIF(\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:name% == 'ValidationLuhn',\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:value%,\n''\n)))"
+        },
+        "label": "SV_Luhn",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/SVluhnValid"
+}

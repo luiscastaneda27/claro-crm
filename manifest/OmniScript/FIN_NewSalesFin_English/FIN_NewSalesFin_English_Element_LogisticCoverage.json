@@ -1,0 +1,50 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|LogisticCoverage|English",
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LogisticCoverage",
+    "OmniProcessId": {
+        "Name": "NewSalesFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/NewSalesFin/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "English",
+        "Sub Type": "LogisticCoverage",
+        "Type": "FVU",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "SF_TMK",
+                        "field": "UserDetails:Channel"
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "<>",
+                                    "data": "NAP",
+                                    "field": "MultiSelectTipoDeVenta"
+                                },
+                                {
+                                    "condition": "<>",
+                                    "data": "MIG",
+                                    "field": "MultiSelectTipoDeVenta"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/NewSalesFin/English/LogisticCoverage"
+}

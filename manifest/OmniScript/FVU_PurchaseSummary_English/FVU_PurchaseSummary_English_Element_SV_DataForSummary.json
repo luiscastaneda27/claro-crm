@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_DataForSummary",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseSummary",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseSummary/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "DataSummary": {
+                "BillingData": "%BillingData:BillCycle%",
+                "Data": "%IP_SummaryData%",
+                "FullServiceAddress": "%AddressService:fullServiceAddress%",
+                "LimitDate": "%IP_SummaryData:ExtraData:Facturacion:LimitDate%",
+                "PickDates": "%StepDeliveryMethod:PickDates%",
+                "PromiseEnd": "%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:EndDateInitForm%",
+                "PromiseName": "%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseName%",
+                "PromiseStart": "%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:StartDateInitForm%",
+                "StoreAddress": "%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:addressDetail%",
+                "StoreFinalPickupDate": "%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:finalPickupDate%",
+                "StoreInitialPickupDate": "%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:initialPickupDate%",
+                "StoreName": "%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:warehouseName%",
+                "StorePickUpTime": "%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:pickupTime%",
+                "isESim": "%isESim%"
+            }
+        },
+        "label": "SV_DataForSummary",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseSummary/English/SV_DataForSummary"
+}

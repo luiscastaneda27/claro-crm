@@ -1,0 +1,45 @@
+{
+    "Description": "%orderNumber%\n \nrejectORApproved - RECHAZADO",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRgetOrderPaymentConfirmation",
+    "OmniProcessId": {
+        "Name": "OrderPaymentConfirmationReject",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/Service/OrderPaymentConfirmationReject/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+            "pago:estado": "=\"RECHAZADO\""
+        },
+        "bundle": "DR_GetOrderPaymentConfirmation",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataRaptorExtractAction2",
+        "responseJSONNode": "DR_GetOrderPaymentConfirmation",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "orderWithOMSId",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/Service/OrderPaymentConfirmationReject/Procedure/DRgetOrderPaymentConfirmation"
+}

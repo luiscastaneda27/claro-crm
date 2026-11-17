@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_InPaymentStatus",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseConfirmation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseConfirmation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Order": {
+                "OrderId": "%ContextId%",
+                "OrderStatus": "Draft"
+            },
+            "orderStatusFlag": "=(%OrderStatus% == 'InPayment' || %OrderStatus% == 'DeliveryAndActivated' || %OrderStatus% == 'Activated' ) && %AllReserved% == true"
+        },
+        "label": "SV_InPaymentStatus",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseConfirmation/English/SV_InPaymentStatus"
+}

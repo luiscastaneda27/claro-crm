@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "FormulaLocationSelected",
+    "OmniProcessId": {
+        "Name": "CheckAvailableInventory",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CheckAvailableInventory/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepSelectAddress",
+        "OmniProcessId": {
+            "Name": "CheckAvailableInventory",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CheckAvailableInventory/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CheckAvailableInventory/English/StepSelectAddress",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepSelectAddress",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "dataType": "Text",
+        "dateFormat": "MM-dd-yyyy",
+        "disOnTplt": false,
+        "expression": "IF(%StepSelectAddress:TypeAheadDepartment-Block:Label% = null, \"¿Departamento?\", %StepSelectAddress:TypeAheadDepartment-Block:Label%) + \",  \" +  IF(%StepSelectAddress:TypeAheadCity-Block:FVU_CityName__c% = null, \"¿Municipio?\", %StepSelectAddress:TypeAheadCity-Block:FVU_CityName__c%) + \",  \" + IF(%StepSelectAddress:TypeAheadCityPopulatedCenter-Block:FVU_CentroPobladoName__c% = null, \"¿Centro Poblado?\", %StepSelectAddress:TypeAheadCityPopulatedCenter-Block:FVU_CentroPobladoName__c%)",
+        "hide": false,
+        "hideGroupSep": false,
+        "inputWidth": 12,
+        "label": "Verifique su ubicación seleccionada, no debe haber signos de interrogación.",
+        "mask": null,
+        "show": null,
+        "showInputWidth": false
+    },
+    "Type": "Formula",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CheckAvailableInventory/English/FormulaLocationSelected"
+}

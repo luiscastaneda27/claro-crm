@@ -1,0 +1,78 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Msg_ErrorCashAudit",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentManual",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentManual/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "Step_Payment",
+        "OmniProcessId": {
+            "Name": "FVU_PaymentManual",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentManual/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentManual/English/Step_Payment",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "Step_Payment",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "Msg_ErrorCashAudit",
+        "messages": [
+            {
+                "active": true,
+                "text": "Las formas de pago ingresadas  no coinciden con el total a pagar de la orden. Por favor, verifique los montos, agregue o elimine formas de pago.",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": true,
+                "text": "El total de las forma de pagos ingresadas, cubren el monto a pagar de la orden.",
+                "type": "Success",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": ">",
+                        "data": "0",
+                        "field": "TotalPayments"
+                    }
+                ]
+            }
+        },
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "%order:EffectiveOneTimeTotalIncTaxes%",
+                        "field": "TotalPayments"
+                    },
+                    {
+                        "condition": ">",
+                        "data": "0",
+                        "field": "TotalPayments"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentManual/English/Msg_ErrorCashAudit"
+}

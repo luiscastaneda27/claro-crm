@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_IdClaroValidation",
+    "OmniProcessId": {
+        "Name": "FVU_CancelOrderAfterPayment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CancelOrderAfterPayment/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%Response_Order:AccountId%",
+            "Application": "=IF(%Response_Order:PurchaseType% == \"NAP\", \"SALESFORCE_CANCELACION_ORDENES_TYT\", \"SALESFORCE_CANCELACION_ORDENES_LINEAS\")",
+            "Channel": "%Channel%",
+            "IsThirdPerson": false,
+            "RecordId": "%ContextId%"
+        },
+        "label": "SV_IdClaroValidation",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CancelOrderAfterPayment/English/SV_IdClaroValidation"
+}

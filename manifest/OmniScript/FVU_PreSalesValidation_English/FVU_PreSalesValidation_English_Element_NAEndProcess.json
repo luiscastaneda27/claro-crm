@@ -1,0 +1,59 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "NAEndProcess",
+    "OmniProcessId": {
+        "Name": "PreSalesValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreSalesValidation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "iconName": "",
+        "iconPosition": "left",
+        "iconVariant": "",
+        "label": "NAEndProcess",
+        "loginAction": "login",
+        "message": {
+        },
+        "objectAction": "home",
+        "pubsub": false,
+        "recordAction": "view",
+        "replace": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "StopProcess"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "PreSalesValidation:PurchaseIntention:Financiado"
+                    }
+                ]
+            }
+        },
+        "ssm": false,
+        "targetFilter": "Recent",
+        "targetId": "%ContextId%",
+        "targetLWC": "c:FINendAllProcessEnglish",
+        "targetLWCLayout": "lightning",
+        "targetLWCParams": "&c__layout=lightning&c__tabLabel=Nueva Venta&c__tabIcon=utility:cart&c__QuoteId=%QuoteId%&c__QuoteNumber=%QuoteNumber%&c__Param1=%Param1%&c__Param2=%Param2%&c__Param3=%Param3%&c__Param4=%Param4%&c__Param5=%Param5%&c__ObjectId=%ContextId%&c__StopProcess=%StopProcess%&c__codeMessage=%codeMessage%",
+        "targetType": "Vlocity OmniScript",
+        "validationRequired": "Submit",
+        "variant": "brand",
+        "wpm": false
+    },
+    "Type": "Navigate Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreSalesValidation/English/NAEndProcess"
+}

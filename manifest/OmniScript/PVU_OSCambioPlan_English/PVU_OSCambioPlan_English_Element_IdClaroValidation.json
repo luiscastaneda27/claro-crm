@@ -1,0 +1,38 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|IdClaroValidation|Spanish",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IdClaroValidation",
+    "OmniProcessId": {
+        "Name": "OSCambioPlan",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioPlan/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "Spanish",
+        "Sub Type": "IdClaroValidation",
+        "Type": "FVU",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "true",
+                        "field": "esRetencion"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "Backoffice Nível 1 - Retención",
+                        "field": "UserDetails:Role"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioPlan/English/IdClaroValidation"
+}

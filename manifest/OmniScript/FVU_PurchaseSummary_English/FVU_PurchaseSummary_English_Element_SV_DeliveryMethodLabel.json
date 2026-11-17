@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_DeliveryMethodLabel",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseSummary",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseSummary/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "DeliveryMethodLabel": "=IF(%DeliveryMethod% == 'Delivery', 'Entrega en Domicilio', IF(%DeliveryMethod% == 'PickUp', 'Retiro en Tienda', 'Entrega inmediata'))",
+            "DocumentNumberForm": "=IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentNumberAlf% != NULL,%StepDeliveryMethod:BlockAuthorizedPerson:DocumentNumberAlf%,IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentTypeCC% != NULL,%StepDeliveryMethod:BlockAuthorizedPerson:DocumentTypeCC%,%StepDeliveryMethod:BlockAuthorizedPerson:DocumentTypeCE%))",
+            "DocumentTypeLabelAuthorize": "=IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentType% == \"CC\", \"CEDULA DE CIUDADANIA\" , IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentType% == \"NI\", \"NI\" , IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentType% == \"NE\", \"NIT DE EXTRANJERIA\" , IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentType% == \"CE\", \"CEDULA DE EXTRANJERIA\" , IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentType% == \"PP\", \"PASAPORTE\" , IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentType% == \"CD\", \"CARNET DIPLOMATICO\" , \" \" ))))))"
+        },
+        "label": "DeliveryMethodLabel",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseSummary/English/SV_DeliveryMethodLabel"
+}

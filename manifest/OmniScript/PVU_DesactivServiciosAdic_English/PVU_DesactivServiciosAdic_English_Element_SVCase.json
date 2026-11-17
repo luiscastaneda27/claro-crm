@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCase",
+    "OmniProcessId": {
+        "Name": "DesactivServiciosAdic",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DesactivServiciosAdic/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%AccountId%",
+                "AssetId": "%AssetId%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "Descripcion": "Solicitud de %VozCliente%: %paramMessage%",
+                "NumeroDocCliente": "%IPGetAccountInfo:Details:accountDocumentNumber%",
+                "OrderId": "%OrderId%",
+                "Status": "Abierto",
+                "SubCategoria": "Activación/Desactivación Servicios Adicionales y Funcionalidades",
+                "TipoDocumento": "%IPGetAccountInfo:Details:accountDocumentType%",
+                "VozCliente": "%VozCliente%"
+            }
+        },
+        "label": "SVCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": null,
+                        "field": "esRetencion"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "esRetencion"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DesactivServiciosAdic/English/SVCase"
+}

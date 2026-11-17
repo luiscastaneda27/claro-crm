@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_SetDocument",
+    "OmniProcessId": {
+        "Name": "IdClaroValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/IdClaroValidation/Spanish",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "DocumentNumber": "=IF(%isThirdPersonPV%, %thirdPersonData:NumDoc%, IF(%IsThirdPerson%, %DRE_GetVerificacionIdClaroInfo:AuthorizedPerson:DocumentNumber%, %DRE_GetVerificacionIdClaroInfo:Account:DocumentNumber%))",
+            "DocumentNumberVerify": "=IF(%isThirdPersonPV%, %thirdPersonData:NumDoc%, IF(%IsThirdPerson%, %DRE_GetVerificacionIdClaroInfo:AuthorizedPerson:DocumentNumber%, %DRE_GetVerificacionIdClaroInfo:Account:DocumentNumber%))",
+            "DocumentType": "=IF(%isThirdPersonPV%, %thirdPersonData:TipoDoc%, IF(%IsThirdPerson%, %DRE_GetVerificacionIdClaroInfo:AuthorizedPerson:DocumentType%, %DRE_GetVerificacionIdClaroInfo:Account:DocumentType%))",
+            "DocumentTypeVerify": "=IF(%isThirdPersonPV%, %thirdPersonData:TipoDoc%, IF(%IsThirdPerson%, %DRE_GetVerificacionIdClaroInfo:AuthorizedPerson:DocumentType%, %DRE_GetVerificacionIdClaroInfo:Account:DocumentType%))"
+        },
+        "label": "SV_SetDocument",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/IdClaroValidation/Spanish/SV_SetDocument"
+}

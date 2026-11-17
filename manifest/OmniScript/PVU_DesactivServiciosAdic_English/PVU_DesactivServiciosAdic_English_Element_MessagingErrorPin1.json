@@ -1,0 +1,74 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MessagingErrorPin1",
+    "OmniProcessId": {
+        "Name": "DesactivServiciosAdic",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DesactivServiciosAdic/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "AceptacionOTP",
+        "OmniProcessId": {
+            "Name": "DesactivServiciosAdic",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DesactivServiciosAdic/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DesactivServiciosAdic/English/AceptacionOTP",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "AceptacionOTP",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": null,
+        "hideLabel": true,
+        "label": "MessagingErrorPin1",
+        "lwcComponentOverride": "",
+        "messages": [
+            {
+                "active": true,
+                "text": "%IPEnviarOTP:responsePinGenerationDescription%",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "NO",
+                        "field": "showPin1Response"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "Success",
+                        "field": "IPEnviarAceptacion:EndProcess"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "OTPValidado"
+                    }
+                ]
+            }
+        },
+        "showMessageAs": "inline",
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DesactivServiciosAdic/English/MessagingErrorPin1"
+}

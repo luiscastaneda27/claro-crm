@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_ValidCreditScoreCheck",
+    "OmniProcessId": {
+        "Name": "FVU_DeliveryMethodAllies",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DeliveryMethodAllies/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ValidCreditScoreCheck": "=IF(%ResponseCreditScoreCheck:success%==false, null, IF(%ResponseCreditScoreCheck:cupoDisponible% < %Order:EffectiveRecurringTotalIncTaxesValue%, false, true))"
+        },
+        "label": "SV_ValidCreditScoreCheck",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "NAP",
+                        "field": "Order:PurchaseType"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DeliveryMethodAllies/English/SV_ValidCreditScoreCheck"
+}

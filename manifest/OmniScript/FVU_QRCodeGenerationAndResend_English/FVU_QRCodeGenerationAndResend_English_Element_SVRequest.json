@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequest",
+    "OmniProcessId": {
+        "Name": "QRCodeGenerationAndResend",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/QRCodeGenerationAndResend/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "attachment": [
+            ],
+            "communicationOrigin": "SALESFORCE-VENTAS",
+            "communicationType": "COMERCIAL",
+            "contentType": "CONTENTID",
+            "deliveryReceipts": "N",
+            "messageType": "SMTP",
+            "parameters": {
+                "_ICCID_": "%OrderItemESIM:ICCIDWithCheckDigit%",
+                "_IMG_QR_": "%Details:qrCode%",
+                "_NAME1_": "%Order:Account:Name%"
+            },
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "mail": "%Order:Account:Email%"
+                }
+            ],
+            "reenvio": false,
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Tu Sim Virtual ya está disponible",
+            "templateId": "QR01",
+            "tryTimes": 3
+        },
+        "label": "SVRequest",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/QRCodeGenerationAndResend/English/SVRequest"
+}

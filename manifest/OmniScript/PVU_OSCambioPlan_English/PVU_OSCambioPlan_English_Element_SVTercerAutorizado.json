@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVTercerAutorizado",
+    "OmniProcessId": {
+        "Name": "OSCambioPlan",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioPlan/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "DatosAdjunto": {
+                "ActualLinkedEntityId": "%AccountId%",
+                "ContentDocumentId": "%DatosTercero:AdjuntoTercero|1:data%"
+            },
+            "SVTercerAutorizado": {
+                "TipoDoc": "%DatosTercero:TipoDoc%",
+                "apellidos": "%DatosTercero:primerApellido%  %DatosTercero:segundoApellido%",
+                "nombres": "%DatosTercero:primerNombre%  %DatosTercero:segundoNombre%",
+                "numeroDOC": "%DatosTercero:NumDoc%",
+                "registroIdClaro": "%Validation:transaction%"
+            },
+            "tieneAdjunto": "%SelecCliente:EsTercero%"
+        },
+        "label": "SVTercerAutorizado",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioPlan/English/SVTercerAutorizado"
+}

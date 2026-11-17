@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CustomerWrapper",
+    "OmniProcessId": {
+        "Name": "LeadConversion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/LeadConversion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "customerWrapper.Birthdate": "null",
+            "customerWrapper.CodeOTP": "%LeadInfo:CodeOTP%",
+            "customerWrapper.ContactPreferences": "null",
+            "customerWrapper.CustomerGroup": "null",
+            "customerWrapper.DocumentNumber": "%LeadInfo:DocumentNumber%",
+            "customerWrapper.DocumentNumberConverted": "=NUMBER(%LeadInfo:DocumentNumber%)",
+            "customerWrapper.DocumentType": "%LeadInfo:DocumentType%",
+            "customerWrapper.Email": "%LeadInfo:Email%",
+            "customerWrapper.EmailOwnership": "%LeadInfo:EmailOwnership%",
+            "customerWrapper.FirstName": "%LeadInfo:FirstName%",
+            "customerWrapper.Gender": "null",
+            "customerWrapper.HearingProblemCustomer": "null",
+            "customerWrapper.LastName": "%LeadInfo:LastName%",
+            "customerWrapper.Name": "%LeadInfo:FirstName%",
+            "customerWrapper.OTPValidation": "%LeadInfo:OTPValidation%",
+            "customerWrapper.Occupation": "=NULL",
+            "customerWrapper.OtherPhone": "=IF(SUBSTRING(STRING(%LeadInfo:Phone%), 0, 1) == \"6\", %LeadInfo:Phone%, null)",
+            "customerWrapper.Phone": "=IF(SUBSTRING(STRING(%LeadInfo:Phone%), 0, 1) == \"3\", %LeadInfo:Phone%, null)",
+            "customerWrapper.PreferencesContact": "null",
+            "customerWrapper.SecondLastName": "%LeadInfo:SecondLastName%"
+        },
+        "label": "SV_CustomerWrapper",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/LeadConversion/English/SV_CustomerWrapper"
+}

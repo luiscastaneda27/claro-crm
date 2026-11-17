@@ -1,0 +1,123 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PVU_NotifCambioPosPre",
+    "OmniProcessId": {
+        "Name": "AccionesInmediatas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/AccionesInmediatas/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "CorreoElectronicoContacto": "%IPValidaciones:account:PVU_NotificationPreferenceMethod__c%",
+            "FechaCorte": "%cancelationDate%",
+            "NombreCliente": "%IPValidaciones:account:Name%",
+            "NroCaso": "%Details:CaseNumber%",
+            "NumeroContacto": "%IPValidaciones:account:PVU_NotificationPreferenceMethod__c%",
+            "NumeroContactoFallecimiento": "%IPValidaciones:account:PVU_NotificationPreferenceMethod__c%",
+            "asunto": "%IPValidaciones:mensajes:CAMBPOSPRE005%",
+            "contenido": "%IPValidaciones:mensajes:CAMBPOSPRE004%",
+            "isEmail": "%IPValidaciones:IsEmail%",
+            "numeroTelefono": "%NumeroLinea%",
+            "proceso": "%VozClienteFinal%"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_NotifCancelacionVoluntaria",
+        "label": "PVU_NotifCambioPosPre",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "IPValidaciones:IsBackOffice"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "Case",
+                                    "field": "IPValidaciones:Context"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Cambio de pospago a prepago",
+                                    "field": "VozClienteCaso"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "Cambio de pospago a prepago",
+                                    "field": "VozCliente:vozCliente"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/AccionesInmediatas/English/PVU_NotifCambioPosPre"
+}

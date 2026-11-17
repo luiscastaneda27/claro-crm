@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "pinLinkWithoutLogistics",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseSummary",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseSummary/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "pinLinkWithoutLogistics": "=((%Order:PurchaseType% = \"MIG\") || (%isESim% = true && (%Order:PurchaseType% = \"POR\" || %Order:PurchaseType% = \"ACT\")) || %userProfile% = \"Usuario Aliado Claro\") && %StepDeliveryPago:FormulaPaymentMethodSummary% = \"Pin Link de Pagos\" "
+        },
+        "label": "pinLinkWithoutLogistics",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseSummary/English/pinLinkWithoutLogistics"
+}

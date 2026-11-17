@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Response_FAILcreate",
+    "OmniProcessId": {
+        "Name": "UpdateContentDocumentLink",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/UpdateContentDocumentLink/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "error_code": "%DR_CreateContentDoc:ContentDocumentLink_1:UpsertError%",
+                "message": "Ha ocurrido un error durante la creación del registro. %DR_CreateContentDoc:ContentDocumentLink_1:UpsertError%"
+            },
+            "EndProcess": "fail"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "DR_CreateContentDoc:error != 'OK'",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/UpdateContentDocumentLink/Procedure/Response_FAILcreate"
+}

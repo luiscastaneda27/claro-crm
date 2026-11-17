@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRgetAssetRootData",
+    "OmniProcessId": {
+        "Name": "ValidServicesReinstalacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidServicesReinstalation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "subscriberNumber": "%DRgetSubscriberNumber:subscriberNumber%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVU_DRgetDeactivatedAssetRootByNumber",
+        "chainOnStep": false,
+        "dataRaptor Input Parameters": [
+        ],
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "ISNOTBLANK(%DRgetAssetRootData:disconnectedDate%)",
+        "failureResponse": {
+            "message": "Disconnection Date Not found"
+        },
+        "ignoreCache": false,
+        "label": "DataMapperExtractAction3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Extract Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidServicesReinstalation/Procedure/DRgetAssetRootData"
+}

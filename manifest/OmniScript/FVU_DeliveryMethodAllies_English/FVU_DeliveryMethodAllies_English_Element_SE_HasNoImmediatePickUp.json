@@ -1,0 +1,55 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SE_HasNoImmediatePickUp",
+    "OmniProcessId": {
+        "Name": "FVU_DeliveryMethodAllies",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DeliveryMethodAllies/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementErrorMap": {
+            "MessagingWithoutInmediatePickUp": "="
+        },
+        "label": "SE_HasNoImmediatePickUp",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "0",
+                        "field": "hasImmediatePickUp"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "ImmediatePickUp",
+                        "field": "DeliveryMethodFormula"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "POR",
+                        "field": "Order:PurchaseType"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Set Errors",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DeliveryMethodAllies/English/SE_HasNoImmediatePickUp"
+}

@@ -1,0 +1,114 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGenerateTemporySuspensionOrder",
+    "OmniProcessId": {
+        "Name": "Liberación de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSLiberacionIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "DescripcionEvento": "%LiberarIMEI:MotivoRecupera%",
+                "Id": "%CaseId%",
+                "MotivoReporte": "=IF(%tipoReporteFromContext% == 1,'Robo', IF(%tipoReporteFromContext% == 2,'Perdida','Reincidente'))",
+                "OrderId": "%GenerateOrder:result:orderId%",
+                "PinImei": "=IF(%IPConsultaIMEIDualSIMResponse:imei2%<>null,'Imei: ' + %imeiFromContext% + ' Pin: ' + %PinIMEI1% + ' / Imei2: ' + %IPConsultaIMEIDualSIMResponse:imei2%+ ' Pin: ' + %PinIMEI2%, 'Imei: ' + %imeiFromContext% + ' Pin: ' + %PinIMEI1%)",
+                "Status": "En curso",
+                "SubEstado": "Pendiente ejecución de la orden",
+                "TipoReporte": "%TipoLiberacionFinal%"
+            }
+        },
+        "label": "SVGenerateTemporySuspensionOrder",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "liberarImei1Response:isValid"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "liberarImei2Response:isValid"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "LineaYEquipo",
+                                    "field": "LiberarIMEI:TipoLiberacion"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "liberarImei1Response:isValid"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "0",
+                                    "field": "IPConsultaIMEIDualSIMResponse:piCode"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "LineaYEquipo",
+                                    "field": "LiberarIMEI:TipoLiberacion"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Success",
+                                    "field": "liberarImei1Response:Response:state"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "LineaYEquipo",
+                                    "field": "LiberarIMEI:TipoLiberacion"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "Security:accessProcess:PVU_Resolucion_7811"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSLiberacionIMEI/English/SVGenerateTemporySuspensionOrder"
+}

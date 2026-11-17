@@ -1,0 +1,61 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Call_FlujoCancelacion",
+    "OmniProcessId": {
+        "Name": "OSGestionarRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSGestionarRetencion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "iconName": "",
+        "iconPosition": "left",
+        "iconVariant": "",
+        "label": "Call_FlujoCancelacion",
+        "loginAction": "login",
+        "lwcComponentOverride": "",
+        "message": {
+        },
+        "objectAction": "home",
+        "pubsub": false,
+        "recordAction": "view",
+        "replace": true,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "CambioPosPre",
+                        "field": "Opcion"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "Cancelacion",
+                        "field": "Opcion"
+                    }
+                ]
+            }
+        },
+        "ssm": false,
+        "targetFilter": "Recent",
+        "targetId": "%ContextId%",
+        "targetLWC": "PVUOSCreateOrderWrapperEnglish",
+        "targetLWCLayout": "lightning",
+        "targetLWCParams": "c__AssetId=%InfoRetencion:CaseDetail:AssetId%&c__Type=Cambios&c__SubType=Eliminacion_de_Adicionales&c__esRetencion=true&c__CasoRetencionId=%ContextId%&tabLabel=DesactivacionServiciosAdicionales",
+        "targetType": "Web Page",
+        "targetUrl": "/lightning/cmp/%vlocity_namespace%__vlocityLWCOmniWrapper?c__target=c:pVUFlujoCancelacionEnglish&c__layout=lightning&c__tabIcon=custom:custom18&c__tabLabel=FlujoCancelacion&c__CaseId=%ContextId%&c__AccountId=%InfoRetencion:CaseDetail:Case:AccountId%",
+        "validationRequired": "Submit",
+        "variant": "brand",
+        "wpm": false
+    },
+    "Type": "Navigate Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSGestionarRetencion/English/Call_FlujoCancelacion"
+}

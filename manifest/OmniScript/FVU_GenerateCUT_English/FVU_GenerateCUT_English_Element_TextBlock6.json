@@ -1,0 +1,67 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "TextBlock6",
+    "OmniProcessId": {
+        "Name": "GenerateCUT",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GenerateCUT/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepSelectPickupPerson",
+        "OmniProcessId": {
+            "Name": "GenerateCUT",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GenerateCUT/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GenerateCUT/English/StepSelectPickupPerson",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepSelectPickupPerson",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "dataJSON": false,
+        "label": "TextBlock6",
+        "sanitize": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "TerceroAutorizado",
+                        "field": "PickupPersonWithAuthorizedPerson"
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "<>",
+                                    "data": null,
+                                    "field": "DeliveryData"
+                                },
+                                {
+                                    "condition": "<>",
+                                    "data": "",
+                                    "field": "DeliveryData:AuthorizedPersonData:Name"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "text": "<p>Nombre: %DeliveryData:AuthorizedPersonData:Name% %DeliveryData:AuthorizedPersonData:SecondLastName% %DeliveryData:AuthorizedPersonData:LastName%</p>",
+        "textKey": ""
+    },
+    "Type": "Text Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GenerateCUT/English/TextBlock6"
+}

@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CancelOrderWithoutOMS",
+    "OmniProcessId": {
+        "Name": "CancelOrderInPaymentProcess",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CancelOrderInPaymentProcess/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CancelOrder": {
+                "ClosingReason": "Desistimiento del cliente antes de entrega",
+                "DeliveryStatus": "Canceled",
+                "EndDate": "=NOW()",
+                "Id": "%ContextId%",
+                "OrderProductItem": {
+                    "Id": "%OrderItemEsim:Id%",
+                    "Status": "Canceled"
+                },
+                "Status": "Cerrada Perdida",
+                "vlocityOrderStatus": "Cancelled"
+            }
+        },
+        "label": "SV_CancelOrderWithoutOMS",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "skipNotificationOMS"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "ERROR",
+                        "field": "Response_CancelPortability:ERROR"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CancelOrderInPaymentProcess/English/SV_CancelOrderWithoutOMS"
+}

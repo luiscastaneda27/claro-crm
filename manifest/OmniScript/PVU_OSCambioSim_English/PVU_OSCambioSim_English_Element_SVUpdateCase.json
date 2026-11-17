@@ -1,0 +1,63 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateCase",
+    "OmniProcessId": {
+        "Name": "OSCambioSim",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioSim/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CaseUpdate": {
+                "Categoria": "Soporte, Fallas de Servicio y Equipos",
+                "ICCIDTemporal": "%iccid%",
+                "ICCIDTemporalQR": "%NewICCIDResponse:Details:iccid%",
+                "Id": "%IPCreateCase:Details:CaseId%",
+                "IdProceso": "%IPSim:Details:ProcessName%",
+                "OrderId": "%IPSim:Details:OrderId%",
+                "SubCategoria": "Fallas de Servicio y Equipos",
+                "oldICCID": "%InfoSIM:iccid_old%"
+            }
+        },
+        "label": "SVUpdateCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "E-Sim",
+                        "field": "TipoSim"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "fail",
+                        "field": "IPSim:EndProcess"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "available",
+                        "field": "NewICCIDResponse:isInventoryAvailable"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioSim/English/SVUpdateCase"
+}

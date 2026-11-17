@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDaneCodes",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "codigoDaneCentro": "%DatosCuenta:Billing|1:CodigoDane%",
+            "codigoDaneCiudad": "=SUBSTRING(%DatosCuenta:Billing|1:CodigoDane%,0,5)",
+            "codigoDaneDepartamento": "=SUBSTRING(%DatosCuenta:Billing|1:CodigoDane%,0,2)",
+            "fechaAFormatear": "=REPLACE(%fechaInicioSusp%, '/', '-')"
+        },
+        "label": "SVDaneCodes",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": {
+            "vlcCart": true,
+            "vlcKnowledge": false
+        },
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/SVDaneCodes"
+}

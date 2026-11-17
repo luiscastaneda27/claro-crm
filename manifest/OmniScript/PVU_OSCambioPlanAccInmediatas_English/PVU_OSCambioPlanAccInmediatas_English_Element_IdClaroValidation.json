@@ -1,0 +1,38 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|IdClaroValidation|Spanish",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IdClaroValidation",
+    "OmniProcessId": {
+        "Name": "OSCambioPlanAccInmediatas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioPlanAccInmediatas/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "Spanish",
+        "Sub Type": "IdClaroValidation",
+        "Type": "FVU",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "IPValidaciones:passValidations"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "Case",
+                        "field": "Context"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioPlanAccInmediatas/English/IdClaroValidation"
+}

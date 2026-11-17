@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_idClaro",
+    "OmniProcessId": {
+        "Name": "CambioCiclo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CambioCiclo/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%AccountId%",
+            "Application": "=IF(%SelecCliente:EsTercero%, \"SF_TERCERO_AUTORIZADO_POSVENTA\", \"SF_CAMBIO_CICLO\") ",
+            "Channel": "1",
+            "DocumentNumber": "%IPvalidaciones:Details:accountData:AccountDocumentNumber%",
+            "DocumentType": "%IPvalidaciones:Details:accountData:AccountDocumentType%",
+            "IsThirdPerson": "%SelecCliente:EsTercero%",
+            "RecordId": "%ContextId%",
+            "Telefono": "=%IPvalidaciones:Details:accountData:AccountPhone%",
+            "isThirdPersonPV": "%SelecCliente:EsTercero%",
+            "thirdPersonData": "%DatosTercero%"
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CambioCiclo/English/SV_idClaro"
+}

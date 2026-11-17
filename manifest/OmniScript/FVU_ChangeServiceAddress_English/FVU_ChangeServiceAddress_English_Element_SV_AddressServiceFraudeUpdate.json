@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AddressServiceFraudeUpdate",
+    "OmniProcessId": {
+        "Name": "ChangeServiceAddress",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ChangeServiceAddress/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Address": {
+                "AccountId": "%StepChangeServiceAddress:FlexCardAddressList:selectAddress:selectedAddress|1:Id%",
+                "AccountName": "%StepChangeServiceAddress:FlexCardAddressList:selectAddress:selectedAddress|1:name%",
+                "ServiceAddressStatus": "%AddressStatus%",
+                "ServiceExtract": "%ResponseConsultaDireccion:stratum%",
+                "ServiceLatitude": "%ResponseConsultaDireccion:coordinate:latitude%",
+                "ServiceLongitude": "%ResponseConsultaDireccion:coordinate:length%"
+            }
+        },
+        "label": "SV_AddressServiceFraudeUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ChangeServiceAddress/English/SV_AddressServiceFraudeUpdate"
+}

@@ -1,0 +1,36 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_CausalesActivacion",
+    "OmniProcessId": {
+        "Name": "CartCheckout",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CartCheckout/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "OrderItem": {
+                "causalesActivacion": "=IF(%OrderItem:productType% == \"Plan\", IF(%OrderItem:productSubType% == \"Postpaid\",\"2002\",\"\"), \"\")"
+            }
+        },
+        "label": "SV_CausalesActivacion",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            false,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CartCheckout/English/SV_CausalesActivacion"
+}

@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccess",
+    "OmniProcessId": {
+        "Name": "ValidateNormalCreditStatus",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidateNormalCreditStatus/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "Descripcion": "",
+                "Name": "FIN_IP_CusInstallRefund",
+                "metodo": "POST",
+                "request": "%SV_RequestBody%",
+                "response": "%SV_Response:response%",
+                "statusId": "%SV_Response:response:statusId%"
+            },
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%SV_Response:response%) && %SV_Response:response:statusId% != \"-1\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidateNormalCreditStatus/Procedure/ResponseActionSuccess"
+}

@@ -1,0 +1,111 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_OrderData",
+    "OmniProcessId": {
+        "Name": "NewSales",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/NewSales/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Order": {
+                "ATDPDatetime": "=IF(%HasATDPApproval% == true, %DateAcceptedATDP%, %ATDPRequest:ATDPIntegrations:FVU_ContractStatusApproval:dateAccept%)",
+                "ATDPNotificationMethod": "=IF(%HasATDPApproval% == true, %ATDPType%, %ATDPRequest:ATDPIntegrations:FVU_CallATDP:tipoEnvio%)",
+                "AccountId": "%ContextId%",
+                "AdvancedCharge": "%ResponseCreditScoreCheck:matrizPersonaVenta:cfmAnticipado%",
+                "Agreement": "%SelectedAgreement%",
+                "BusinessChannel": "%UserDetails:BusinessChannel%",
+                "Categoria": "=IF(%userProfile% == \"Usuario Aliado Claro\", %UserDetails:Categoria%, null)",
+                "Channel": "%UserDetails:Channel%",
+                "CiudadCAVOrden": "%UserDetails:CiudadCAV%",
+                "CodigoCAV": "%UserDetails:CAV%",
+                "CodigoD": "%UserDetails:CodigoMovil%",
+                "CoverageType": "%ResponseAddressCoverage:HhppsCovered|1:technology%",
+                "CreditQuota": "%cupoDisponible%",
+                "CustomerDataAuthorization": "=%DocGenAcceptance% == \"Aprobado\"",
+                "CustomerDataAuthorizationDate": "=IF(%UserDetails:CAV% == \"TMK\", %data:dateAccept%, NOW())",
+                "DaneCiudadCAVOrden": "%UserDetails:DaneCode%",
+                "Division": "%UserDetails:Division%",
+                "DocumentManagerDate": "=IF(%IsDocSent%, NOW(), null)",
+                "DunningStatus": "%DelinquentStatus%",
+                "EffectiveDate": "=TODAY()",
+                "Email": "=IF(%HasATDPApproval% == true, %SendEmailATDP%, %ATDPRequest:ATDPIntegrations:FVU_CallATDP:mailEnvio%)",
+                "Empleador": "%UserDetails:Empleador%",
+                "EngagementInteraction": "%EngagementInteraction|1:Id%",
+                "HasATDPApprovalValidation": "=IF(%HasATDPApproval% == true, true, false)",
+                "HasPortedOutLately": "%StepPortIn:HasPortedOutRecently%",
+                "IdArea": "%UserDetails:IdArea%",
+                "IdDistrito": "%UserDetails:IdDistrito%",
+                "IdentityValidationReason": "%ProcessBlacklist:reason%",
+                "IdentityValidationRequired": "=IF(%ProcessBlacklist:action% == \"VALIDAR IDENTIDAD\", \"Requerido\",%IdentityValidationRequired%)",
+                "InquiryContact": "%data:typeSend%",
+                "Installments": "%PreSalesValidation:PurchaseIntention:Financiado%",
+                "InvoiceCharge": "=IF(%ResponseCreditScoreCheck:matrizPersonaVenta:cfmFactura% == 0 || %MultiSelectTipoDeVenta% == 'NAP', false, true)",
+                "IsIVAExempt": "%IVAExemptedCustomer:clienteExcluidoDeImpuesto%",
+                "MigraData": [
+                    {
+                        "ICCID": "%IP_MigraPrePosDataConsult:FinalICCID%",
+                        "NRN": "%IP_MigraPrePosDataConsult:data:nrnCode%",
+                        "NumberToMigrate": "%NumberToPort%",
+                        "Serial": "%IP_MigraPrePosDataConsult:data:iccid%"
+                    }
+                ],
+                "NRNCode": "%IP_MigraPrePosDataConsult:data:nrnCode%",
+                "OmitirHDC": "=IF(%MultiSelectTipoDeVenta% = \"POR\", %StepPortIn:IgnoreCallHDC%, %StepMigracionPrePos:IgnoreCallHDC%)",
+                "OperadorDonante": "%PortInData|1:OperadorDonante%",
+                "OriginatingChannel": "%UserDetails:BusinessChannel%",
+                "Phone": "=IF(%HasATDPApproval% == true, %SendPhoneATDP%, %ATDPRequest:ATDPIntegrations:FVU_CallATDP:numeroEnvio%)",
+                "PortInData": "%PortInData%",
+                "PreToPosReversed": "=IF(%StepMigracionPrePos:FlexCard_LineNumberMin:LineNumbers:Records|1:LineValidation:IPResult:PreToPosReversed% == true,true, IF(%IsReversion% && %MultiSelectTipoDeVenta% == 'POR', true, false))",
+                "PrepaidCreditQuota": "%IP_QueryPrepaidQuoteStrategy:data:cfm%",
+                "ProcessUserId": "%userId%",
+                "PurchaseType": "%MultiSelectTipoDeVenta%",
+                "SalesType": "Venta",
+                "ShortName": "%UserDetails:Name%",
+                "Status": "Análisis de Necesidad",
+                "StatusTodoClaro": "%StatusTodoClaroPreSalesValidation%",
+                "Subcanal": "%UserDetails:SubCanal%",
+                "Type": "=IF(%MultiSelectTipoDeVenta% = \"POR\", \"PortIn\", IF(%MultiSelectTipoDeVenta% = \"ACT\" || %MultiSelectTipoDeVenta% = \"ATT\" || %MultiSelectTipoDeVenta% = \"MIG\", \"Activation\", \"HandsetAndTech\"))",
+                "Zona": "%UserDetails:Zona%",
+                "billingAddressId": "%PreSalesValidation:Addresses:AddressList:selectAddress:selectedAddress|1:billingAddressId%",
+                "cedulaAsesor": "=IF(%userProfile% == \"Usuario Aliado Claro\", %UserDetails:NumeroDeIdentificacion%, null)",
+                "deliveryMethod": "%DefaultDeliveryMethod%",
+                "noLogisticCoverage": "%continueESIM%",
+                "puntoDeVenta": "%UserDetails:PuntoVenta%",
+                "region": "=STRING(%PreSalesValidation:Addresses:AddressList:selectAddress:selectedAddress:Region%)",
+                "serviceAddressId": "%PreSalesValidation:Addresses:AddressList:selectAddress:selectedAddress|1:Id%",
+                "usuarioDeRed": "=IF(%userProfile% == \"Usuario Aliado Claro\", %UserDetails:usuarioConsulta%, null)"
+            }
+        },
+        "label": "SV_OrderData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "true",
+                        "field": "Inconsistency"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/NewSales/English/SV_OrderData"
+}

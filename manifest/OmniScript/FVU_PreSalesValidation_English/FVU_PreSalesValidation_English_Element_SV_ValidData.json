@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_ValidData",
+    "OmniProcessId": {
+        "Name": "PreSalesValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreSalesValidation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AddressIdSelected": "=%PreSalesValidation:Addresses:AddressList:selectAddress:selectedAddress|1:Id%",
+            "AddressRecordTypeNameSelected": "=%PreSalesValidation:Addresses:AddressList:selectAddress:selectedAddress|1:RecordTypeName%",
+            "IdMER": "=%PreSalesValidation:Addresses:AddressList:selectAddress:selectedAddress|1:serciveMerId%",
+            "IdentityValidationRequired": "=IF(%action% == \"Validar Identidad\", \"Requerido\", \"No Requerido\")",
+            "NoAddressSelected": "=!(%AddressSelected%)",
+            "selectedDaneCode": "=SUBSTRING(%Addresses:AddressList:selectAddress:selectedAddress|1:serviceDaneCode%, 0, 2)"
+        },
+        "label": "SV_ValidData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreSalesValidation/English/SV_ValidData"
+}

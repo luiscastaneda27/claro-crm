@@ -1,0 +1,100 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "PortIn",
+    "OmniProcessId": {
+        "Name": "FVU_CheckoutPortability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CheckoutPortability/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "allowSaveForLater": false,
+        "businessCategory": "",
+        "businessEvent": "",
+        "cancelLabel": "Cancel",
+        "cancelMessage": "Are you sure?",
+        "chartLabel": null,
+        "completeLabel": "Complete",
+        "completeMessage": "Are you sure you want to complete the script?",
+        "conditionType": "Hide if False",
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "instruction": "",
+        "instructionKey": "",
+        "knowledgeOptions": {
+            "dataCategoryCriteria": "",
+            "keyword": "",
+            "language": "English",
+            "publishStatus": "Online",
+            "remoteTimeout": 30000,
+            "typeFilter": ""
+        },
+        "label": "Port In",
+        "message": {
+            "min": "%SolicitudPortinEntrante:solicitudPortin:MIN%",
+            "orderItemId": "%SolicitudPortinEntrante:solicitudPortin:OrderItemId%"
+        },
+        "nextLabel": "Siguiente",
+        "nextWidth": 0,
+        "previousLabel": "",
+        "previousWidth": 0,
+        "pubsub": true,
+        "remoteClass": "",
+        "remoteMethod": "",
+        "remoteOptions": {
+        },
+        "remoteTimeout": 30000,
+        "saveLabel": "",
+        "saveMessage": "",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "false",
+                        "field": "SolicitudPortinEntrante:CanProceed"
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "OK",
+                                    "field": "SolicitudPortinEntrante:ERROR"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "SolicitudPortinEntrante:solicitudPortin:skipRequest"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "false",
+                        "field": "SendPortabilityOptions:CanProceed"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": true,
+        "wpm": false
+    },
+    "Type": "Step",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CheckoutPortability/English/PortIn"
+}

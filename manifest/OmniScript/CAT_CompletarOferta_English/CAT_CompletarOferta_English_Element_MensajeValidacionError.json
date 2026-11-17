@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MensajeValidacionError",
+    "OmniProcessId": {
+        "Name": "Completar Oferta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompletarOferta/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CompraPromociones",
+        "OmniProcessId": {
+            "Name": "Completar Oferta",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompletarOferta/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompletarOferta/English/CompraPromociones",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CompraPromociones",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "dataJSON": false,
+        "label": "TextBlock1",
+        "sanitize": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "Validacion"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "ClasesBeneficioFaltantes"
+                    }
+                ]
+            }
+        },
+        "text": "<h2 style=\"text-align: center;\"><span style=\"text-decoration: underline; color: #e03e2d;\"><strong>%ClasesBeneficioFaltantes%.</strong></span></h2>",
+        "textKey": ""
+    },
+    "Type": "Text Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompletarOferta/English/MensajeValidacionError"
+}

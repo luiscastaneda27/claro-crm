@@ -1,0 +1,105 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPValidacionCasosOpenSoporteFalla",
+    "OmniProcessId": {
+        "Name": "DevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ]
+        },
+        "extraPayload": {
+            "CasoGestion": "%CasoGestion%",
+            "accountId": "%ContextId%",
+            "listAssets": "%IPAssetsPQR:Assets%",
+            "siAssets": "%IPAssetsPQR:assetInfo%",
+            "tipo": "%Origen:Tipo%"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_DevolucionDineroOpencasesSoporte",
+        "label": "IPValidacionCasosOpenSoporteFalla",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "IPValidacionCasosOpenSoporteFalla",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "IPResult",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Asset",
+                        "field": "Tipo"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "PQR",
+                        "field": "Tipo"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "SaldoFin",
+                        "field": "Tipo"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "Saldo",
+                        "field": "Tipo"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            {
+                "vlcCart": true,
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDinero/English/IPValidacionCasosOpenSoporteFalla"
+}

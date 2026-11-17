@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateCase2",
+    "OmniProcessId": {
+        "Name": "OSCambioSim",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioSim/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CaseUpdate": {
+                "Id": "%IPCreateCase:Details:CaseId%",
+                "SubEstado": "Pendiente ejecución de la orden"
+            }
+        },
+        "label": "SVUpdateCase2",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "E-Sim",
+                        "field": "TipoSim"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "success",
+                        "field": "IPCheckoutOrder:EndProcess"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioSim/English/SVUpdateCase2"
+}

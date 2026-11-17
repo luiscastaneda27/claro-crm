@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA",
+    "OmniProcessId": {
+        "Name": "SetActivosSeleccionadosNegacionPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/SetActivosSeleccionadosNegacionPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "cuentaFinanciamiento": "=IF(%SVListAssets:AssetsCount% > 1  , %SV:TrimProdCredito92%, %SVAsset:CuentaFinSA%)",
+            "nombreEquipo": "=IF(%SVListAssets:AssetsCount% > 1, %SV:TrimProdName%, %SVAsset:NameSA%)",
+            "numeroCredito": "=IF(%SVListAssets:AssetsCount% > 1  , %SV:TrimProdNumeroCredito%, %SVAsset:NumCredSA%)",
+            "serialEquipo": "=IF( %SVListAssets:AssetsCount% > 1,%SV:TrimProdSerial%,  %SVAsset:SerialSA%)",
+            "valorPrecioVenta": "=%SVListAssets:AssetsfnValorVentaSUM%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/SetActivosSeleccionadosNegacionPQR/Procedure/RA"
+}

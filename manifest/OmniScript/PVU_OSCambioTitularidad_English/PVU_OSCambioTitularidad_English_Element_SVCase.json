@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCase",
+    "OmniProcessId": {
+        "Name": "Cambio de titularidad de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioTitularidad/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Canal": "%IPValidation:channel%",
+            "Case": {
+                "AccountId": "%AccountId%",
+                "AssetId": "%AssetId%",
+                "CantidadCambios": "%IPValidation:Details:cantidadCambios%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "DatosTerceroValues": "%DatosTerceroAutorizado%",
+                "ImeiMas2CambiosTitularidad": "%IPValidation:Details:tieneMas2CambiosTitularidad%",
+                "ImeiReporte1": "%imeiFromContext%",
+                "NombreCliente": "%IPValidation:Details:account:Name%",
+                "NumeroDocCliente": "%IPValidation:Details:account:FVU_DocumentNumber__c%",
+                "Status": "En curso",
+                "SubCategoria": "Gestión de IMEI",
+                "SubEstado": "-",
+                "TipoDocumento": "%IPValidation:Details:account:FVU_DocumentType__c%",
+                "VentaClaro": "%IPValidation:Details:isVendidoClaro%",
+                "VozCliente": "%VozCliente%"
+            },
+            "TipoDocumento": "=IF(%IPValidation:Details:accountInfo:accountDocumentType% == 'CC', 'Cédula Ciudadanía', IF(%PValidation:Details:accountInfo:accountDocumentType%  == 'PP', 'Pasaporte', IF(%PValidation:Details:accountInfo:accountDocumentType% == 'NI','NIT', 'Cédula Extranjería')))"
+        },
+        "label": "SVCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioTitularidad/English/SVCase"
+}

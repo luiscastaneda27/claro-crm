@@ -1,0 +1,61 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SVQuote",
+    "OmniProcessId": {
+        "Name": "OSStartQuoteCart",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/StartQuoteCart/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Quote": {
+                "ATDPDatetime": "=IF(%HasATDPApproval% == true, %DateAcceptedATDP%, %ATDPRequest:ATDPIntegrations:FVU_ContractStatusApproval:dateAccept%)",
+                "ATDPNotificationMethod": "=IF(%HasATDPApproval% == true, %ATDPType%, %ATDPRequest:ATDPIntegrations:FVU_CallATDP:tipoEnvio%)",
+                "AccountEmail": "=IF(%HasATDPApproval% == true, %SendEmailATDP%, %AccountEmail%)",
+                "AccountId": "%ContextId%",
+                "AccountNumberExternalBilling": "%AccountNumberExternalBilling%",
+                "BusinessChannel": "%UserDetails:BusinessChannel%",
+                "CAT_DeliveryMethod": "=IF(%UserDetails:Channel% = 'SF_CAV', 'Immediatepickup', 'Delivery')",
+                "CalificacionCuenta": "%AccountCalificacion%",
+                "Channel": "%UserDetails:Channel%",
+                "CiudadCAVOrden": "%UserDetails:CiudadCAV%",
+                "CodigoCAV": "%UserDetails:CAV%",
+                "CodigoD": "%UserDetails:CodigoMovil%",
+                "CoverageType": "%ResponseAddressCoverage:HhppsCovered|1:technology%",
+                "CreditQuota": "%cupoDisponible%",
+                "DocumentManagerDate": "=IF(%IsDocSent%, NOW(), null)",
+                "FIN_CreditHistoryQuota": "%cupoAutorizadoOficial%",
+                "FIN_CreditQuota": "%Cupo%",
+                "FIN_MasterQuote": "true",
+                "FIN_tipoDeVenta": "Financiacion",
+                "FVU_Channel": "%UserDetails:Channel%",
+                "HasATDPApprovalValidation": "=IF(%HasATDPApproval% == true, true, false)",
+                "Name": "00000001",
+                "PagosInicialesTecnologia": "%pagoInicialTecnologia%",
+                "PagosInicialesTerminales": "%pagoInicialTerminales%",
+                "Phone": "=IF(%HasATDPApproval% == true, %SendPhoneATDP%, %ATDPRequest:ATDPIntegrations:FVU_CallATDP:numeroEnvio%)",
+                "Status": "Borrador",
+                "serviceAddressId": "%SVselectedAddressId%"
+            }
+        },
+        "label": "SVQuote",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/StartQuoteCart/English/SVQuote"
+}

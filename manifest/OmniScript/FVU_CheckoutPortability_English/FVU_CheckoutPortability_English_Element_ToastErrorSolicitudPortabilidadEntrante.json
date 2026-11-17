@@ -1,0 +1,85 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "ToastErrorSolicitudPortabilidadEntrante",
+    "OmniProcessId": {
+        "Name": "FVU_CheckoutPortability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CheckoutPortability/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "PortInError",
+        "OmniProcessId": {
+            "Name": "FVU_CheckoutPortability",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CheckoutPortability/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CheckoutPortability/English/PortInError",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "PortInError",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "ToastErrorSolicitudPortabilidadEntrante",
+        "messages": [
+            {
+                "active": true,
+                "text": "%SolicitudPortinEntrante:message%",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "OK",
+                        "field": "SolicitudPortinEntrante:ERROR"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "false",
+                        "field": "SolicitudPortinEntrante:CanProceed"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "false",
+                        "field": "SendPortabilityOptions:CanProceed"
+                    }
+                ]
+            }
+        },
+        "showMessageAs": "toast",
+        "toastMode": "sticky",
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "OK",
+                        "field": "SolicitudPortinEntrante:ERROR"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CheckoutPortability/English/ToastErrorSolicitudPortabilidadEntrante"
+}

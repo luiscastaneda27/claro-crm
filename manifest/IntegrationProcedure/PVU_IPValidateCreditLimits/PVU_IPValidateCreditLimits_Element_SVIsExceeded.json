@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVIsExceeded",
+    "OmniProcessId": {
+        "Name": "IPValidateCreditLimits",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidateCreditLimits/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "IsPackageExceeded": "=IF(%SVSumAmount:PackageAmount%>%SVCreditLimits:PackageLimit:CreditLimit%,true,false)",
+            "IsRoamingExceeded": "=IF(%SVSumAmount:RoamingAmount%>%SVCreditLimits:RoamingLimit:CreditLimit%,true,false)",
+            "IsServiceExceeded": "=IF(%SVSumAmount:ServicesAmount%>%SVCreditLimits:ServiceLimit:CreditLimit%,true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidateCreditLimits/Procedure/SVIsExceeded"
+}

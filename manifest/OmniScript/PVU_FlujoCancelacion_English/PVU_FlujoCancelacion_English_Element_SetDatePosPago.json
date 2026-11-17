@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetDatePosPago",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "FechaFinal": "=IF(%IPValidacionesCancelacion:infoCiclo:diasLaborales% > %IPValidacionesCancelacion:settings:DiasHabilesPosPre%, %IPValidacionesCancelacion:infoCiclo:fechaCorteActual%,  %IPValidacionesCancelacion:infoCiclo:fechaCorteSiguiente%)"
+        },
+        "label": "SetDatePosPago",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Cambio de pospago a prepago",
+                        "field": "vozCliente"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            {
+                "vlcCart": true,
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/SetDatePosPago"
+}

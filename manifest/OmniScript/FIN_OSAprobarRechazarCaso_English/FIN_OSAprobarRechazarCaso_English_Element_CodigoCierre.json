@@ -1,0 +1,87 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CodigoCierre",
+    "OmniProcessId": {
+        "Name": "FIN_OSAprobarRechazarCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSAprobarRechazarCaso/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "FIN_SelectCodCierre",
+        "OmniProcessId": {
+            "Name": "FIN_OSAprobarRechazarCaso",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSAprobarRechazarCaso/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSAprobarRechazarCaso/English/FIN_SelectCodCierre",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "FIN_SelectCodCierre",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "accessibleInFutureSteps": false,
+        "conditionType": "Hide if False",
+        "controlWidth": 7,
+        "controllingField": {
+            "element": "",
+            "source": "",
+            "type": ""
+        },
+        "defaultValue": null,
+        "disOnTplt": false,
+        "help": false,
+        "helpText": "Seleccionar",
+        "helpTextPos": "",
+        "hide": false,
+        "inputWidth": 12,
+        "label": "Codigo de Cierre",
+        "optionSource": {
+            "source": "",
+            "type": ""
+        },
+        "options": [
+            {
+                "autoAdv": null,
+                "name": "El soporte no es legible",
+                "value": "El soporte no es legible"
+            },
+            {
+                "autoAdv": null,
+                "name": "El pago ya fue abonado",
+                "value": "El pago ya fue abonado"
+            },
+            {
+                "autoAdv": null,
+                "name": "Se aplica pago",
+                "value": "Se aplica pago"
+            }
+        ],
+        "readOnly": false,
+        "repeat": false,
+        "repeatClone": false,
+        "repeatLimit": null,
+        "required": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "PVU_Validations:Success"
+                    }
+                ]
+            }
+        },
+        "showInputWidth": false
+    },
+    "Type": "Select",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSAprobarRechazarCaso/English/CodigoCierre"
+}

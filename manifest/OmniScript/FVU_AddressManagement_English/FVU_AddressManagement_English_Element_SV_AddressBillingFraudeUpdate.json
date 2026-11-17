@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AddressBillingFraudeUpdate",
+    "OmniProcessId": {
+        "Name": "AddressManagement",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AddressManagement/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "BillingAddress": {
+                "Address": {
+                    "AccountId": "%billingAddressId%",
+                    "AccountName": "%AccountData|1:Name%",
+                    "BillingAddressStatus": "Fraude"
+                }
+            }
+        },
+        "label": "SV_AddressBillingFraudeUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "AccountId"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "FormulaShowFraudeMarkExists"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AddressManagement/English/SV_AddressBillingFraudeUpdate"
+}

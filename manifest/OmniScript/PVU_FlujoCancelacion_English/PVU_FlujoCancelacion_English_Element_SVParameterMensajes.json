@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParameterMensajes",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "NumeroLineaFromCase": "=SUBSTRING(%IPGetCaseInformation:Details:NumeroLinea%, 2)",
+            "asunto": "=IF(%vozCliente% = \"Cancelación Voluntaria\", %IPValidacionesCancelacion:mensajes:CANVOL005%, %IPMensajes:CANCF007%)",
+            "contenido": "=IF(%vozCliente% = \"Cancelación Voluntaria\", %IPValidacionesCancelacion:mensajes:CANVOL004%, %IPMensajes:CANCF008%)"
+        },
+        "label": "SVParameterMensajes",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/SVParameterMensajes"
+}

@@ -1,0 +1,56 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "TheresNoInbound",
+    "OmniProcessId": {
+        "Name": "PortIn",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PortIn/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ChannelToObject": {
+                "ChannelType": "Outbound"
+            }
+        },
+        "label": "TheresNoInbound",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": null,
+                        "field": "DMResponseChannel:ChannelType"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "SetChannel"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "SetSubchannel"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PortIn/English/TheresNoInbound"
+}

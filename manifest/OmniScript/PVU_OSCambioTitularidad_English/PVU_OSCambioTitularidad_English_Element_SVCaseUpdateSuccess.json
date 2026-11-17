@@ -1,0 +1,66 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdateSuccess",
+    "OmniProcessId": {
+        "Name": "Cambio de titularidad de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioTitularidad/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AssetMarca": "%marcaFinal%",
+                "AssetModelo": "%modelFinal%",
+                "Ciudad": "%ciudadContactoPropietario%",
+                "CodigoCierre": "Se realiza Cambio de Titularidad",
+                "ConsecutivoFactura": "%consecutivoFacturaFinal%",
+                "ContactEmail": "%CorreoElectronicoContacto%",
+                "ContactPhone": "%telContactoPropietario%",
+                "ContenidoCorreo": "%IPEnviarAceptacionRegistro:AceptacionEnviada%",
+                "Departamento": "%departamentoPopietario%",
+                "Direccion": "%direccionPropietario%",
+                "Id": "%CaseId%",
+                "MINReporte": "%minFinal%",
+                "NitEstablecimientoVenta": "%numIdAutorizado%",
+                "NombreCliente": "%nombrePropietario%",
+                "NombreEstablecimientoVenta": "%nombreAutorizado%",
+                "NumeroDocCliente": "%numIdPropietario%",
+                "PinImei": "%ClaveOTP%",
+                "Status": "Cerrado",
+                "SubEstado": "-",
+                "TipoDocumento": "%tipoDocumentoFinal%"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "lwcComponentOverride": "",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "cambioResult:isValid"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioTitularidad/English/SVCaseUpdateSuccess"
+}

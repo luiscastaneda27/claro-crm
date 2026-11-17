@@ -1,0 +1,68 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Msg_ErrorAmountMoreZero",
+    "OmniProcessId": {
+        "Name": "FVU_PaymentManual",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentManual/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "Block_PaymentMethods",
+        "OmniProcessId": {
+            "Name": "FVU_PaymentManual",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PaymentManual/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentManual/English/Block_PaymentMethods",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "Block_PaymentMethods",
+    "ParentElementType": "Block",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "Msg_ErrorAmountZero",
+        "lwcComponentOverride": "",
+        "messages": [
+            {
+                "active": true,
+                "text": "El monto mínimo permitido es de COP 0,01. Por favor, ingrese un valor igual o superior a este monto.",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Success",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<=",
+                        "data": 0,
+                        "field": "Block_PaymentMethods|n:amount"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "Block_PaymentMethods|n:amount"
+                    }
+                ]
+            }
+        },
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PaymentManual/English/Msg_ErrorAmountMoreZero"
+}

@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_RetakePortability",
+    "OmniProcessId": {
+        "Name": "RenewPortability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RenewPortability/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CloneOrderId": "%CloneOrder:orderId%",
+            "TracingFlagClone": "RenewPortability"
+        },
+        "label": "SV_RetakePortability",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Superseded",
+                        "field": "IP_RenewPortInValidation:OrderStatus"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "IP_RenewPortInValidation:Continue"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RenewPortability/English/SV_RetakePortability"
+}

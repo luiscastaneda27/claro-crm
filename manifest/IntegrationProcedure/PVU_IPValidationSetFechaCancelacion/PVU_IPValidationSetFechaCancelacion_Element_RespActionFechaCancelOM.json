@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RespActionFechaCancelOM",
+    "OmniProcessId": {
+        "Name": "IPValidationSetFechaCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidationSetFechaCancelacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "fechaFactOM": "=IF((YEAR(TODAY()) - YEAR(%SVCheckDiffDate:fechaFactOM%)) < 1, %SVCheckDiffDate:fechaFactOM%, ADDYEAR(%SVCheckDiffDate:fechaFactOM%, (YEAR(TODAY()) - YEAR(%SVCheckDiffDate:fechaFactOM%))))"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidationSetFechaCancelacion/Procedure/RespActionFechaCancelOM"
+}

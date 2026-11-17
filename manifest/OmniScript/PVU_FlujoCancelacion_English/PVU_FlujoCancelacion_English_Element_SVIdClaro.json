@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVIdClaro",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%AccountId%",
+            "Application": "=IF(%SelecCliente:EsTercero%, \"SF_TERCERO_AUTORIZADO_POSVENTA\" , \"SF_CANCELACION_VOLUNTARIA\")",
+            "Channel": "1",
+            "DocumentNumber": "=IF(%SelecCliente:EsTercero%, %DatosTercero:NumDoc%, %NumeroDocumentoSolicitante%)",
+            "DocumentType": "=IF(%SelecCliente:EsTercero%, %DatosTercero:TipoDoc%, %TipoDocumentoSolicitante%)",
+            "IsThirdPerson": "=IF(%SelecCliente% = NULL ,false, %SelecCliente:EsTercero%)",
+            "RecordId": "%AccountId%",
+            "isThirdPersonPV": "=IF(%SelecCliente% = NULL ,false, %SelecCliente:EsTercero%)",
+            "thirdPersonData": "%DatosTercero%"
+        },
+        "label": "SVIdClaro",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            {
+                "vlcCart": {
+                    "vlcCart": true,
+                    "vlcKnowledge": false
+                },
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/SVIdClaro"
+}

@@ -1,0 +1,58 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_ConfigDataStepDeliveryPago",
+    "OmniProcessId": {
+        "Name": "FVU_Payment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Payment/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "BillingData": {
+                "AccountNumber": "=IF(%AddressService:accountExternalID% != '', %AddressService:accountExternalID%, null)",
+                "AddressBilling": "%AddressBilling:fullBillingAddress%",
+                "BillCycle": "%BillingCycle:BillingAccountInformation:BillCycleCutoff% de cada mes ",
+                "OrderPurchaseType": "%Order:PurchaseType%"
+            },
+            "Celular": "=IF(%Account:AccountPhoneType% = \"Móvil\", %Account:AccountPhone%, \nIF(%Account:AccountPhoneType2% = \"Móvil\", %Account:AccountPhone2%, \"Error\"))",
+            "StepDeliveryPago": {
+                "PaymentType": {
+                    "PaymentInformation": {
+                        "MedioPagoSelect": "",
+                        "PaymentMethod": "",
+                        "PaymentType": ""
+                    }
+                }
+            },
+            "TotalPayment": {
+                "CostDelivery": "%ValidCostDelivery%",
+                "CostDeliveryFIN": "=INTEGER(%DeliveryCost%)",
+                "Discounts": "=INTEGER(%Order:TotalOneTimeDiscount%)",
+                "PurchaseType": "%Order:PurchaseType%",
+                "SaldoDiferirFIN": "=INTEGER(%Order:Quote:ValorDiferido%)",
+                "TotalCuotaInicialFIN": "=INTEGER(%Order:Quote:TotalCuotaInicial%)",
+                "TotalPriceWithTaxes": "=%orderUpadatePrices:EffectiveOneTimeTotalIncTaxes%",
+                "TotalPriceWithoutTax": "=INTEGER(%orderUpadatePrices:OrderEffectiveOneTimeTota%)"
+            }
+        },
+        "label": "SV_ConfigDataStepDeliveryPago",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Payment/English/SV_ConfigDataStepDeliveryPago"
+}

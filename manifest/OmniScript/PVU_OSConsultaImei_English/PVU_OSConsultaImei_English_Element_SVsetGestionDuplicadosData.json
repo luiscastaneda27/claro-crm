@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVsetGestionDuplicadosData",
+    "OmniProcessId": {
+        "Name": "Consulta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaImei/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "duplicadoExisteBdaPositivo": "=IF(%BdaPositivo:response:bdaPositivoMessage:codigoError% <> \"01\", false, true)",
+            "duplicadoExisteBdoPositivo": "=IF(%BdoPositivo:response:bdoPositivoMessage:isReported% <> true, false, true)",
+            "duplicadoImei": "%Step1:Text4%",
+            "duplicadoImsi": "%imsiString%",
+            "duplicadoMarca": "=IF(%QueryTac:response:headerResponse:statusCode% == 'OK', %QueryTac:response:cursor:Row:Column|2:value%, '')",
+            "duplicadoMin": "%minString%",
+            "duplicadoModelo": "=IF(%QueryTac:response:headerResponse:statusCode% == 'OK', %QueryTac:response:cursor:Row:Column|3:value%, '')",
+            "duplicadoNumDoc": "%AccountData:AccountDocument|1:FVU_DocumentNumber__c%",
+            "duplicadoProcessDetection": "%ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:respuestaConsultaProcesoDeteccionBean|1:tipoDeteccion%",
+            "duplicadoTipoDoc": "=%TipoDocumentoApi%",
+            "duplicadoTipoId": "=IF(%ConsultaTipoIdentificacion:response:TipoIdentificacion% != null, %ConsultaTipoIdentificacion:response:TipoIdentificacion%, '')",
+            "duplicadoTitularidad": "=IF(%BdaPositivo:response:bdaPositivoMessage:isReported% <> true, false, true)"
+        },
+        "label": "SVsetGestionDuplicadosData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaImei/English/SVsetGestionDuplicadosData"
+}

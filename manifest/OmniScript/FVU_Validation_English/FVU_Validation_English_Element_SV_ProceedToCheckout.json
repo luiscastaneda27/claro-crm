@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_ProceedToCheckout",
+    "OmniProcessId": {
+        "Name": "FVU_Validation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Validation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ProceedToCheckout": "=IF(%OrderIsValid% == true && %DailyProductAmountLimit% == false && %WeeklyProductAmountLimit% == false && %MonthlyProductAmountLimit% == false && %DailyServiceAmountLimit% == false && %WeeklyServiceAmountLimit% == false && %MonthlyServiceAmountLimit% == false && %AgentDailyProductAmountLimit% == false && %AgentWeeklyProductAmountLimit% == false && %AgentMonthlyProductAmountLimit% == false && %AgentDailyServiceAmountLimit% == false && %AgentWeeklyServiceAmountLimit% == false && %AgentMonthlyServiceAmountLimit% == false && %ProductTimePurchase:LimitExceeded% == false && %OrderPromotion:LimitExceeded% == false && %SalesFraudValidations:ShowMessage% != true, true, false)"
+        },
+        "label": "SV_ProceedToCheckout",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Validation/English/SV_ProceedToCheckout"
+}

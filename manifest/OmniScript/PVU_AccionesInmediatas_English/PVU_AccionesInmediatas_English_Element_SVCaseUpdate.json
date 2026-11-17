@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdate",
+    "OmniProcessId": {
+        "Name": "AccionesInmediatas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/AccionesInmediatas/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%accountIdFromContext%",
+                "AssetId": "%AssetId%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "FechaActivacion": "=IF(%VozClienteCaso% == 'Cambio de pospago a prepago',%IPFormatDate:fechaGuionYYYYMMDD%,'')",
+                "FechaInicioSusp": "%IPFormatDate:fechaGuionYYYYMMDD%",
+                "Id": "%CaseId%",
+                "MotivoCancelacion": "=IF(%VozClienteCaso% != 'Cambio de pospago a prepago','Des Voluntaria” (Causal E// - 2007 Reason Code BSCS)','')",
+                "NumeroLinea": "%minContext%",
+                "OrderId": "%GeneratedOrder:OrderId%",
+                "Status": "En curso",
+                "SubCategoria": "Acciones inmediatas",
+                "SubEstado": "Pendiente de aprobación"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Case",
+                        "field": "Context"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/AccionesInmediatas/English/SVCaseUpdate"
+}

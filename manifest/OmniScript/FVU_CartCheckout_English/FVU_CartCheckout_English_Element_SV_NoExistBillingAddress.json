@@ -1,0 +1,59 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_NoExistBillingAddress",
+    "OmniProcessId": {
+        "Name": "CartCheckout",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CartCheckout/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Address": {
+                "AccountId": "%Order:OrderAccountId%",
+                "BillingAddressNode": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressNode%",
+                "BillingAddressStatus": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:Status%",
+                "BillingAddressType": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressType%",
+                "BillingCity": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressMiniCity%",
+                "BillingCycle": "%FormulaSummaryBillingCycle%",
+                "BillingDaneCode": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressDaneCode%",
+                "BillingMerId": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressMerId%",
+                "BillingNeighborhood": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressNeighborhood%",
+                "BillingPostalCode": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressPostalCode%",
+                "BillingState": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressState%",
+                "BillingStreet": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressShortAddress%",
+                "FullBillingAddress": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:AddressFull%",
+                "PaydayLimit": "%FormulaSummaryPaydayLimit%"
+            }
+        },
+        "label": "SV_NoExistBillingAddress",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "ExistBillingAddressValid"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CartCheckout/English/SV_NoExistBillingAddress"
+}

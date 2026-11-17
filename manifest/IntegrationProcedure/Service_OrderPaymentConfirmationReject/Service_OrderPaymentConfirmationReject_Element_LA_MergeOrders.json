@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LA_MergeOrders",
+    "OmniProcessId": {
+        "Name": "OrderPaymentConfirmationReject",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/Service/OrderPaymentConfirmationReject/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "failedOrders": "=%failedOrders%",
+            "totalOrders": "=%totalOrders%"
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": true,
+        "advancedMergeMap": [
+            {
+                "listKey": "totalOrders",
+                "matchingPath": "OrderNumber",
+                "normalizeKey": "1"
+            },
+            {
+                "listKey": "failedOrders",
+                "matchingPath": "OrderNumber",
+                "normalizeKey": "1"
+            }
+        ],
+        "allowMergeNulls": false,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "",
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "",
+        "hasPrimary": false,
+        "label": "ListAction3",
+        "mergeFields": [
+        ],
+        "mergeListsOrder": [
+            "totalOrders",
+            "failedOrders"
+        ],
+        "primaryListKey": "",
+        "responseJSONNode": "mergedOrders",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/Service/OrderPaymentConfirmationReject/Procedure/LA_MergeOrders"
+}

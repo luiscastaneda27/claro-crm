@@ -1,0 +1,53 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCancelOrder",
+    "OmniProcessId": {
+        "Name": "Cesión de Contrato",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCesionContrato/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "orderCancelUpdate": {
+                "OrderId": "%NewOrder:OrderId%",
+                "OrderStatus": "Cancelled",
+                "Status": "Cerrada Perdida"
+            }
+        },
+        "label": "SVCancelOrder",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "fail",
+                        "field": "IPUpdateOrder:EndProcess"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "IPCreateAccount93:success"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCesionContrato/English/SVCancelOrder"
+}

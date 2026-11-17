@@ -1,0 +1,61 @@
+{
+    "Description": "ve si se puede consultar con el min en ves de imei",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PVU_IPGetImeiInformationBydocOtroImei",
+    "OmniProcessId": {
+        "Name": "ValidarAdicionDuplas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBOtroImei",
+        "OmniProcessId": {
+            "Name": "ValidarAdicionDuplas",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/CBOtroImei",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBOtroImei",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "imei": "%SVDuplicados:imeiDuplas%",
+            "numeroDocumento": "%SVInput:numdoc%",
+            "tipoDocumento": "%SVInput:tipoDoc%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPGetImeiInformation",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "PVU_IPGetImeiInformationBydocOtroImei",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/PVU_IPGetImeiInformationBydocOtroImei"
+}

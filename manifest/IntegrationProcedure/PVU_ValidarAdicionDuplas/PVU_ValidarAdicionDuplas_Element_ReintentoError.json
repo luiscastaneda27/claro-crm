@@ -1,0 +1,32 @@
+{
+    "Description": "%SVInput:MinReintento% == %SVConsultaMin:min% &&",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ReintentoError",
+    "OmniProcessId": {
+        "Name": "ValidarAdicionDuplas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "MinReintento": "%SVConsultaMin:min%",
+            "reintentos": "=SUM(%SVInput:reintentos%,-1)"
+        },
+        "executionConditionalFormula": "%SVInput:MinReintento% == %SVConsultaMin:min% && %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"500\" || %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"504\" || %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"400\" || %PVU_IPGetImeiInformationBydoc:consultaImei:status% = 400 ||  %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"500\" || %PVU_IPGetImeiInformationBydoc:consultaImei:code% = \"504\" || %PVU_IPGetImeiInformationBydoc:consultaImei:status% = \"400\" ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues15",
+        "responseJSONNode": "ReintentoError",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/ReintentoError"
+}

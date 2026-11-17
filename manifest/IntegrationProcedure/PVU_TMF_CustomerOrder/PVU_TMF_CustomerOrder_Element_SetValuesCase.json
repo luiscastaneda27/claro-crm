@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesCase",
+    "OmniProcessId": {
+        "Name": "TMF_CustomerOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/TMF_CustomerOrder/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%DRGetAccountInfo:acc:Id%",
+                "Categoria": "%DRGetCategoriaAndSubCat:category:controllingFieldValue%",
+                "SubCategoria": "%DRGetCategoriaAndSubCat:category:dependentValue%",
+                "VozCliente": "%DRGetCategoriaAndSubCat:subCategory:dependentValue%",
+                "origin": "%channel|1:name%"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/TMF_CustomerOrder/Procedure/SetValuesCase"
+}

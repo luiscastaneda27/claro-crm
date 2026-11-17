@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetEstadoCaja",
+    "OmniProcessId": {
+        "Name": "DevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "EstadoCaja": "=IF((%CasoGestion:Order:FVU_BusinessChannel__c%='CAV' || %CasoGestion:Order:FVU_BusinessChannel__c%='TELEFONICO VENTA' || %CasoGestion:Order:FVU_BusinessChannel__c%='ECOMMERCE')&& %CasoGestion:Order:FVU_PaymentMethod__c%='Pin Link de Pagos','Caja cerrada','')"
+        },
+        "label": "SetEstadoCaja",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDinero/English/SetEstadoCaja"
+}

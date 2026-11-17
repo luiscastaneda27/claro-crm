@@ -1,0 +1,77 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVprefillBlock",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "EditBlock1": [
+                {
+                    "Text1": "BDO -",
+                    "Text2": "=%bdoNegativo:description%"
+                },
+                {
+                    "Text1": "BDA +",
+                    "Text2": "=%bdaTextoUI%"
+                },
+                {
+                    "Text1": "Marca",
+                    "Text2": "=%IPGetImei:DataEquipo:Marca%"
+                },
+                {
+                    "Text1": "Modelo",
+                    "Text2": "=%IPGetImei:DataEquipo:Modelo%"
+                },
+                {
+                    "Text1": "Proceso Detección",
+                    "Text2": "=%procesoDetec%"
+                }
+            ],
+            "EditBlock3": [
+                {
+                    "Text10": "BDO -",
+                    "Text11": "=IF(AND(%bdoNegativo:description% != null, %bdoNegativo:description% != '', %bdoNegativo:description% != 'null'), %bdoNegativo:description%, '')"
+                },
+                {
+                    "Text10": "BDA +",
+                    "Text11": "=IF(AND(%bdaTextoUI% != null, %bdaPositivo:descripcionError% != '', %bdaTextoUI% != 'null'), %bdaTextoUI%, '')"
+                },
+                {
+                    "Text10": "Marca",
+                    "Text11": "=IF(AND(%IPGetImei:DataEquipo:Marca% != null, %IPGetImei:DataEquipo:Marca% != '', %IPGetImei:DataEquipo:Marca% != 'null'), %IPGetImei:DataEquipo:Marca%, '')"
+                },
+                {
+                    "Text10": "Modelo",
+                    "Text11": "=IF(AND(%IPGetImei:DataEquipo:Modelo% != null, %IPGetImei:DataEquipo:Modelo% != '', %IPGetImei:DataEquipo:Modelo% != 'null'), %IPGetImei:DataEquipo:Modelo%, '')"
+                },
+                {
+                    "Text10": "Proceso Detección",
+                    "Text11": "=IF(AND(%procesoDetec% != null, %procesoDetec% != '', %procesoDetec% != 'null'), %procesoDetec%, '')"
+                }
+            ],
+            "ModelBranchError": "=IF(%QueryTac:response:headerResponse:statusCode%<>'OK',true,false)"
+        },
+        "label": "SVprefillBlock",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/SVprefillBlock"
+}

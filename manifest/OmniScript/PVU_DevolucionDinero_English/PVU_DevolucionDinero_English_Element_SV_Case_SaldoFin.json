@@ -1,0 +1,52 @@
+{
+    "Description": "BUG-713055:Devolucion de Dinero SaldoFin la Cuenta de Facturacion para servicio ChargeNotification es la 93 todos los Origenes.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Case_SaldoFin",
+    "OmniProcessId": {
+        "Name": "DevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "EntregaEquipo": "No aplica entrega",
+                "NumCtaFact": "%CasoGestion:SaldoFin:defaultBillingAcountFin%",
+                "SaldoAFavor": true,
+                "SubCategoria": "Devolución de dinero",
+                "equipmentRef": "%CasoGestion:SaldoFin:equipmentRef%",
+                "financingCode": "%CasoGestion:SaldoFin:financingCode%"
+            }
+        },
+        "label": null,
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "SaldoFin",
+                        "field": "Tipo"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDinero/English/SV_Case_SaldoFin"
+}

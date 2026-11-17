@@ -1,0 +1,84 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SE_HasNoDeliveryPortIn",
+    "OmniProcessId": {
+        "Name": "FVU_DeliveryMethodAllies",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DeliveryMethodAllies/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementErrorMap": {
+            "MessagingWithoutDeliveryMethodPortIn": "="
+        },
+        "label": "SE_HasNoDeliveryPortIn",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "ImmediatePickUp",
+                                    "field": "StepDeliveryMethod:DeliveryMethodFormula"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "0",
+                                    "field": "hasImmediatePickUp"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "POR",
+                                    "field": "Order:PurchaseType"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Delivery",
+                                    "field": "StepDeliveryMethod:DeliveryMethodFormula"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "0",
+                                    "field": "hasDelivery"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "POR",
+                                    "field": "Order:PurchaseType"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Set Errors",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DeliveryMethodAllies/English/SE_HasNoDeliveryPortIn"
+}

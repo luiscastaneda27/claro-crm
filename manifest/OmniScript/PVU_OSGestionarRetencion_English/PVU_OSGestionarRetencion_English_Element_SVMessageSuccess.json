@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVMessageSuccess",
+    "OmniProcessId": {
+        "Name": "OSGestionarRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSGestionarRetencion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Message": "=IF(%InfoEscalacion:success% ==true,%InfoEscalacion:message%, %InfoDesistimiento:message%)",
+            "ShowMessage": "=IF(%InfoEscalacion:success% ==true || %InfoDesistimiento:success% == true, true, false)"
+        },
+        "label": "ShowMessage",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSGestionarRetencion/English/SVMessageSuccess"
+}

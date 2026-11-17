@@ -1,0 +1,103 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "MessagingWithoutQuantityPickUp",
+    "OmniProcessId": {
+        "Name": "FVU_DeliveryMethod",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DeliveryMethod/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepDeliveryMethod",
+        "OmniProcessId": {
+            "Name": "FVU_DeliveryMethod",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DeliveryMethod/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DeliveryMethod/English/StepDeliveryMethod",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepDeliveryMethod",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "MessagingWithoutQuantityPickUp",
+        "messages": [
+            {
+                "active": true,
+                "text": "Estimado asesor, No se cuenta con inventario para este método de entrega, por favor elija otro método de entrega o consulte por una nueva ciudad de retiro.",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Warning",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": true,
+                        "field": "ProductAvailability:success"
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "group": {
+                                        "operator": "AND",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "PickUp",
+                                                "field": "DeliveryMethodFormula"
+                                            },
+                                            {
+                                                "group": {
+                                                    "operator": "OR",
+                                                    "rules": [
+                                                        {
+                                                            "condition": "=",
+                                                            "data": false,
+                                                            "field": "ProductAvailability:availableDeliveryMethods:PickUp"
+                                                        },
+                                                        {
+                                                            "condition": "=",
+                                                            "data": "0",
+                                                            "field": "hasPickUp"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "POR",
+                        "field": "Order:PurchaseType"
+                    }
+                ]
+            }
+        },
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DeliveryMethod/English/MessagingWithoutQuantityPickUp"
+}

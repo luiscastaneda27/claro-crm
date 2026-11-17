@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_TokenData",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseSummary",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseSummary/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "TokenData": {
+                "AccountDocumentNumber": "=IF(%StepDeliveryMethod:BlockAuthorizedPerson% != null,IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentNumberAlf% != null,%StepDeliveryMethod:BlockAuthorizedPerson:DocumentNumberAlf%,IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentTypeCC% != null,%StepDeliveryMethod:BlockAuthorizedPerson:DocumentTypeCC%,%StepDeliveryMethod:BlockAuthorizedPerson:DocumentTypeCE%)),'')",
+                "AccountDocumentType": "=IF(%StepDeliveryMethod:BlockAuthorizedPerson% != null, %StepDeliveryMethod:BlockAuthorizedPerson:DocumentType%, '')",
+                "AccountFirstName": "=IF(%StepDeliveryMethod:BlockAuthorizedPerson% != null, %StepDeliveryMethod:BlockAuthorizedPerson:Surname%, '')",
+                "AccountLastName": "=IF(%StepDeliveryMethod:BlockAuthorizedPerson% != null, %StepDeliveryMethod:BlockAuthorizedPerson:SecondSurname%, '')",
+                "AccountName": "=IF(%StepDeliveryMethod:BlockAuthorizedPerson% != null, %StepDeliveryMethod:BlockAuthorizedPerson:Name%, '')",
+                "AccountPhone": "=IF(%StepDeliveryMethod:BlockAuthorizedPerson% != null, %StepDeliveryMethod:BlockAuthorizedPerson:Phone%, '')",
+                "DeliveryCost": "%IP_SummaryData:Resumen:TotalAPagar:CargoEnvio%",
+                "OrderDeliveryMethodSelected": "=IF(%DeliveryMethod% == \"Delivery\", \"Entrega en Domicílio\", IF(%DeliveryMethod% == \"ImmediatePickUp\", \"Entrega Inmediata\", IF(%DeliveryMethod% == \"PickUp\", \"Retiro en Tienda\", \"\")))",
+                "OrderItem": "%OrderItem%",
+                "OrderNumber": "%Order:OrderNumber%",
+                "OrderPaymentDiscount": "=formatCurrency(%sumAdjustmentValue%)",
+                "OrderPaymentMethodSelected": "%StepDeliveryPago:FormulaPaymentMethodSummary%",
+                "OrderPurchasePrice": "%Order:CurrencyBaseOneTImeTotalSummary%",
+                "OrderStoreSelected": "%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:warehouseName%",
+                "OrderTotalPrice": "%Order:CurrencyEffectiveOneTimeIncTaxesTotal%"
+            }
+        },
+        "label": "SV_TokenData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseSummary/English/SV_TokenData"
+}

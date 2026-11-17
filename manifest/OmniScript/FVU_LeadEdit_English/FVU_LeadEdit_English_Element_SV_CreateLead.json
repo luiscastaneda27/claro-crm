@@ -1,0 +1,69 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CreateLead",
+    "OmniProcessId": {
+        "Name": "LeadEdit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/LeadEdit/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "DataLead": {
+                "AcceptPersonalData": "%AcceptPersonalData%",
+                "City": "%OtherInformation:CityInput-Block:CityInput%",
+                "DocumentNumber": "%DocumentNumber%",
+                "DocumentType": "%IdentificationDocument:DocumentType%",
+                "Email": "%ContactInformation:Email%",
+                "ExternalOperator": "%OtherInformation:ExternalOperator%",
+                "FirstName": "=CASE(%ContactInformation:Name%, UPPER)",
+                "FixedTelephonyProducts": "%FixedTelephonyProducts:ValueFixedTelephonyProducts%",
+                "HomeInternetProducts": "%HomeInternetProducts:ValueHomeInternetProducts%",
+                "InnovationProducts": "%InnovationProducts:ValueInnovationProducts%",
+                "LastName": "=CASE(%ContactInformation:LastName%, UPPER)",
+                "MobilePhoneProducts": "%MobilePhoneProducts:ValueMobilePhoneProducts%",
+                "OtherProducts": "%OtherProducts:ValueOtherProducts%",
+                "Phone": "%ContactInformation:Phone%",
+                "PortabilityProducts": "%PortabilityProducts:ValuePortabilityProducts%",
+                "SecondLastName": "=CASE(%ContactInformation:SecondLastName%, UPPER)",
+                "Status": "AbiertoContactado",
+                "TelevisionProducts": "%TelevisionProducts:ValueTelevisionProducts%",
+                "TerminalsAndTechnologyProducts": "%TerminalsAndTechnologyProducts:ValueTerminalsAndTechnologyProducts%"
+            }
+        },
+        "label": "SV_CreateLead",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "0",
+                        "field": "TotalLeads"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "0",
+                        "field": "TotalAccounts"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/LeadEdit/English/SV_CreateLead"
+}

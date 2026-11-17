@@ -1,0 +1,73 @@
+{
+    "Description": "MUESTRA MENSAJE DE VALIDACIÓN EXITOSA",
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "Msg_LineNumberSuccess",
+    "OmniProcessId": {
+        "Name": "PortIn",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PortIn/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepPortIn",
+        "OmniProcessId": {
+            "Name": "PortIn",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PortIn/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PortIn/English/StepPortIn",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepPortIn",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "Msg_LineNumberSuccess",
+        "messages": [
+            {
+                "active": true,
+                "text": "%StepPortIn:FlexCard_LineNumberPortIn:LineNumbers:Records|1:LineValidation:mensaje%",
+                "type": "Success",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "ButtonHide"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "ButtonActive"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "ButtonFlagFormula"
+                    }
+                ]
+            }
+        },
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PortIn/English/Msg_LineNumberSuccess"
+}

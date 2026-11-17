@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVprefillBlock",
+    "OmniProcessId": {
+        "Name": "Consulta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaImei/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "EditBlock1": [
+                {
+                    "Text1": "BDO +",
+                    "Text2": "=IF(%BdoPositivo:response:bdoPositivoMessage:isReported% == false, 'El equipo no se encuentra registrado, puede registrarlo en este momento ingresa a la opción de registro de IMEI', 'El equipo ya se encuentra registrado')"
+                },
+                {
+                    "Text1": "BDA +",
+                    "Text2": "=%BdaPositivo:response:bdaPositivoMessage:descripcionError%"
+                },
+                {
+                    "Text1": "Marca",
+                    "Text2": "=IF(AND(%QueryTac:response:headerResponse:statusCode% == 'OK',%ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:respuestaConsultaProcesoDeteccionBean|1:tipoDeteccion% != 'NO_HOMOLOGADO'), %QueryTac:response:cursor:Row:Column|2:value%, IF(%ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:respuestaConsultaProcesoDeteccionBean|1:tipoDeteccion% != 'NO_HOMOLOGADO',%QueryTac:response:headerResponse:statusDesc%,''))"
+                },
+                {
+                    "Text1": "Modelo",
+                    "Text2": "=IF(AND(%QueryTac:response:headerResponse:statusCode% == 'OK' ,%ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:respuestaConsultaProcesoDeteccionBean|1:tipoDeteccion% != 'NO_HOMOLOGADO'), %QueryTac:response:cursor:Row:Column|3:value%, IF(%ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:respuestaConsultaProcesoDeteccionBean|1:tipoDeteccion% != 'NO_HOMOLOGADO',%QueryTac:response:headerResponse:statusDesc%,''))"
+                },
+                {
+                    "Text1": "Proceso Detección",
+                    "Text2": "=IF(%ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:respuestaConsultaProcesoDeteccionBean|1:tipoDeteccion% != 'NO_HOMOLOGADO',%ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:descripcion%,'El TAC no se encuentra homologado por favor dirigase a la página https://www.crcom.gov.co y realizar el proceso de homologación')"
+                }
+            ],
+            "ModelBranchError": "=IF(%QueryTac:response:headerResponse:statusCode%<>'OK',true,false)"
+        },
+        "label": "SVprefillBlock",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaImei/English/SVprefillBlock"
+}

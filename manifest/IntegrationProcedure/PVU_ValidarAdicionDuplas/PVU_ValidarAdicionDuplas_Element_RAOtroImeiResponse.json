@@ -1,0 +1,58 @@
+{
+    "Description": "%bdaPositivo:isReported% = \"true\"",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAOtroImeiResponse",
+    "OmniProcessId": {
+        "Name": "ValidarAdicionDuplas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBOtroImei",
+        "OmniProcessId": {
+            "Name": "ValidarAdicionDuplas",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/CBOtroImei",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBOtroImei",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "Message": "El proceso ha concluido exitosamente",
+                "minValid": "false"
+            },
+            "EBAdicionar": "%SVInput:ListIn%",
+            "EndProcess": "success",
+            "MensageParametrizadoAdicion": "%RAOtroImei:mensajeParametrizado%",
+            "minValidar": ""
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "NOT(ISBLANK(%SVOtroImei:Titular%))",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/RAOtroImeiResponse"
+}

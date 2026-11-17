@@ -1,0 +1,126 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "NACesion",
+    "OmniProcessId": {
+        "Name": "Consulta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaImei/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConsultaIMEI",
+        "OmniProcessId": {
+            "Name": "Consulta",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaImei/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaImei/English/ConsultaIMEI",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConsultaIMEI",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 3,
+        "iconName": "",
+        "iconPosition": "left",
+        "iconVariant": "",
+        "label": "Cesión",
+        "loginAction": "login",
+        "message": {
+        },
+        "objectAction": "home",
+        "pubsub": false,
+        "recordAction": "view",
+        "replace": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "isReported"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "6",
+                                    "field": "tipoReporte"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "Comcel S.A",
+                                    "field": "BdoNegativo:response:bdoNegativoMessage:listaReportesBean|1:operador"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "1",
+                                    "field": "bdaPositivoTipoRespuesta"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "BdoPositivo:response:bdoPositivoMessage:isReported"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "Security:accessProcess:PVU_cesionIMEI"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "isReported"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "1",
+                                    "field": "bdaPositivoTipoRespuesta"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "BdoPositivo:response:bdoPositivoMessage:isReported"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "Security:accessProcess:PVU_cesionIMEI"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "ssm": false,
+        "targetFilter": "Recent",
+        "targetId": "%ContextId%",
+        "targetLWCLayout": "lightning",
+        "targetType": "Web Page",
+        "targetUrl": "/lightning/cmp/%vlocity_namespace%__vlocityLWCOmniWrapper?c__target=c:pVUOSCesionIMEIEnglish&c__layout=lightning&c__tabIcon=custom:custom18&c__tabLabel=Cesión de IMEI&c__ContextId=%ContextId%&c__imei=%cesionImei%&c__tipoDoc=%cesionTipoDoc%&c__numDoc=%cesionNumDoc%&c__marca=%cesionMarca%&c__modelo=%cesionModelo%&c__min=%cesionMIN%&c__imeiLuhn=%imeiLuhn%&c__accountId=%accountId%",
+        "validationRequired": "Submit",
+        "variant": "neutral",
+        "wpm": false
+    },
+    "Type": "Navigate Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaImei/English/NACesion"
+}

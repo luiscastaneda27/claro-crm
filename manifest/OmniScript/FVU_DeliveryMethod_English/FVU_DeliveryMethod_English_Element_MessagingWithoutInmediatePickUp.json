@@ -1,0 +1,88 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "MessagingWithoutInmediatePickUp",
+    "OmniProcessId": {
+        "Name": "FVU_DeliveryMethod",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DeliveryMethod/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepDeliveryMethod",
+        "OmniProcessId": {
+            "Name": "FVU_DeliveryMethod",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DeliveryMethod/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DeliveryMethod/English/StepDeliveryMethod",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepDeliveryMethod",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "MessagingWithoutInmediatePickUp",
+        "messages": [
+            {
+                "active": true,
+                "text": "No existe disponibilidad de inventario para este método de entrega, por favor elija otro método de entrega.",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "No existe disponibilidad de inventario para este método de entrega, por favor elija otro método de entrega.",
+                "type": "Warning",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "0",
+                        "field": "hasImmediatePickUp"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "ImmediatePickUp",
+                        "field": "DeliveryMethodFormula"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "POR",
+                        "field": "Order:PurchaseType"
+                    },
+                    {
+                        "condition": "=",
+                        "data": true,
+                        "field": "ProductAvailability:success"
+                    }
+                ]
+            }
+        },
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "ImmediatePickUp",
+                        "field": "DeliveryMethodFormula"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DeliveryMethod/English/MessagingWithoutInmediatePickUp"
+}

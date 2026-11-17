@@ -1,0 +1,57 @@
+{
+    "Description": "Datos del contacto a actualizar.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataContato",
+    "OmniProcessId": {
+        "Name": "CreateCustomer",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CreateCustomer/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Contact": {
+                "AccountId": "%AccountId%",
+                "Birthdate": "%DateBirthdate%",
+                "ContactPreferences": "%RadioContactPreference%",
+                "DocumentNumber": "%DocumentNumber%",
+                "DocumentType": "%DocumentType%",
+                "Email": "%TextEmailInput%",
+                "ExpeditionDate": "%ExpeditionDate%",
+                "ExpeditionSite": "%ExpeditionSite%",
+                "FirstName": "=CASE(%ContactInfo:FirstName%, UPPER)",
+                "Gender": "%TextGender%",
+                "HearingProblemCustomer": "%StepUpdateCustomer:AdditionalData:HearingProblemCustomer2%",
+                "Id": "%ContactId%",
+                "LastName": "=CASE(%ContactInfo:LastName%, UPPER)",
+                "Occupation": "%StepUpdateCustomer:AdditionalData:OccupationFormula2%",
+                "OptionEmail": "%Email%",
+                "OptionPhone": "%ValuePhone%",
+                "OptionSmsWhatsapp": "%ValueFirstPhone%",
+                "OptionSocialMedia": "%ValueISocialMedia%",
+                "OtherPhone": "%StepUpdateCustomer:InfoContactCreateCustomer:OtherPhone%",
+                "Phone": "%Phone%",
+                "RecordTypeId": "%RecordType:Id%",
+                "SecondLastName": "=CASE(%ContactInfo:SecondLastName%, UPPER)"
+            }
+        },
+        "label": "SV_DataContact",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CreateCustomer/English/SV_DataContato"
+}

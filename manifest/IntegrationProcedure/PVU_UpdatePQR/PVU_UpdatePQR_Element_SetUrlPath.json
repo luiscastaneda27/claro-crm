@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetUrlPath",
+    "OmniProcessId": {
+        "Name": "UpdatePQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/UpdatePQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "pathUrl": "=CONCAT(\"/services/apexrest/UpdateCase/v1?nrOrCun=\",IF(ISBLANK(%DRGetCaseInfo:Case:PVU_NR__c%), %DRGetCaseInfo:Case:PVU_CUN__c%, %DRGetCaseInfo:Case:PVU_NR__c%))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/UpdatePQR/Procedure/SetUrlPath"
+}

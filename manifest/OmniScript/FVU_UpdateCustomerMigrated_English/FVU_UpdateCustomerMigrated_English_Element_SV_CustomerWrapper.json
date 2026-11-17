@@ -1,0 +1,57 @@
+{
+    "Description": "=IF(%ContactSecondLastName% != null,%ContactSecondLastName%, '') // %ContactSecondLastName%",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_CustomerWrapper",
+    "OmniProcessId": {
+        "Name": "UpdateCustomerMigrated",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateCustomerMigrated/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "customerWrapper.AccountPhoneType": "%AccountPhoneType%",
+            "customerWrapper.Birthdate": "%ContactBirthdate%",
+            "customerWrapper.ContactExpeditionDate": "%ContactExpeditionDate%",
+            "customerWrapper.ContactExpeditionDepartment": "%ContactExpeditionDepartment%",
+            "customerWrapper.ContactExpeditionSite": "%ContactExpeditionSite%",
+            "customerWrapper.ContactLastName": "%ContactLastName%",
+            "customerWrapper.ContactPreferences": "%ContactPreferencesText%",
+            "customerWrapper.ContactSecondLastName": "%ContactSecondLastName%",
+            "customerWrapper.CustomerGroup": "%AccountCustomerGroup%",
+            "customerWrapper.DaneCode": "%codeDane:DaneDepartment%",
+            "customerWrapper.DocumentNumber": "%AccountDocumentNumber%",
+            "customerWrapper.DocumentNumberConverted": "=NUMBER(%AccountDocumentNumber%)",
+            "customerWrapper.DocumentType": "%AccountDocumentType%",
+            "customerWrapper.Email": "%AccountEmail%",
+            "customerWrapper.FirstNameConcat": "%ContactFirstName%",
+            "customerWrapper.Gender": "%ContactGender%",
+            "customerWrapper.HearingProblemCustomer": "%ContactHearingProblemCustomer%",
+            "customerWrapper.LastNameConcat": "=CONCATENATE(%ContactLastName% +' '+ IF(%ContactSecondLastName% != null, %ContactSecondLastName%,''))",
+            "customerWrapper.Name": "%AccountName%",
+            "customerWrapper.NotificationChoice": "%AccountNotificationChoice%",
+            "customerWrapper.Occupation": "%ContactOccupation%",
+            "customerWrapper.OtherPhone": "%AccountPhone2%",
+            "customerWrapper.Phone": "%AccountPhone%",
+            "customerWrapper.PreferencesContact": "%ContactPreferences%"
+        },
+        "label": "SV_CustomerWrapper",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateCustomerMigrated/English/SV_CustomerWrapper"
+}

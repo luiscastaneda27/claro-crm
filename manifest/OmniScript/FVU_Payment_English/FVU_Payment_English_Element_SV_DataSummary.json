@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_DataSummary",
+    "OmniProcessId": {
+        "Name": "FVU_Payment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Payment/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "SummaryAuthorizedPerson": "%ValidReceives%",
+            "SummaryBillingCycle": "=IF(%AssignBillingCycle% == null, \"Día \"+ %StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:BillingCycle% +\" de cada mes\", \"Día \"+ %AssignBillingCycle% +\" de cada mes\")",
+            "SummaryBonoType": "%PaymentInformation:BonoType%",
+            "SummaryDocumentType": "%ValidDocumentType%",
+            "SummaryNumberDocument": "%ValidDocument%",
+            "SummaryPaydayLimit": "=IF(%AssignPaydayLimit% == null, \"Día \"+ %StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:PaymentDeadline% +\" de cada mes\", \"Día \"+ %AssignPaydayLimit% +\" de cada mes\")",
+            "SummaryPaymentMethod": "%StepDeliveryPago:FormulaPaymentMethodSummary%",
+            "SummaryPhone": "%ValidPhone%",
+            "TexMethodOfDelivery": "%ValidMethodOfDelivery%"
+        },
+        "label": "SV_DataSummary",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Payment/English/SV_DataSummary"
+}

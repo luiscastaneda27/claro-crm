@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVIPValues",
+    "OmniProcessId": {
+        "Name": "CreateCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCreateCase/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Cierre": "=IF(%vozCliente% == \"Configuración de Equipo (Solución en Primer Contacto)\", 'Se configura equipo', '')",
+            "Status": "=IF(%vozCliente% == \"Configuración de Equipo (Solución en Primer Contacto)\", 'Cerrado', IF(%vozCliente% == \"Retracto de compra\", 'Abierto', 'En Curso'))",
+            "closedCasesList": "%closedCases%"
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCreateCase/English/SVIPValues"
+}

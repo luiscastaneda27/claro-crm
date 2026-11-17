@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Data_GetImei",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AprovisionadoCliente": "=IF(  %IPGetImei:consultaImei:customer:product|1:productCharacteristic|6:name% == 'duplicados',  %IPGetImei:consultaImei:customer:product|1:productCharacteristic|6:value:compImeiImsiMin1|:imei%,IF(%IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:name% == 'duplicados',%IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:value:compImeiImsiMin1|:imei%, IF(    %IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:name% == 'duplicados',    %IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:value:compImeiImsiMin1|:imei%, IF(%IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:name% == 'duplicados',%IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:value:compImeiImsiMin1|:imei%, IF(        %IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:name% == 'duplicados',        %IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:value:compImeiImsiMin1|:imei%, IF(%IPGetImei:consultaImei:customer:product|1:productCharacteristic|1:name% == 'duplicados',%IPGetImei:consultaImei:customer:product|1:productCharacteristic|1:value:compImeiImsiMin1|:imei%,''))))))",
+            "bdaNegativa": "=IF(  %IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:name% == 'Lists',  %IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:value:bdaNegativa%,  IF(%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:name% == 'Lists',%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:value:bdaNegativa%,IF(      %IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:name% == 'Lists',      %IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:value:bdaNegativa%,IF(%IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:name% == 'Lists',%IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:value:bdaNegativa%,IF(          %IPGetImei:consultaImei:customer:product|1:productCharacteristic|1:name% == 'Lists',          %IPGetImei:consultaImei:customer:product|1:productCharacteristic|1:value:bdaNegativa%,'')))))",
+            "bdaPositivo": "=IF(  %IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:name% == 'Lists',  %IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:value:bdaPositivo%,  IF(%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:name% == 'Lists',%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:value:bdaPositivo%,IF(      %IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:name% == 'Lists',      %IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:value:bdaPositivo%,IF(%IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:name% == 'Lists',%IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:value:bdaPositivo%,IF(          %IPGetImei:consultaImei:customer:product|1:productCharacteristic|1:name% == 'Lists',          %IPGetImei:consultaImei:customer:product|1:productCharacteristic|1:value:bdaPositivo%,'')))))",
+            "bdoNegativo": "=IF(  %IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:name% == 'Lists',  %IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:value:bdoNegativo%,  IF(%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:name% == 'Lists',%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:value:bdoNegativo%,IF(      %IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:name% == 'Lists',      %IPGetImei:consultaImei:customer:product|1:productCharacteristic|3:value:bdoNegativo%,IF(%IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:name% == 'Lists',%IPGetImei:consultaImei:customer:product|1:productCharacteristic|2:value:bdoNegativo%,IF(          %IPGetImei:consultaImei:customer:product|1:productCharacteristic|1:name% == 'Lists',          %IPGetImei:consultaImei:customer:product|1:productCharacteristic|1:value:bdoNegativo%,'')))))",
+            "duplicadosStatus": "=IF(\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|6:name% == 'duplicados',\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|6:value:statusCode%,\nIF(\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:name% == 'duplicados',\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|5:value:statusCode%,\nIF(\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:name% == 'duplicados',\n%IPGetImei:consultaImei:customer:product|1:productCharacteristic|4:value:statusCode%,\n''\n)))"
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/SV_Data_GetImei"
+}

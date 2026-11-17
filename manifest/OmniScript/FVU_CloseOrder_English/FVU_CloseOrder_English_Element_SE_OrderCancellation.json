@@ -1,0 +1,77 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SE_OrderCancellation",
+    "OmniProcessId": {
+        "Name": "FVU_CloseOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CloseOrder/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementErrorMap": {
+            "OrderCancellationMessaging": true
+        },
+        "label": "SE_OrderCancellation",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "No",
+                        "field": "CustomerAcceptation"
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Producto no conforme sin cambio",
+                                    "field": "ClosingReasonRejected"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "Muerto en caja sin cambio",
+                                    "field": "ClosingReasonRejected"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "Desistimiento del cliente antes de entrega",
+                                    "field": "ClosingReasonRejected"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "HasProductExchange"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "Cerrada Perdida",
+                        "field": "OrderStatus"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Set Errors",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CloseOrder/English/SE_OrderCancellation"
+}

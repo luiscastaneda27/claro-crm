@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_StatusTodoClaro",
+    "OmniProcessId": {
+        "Name": "PreSalesValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreSalesValidation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "StatusTodoClaroPreSalesValidation": "=IF(\n  OR(\n    SUBSTRING(%ResponseStatusTodoClaro:ConsultAgeAndCustomerSegmentation:codSegmento%, 1, 2) = \"1\",\n    SUBSTRING(%ResponseStatusTodoClaro:ConsultAgeAndCustomerSegmentation:codSegmento%, 1, 2) = \"5\"\n  ),\n  \"No Potencial\",\n  IF(\n    OR(\n      SUBSTRING(%ResponseStatusTodoClaro:ConsultAgeAndCustomerSegmentation:codSegmento%, 1, 2) = \"3\",\n      SUBSTRING(%ResponseStatusTodoClaro:ConsultAgeAndCustomerSegmentation:codSegmento%, 1, 2) = \"4\"\n    ),\n    \"Todo Claro\",\n    IF(\n      SUBSTRING(%ResponseStatusTodoClaro:ConsultAgeAndCustomerSegmentation:codSegmento%, 1, 2) = \"2\",\n      \"Potencial\",\n      \"\"\n    )\n  )\n)"
+        },
+        "label": "SV_StatusTodoClaro",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreSalesValidation/English/SV_StatusTodoClaro"
+}

@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVOtroImei",
+    "OmniProcessId": {
+        "Name": "ValidarAdicionDuplas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBOtroImei",
+        "OmniProcessId": {
+            "Name": "ValidarAdicionDuplas",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/CBOtroImei",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBOtroImei",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Titular": "=IF( %PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|7:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|7:value:compImeiImsiMin|1:imei%,IF(%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|6:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|6:value:compImeiImsiMin|1:imei%, IF(%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|5:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|5:value:compImeiImsiMin|1:imei%,IF(%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|4:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|4:value:compImeiImsiMin|1:imei%,IF(%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|3:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|3:value:compImeiImsiMin|1:imei%,IF(%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|2:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|2:value:compImeiImsiMin|1:imei%,IF(%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|1:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydocOtroImei:consultaImei:customer:product|1:productCharacteristic|1:value:compImeiImsiMin|1:imei%,'')))))))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues14",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/SVOtroImei"
+}

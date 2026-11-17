@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_SalesType",
+    "OmniProcessId": {
+        "Name": "PreSalesValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreSalesValidation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "IsPurchaseIntentionSelected": "=IF(%PurchaseIntentionAllOptions:FlexCard_SelectCard:records:selectedRecord|1:isSelected% == true || %IsReversion%, true, false)",
+            "MultiSelectTipoDeVenta": "%FormulaSaleType%",
+            "PreSalesValidation": {
+                "PurchaseIntention": {
+                    "Financiado": "=IF(%PreSalesValidation:SelectMovil:Installments% == \"Financiado\", true, false)",
+                    "MultiSelectTipoDeVenta": "%FormulaSaleType%"
+                },
+                "PurchaseIntentionAllOptions": {
+                    "FlexCard_SelectCard": "clear"
+                }
+            }
+        },
+        "label": "SV_SalesType",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreSalesValidation/English/SV_SalesType"
+}

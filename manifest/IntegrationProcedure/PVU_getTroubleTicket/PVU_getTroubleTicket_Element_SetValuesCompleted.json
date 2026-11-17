@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesCompleted",
+    "OmniProcessId": {
+        "Name": "TMFGetCases",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/getTroubleTicket/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "whereDataCompleted": "=IF(ISNOTBLANK(%documentNumber%) && ISNOTBLANK(%documentType%), LIST(%SetValuesDataWhere:whereData1%), IF(ISNOTBLANK(%subcategory%) && ISNOTBLANK(%category%),LIST(%SetValuesDataWhere:whereData3%),IF(ISNOTBLANK(%caseNumber%),LIST(%SetValuesDataWhere:whereData4%), IF(ISNOTBLANK(%customerVoice%) && ISNOTBLANK(%subscriberNumber%), LIST(%SetValuesDataWhere:whereData5%), LIST(%SetValuesDataWhere:whereData2%)))))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/getTroubleTicket/Procedure/SetValuesCompleted"
+}

@@ -1,0 +1,74 @@
+{
+    "EmbeddedOmniScriptKey": "PVU|ChargeNotification|Spanish",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ChargeNotification",
+    "OmniProcessId": {
+        "Name": "PVU_AprobarDevDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/AprobarDevDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "Spanish",
+        "Sub Type": "ChargeNotification",
+        "Type": "PVU",
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Se realiza devolución",
+                                    "field": "PVU_SelecCodCierre:PVU_PendingApprovalTransfer"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "true",
+                                                "field": "PVU_Validations:PendingApprovalTransfer"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "true",
+                                                "field": "PVU_Validations:PendingApprovalTransferSaldo"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Se realiza devolución",
+                                    "field": "PVU_SelecCodCierre:PVU_PendingApprovalEffective"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "Se realiza devolución",
+                                    "field": "PVU_SelecCodCierre:PVU_DevolucionDineroClaroPay"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/AprobarDevDinero/English/ChargeNotification"
+}

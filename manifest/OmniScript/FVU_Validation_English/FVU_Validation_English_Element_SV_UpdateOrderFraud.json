@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_UpdateOrderFraud",
+    "OmniProcessId": {
+        "Name": "FVU_Validation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Validation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 3,
+        "elementValueMap": {
+            "Order": {
+                "EndDate": "=NOW()",
+                "Id": "%ContextId%",
+                "MotivoCierre": "Cliente cumplió la cantidad de transacciones",
+                "OrderStatusVelocity": "Cancelled",
+                "Status": "Cerrada Perdida"
+            }
+        },
+        "label": "Cancelar la Venta Fraude",
+        "message": {
+            "Id": "%ContextId%"
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "SalesFraudValidations:ShowMessage"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Validation/English/SV_UpdateOrderFraud"
+}

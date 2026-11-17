@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVContextParameters",
+    "OmniProcessId": {
+        "Name": "CancelacionVoluntaria",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CancelacionVoluntaria/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "=IF(%SkipStep%,%PVU_IPGetCaseDetails:Case:AccountId%,%Id%)",
+            "AssetId": "=IF(%SkipStep%,%PVU_IPGetCaseDetails:Case:AssetId%,%ContextId%)",
+            "SkipStep": "=IF(%SkipStep%,%SkipStep%,false) ",
+            "accountIdFromContext": "=IF(%SkipStep%,%PVU_IPGetCaseDetails:Case:AccountId%,%accountId%)",
+            "businessChannelFromContext": "=%businessChannel%",
+            "haveCasesPortFromContext": "=IF(%SkipStep%,%PVU_IPGetCaseDetails:Case:haveCasesPort%,%haveCasesPort%)",
+            "minContext": "=IF(%SkipStep%,%PVU_IPGetCaseDetails:Case:minContextDigital%,%minContext%)",
+            "today": "=TODAY()"
+        },
+        "label": "SVContextParameters",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CancelacionVoluntaria/English/SVContextParameters"
+}

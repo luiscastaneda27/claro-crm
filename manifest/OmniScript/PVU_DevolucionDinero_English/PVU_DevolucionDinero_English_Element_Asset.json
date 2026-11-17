@@ -1,0 +1,54 @@
+{
+    "Description": "BUG-713055:Devolucion de Dinero SaldoFin la Cuenta de Facturacion para servicio ChargeNotification es la 93 todos los Origenes.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Asset",
+    "OmniProcessId": {
+        "Name": "DevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AssetId": "%CasoGestion:Case:AssetId%",
+                "MotivoDevolucion": "%CasoGestion:Case:PVU_Level3__c% / %CasoGestion:Case:PVU_Codigo_de_Cierre__c%",
+                "NomODS": "%CasoGestion:Case:PVU_IdODS__c%",
+                "NumCtaFact": "=IF(%IPAssetsPQR:Assets|1:FIN_IdReferenciaDelCredito92__c% != null, %IPAssetsPQR:Assets|1:FIN_NumeroDeCuenta__c%, %IPAssetsPQR:Assets|1:%vlocity_namespace%__BillingAccountId__r:FVU_AccountExternalID__c%)",
+                "NumNotaCredito": "%CasoGestion:Case:PVU_NoNotaCredito__c%",
+                "Status": "En curso",
+                "SubCategoria": "Devolución de dinero",
+                "Valor": "%CasoGestion:Case:PVU_Valor__c%"
+            }
+        },
+        "label": "Asset",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Asset",
+                        "field": "Tipo"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDinero/English/Asset"
+}

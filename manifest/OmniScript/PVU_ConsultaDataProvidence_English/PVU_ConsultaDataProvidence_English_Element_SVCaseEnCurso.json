@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseEnCurso",
+    "OmniProcessId": {
+        "Name": "ConsultaDataProvidence",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ConsultaDataProvidence/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "Categoria": "Facturación y pagos",
+                "CodigoCierre": "Falla de ejecución",
+                "Id": "%ContextId%",
+                "Status": "Cerrado",
+                "SubEstado": "-"
+            },
+            "errorReintento": false,
+            "reintentoNumero": "%DataProvidence:reintentos%"
+        },
+        "label": "SVCaseEnCurso",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "DataProvidence:CasoCerrado"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ConsultaDataProvidence/English/SVCaseEnCurso"
+}

@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "IPValidationCesionImei",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidationCesionImei/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "AccountCedente": {
+                "BillingAddress": "%DRGetAccountHeaderData:AccountDoc|1:FVU_BillingShortAddress__c%",
+                "BillingCity": "%DRGetAccountHeaderData:AccountDoc|1:FVU_BillingMiniCity__c%",
+                "BillingState": "%DRGetAccountHeaderData:AccountDoc|1:FVU_BillingState__c%",
+                "DocumentType": "%SVOutputs:DocumentTypeCedente%",
+                "Email": "%DRGetAccountDetails:accountEmail%",
+                "Name": "%DRGetAccountDetails:accountName%",
+                "Phone": "%DRGetAccountDetails:accountPhone%"
+            },
+            "AssetInfo": "%DRGetAssetById%",
+            "Day": "=DAY(TODAY())",
+            "DepartmentDane": "%SVOutputs:DepartmentDane%",
+            "UserDetails": "%DRGetUserDetails:UserDetails%",
+            "assetTerminal": "%DRGetAssetByImeiProdType%",
+            "hora": "=FORMATDATETIME(NOW(),\"HH:mm\", \"America/Bogota\")",
+            "imei2": "%IPConsultaIMEIDualSIM:imei2%",
+            "isDualSim": "=IF(ISNOTBLANK(%IPConsultaIMEIDualSIM:imei2%), true, false)",
+            "mensajes": "%RAGetMensajes:mensajes%",
+            "openCases": "%RACasesValidations:openCases%",
+            "openCasesSize": "%RACasesValidations:openCasesSize%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidationCesionImei/Procedure/ResponseAction"
+}

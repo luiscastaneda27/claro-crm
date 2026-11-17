@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_NotificationError",
+    "OmniProcessId": {
+        "Name": "RegisterIMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ContentError": "=IF(%ConcatIMEI2Error% =! NULL,\"Estimado cliente, el/los siguientes IMEI %ConcatIMEIError%,%ConcatIMEI2Error% no han podido ser registrados, puede realizar su registro a través de los canales de autogestión.\", \"Estimado cliente, el/los siguientes IMEI %ConcatIMEIError% no han podido ser registrados, puede realizar su registro a través de los canales de autogestión.\")",
+            "PhoneSMS": "=CONCATENATE(\"57\",%AccountPhone%)"
+        },
+        "label": "SetContent",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "",
+                        "field": "ConcatIMEIError"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterIMEI/English/SV_NotificationError"
+}

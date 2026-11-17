@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFraude",
+    "OmniProcessId": {
+        "Name": "ValidateGPTFuncionalidades",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LBCasosFraude",
+        "OmniProcessId": {
+            "Name": "ValidateGPTFuncionalidades",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure/LBCasosFraude",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LBCasosFraude",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "BloqueoFraude": "=IF(%FuncionalidadesList:Active% == false, IF(ISNOTBLANK(FILTER(LIST(%GetGPTCases:CasesFraude%), 'servicio == \"' + %FuncionalidadesList:Code% + '\"' )) == true, true,false),false)",
+            "Code": "=%FuncionalidadesList:Code%",
+            "Filter": "=FILTER(LIST(%GetGPTCases:CasesGPT%), 'servicio == \"' + %FuncionalidadesList:Code% + '\"' )",
+            "SizeFilter": "=LISTSIZE(FILTER(LIST(%GetGPTCases:CasesGPT%), 'servicio == \"' + %FuncionalidadesList:Code% + '\"' ))",
+            "isNotBlank": "=ISNOTBLANK(FILTER(LIST(%GetGPTCases:CasesGPT%), 'servicio == \"' + %FuncionalidadesList:Code% + '\"' ))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidateGPTFuncionalidades/Procedure/SVFraude"
+}

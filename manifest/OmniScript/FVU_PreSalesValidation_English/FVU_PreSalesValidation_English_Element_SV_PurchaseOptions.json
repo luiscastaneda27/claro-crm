@@ -1,0 +1,59 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_PurchaseOptions",
+    "OmniProcessId": {
+        "Name": "PreSalesValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreSalesValidation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "PurchaseIntentionOptions": [
+                {
+                    "apiName": "ventaPrepagoContado",
+                    "description": "%intencion:description%",
+                    "isMobile": false,
+                    "isSelected": false,
+                    "label": "%intencion:label%"
+                },
+                {
+                    "apiName": "servicioMovil",
+                    "description": "Todas las ventas móviles con cargo mensual recurrente.",
+                    "isMobile": true,
+                    "isSelected": false,
+                    "label": "Venta de Servicio Móvil"
+                }
+            ]
+        },
+        "label": "SV_PurchaseOptions",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "true",
+                        "field": "IsReversion"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreSalesValidation/English/SV_PurchaseOptions"
+}

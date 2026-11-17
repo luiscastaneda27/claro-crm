@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVOrderUpdate",
+    "OmniProcessId": {
+        "Name": "Cesión de Contrato",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCesionContrato/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "elementValueMap": {
+            "UpdateOrder": {
+                "ATDPDatetime": "%fechaModificadaATDP%",
+                "ATDPNotificationMethod": "%ATDPRequest:ATDPIntegrations:FVU_CallATDP:tipoEnvio%",
+                "AccountId": "%CesionFormulario:AccCesionarioSelectedId%",
+                "Email": "%ATDPRequest:ATDPIntegrations:FVU_CallATDP:mailEnvio%",
+                "Id": "%NewOrder:OrderId%",
+                "Nuit": "%IdClaroCesionario%",
+                "Phone": "%ATDPRequest:ATDPIntegrations:FVU_CallATDP:numeroEnvio%",
+                "billingAddressId": "%accBillingSelectedCesionario%",
+                "serviceAddressId": "%accServiceSelectedCesionario%"
+            }
+        },
+        "label": "SVOrderUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCesionContrato/English/SVOrderUpdate"
+}

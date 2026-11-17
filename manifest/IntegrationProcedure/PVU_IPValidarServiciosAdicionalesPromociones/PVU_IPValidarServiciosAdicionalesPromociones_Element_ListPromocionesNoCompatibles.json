@@ -1,0 +1,63 @@
+{
+    "Description": "SVTest\n%PromosActuales%",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ListPromocionesNoCompatibles",
+    "OmniProcessId": {
+        "Name": "IPValidarServiciosAdicionalesPromociones",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidarServiciosAdicionalesPromociones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "Promociones",
+        "OmniProcessId": {
+            "Name": "IPValidarServiciosAdicionalesPromociones",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidarServiciosAdicionalesPromociones/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidarServiciosAdicionalesPromociones/Procedure/Promociones",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "Promociones",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "campo": "Id",
+            "promos": "%PromosActuales%",
+            "validas": "%LBPromocionesValidas:lista%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_FilterList",
+        "remoteMethod": "promoNoValida",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidarServiciosAdicionalesPromociones/Procedure/ListPromocionesNoCompatibles"
+}

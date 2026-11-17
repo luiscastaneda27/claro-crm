@@ -1,0 +1,51 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_DateBirthdayModify",
+    "OmniProcessId": {
+        "Name": "UpdateCustomer",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateCustomer/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DateBirthdateModify": "%FormatDateBirthdateModify%",
+            "FormatDateBirthdateModify": "=IF(DAYOFMONTH(%customerWrapper.Birthdate%)>12, MOMENT(%customerWrapper.Birthdate%).format('DD/MM/YYYY'), %customerWrapper.Birthdate%)"
+        },
+        "label": "SV_DateBirthdayModify",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "IsCreate"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "CE",
+                        "field": "AccountDocumentType"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateCustomer/English/SV_DateBirthdayModify"
+}

@@ -1,0 +1,87 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SetValues1",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseConfirmationFC",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseConfirmationFC/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepGeneratePinLink",
+        "OmniProcessId": {
+            "Name": "FVU_PurchaseConfirmationFC",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseConfirmationFC/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseConfirmationFC/English/StepGeneratePinLink",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepGeneratePinLink",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 2,
+        "elementValueMap": {
+        },
+        "label": "Cerrar",
+        "lwcComponentOverride": "setvalue_next",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "Pin Link de Pagos",
+                        "field": "StepDeliveryPago:FormulaPaymentMethodSummary"
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Pin Link de Pagos",
+                                    "field": "StepDeliveryPago:FormulaPaymentMethodSummary"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "0",
+                                                "field": "RequestPaymentCodeResponse:codigoError"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "0",
+                                                "field": "PaymentCodeResponse:codigoError"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseConfirmationFC/English/SetValues1"
+}

@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesClaro",
+    "OmniProcessId": {
+        "Name": "Cambio de titularidad de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCambioTitularidad/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "consecutivoFactura": "=IF(%IPValidation:Details:isVendidoClaro% == true, %IPValidation:Details:NumeroFactura%, \"\")",
+            "direccionEstablecimiento": "%IPValidation:Details:businnesInfo:ClaroBusinesAddress%",
+            "nitEstablecimiento": "=IF(%IPValidation:Details:isVendidoClaro% == true, %IPValidation:Details:businnesInfo:ClaroNIT%, \"\")",
+            "nombreEstablecimiento": "=IF(%IPValidation:Details:isVendidoClaro% == true, %IPValidation:Details:businnesInfo:ClaroBusinessName%, \"\")",
+            "telefonoEstablecimiento": "%IPValidation:Details:businnesInfo:ClaroBusinessPhone%"
+        },
+        "label": "SetValClaro",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCambioTitularidad/English/SetValuesClaro"
+}

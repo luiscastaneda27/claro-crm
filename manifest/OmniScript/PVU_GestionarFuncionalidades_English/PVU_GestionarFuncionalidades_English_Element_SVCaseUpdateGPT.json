@@ -1,0 +1,61 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdateGPT",
+    "OmniProcessId": {
+        "Name": "GestionarFuncionalidades",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GestionarFuncionalidades/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "CodigoCierre": "No aplica",
+                "ContactEmail": "%correoClave%",
+                "ContactPhone": "%movilClave%",
+                "ContenidoCorreo": "%IPEnviarAceptacion:AceptacionEnviada%",
+                "Id": "%CaseId%",
+                "OrderId": "%OrderId%",
+                "PinImei": "%ClaveOTP%",
+                "Status": "En curso",
+                "SubEstado": "Pendiente aprobación",
+                "TerminosYCondiciones": "Acepta"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "lwcComponentOverride": "",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validationGPT"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validationFraude"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GestionarFuncionalidades/English/SVCaseUpdateGPT"
+}

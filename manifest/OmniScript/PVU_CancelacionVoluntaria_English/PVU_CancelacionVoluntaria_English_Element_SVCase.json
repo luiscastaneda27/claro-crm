@@ -1,0 +1,56 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCase",
+    "OmniProcessId": {
+        "Name": "CancelacionVoluntaria",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CancelacionVoluntaria/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%accountIdFromContext%",
+                "AssetId": "%AssetId%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "DatosTerceroValues": "%SVTercerAutorizado%",
+                "MotivoCancelacion": "%Cancelacion:stepCancelacion:MotivoCancelacion%",
+                "NumeroLinea": "%minContext%",
+                "Status": "Abierto",
+                "SubCategoria": "Cancelación Servicio Móvil",
+                "SubEstado": "No Aplica",
+                "SubMotivoCancelacion": "%Cancelacion:stepCancelacion:Subrazon%",
+                "VozCliente": "%Cancelacion:stepCancelacion:Causal%"
+            }
+        },
+        "label": "SVCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "Cancelación Fallecimiento",
+                        "field": "Cancelacion:stepCancelacion:Causal"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": {
+            "vlcCart": true,
+            "vlcKnowledge": false
+        },
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CancelacionVoluntaria/English/SVCase"
+}

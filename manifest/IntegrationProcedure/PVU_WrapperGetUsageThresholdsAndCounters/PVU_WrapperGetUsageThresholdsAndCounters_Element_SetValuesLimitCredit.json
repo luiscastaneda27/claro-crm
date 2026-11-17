@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesLimitCredit",
+    "OmniProcessId": {
+        "Name": "WrapperGetUsageThresholdsAndCounters",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/WrapperGetUsageThresholdsAndCounters/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "currentUsageBalanceMonetary": "%SetValuesFilter:currentUsageBalanceMonetary:currentUsageBalanceMonetaryValue%",
+            "errorData": "=IF(ISBLANK(%IPGetUsageThresholdsAndCounters:usageCounter%) , IF(%IPGetUsageThresholdsAndCounters:status% == \"ERROR\",%IPGetUsageThresholdsAndCounters:message%, \"La consulta de límite de crédito por el momento no está disponible, por favor contacte al administrador del sistema.\") , IF(%IPGetUsageThresholdsAndCounters:status% == \"ERROR\", %IPGetUsageThresholdsAndCounters:message% ,\"SIN ERROR\"))",
+            "usageCounterMonetary": "=%SetValuesFilter:usageCounterMonetary:usageCounterMonetaryValue%",
+            "usageThresholdMonetary": "%SetValuesFilter:usageThresholdMonetary:usageThresholdMonetaryValue%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/WrapperGetUsageThresholdsAndCounters/Procedure/SetValuesLimitCredit"
+}

@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGenerateOrder",
+    "OmniProcessId": {
+        "Name": "CancelacionVoluntaria",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CancelacionVoluntaria/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "OM_PortationStatus": "%responseGetRootAsset:OM_PortationStatus%",
+            "fechaInicioSusp": "=IF(%vozCliente% = \"Cancelación Voluntaria\", %IPValidacionesCancelacion:fechaFactOM%, IF(%vozCliente% = \"Cambio de pospago a prepago\", %FechaFinal%, %todayFormat%))\n",
+            "mensajeObservaciones": "=IF(%vozCliente% = \"Cancelación Voluntaria\", %IPValidacionesCancelacion:mensajes:CANVOL007%, %IPValidacionesCancelacion:mensajes:CANCF001%)",
+            "processNameValue": "=IF(%vozCliente% = \"Cancelación Fallecimiento\", \"cancelacion_fallecimiento\",(IF(%vozCliente% = \"Cancelación Voluntaria\",\"cancelacion_voluntaria\",\"Cambio_pos_pre\")))"
+        },
+        "label": "SVGenerateOrder",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CancelacionVoluntaria/English/SVGenerateOrder"
+}

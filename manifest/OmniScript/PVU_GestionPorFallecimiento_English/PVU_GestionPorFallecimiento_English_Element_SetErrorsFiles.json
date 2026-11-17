@@ -1,0 +1,51 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetErrorsFiles",
+    "OmniProcessId": {
+        "Name": "GestionPorFallecimiento",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/GestionPorFallecimiento/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementErrorMap": {
+            "FileActaDefuncion": "=IF(%FileActaDefuncion% = NULL, \"Adjunta los documentos asociados para continuar con el proceso\")",
+            "FileDocTercero": "=IF(%FileDocTercero% = NULL, \"Adjunta los documentos asociados para continuar con el proceso\")"
+        },
+        "label": "Mensaje de Archivos requeridos",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": null,
+                        "field": "FileActaDefuncion"
+                    },
+                    {
+                        "condition": "=",
+                        "data": null,
+                        "field": "FileDocTercero"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Set Errors",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/GestionPorFallecimiento/English/SetErrorsFiles"
+}

@@ -1,0 +1,38 @@
+{
+    "EmbeddedOmniScriptKey": "PVU|IncompatibilidadOrdenesFuturas|English",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IncompatibilidadOrdenesFuturas",
+    "OmniProcessId": {
+        "Name": "CancelacionVoluntaria",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CancelacionVoluntaria/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "English",
+        "Sub Type": "IncompatibilidadOrdenesFuturas",
+        "Type": "PVU",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "Cancelación Fallecimiento",
+                        "field": "vozCliente"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validateOrdersPending:haveFutureOrders"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CancelacionVoluntaria/English/IncompatibilidadOrdenesFuturas"
+}

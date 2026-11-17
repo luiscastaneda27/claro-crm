@@ -1,0 +1,67 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "Msg_NoCancelAllowed",
+    "OmniProcessId": {
+        "Name": "CancelCreditFinancing",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelCreditFinancing/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "NoCancellationAllowed",
+        "OmniProcessId": {
+            "Name": "CancelCreditFinancing",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelCreditFinancing/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelCreditFinancing/English/NoCancellationAllowed",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "NoCancellationAllowed",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "Msg_NoCancelAllowed",
+        "messages": [
+            {
+                "active": true,
+                "text": "Estimado Asesor, la orden de venta no cumple las condiciones para avanzar con el proceso de cancelación, por favor verificar.",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "AllowsOrderStatus"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "DeliveredAgent",
+                        "field": "Response_Order:Products:ProductDeliveryStatus"
+                    }
+                ]
+            }
+        },
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelCreditFinancing/English/Msg_NoCancelAllowed"
+}

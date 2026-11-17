@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ValidDataClient",
+    "OmniProcessId": {
+        "Name": "LeadEdit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/LeadEdit/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ValidDocumentNumber": "=IF(%DocumentType% == \"CC\" && (INTEGER(%LengthDocumentNumber%) < 5 || INTEGER(%LengthDocumentNumber%) > 10), \"Mínimo 5 y máximo 10 posiciones\", \nIF(%DocumentType% == \"NI\" && INTEGER(%LengthDocumentNumber%) != 9, \"La longitud del campo debe ser de 9 posiciones\", \nIF(%DocumentType% == \"CE\" && INTEGER(%LengthDocumentNumber%) != 6, \"Máximo 6 posiciones\", \nIF(%DocumentType% == \"NE\" && INTEGER(%LengthDocumentNumber%) != 13, \"La longitud del campo debe ser de 13 posiciones\", \nIF(%DocumentType% == \"PP\" && (INTEGER(%LengthDocumentNumber%) < 5 || INTEGER(%LengthDocumentNumber%) > 15), \"Mínimo 5 y máximo 15 posiciones\",\nIF(%DocumentType% == \"CD\" && INTEGER(%LengthDocumentNumber%) > 10, \"Máximo 10 posiciones\", \"valido\"))))))"
+        },
+        "label": "SV_ValidDataClient",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/LeadEdit/English/SV_ValidDataClient"
+}

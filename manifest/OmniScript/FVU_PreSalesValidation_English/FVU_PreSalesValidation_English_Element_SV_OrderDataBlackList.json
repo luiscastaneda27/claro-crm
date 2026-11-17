@@ -1,0 +1,135 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_OrderDataBlackList",
+    "OmniProcessId": {
+        "Name": "PreSalesValidation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PreSalesValidation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Order": {
+                "AccountId": "%ContextId%",
+                "ClosingReason": "=IF(%ProcessBlacklist:success% == false, \"No se pudo realizar la consulta del cliente en base de datos\", \"Cliente no apto para proceso de venta\")",
+                "CustomerDataAuthorizationDate": "=NOW()",
+                "EffectiveDate": "=TODAY()",
+                "EndDate": "=NOW()",
+                "EngagementInteraction": "%EngagementInteraction|1:Id%",
+                "ListCheck": "%coincidenceLists%",
+                "ListsMarks": "%allLists%",
+                "OrderStatusVelocity": "Cancelled",
+                "PEPDateTime": "=NOW()",
+                "ProcessUserId": "%userId%",
+                "PurchaseType": "=IF(%MultiSelectTipoDeVenta% == 'Financiado','FIN',%MultiSelectTipoDeVenta%)",
+                "SalesType": "Venta",
+                "Status": "Cerrada Perdida",
+                "billingAddressId": "%ContextId%",
+                "serviceAddressId": "%PreSalesValidation:Addresses:AddressList:selectAddress:selectedAddress|1:Id%"
+            }
+        },
+        "label": "SV_OrderDataBlackList",
+        "lwcComponentOverride": "",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "PreSalesValidation:PurchaseIntention:Financiado"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "RECHAZADO",
+                                                "field": "ProcessBlacklist:action"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "ESCALAR",
+                                                "field": "ProcessBlacklist:action"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "ProcessBlacklist:success"
+                                            },
+                                            {
+                                                "condition": "<>",
+                                                "data": null,
+                                                "field": "coincidenceLists"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "PreSalesValidation:PurchaseIntention:Financiado"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": null,
+                                    "field": "coincidenceLists"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "RECHAZADO",
+                                                "field": "ProcessBlacklist:action"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "ESCALAR",
+                                                "field": "ProcessBlacklist:action"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "ProcessBlacklist:success"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PreSalesValidation/English/SV_OrderDataBlackList"
+}

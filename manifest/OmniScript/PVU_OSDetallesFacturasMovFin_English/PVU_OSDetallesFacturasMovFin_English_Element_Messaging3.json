@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Messaging3",
+    "OmniProcessId": {
+        "Name": "OSDetallesFacturasMovFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSDetallesFacturasMovFin/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "Step3",
+        "OmniProcessId": {
+            "Name": "OSDetallesFacturasMovFin",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSDetallesFacturasMovFin/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSDetallesFacturasMovFin/English/Step3",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "Step3",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "Messaging2",
+        "messages": [
+            {
+                "active": true,
+                "text": "La solicitud de ajustes en la factura fue enviada exitosamente, informa al cliente que le llegará un mensaje con la confirmación del proceso.",
+                "type": "Success",
+                "value": true
+            },
+            {
+                "active": true,
+                "text": "En este momento no podemos realizar el ajuste en la factura porque el sistema presentó una novedad, informa al cliente que intente nuevamente en otro momento. ",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": null,
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "success",
+                        "field": "NotificationResponse:EndProcess"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSDetallesFacturasMovFin/English/Messaging3"
+}

@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCase",
+    "OmniProcessId": {
+        "Name": "OSDetallesFacturasMovFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSDetallesFacturasMovFin/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%IPresponse:Details:ParentAccountId%",
+                "AssetId": "%IPresponse:Details:AssetBundle%",
+                "Categoria": "Facturación y pagos",
+                "Descripcion": "Cobro Errado",
+                "MINReporte": "%IPresponse:Details:NumeroLinea%",
+                "NumCtaFact": "%IPresponse:Details:ExtenalId%",
+                "NumeroLinea": "%IPresponse:Detail:numeroLinea%",
+                "ObservacionesCE": "%detalleAjusteFactura:observacion%",
+                "ParentId": "%CasoRetencionId%",
+                "Status": "Abierto",
+                "SubCategoria": "Ajustes",
+                "VozCliente": "Cobro Errado"
+            },
+            "smsMessage": "=CONCATENATE(\"Hola \" +%IPresponse:Details:AccountName% + \" \" + \"el  ajuste a tu favor en la factura ha sido aplicado exitosamente\")"
+        },
+        "label": "",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSDetallesFacturasMovFin/English/SVCase"
+}

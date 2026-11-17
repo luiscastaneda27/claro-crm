@@ -1,0 +1,128 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LWCSimularFianza",
+    "OmniProcessId": {
+        "Name": "OSSimulacionDetallada",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSSimulacionDetallada/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepInfoSimulacion",
+        "OmniProcessId": {
+            "Name": "OSSimulacionDetallada",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSSimulacionDetallada/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSSimulacionDetallada/English/StepInfoSimulacion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepInfoSimulacion",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "bStandalone": false,
+        "conditionType": "Hide if False",
+        "controlWidth": 2,
+        "customAttributes": [
+            {
+                "name": "label",
+                "source": "Simular"
+            }
+        ],
+        "hide": false,
+        "label": "LWCSimularFianza",
+        "lwcName": "fin_BotonSimular",
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "securityProcess:accessProcess:FIN_fianza"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "selectedSuretyBoolean"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "suretiesAvailable"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "securityProcess:accessProcess:FIN_fianza"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "selectedSuretyBoolean"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "responseSuccess"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "securityProcess:accessProcess:FIN_fianza"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "securityProcess:accessProcess:FIN_fianza"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "securityProcess:accessProcess:FIN_Fianza_Tercero"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "cliente",
+                                    "field": "optionType"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Custom Lightning Web Component",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSSimulacionDetallada/English/LWCSimularFianza"
+}

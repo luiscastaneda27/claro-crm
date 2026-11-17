@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RANotifCancelacionOrdenFutura",
+    "OmniProcessId": {
+        "Name": "PVU_NotifCancelacionOrdenFutura",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/NotifCancelacionOrdenFutura/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": "=%respuesta:value:data%",
+            "EndProcess": "=IF(%respuesta:value:data:isValid% == true, \"Success\", \"Fail\")"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%respuesta:value:data:isValid% == true",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/NotifCancelacionOrdenFutura/Procedure/RANotifCancelacionOrdenFutura"
+}

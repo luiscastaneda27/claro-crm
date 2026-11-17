@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_LimitQuantity",
+    "OmniProcessId": {
+        "Name": "FVU_Validation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Validation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AgentProductAmountLimit": "=IF(%AgentDailyProductAmountLimit% == true && %AgentWeeklyProductAmountLimit% == true && %AgentMonthlyProductAmountLimit% == true,\"diaria, semanal y mensual\",IF(%AgentWeeklyProductAmountLimit% == true && %AgentMonthlyProductAmountLimit% == true,\"semanal y mensual\",IF(%AgentDailyProductAmountLimit% == true && %AgentMonthlyProductAmountLimit% == true,\"diaria y mensual\",IF(%AgentDailyProductAmountLimit% == true && %AgentWeeklyProductAmountLimit% == true,\"diaria y semanal\",IF(%AgentMonthlyProductAmountLimit% == true,\"mensual\",IF(%AgentWeeklyProductAmountLimit% == true,\"semanal\",IF(%AgentDailyProductAmountLimit% == true,\"diarias\",NULL)))))))",
+            "AgentServiceAmountLimit": "=IF(%AgentDailyServiceAmountLimit% == true && %AgentWeeklyServiceAmountLimit% == true && %AgentMonthlyServiceAmountLimit% == true,\"diaria, semanal y mensual\",IF(%AgentWeeklyServiceAmountLimit% == true && %AgentMonthlyServiceAmountLimit% == true,\"semanal y mensual\",IF(%AgentDailyServiceAmountLimit% == true && %AgentMonthlyServiceAmountLimit% == true,\"diaria y mensual\",IF(%AgentDailyServiceAmountLimit% == true && %AgentWeeklyServiceAmountLimit% == true,\"diaria y semanal\",IF(%AgentMonthlyServiceAmountLimit% ==true,\"mensual\",IF(%AgentWeeklyServiceAmountLimit% == true,\"semanal\",IF(%AgentDailyServiceAmountLimit% == true,\"diarias\",NULL)))))))",
+            "ProductAmountLimit": "=IF(%DailyProductAmountLimit% == true && %WeeklyProductAmountLimit% == true && %MonthlyProductAmountLimit% == true,\"diaria, semanal y mensual\",IF(%WeeklyProductAmountLimit% == true && %MonthlyProductAmountLimit% == true,\"semanal y mensual\",IF(%DailyProductAmountLimit% == true && %MonthlyProductAmountLimit% == true,\"diaria y mensual\",IF(%DailyProductAmountLimit% == true && %WeeklyProductAmountLimit% == true,\"diaria y semanal\",IF(%MonthlyProductAmountLimit% == true,\"mensual\",IF(%WeeklyProductAmountLimit% == true,\"semanal\",IF(%DailyProductAmountLimit% == true,\"diarias\",NULL)))))))",
+            "ProductLimit": "=IF(%DailyProductQuantityLimit% == true && %WeeklyProductQuantityLimit% == true && %MonthlyProductQuantityLimit%==true,\"diaria, semanal y mensual\",IF(%WeeklyProductQuantityLimit% == true && %MonthlyProductQuantityLimit% == true,\"semanal y mensual\",IF(%DailyProductQuantityLimit% == true && %MonthlyProductQuantityLimit% == true,\"diaria y mensual\",IF(%DailyProductQuantityLimit% == true && %WeeklyProductQuantityLimit% == true,\"diaria y semanal\",IF(%MonthlyProductQuantityLimit% ==true,\"mensual\",IF(%WeeklyProductQuantityLimit%==true,\"semanal\",IF(%DailyProductQuantityLimit% ==true,\"diarias\",NULL)))))))",
+            "ServiceAmountLimit": "=IF(%DailyServiceAmountLimit% == true && %WeeklyServiceAmountLimit% == true && %MonthlyServiceAmountLimit% == true,\"diaria, semanal y mensual\",IF(%WeeklyServiceAmountLimit% == true && %MonthlyServiceAmountLimit% == true,\"semanal y mensual\",IF(%DailyServiceAmountLimit% == true && %MonthlyServiceAmountLimit% == true,\"diaria y mensual\",IF(%DailyServiceAmountLimit% == true && %WeeklyServiceAmountLimit% == true,\"diaria y semanal\",IF(%MonthlyServiceAmountLimit% ==true,\"mensual\",IF(%WeeklyServiceAmountLimit% == true,\"semanal\",IF(%DailyServiceAmountLimit% == true,\"diarias\",NULL)))))))",
+            "ServiceLimit": "=IF(%DailyServiceQuantityLimit% == true && %WeeklyServiceQuantityLimit% == true && %MonthlyServiceQuantityLimit%==true,\"diaria, semanal y mensual\",IF(%WeeklyServiceQuantityLimit% == true && %MonthlyServiceQuantityLimit% == true,\"semanal y mensual\",IF(%DailyServiceQuantityLimit% == true && %MonthlyServiceQuantityLimit% == true,\"diaria y mensual\",IF(%DailyServiceQuantityLimit% == true && %WeeklyServiceQuantityLimit% == true,\"diaria y semanal\",IF(%MonthlyServiceQuantityLimit% ==true,\"mensual\",IF(%WeeklyServiceQuantityLimit%==true,\"semanal\",IF(%DailyServiceQuantityLimit% ==true,\"diarias\",NULL)))))))"
+        },
+        "label": "SV_LimitQuantity",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Validation/English/SV_LimitQuantity"
+}

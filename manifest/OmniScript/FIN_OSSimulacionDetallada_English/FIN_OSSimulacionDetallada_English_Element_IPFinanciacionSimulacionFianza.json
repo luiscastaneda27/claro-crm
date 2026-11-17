@@ -1,0 +1,98 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPFinanciacionSimulacionFianza",
+    "OmniProcessId": {
+        "Name": "OSSimulacionDetallada",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSSimulacionDetallada/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "Monto": "%LWCPreSim:selectedPlazo:montoInput%",
+            "Plazo": "%LWCPreSim:selectedPlazo:PlazoSelect%",
+            "QuoteData": "%QuoteData%",
+            "QuoteInfo": "%LWCPreSim:selectedPlazo%",
+            "SimulacionDetallada": true,
+            "cycles": "%cycles%",
+            "dayEstimatedPayment": "%dayEstimatedPayment%",
+            "materialProduct": "%materialProduct%",
+            "optionType": "%optionType%",
+            "pagosIniciales": "%pagosIniciales%",
+            "simulationDate": "%simulationDate%",
+            "surety": "%SVSurety%",
+            "suretySuccess": "%response:IPResult:success%",
+            "typeProduct": "%typeProduct%",
+            "userId": "%userId%"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "FIN_FinanciacionSimulacionFianza",
+        "label": "IPFinanciacionSimulacionFianza",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "securityProcess:accessProcess:FIN_fianza"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSSimulacionDetallada/English/IPFinanciacionSimulacionFianza"
+}

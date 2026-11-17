@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVPreliminarButtons",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "candDuplicados": "=IF(\n  OR(\n    %bdoTipoReporte% == 'Duplicado',\n    AND(\n      %duplicadosOk% == true,\n      %bdaRegistrado% == true,\n      %bdoTieneReporte% == false\n    )\n  ),\n  true,\n  false\n)",
+            "candLiberacion": "=IF(\n  AND(\n    %bdoTieneReporte% == true,\n    OR(%bdoTipoReporte% == 'Hurto', %bdoTipoReporte% == 'Extravió'),\n    OR(%bdoOperador% == 'COMCEL S.A.', %bdoOperador% == '00003'),\n    %bdoMinCoincide% == true\n  ),\n  true,\n  false\n)",
+            "candRegistro": "=IF(\n  AND(\n    %isLuhnValid% == true,\n    %actividadTrue% == true,\n    %bdaRegistrado% == false,\n    OR(\n      %bdoTieneReporte% == false,\n      AND(\n        %bdoTipoReporte% == 'Sin Registro',\n        OR(\n          %bdoOperador% == 'COMCEL S.A.',\n          %bdoOperador% == '00003'\n        )\n      )\n    )\n  ),\n  true,\n  false\n)",
+            "candReporte": "=true"
+        },
+        "label": "SVPreliminarButtons",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/SVPreliminarButtons"
+}

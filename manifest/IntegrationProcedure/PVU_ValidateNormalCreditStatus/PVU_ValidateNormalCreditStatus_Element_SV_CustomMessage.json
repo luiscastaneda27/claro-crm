@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CustomMessage",
+    "OmniProcessId": {
+        "Name": "ValidateNormalCreditStatus",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidateNormalCreditStatus/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "message": "=IF(%SV_Response:response:statusId% == \"0\",\"Exito: \"+%IP_GetMessage:message:MainMessage%,IF(%SV_Response:response:statusId% == \"-2\",\"Exito: \"+%IP_GetMessage:message:MainMessage%,%IP_GetMessage:message:MainMessage%))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidateNormalCreditStatus/Procedure/SV_CustomMessage"
+}

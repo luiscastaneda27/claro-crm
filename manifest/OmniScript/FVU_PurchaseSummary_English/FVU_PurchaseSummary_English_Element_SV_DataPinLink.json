@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_DataPinLink",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseSummary",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseSummary/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "NotificationChoiceIsEmail": "=IF(%Account:AccountNotificationChoice% ==\"Correo electrónico\", true,false)",
+            "NotificationChoiceIsSMS": "=IF(%Account:AccountNotificationChoice% ==\"SMS - Teléfono de contacto\", true,false)",
+            "TypeNotificationFlag": "=IF(%Account:AccountNotificationChoice% ==\"Correo electrónico\", \"Correo electrónico\",\"SMS\")",
+            "effectiveOneTimeTotalTaxesFlag": "=IF(%isNullListProductMobile%, %Order:EffectiveOneTimeTotalIncTaxes%, %ListProductMobile|1:EffectiveOneTimeTotalIncTaxes%)",
+            "esAgente": "=IF(%userProfile% == 'Usuario Aliado Claro',true,false)",
+            "referenciaPagoMotorIdFlag": "=IF(%AccountBSCS:AccountExternalIDBSCS%, %AccountBSCS:AccountExternalIDBSCS%, %Order:BillingAccountExternalID%)"
+        },
+        "label": "SV_DataPinLink",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "pinLinkWithoutLogistics"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": {
+            "vlcCart": true,
+            "vlcKnowledge": false
+        },
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseSummary/English/SV_DataPinLink"
+}

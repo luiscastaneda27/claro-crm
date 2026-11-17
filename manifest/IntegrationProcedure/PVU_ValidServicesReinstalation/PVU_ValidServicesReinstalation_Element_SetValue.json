@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValue",
+    "OmniProcessId": {
+        "Name": "ValidServicesReinstalacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidServicesReinstalation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ValidCuarentine": "=AND(%IPconsultaLineaCuarentena:numberStatus% <> \"Activo\", %IPconsultaLineaCuarentena:numberStatus% <> \"Tiempo de cuarentena No Nativa\")",
+            "ValidDaysDesactived": "=AND(%IPconsultaLineaOperador:operatorDesc% == 'CLARO', %SetValueDays:DaysDesactived% >= 90)",
+            "ValidIsFailServices": "=IF(%IPconsultaMora:success% == false || %IPconsultaLineaOperador:success% == false || %IPconsultaLineaCuarentena:success% == false, true, false)",
+            "ValidMora": "=%IPconsultaMora:Estado% == 'Mora'",
+            "ValidPortability": "=IF(%IPconsultaLineaOperador:operatorDesc% <> 'CLARO' && %DRgetAssetRootData:orderSubType% == 'Portout' && %SetValueDays:DaysDesactived% > 28,true, false)",
+            "validarOrdenRoboPerdida": "=%RA_ValidaOrdenRoboPerdida:Detail:validarOrdeRoboPerdida%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidServicesReinstalation/Procedure/SetValue"
+}

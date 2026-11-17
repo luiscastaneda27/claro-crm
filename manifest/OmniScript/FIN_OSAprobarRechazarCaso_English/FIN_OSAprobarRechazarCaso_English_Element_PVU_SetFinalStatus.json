@@ -1,0 +1,35 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PVU_SetFinalStatus",
+    "OmniProcessId": {
+        "Name": "FIN_OSAprobarRechazarCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSAprobarRechazarCaso/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Message": "=IF(1 > 0, %MSG%, IF(%PVU_PendingApprovalPagoNoAbonado% == \"El soporte no es legible\" || \n%PVU_PendingApprovalPagoNoAbonado% == \"El pago ya fue abonado\"\n, \"le informamos que no ha sido posible realizar su solicitud de abono de pago debido a %PVU_PendingApprovalPagoNoAbonado%\",\nIF(%PVU_PendingApprovalPagoNoAbonado% == \"Se aplica pago\",\n\"hemos realizado el abono de pago de su equipo por la suma de %PVU_Validations:Case:ValorPago__c%\",\n\" \")))\n",
+            "PVU_CodCierre": "=IF( %PVU_PendingApprovalPagoNoAbonado% <> null, %PVU_PendingApprovalPagoNoAbonado%, \n\"\")\n\n\n\n\n\n\n\n",
+            "PVU_Status": "Cerrado",
+            "PVU_SubStatus": "=IF( %PVU_PendingApprovalPagoNoAbonado% == \"Se aplica pago\", \"Aprobado\",\nIF( %PVU_PendingApprovalPagoNoAbonado% == \"El pago ya fue abonado\"\n|| %PVU_PendingApprovalPagoNoAbonado% == \"El soporte no es legible\" , \"Rechazado\",\n\"\"))\n"
+        },
+        "label": "PVU_SetFinalStatus",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSAprobarRechazarCaso/English/PVU_SetFinalStatus"
+}

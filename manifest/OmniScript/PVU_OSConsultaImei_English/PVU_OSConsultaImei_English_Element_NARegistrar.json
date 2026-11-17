@@ -1,0 +1,111 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "NARegistrar",
+    "OmniProcessId": {
+        "Name": "Consulta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaImei/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConsultaIMEI",
+        "OmniProcessId": {
+            "Name": "Consulta",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaImei/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaImei/English/ConsultaIMEI",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConsultaIMEI",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 3,
+        "iconName": "",
+        "iconPosition": "left",
+        "iconVariant": "",
+        "label": "Registrar",
+        "loginAction": "login",
+        "message": {
+        },
+        "objectAction": "home",
+        "pubsub": false,
+        "recordAction": "view",
+        "replace": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "BdoNegativo:response:bdoNegativoMessage:isReported"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "AND",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "true",
+                                                "field": "BdoNegativo:response:bdoNegativoMessage:isReported"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "3",
+                                                "field": "BdoNegativo:response:bdoNegativoMessage:listaReportesBean|1:tipoReporte"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "condition": "=",
+                        "data": "01",
+                        "field": "BdaPositivo:response:bdaPositivoMessage:codigoError"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "BdoPositivo:response:bdoPositivoMessage:isReported"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "Security:accessProcess:PVU_registroIMEI"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "NO_HOMOLOGADO",
+                        "field": "ImeiComcel:response:imeiComcelMessage:consultaProcesoDeteccionResponse1:respuestaConsultaProcesoDeteccionBean|1:tipoDeteccion"
+                    }
+                ]
+            }
+        },
+        "ssm": false,
+        "targetFilter": "Recent",
+        "targetId": "%ContextId%",
+        "targetLWCLayout": "lightning",
+        "targetType": "Web Page",
+        "targetUrl": "/lightning/cmp/%vlocity_namespace%__vlocityLWCOmniWrapper?c__target=c:pVUOSRegistroIMEIEnglish&c__layout=lightning&c__tabIcon=custom:custom18&c__tabLabel=Registro de IMEI&c__ContextId=%ContextId%&c__imei=%registroImei%&c__tipoDoc=%reporteTipoDocumento%&c__numDoc=%registroNumeroDocumento%&c__marca=%registroMarca%&c__modelo=%registroModelo%&c__min=%registroMIN%&c__msisdn=%minString%&c__imeiLuhn=%imeiLuhn%&c__AccountId=%accountId%&c__nombreCliente=%AccountName%&c__usuarioRed=%usuarioRedReporte%&c__AssetId=%AssetId%",
+        "validationRequired": "Submit",
+        "variant": "neutral",
+        "wpm": false
+    },
+    "Type": "Navigate Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaImei/English/NARegistrar"
+}

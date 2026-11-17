@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "TextBlock6",
+    "OmniProcessId": {
+        "Name": "FVU_Payment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Payment/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepDeliveryPago",
+        "OmniProcessId": {
+            "Name": "FVU_Payment",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Payment/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Payment/English/StepDeliveryPago",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepDeliveryPago",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "dataJSON": false,
+        "label": "TextBlock17",
+        "sanitize": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "POR",
+                        "field": "Order:PurchaseType"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "ACT",
+                        "field": "Order:PurchaseType"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "MIG",
+                        "field": "Order:PurchaseType"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "ATT",
+                        "field": "Order:PurchaseType"
+                    }
+                ]
+            }
+        },
+        "text": "<p>Recuerda que la informaci&oacute;n de la fecha de corte <strong>es la que le indica al cliente cuando finaliza su consumo mensual</strong>.</p>",
+        "textKey": ""
+    },
+    "Type": "Text Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Payment/English/TextBlock6"
+}

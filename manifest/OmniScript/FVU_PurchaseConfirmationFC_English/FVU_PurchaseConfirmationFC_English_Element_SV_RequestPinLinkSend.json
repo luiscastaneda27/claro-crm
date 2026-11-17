@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_RequestPinLinkSend",
+    "OmniProcessId": {
+        "Name": "FVU_PurchaseConfirmationFC",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/PurchaseConfirmationFC/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "RequestValuesPinLink": {
+                "codigoPago": "=IF(%PaymentCodeResponse:codigoPago%, %PaymentCodeResponse:codigoPago%, %RequestPaymentCodeResponse:codigoPago%)",
+                "fechaVigencia": "=IF(%PaymentCodeResponse:fechaVigencia%, %PaymentCodeResponse:fechaVigencia%, %RequestPaymentCodeResponse:fechaVigencia%)",
+                "medioEnvio": "=IF(%MessageTypeNotification%, %MessageTypeNotification%, %TypeNotificationFlag%)"
+            }
+        },
+        "label": "SV_RequestPinLinkSend",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "pinLinkWithoutLogistics"
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "0",
+                                    "field": "PaymentCodeResponse:codigoError"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "0",
+                                    "field": "RequestPaymentCodeResponse:codigoError"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/PurchaseConfirmationFC/English/SV_RequestPinLinkSend"
+}

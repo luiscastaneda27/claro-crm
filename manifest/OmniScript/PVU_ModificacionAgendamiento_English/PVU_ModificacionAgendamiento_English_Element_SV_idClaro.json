@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_idClaro",
+    "OmniProcessId": {
+        "Name": "ModificacionAgendamiento",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ModificacionAgendamiento/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%IPvalidaciones:Details:Cuenta:AccountId%",
+            "Application": "SOLICITUD_DE_MODIFICACIONES_DE_ORDENES_SF",
+            "Channel": "1",
+            "DocumentNumber": "%IPvalidaciones:Details:Cuenta:DocumentNumber%",
+            "DocumentType": "%IPvalidaciones:Details:Cuenta:DocumentType%",
+            "IsThirdPerson": false,
+            "RecordId": "%ContextId%",
+            "Telefono": "=IF(%IPvalidaciones:Details:VozCliente% == 'Modificación datos de la persona autorizada para la entrega', %IPvalidaciones:Details:Orden:DeliveryData:AuthorizedPersonData:Phone%, %IPvalidaciones:Details:Cuenta:Telefono%)"
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ModificacionAgendamiento/English/SV_idClaro"
+}

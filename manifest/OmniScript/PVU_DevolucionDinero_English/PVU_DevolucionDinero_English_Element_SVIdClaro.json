@@ -1,0 +1,61 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVIdClaro",
+    "OmniProcessId": {
+        "Name": "DevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%ContextId%",
+            "Application": "SF_DEVOLUCION_DINERO",
+            "Channel": "1",
+            "IsThirdPerson": false,
+            "RecordId": "%ContextId%"
+        },
+        "label": "SVIdClaro",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "",
+                        "field": "EstadoCaja"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "EncuentraAssets"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "EncuentraAssets"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            {
+                "vlcCart": true,
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDinero/English/SVIdClaro"
+}

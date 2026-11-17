@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DataExtra2",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "bdaTextoUI": "=IF(%bdaRegistrado% == true, 'IMEI Registrado', 'IMEI No Registrado')",
+            "bdoTextoUI": "=IF(%bdoTieneReporte% == true, 'tipoReporte: ' + %bdoTipoReporteTexto% + ',operador:' + %bdoOperador% + ',fechaReporte:' + %bdoFechaReporte% + ',msisdn:' + %bdoMsisdnMask%, %bdoNegativo:description%)",
+            "duplicadosOk": "=IF(%duplicadosStatus% == 200 || %duplicadosStatus% == '200', true, false)",
+            "minConsultaNorm": "=IF(\n  AND(%minConsultaRaw% != null, %minConsultaRaw% != 'null'),\n  IF(SUBSTRING(%minConsultaRaw%,0,3) == '+57', SUBSTRING(%minConsultaRaw%,3), %minConsultaRaw%),\n  ''\n)",
+            "reincidenteReportedByClaro": "=IF(%bdoOperador% == '00003' && %bdoTipoReporte% == 'Reincidente', true, false)"
+        },
+        "label": "SV_DataExtra2",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/SV_DataExtra2"
+}

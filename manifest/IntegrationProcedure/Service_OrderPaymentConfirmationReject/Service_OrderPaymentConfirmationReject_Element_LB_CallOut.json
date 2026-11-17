@@ -1,0 +1,27 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LB_CallOut",
+    "OmniProcessId": {
+        "Name": "OrderPaymentConfirmationReject",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/Service/OrderPaymentConfirmationReject/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(orderWithOMSId)",
+        "label": "LoopBlock1",
+        "loopList": "SetLoop",
+        "loopOutput": {
+            "CalloutOrderPaymentConfirmation": "=%CalloutOrderPaymentConfirmation%",
+            "messageCode": "=%CalloutOrderPaymentConfirmation:responseCode%",
+            "orderNumber": "=%SetLoop:num_orden%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/Service/OrderPaymentConfirmationReject/Procedure/LB_CallOut"
+}

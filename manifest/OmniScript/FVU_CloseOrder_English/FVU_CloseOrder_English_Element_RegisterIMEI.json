@@ -1,0 +1,48 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|RegisterIMEI|English",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RegisterIMEI",
+    "OmniProcessId": {
+        "Name": "FVU_CloseOrder",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CloseOrder/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "English",
+        "Sub Type": "RegisterIMEI",
+        "Type": "FVU",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Yes",
+                        "field": "CustomerAcceptation"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "HasNoOrderProducts"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "HasProductExchange"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "canRegister"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CloseOrder/English/RegisterIMEI"
+}

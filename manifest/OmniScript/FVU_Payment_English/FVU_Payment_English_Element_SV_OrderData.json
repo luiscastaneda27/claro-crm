@@ -1,0 +1,35 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_OrderData",
+    "OmniProcessId": {
+        "Name": "FVU_Payment",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/Payment/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "varCodigoPago": "=IF(%StepDeliveryPago:FormulaPaymentMethodSummary% == \"Contado\",\" \", %RequestPaymentCodeResponse:codigoPago%)",
+            "varMedioEnvio": "=IF(%StepDeliveryPago:FormulaPaymentMethodSummary% == \"Contado\",\" \", IF(AND(%StepDeliveryPago:OptionEmail%,%StepDeliveryPago:OptionPhone%),\"Correo Electrónico;SMS\",IF(%StepDeliveryPago:OptionEmail%,\"Correo Electrónico\",\"SMS\")))"
+        },
+        "label": "SV_OrderData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            false,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/Payment/English/SV_OrderData"
+}

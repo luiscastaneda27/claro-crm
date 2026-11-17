@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_DocumentNumber",
+    "OmniProcessId": {
+        "Name": "NewLead",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/NewLead/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "DocumentNumber": "=IF(%CreateProspect:ContactInformation:DocumentType%==\"CC\",%CreateProspect:ContactInformation:DocumentTypeCC%,IF(%CreateProspect:ContactInformation:DocumentType%==\"CE\",%CreateProspect:ContactInformation:DocumentTypeCE%,IF(%CreateProspect:ContactInformation:DocumentType%==\"CD\",%CreateProspect:ContactInformation:DocumentTypeCD%,IF(%CreateProspect:ContactInformation:DocumentType%==\"PP\",%CreateProspect:ContactInformation:DocumentTypePP%,IF(%CreateProspect:ContactInformation:DocumentType%==\"NI\",%CreateProspect:ContactInformation:DocumentNumberNotValid%,IF(%CreateProspect:ContactInformation:DocumentType%==\"NE\",%CreateProspect:ContactInformation:DocumentNumberNE%,\"\"))))))"
+        },
+        "label": "SV_DocumentNumber",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/NewLead/English/SV_DocumentNumber"
+}

@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_SetOrderParams",
+    "OmniProcessId": {
+        "Name": "CrearOrdenConciliacionRed",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/OM/CrearOrdenConciliacionRed/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "MSISDN": "%Order:MSISDN%",
+            "customerId": "%Account:identificacionExterna%",
+            "dateExecution": "=NOW()",
+            "orderSubType": "Conciliacion_red",
+            "orderType": "Cambios",
+            "reasonCode": -2,
+            "success": false
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "selecteditems:SelectedProducts"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "inventoryitemselected:SelectedProducts"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/OM/CrearOrdenConciliacionRed/English/SV_SetOrderParams"
+}

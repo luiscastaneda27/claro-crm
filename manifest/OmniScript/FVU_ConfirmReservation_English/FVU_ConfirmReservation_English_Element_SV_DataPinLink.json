@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_DataPinLink",
+    "OmniProcessId": {
+        "Name": "FVU_ConfirmReservation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ConfirmReservation/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "effectiveOneTimeTotalTaxesFlag": "=IF(%IsNullProductMobile%, %EffectiveOneTimeTotalIncTaxes%, %ListProductMobile|1:EffectiveOneTimeTotalIncTaxes%)",
+            "esAgente": "=IF(%userProfile% == 'Usuario Aliado Claro',true,false)"
+        },
+        "label": "SV_DataPinLink",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Pin Link de Pagos",
+                        "field": "PaymentMethod"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ConfirmReservation/English/SV_DataPinLink"
+}

@@ -1,0 +1,89 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesDataWhere",
+    "OmniProcessId": {
+        "Name": "TMFGetCases",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/getTroubleTicket/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "whereData1": [
+                {
+                    "field": "Account.FVU_DocumentNumber__c",
+                    "operater": "AND",
+                    "value": "%documentNumber%"
+                },
+                {
+                    "field": "Account.FVU_DocumentType__c",
+                    "operater": "AND",
+                    "value": "%documentType%"
+                },
+                {
+                    "field": "PVU_Level3__c",
+                    "operater": "",
+                    "value": "%customerVoice%"
+                }
+            ],
+            "whereData2": [
+                {
+                    "field": "PVU_MINReporteImei__c",
+                    "operater": "",
+                    "value": "%subscriberNumber%"
+                }
+            ],
+            "whereData3": [
+                {
+                    "field": "PVU_Level1__c",
+                    "operater": "AND",
+                    "value": "%category%"
+                },
+                {
+                    "field": "PVU_Level2__c",
+                    "operater": "AND",
+                    "value": "%subcategory%"
+                },
+                {
+                    "field": "PVU_Level3__c",
+                    "operater": "AND",
+                    "value": "%customerVoice%"
+                }
+            ],
+            "whereData4": [
+                {
+                    "field": "CaseNumber",
+                    "operater": "",
+                    "value": "%caseNumber%"
+                }
+            ],
+            "whereData5": [
+                {
+                    "field": "Asset.%vlocity_namespace%__SubscriptionId__r.OM_MSISDN__c",
+                    "operater": "AND",
+                    "value": "%subscriberNumber%"
+                },
+                {
+                    "field": "PVU_Level3__c",
+                    "operater": "AND",
+                    "value": "%customerVoice%"
+                }
+            ]
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/getTroubleTicket/Procedure/SetValuesDataWhere"
+}

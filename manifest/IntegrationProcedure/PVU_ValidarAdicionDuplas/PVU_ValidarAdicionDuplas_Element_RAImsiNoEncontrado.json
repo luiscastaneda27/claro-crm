@@ -1,0 +1,44 @@
+{
+    "Description": "SVImsi:imsi = ''",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAImsiNoEncontrado",
+    "OmniProcessId": {
+        "Name": "ValidarAdicionDuplas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Details": {
+                "Message": "El proceso ha concluido exitosamente",
+                "minValid": "false"
+            },
+            "EBAdicionar": "%SVInput:ListIn%",
+            "EndProcess": "success",
+            "MensageParametrizadoAdicion": "%SVInput:mensajes:DUPIMEI023%",
+            "minValidar": ""
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SVDuplas:cantidadDuplas% = 0 && SVImsi:imsi = null",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/RAImsiNoEncontrado"
+}

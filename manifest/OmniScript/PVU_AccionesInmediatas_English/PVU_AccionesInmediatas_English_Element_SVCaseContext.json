@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseContext",
+    "OmniProcessId": {
+        "Name": "AccionesInmediatas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/AccionesInmediatas/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%accountIdFromContext%",
+                "AssetId": "%AssetId%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "FechaActivacion": "=IF(%VozClienteCaso% == 'Cambio de pospago a prepago',%SelectedDate:cancelationDate%,'')",
+                "FechaInicioSusp": "%SelectedDate:cancelationDate%",
+                "Id": "%CaseId%",
+                "MotivoCancelacion": "=IF(%VozClienteCaso% != 'Cambio de pospago a prepago','Des Voluntaria” (Causal E// - 2007 Reason Code BSCS)','')",
+                "NumeroLinea": "%minContext%",
+                "Status": "En curso",
+                "SubCategoria": "Acciones inmediatas",
+                "SubEstado": "Pendiente de aprobación",
+                "VozCliente": "%VozCliente:vozCliente%"
+            },
+            "case2d": {
+                "DatosTerceroValues": "%SVTercerAutorizado%",
+                "MotivoCancelacion": "Des Voluntaria” (Causal E// - 2007 Reason Code BSCS)",
+                "SubMotivoCancelacion": "VER CUAL"
+            }
+        },
+        "label": "SVCaseContext",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Case",
+                        "field": "Context"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/AccionesInmediatas/English/SVCaseContext"
+}

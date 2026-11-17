@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_ContactExpeditionDate",
+    "OmniProcessId": {
+        "Name": "ValidationsSummaryTerminal",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ValidationsSummaryTerminal/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Contact": {
+                "ExpeditionDate": "%StepValidationsSummary:ClientInformation:ExpeditionDate%",
+                "Id": "%AccountPrimaryContactId%",
+                "SecondLastName": "%ContactSecondLastName%"
+            }
+        },
+        "label": "SV_ContactExpeditionDate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "StepValidationsSummary:FormExpeditionDateIsChange"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": {
+            "vlcCart": true,
+            "vlcKnowledge": false
+        },
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ValidationsSummaryTerminal/English/SV_ContactExpeditionDate"
+}

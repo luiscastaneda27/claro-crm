@@ -1,0 +1,50 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SE_AuthorizationDeclined",
+    "OmniProcessId": {
+        "Name": "DocAuthorization",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DocAuthorization/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementErrorMap": {
+            "TextBlockAcepto": "La venta solicitada requiere aceptación del cliente ante centrales de riesgo, podrás continuar con procesos de venta contado"
+        },
+        "label": "SE_AuthorizationDeclined",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Rechazado",
+                        "field": "DocGenAcceptance"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "false",
+                        "field": "IsDocSent"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Set Errors",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DocAuthorization/English/SE_AuthorizationDeclined"
+}

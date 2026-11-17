@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "ValidateNormalCreditStatus",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidateNormalCreditStatus/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CaseId": "%caseId%",
+            "RealisarReversion": "SI",
+            "billingAccount": "%DR_GetCaseDetails:Case:ReferenciaCredito92%",
+            "calculateAmount": true,
+            "chargeService": "%DR_GetParamChargeService:resultParam|1:FIN_LargeLabel__c%",
+            "financingCode": "%DR_GetCaseDetails:Case:NumeroCredito%",
+            "remark": "Ajuste de saldo por cancelación de crédito",
+            "suretyChargeService": "%DR_GetParamSuretyChargeService:resultParam|1:FIN_Valor__c%",
+            "suretyId": "%DR_GetFianzaByCreditNumber:suretyId%",
+            "target": "%DR_GetHeaderIntegration:Target%",
+            "user": "%DR_GetHeaderIntegration:UserSession%",
+            "validDate": "%DR_GetHeaderIntegration:StartDate%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidateNormalCreditStatus/Procedure/SV_Request"
+}

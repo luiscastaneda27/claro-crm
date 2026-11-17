@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SEFallaClienteMessage_vozClienteStep",
+    "OmniProcessId": {
+        "Name": "CreateCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCreateCase/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementErrorMap": {
+            "FallaCliente": "Seleccione un valor de la lista para este campo."
+        },
+        "label": "SEFallaClienteMessage_vozClienteStep",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "",
+                        "field": "vozClienteStep:OdsDeIngreso:FallaCliente-Block:Id"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "Falla de Equipo Fuera de Garantía",
+                        "field": "vozCliente"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "Configuración de Equipo (Solución en Primer Contacto)",
+                        "field": "vozCliente"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Set Errors",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCreateCase/English/SEFallaClienteMessage_vozClienteStep"
+}

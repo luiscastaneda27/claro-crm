@@ -1,0 +1,61 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SE_NotModifyNothing",
+    "OmniProcessId": {
+        "Name": "UpdateCustomer",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateCustomer/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "disOnTplt": false,
+        "elementErrorMap": {
+            "MessagingValidationModFalse": "%MessagingValidationModFalse%"
+        },
+        "label": "SE_NotModifyNothing",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "DatosComplejosFlag"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "DatosComplementariosFlag"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "IsCreate"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "AllReadOnly"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            null,
+            null
+        ],
+        "ssm": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Set Errors",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateCustomer/English/SE_NotModifyNothing"
+}

@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateCase",
+    "OmniProcessId": {
+        "Name": "ConfirmacionSimCard",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ConfirmacionSimCard/Spanish",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "CodigoCierre": "=IF(%ConfirmaSimCard:RecibeSimCard% =='Si', 'Sim Card Entregada al cliente', 'Cambio de Sim Card no Exitoso')",
+                "Id": "%CaseId%",
+                "Status": "Cerrado",
+                "SubEstado": "No Aplica"
+            }
+        },
+        "label": "SVUpdateCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Si",
+                        "field": "ConfirmaSimCard:RecibeSimCard"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ConfirmacionSimCard/Spanish/SVUpdateCase"
+}

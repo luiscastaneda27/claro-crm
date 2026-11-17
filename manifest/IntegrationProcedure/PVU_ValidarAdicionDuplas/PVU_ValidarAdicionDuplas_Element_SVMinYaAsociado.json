@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVMinYaAsociado",
+    "OmniProcessId": {
+        "Name": "ValidarAdicionDuplas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "asociado": "=IF(LISTSIZE(FILTER(LIST(%SVDuplicados:duplas%), 'min == %minIn|1:minAdicion%')) > 0, true, false)",
+            "imeiAsociado": "=IF(LISTSIZE(FILTER(LIST(%SVDuplicados:duplas%), 'min == %minIn|1:minAdicion%')) > 0, true, false)"
+        },
+        "executionConditionalFormula": "%SVDuplas:cantidadDuplas% > 0",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues16",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/SVMinYaAsociado"
+}

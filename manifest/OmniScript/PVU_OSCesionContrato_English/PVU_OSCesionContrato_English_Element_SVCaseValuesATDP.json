@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseValuesATDP",
+    "OmniProcessId": {
+        "Name": "Cesión de Contrato",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCesionContrato/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "fechaModificadaATDP": "=DATE(%ATDPRequest:ATDPIntegrations:FVU_ContractStatusApproval:dateAccept%)",
+            "metodoUtilizadoValidacionAtdp": "=IF(%ATDPRequest:ATDPIntegrations:FVU_CallATDP:tipoEnvio% == 'email',%ATDPRequest:ATDPIntegrations:FVU_CallATDP:mailEnvio%,%IPValidaciones:accountInfo:phone%)"
+        },
+        "label": "SVCaseValuesATDP",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCesionContrato/English/SVCaseValuesATDP"
+}

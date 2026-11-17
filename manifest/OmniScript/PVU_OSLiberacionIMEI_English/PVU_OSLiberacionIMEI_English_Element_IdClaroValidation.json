@@ -1,0 +1,98 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|IdClaroValidation|Spanish",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IdClaroValidation",
+    "OmniProcessId": {
+        "Name": "Liberación de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSLiberacionIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "Spanish",
+        "Sub Type": "IdClaroValidation",
+        "Type": "FVU",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "group": {
+                                        "operator": "AND",
+                                        "rules": [
+                                            {
+                                                "condition": "<>",
+                                                "data": null,
+                                                "field": "DRGetAssetByImei:Id"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "TitularEquipo",
+                                                "field": "RSolicitante"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "group": {
+                                        "operator": "AND",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "TitularLinea",
+                                                "field": "RSolicitante"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "group": {
+                                        "operator": "AND",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "PersonaReporte",
+                                                "field": "RSolicitante"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "1",
+                                    "field": "tipoReporteFromContext"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "2",
+                                    "field": "tipoReporteFromContext"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "7",
+                                    "field": "tipoReporteFromContext"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSLiberacionIMEI/English/IdClaroValidation"
+}

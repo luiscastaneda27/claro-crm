@@ -1,0 +1,73 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVAceptacionCedente",
+    "OmniProcessId": {
+        "Name": "Cesión de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCesionIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "OTPEmail": "%IPValidation:AccountCedente:Email%",
+            "OTPPhone": "%IPValidation:AccountCedente:Phone%",
+            "ShowAceptacion": true,
+            "accountIdFromContext": "%accountId%",
+            "asunto": "%IPValidation:mensajes:CESIONIMEI003%",
+            "index": 10,
+            "mensajeParam": "%IPValidation:mensajes:CESIONIMEI002%",
+            "min": "%minContext%",
+            "mostrarStepAceptacion": true,
+            "nombreCliente": "%IPValidation:AccountCedente:Name%",
+            "param1": [
+                "%IPValidation:AccountCedente:Name%",
+                "%IPValidation:UserDetails:Name%",
+                "%marcaContext%",
+                "%modeloContext%",
+                "%imeiContext%",
+                "%CesionIMEIFormulario:CuidadTypeAhead2-Block:CuidadTypeAhead2%",
+                "%hora%",
+                "%day%",
+                "%month%",
+                "%year%"
+            ],
+            "param2": [
+                "%imeiContext%",
+                "%CesionIMEIFormulario:NombreCedente%",
+                "%CesionIMEIFormulario:TipoDocumentoCedente%",
+                "%CesionIMEIFormulario:NumeroDocumentoCedente%",
+                "%CesionIMEIFormulario:NombreCesionarioForm%",
+                "%CesionIMEIFormulario:TipoDocumentoCesionarioForm%",
+                "%CesionIMEIFormulario:NumeroDocumentoCesionarioForm%",
+                "%CesionIMEIFormulario:NombreCedente%",
+                "%CesionIMEIFormulario:TelefonoCedente%",
+                "%CesionIMEIFormulario:DireccionCedente%",
+                "%CesionIMEIFormulario:CuidadTypeAhead2-Block:CuidadTypeAhead2%",
+                "%searchAccount:Accounts|1:SinglePhone%",
+                "%CesionIMEIFormulario:NombreCesionarioForm%",
+                "%searchAccount:Accounts|1:Direccion%",
+                "%searchAccount:Accounts|1:Ciudad%"
+            ],
+            "stepName": "Cedente",
+            "urlCancelar": "/lightning/cmp/%vlocity_namespace%__vlocityLWCOmniWrapper?c__target=c:pVUCancelReporteImeiEnglish&c__layout=lightning&c__tabIcon=custom:custom18&c__tabLabel=Cancelar Cesión IMEI&c__CaseId=%Details:CaseId%"
+        },
+        "label": "SVAceptacionCedente",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCesionIMEI/English/SVAceptacionCedente"
+}

@@ -1,0 +1,113 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVIdClaro",
+    "OmniProcessId": {
+        "Name": "Liberación de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSLiberacionIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Application": "LIBERACION_IMEI_SF",
+            "Channel": "1",
+            "DocumentNumber": "%NumeroDocumentoSolicitante%",
+            "DocumentType": "%TipoDocumentoSolicitante%",
+            "RecordId": "=IF(%IPCaseValidationLiberacionImei:lastCase:Id% = NULL, %AccountId%, %IPCaseValidationLiberacionImei:lastCase:Id%)"
+        },
+        "label": "SVIdClaro",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "group": {
+                                        "operator": "AND",
+                                        "rules": [
+                                            {
+                                                "condition": "<>",
+                                                "data": null,
+                                                "field": "DRGetAssetByImei:Id"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "TitularEquipo",
+                                                "field": "RSolicitante"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "group": {
+                                        "operator": "AND",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "TitularLinea",
+                                                "field": "RSolicitante"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "group": {
+                                        "operator": "AND",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "PersonaReporte",
+                                                "field": "RSolicitante"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "1",
+                                    "field": "tipoReporteFromContext"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "2",
+                                    "field": "tipoReporteFromContext"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "7",
+                                    "field": "tipoReporteFromContext"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": {
+            "vlcCart": true,
+            "vlcKnowledge": false
+        },
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSLiberacionIMEI/English/SVIdClaro"
+}

@@ -1,0 +1,63 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCloseCasePQR",
+    "OmniProcessId": {
+        "Name": "FIN_GestionCasoAjuste",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoAjuste/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccionGestionar": "%SelectGestionCaso:AccionRealizarPQR%",
+                "AjusteFianza": "%AjusteFianzaCurrency%",
+                "CodigoCierre": "=IF(%SVCancelacion%,%ClosingCode:SelectClosingCodeCancel%,%ClosingCode:SelectClosingCode%)",
+                "DescripcionCierre": "%ClosingCode:Description%",
+                "FianzaActual": "%SelectUpdateFianza:CurrentFianza%",
+                "FianzaNueva": "%ChangeUpdateFianza:TextFianzaNueva%",
+                "Id": "%ContextId%",
+                "MessageResponseFail": "%responseFail%",
+                "RealisarReversion": "%Reversion%",
+                "ResponseFail": "=IF(%responseFail%!='',true,false)",
+                "SimulationId": "%simulationId%",
+                "Status": "=IF(%responseFail%=NULL,'Cerrado','En curso')",
+                "SubEstado": "=IF(%responseFail%=NULL,'','Rechazo por Motor Financiero')"
+            }
+        },
+        "label": "SVCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "PQR",
+                        "field": "Case:Origen"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "No aprobado",
+                        "field": "ClosingCode:SelectClosingCode"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoAjuste/English/SVCloseCasePQR"
+}

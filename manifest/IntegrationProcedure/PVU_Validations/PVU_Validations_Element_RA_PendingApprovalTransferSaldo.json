@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_PendingApprovalTransferSaldo",
+    "OmniProcessId": {
+        "Name": "PVU_Validations",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Validations/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "PendingApprovalTransferSaldo": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRE_GetCase:Case:PVU_Sub_Estado__c% == \"Pendiente de aprobación\" && %DRE_GetCase:Case:PVU_Level3__c% == \"Devolución dinero por transferencia\" && %DRE_GetCase:Case:PVU_Saldo_a_favor__c% == true && ISNOTBLANK(FILTER(LIST(DRE_GetGroupMember:Role), 'DeveloperName == \"Backoffice_Nivel_1_Ajustes\"'))",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "Case",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "DRE_GetCase",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Validations/Procedure/RA_PendingApprovalTransferSaldo"
+}

@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SE_RequiredPickupPersonWithoutAuthorizedPerson",
+    "OmniProcessId": {
+        "Name": "GenerateCUT",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/GenerateCUT/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementErrorMap": {
+            "PickupPersonWithoutAuthorizedPerson": "Campo obligatorio."
+        },
+        "label": "SE_RequiredPickupPersonWithoutAuthorizedPerson",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "ClienteClaro",
+                        "field": "StepSelectPickupPerson:PickupPersonWithoutAuthorizedPerson"
+                    },
+                    {
+                        "group": {
+                            "operator": "OR",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": null,
+                                    "field": "DeliveryData"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "",
+                                    "field": "DeliveryData:AuthorizedPersonData:Name"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Set Errors",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/GenerateCUT/English/SE_RequiredPickupPersonWithoutAuthorizedPerson"
+}

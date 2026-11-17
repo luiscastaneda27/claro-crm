@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ConditionalNotifyOMS",
+    "OmniProcessId": {
+        "Name": "CancelOrderInPaymentProcess",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CancelOrderInPaymentProcess/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "FlagCondictional": "=IF(%OrderInformation:PurchaseType% = 'POR' || %OrderInformation:PaymentMethod% = 'Pin Link de Pagos', false, true)",
+            "PinLinkCondictional": "=%OrderInformation:PaymentMethod% = 'Pin Link de Pagos' && %Response_PinExpiration:success% = true && %OrderInformation:PurchaseType% != \"POR\"",
+            "PortAndPinLinkCondictional": "=%OrderInformation:PurchaseType% = \"POR\" && %OrderInformation:PaymentMethod% = \"Pin Link de Pagos\" && %Response_CancelPortability:success% = true && %Response_CancelPortability:ERROR% != 'ERROR' && %Response_PinExpiration:success% = true",
+            "PortabilityCondictional": "=%OrderInformation:PurchaseType% = 'POR' && %Response_CancelPortability:success% = true  && %Response_CancelPortability:ERROR% != 'ERROR' && %OrderInformation:PaymentMethod% != 'Pin Link de Pagos'"
+        },
+        "label": "SV_ConditionalNotifyOMS",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CancelOrderInPaymentProcess/English/SV_ConditionalNotifyOMS"
+}

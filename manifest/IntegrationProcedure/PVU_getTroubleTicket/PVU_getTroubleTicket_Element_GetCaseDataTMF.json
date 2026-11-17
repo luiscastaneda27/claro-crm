@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "GetCaseDataTMF",
+    "OmniProcessId": {
+        "Name": "TMFGetCases",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/getTroubleTicket/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "category": "%category%",
+            "customerVoice": "%customerVoice%",
+            "documentNumber": "%documentNumber%",
+            "documentType": "%documentType%",
+            "fieldStandard": "=\"Id,CaseNumber,ContactId,AccountId,Status,PVU_Sub_Estado__c,ClosedDate,CreatedDate, IsEscalated,LastModifiedById,LastModifiedDate,Origin,OwnerId\"",
+            "sObjectName": "Case",
+            "subcategory": "%subcategory%",
+            "subscriberNumber": "%subscriberNumber%",
+            "wheredata": "%SetValuesCompleted:whereDataCompleted%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "PVU_TMFCustomCase",
+        "remoteMethod": "getCaseDynamic",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/getTroubleTicket/Procedure/GetCaseDataTMF"
+}

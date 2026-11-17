@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Etapas",
+    "OmniProcessId": {
+        "Name": "FIN_GestionCasoAjuste",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoAjuste/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "SV_Etapa": "=IF(%Case:IntentoDeAjuste% = 'CANCELACION DE CREDITO - NO EXITOSA' , 'CancelarCredito', IF(%Case:IntentoDeAjuste% = 'CANCELACION DE CREDITO - EXITOSA' || %Case:IntentoDeAjuste% = 'REVERSION - NO EXITOSA', 'ReversoDePago', IF(%Case:IntentoDeAjuste% = 'REVERSION - EXITOSA','Cierre','')))",
+            "success": "=IF(%Case:IntentoDeAjuste% = 'CANCELACION DE CREDITO - EXITOSA' || %Case:IntentoDeAjuste% = 'REVERSION - NO EXITOSA'|| %Case:IntentoDeAjuste% = 'REVERSION - EXITOSA',true,false)"
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "Case:IntentoDeAjuste"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoAjuste/English/SV_Etapas"
+}

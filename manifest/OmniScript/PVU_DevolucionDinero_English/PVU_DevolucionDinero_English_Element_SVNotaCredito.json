@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVNotaCredito",
+    "OmniProcessId": {
+        "Name": "DevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "NroNotaCredito": "=IF(%Tipo% = 'Asset', %CasoGestion:Case:PVU_NoNotaCredito__c%,IF(%IPAssetsPQR:Case%, %IPAssetsPQR:Case|1:PVU_NoNotaCredito__c%,''))",
+            "NroTtoNotaCredito": "=IF(%IPAssetsPQR:Case%, %IPAssetsPQR:Case|1:FIN_Numero_de_tratamiento_Nota_credito__c%,'')",
+            "ValorDevo": "=IF(%Tipo% = 'Asset', %CasoGestion:Case:PVU_Valor__c%,'')",
+            "isElimFin": "=IF(%Tipo% = 'SaldoFin'&& %IPAssetsPQR:Case% , true,false)"
+        },
+        "label": "SVNotaCredito",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Asset",
+                        "field": "Tipo"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "SaldoFin",
+                        "field": "Tipo"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDinero/English/SVNotaCredito"
+}

@@ -1,0 +1,58 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_NotificationCusChannel",
+    "OmniProcessId": {
+        "Name": "SendContractByEmail",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/SendContractByEmail/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "attachment": "=%SV_Attachment%",
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "content": "%SV_Content:Content%",
+            "contentType": "MESSAGE",
+            "deliveryReceipts": "N",
+            "description": "Contrato de Servicio Claro",
+            "messageType": "SMTP",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": "=LIST(%SV_EmailReceiver%)",
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Contrato de Servicio Claro",
+            "tryTimes": 3
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "ISBLANK(%proceso%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_IPNotificationCusChannel",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "SummarySendResult",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/SendContractByEmail/Procedure/IP_NotificationCusChannel"
+}

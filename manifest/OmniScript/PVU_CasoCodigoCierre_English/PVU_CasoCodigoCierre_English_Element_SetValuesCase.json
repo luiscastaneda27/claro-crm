@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesCase",
+    "OmniProcessId": {
+        "Name": "CasoCodigoCierre",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CasoCodigoCierre/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "CodigoCierre": "=IF(OR(%NoConforme% == true, %UpdateOds% == true), %CD_Otro%, %CD_Terminales%)",
+                "EstadoFinal": "=IF(OR(%NoConforme% == true, %UpdateOds% == true), %CD_Otro%, %CD_Terminales%)",
+                "Id": "%ContextId%",
+                "ObservacionesDiagnostico": "%Observaciones%",
+                "SubEstado": "=IF(OR(%CD_Otro% == \"No Conforme no Aprobado\", %CD_Terminales% == \"No Aplica Muerto en Caja\"), \"Equipo disponible en punto de Ingreso\", \"\")"
+            }
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CasoCodigoCierre/English/SetValuesCase"
+}

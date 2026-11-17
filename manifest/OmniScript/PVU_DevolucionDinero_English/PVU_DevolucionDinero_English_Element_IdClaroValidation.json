@@ -1,0 +1,43 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|IdClaroValidation|Spanish",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IdClaroValidation",
+    "OmniProcessId": {
+        "Name": "DevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "Spanish",
+        "Sub Type": "IdClaroValidation",
+        "Type": "FVU",
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "",
+                        "field": "EstadoCaja"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "EncuentraAssets"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "EncuentraAssets"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDinero/English/IdClaroValidation"
+}

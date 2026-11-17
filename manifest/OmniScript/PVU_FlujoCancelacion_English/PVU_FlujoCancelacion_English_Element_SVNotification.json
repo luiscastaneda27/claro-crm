@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVNotification",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountName": "%DatosCuenta:Cliente:NombreCompleto%",
+            "Email": "%DatosCuenta:Cliente:Email%",
+            "Parametros": [
+                "%DatosCuenta:Cliente:NombreCompleto%",
+                "%IPGetCaseInformation:Details:NumeroCaso%",
+                "%IPDateFormat:fechaSMS%",
+                "%DRGetAssetById:subscriberNumber%"
+            ],
+            "ParametrosAsunto": "%DRGetAssetById:subscriberNumber%",
+            "PhoneNumber": "%DatosCuenta:Cliente:Telefono%"
+        },
+        "label": "SVNotification",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/SVNotification"
+}

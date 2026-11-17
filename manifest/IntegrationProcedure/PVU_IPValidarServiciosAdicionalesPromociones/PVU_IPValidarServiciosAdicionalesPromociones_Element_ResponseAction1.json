@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction1",
+    "OmniProcessId": {
+        "Name": "IPValidarServiciosAdicionalesPromociones",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPValidarServiciosAdicionalesPromociones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ListPromocionesNoValidas": "=IF(ISBLANK(%ListPromocionesNoCompatibles:result%), LIST(), LIST(%ListPromocionesNoCompatibles:result%))",
+            "ListPromocionesValidas": "=IF(ISBLANK(%LBPromocionesValidas:lista%), LIST(), LIST(%LBPromocionesValidas:lista%))",
+            "ListPropocionesValidas2": "=IF(ISBLANK(%ListPropocionesValidas%), LIST(), LIST(%ListPropocionesValidas%))",
+            "OrderItemActual": "%OrderItemPlanActual%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPValidarServiciosAdicionalesPromociones/Procedure/ResponseAction1"
+}

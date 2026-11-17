@@ -1,0 +1,72 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|IdClaroValidation|Spanish",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IdClaroValidation",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "Spanish",
+        "Sub Type": "IdClaroValidation",
+        "Type": "FVU",
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "Cancelación Fallecimiento",
+                                    "field": "vozCliente"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "SelecCliente:EsTercero"
+                                },
+                                {
+                                    "condition": "<>",
+                                    "data": "Backoffice Nível 1 - Retención",
+                                    "field": "UserDetails:Role"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "<>",
+                                    "data": "Cancelación Fallecimiento",
+                                    "field": "vozCliente"
+                                },
+                                {
+                                    "condition": "<>",
+                                    "data": "Backoffice Nível 1 - Retención",
+                                    "field": "UserDetails:Role"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validarIdentidad"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/IdClaroValidation"
+}

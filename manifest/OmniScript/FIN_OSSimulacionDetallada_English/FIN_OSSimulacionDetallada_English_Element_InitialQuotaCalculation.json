@@ -1,0 +1,123 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "InitialQuotaCalculation",
+    "OmniProcessId": {
+        "Name": "OSSimulacionDetallada",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSSimulacionDetallada/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepInfoSimulacion",
+        "OmniProcessId": {
+            "Name": "OSSimulacionDetallada",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSSimulacionDetallada/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSSimulacionDetallada/English/StepInfoSimulacion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepInfoSimulacion",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "bStandalone": true,
+        "conditionType": "Hide if False",
+        "controlWidth": 12,
+        "customAttributes": [
+            {
+                "name": "term",
+                "source": "%StepInfoSimulacion:LWCPreSim:selectedPlazo:PlazoSelect%"
+            },
+            {
+                "name": "salesamount",
+                "source": "%salesAmount%"
+            },
+            {
+                "name": "pagoiniciales",
+                "source": "%pagosIniciales%"
+            },
+            {
+                "name": "nameproduct",
+                "source": "%nameProduct%"
+            },
+            {
+                "name": "materialproduct",
+                "source": "%materialProduct%"
+            },
+            {
+                "name": "userchannel",
+                "source": "%userChannel%"
+            },
+            {
+                "name": "credithistoryquota",
+                "source": "%creditHistoryQuota%"
+            },
+            {
+                "name": "typeproduct",
+                "source": "%typeProduct%"
+            },
+            {
+                "name": "creditquota",
+                "source": "%creditQuota%"
+            },
+            {
+                "name": "channel",
+                "source": "%channel%"
+            },
+            {
+                "name": "monthlyterm",
+                "source": "%StepInfoSimulacion:LWCPreSim:selectedPlazo:PlazoSelect%"
+            },
+            {
+                "name": "financingamount",
+                "source": "%StepInfoSimulacion:LWCPreSim:selectedPlazo:montoInput%"
+            },
+            {
+                "name": "clienttype",
+                "source": "%clientType%"
+            },
+            {
+                "name": "producttype",
+                "source": "%productType%"
+            },
+            {
+                "name": "servicecondition",
+                "source": "%serviceCondition%"
+            },
+            {
+                "name": "count",
+                "source": "%count%"
+            },
+            {
+                "name": "customertype",
+                "source": "%customerType%"
+            },
+            {
+                "name": "cyclemaster",
+                "source": "%cicloDeFacturacionMaster%"
+            }
+        ],
+        "hide": false,
+        "label": "InitialQuotaCalculation",
+        "lwcName": "fin_InitialQuotaCalculation",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "",
+                        "field": "StepInfoSimulacion:LWCPreSim:selectedPlazo:EnableSimulation"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Custom Lightning Web Component",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSSimulacionDetallada/English/InitialQuotaCalculation"
+}

@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_AddressServiceUpdate",
+    "OmniProcessId": {
+        "Name": "AddressManagement",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/AddressManagement/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ServiceAddress": {
+                "Address": {
+                    "AccountId": "%AccountId%",
+                    "AccountName": "%accList:name%",
+                    "FullServiceAddress": "%StepMER:BlockDirections:Addresses:selectAddress:selectedAddress|1:splitAddres:direccionTexto% %StepCreateAddress:TypeAheadCityPopulatedCenter-Block:FVU_CentroPobladoName__c% %StepCreateAddress:TypeAheadCity-Block:FVU_CityName__c% %StepCreateAddress:TypeAheadDepartment-Block:Label%",
+                    "ServiceAddressNode": "%ResponseMER%",
+                    "ServiceAddressStatus": "Validada",
+                    "ServiceAddressType": "%ResponseMER:drDireccion:idTipoDireccion%",
+                    "ServiceDaneCode": "%StepCreateAddress:TypeAheadCityPopulatedCenter-Block:FVU_DaneCity__c%",
+                    "ServiceExtract": "%ResponseConsultaDireccion:stratum%",
+                    "ServiceMerId": "%StepMER:BlockDirections:Addresses:selectAddress:selectedAddress|1:splitAddres:idDireccionDetallada%",
+                    "ServiceMiniCity": "%StepCreateAddress:TypeAheadCityPopulatedCenter-Block:FVU_CentroPobladoName__c%",
+                    "ServiceMunicipality": "%StepCreateAddress:TypeAheadCity-Block:FVU_CityName__c%",
+                    "ServiceNeighborhood": "%StepCreateAddress:FormulaNeighborhood%",
+                    "ServicePostalCode": "%StepCreateAddress:FormulaPostalCode%",
+                    "ServiceShortAddress": "%StepCreateAddress:FormulaStreet%",
+                    "ServiceState": "%StepCreateAddress:TypeAheadDepartment-Block:Label%"
+                }
+            }
+        },
+        "label": "SV_AddressServiceUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "AccountId"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "FormulaShowConsultaDireccion"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "FormulaShowFraudeMarkExists"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/AddressManagement/English/SV_AddressServiceUpdate"
+}

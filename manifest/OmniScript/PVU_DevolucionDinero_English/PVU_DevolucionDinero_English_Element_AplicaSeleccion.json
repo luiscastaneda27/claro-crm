@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "AplicaSeleccion",
+    "OmniProcessId": {
+        "Name": "DevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AplicaSeleccionVC": "=OR(\n  %Tipo% == 'Saldo',\n  %Tipo% == 'SaldoFin',\n  AND(%vozCliente% <> \"Reverso de pago\", %Case:Valor% <= 1200000, %Case:Valor% <> null)\n)",
+            "montoDevolucion": "=IF(%Case:Valor% != null, %Case:Valor%, \nIF(%IngresaValor:inputValor% != null, %IngresaValor:inputValor%))"
+        },
+        "label": null,
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDinero/English/AplicaSeleccion"
+}

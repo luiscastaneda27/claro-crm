@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDuplicados",
+    "OmniProcessId": {
+        "Name": "ValidarAdicionDuplas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ValidarAdicionDuplas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Titular": "=CONCAT(IF( %PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|7:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|7:value:compImeiImsiMin|1:imei%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|6:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|6:value:compImeiImsiMin|1:imei%, IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|5:name% == 'identidadDuplicados',    %PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|5:value:compImeiImsiMin|1:imei%, IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|4:name% == 'identidadDuplicados',    %PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|4:value:compImeiImsiMin|1:imei%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|3:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|3:value:compImeiImsiMin|1:imei%, IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|2:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|2:value:compImeiImsiMin|1:imei%, IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|1:name% == 'identidadDuplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|1:value:compImeiImsiMin|1:imei%,''))))))))",
+            "duplas": "=IF( %PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|7:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|7:value:data%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|6:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|6:value:data%, IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|5:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|5:value:data%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|4:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|4:value:data%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|3:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|3:value:data%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|2:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|2:value:data%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|1:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|1:value:data%,'')))))))",
+            "imeiDuplas": "=IF( %PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|7:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|7:value:data|1:imei%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|6:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|6:value:data|1:imei%, IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|5:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|5:value:data|1:imei%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|4:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|4:value:data|1:imei%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|3:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|3:value:data|1:imei%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|2:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|2:value:data|1:imei%,IF(%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|1:name% == 'duplicados',%PVU_IPGetImeiInformationBydoc:consultaImei:customer:product|1:productCharacteristic|1:value:data|1:imei%,'')))))))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues14",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ValidarAdicionDuplas/Procedure/SVDuplicados"
+}

@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "OrdenNotLink",
+    "OmniProcessId": {
+        "Name": "DevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/DevolucionDinero/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "CodigoAutorizacion": "%CodigoAutorizacionNotLink%",
+                "CodigoCierre": "No Aplica",
+                "EntidadBancaria": "%EntidadBancariaNotLink%",
+                "EstadoCaja": "%EstadoCajaShowNotLink%",
+                "Franquicia": "%FranquiciaNotLink%",
+                "MedioPago": "=IF(%SetEstadoCajaNotLinkPago% == \"Caja Cerrada\", %medioPagoCashClosed%, %medioPagoCashOpen%)",
+                "MotivoDevolucion": "%MotivoDevoSelectNotLink%",
+                "NumeroCuenta": "%NumeroCuentaNotLink%",
+                "OrderId": "%CasoGestion:Order:Id%",
+                "OtraEntidadBancaria": "%OtraEntidadBancariaNotLink%",
+                "Status": "En curso",
+                "SubCategoria": "Pagos",
+                "TipoCuenta": "%TipoCuentaNotlink%",
+                "Ultimos4Digitos": "%NumerosTarjetaNotLink%",
+                "Valor": "%CasoGestion:Order:FVU_EffectiveOneTimeIncTaxesTotal__c%"
+            }
+        },
+        "label": "SetValues2",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Order",
+                        "field": "Tipo"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "IPGetOrderPayment:success"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/DevolucionDinero/English/OrdenNotLink"
+}

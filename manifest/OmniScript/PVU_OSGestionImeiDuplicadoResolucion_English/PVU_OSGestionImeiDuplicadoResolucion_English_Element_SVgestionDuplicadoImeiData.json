@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVgestionDuplicadoImeiData",
+    "OmniProcessId": {
+        "Name": "OSGestionImeiDuplicadoResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "accion": "=IF(%BotonAdicionarDupla%=='Adicionar','Adicionar','Borrar')",
+            "apellidos": "%Apellidos%",
+            "ciudad": "=%CiudadDomicilio%",
+            "detalle": "=IF(%BotonAdicionarDupla%=='Adicionar','Adición',%JustificacionEliminacion%)",
+            "direccion": "%DireccionDomicilio%",
+            "duplasGestion": "=IF(%BotonAdicionarDupla%=='Adicionar',ARRAY(%EBAdicionar%),ARRAY(%RAgetFilterList:Borrado%))",
+            "imei": "%imeiFromContext%",
+            "infoLegal": "%Autoriza%",
+            "marca": "%Marca%",
+            "modelo": "%Modelo%",
+            "nombres": "%Nombre%",
+            "numeroDoc": "%numDocFromContext%",
+            "pruebaCiudad1": "=%CiudadDomicilio%",
+            "pruebaCiudad2": "=%CiudadDomicilio%",
+            "tipoDoc": "=IF(%tipoDocFromContext%= 'CC','1',IF(%tipoDocFromContext%  == 'PP', '2', IF(%tipoDocFromContext% == 'NI','3', '4')))",
+            "tipoOperacion": "=IF(%BotonAdicionarDupla%=='Adicionar',1,2)",
+            "userId": "%userId%"
+        },
+        "label": "SVgestionDuplicadoImeiData",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSGestionImeiDuplicadoResolucion/English/SVgestionDuplicadoImeiData"
+}

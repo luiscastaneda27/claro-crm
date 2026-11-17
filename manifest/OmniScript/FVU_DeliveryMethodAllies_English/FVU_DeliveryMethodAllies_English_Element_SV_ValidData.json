@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_ValidData",
+    "OmniProcessId": {
+        "Name": "FVU_DeliveryMethodAllies",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/DeliveryMethodAllies/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "RunAssignBillingCycle": "=IF(%Order:BillingAccountBillCycle% = NULL, true, false)",
+            "SeletedPromiseLWC": "%StepDeliveryMethod:LwcOrderProductDeliveryMethod:SeletedPromise%",
+            "SomTotalSales": "=IF(%StepDeliveryMethod:DeliveryMethodGroup1% == \"Delivery\"||%StepDeliveryMethod:DeliveryMethodGroup2% == \"Delivery\", INTEGER(SUM(%Order:OrderOneTimeTotal%,%LwcOrderProductDeliveryMethod:TotalDeliveryCost%) - %Order:TotalOneTimeDiscount%),INTEGER(%Order:OrderOneTimeTotal% - %Order:TotalOneTimeDiscount%))",
+            "ValidAddress": "=IF(%StepDeliveryMethod:DeliveryMethodGroup2%==\"ImmediatePickUp\",%orderProductImmediatepickup:addressDetail%,IF(%StepDeliveryMethod:DeliveryMethodGroup1%==\"PickUp\"||(%StepDeliveryMethod:DeliveryMethodGroup2%==\"PickUp\",%FlexcardStoresList:StoreSelected:Store:addressDetail%,IF(%StepDeliveryMethod:DeliveryMethodGroup1%==\"Delivery\"||%StepDeliveryMethod:DeliveryMethodGroup2%==\"Delivery\",%Order:ServiceAddress%,null))))",
+            "ValidCostDelivery": "=IF(%StepDeliveryMethod:DeliveryMethodGroup1% <> \"Delivery\"||%StepDeliveryMethod:DeliveryMethodGroup2% <> \"Delivery\", 0,INTEGER(%LwcOrderProductDeliveryMethod:TotalDeliveryCost%))",
+            "ValidDocument": "=IF(OR(AND(%StepDeliveryMethod:DeliveryMethodGroup1% == \"PickUp\"||%StepDeliveryMethod:DeliveryMethodGroup2% == \"PickUp\", %StepDeliveryMethod:AuthorizedPerson% == true), AND(%StepDeliveryMethod:DeliveryMethodGroup1% == \"Delivery\"||%StepDeliveryMethod:DeliveryMethodGroup2% == \"PickUp\", %StepDeliveryMethod:AuthorizedPerson2% == true)), %StepDeliveryMethod:BlockAuthorizedPerson:Document%, %Account:AccountDocumentNumber%)\n\n\n",
+            "ValidDocumentType": "=IF(OR(AND(%StepDeliveryMethod:DeliveryMethodGroup1% == \"PickUp\"||%StepDeliveryMethod:DeliveryMethodGroup2% == \"PickUp\", %StepDeliveryMethod:AuthorizedPerson% == true), AND(%StepDeliveryMethod:DeliveryMethodGroup1% == \"Delivery\"||%StepDeliveryMethod:DeliveryMethodGroup2% == \"Delivery\", %StepDeliveryMethod:AuthorizedPerson2% == true)), %StepDeliveryMethod:BlockAuthorizedPerson:DocumentType%, %Account:AccountDocumentType%)",
+            "ValidMethodOfDelivery": "=IF(%StepDeliveryMethod:DeliveryMethodFormula%==\"ImmediatePickUp\",\"Entrega Inmediata\",IF(%StepDeliveryMethod:DeliveryMethodFormula%==\"PickUp”,”Retiro en Tienda\",IF(%StepDeliveryMethod:DeliveryMethodFormula%==\"Delivery\",\"Entrega en Domicilio\",null)))",
+            "ValidPhone": "=IF(OR(AND(%StepDeliveryMethod:SelectMethod% == \"PickUp\", %StepDeliveryMethod:AuthorizedPerson% == true), AND(%StepDeliveryMethod:SelectMethod% == \"Delivery\", %StepDeliveryMethod:AuthorizedPerson2% == true)), %StepDeliveryMethod:BlockAuthorizedPerson:Phone%, %Account:AccountPhone%)",
+            "ValidReceives": "=IF(OR(AND(%StepDeliveryMethod:SelectMethod% == \"PickUp\", %StepDeliveryMethod:AuthorizedPerson% == true), AND(%StepDeliveryMethod:SelectMethod% == \"Delivery\", %StepDeliveryMethod:AuthorizedPerson2% == true)), %StepDeliveryMethod:BlockAuthorizedPerson:Name%, %Account:AccountName%)",
+            "ValidSelectDeliveryMethod": "=IF(%DeliveryMethodFormula%, false, true)",
+            "ValidSelectPromises": "=IF(%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected%,false,true)",
+            "ValidSelectTienda": "=%FlexcardStoresList:StoreSelected:Store:warehouseName% == NULL"
+        },
+        "label": "SV_ValidData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/DeliveryMethodAllies/English/SV_ValidData"
+}

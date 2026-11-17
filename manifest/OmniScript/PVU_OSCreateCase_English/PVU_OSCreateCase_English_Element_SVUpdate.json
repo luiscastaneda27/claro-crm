@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdate",
+    "OmniProcessId": {
+        "Name": "CreateCase",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSCreateCase/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Cierre": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\"  && %acetacionCosto% == \"Cliente No Acepta Costo\", 'No Acepta Costo', %Cierre%)",
+            "Status": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\"  && %acetacionCosto% == \"Cliente No Acepta Costo\", 'Cerrado', %Status%)",
+            "carcasaToInsert": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\", %fueraGarantiaStep:OdsDeIngresoGarantia:InspeccionFisicaGarantia:CarcasaGarantia%, %vozClienteStep:OdsDeIngreso:InspeccionFisica:Carcasa%)",
+            "casosServicioTecnico": "=IF(COUNT(%cases:closedCases%) > 1, true, false)",
+            "comentariosClienteToInsert": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\", %fueraGarantiaStep:OdsDeIngresoGarantia:ComentariosInconformidadGarantia:ComentariosClienteGarantia%, %vozClienteStep:OdsDeIngreso:ComentariosInconformidad:ComentariosCliente%)",
+            "conectorToInsert": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\", %fueraGarantiaStep:OdsDeIngresoGarantia:InspeccionFisicaGarantia:ConectorGarantia%, %vozClienteStep:OdsDeIngreso:InspeccionFisica:Conector%)",
+            "fallaClienteToInsert": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\", %fueraGarantiaStep:OdsDeIngresoGarantia:FallaClienteGarantia-Block:Value%, %vozClienteStep:OdsDeIngreso:FallaCliente-Block:Value%)",
+            "manosLibreToInsert": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\", %fueraGarantiaStep:OdsDeIngresoGarantia:InspeccionFisicaGarantia:ManosLibresGarantia%, %vozClienteStep:OdsDeIngreso:InspeccionFisica:ManosLibres%)",
+            "motivoInconformidad": "%enGarantiaStep:Select1%",
+            "observacionesIngresoToInsert": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\", %fueraGarantiaStep:OdsDeIngresoGarantia:InspeccionFisicaGarantia:ObservacionesdeingresoGarantia%, %vozClienteStep:OdsDeIngreso:InspeccionFisica:Observacionesdeingreso%)",
+            "otrosToInsert": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\", %fueraGarantiaStep:OdsDeIngresoGarantia:InspeccionFisicaGarantia:OtrosGarantia%, %vozClienteStep:OdsDeIngreso:InspeccionFisica:Otros%)",
+            "pantallaToInsert": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\", %fueraGarantiaStep:OdsDeIngresoGarantia:InspeccionFisicaGarantia:PantallaGarantia%, %vozClienteStep:OdsDeIngreso:InspeccionFisica:Pantalla%)",
+            "subStatus": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\"  && %acetacionCosto% == \"Cliente No Acepta Costo\", 'No ingresa equipo', %subEstado%)",
+            "tapaToInsert": "=IF(%vozCliente% == \"Falla de Equipo Fuera de Garantía\", %fueraGarantiaStep:OdsDeIngresoGarantia:InspeccionFisicaGarantia:TapaGarantia%, %vozClienteStep:OdsDeIngreso:InspeccionFisica:Tapa%)"
+        },
+        "label": "",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSCreateCase/English/SVUpdate"
+}

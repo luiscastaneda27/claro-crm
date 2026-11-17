@@ -1,0 +1,57 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGetContext",
+    "OmniProcessId": {
+        "Name": "OSGestionImeiDuplicado",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSGestionImeiDuplicado/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "=STRING(%AccountId%)",
+            "AssetId": "=STRING(%ContextId%)",
+            "GestionName": "Registro de IMEI",
+            "VozCliente": "Gestión de IMEI duplicado",
+            "camino": "=IF(%isReporteOtrosOperadores% = true, 'rosado',IF(OR(AND(%tipoReporte% = 6,%titularidad% = false, %existeBdoPositivo% = false),AND(%processDetection% = 'DUPLICADO_INTRARED',%titularidad% = false, %existeBdoPositivo% = false)), 'azul',IF(OR(AND(%tipoReporte% = 6,%titularidad% = true),AND(%processDetection% = 'DUPLICADO_INTRARED',%titularidad% = true)), 'verde', 'blanco')))",
+            "existeBdaPositivoFromContext": "%existeBdaPositivo%",
+            "existeBdoPositivoFromContext": "%existeBdoPositivo%",
+            "imeiFromContext": "=STRING(%imei%)",
+            "imeiLuhnFromContext": "=STRING(%imeiLuhn%)",
+            "isReporteOtrosOperadoresFromContext": "%isReporteOtrosOperadores%",
+            "marcaFromContext": "=STRING(%marca%)",
+            "minFromContext": "=STRING(%minContext%)",
+            "minFromContextBackEnd": "STRING(%min%)",
+            "modeloFromContext": "=STRING(%modelo%)",
+            "msisdnFromContext": "=STRING(%msisdn%)",
+            "nombreClienteFromContext": "%nombreCliente%",
+            "numDocFromContext": "=STRING(%numDoc%)",
+            "processDetectionFromContext": "%processDetection%",
+            "reincidenteReportedByClaroContext": "%reincidenteReportedByClaro%",
+            "tipoDocFromContext": "=STRING(%tipoDoc%)",
+            "tipoDocIdFromContext": "%tipoDocId%",
+            "tipoReporteFromContext": "=STRING(%tipoReporte%)",
+            "titularidadFromContext": "%titularidad%",
+            "userChannelFromContext": "%userChannel%",
+            "usuarioConsultaContext": "=STRING(%usuarioRed%)",
+            "usuarioRedFromContext": "%usuarioRed%"
+        },
+        "label": "SVGetContext",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSGestionImeiDuplicado/English/SVGetContext"
+}

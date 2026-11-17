@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "setnumberStatus",
+    "OmniProcessId": {
+        "Name": "IPvscGetNumberResourceInfo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/IPvscGetNumberResourceInfo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "hlcode": "%TransformXMLtoJSON:hlcode%",
+            "hmcodePub": "=%TransformXMLtoJSON:hmcodePub%",
+            "npcode": "%TransformXMLtoJSON:npcode%",
+            "number": "%TransformXMLtoJSON:number%",
+            "numberStatus": "=IF(%TransformXMLtoJSON:numberStatus% = \"f\", \"Libre\", IF(%TransformXMLtoJSON:numberStatus% = \"r\", \"Reservado\", IF(%TransformXMLtoJSON:numberStatus% = \"a\", \"Activo\", IF(%TransformXMLtoJSON:numberStatus% = \"d\", \"Desactivo\", IF(%TransformXMLtoJSON:numberStatus% = \"o\", \"Portado\", IF(%TransformXMLtoJSON:numberStatus% = \"i\", \"Importado\", IF(%TransformXMLtoJSON:numberStatus% = \"c\", \"Contratado\", IF(%TransformXMLtoJSON:numberStatus% = \"t\", \"Tiempo de cuarentena No Nativa\", IF(%TransformXMLtoJSON:numberStatus% = \"s\", \"Devuelto al operador origen\", \"\")))))))))",
+            "plcode": "%TransformXMLtoJSON:plcode%",
+            "portNum": "%TransformXMLtoJSON:portNum%",
+            "responseOpResource": "%TransformXMLtoJSON:responseOpResource%",
+            "rscode": "%TransformXMLtoJSON:rscode%"
+        },
+        "executionConditionalFormula": "IPGetMock:ModoTest = \"false\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/IPvscGetNumberResourceInfo/Procedure/setnumberStatus"
+}

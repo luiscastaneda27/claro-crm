@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCesionData",
+    "OmniProcessId": {
+        "Name": "Consulta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaImei/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "cesionImei": "%Step1:Text4%",
+            "cesionMIN": "=IF(SUBSTRING(%minString%, 0, 2) == \"57\", SUBSTRING(%minString%, 2), %minString%)",
+            "cesionMarca": "=IF(%QueryTac:response:headerResponse:statusCode% == 'OK', %QueryTac:response:cursor:Row:Column|2:value%, '')",
+            "cesionModelo": "=IF(%QueryTac:response:headerResponse:statusCode% == 'OK', %QueryTac:response:cursor:Row:Column|3:value%, '')",
+            "cesionNumDoc": "%AccountData:AccountDocument|1:FVU_DocumentNumber__c%",
+            "cesionTipoDoc": "=IF(%ConsultaTipoIdentificacion:response:TipoDocumentoValue% != null, %ConsultaTipoIdentificacion:response:TipoDocumentoValue%, '')"
+        },
+        "label": "SVCesionData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaImei/English/SVCesionData"
+}

@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_Order",
+    "OmniProcessId": {
+        "Name": "CartCheckout",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/CartCheckout/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Order": {
+                "BillingAddressId": "%StepDeliveryPago:FlexCardAddressesList:selectAddress:selectedAddress|1:Id%",
+                "DeliveryData": "%SeletedPromiseLWC%",
+                "DeliveryMethod": "%StepDeliveryMethod:SelectMethod%",
+                "LoyaltyType": "%BonoType%",
+                "OrderId": "%ContextId%",
+                "PaymentMethod": "%PaymentMethodSummary%",
+                "RemoveEBilling": "%CheckboxRemoveEBilling%",
+                "ValueEmail": "%PaymentInformation:ValueEmail%",
+                "ValuePhone": "%PaymentInformation:ValuePhone%"
+            }
+        },
+        "label": "SV_Order",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/CartCheckout/English/SV_Order"
+}

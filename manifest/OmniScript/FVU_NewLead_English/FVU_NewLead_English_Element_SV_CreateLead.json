@@ -1,0 +1,63 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CreateLead",
+    "OmniProcessId": {
+        "Name": "NewLead",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/NewLead/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "DataLead": {
+                "CodeOTP": "%OTP:CodeOTP%",
+                "DocumentNumber": "%DocumentNumber%",
+                "DocumentType": "%ContactInformation:DocumentType%",
+                "Email": "%ContactInformation:Email%",
+                "EmailOwnership": "%EmailOwnership%",
+                "ExternalOperator": "%ContactInformation:ExternalOperator%",
+                "FirstName": "=CASE(%ContactInformation:Name%, UPPER)",
+                "LastName": "=CASE(%ContactInformation:LastName%, UPPER)",
+                "OTPValidation": "=TODAY()",
+                "Phone": "%ContactInformation:Phone%",
+                "PrefProdServ": "%BlockPrefProdAndServ:ValueMobilePhoneProductsServ%",
+                "SecondLastName": "=CASE(%ContactInformation:SecondLastName%, UPPER)",
+                "Status": "AbiertoContactado"
+            }
+        },
+        "label": "SV_CreateLead",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "0",
+                        "field": "TotalLeads"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "0",
+                        "field": "TotalAccounts"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/NewLead/English/SV_CreateLead"
+}

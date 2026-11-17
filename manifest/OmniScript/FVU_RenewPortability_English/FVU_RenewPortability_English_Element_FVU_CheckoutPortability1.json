@@ -1,0 +1,38 @@
+{
+    "EmbeddedOmniScriptKey": "FVU|CheckoutPortability|English",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "FVU_CheckoutPortability1",
+    "OmniProcessId": {
+        "Name": "RenewPortability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RenewPortability/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "English",
+        "Sub Type": "CheckoutPortability",
+        "Type": "FVU",
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": true,
+                        "field": "HasNotificationBroker"
+                    },
+                    {
+                        "condition": "=",
+                        "data": true,
+                        "field": "IP_RenewPortInValidation:Continue"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RenewPortability/English/FVU_CheckoutPortability1"
+}

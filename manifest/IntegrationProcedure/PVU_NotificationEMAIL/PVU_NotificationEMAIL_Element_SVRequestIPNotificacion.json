@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequestIPNotificacion",
+    "OmniProcessId": {
+        "Name": "NotificationEMAIL",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/NotificationEMAIL/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "contentType": "CONTENTID",
+            "deliveryReceipts": "N",
+            "description": "%VozCliente%",
+            "messageType": "SMTP",
+            "parameters": {
+                "_BODY_": "%emailMessage%",
+                "_NAME1_": "%nombCliente%",
+                "_NUMER_LINEA_": "%nroTelefono%",
+                "_PROCESO_": "%VozCliente%"
+            },
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "mail": "%correoElectronico%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "%asuntoCorreo%",
+            "templateid": "CAMBIOSERV_01",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "%isNoTemplate% != true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/NotificationEMAIL/Procedure/SVRequestIPNotificacion"
+}

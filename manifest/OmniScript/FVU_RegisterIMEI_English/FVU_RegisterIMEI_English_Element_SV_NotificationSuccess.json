@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_NotificationSuccess",
+    "OmniProcessId": {
+        "Name": "RegisterIMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RegisterIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ContentSuccess": "=IF(%ConcatIMEI2Success% != NULL, \"Estimado cliente el registro de el/los IMEI %ConcatIMEISuccess%,%ConcatIMEI2Success% se encuentra en proceso.\", \"Estimado cliente el registro de el/los IMEI %ConcatIMEISuccess% se encuentra en proceso.\")",
+            "PhoneSMS": "=CONCATENATE(\"57\",%AccountPhone%)"
+        },
+        "label": "SetContent",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "",
+                        "field": "ConcatIMEISuccess"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RegisterIMEI/English/SV_NotificationSuccess"
+}

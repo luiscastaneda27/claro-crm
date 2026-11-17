@@ -1,0 +1,77 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CalloutOrderPaymentConfirmation",
+    "OmniProcessId": {
+        "Name": "OrderPaymentConfirmationReject",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/Service/OrderPaymentConfirmationReject/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LB_CallOut",
+        "OmniProcessId": {
+            "Name": "OrderPaymentConfirmationReject",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/Service/OrderPaymentConfirmationReject/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/Service/OrderPaymentConfirmationReject/Procedure/LB_CallOut",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LB_CallOut",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(SetLoop:orderId)",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "description": "=%CalloutOrderPaymentConfirmation%",
+            "message": "=\"Failed\"",
+            "messageCode": "=404",
+            "success": false
+        },
+        "label": "HTTPAction1",
+        "namedCredential": "NamedCredentialIntegrations",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "POST",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "ApkSitSfic": "%apiKey:ValueKey%",
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+            },
+            "sendBody": true,
+            "timeout": 20000,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "%SetUrlPath:pathUrl%",
+        "retryCount": 3,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "SetLoop",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/Service/OrderPaymentConfirmationReject/Procedure/CalloutOrderPaymentConfirmation"
+}

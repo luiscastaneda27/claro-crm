@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVFinalCase",
+    "OmniProcessId": {
+        "Name": "OSDetallesFacturasMovFin",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSDetallesFacturasMovFin/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "codigoCierre": "=IF(%NotificationResponse:EndProcess% == \"success\",\"Aprobado Creer en Cliente\", \"Trámite no exitoso\")",
+            "email": "%IPresponse:Details:email%",
+            "isEmail": "=IF(%IPresponse:Details:medioContacto% == \"Correo electrónico\", true, false)",
+            "nombreCliente": "%IPresponse:Details:AccountName%",
+            "phone": "%IPresponse:Details:Phone%",
+            "statusCase": "Cerrado"
+        },
+        "label": "SVFinalCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSDetallesFacturasMovFin/English/SVFinalCase"
+}

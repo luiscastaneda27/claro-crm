@@ -1,0 +1,54 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "GuardarPlanProductId",
+    "OmniProcessId": {
+        "Name": "CompletarOferta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/CompletarOferta/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AnadirPaquetesAdicionales": {
+                "OrderItemId": "%IPGetCartData:Details:RootItemId%",
+                "OrderType": "%IPGetCartData:Details:OrderType%",
+                "Proceso": "=IF(%processName% == 'RoamingActivacion', 'Roaming','')",
+                "Product2Id": "%IPGetCartData:Details:RootProductId%",
+                "SelectedCountries": "%SelectedCountries%"
+            },
+            "CompraPromociones": {
+                "OrderAccountId": "%IPGetCartData:Details:AccountId%",
+                "OrderItemId": "%IPGetCartData:Details:RootItemId%",
+                "OrderType": "%IPGetCartData:Details:OrderType%",
+                "Proceso": "%IPGetCartData:Details:Proceso%",
+                "Product2Id": "%IPGetCartData:Details:RootProductId%",
+                "promoType": "%IPGetCartData:Details:CartConfig:CompraPromociones:filterType%"
+            },
+            "DesactivacionPaquetes": {
+                "DetalleConsumo": "false",
+                "PlanId": "%ContextId%",
+                "PuedeDesactivarServicio": "%IPValidacionesDesactivacionRoaming:puedeDesactivarServicio%",
+                "UserId": "%userId%"
+            },
+            "Validacion": true
+        },
+        "label": "Guardar Plan ProductId",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/CompletarOferta/English/GuardarPlanProductId"
+}

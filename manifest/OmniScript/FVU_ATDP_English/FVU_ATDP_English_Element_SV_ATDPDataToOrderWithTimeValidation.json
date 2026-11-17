@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_ATDPDataToOrderWithTimeValidation",
+    "OmniProcessId": {
+        "Name": "FVU_ATDP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/ATDP/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ATDPType": "=IF(%PersonalDataAgreementMethod% == \"SMS - Teléfono de contacto\", \"sms\", \"email\")",
+            "DateAcceptedATDP": "=%PersonalDataAgreementDate%",
+            "SendEmailATDP": "=IF(%PersonalDataAgreementMethod% == \"Correo electrónico\", %AccountAuthorizationValue%, %AccountEmail%)",
+            "SendPhoneATDP": "=IF(%PersonalDataAgreementMethod% == \"SMS - Teléfono de contacto\", %AccountAuthorizationValue%, %AccountPhone%)"
+        },
+        "label": "SV_ATDPDataToOrderWithTimeValidation",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "HasATDPApproval"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/ATDP/English/SV_ATDPDataToOrderWithTimeValidation"
+}

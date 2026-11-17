@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCasePosPagoPrepago",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "Categoria": "Solicitud de información y modificaciones",
+                "DatosTerceroValues": "%SVTercerAutorizado%",
+                "FechaActivacion": "%FechaFinal%",
+                "FechaCancelacion": "%FechaFinal%",
+                "Id": "%CaseId%",
+                "NombreApellidosReporter": "%IPValidacionesCancelacion:account:Name%",
+                "NumeroDocCliente": "%IPValidacionesCancelacion:account:FVU_DocumentNumber__c%",
+                "OrderId": "%GeneratedOrder:result:orderId%",
+                "Status": "En curso",
+                "SubCategoria": "Cancelación Servicio Móvil",
+                "SubEstado": "Pendiente ejecución de la orden",
+                "TipoDocumento": "%IPValidacionesCancelacion:account:FVU_DocumentType__c%"
+            }
+        },
+        "label": "SetValuesCasePosPre",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Cambio de pospago a prepago",
+                        "field": "vozCliente"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            {
+                "vlcCart": true,
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/SVCasePosPagoPrepago"
+}

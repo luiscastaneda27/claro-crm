@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Data_Extra",
+    "OmniProcessId": {
+        "Name": "OSConsultaIMEIResolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSConsultaIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "actividadTrue": "=IF(%IPGetImei:consultaImei:customer:product|1:consultaInfo:actividad:min% != \"\" || %IPGetImei:consultaImei:customer:product|1:consultaInfo:actividad:min% != null , true,false)",
+            "bdaRegistrado": "=IF(\n  %bdaPositivo:Estado% == \"01\",\n  true,\n  false\n)",
+            "bdoFechaReporte": "%bdoNegativo:listaReportesBean|1:fechaReporte%",
+            "bdoMsisdn": "%bdoNegativo:listaReportesBean|1:msisdn%",
+            "bdoMsisdnLast2": "=IF(%bdoMsisdnNorm% != '', SUBSTRING(%bdoMsisdnNorm%, LENGTH(%bdoMsisdnNorm%) - 2), '')",
+            "bdoMsisdnMask": "=IF(%bdoMsisdnLast2% != '', '********' + %bdoMsisdnLast2%, '')",
+            "bdoMsisdnNorm": "=IF(\n  AND(%bdoMsisdnRaw% != null, %bdoMsisdnRaw% != '', %bdoMsisdnRaw% != 'null'),\n  IF(SUBSTRING(%bdoMsisdnRaw%,0,2) == '57', SUBSTRING(%bdoMsisdnRaw%,2), %bdoMsisdnRaw%),\n  ''\n)",
+            "bdoMsisdnRaw": "%bdoNegativo:listaReportesBean|1:msisdn%",
+            "bdoOperador": "%bdoNegativo:listaReportesBean|1:operador%",
+            "bdoTextoUI": "=IF(%bdoTieneReporte% == true, 'tipoReporte: ' + %bdoTipoReporteTexto% + ',operador:' + %bdoOperador% + ',fechaReporte:' + %bdoFechaReporte% + ',msisdn:' + %bdoMsisdnMask%, 'Sin reporte: Consulta exitosa. El IMEI no cuenta con ningún reporte.')",
+            "bdoTieneReporte": "=IF(%bdoNegativo:isReported% == true, true, false)",
+            "bdoTipoReporte": "%bdoNegativo:listaReportesBean|1:tipoReporte%",
+            "bdoTipoReporteNum": "=IF(\n  %bdoNegativo:listaReportesBean|1:tipoReporteCodigo% != null,\n  %bdoNegativo:listaReportesBean|1:tipoReporteCodigo%,\n  %bdoNegativo:listaReportesBean|1:tipoReporte%\n)",
+            "bdoTipoReporteTexto": "=IF(%bdoTipoReporteNum% == '1' OR %bdoTipoReporteNum% == 1, 'Robo', IF(%bdoTipoReporteNum% == '2' OR %bdoTipoReporteNum% == 2, 'Pérdida', IF(%bdoTipoReporteNum% == '3' OR %bdoTipoReporteNum% == 3, 'Sin Registro', IF(%bdoTipoReporteNum% == '4' OR %bdoTipoReporteNum% == 4, 'Inválido', IF(%bdoTipoReporteNum% == '6' OR %bdoTipoReporteNum% == 6, 'Duplicado', IF(%bdoTipoReporteNum% == '7' OR %bdoTipoReporteNum% == 7, 'Reincidente', IF(%bdoTipoReporteNum% == '8' OR %bdoTipoReporteNum% == 8, 'Administrativo', IF(%bdoTipoReporteNum% == '9' OR %bdoTipoReporteNum% == 9, 'Dijín', 'Sin reporte'))))))))",
+            "codeMessage": "=IF(%IPGetImei:consultaImei:customer:product|1:consultaInfo:tac:mensaje% != \"Equipo Homologado\" || %IPGetImei:consultaImei:customer:product|1:consultaInfo:tac:mensaje% == \"\" , \"PVU021\",\"\")",
+            "hasTac": "=IF(%IPGetImei:consultaImei:customer:product|1:consultaInfo:tac:mensaje% == \"Equipo Homologado\" , true,false)",
+            "marcaTextoUI": "='name: MARKETING_NAME,type: ' + %IPGetImei:consultaImei:customer:product|1:consultaInfo:gsmaInfo:marca% + ' ' + %IPGetImei:consultaImei:customer:product|1:consultaInfo:gsmaInfo:referencia%",
+            "minConsultaRaw": "%IPGetImei:consultaImei:customer:product|1:consultaInfo:actividad:min%",
+            "modeloTextoUI": "='name: MODEL_NAME,type: ' + %IPGetImei:consultaImei:customer:product|1:consultaInfo:gsmaInfo:referencia%",
+            "tac": "%IPGetImei:consultaImei:customer:product|1:consultaInfo:gsmaInfo:tac%"
+        },
+        "label": "SV_Data_Extra",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSConsultaIMEIResolucion/English/SV_Data_Extra"
+}

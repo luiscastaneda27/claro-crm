@@ -1,0 +1,59 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCase",
+    "OmniProcessId": {
+        "Name": "FlujoCancelacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/FlujoCancelacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%accountIdFromContext%",
+                "AssetId": "%AssetId%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "DatosTerceroValues": "%SVTercerAutorizado%",
+                "MotivoCancelacion": "%Cancelacion:stepCancelacion:MotivoCancelacion%",
+                "NumeroLinea": "%minContext%",
+                "Status": "En curso",
+                "SubCategoria": "Cancelación Servicio Móvil",
+                "SubEstado": "Pendiente ejecución de la orden",
+                "SubMotivoCancelacion": "%Cancelacion:stepCancelacion:Subrazon%",
+                "VozCliente": "%Cancelacion:stepCancelacion:Causal%"
+            }
+        },
+        "label": "SVCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "Cambio de pospago a prepago",
+                        "field": "vozCliente"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            {
+                "vlcCart": true,
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/FlujoCancelacion/English/SVCase"
+}

@@ -1,0 +1,35 @@
+{
+    "Description": "Tipos de renovación:\n- PortabilityBlocked = Portabilidad Bloqueada.\n- RenewPortability = Retoma de Portabilidad.\n- LogisticsNovelty = Novedad logística de la SIM.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_TypeRenewPortability",
+    "OmniProcessId": {
+        "Name": "RenewPortability",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/RenewPortability/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "TypeRenew": "=IF(%HasNotificationBroker%,\"LogisticsNovelty\",IF(%Order:OrderDeliveryStatus% == \"PortabilityBlocked\", \"PortabilityBlocked\",NULL))"
+        },
+        "label": "SV_TypeRenewPortability",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/RenewPortability/English/SV_TypeRenewPortability"
+}

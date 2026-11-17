@@ -1,0 +1,59 @@
+{
+    "Description": "=IF(%ContactSecondLastName% != null,%ContactSecondLastName%, '') // %ContactSecondLastName%",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SV_CamposOriginales",
+    "OmniProcessId": {
+        "Name": "UpdateCustomerMigrated",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FVU/UpdateCustomerMigrated/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CamposOriginales": {
+                "AccountPhoneType": "%AccountPhoneType%",
+                "Birthdate": "%ContactBirthdate%",
+                "ContactExpeditionDate": "%ContactExpeditionDate%",
+                "ContactExpeditionDepartment": "%ContactExpeditionDepartment%",
+                "ContactExpeditionSite": "%ContactExpeditionSite%",
+                "ContactLastName": "%ContactLastName%",
+                "ContactPreferences": "%ContactPreferencesText%",
+                "ContactSecondLastName": "=IF(%ContactSecondLastName% != null,%ContactSecondLastName%, '')",
+                "CustomerGroup": "%AccountCustomerGroup%",
+                "DaneCode": "%codeDane:DaneDepartment%",
+                "DocumentNumber": "%AccountDocumentNumber%",
+                "DocumentNumberConverted": "=NUMBER(%AccountDocumentNumber%)",
+                "DocumentType": "%AccountDocumentType%",
+                "Email": "%AccountEmail%",
+                "FirstNameConcat": "%ContactFirstName%",
+                "Gender": "%ContactGender%",
+                "HearingProblemCustomer": "%ContactHearingProblemCustomer%",
+                "LastNameConcat": "=CONCATENATE(%ContactLastName% +' '+ IF(%ContactSecondLastName% != null, %ContactSecondLastName%,''))",
+                "Name": "%AccountName%",
+                "NotificationChoice": "%AccountNotificationChoice%",
+                "Occupation": "%ContactOccupation%",
+                "OtherPhone": "%AccountPhone2%",
+                "Phone": "%AccountPhone%",
+                "PreferencesContact": "%ContactPreferences%"
+            }
+        },
+        "label": "SV_CamposOriginales",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FVU/UpdateCustomerMigrated/English/SV_CamposOriginales"
+}

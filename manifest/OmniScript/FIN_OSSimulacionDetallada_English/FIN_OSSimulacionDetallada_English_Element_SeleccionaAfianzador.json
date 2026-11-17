@@ -1,0 +1,87 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SeleccionaAfianzador",
+    "OmniProcessId": {
+        "Name": "OSSimulacionDetallada",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSSimulacionDetallada/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepInfoSimulacion",
+        "OmniProcessId": {
+            "Name": "OSSimulacionDetallada",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/OSSimulacionDetallada/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSSimulacionDetallada/English/StepInfoSimulacion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepInfoSimulacion",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "bStandalone": true,
+        "conditionType": "Hide if False",
+        "controlWidth": 12,
+        "customAttributes": [
+            {
+                "name": "channel",
+                "source": "%channel%"
+            },
+            {
+                "name": "monthlyterm",
+                "source": "%StepInfoSimulacion:LWCPreSim:selectedPlazo:PlazoSelect%"
+            },
+            {
+                "name": "financingamount",
+                "source": "%QuoteData:saldoDiferir%"
+            },
+            {
+                "name": "clienttype",
+                "source": "%clientType%"
+            },
+            {
+                "name": "producttype",
+                "source": "%productType%"
+            },
+            {
+                "name": "citydanecode",
+                "source": "%cityDaneCode%"
+            },
+            {
+                "name": "inicialvoluntaria",
+                "source": "%QuoteData:cuotaInicialVoluntaria%"
+            },
+            {
+                "name": "messageinfo",
+                "source": "%messageLong%"
+            },
+            {
+                "name": "phone",
+                "source": "%phone%"
+            }
+        ],
+        "hide": false,
+        "label": "InitialQuotaCalculation",
+        "lwcName": "fin_SeleccionaAfianzador",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "securityProcess:accessProcess:FIN_fianza"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Custom Lightning Web Component",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/OSSimulacionDetallada/English/SeleccionaAfianzador"
+}
