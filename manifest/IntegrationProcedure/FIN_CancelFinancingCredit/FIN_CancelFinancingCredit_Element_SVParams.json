@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParams",
+    "OmniProcessId": {
+        "Name": "CancelFinancingCredit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelFinancingCredit/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccionGestionar": "%AccionGestionar%",
+            "CaseId": "%CaseId%",
+            "UserId": "=$Vlocity.UserId",
+            "accountNumber": "%accountNumber%",
+            "accountNumberInternal": "%accountNumberInternal%",
+            "confirmationParams": "='cancelar el crédito', %tipoDeIntento%",
+            "createdDateCredit": "=IF(%createdDateCredit%>TODAY(),%createdDateTimeCredit%,FORMATDATETIME(NOW(),\"yyyy-MM-dd'T'HH:mm:ss\",\"America/Colombia\"))",
+            "financingCode": "%financingCode%",
+            "reasonId": "%reasonId%",
+            "tipoDeIntento": "%tipoDeIntento%",
+            "userName": "salesforce"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelFinancingCredit/Procedure/SVParams"
+}

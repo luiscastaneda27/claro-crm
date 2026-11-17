@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParams",
+    "OmniProcessId": {
+        "Name": "GestionCasoAjusteCancelFinancing",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoAjusteCancelFinancing/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "TipoDeCancelacion": "%TipoCancelacion%",
+            "caseId": "%caseId%",
+            "reasonId": "%reasonId%",
+            "validDate": "=CONCAT(   YEAR(TODAY()), '-',   IF(MONTH(TODAY()) < 10, CONCAT('0', MONTH(TODAY())), MONTH(TODAY())), '-',   IF(DAY(TODAY()) < 10, CONCAT('0', DAY(TODAY())), DAY(TODAY())) )"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoAjusteCancelFinancing/Procedure/SVParams"
+}

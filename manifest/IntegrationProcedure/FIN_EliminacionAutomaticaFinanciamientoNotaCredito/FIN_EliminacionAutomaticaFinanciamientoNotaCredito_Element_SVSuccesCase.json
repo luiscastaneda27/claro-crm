@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSuccesCase",
+    "OmniProcessId": {
+        "Name": "EliminacionAutomaticaFinanciamientoNotaCrédito",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "success": "=IF(%IP_ReversionDePago:success% == true AND %FIN_GetFinancingActive:Finalizado%, true, IF(%IP_CancelarCredito:success% == false || %IP_ReversionDePago:success% == false, false, true))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure/SVSuccesCase"
+}

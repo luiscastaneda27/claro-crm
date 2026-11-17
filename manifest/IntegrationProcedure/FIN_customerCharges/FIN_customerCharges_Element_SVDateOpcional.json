@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVDateOpcional",
+    "OmniProcessId": {
+        "Name": "customerCharges",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/customerCharges/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Date": "=IF( ISNOTBLANK( %startDate% ) AND ISNOTBLANK( %endDate% ), '&startDate=' + %startDate% + '&endDate=' + %endDate%, IF( ISNOTBLANK( %startDate% ), '&startDate=' + %startDate%, '' ) )"
+        },
+        "executionConditionalFormula": "ISNOTBLANK( %startDate% ) OR ISNOTBLANK( %endDate% )",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/customerCharges/Procedure/SVDateOpcional"
+}

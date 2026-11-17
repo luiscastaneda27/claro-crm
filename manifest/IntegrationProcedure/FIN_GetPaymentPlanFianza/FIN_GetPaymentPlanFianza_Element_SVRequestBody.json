@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequestBody",
+    "OmniProcessId": {
+        "Name": "GetPaymentPlanFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GetPaymentPlanFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "financingCode": "%financingCode%",
+            "headerRequest": {
+                "additionalNode": "String",
+                "channel": "%DRGetHeaderIntegration:Channel%",
+                "idApplication": "%DRGetHeaderIntegration:IdApplication%",
+                "idBusinessTransaction": "%DRGetHeaderIntegration:IdBusinessTransaction%",
+                "idESBTransaction": "%DRGetHeaderIntegration:IdESBTransaction%",
+                "ipApplication": "%DRGetHeaderIntegration:IpApplication%",
+                "startDate": "%DRGetHeaderIntegration:StartDate%",
+                "target": "%DRGetHeaderIntegration:Target%",
+                "userApplication": "%DRGetHeaderIntegration:UserApplication%",
+                "userSession": "%DRGetHeaderIntegration:UserSession%"
+            },
+            "suretyId": "%suretyId%",
+            "username": "%DRGetHeaderIntegration:UserApplication%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GetPaymentPlanFianza/Procedure/SVRequestBody"
+}

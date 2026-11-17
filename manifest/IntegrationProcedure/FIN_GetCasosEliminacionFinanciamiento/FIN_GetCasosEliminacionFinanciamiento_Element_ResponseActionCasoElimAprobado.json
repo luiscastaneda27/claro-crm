@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionCasoElimAprobado",
+    "OmniProcessId": {
+        "Name": "GetCasosEliminacionFinanciamiento",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GetCasosEliminacionFinanciamiento/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "creditResponse": {
+                "canProceed": "%SVGetResponse:canProceed%",
+                "caseId": "%SVGetResponse:caseId%",
+                "caseNumber": "%SVGetResponse:caseNumber%",
+                "message": "%SVGetResponse:message%",
+                "nc": "%SVGetResponse:notaCredito%",
+                "ods": "%SVGetResponse:ods%"
+            }
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SVParameterCasoElimAprobado:casoConEliminacion%",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GetCasosEliminacionFinanciamiento/Procedure/ResponseActionCasoElimAprobado"
+}

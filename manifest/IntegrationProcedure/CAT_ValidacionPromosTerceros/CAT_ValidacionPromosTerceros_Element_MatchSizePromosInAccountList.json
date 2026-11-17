@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MatchSizePromosInAccountList",
+    "OmniProcessId": {
+        "Name": "Validación Promos Terceros",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromosTerceros/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "PromotionsInAccountListLoop",
+        "OmniProcessId": {
+            "Name": "Validación Promos Terceros",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromosTerceros/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromosTerceros/Procedure/PromotionsInAccountListLoop",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "PromotionsInAccountListLoop",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountAppliedPromosId": "%ListAddOns:ListAddOns:PromoTercerosId%",
+            "AccountAppliedPromosName": "%ListAddOns:ListAddOns:PromoTercerosName%"
+        },
+        "executionConditionalFormula": "IF(ISBLANK(%FilterPromotionsInAccountList:filteredList%),0,LISTSIZE(%FilterPromotionsInAccountList:filteredList%)) >= 1",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "PromosInAccount:PromosListInAccount",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromosTerceros/Procedure/MatchSizePromosInAccountList"
+}

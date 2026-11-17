@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionFail",
+    "OmniProcessId": {
+        "Name": "APIMCMICFinancingSimulation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/APIMCMICFinancingSimulation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Response": "Ha ocurrido un error al consultar el servicio",
+            "result": {
+                "Descripcion": "",
+                "Name": "APIMCMICFinancingSimulation",
+                "enpoint": "/ros-rest/APIMCMICFinancingSimulation/simulate",
+                "metodo": "POST",
+                "request": "%BodyRequest%",
+                "response": "%HTTPFinancingSimulation%",
+                "simulacion": false,
+                "statusCode": "%HTTPFinancingSimulation:responseStatus:code%"
+            },
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%HTTPFinancingSimulation:responseStatus:code% != 200 && %HTTPFinancingSimulation:responseStatus:status% != \"OK\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/APIMCMICFinancingSimulation/Procedure/ResponseActionFail"
+}

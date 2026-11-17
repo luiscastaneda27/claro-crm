@@ -1,0 +1,224 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'Vigente'",
+        "GlobalKey": "FVU_GetAllianceStatusVigente1436424814383821",
+        "InputFieldName": "FVU_Status__c",
+        "InputObjectName": "FVU_Alliance__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Alliance",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(Alliance:FVU_DateTo__c <> NULL,\r\n     CONCAT(\"Desde el \",FORMATDATETIME(Alliance:FVU_DateFrom__c,\"dd-MM-yyyy\"), \" Hasta el \"FORMATDATETIME(Alliance:FVU_DateTo__c,\"dd-MM-yyyy\")),CONCAT(\"Desde el \",FORMATDATETIME(Alliance:FVU_DateFrom__c,\"dd-MM-yyyy\")))",
+        "FormulaResultPath": "Alliance:Validity",
+        "FormulaSequence": 2,
+        "GlobalKey": "FVU_GetAllianceStatusVigente5794445500589083",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(Alliance:FVU_MinimumAmounts__c <> NULL, CONCAT(Alliance:FVU_ConditionMinimumAmounts__c, \" $\", Alliance:FVU_MinimumAmounts__c),Alliance:FVU_ConditionMinimumAmounts__c)",
+        "FormulaResultPath": "Alliance:MinimumAmounts",
+        "FormulaSequence": 1,
+        "GlobalKey": "FVU_GetAllianceStatusVigente7836852356403317",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetAllianceStatusVigente2127044891342631",
+        "InputFieldName": "Alliance:FVU_Benefit__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AllianceBenefit",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "-",
+        "GlobalKey": "FVU_GetAllianceStatusVigente6013401950347637",
+        "InputFieldName": "Alliance:FVU_DeadlinesAndConditions__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AllianceDeadlinesAndConditions",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetAllianceStatusVigente5829203694018641",
+        "InputFieldName": "Alliance:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AllianceId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "-",
+        "GlobalKey": "FVU_GetAllianceStatusVigente316518721383529",
+        "InputFieldName": "Alliance:MinimumAmounts",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AllianceMinimumAmounts",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetAllianceStatusVigente8447699102951791",
+        "InputFieldName": "Alliance:Name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AllianceName",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetAllianceStatusVigente5165117845440197",
+        "InputFieldName": "Alliance:FVU_Status__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AllianceStatus",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "-",
+        "GlobalKey": "FVU_GetAllianceStatusVigente9290583562853412",
+        "InputFieldName": "Alliance:FVU_TYC__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AllianceTYC",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "-",
+        "GlobalKey": "FVU_GetAllianceStatusVigente9499722452117718",
+        "InputFieldName": "Alliance:Validity",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetAllianceStatusVigente",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetAllianceStatusVigente",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetAllianceStatusVigente",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AllianceValidity",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

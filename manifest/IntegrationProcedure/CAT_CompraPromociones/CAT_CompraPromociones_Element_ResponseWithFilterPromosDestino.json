@@ -1,0 +1,52 @@
+{
+    "Description": "Toma la respuesta del método filterPromosDestino y devuelve la lista de promociones  (sin excluir \"Obsequios de CFM\"). HDU - 669698",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseWithFilterPromosDestino",
+    "OmniProcessId": {
+        "Name": "Compra de Promociones - Omni",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompraPromociones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockFilterPromo",
+        "OmniProcessId": {
+            "Name": "Compra de Promociones - Omni",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompraPromociones/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompraPromociones/Procedure/ConditionalBlockFilterPromo",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockFilterPromo",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "CompatibleOffersList": "%filterPromoDestino%",
+            "PromoTypes": "%GetListOfPromotionClassesFiltered%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DMExtractFieldInOrder:ordenRetencion%",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "GetPromotionsRemoteAction",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "GetPromotionsRemoteAction",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompraPromociones/Procedure/ResponseWithFilterPromosDestino"
+}

@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ValidacionErrorTerceros",
+    "OmniProcessId": {
+        "Name": "CATValidacionPromocionesAgregadas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ClasesBeneficioFaltantes": "=CONCAT(%MensajeEstaticoErrorPromosFaltantes:mensajeEstaticoErrorPromosFaltantes%,%ClasesPromoFaltantes:clasesPromoFaltantes%)",
+            "PromosClaseTercerosFaltantes": "%RespuestaValidacionPromosTerceros:RequiredPromoList%",
+            "Validacion": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%ClasesPromoFaltantes:clasesPromoFaltantes%) && %RespuestaValidacionPromosTerceros:ValidacionTerceros% == false",
+        "label": "ResponseAction5",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure/ValidacionErrorTerceros"
+}

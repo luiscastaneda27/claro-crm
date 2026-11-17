@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CalculateLines",
+    "OmniProcessId": {
+        "Name": "BTC_IPGetLines",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/BTC/IPGetLines/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "maximumNumberLines": "=IF(%RA_CallCustomerInformation:assetsCount% + %DRT_LegacyResponse:total:cellLine% == 6 OR %RA_CallCustomerInformation:assetsCount% + %DRT_LegacyResponse:total:cellLine% > 6 , \"SI\", \"NO\")",
+            "totalLines": "=%RA_CallCustomerInformation:assetsCount% + %DRT_LegacyResponse:total:cellLine%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/BTC/IPGetLines/Procedure/SV_CalculateLines"
+}

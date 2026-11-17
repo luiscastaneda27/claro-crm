@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSimulacion",
+    "OmniProcessId": {
+        "Name": "FinanciacionSimulacionFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_UserInfoAndConfiguration",
+        "OmniProcessId": {
+            "Name": "FinanciacionSimulacionFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure/CB_UserInfoAndConfiguration",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_UserInfoAndConfiguration",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ConfiguracionSimulacion": "=IF(%SimulacionDetallada% == true && %SVParams:errorSistemaFianza% == true, 'Simulacion_Detallada_Falla_Servicio', IF(%SimulacionDetallada% == true && %SVParams:optionType% == \"cliente\",'Simulacion_Detallada_Tercero',IF(%SimulacionDetallada% == true,'Simulacion_Detallada','Simulacion_Simplificada'),'Simulacion_Simplificada'),'Simulacion_Simplificada')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure/SVSimulacion"
+}

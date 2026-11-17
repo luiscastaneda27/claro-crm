@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "BTC_IPGetLines",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/BTC/IPGetLines/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "legacy:customerServices": "=IF(%DRT_LegacyResponse:total:landline% > 0 AND %SV_CalculateLines:totalLines% > 0, \"Movil y Hogar\", \r\n    IF(%DRT_LegacyResponse:total:landline% > 0 AND %SV_CalculateLines:totalLines% == 0, \"Hogar\",\r\n        IF(%DRT_LegacyResponse:total:landline% == 0 AND %SV_CalculateLines:totalLines% > 0, \"Movil Postpago\",\r\n            IF(%DRT_LegacyResponse:total:landline% == 0 AND %SV_CalculateLines:totalLines% == 0 AND %DRT_LegacyResponse:total:prepaid% > 0, \"Prepago\",\"Sin Servicios\"\r\n))))",
+            "legacy:maxCellLines": "=%SV_CalculateLines:maximumNumberLines%",
+            "legacy:total": "=%DRT_LegacyResponse:total%",
+            "portOut": "=%RA_CallCustomerInformation%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/BTC/IPGetLines/Procedure/ResponseAction"
+}

@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAFail",
+    "OmniProcessId": {
+        "Name": "FinancingsSearchV1.0",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinancingsSearchV1.0/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Response": "Ha ocurrido un error, intente más tarde por favor",
+            "responseCode": "%DRTransformResponse:responseCode%",
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRTransformResponse:responseCode% != \"FS_ESB_0\" && %DRTransformResponse:responseCode% != \"FS_MF_02\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinancingsSearchV1.0/Procedure/RAFail"
+}

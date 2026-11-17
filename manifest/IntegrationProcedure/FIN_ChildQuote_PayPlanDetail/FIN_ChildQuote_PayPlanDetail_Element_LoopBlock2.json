@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LoopBlock2",
+    "OmniProcessId": {
+        "Name": "FIN_ChildQuotePayPlanDetail",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock1",
+        "OmniProcessId": {
+            "Name": "FIN_ChildQuotePayPlanDetail",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure/ConditionalBlock1",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock1",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "ListActionPayment",
+        "loopOutput": {
+            "AbonoCapital": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTableFianza:AbonoCapital%)",
+            "CapitalFinal": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTableFianza:CapitalFinal%)",
+            "CuotaMes": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTableFianza:CuotaMesFianza%)",
+            "FechaCuota": "%ListActionPayment:date%",
+            "FianzaPago": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTableFianza:FianzaPago%)",
+            "IVA": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTableFianza:IVA%)",
+            "InteresCorriente": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTableFianza:InteresCorriente%)",
+            "NumCuota": "%ListActionPayment:termNo%",
+            "SaldoCapitalInicial": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTableFianza:SaldoCapitalInicial%)",
+            "fianza": "%RASecurity:fianza%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure/LoopBlock2"
+}

@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_PagoMinimoValores",
+    "OmniProcessId": {
+        "Name": "FIN_GetPagoMinimo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GetPagoMinimo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "InteresesCorrientes": "==FILTER(LIST(%SV_ACHTransaction:ACHTrans:details:detail%), 'chargeType == \"RI\" ||chargeType == \"RI_TER\" || chargeType == \"RI_TEC\" || chargeType == \"NRI\" || chargeType == \"NRI_TER\" || chargeType == \"NRI_TEC\"')",
+            "InteresesCorrientesIVA": "=FILTER(LIST(%SV_ACHTransaction:ACHTrans:details:detail%), 'chargeType == \"IVA\"')",
+            "InteresesMora": "=FILTER(LIST(%SV_ACHTransaction:ACHTrans:details:detail%), 'chargeType == \"LPI_TER\" ||chargeType == \"LPI_TEC\" || chargeType == \"LPI\" || chargeType == \"NLPI_TEC\" || chargeType == \"NLPI_TER\" || chargeType == \"NLPI\"')",
+            "InteresesMoraIVA": "=FILTER(LIST(%SV_ACHTransaction:ACHTrans:details:detail%), 'chargeType == \"LPV\"')",
+            "ValorAcelerado": "=FILTER(LIST(%SV_ACHTransaction:ACHTrans:details:detail%), 'chargeType == \"AMZ\"')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GetPagoMinimo/Procedure/SV_PagoMinimoValores"
+}

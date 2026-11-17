@@ -1,0 +1,247 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Id",
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom3217",
+        "InputFieldName": "Quote_Id__c",
+        "InputObjectName": "FIN_Fianza__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Fianza",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "Fianza:FIN_Valor_total_de_la_cotizacion__c",
+        "FormulaResultPath": "totalCuotaMensualFianza",
+        "FormulaSequence": 3,
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom2200",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ErrorSistemaFianza=$Vlocity.TRUE,\"FIN040\",IF(IsFianza=false,\"FIN037\",''),'')",
+        "FormulaResultPath": "codeMessage",
+        "FormulaSequence": 1,
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom9707",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(codeMessage=\"FIN037\",\"Sin Fianza RC\",IF(codeMessage=\"FIN040\",\"No Disp\",''),'')",
+        "FormulaResultPath": "siglaAfianzador",
+        "FormulaSequence": 2,
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom4027",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "ROUND(Fianza:FIN_Valor_de_la_cuota_mensual__c,0)",
+        "FormulaResultPath": "valorCuotaMensualFianza",
+        "FormulaSequence": 4,
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom128",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "''",
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom9392",
+        "InputFieldName": "codeMessage",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "codeMessage",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom7183",
+        "InputFieldName": "Fianza:Quote_Id__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "quoteId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom6736",
+        "InputFieldName": "Fianza:FIN_Sigla_del_afianzador__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "siglaAfianzador",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom7286",
+        "InputFieldName": "siglaAfianzador",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "siglaAfianzador",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom7486",
+        "InputFieldName": "totalCuotaMensualFianza",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Number",
+        "OutputFieldName": "totalCuotaMensualFianza",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom2588",
+        "InputFieldName": "valorCuotaMensualFianza",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Number",
+        "OutputFieldName": "valorCuotaMensualFianza",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetFianzaByQuoteIdCustom6502",
+        "InputFieldName": "Fianza:FIN_Valor_total_de_la_fianza__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetFianzaByQuoteId",
+        "OmniDataTransformationId": {
+            "Name": "FINGetFianzaByQuoteId",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetFianzaByQuoteId",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Number",
+        "OutputFieldName": "valorTotalFianza",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

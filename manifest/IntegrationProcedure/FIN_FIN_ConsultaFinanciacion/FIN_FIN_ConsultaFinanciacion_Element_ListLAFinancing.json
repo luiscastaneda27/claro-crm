@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ListLAFinancing",
+    "OmniProcessId": {
+        "Name": "FIN_ConsultaFinanciacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SuccessCondition",
+        "OmniProcessId": {
+            "Name": "FIN_ConsultaFinanciacion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure/SuccessCondition",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SuccessCondition",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISNOTBLANK(%DR_GetAssetWithCreditDetails:NumeroCuenta%)",
+        "label": "LoopBlock1",
+        "loopList": "SVListGetAssetWithCreditDetails:ListGetAssetCreditDetails",
+        "loopOutput": {
+            "ListNumeroLinea": "%ConsultaNumeroLinea%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure/ListLAFinancing"
+}

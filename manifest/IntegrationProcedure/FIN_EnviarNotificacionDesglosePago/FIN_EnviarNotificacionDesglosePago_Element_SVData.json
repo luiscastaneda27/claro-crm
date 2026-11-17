@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVData",
+    "OmniProcessId": {
+        "Name": "EnviarNotificacionDesglosePago",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EnviarNotificacionDesglosePago/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "codCierre": "%codCierre%",
+            "correoElectronico": "%GetAccountNotifChoice:Account:Email%",
+            "isEmail": "=IF(%GetAccountNotifChoice:Account:NotificationChoice% = \"Correo electrónico\",TRUE,FALSE)",
+            "nombreCliente": "%GetAccountNotifChoice:Account:Name%",
+            "nroCompleto": "=\"57\"+%GetAccountNotifChoice:Account:Phone%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EnviarNotificacionDesglosePago/Procedure/SVData"
+}

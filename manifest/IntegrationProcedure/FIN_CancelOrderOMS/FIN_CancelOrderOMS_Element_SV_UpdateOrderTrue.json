@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_UpdateOrderTrue",
+    "OmniProcessId": {
+        "Name": "FIN_CancelOrderOMS",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelOrderOMS/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "DeliveryStatus": "PendingOMSCancelled",
+            "OrderId": "=%SVParams:orderId%",
+            "OrderMotivoCierre": "%SVParams:Motivo%",
+            "OrderStatus": "Cerrada Perdida"
+        },
+        "executionConditionalFormula": "%IP_CancelOrder:Success% = true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "SV_UpdateOrder",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelOrderOMS/Procedure/SV_UpdateOrderTrue"
+}

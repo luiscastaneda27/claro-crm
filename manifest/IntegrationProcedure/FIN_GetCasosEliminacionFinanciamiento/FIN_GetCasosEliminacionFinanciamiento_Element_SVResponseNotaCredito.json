@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVResponseNotaCredito",
+    "OmniProcessId": {
+        "Name": "GetCasosEliminacionFinanciamiento",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GetCasosEliminacionFinanciamiento/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "canProceed": "=IF(%SVParameterNC:casoSinNC%, false, true)",
+            "caseId": null,
+            "caseNumber": null,
+            "message": "%DR_GetMessage_NC:Message:MainMessage%",
+            "notaCredito": "%DR_GetCasosEliminacionFinanciamiento:NC%",
+            "ods": "%DR_GetCasosEliminacionFinanciamiento:ODS%"
+        },
+        "executionConditionalFormula": "%SVParameterNC:casoSinNC%",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GetCasosEliminacionFinanciamiento/Procedure/SVResponseNotaCredito"
+}

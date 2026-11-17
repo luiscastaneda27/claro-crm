@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVConsultaNumero",
+    "OmniProcessId": {
+        "Name": "FIN_ConsultaNumeroLinea",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/ConsultaNumeroLinea/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Linea": "=IF(ISNOTBLANK(%DR_ConsultaNumeroLinea:NumeroLinea%),FUNCTION('CustomOmniStudioFunctions', 'replaceFirst',%DR_ConsultaNumeroLinea:NumeroLinea%, '^57', '')\r\n,%SVMessage:mensaje%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/ConsultaNumeroLinea/Procedure/SVConsultaNumero"
+}

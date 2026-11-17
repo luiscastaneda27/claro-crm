@@ -1,0 +1,204 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "promoType",
+        "GlobalKey": "PVU_GetPromosCustom4854",
+        "InputFieldName": "%vlocity_namespace%__AppliedPromotionId__r.%vlocity_namespace%__PromotionId__r.CAT_Type__c",
+        "InputObjectName": "%vlocity_namespace%__AccountAppliedPromotionItem__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Promocion",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "assetReferenceId",
+        "GlobalKey": "PVU_GetPromosCustom4140",
+        "InputFieldName": "%vlocity_namespace%__AssetId__r.%vlocity_namespace%__AssetReferenceId__c",
+        "InputObjectName": "%vlocity_namespace%__AccountAppliedPromotionItem__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Promocion",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(Promocion:%vlocity_namespace%__AssetId__r.%vlocity_namespace%__SubscriptionId__r.%vlocity_namespace%__Status__c == \"Suspended\", Promocion:%vlocity_namespace%__AssetId__r.%vlocity_namespace%__SubscriptionId__r.%vlocity_namespace%__SuspendDate__c, Promocion:%vlocity_namespace%__AssetId__r.%vlocity_namespace%__SubscriptionId__r.%vlocity_namespace%__EndDate__c)",
+        "FormulaResultPath": "cancelationDateForm",
+        "FormulaSequence": 1,
+        "GlobalKey": "PVU_GetPromosCustom7601",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_GetPromosCustom9828",
+        "InputFieldName": "Promocion:%vlocity_namespace%__AppliedPromotionId__r.%vlocity_namespace%__PromotionId__r.CAT_PromotionClass__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Class",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_GetPromosCustom7150",
+        "InputFieldName": "Promocion:%vlocity_namespace%__AppliedPromotionId__r.%vlocity_namespace%__PromotionId__r.Name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Name",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_GetPromosCustom4544",
+        "InputFieldName": "Promocion:%vlocity_namespace%__AssetId__r.Status",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Status",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_GetPromosCustom6066",
+        "InputFieldName": "Promocion:%vlocity_namespace%__AssetId__r.%vlocity_namespace%__SubscriptionId__r.%vlocity_namespace%__StartDate__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "activationDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_GetPromosCustom7740",
+        "InputFieldName": "cancelationDateForm",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "cancelationDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_GetPromosCustom4573",
+        "InputFieldName": "Promocion:%vlocity_namespace%__AssetId__r.%vlocity_namespace%__SubscriptionId__r.%vlocity_namespace%__EndDate__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "endDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_GetPromosCustom8772",
+        "InputFieldName": "Promocion:%vlocity_namespace%__AssetId__r.%vlocity_namespace%__SubscriptionId__r.%vlocity_namespace%__SuspendDate__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_GetPromos",
+        "OmniDataTransformationId": {
+            "Name": "PVU_GetPromos",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_GetPromos",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "suspendDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

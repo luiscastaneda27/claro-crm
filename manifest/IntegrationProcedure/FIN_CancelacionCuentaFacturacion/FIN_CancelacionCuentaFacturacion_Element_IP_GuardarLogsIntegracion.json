@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_GuardarLogsIntegracion",
+    "OmniProcessId": {
+        "Name": "CancelacionCuentaFacturacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelacionCuentaFacturacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Descripcion": "",
+            "Endpoint": "%IP_BillingAccountDeactivate:result:enpoint%",
+            "Metodo": "%IP_BillingAccountDeactivate:result:metodo%",
+            "Name": "%IP_BillingAccountDeactivate:result:Name%",
+            "Request": "%IP_BillingAccountDeactivate:result:request%",
+            "Response": "%IP_BillingAccountDeactivate:result:response%",
+            "StatusCode": "%IP_BillingAccountDeactivate:result:statusId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "%DM_GetOrder:CuentaCreadaSinServicio%",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_GuardarLogIntegracion",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelacionCuentaFacturacion/Procedure/IP_GuardarLogsIntegracion"
+}

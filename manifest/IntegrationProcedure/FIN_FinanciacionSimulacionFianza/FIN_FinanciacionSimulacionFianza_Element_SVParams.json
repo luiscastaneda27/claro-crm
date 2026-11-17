@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParams",
+    "OmniProcessId": {
+        "Name": "FinanciacionSimulacionFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "QuoteId": "%QuoteInfo:QuoteId%",
+            "downPaymentCondition": "=IF(%QuoteData:totalCuotaInicial% != 0,\"downPaymentConditionConCuotaInicial\",\"downPaymentConditionSinCuotaInicial\")",
+            "errorSistemaFianza": "=IF(%suretySuccess%==false,true,false)",
+            "isFianza": "=IF(%optionType%==\"cliente\",true,IF(%surety:suretyName%==\"No Aplica Fianza\",false,IF(ISBLANK(%surety:suretyName%),false,true))",
+            "materialProduct": "%materialProduct%",
+            "optionType": "%optionType%",
+            "pagosInicialesTecnologia": "=IF(%typeProduct%!='Terminales',TOSTRING(%pagosIniciales%),'')",
+            "pagosInicialesTerminales": "=IF(%typeProduct%=='Terminales',TOSTRING(%pagosIniciales%),'')",
+            "simulationDate": "==FORMATDATETIME(%simulationDate%, \"yyyy-MM-dd\", \"America/Bogota\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure/SVParams"
+}

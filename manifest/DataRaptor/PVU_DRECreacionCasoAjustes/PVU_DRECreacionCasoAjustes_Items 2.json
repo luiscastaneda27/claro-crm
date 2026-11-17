@@ -1,0 +1,458 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "CaseId",
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom8769",
+        "InputFieldName": "Id",
+        "InputObjectName": "Case",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Case",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Case:AccountId",
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom7414",
+        "InputFieldName": "AccountId",
+        "InputObjectName": "Contact",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Contact",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(%Case:PVU_CUN__c%!=null, %Case:PVU_CUN__c%, %Case:PVU_NR__c%)",
+        "FormulaResultPath": "Case:cun_O_nr",
+        "FormulaSequence": 1,
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom3599",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ISBLANK(%Contact:LastName%),\r\n    IF(ISBLANK(%Contact:FVU_SecondLastName__c%), '', %Contact:FVU_SecondLastName__c%),\r\n    IF(ISBLANK(%Contact:FVU_SecondLastName__c%),%Contact:LastName%,\r\n      CONCAT(%Contact:LastName%, ' ', %Contact:FVU_SecondLastName__c%)\r\n    )\r\n)",
+        "FormulaResultPath": "Contact:apellidos",
+        "FormulaSequence": 2,
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom6049",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom4209",
+        "InputFieldName": "Contact:apellidos",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "apellidos",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom3792",
+        "InputFieldName": "Case:Asset.Product2.ProductCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "assetProdutCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom1176",
+        "InputFieldName": "Case:PVU_Level1__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "categoria",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom2722",
+        "InputFieldName": "Case:Account.FVU_Email__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "correoElectronico",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom2285",
+        "InputFieldName": "Case:PVU_CUN__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "cun",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom2073",
+        "InputFieldName": "Case:cun_O_nr",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "cun_O_nr",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom9399",
+        "InputFieldName": "Case:Subject",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "descripcionCasoPQR",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom8101",
+        "InputFieldName": "Case:Description",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "descripcionSolicitud",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom7808",
+        "InputFieldName": "Case:PVU_ObservacionesCobroErrado__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "detalleAjuste",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom128",
+        "InputFieldName": "Case:PVU_Fecha_SAP__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "fechaSlaPqr",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom123",
+        "InputFieldName": "Case:PVU_MINReporteImei__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "min",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom4258",
+        "InputFieldName": "Contact:FirstName",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "nombres",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom3249",
+        "InputFieldName": "Case:PVU_NR__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "nr",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom8467",
+        "InputFieldName": "Case:CaseNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "numeroCasoSF",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom3861",
+        "InputFieldName": "Case:Account.FVU_DocumentNumber__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "numeroDocumento",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom8911",
+        "InputFieldName": "Case:PVU_Level2__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "subcategoria",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom4288",
+        "InputFieldName": "Case:PVU_PQR_Solicitado__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "tipo",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom4446",
+        "InputFieldName": "Case:Account.FVU_DocumentType__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "tipoDocumento",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRECreacionCasoAjustesCustom2960",
+        "InputFieldName": "Case:PVU_Level3__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRECreacionCasoAjustes",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRECreacionCasoAjustes",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRECreacionCasoAjustes",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "vozDeCliente",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

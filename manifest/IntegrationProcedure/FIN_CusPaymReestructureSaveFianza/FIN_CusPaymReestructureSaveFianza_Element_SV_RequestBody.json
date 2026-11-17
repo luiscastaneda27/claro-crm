@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_RequestBody",
+    "OmniProcessId": {
+        "Name": "CusPaymReestructureSaveFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CusPaymReestructureSaveFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "financingCode": "%financingCode%",
+            "headerRequest": {
+                "additionalNode": "String",
+                "channel": "%DR_GetHeaderIntegration:Channel%",
+                "idApplication": "%DR_GetHeaderIntegration:IdApplication%",
+                "idBusinessTransaction": "%DR_GetHeaderIntegration:IdBusinessTransaction%",
+                "idESBTransaction": "%DR_GetHeaderIntegration:IdESBTransaction%",
+                "ipApplication": "%DR_GetHeaderIntegration:IpApplication%",
+                "startDate": "%DR_GetHeaderIntegration:StartDate%",
+                "target": "%DR_GetHeaderIntegration:Target%",
+                "userApplication": "%DR_GetHeaderIntegration:UserApplication%",
+                "userSession": "%DR_GetHeaderIntegration:UserSession%"
+            },
+            "reasonId": "%reasonId%",
+            "simulationId": "%simulationId%",
+            "suretyId": "=IF(ISBLANK(%DR_GetFianzaByCreditNumber:suretyId%),TOSTRING(-123),TOSTRING(%DR_GetFianzaByCreditNumber:suretyId%))",
+            "suretySimulationId": "=IF(ISBLANK(%suretySimulationId%),TOSTRING(-123),TOSTRING(%suretySimulationId%))",
+            "validFrom": "=FORMATDATETIMEGMT($Vlocity.NOW,\"America/Colombia\",\"yyyy-MM-dd'T'HH:mm:ss\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CusPaymReestructureSaveFianza/Procedure/SV_RequestBody"
+}

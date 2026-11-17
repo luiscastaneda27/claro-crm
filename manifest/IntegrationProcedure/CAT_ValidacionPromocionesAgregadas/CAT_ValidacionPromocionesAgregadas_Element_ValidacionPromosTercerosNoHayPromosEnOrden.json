@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ValidacionPromosTercerosNoHayPromosEnOrden",
+    "OmniProcessId": {
+        "Name": "CATValidacionPromocionesAgregadas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "NoHayPromosEnLaOrden",
+        "OmniProcessId": {
+            "Name": "CATValidacionPromocionesAgregadas",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure/NoHayPromosEnLaOrden",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "NoHayPromosEnLaOrden",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ClasesBeneficioFaltantes": "=CONCAT(%MensajeEstaticoErrorPromosFaltantes:mensajeEstaticoErrorPromosFaltantes%,%ClasesPromoFaltantes:clasesPromoFaltantes%)",
+            "PromosClaseTercerosFaltantes": "%RespuestaValidacionPromosTerceros:RequiredPromoList%",
+            "Validacion": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%RespuestaValidacionPromosTerceros:ValidacionTerceros% == false",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure/ValidacionPromosTercerosNoHayPromosEnOrden"
+}

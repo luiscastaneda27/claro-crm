@@ -1,0 +1,69 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionDetallada",
+    "OmniProcessId": {
+        "Name": "FinanciacionSimulacionFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SimulacionDetallada",
+        "OmniProcessId": {
+            "Name": "FinanciacionSimulacionFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure/SimulacionDetallada",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SimulacionDetallada",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "AddToCart": "%AddToCart%",
+            "CalloutResponse": "%FinancingSimulationFianza:success%",
+            "CreateSimQuoteCart": "%CreateSimQuoteCart%",
+            "DMConfiguracionSimulacion": "%DMConfiguracionSimulacion%",
+            "DRE_GetIVAClaroCodes": "%DRE_GetIVAClaroCodes%",
+            "DRE_GetIntRate": "%DRE_GetIntRate%",
+            "DRE_GetRecordType": "%DRE_GetRecordType%",
+            "DRE_ObtenerClavesTasas": "%DRE_ObtenerClavesTasas%",
+            "DRE_ProductIVA": "%DRE_ProductIVA%",
+            "DRTE_GetBillingAccountId": "%DRTE_GetBillingAccountId%",
+            "DRT_CreateSimQuoteCart": "%DRT_CreateSimQuoteCart%",
+            "IntRate": "=IF(ISBLANK(%DRE_GetIntRate:IntRate%),%DRE_GetIntRate:TasaSuperFinanciera%,%DRE_GetIntRate:IntRate%)",
+            "IsFianza": "%SVParams:isFianza%",
+            "QuoteCreated": "%CreateSimQuoteCart:records:Id%",
+            "RDetalle": "%LASinCuotaInicial%",
+            "Resultado": "=IF(%DRT_ResultadoSimulacion|1% == nul, %DRT_ResultadoSimulacion%, %DRT_ResultadoSimulacion|1% )",
+            "SimId": "%FinancingSimulationFianza:financingData:simulationSummary:simulationID%",
+            "cicloDeFacturacionMaster": "%cycles%",
+            "fechaSimulada": "=NOW(\"dd/MM/yyyy, HH:mm\")",
+            "request": "%FinancingSimulationFianza:request%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure/ResponseActionDetallada"
+}

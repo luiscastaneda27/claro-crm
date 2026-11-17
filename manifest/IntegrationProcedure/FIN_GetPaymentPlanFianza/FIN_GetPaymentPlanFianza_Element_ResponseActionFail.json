@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionFail",
+    "OmniProcessId": {
+        "Name": "GetPaymentPlanFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GetPaymentPlanFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "Descripcion": "",
+                "Name": "GetFinancingPlanFianza",
+                "enpoint": "/ros-rest/GetFinancingPlan",
+                "metodo": "POST",
+                "request": "%SVRequestBody%",
+                "response": "%SVResponse:response%",
+                "statusId": "%SVResponse:response:statusId%"
+            },
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%SVResponse:response:%) || %SVResponse:response:statusId% != \"SUCCESS\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GetPaymentPlanFianza/Procedure/ResponseActionFail"
+}

@@ -1,0 +1,50 @@
+{
+    "OrderUpdate": {
+        "DeliveryData": {
+            "AuthorizedPersonData": {
+                "Document": "=IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentNumberAlf% != NULL,%StepDeliveryMethod:BlockAuthorizedPerson:DocumentNumberAlf%,IF(%StepDeliveryMethod:BlockAuthorizedPerson:DocumentTypeCC% != NULL,%StepDeliveryMethod:BlockAuthorizedPerson:DocumentTypeCC%,%StepDeliveryMethod:BlockAuthorizedPerson:DocumentTypeCE%))",
+                "DocumentType": "=%StepDeliveryMethod:BlockAuthorizedPerson:DocumentType%",
+                "LastName": "=%StepDeliveryMethod:BlockAuthorizedPerson:Surname%",
+                "Name": "=%StepDeliveryMethod:BlockAuthorizedPerson:Name%",
+                "Phone": "=%StepDeliveryMethod:BlockAuthorizedPerson:Phone%",
+                "SecondLastName": "=%StepDeliveryMethod:BlockAuthorizedPerson:SecondSurname%"
+            },
+            "DeliveryData": {
+                "Code": "=%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseCode%",
+                "EndDate": "=%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseEndDate%",
+                "Name": "=%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseName%",
+                "StartDate": "=%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseStartDate%",
+                "fullfillGroup": "=IF(%StepDeliveryMethod:DeliveryMethodFormula% == 'Delivery', %orderProductDelivery:fulfillGroup%, null)",
+                "selectedPromise": {
+                    "deliveryCost": "=%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:deliveryCost%",
+                    "fulfillGroup": "=IF(%StepDeliveryMethod:DeliveryMethodFormula% == 'Delivery', %orderProductDelivery:fulfillGroup%, null)",
+                    "productList": [
+                        {
+                            "groupId": "",
+                            "productCode": "=IF(%StepDeliveryMethod:DeliveryMethodFormula% == 'Delivery', %orderProductDelivery:productList:productCode%, null)",
+                            "productNum": "=IF(%StepDeliveryMethod:DeliveryMethodFormula% == 'Delivery',%orderProductDelivery:productList:productNum%, null)"
+                        }
+                    ],
+                    "promiseCode": "=%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseCode%",
+                    "promiseEndDate": "=%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseEndDate%",
+                    "promiseId": "=IF(%StepDeliveryMethod:DeliveryMethodFormula% == 'Delivery',NUMBER(%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseId%, null))",
+                    "promiseStartDate": "=%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseStartDate%"
+                }
+            },
+            "DeliveryMethod": "=%DeliveryMethodFormula%",
+            "PickUpData": {
+                "finalPickupDate": "=%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:finalPickupDate%",
+                "pickupCodeDane": "=%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:addressId%",
+                "pickupPointCode": "=%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:warehouseCode%",
+                "pickupStoreName": "=%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:warehouseName%",
+                "selectedPickupDate": {
+                    "avaDate": "=%StepDeliveryMethod:FlexcardStoresList:StoreSelected:Store:pickupDate|1:avaDate%"
+                }
+            }
+        },
+        "Id": "%ContextId%",
+        "PromiseEndDate": "=%StepDeliveryMethod:Block_DataPromise:FlexcardPromiseList:PromiseSelected:Promise:promiseEndDate%",
+        "PurchaseType": "%Order:PurchaseType%",
+        "ValidMethodOfDelivery": "=IF(%DeliveryMethod% == 'ImmediatePickUp', 'Immediatepickup', IF(%DeliveryMethod% == 'PickUp', 'PickUp', IF(%DeliveryMethod% == 'Delivery', 'Delivery', null)))"
+    }
+}

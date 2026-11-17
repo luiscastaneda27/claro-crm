@@ -1,0 +1,681 @@
+[
+    {
+        "FormulaExpression": "FILTER(LIST(orderGroupList:delivery:productList:freight), 'deliveryCost > 0')",
+        "FormulaResultPath": "ListFreight",
+        "FormulaSequence": 2,
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom2908",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FILTER(LIST(orderGroupList:pickupPointList:avaDaysForPickup),' avaDate == NOW(\"yyyyMMdd\")')",
+        "FormulaResultPath": "avaDateFilter",
+        "FormulaSequence": 1,
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom4834",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "LISTSIZE(ListFreight)",
+        "FormulaResultPath": "CountFreight",
+        "FormulaSequence": 4,
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom2087",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "SUM(ListFreight:deliveryCost)",
+        "FormulaResultPath": "SumFreight",
+        "FormulaSequence": 3,
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom4116",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "SumFreight/CountFreight",
+        "FormulaResultPath": "DeliveryCostForm",
+        "FormulaSequence": 5,
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom1757",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule36626378846425367",
+        "InputFieldName": "code",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "code",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule16992381023307734",
+        "InputFieldName": "message",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "message",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule6926144897265971",
+        "InputFieldName": "orderGroupList:delivery:promiseInfor:fulfillGroup",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:fulfillGroup",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "DefaultValue": "1",
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom9314",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Integer",
+        "OutputFieldName": "orderProductDelivery:fulfillGroup",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule34770917068373297",
+        "InputFieldName": "orderGroupList:delivery:productList:channelProdCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:productList:channelProdCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom3261",
+        "InputFieldName": "orderGroupList:delivery:productList:freight:deliveryCost",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:productList:deliveryCost",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule6825124734553389",
+        "InputFieldName": "orderGroupList:delivery:productList:groupId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:productList:groupId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule3421644888862607",
+        "InputFieldName": "orderGroupList:delivery:productList:productCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:productList:productCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule2909770834639367",
+        "InputFieldName": "orderGroupList:delivery:productList:productNum",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:productList:productNum",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom9430",
+        "InputFieldName": "orderGroupList:delivery:productList:freight:promiseCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:productList:promiseCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom7425",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "orderProductDelivery:promiseList",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule32348237768376653",
+        "InputFieldName": "DeliveryCostForm",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:promiseList:deliveryCost",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule8470994565725836",
+        "InputFieldName": "orderGroupList:delivery:promiseInfor:promiseList:promiseCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:promiseList:promiseCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule8260546686499024",
+        "InputFieldName": "orderGroupList:delivery:promiseInfor:promiseList:availableDateList:promiseEndDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:promiseList:promiseEndDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule858463127540483",
+        "InputFieldName": "orderGroupList:delivery:promiseInfor:promiseList:promiseId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:promiseList:promiseId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule08054591319721482",
+        "InputFieldName": "orderGroupList:delivery:promiseInfor:promiseList:promiseName",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:promiseList:promiseName",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{\"Estandar\":\"Estándar\"}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule6853167830038538",
+        "InputFieldName": "orderGroupList:delivery:promiseInfor:promiseList:availableDateList:promiseStartDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:promiseList:promiseStartDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom1478",
+        "InputFieldName": "orderGroupList:delivery:promiseInfor:promiseList:promiseName",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductDelivery:promiseName",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule6398932261313799",
+        "InputFieldName": "pointList",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "orderProductpickup",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule21554632599651646",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:addressDetail",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:addressDetail",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule7454935265375324",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:addressId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:addressId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule9532324125068263",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:city",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:city",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule8966721928354768",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:departament",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:departament",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderScheduleCustom4812",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:avaDaysForPickup|1:avaDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:initialPickupDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule4291544731951278",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:locationCoordinate:latitude",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:locationCoordinate:latitude",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule8482987630779668",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:locationCoordinate:longitude",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:locationCoordinate:longitude",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule3592365183760662",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:avaDaysForPickup",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:pickupDate",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule2662327701872431",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:extInfor:workHourDesc",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:pickupTime",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule10721320037558724",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:warehouseCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:warehouseCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRTResponseOrderSchedule8604850594368161",
+        "InputFieldName": "orderGroupList:pickup:pickupPointList:warehouseName",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRTResponseOrderSchedule",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRTResponseOrderSchedule",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRTResponseOrderSchedule",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orderProductpickup:warehouseName",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

@@ -1,0 +1,62 @@
+{
+    "Description": "Filtra la lista base de promociones removiendo aquellas cuyo CAT_PromotionClass__c = \"Obsequios de CFM\", generando una lista depurada para continuar el procesamiento.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RemoveClasesBeneficioCFMPromosOrden",
+    "OmniProcessId": {
+        "Name": "Compra de Promociones - Omni",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompraPromociones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": false,
+        "advancedMergeMap": [
+        ],
+        "allowMergeNulls": false,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "",
+        "executionConditionalFormula": "%DMExtractFieldInOrder:has6Months% == true && %DMExtractFieldInOrder:ordenRetencion% == true",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "=CAT_PromotionClass__c != \"Obsequios de CFM\"",
+        "hasPrimary": false,
+        "label": "ListAction5",
+        "mergeFields": [
+            ""
+        ],
+        "mergeListsOrder": [
+            "ReturnList:returnList"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompraPromociones/Procedure/RemoveClasesBeneficioCFMPromosOrden"
+}

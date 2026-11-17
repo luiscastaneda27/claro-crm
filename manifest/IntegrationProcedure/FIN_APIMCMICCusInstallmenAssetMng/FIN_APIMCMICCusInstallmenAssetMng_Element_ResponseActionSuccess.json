@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccess",
+    "OmniProcessId": {
+        "Name": "APIMCMICCusInstallmenAssetMng",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/APIMCMICCusInstallmenAssetMng/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Response": "%SVResponse:ResponseEnrolamiento%",
+            "errorFianza": false,
+            "errorUpdateCredit": false,
+            "result": {
+                "ValidEnrolamiento": "%SVValidEnrolamiento:ValidEnrolamiento%"
+            }
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SVResponse:response:responseCode% <> \"404\" && ISBLANK(%SVResponse:response:error%)",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/APIMCMICCusInstallmenAssetMng/Procedure/ResponseActionSuccess"
+}

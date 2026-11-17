@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRL_UpdateCheckoutCreatedOrder",
+    "OmniProcessId": {
+        "Name": "FIN_ApproveAndDeleteQuotes",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/ApproveAndDeleteQuotes/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "ATDP_Fecha": "%DRE_GetMasterQuote:ATDP_Fecha%",
+            "ATDP_MedioNotificacion": "%DRE_GetMasterQuote:ATDP_MedioNotificacion%",
+            "ATDP_Phone": "%DRE_GetMasterQuote:Phone%",
+            "CodigoCAV": "%GetUserDetails:UserDetails:CAV%",
+            "DaneCode": "%DRE_GetMasterQuote:DaneCode%",
+            "DeliveryMethod": "%DRE_GetMasterQuote:DeliveryMethod%",
+            "Email": "%DRE_GetMasterQuote:Email%",
+            "FVU_Channel__c": "%DRE_GetMasterQuote:FVU_Channel__c%",
+            "IntencionCompra": "FIN",
+            "NotasDeOrden": "Oferta Completa"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FIN_DRL_CheckOutOrder",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "%SV_CheckOutOrderSimId%",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/ApproveAndDeleteQuotes/Procedure/DRL_UpdateCheckoutCreatedOrder"
+}

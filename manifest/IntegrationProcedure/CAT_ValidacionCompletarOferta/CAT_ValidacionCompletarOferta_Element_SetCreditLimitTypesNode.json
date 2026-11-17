@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetCreditLimitTypesNode",
+    "OmniProcessId": {
+        "Name": "Validación Completar Oferta",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidaciónCompletarOferta/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CambiosOrderType",
+        "OmniProcessId": {
+            "Name": "Validación Completar Oferta",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidaciónCompletarOferta/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidaciónCompletarOferta/Procedure/CambiosOrderType",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CambiosOrderType",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CreditLimitPaquetesNode": "=FILTER(LIST(CreditLimitQuery), 'CreditLimitType == \"4017\"')",
+            "CreditLimitRoamingNode": "=FILTER(LIST(CreditLimitQuery), 'CreditLimitType == \"4016\"')",
+            "CreditLimitServiciosNode": "=FILTER(LIST(CreditLimitQuery), 'CreditLimitType == \"4001\"')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidaciónCompletarOferta/Procedure/SetCreditLimitTypesNode"
+}

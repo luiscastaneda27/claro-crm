@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccess",
+    "OmniProcessId": {
+        "Name": "FIN_APIMCMICCusPaymInstallmenMng",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/APIMCMICCusPaymInstallmenMng/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "NumeroDeCredito": "%HTTPCreateCredit:financingCode%",
+            "responseCode": "%HTTPCreateCredit:responseStatus:code%",
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "HTTPCreateCredit:responseStatus:code != NULL && HTTPCreateCredit:responseStatus:code == \"FS_ESB_0\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "HTTPCreateCredit",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/APIMCMICCusPaymInstallmenMng/Procedure/ResponseActionSuccess"
+}

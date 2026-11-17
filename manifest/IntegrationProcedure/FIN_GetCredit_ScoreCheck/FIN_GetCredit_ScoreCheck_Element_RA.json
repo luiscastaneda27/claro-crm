@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA",
+    "OmniProcessId": {
+        "Name": "FIN_GetCreditScoreCheck",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_GetCredit/ScoreCheck/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "AccountCalificacion": "%IP_GetCreditScoreCheck:matrizEquipoVenta:calificacion%",
+            "Cupo": "=%IP_GetCreditScoreCheck:matrizEquipoVenta:totalCupo%",
+            "CupoAutorizadoCOP": "%DRTransformCupo:cupoAutorizadoNumberFIN%",
+            "CupoCOP": "%DRTransformCupo:cupoNumberFIN%",
+            "CupoDisponible": "%DRTransformCupo:cupoNumberFIN%",
+            "cupoAutorizadoOficial": "=%IP_GetCreditScoreCheck:matrizEquipoVenta:cupoAutorizadoTotal%",
+            "pagoInicialTecnologia": "%DRTransformCupo:pagoInicialTecnologia%",
+            "pagoInicialTerminales": "%DRTransformCupo:pagoInicialTerminales%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_GetCredit/ScoreCheck/Procedure/RA"
+}

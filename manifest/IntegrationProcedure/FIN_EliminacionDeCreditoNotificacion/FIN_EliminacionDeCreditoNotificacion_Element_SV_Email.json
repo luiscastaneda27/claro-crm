@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Email",
+    "OmniProcessId": {
+        "Name": "FIN_EliminacionDeCreditoNotificacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionDeCreditoNotificacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "contentType": "CONTENTID",
+            "deliveryReceipts": "N",
+            "description": "%DME_GetAsuntoEliminacion:Params:Value%",
+            "messageType": "SMTP",
+            "parameters": {
+                "_BODY_": "%IP_GetMSJEliminacion:message:MainMessage%",
+                "_NAME1_": "%DME_GetAccountFromCaseDetails:Account:Name%",
+                "_NUMER_LINEA_": "%SV_Vars:Phone%",
+                "_PROCESO_": "%DME_GetAsuntoEliminacion:Params:Value%"
+            },
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "mail": "%DME_GetAccountFromCaseDetails:Account:Email%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "%DME_GetAsuntoEliminacion:Params:Value%",
+            "templateid": "CAMBIOSERV_01",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "DME_GetAccountFromCaseDetails:Account:NotificationPrefMethod != 'SMS - Teléfono de contacto'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionDeCreditoNotificacion/Procedure/SV_Email"
+}

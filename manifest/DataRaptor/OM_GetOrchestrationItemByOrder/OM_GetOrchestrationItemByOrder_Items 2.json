@@ -1,0 +1,133 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "orderId",
+        "GlobalKey": "OM_GetOrchestrationItemByOrderCustom6206",
+        "InputFieldName": "%vlocity_namespace%__OrderId__c",
+        "InputObjectName": "%vlocity_namespace%__OrchestrationPlan__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByOrder",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrchestrationPlan",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "OrchestrationPlan:Id",
+        "GlobalKey": "OM_GetOrchestrationItemByOrderCustom4906",
+        "InputFieldName": "%vlocity_namespace%__OrchestrationPlanId__c",
+        "InputObjectName": "%vlocity_namespace%__OrchestrationItem__c",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByOrder",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrchestrationItem",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'Running'",
+        "GlobalKey": "OM_GetOrchestrationItemByOrderCustom9631",
+        "InputFieldName": "%vlocity_namespace%__State__c",
+        "InputObjectName": "%vlocity_namespace%__OrchestrationItem__c",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByOrder",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrchestrationItem",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ISNOTBLANK(%OrchestrationItem:%vlocity_namespace%__State__c%) &&%OrchestrationItem:%vlocity_namespace%__State__c%=\"Running\",\"Pending\",\"\")",
+        "FormulaResultPath": "OrchestrationItem:state",
+        "FormulaSequence": 1,
+        "GlobalKey": "OM_GetOrchestrationItemByOrderCustom3621",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByOrder",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_GetOrchestrationItemByOrderCustom5127",
+        "InputFieldName": "OrchestrationItem:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByOrder",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "orchestratioItemId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_GetOrchestrationItemByOrderCustom5300",
+        "InputFieldName": "OrchestrationItem:state",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByOrder",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "state",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRL_UpsertLegacyResponse",
+    "OmniProcessId": {
+        "Name": "BTC_IPGetLines",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/BTC/IPGetLines/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "accountId": "=accountId",
+            "customerServices": "=IF(%DRT_LegacyResponse:total:landline% > 0 AND %SV_CalculateLines:totalLines% > 0, \"Movil y Hogar\", \n    IF(%DRT_LegacyResponse:total:landline% > 0 AND %SV_CalculateLines:totalLines% == 0, \"Hogar\",\n        IF(%DRT_LegacyResponse:total:landline% == 0 AND %SV_CalculateLines:totalLines% > 0, \"Movil Postpago\",\n            IF(%DRT_LegacyResponse:total:landline% == 0 AND %SV_CalculateLines:totalLines% == 0 AND %DRT_LegacyResponse:total:prepaid% > 0, \"Prepago\",\"Sin Servicios\"\n))))",
+            "maximumNumberLines": "==%SV_CalculateLines:maximumNumberLines%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "BTC_DRL_UpsertLegacyResponse",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRE_GetNumberLines:maximumNumberLines% <> %SV_CalculateLines:maximumNumberLines%",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataRaptorPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/BTC/IPGetLines/Procedure/DRL_UpsertLegacyResponse"
+}

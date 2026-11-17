@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_ErrorPaymentRef",
+    "OmniProcessId": {
+        "Name": "FIN_ConsultaFinanciacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Response": "%IPGetPaymentReferences:info%",
+            "paramMensaje": "%DMGetParamErrorMessage:Message%",
+            "success": "%IPGetPaymentReferences:success%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPGetPaymentReferences:success% == false \n",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure/RA_ErrorPaymentRef"
+}

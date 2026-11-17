@@ -1,0 +1,65 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DM_BlockHeaderInPorta",
+    "OmniProcessId": {
+        "Name": "CPQGetGlobalHeaderDetails",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CPQ/GetGlobalHeaderDetails/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CB_Order",
+        "OmniProcessId": {
+            "Name": "CPQGetGlobalHeaderDetails",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CPQ/GetGlobalHeaderDetails/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CPQ/GetGlobalHeaderDetails/Procedure/CB_Order",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CB_Order",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "defaultMatrixResult": {
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DataRaptorResult:PurchaseType% == \"POR\" && %DataRaptorResult:OrderItemDeliverySubstatus%",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DecisionMatrixAction1",
+        "matrix Input Parameters": [
+            {
+                "name": "DataRaptorResult:OrderItemDeliveryStatus",
+                "value": "Status"
+            },
+            {
+                "name": "DataRaptorResult:OrderItemDeliverySubstatus",
+                "value": "Substatus"
+            }
+        ],
+        "remoteOptions": {
+            "matrixName": "FVU_ActionStateAndSubstate"
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Matrix Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CPQ/GetGlobalHeaderDetails/Procedure/DM_BlockHeaderInPorta"
+}

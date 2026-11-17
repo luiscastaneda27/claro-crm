@@ -1,0 +1,26 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "QuotesToCancel",
+    "OmniProcessId": {
+        "Name": "FIN_CancelarCotizacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_Cancelar/Cotizacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "DRE_GetQuotesToCancel",
+        "loopOutput": {
+            "SV_vals": "%SV_QuoteStatus%",
+            "UpdatedQuotes": "%DRL_CancelQuote%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_Cancelar/Cotizacion/Procedure/QuotesToCancel"
+}

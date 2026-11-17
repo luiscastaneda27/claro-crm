@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "splitResultadoMatriz",
+    "OmniProcessId": {
+        "Name": "CATValidacionPromocionesAgregadas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "listaConSpitObligatorias": "=LIST(SPLIT(%ObligatoriedadClasesBeneficio:clasesBeneficio%, ',' ))",
+            "listaConSplit": "=SPLIT(%ClasesBeneficiosNoObligatorias:CAT_PromotionClass__c%, ',' )"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues9",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure/splitResultadoMatriz"
+}

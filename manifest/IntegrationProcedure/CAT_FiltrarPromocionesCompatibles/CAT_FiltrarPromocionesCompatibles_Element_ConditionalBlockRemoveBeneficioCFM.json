@@ -1,0 +1,37 @@
+{
+    "Description": "Ejecuta lógica si se cumple la condición has6Months, valor obtenido desde el DataMapper DMExtractFieldInOrder, sobre la orden actual.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ConditionalBlockRemoveBeneficioCFM",
+    "OmniProcessId": {
+        "Name": "Filtrar Promociones Compatibles",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "NoTercerosPromosInAcc",
+        "OmniProcessId": {
+            "Name": "Filtrar Promociones Compatibles",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure/NoTercerosPromosInAcc",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "NoTercerosPromosInAcc",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DMExtractFieldInOrder:has6Months% == true",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock2",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure/ConditionalBlockRemoveBeneficioCFM"
+}

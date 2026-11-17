@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CompararTamano",
+    "OmniProcessId": {
+        "Name": "CATValidacionPromocionesAgregadas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ObtenerClasesPromoFaltantes",
+        "OmniProcessId": {
+            "Name": "CATValidacionPromocionesAgregadas",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure/ObtenerClasesPromoFaltantes",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ObtenerClasesPromoFaltantes",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ListaClases": "=%ObtenerClasesBeneficioDisponibles:CAT_PromotionClass__c%"
+        },
+        "executionConditionalFormula": "IF(ISBLANK(%FitrarListaPromosOrden:ListaPromosOrden%),false,LISTSIZE(%FitrarListaPromosOrden:ListaPromosOrden%) == LISTSIZE(%ObtenerClasesBeneficioPromosOrden%))",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "ListaClasesFaltanteEnOrden:ListaClases",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure/CompararTamano"
+}

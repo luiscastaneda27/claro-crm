@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGetResponse",
+    "OmniProcessId": {
+        "Name": "GetInvoiceFinancingInfo",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GetInvoiceFinancingInfo/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "capital": "=IF(%SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:capital% != null, %SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:capital%, 0)",
+            "errorMessage": "=%DR_GetMessages:Message:MainMessage%",
+            "intCorrientes": "=IF(%SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:intCorrientes% != null, %SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:intCorrientes%, 0)",
+            "intMora": "=IF(%SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:intMora% != null, %SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:intMora%, 0)",
+            "ivaIntCorrientes": "=IF(%SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:ivaIntCorrientes% != null, %SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:ivaIntCorrientes%, 0)",
+            "ivaIntMora": "=IF(%SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:ivaIntMora% != null, %SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1:ivaIntMora%, 0)",
+            "success": "=IF(%SVInvoiceInfo:InvoiceInfoNode:detallesServicio|3:financiamientos|1% != null, true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GetInvoiceFinancingInfo/Procedure/SVGetResponse"
+}

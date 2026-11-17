@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Message",
+    "OmniProcessId": {
+        "Name": "FIN_EliminacionDeCreditoNotificacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionDeCreditoNotificacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "content": "%IP_GetMSJEliminacion:message:MainMessage%",
+            "contentType": "MESSAGE",
+            "deliveryReceipts": "N",
+            "description": "Eliminación de crédito",
+            "messageType": "SMS",
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "phone": "%SV_Vars:Phone%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Eliminación de crédito",
+            "tryTimes": 3
+        },
+        "executionConditionalFormula": "DME_GetAccountFromCaseDetails:Account:NotificationPrefMethod == 'SMS - Teléfono de contacto'",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionDeCreditoNotificacion/Procedure/SV_Message"
+}

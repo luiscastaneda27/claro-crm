@@ -1,0 +1,113 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MatchSizeTercerosPromos",
+    "OmniProcessId": {
+        "Name": "Compra de Promociones - Omni",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompraPromociones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "RemoveTercerosPromoCompatible",
+        "OmniProcessId": {
+            "Name": "Compra de Promociones - Omni",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompraPromociones/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompraPromociones/Procedure/RemoveTercerosPromoCompatible",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "RemoveTercerosPromoCompatible",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "%vlocity_namespace%__AppliesToAllItems__c": "%ReturnList:returnList:%vlocity_namespace%__AppliesToAllItems__c%",
+            "%vlocity_namespace%__Code__c": "%ReturnList:returnList:%vlocity_namespace%__Code__c%",
+            "%vlocity_namespace%__Description__c": "%ReturnList:returnList:%vlocity_namespace%__Description__c%",
+            "%vlocity_namespace%__DurationUnitOfMeasure__c": "%ReturnList:returnList:%vlocity_namespace%__DurationUnitOfMeasure__c%",
+            "CAT_Oferta_Retencion__c": "%ReturnList:returnList:CAT_Oferta_Retencion__c%",
+            "CAT_PromotionClass__c": "%ReturnList:returnList:CAT_PromotionClass__c%",
+            "CAT_Type__c": "%ReturnList:returnList:CAT_Type__c%",
+            "Discount": [
+                {
+                    "chargeType": "%ReturnList:returnList:Discount|1:chargeType%",
+                    "label": "%ReturnList:returnList:Discount|1:label%",
+                    "selectedAdjustmentMethod": "%ReturnList:returnList:Discount|1:selectedAdjustmentMethod%",
+                    "value": "%ReturnList:returnList:Discount|1:value%"
+                }
+            ],
+            "Id": "%ReturnList:returnList:Id%",
+            "Name": "%ReturnList:returnList:Name%",
+            "RecordTypeId": "%ReturnList:returnList:RecordTypeId%",
+            "actions": {
+                "addtocart": {
+                    "client": {
+                        "params": {
+                        }
+                    },
+                    "remote": {
+                        "params": {
+                            "cartId": "%ReturnList:returnList:actions:addtocart:remote:params:cartId%",
+                            "items": [
+                                {
+                                    "itemId": "%ReturnList:returnList:actions:addtocart:remote:params:items|1:itemId%"
+                                }
+                            ],
+                            "methodName": "postCartsPromoItems",
+                            "promotionId": "%ReturnList:returnList:actions:addtocart:remote:params:promotionId%"
+                        }
+                    },
+                    "rest": {
+                        "link": null,
+                        "method": null,
+                        "params": {
+                        }
+                    }
+                },
+                "validatecart": {
+                    "client": {
+                        "params": {
+                        }
+                    },
+                    "remote": {
+                        "params": {
+                            "cartId": "%ReturnList:returnList:actions:validatecart:remote:params:cartId%",
+                            "methodName": "%ReturnList:returnList:actions:validatecart:remote:params:methodName%"
+                        }
+                    },
+                    "rest": {
+                        "link": "%ReturnList:returnList:actions:validatecart:rest:link%",
+                        "method": "POST",
+                        "params": {
+                        }
+                    }
+                }
+            },
+            "category": "%ReturnList:returnList:category%",
+            "code": "%ReturnList:returnList:code%",
+            "description": "%ReturnList:returnList:%vlocity_namespace%__Description__c%",
+            "displaySequence": "%ReturnList:returnList:displaySequence%",
+            "id": "%ReturnList:returnList:id%",
+            "messages": [
+            ],
+            "name": "%ReturnList:returnList:name%"
+        },
+        "executionConditionalFormula": "IF(ISBLANK(%FilterTercerosPromos:filteredList%),0,LISTSIZE(%FilterTercerosPromos:filteredList%)) == LISTSIZE(FindTercerosPromosInAccount)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "CompatibleOffersList:CompatibleOffersList",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompraPromociones/Procedure/MatchSizeTercerosPromos"
+}

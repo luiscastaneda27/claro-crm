@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "setPreciosMaximosUnItem",
+    "OmniProcessId": {
+        "Name": "CATMaximoPagoInicial",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/MaximoPagoInicial/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock1",
+        "OmniProcessId": {
+            "Name": "CATMaximoPagoInicial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/MaximoPagoInicial/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/MaximoPagoInicial/Procedure/ConditionalBlock1",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock1",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "precioMaximoCreditQuota": "=%CATObtainQuoteItemsData:quoteLineItem:Price% - %CATObtainQuoteItemsData:quoteLineItem:CreditQuota%",
+            "precioMaximoCuotaInicial": "=%SetValues11:porcentajeCuotaInicial% * %CATObtainQuoteItemsData:quoteLineItem:Price% / 100",
+            "precioMaximoPagosIniciales": "=%SetValues11:porcentajeMaximo% * %CATObtainQuoteItemsData:quoteLineItem:Price% / 100"
+        },
+        "executionConditionalFormula": "CATObtainQuoteItemsData:cantidadItems = 1 ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues7",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/MaximoPagoInicial/Procedure/setPreciosMaximosUnItem"
+}

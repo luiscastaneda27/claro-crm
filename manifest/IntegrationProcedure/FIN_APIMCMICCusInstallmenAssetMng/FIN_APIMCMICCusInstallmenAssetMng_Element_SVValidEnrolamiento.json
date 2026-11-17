@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVValidEnrolamiento",
+    "OmniProcessId": {
+        "Name": "APIMCMICCusInstallmenAssetMng",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/APIMCMICCusInstallmenAssetMng/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ValidEnrolamiento": "=IF(ISBLANK(%SVResponse:response%), true,IF(%SVResponse:response:responseCode% == \"404\",true ,IF(%SVResponse:response:error|1:origin% == 2 , true, false)))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/APIMCMICCusInstallmenAssetMng/Procedure/SVValidEnrolamiento"
+}

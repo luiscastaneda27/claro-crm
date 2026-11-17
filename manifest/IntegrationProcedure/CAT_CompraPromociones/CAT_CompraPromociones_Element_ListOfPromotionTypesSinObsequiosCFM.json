@@ -1,0 +1,77 @@
+{
+    "Description": "Extrae desde la lista filtrada (RemoveClasesBeneficioCFMPromosOrden) los valores únicos del campo Type y los asigna al nodo PromoTypes:promosList.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ListOfPromotionTypesSinObsequiosCFM",
+    "OmniProcessId": {
+        "Name": "Compra de Promociones - Omni",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompraPromociones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "RemoveBeneficioObsequiosCFM",
+        "OmniProcessId": {
+            "Name": "Compra de Promociones - Omni",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompraPromociones/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompraPromociones/Procedure/RemoveBeneficioObsequiosCFM",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "RemoveBeneficioObsequiosCFM",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": false,
+        "advancedMergeMap": [
+        ],
+        "allowMergeNulls": false,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "promoType",
+        "executionConditionalFormula": "%promoType% == \"CAT_Type__c\"",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "",
+        "hasPrimary": false,
+        "label": "ListAction1",
+        "mergeFields": [
+            "CAT_Type__c"
+        ],
+        "mergeListsOrder": [
+            "RemoveClasesBeneficioCFMPromosOrden"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "PromoTypes:promosList",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+            "": ""
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompraPromociones/Procedure/ListOfPromotionTypesSinObsequiosCFM"
+}

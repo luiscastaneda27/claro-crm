@@ -1,0 +1,232 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "MSISDN",
+        "GlobalKey": "OM_getLastSubscription6600976812310826",
+        "InputFieldName": "OM_MSISDN__c",
+        "InputObjectName": "%vlocity_namespace%__Subscription__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Subscription",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "LIMIT",
+        "FilterValue": "1",
+        "GlobalKey": "OM_getLastSubscription39565525288649606",
+        "InputObjectName": "%vlocity_namespace%__Subscription__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Subscription",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "ORDER BY",
+        "FilterValue": "CreatedDate DESC",
+        "GlobalKey": "OM_getLastSubscription1109079758433269",
+        "InputObjectName": "%vlocity_namespace%__Subscription__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Subscription",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "DATEDIFF(Subscription:%vlocity_namespace%__EndDate__c,TODAY())",
+        "FormulaResultPath": "days",
+        "FormulaSequence": 4,
+        "GlobalKey": "OM_getLastSubscriptionCustom4321",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(%Subscription:OM_SubReasonCode__c% LIKE \"DEA\"\n&&DATEDIFF(Subscription:%vlocity_namespace%__EndDate__c,TODAY()) > 28&&(Subscription:OM_PortationStatus__c = \"1\"||Subscription:OM_PortationStatus__c = 1),true,false)",
+        "FormulaResultPath": "mayor28",
+        "FormulaSequence": 2,
+        "GlobalKey": "OM_getLastSubscriptionCustom1974",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(%Subscription:OM_SubReasonCode__c% LIKE \"DEA\"\n&&DATEDIFF(Subscription:%vlocity_namespace%__EndDate__c,TODAY()) > 90&&(ISBLANK(Subscription:OM_PortationStatus__c)||Subscription:OM_PortationStatus__c = \"0\"||Subscription:OM_PortationStatus__c = 0),true,false)",
+        "FormulaResultPath": "mayor90",
+        "FormulaSequence": 1,
+        "GlobalKey": "OM_getLastSubscriptionCustom9823",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(mayor90=true,\"No se permite una reinstalación de un numero NATIVO si han pasado mas de 90\",IF(mayor28=true,\"No se permite una reinstalación de un numero NO NATIVO si han pasado mas de 28\",\"\"))",
+        "FormulaResultPath": "MensajeError",
+        "FormulaSequence": 3,
+        "GlobalKey": "OM_getLastSubscriptionCustom9310",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getLastSubscriptionCustom1349",
+        "InputFieldName": "MensajeError",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "MensajeError",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getLastSubscriptionCustom3911",
+        "InputFieldName": "Subscription:OM_SubReasonCode__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SubReasonCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getLastSubscription23471826811943886",
+        "InputFieldName": "Subscription:OM_SubStatus__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SubStatus",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getLastSubscriptionCustom9691",
+        "InputFieldName": "days",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getLastSubscription",
+        "OmniDataTransformationId": {
+            "Name": "OM_getLastSubscription",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getLastSubscription",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "diffDays",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

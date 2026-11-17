@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_CancelarCredito",
+    "OmniProcessId": {
+        "Name": "EliminacionAutomaticaFinanciamientoNotaCrédito",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCallCancelacion",
+        "OmniProcessId": {
+            "Name": "EliminacionAutomaticaFinanciamientoNotaCrédito",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure/CBCallCancelacion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCallCancelacion",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "SkipLog": true,
+            "accountNumber": "%DM_ObtenerCuentaExterna:externalAccountNumber%",
+            "accountNumberInternal": "%IP_ObtenerInformacionFinanciamiento:financings:financing:accountNumber%",
+            "financingCode": "%NumeroCredito%",
+            "reasonId": "%DM_ObtenerCodigoRazon:ReasonId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "FIN_IP_Call_CancelFinancingCredit",
+        "label": "IntegrationProcedureAction1",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure/IP_CancelarCredito"
+}

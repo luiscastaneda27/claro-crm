@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA",
+    "OmniProcessId": {
+        "Name": "FIN_DevDineroValidacionesCaso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/DevDineroValidacionesCaso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "casoBloqueanteId": "%SV_CaseVals:CaseId%",
+            "casoBloqueanteNumero": "%SV_CaseVals:CaseNumber%",
+            "casoErrorMensaje": "%DME_ExtDevDineroMensajes:Mensaje%",
+            "puedeContinuar": "=IF(%DME_ExtCasosDevDinero:Error:OpenCaseError% = true || %DME_ExtCasosDevDinero:Error:InProgressCaseError% = true || %DME_ExtCasosDevDinero:Error:CloseCaseError% = true, false, true )"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/DevDineroValidacionesCaso/Procedure/RA"
+}

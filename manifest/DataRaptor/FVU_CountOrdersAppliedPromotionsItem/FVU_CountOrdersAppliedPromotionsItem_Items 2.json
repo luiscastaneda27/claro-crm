@@ -1,0 +1,91 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "AccountId",
+        "GlobalKey": "FVU_CountOrdersAppliedPromotionsItemCustom4376",
+        "InputFieldName": "%vlocity_namespace%__OrderAppliedPromotionId__r.%vlocity_namespace%__OrderId__r.AccountId",
+        "InputObjectName": "%vlocity_namespace%__OrderAppliedPromotionItem__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_CountOrdersAppliedPromotionsItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_CountOrdersAppliedPromotionsItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_CountOrdersAppliedPromotionsItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrderPromotionItem",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "PromotionId",
+        "GlobalKey": "FVU_CountOrdersAppliedPromotionsItemCustom4216",
+        "InputFieldName": "%vlocity_namespace%__OrderAppliedPromotionId__r.%vlocity_namespace%__PromotionId__c",
+        "InputObjectName": "%vlocity_namespace%__OrderAppliedPromotionItem__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_CountOrdersAppliedPromotionsItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_CountOrdersAppliedPromotionsItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_CountOrdersAppliedPromotionsItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrderPromotionItem",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "COUNTQUERY(\"SELECT COUNT() FROM %vlocity_namespace%__OrderAppliedPromotionItem__c WHERE %vlocity_namespace%__OrderAppliedPromotionId__r.%vlocity_namespace%__OrderId__r.AccountId = '{0}' AND %vlocity_namespace%__OrderAppliedPromotionId__r.%vlocity_namespace%__PromotionId__c ='{1}' AND %vlocity_namespace%__OrderItemId__r.Product2.Family = 'Device'    AND %vlocity_namespace%__OrderItemId__r.Product2.%vlocity_namespace%__SpecificationType__c = 'Offer' AND %vlocity_namespace%__OrderItemId__r.Product2.%vlocity_namespace%__Type__c IN ('Handset', 'Tech') AND ((%vlocity_namespace%__OrderAppliedPromotionId__r.%vlocity_namespace%__OrderId__r.Status = 'Activated' AND %vlocity_namespace%__OrderAppliedPromotionId__r.%vlocity_namespace%__OrderId__r.EndDate = LAST_N_DAYS:{2} ) OR %vlocity_namespace%__OrderAppliedPromotionId__r.%vlocity_namespace%__OrderId__r.Status IN ('InPayment', 'DeliveryAndActivated'))\", AccountId, PromotionId, MaxdaysFormula)",
+        "FormulaResultPath": "FormCountOrdersAppliedPromotions",
+        "FormulaSequence": 1,
+        "GlobalKey": "FVU_CountOrdersAppliedPromotionsItemCustom2743",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_CountOrdersAppliedPromotionsItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_CountOrdersAppliedPromotionsItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_CountOrdersAppliedPromotionsItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_CountOrdersAppliedPromotionsItemCustom9982",
+        "InputFieldName": "FormCountOrdersAppliedPromotions",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_CountOrdersAppliedPromotionsItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_CountOrdersAppliedPromotionsItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_CountOrdersAppliedPromotionsItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Integer",
+        "OutputFieldName": "CountOrdersAppliedPromotions",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

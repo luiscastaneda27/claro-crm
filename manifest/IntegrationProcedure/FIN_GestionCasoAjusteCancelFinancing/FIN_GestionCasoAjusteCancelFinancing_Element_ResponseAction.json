@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "GestionCasoAjusteCancelFinancing",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoAjusteCancelFinancing/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "BillingAccount": "%IP_IPGetFinancingInfo:financings:financing:paymentReference%",
+            "CreditStatus": "%IP_IPGetFinancingInfo:financings:summary:resolvedState%",
+            "CreditoTerminado": "%FIN_GetFinancingActive:Finalizado%",
+            "FianzaData": "%SVFianzaData:FianzaData%",
+            "accountNumber": "%DR_ExternalAccoundId:externalAccountNumber%",
+            "accountNumberInternal": "%IP_IPGetFinancingInfo:financings:financing:accountNumber%",
+            "chargeService": "%FIN_DRGetParam:Params:Value%",
+            "financingCode": "%DR_GetCaseDetails:Case:NumeroCredito%",
+            "reasonId": "%DR_CodeReason:ReasonId%",
+            "userId": "=$Vlocity.UserId",
+            "validDate": "%SVParams:validDate%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoAjusteCancelFinancing/Procedure/ResponseAction"
+}

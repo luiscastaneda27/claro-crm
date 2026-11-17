@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_RequestBody",
+    "OmniProcessId": {
+        "Name": "CusPaymReestructureSimulateFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CusPaymReestructureSimulateFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "administrativeFee": "%administrativeFee%",
+            "administrativeFeePeriod": "%administrativeFeePeriod%",
+            "debtInsuranceFee": "%debtInsuranceFee%",
+            "equipmentInsuranceFee": "%equipmentInsuranceFee%",
+            "financingCode": "%financingCode%",
+            "forceSimulation": "%forceSimulation%",
+            "headerRequest": {
+                "additionalNode": "String",
+                "channel": "%DR_GetHeaderIntegration:Channel%",
+                "idApplication": "%DR_GetHeaderIntegration:IdApplication%",
+                "idBusinessTransaction": "%DR_GetHeaderIntegration:IdBusinessTransaction%",
+                "idESBTransaction": "%DR_GetHeaderIntegration:IdESBTransaction%",
+                "ipApplication": "%DR_GetHeaderIntegration:IpApplication%",
+                "startDate": "%DR_GetHeaderIntegration:StartDate%",
+                "target": "%DR_GetHeaderIntegration:Target%",
+                "userApplication": "%DR_GetHeaderIntegration:UserApplication%",
+                "userSession": "%DR_GetHeaderIntegration:UserSession%"
+            },
+            "interestRate": "%interestRate%",
+            "interestType": "%interestType%",
+            "principalDiscount": "%principalDiscount%",
+            "referenceDate": "%referenceDate%",
+            "suretyId": "=IF(ISBLANK(%DR_GetFianzaByCreditNumber:suretyId%),TOSTRING(-123),TOSTRING(%DR_GetFianzaByCreditNumber:suretyId%))",
+            "term": "%term%",
+            "userRole": "%userRole%",
+            "username": "%DR_GetHeaderIntegration:UserSession%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CusPaymReestructureSimulateFianza/Procedure/SV_RequestBody"
+}

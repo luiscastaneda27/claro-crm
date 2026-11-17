@@ -1,0 +1,31 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateCase",
+    "OmniProcessId": {
+        "Name": "CancelFinancingCredit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelFinancingCredit/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Reintentos": "=IF(%tipoDeIntento% = 'automáticos' || %SV_FilterResponse:successList:responseCode% = 'FS_ESB_0' && ISNOTBLANK(%CaseId%)  && ISNOTBLANK(%tipoDeIntento%) ,true,false)",
+            "SkiplogCase": "=IF(%SV_FilterResponse:successList:responseCode% != \"FS_ESB_0\" && ISBLANK(%tipoDeIntento%) && ISNOTBLANK(%CaseId%) ,true,false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues9",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelFinancingCredit/Procedure/SVUpdateCase"
+}

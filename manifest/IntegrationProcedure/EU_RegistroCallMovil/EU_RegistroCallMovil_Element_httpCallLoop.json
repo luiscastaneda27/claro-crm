@@ -1,0 +1,29 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "httpCallLoop",
+    "OmniProcessId": {
+        "Name": "EU_RegistroCallMovil",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/EU/RegistroCallMovil/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock2",
+        "loopList": "TaskLoop",
+        "loopOutput": {
+            "action": "=%HTTP_CallMovil_POSTInfo%",
+            "messageCode": "%HTTP_CallMovil_POST:messageCode%",
+            "responseMessage": "%HTTP_CallMovil_POST:responseMessage%",
+            "status": "=%HTTP_CallMovil_POSTInfo:status%",
+            "statusCode": "=%HTTP_CallMovil_POSTInfo:statusCode%"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/EU/RegistroCallMovil/Procedure/httpCallLoop"
+}

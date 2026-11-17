@@ -1,0 +1,110 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MatchSize",
+    "OmniProcessId": {
+        "Name": "Filtrar Promociones Compatibles",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopPromosList",
+        "OmniProcessId": {
+            "Name": "Filtrar Promociones Compatibles",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure/LoopPromosList",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopPromosList",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "%vlocity_namespace%__AppliesToAllItems__c": "%GetPromotionsRemoteAction:%vlocity_namespace%__AppliesToAllItems__c%",
+            "%vlocity_namespace%__Code__c": "%GetPromotionsRemoteAction:%vlocity_namespace%__Code__c%",
+            "%vlocity_namespace%__DurationUnitOfMeasure__c": "%GetPromotionsRemoteAction:%vlocity_namespace%__DurationUnitOfMeasure__c%",
+            "CAT_PromotionClass__c": "%GetPromotionsRemoteAction:CAT_PromotionClass__c%",
+            "CAT_Type__c": "%GetPromotionsRemoteAction:CAT_Type__c%",
+            "Discount": [
+                {
+                    "chargeType": "%GetPromotionsRemoteAction:Discount|1:chargeType%",
+                    "label": "%GetPromotionsRemoteAction:Discount|1:label%",
+                    "selectedAdjustmentMethod": "%GetPromotionsRemoteAction:Discount|1:selectedAdjustmentMethod%",
+                    "value": "%GetPromotionsRemoteAction:Discount|1:value%"
+                }
+            ],
+            "Id": "%GetPromotionsRemoteAction:Id%",
+            "Name": "%GetPromotionsRemoteAction:Name%",
+            "RecordTypeId": "%GetPromotionsRemoteAction:RecordTypeId%",
+            "actions": {
+                "addtocart": {
+                    "client": {
+                        "params": {
+                        }
+                    },
+                    "remote": {
+                        "params": {
+                            "cartId": "%GetPromotionsRemoteAction:actions:addtocart:remote:params:cartId%",
+                            "items": [
+                                {
+                                    "itemId": "%GetPromotionsRemoteAction:actions:addtocart:remote:params:items|1:itemId%"
+                                }
+                            ],
+                            "methodName": "postCartsPromoItems",
+                            "promotionId": "%GetPromotionsRemoteAction:actions:addtocart:remote:params:promotionId%"
+                        }
+                    },
+                    "rest": {
+                        "link": null,
+                        "method": null,
+                        "params": {
+                        }
+                    }
+                },
+                "validatecart": {
+                    "client": {
+                        "params": {
+                        }
+                    },
+                    "remote": {
+                        "params": {
+                            "cartId": "%GetPromotionsRemoteAction:actions:validatecart:remote:params:cartId%",
+                            "methodName": "%GetPromotionsRemoteAction:actions:validatecart:remote:params:methodName%"
+                        }
+                    },
+                    "rest": {
+                        "link": "%GetPromotionsRemoteAction:actions:validatecart:rest:link%",
+                        "method": "POST",
+                        "params": {
+                        }
+                    }
+                }
+            },
+            "category": "%GetPromotionsRemoteAction:category%",
+            "code": "%GetPromotionsRemoteAction:code%",
+            "displaySequence": "%GetPromotionsRemoteAction:displaySequence%",
+            "id": "%GetPromotionsRemoteAction:id%",
+            "messages": [
+            ],
+            "name": "%GetPromotionsRemoteAction:name%"
+        },
+        "executionConditionalFormula": "IF(ISBLANK(%FilterList:filteredList%),0,LISTSIZE(%FilterList:filteredList%)) == LISTSIZE(RemoveDuplicates)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "PromosList:promosList",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure/MatchSize"
+}

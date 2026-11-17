@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAFail",
+    "OmniProcessId": {
+        "Name": "FIN_FraudAgentSalesItemsLimit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FraudAgentSalesItemsLimit/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "fraudMessage": "%DR_CounterFraudAgentSalesTransaction:errorMessage%",
+            "fraudValidation": true,
+            "tipoDeLimite": "%SV_ErrorMessage:tipoDeLimite%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%SV_Validate:DailyTransactionLimit% || %SV_Validate:MonthlyTransactionLimit%  || %SV_Validate:WeeklyTransactionLimit% ",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FraudAgentSalesItemsLimit/Procedure/RAFail"
+}

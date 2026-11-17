@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCreateDataError",
+    "OmniProcessId": {
+        "Name": "FIN_ConsultaFinanciamientoDetalle",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ErrorDetailData",
+        "OmniProcessId": {
+            "Name": "FIN_ConsultaFinanciamientoDetalle",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure/ErrorDetailData",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ErrorDetailData",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "error": true,
+            "financingCode": "%recordId%",
+            "mensaje": "=IF(%IPGetFinancingCodeInfo:code% != \"202\" || %IPGetFinancingCodeInfo:statusId% == false,(%IPGetFinancingCodeInfo:errorMessage%,\"Ha ocurrido un error al buscar el detalle, por favor intente más tarde\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure/SVCreateDataError"
+}

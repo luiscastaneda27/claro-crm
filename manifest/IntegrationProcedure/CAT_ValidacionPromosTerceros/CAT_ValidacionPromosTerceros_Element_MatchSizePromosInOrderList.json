@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MatchSizePromosInOrderList",
+    "OmniProcessId": {
+        "Name": "Validación Promos Terceros",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromosTerceros/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "PromotionsInOrderListLoop",
+        "OmniProcessId": {
+            "Name": "Validación Promos Terceros",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromosTerceros/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromosTerceros/Procedure/PromotionsInOrderListLoop",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "PromotionsInOrderListLoop",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "OrderAppliedPromosName": "%PromosNOTInAccount:PromosListNOTInAccount:AccountNOTAppliedPromosName%"
+        },
+        "executionConditionalFormula": "IF(ISBLANK(%FilterPromotionsInOrderList:filteredList%),0,LISTSIZE(%FilterPromotionsInOrderList:filteredList%)) >= 1",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "PromosInOrder:PromosListInOrder",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromosTerceros/Procedure/MatchSizePromosInOrderList"
+}

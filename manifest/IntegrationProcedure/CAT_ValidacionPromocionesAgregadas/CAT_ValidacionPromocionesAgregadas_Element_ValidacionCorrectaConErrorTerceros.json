@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ValidacionCorrectaConErrorTerceros",
+    "OmniProcessId": {
+        "Name": "CATValidacionPromocionesAgregadas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "PromosClaseTercerosFaltantes": "%RespuestaValidacionPromosTerceros:RequiredPromoList%",
+            "Validacion": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%ClasesPromoFaltantes:clasesPromoFaltantes%) && %RespuestaValidacionPromosTerceros:ValidacionTerceros% == false",
+        "label": "ResponseAction3",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromocionesAgregadas/Procedure/ValidacionCorrectaConErrorTerceros"
+}

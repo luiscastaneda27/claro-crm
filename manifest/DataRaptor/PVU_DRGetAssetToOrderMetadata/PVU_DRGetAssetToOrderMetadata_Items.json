@@ -1,0 +1,322 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "ConfigName",
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadata5637189296428531",
+        "InputFieldName": "DeveloperName",
+        "InputObjectName": "PVU_AssetToOrderCodigos__mdt",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrderCodeConfig",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "OrderCodeConfig:ReasonCode__c",
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadata9725149130573889",
+        "InputFieldName": "Identificador__c",
+        "InputObjectName": "InterfaceSettings__mdt",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "IntefazSettingReasonCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "DESERIALIZE(OrderCodeConfig:CartConfiguration__c)",
+        "FormulaResultPath": "cartConfig",
+        "FormulaSequence": 2,
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadataCustom5815",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ISNOTBLANK(%OrderCodeConfig:CartOperations__c%), LIST(DESERIALIZE(OrderCodeConfig:CartOperations__c)), $Vlocity.NULL)",
+        "FormulaResultPath": "cartOperations",
+        "FormulaSequence": 1,
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadataCustom5525",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ISNOTBLANK(IntefazSettingReasonCode), IntefazSettingReasonCode:IdCode__c , OrderCodeConfig:ReasonCode__c)",
+        "FormulaResultPath": "ReasonCode",
+        "FormulaSequence": 3,
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadataCustom4137",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadata03715557742451403",
+        "InputFieldName": "OrderCodeConfig:Action__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:Action",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadataCustom7586",
+        "InputFieldName": "cartConfig",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:CartConfiguration",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadataCustom6094",
+        "InputFieldName": "cartOperations",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:CartOperations",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadata35166782988573386",
+        "InputFieldName": "OrderCodeConfig:OrderInitialStatus__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:OrderInitialStatus",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadataCustom1427",
+        "InputFieldName": "OrderCodeConfig:OrderType__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:OrderType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadata8632086645232109",
+        "InputFieldName": "ReasonCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:ReasonCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadata11629433707444492",
+        "InputFieldName": "OrderCodeConfig:SubAction__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:SubAction",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadataCustom7217",
+        "InputFieldName": "OrderCodeConfig:Sub_Action_compatibles__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:SubActionCompatibles",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadata5262033648158453",
+        "InputFieldName": "OrderCodeConfig:SubCausal__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:SubCausal",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadataCustom6764",
+        "InputFieldName": "OrderCodeConfig:SubType__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:SubType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRGetAssetToOrderMetadataCustom2779",
+        "InputFieldName": "OrderCodeConfig:Type__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRGetAssetToOrderMetadata",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRGetAssetToOrderMetadata",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRGetAssetToOrderMetadata",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderConfig:Type",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

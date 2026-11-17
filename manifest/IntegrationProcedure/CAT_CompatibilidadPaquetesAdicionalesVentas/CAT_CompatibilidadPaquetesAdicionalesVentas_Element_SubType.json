@@ -1,0 +1,45 @@
+{
+    "Description": "Toma el valor del key \"%vlocity_namespace%__SubType__c\" y lo manda a la lista declarada anteriormente para formar una lista con los tipos de paquetes adicionales",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SubType",
+    "OmniProcessId": {
+        "Name": "Compatibilidad Paquetes Adicionales Ventas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompatibilidadPaquetesAdicionalesVentas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "GetSubTypesLoop",
+        "OmniProcessId": {
+            "Name": "Compatibilidad Paquetes Adicionales Ventas",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompatibilidadPaquetesAdicionalesVentas/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompatibilidadPaquetesAdicionalesVentas/Procedure/GetSubTypesLoop",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "GetSubTypesLoop",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "SubType": "%GetSubTypes:Product2:%vlocity_namespace%__SubType__c%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "ReturnList:returnList",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompatibilidadPaquetesAdicionalesVentas/Procedure/SubType"
+}

@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_CreditoAcelerado",
+    "OmniProcessId": {
+        "Name": "FIN_ConsultaFinanciamientoDetalle",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "creditoAcelerado": "=IF(%IPGetFinancingCodeInfoV1:financings:financing:status% == 'E - ACELERACION' || %IPGetFinancingCodeInfoV1:financings:financing:status% == 'I - ACELERACIÓN INMEDIATA' || %IPGetFinancingCodeInfoV1:financings:financing:status% == 'J - ACELERACIÓN A DEMANDA', true, false)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure/SV_CreditoAcelerado"
+}

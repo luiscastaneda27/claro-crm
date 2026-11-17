@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Serial",
+    "OmniProcessId": {
+        "Name": "FIN_EliminacionDeCreditoNotificacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionDeCreditoNotificacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Serial": "=IF(%DME_GetAsset:Asset:Product2:FVU_Type__c% = 'Terminales', %DME_GetAsset:Asset:PVU_IMEI__c%, IF(%DME_GetAsset:Asset:Product2:FVU_Type__c% = 'Tecnología',%DME_GetAsset:Asset:PVU_Serial__c%,''))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionDeCreditoNotificacion/Procedure/SV_Serial"
+}

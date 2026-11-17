@@ -1,0 +1,66 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_ReversionDePago",
+    "OmniProcessId": {
+        "Name": "EliminacionFinanciamientoDevolucionPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBReversoDeCredito",
+        "OmniProcessId": {
+            "Name": "EliminacionFinanciamientoDevolucionPQR",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure/CBReversoDeCredito",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBReversoDeCredito",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "SkipLog": true,
+            "billingAccount": "%cuentaFinanciamiento92%",
+            "calculateAmount": "=true",
+            "chargeService": "=%FIN_DRGetParam:Params:Value%",
+            "financingCode": "%numeroCredito%",
+            "remark": "='Ajuste de saldo por cancelación de crédito'",
+            "suretyChargeService": "%FIN_GetFianzaByCreditNumber:Parametro:Valor%",
+            "suretyId": "%FIN_GetFianzaByCreditNumber:suretyId%",
+            "user": "%FIN_GetFianzaByCreditNumber:User:UsuarioRed%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": true,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "FIN_IP_Call_CusInstallRefund",
+        "label": "IntegrationProcedureAction4",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure/IP_ReversionDePago"
+}

@@ -1,0 +1,56 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionFail",
+    "OmniProcessId": {
+        "Name": "CancelFinancingCredit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelFinancingCredit/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBResponse",
+        "OmniProcessId": {
+            "Name": "CancelFinancingCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelFinancingCredit/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelFinancingCredit/Procedure/CBResponse",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBResponse",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "IntentoCancelarCredito": "=IF(%tipoDeIntento%='manuales',%IntentoCancelarCredito%+1,0)",
+            "Response": "Ha ocurrido un error al consultar el servicio",
+            "categoryCode": "%DRTransformResponse:responseCode%",
+            "categoryDescription": "%DRTransformResponse:message%",
+            "message": "%IP_IPGetMessages:message%",
+            "sinDatosServicio": "Functional Error",
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DRTransformResponse:responseCode% != \"FS_ESB_0\" && %DRTransformResponse:responseCode% != \"FS_MF_02\" ",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelFinancingCredit/Procedure/ResponseActionFail"
+}

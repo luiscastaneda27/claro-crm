@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCancelOrder",
+    "OmniProcessId": {
+        "Name": "CPQGetGlobalHeaderDetails",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CPQ/GetGlobalHeaderDetails/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CancelarVenta": "=IF(AND(%RAAccessProcess:FVU_cancelacionDeOrdenes% == true,%DataRaptorResult:Status% != 'Activated',%DataRaptorResult:Status% != 'Cerrada Perdida',%DataRaptorResult:IsOMSIdBlank% == true,OR(%DataRaptorResult:OrderPaymentStatus% == 'NA',%DataRaptorResult:OrderPaymentStatus% == 'PP',%DataRaptorResult:OrderPaymentStatus% == 'PL',%DataRaptorResult:StandardStatus% == 'En Proceso de Entrega/Activación', %DataRaptorResult:StandardStatus% == 'En Proceso de Pago')),true,false)"
+        },
+        "executionConditionalFormula": "%DataRaptorResult:Status% != 'Cerrada Perdida' && %RAAccessProcess:FVU_cancelacionDeOrdenes% =TRUE && %SVMIGCancel:showCancelBtnToMIG% != FALSE",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues6",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CPQ/GetGlobalHeaderDetails/Procedure/SVCancelOrder"
+}

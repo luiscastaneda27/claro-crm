@@ -1,0 +1,22 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CBFErrorAPI",
+    "OmniProcessId": {
+        "Name": "EliminacionFinanciamientoDevolucionPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "(%IP_CancelarCredito:success% == false AND ISNOTBLANK(%IP_CancelarCredito:success%)) OR (%IP_ReversionDePago:success% == false AND ISNOTBLANK(%IP_ReversionDePago:success%)) OR %SVCredito:Cancelado% = true",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock1",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure/CBFErrorAPI"
+}

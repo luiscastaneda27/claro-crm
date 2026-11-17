@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Request",
+    "OmniProcessId": {
+        "Name": "CancelFinancingCredit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelFinancingCredit/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "accountNumber": "%SVParams:accountNumber%",
+            "accountNumberInternal": "%SVParams:accountNumberInternal%",
+            "financingCode": "%SVParams:financingCode%",
+            "reasonId": "%SVParams:reasonId%",
+            "userName": "%SVParams:userName%",
+            "validFrom": "=FORMATDATETIME(%SVParams:createdDateCredit%,\"yyyy-MM-dd'T'HH:mm:ss\",\"America/Colombia\")"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelFinancingCredit/Procedure/SV_Request"
+}

@@ -1,0 +1,140 @@
+[
+    {
+        "FormulaExpression": "IF(%status% == \"OK\",\"Validado\",\"Fallido\")",
+        "FormulaResultPath": "statusValue",
+        "FormulaSequence": 1,
+        "GlobalKey": "FVU_DRPUpdateOrderCustom2510",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRPUpdateOrder",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRPUpdateOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ISNOTBLANK(headerResponse:responseDate),CONCAT(FORMATDATETIMEGMT(SUBSTRING(headerResponse:responseDate,0,23),\"America/Bogota\",\"yyyy-MM-dd'T'HH:mm:ss.SSS\"), \"Z\"), \"\")",
+        "FormulaResultPath": "formatedResponseDate",
+        "FormulaSequence": 2,
+        "GlobalKey": "FVU_DRPUpdateOrderCustom3287",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRPUpdateOrder",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRPUpdateOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRPUpdateOrderCustom7967",
+        "InputFieldName": "transaction",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRPUpdateOrder",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRPUpdateOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "FVU_IdentifyValidationId__c",
+        "OutputObjectName": "Order",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRPUpdateOrderCustom8493",
+        "InputFieldName": "formatedResponseDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRPUpdateOrder",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRPUpdateOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "FVU_IdentityValidationResponseDate__c",
+        "OutputObjectName": "Order",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRPUpdateOrderCustom4360",
+        "InputFieldName": "statusValue",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_DRPUpdateOrder",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRPUpdateOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "FVU_IdentityValidationStatus__c",
+        "OutputObjectName": "Order",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_DRPUpdateOrderCustom9419",
+        "InputFieldName": "orderId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": true,
+        "Name": "FVU_DRPUpdateOrder",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRPUpdateOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Id",
+        "OutputObjectName": "Order",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterOperator": "=",
+        "GlobalKey": "FVU_DRPUpdateOrderCustom116",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "MigrationValue": "FAKEMAPPING",
+        "Name": "FVU_DRPUpdateOrder",
+        "OmniDataTransformationId": {
+            "Name": "FVU_DRPUpdateOrder",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_DRPUpdateOrder",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Id",
+        "OutputObjectName": "Order",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

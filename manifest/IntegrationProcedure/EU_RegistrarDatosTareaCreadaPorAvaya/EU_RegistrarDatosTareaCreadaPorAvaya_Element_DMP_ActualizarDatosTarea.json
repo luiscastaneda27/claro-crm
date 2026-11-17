@@ -1,0 +1,52 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DMP_ActualizarDatosTarea",
+    "OmniProcessId": {
+        "Name": "EU_RegistrarDatosTareaCreadaPorAvaya",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/EU/RegistrarDatosTareaCreadaPorAvaya/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+            "result": {
+                "message": "La actualización se realizó exitosamente",
+                "status": "OK",
+                "statusCode": 200
+            },
+            "success": true
+        },
+        "bundle": "EU_DMP_ActualizarDatosTarea",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "success == false",
+        "failureResponse": {
+            "result": {
+                "message": "La actualización no se realizó",
+                "status": "ERROR",
+                "statusCode": 400
+            },
+            "success": false
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": true,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "%DME_ObtenerDatosTarea%",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/EU/RegistrarDatosTareaCreadaPorAvaya/Procedure/DMP_ActualizarDatosTarea"
+}

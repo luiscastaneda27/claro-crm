@@ -1,0 +1,290 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "orderid",
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom0jIdm0000000XaHEAUItem13",
+        "InputFieldName": "Id",
+        "InputObjectName": "Order",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Order",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'$Vlocity.TRUE'",
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom2130",
+        "InputFieldName": "CAT_GroupCharges__c",
+        "InputObjectName": "OrderItem",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Order:OrderItemRoot",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Order:Id",
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom0jIdm0000000XaHEAUItem9",
+        "InputFieldName": "OrderId",
+        "InputObjectName": "OrderItem",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Order:OrderItemRoot",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'Add On'",
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom9913",
+        "InputFieldName": "Product2.%vlocity_namespace%__Type__c",
+        "InputObjectName": "OrderItem",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Order:OrderItemRoot",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "ABS(Order:OrderItemRoot:FVU_EffectiveRecurringTotalIncTaxes__c) * (1 - %discountPercent%)",
+        "FormulaResultPath": "Order:OrderItemRoot:cfmAddOnDiscount",
+        "FormulaSequence": 1,
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom8207",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom1178",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "List<Map>",
+        "OutputFieldName": "OrderItem",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom6190",
+        "InputFieldName": "discountPercent",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:DiscountPercent",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom734",
+        "InputFieldName": "Order:OrderItemRoot:%vlocity_namespace%__EffectiveOneTimeTotal__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:EffectiveOneTimeTotal",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom5024",
+        "InputFieldName": "Order:OrderItemRoot:FVU_EffectiveOneTimeTotalIncTaxes__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:EffectiveOneTimeTotalIncTaxes",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom2225",
+        "InputFieldName": "Order:OrderItemRoot:cfmAddOnDiscount",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:EffectiveRecurringTotalIncTaxes",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom4191",
+        "InputFieldName": "Order:OrderItemRoot:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:Id",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom8604",
+        "InputFieldName": "Order:OrderItemRoot:%vlocity_namespace%__OneTimeCharge__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:OneTimeCharge",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom6106",
+        "InputFieldName": "Order:OrderItemRoot:FVU_OneTimeChargeIncTaxes__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:OneTimeChargeIncTaxes",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_GetDataForIVAConsultOrderItemCustom688",
+        "InputFieldName": "Order:OrderItemRoot:FVU_RecurringChargeIncDiscount__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_GetDataForIVAConsultOrderItem",
+        "OmniDataTransformationId": {
+            "Name": "FVU_GetDataForIVAConsultOrderItem",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_GetDataForIVAConsultOrderItem",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:RecurringChargeIncDiscount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

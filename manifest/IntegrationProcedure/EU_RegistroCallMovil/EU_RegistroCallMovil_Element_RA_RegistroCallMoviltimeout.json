@@ -1,0 +1,38 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_RegistroCallMoviltimeout",
+    "OmniProcessId": {
+        "Name": "EU_RegistroCallMovil",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/EU/RegistroCallMovil/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "=IF(ISBLANK(%httpCallLoop|1:responseMessage%), \"Gateway Timeout, la operación alcanzó el tiempo máximo de espera\", %httpCallLoop|1:responseMessage%)",
+            "statusCode": 504,
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%httpCallLoop:statusCode% == null",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "httpCallLoop",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/EU/RegistroCallMovil/Procedure/RA_RegistroCallMoviltimeout"
+}

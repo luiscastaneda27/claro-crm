@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetPromosWhenTercerosPromosInAccEmpty",
+    "OmniProcessId": {
+        "Name": "Validación Promos Terceros",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromosTerceros/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "PromosLoopWhenTercerosPromosInAccEmpty",
+        "OmniProcessId": {
+            "Name": "Validación Promos Terceros",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromosTerceros/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromosTerceros/Procedure/PromosLoopWhenTercerosPromosInAccEmpty",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "PromosLoopWhenTercerosPromosInAccEmpty",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountNOTAppliedPromosId": "%ListAddOns:ListAddOns:PromoTercerosId%",
+            "AccountNOTAppliedPromosName": "%ListAddOns:ListAddOns:PromoTercerosName%"
+        },
+        "executionConditionalFormula": "ISBLANK(%RemoveDuplicatesInGetTercerosPromosInAccount%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues14",
+        "responseJSONNode": "PromosNOTInAccount:PromosListNOTInAccount",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromosTerceros/Procedure/SetPromosWhenTercerosPromosInAccEmpty"
+}

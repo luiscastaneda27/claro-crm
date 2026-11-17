@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVParams",
+    "OmniProcessId": {
+        "Name": "CrearCasoBodegaAndOrderItem",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CrearCasoBodegaAndOrderItem/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%AccountId%",
+                "Categoria": "Facturación y pagos",
+                "DescripcionC": "%Motivo%",
+                "OrderId": "%OrderId%",
+                "RecordTypeName": "GestionCasosPosventa",
+                "Status": "En curso",
+                "SubCategoria": "Financiación",
+                "SubEstado": "Pendiente Devolucion Producto a Bodega",
+                "VozCliente": "Retracto de compra"
+            },
+            "Ejecutar": "=NOT(ISBLANK(%Motivo%))",
+            "OrderId": "%OrderId%",
+            "OrderItem": {
+                "Id": "%OrderItemId%",
+                "ProductDeliveryStatus": "Pendiente Devolucion Producto a Bodega"
+            }
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CrearCasoBodegaAndOrderItem/Procedure/SVParams"
+}

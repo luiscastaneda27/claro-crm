@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MatchSizeAddOnsList",
+    "OmniProcessId": {
+        "Name": "Validación Promos Terceros",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromosTerceros/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "AddOnListLoop",
+        "OmniProcessId": {
+            "Name": "Validación Promos Terceros",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/ValidacionPromosTerceros/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromosTerceros/Procedure/AddOnListLoop",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "AddOnListLoop",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "PromoTercerosId": "%GetAddOnsInTercerosPromos:PromoTercerosId%",
+            "PromoTercerosName": "%GetAddOnsInTercerosPromos:PromoTercerosName%"
+        },
+        "executionConditionalFormula": "IF(ISBLANK(%FilterAddOns:filteredList%),0,LISTSIZE(%FilterAddOns:filteredList%)) >= 1",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "ListAddOns:ListAddOns",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/ValidacionPromosTerceros/Procedure/MatchSizeAddOnsList"
+}

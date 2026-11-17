@@ -1,0 +1,51 @@
+{
+    "Description": "Procesa la respuesta filtrada que excluye las promociones de tipo “Obsequios de CFM” y retorna la lista de promociones (excluyendo \"Obsequios de CFM\").",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseFiltered",
+    "OmniProcessId": {
+        "Name": "Filtrar Promociones Compatibles",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockRemoveBeneficioCFM",
+        "OmniProcessId": {
+            "Name": "Filtrar Promociones Compatibles",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure/ConditionalBlockRemoveBeneficioCFM",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockRemoveBeneficioCFM",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "ListMergePromotionsClass": "%filterPromoDestinoCFM:listaPromosFinal%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DMExtractFieldInOrder:has6Months% == true",
+        "label": "ResponseAction4",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure/ResponseFiltered"
+}

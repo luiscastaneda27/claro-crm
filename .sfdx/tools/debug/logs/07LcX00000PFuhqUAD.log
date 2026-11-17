@@ -1,0 +1,365 @@
+56.0 APEX_CODE,FINE;APEX_PROFILING,NONE;CALLOUT,NONE;DATA_ACCESS,NONE;DB,INFO;NBA,NONE;SYSTEM,DEBUG;VALIDATION,NONE;VISUALFORCE,INFO;WAVE,NONE;WORKFLOW,NONE
+16:33:57.345 (345815268)|SOQL_EXECUTE_BEGIN|[2136]|Aggregations:0|SELECT Id, Name, AsyncApexJobIdentifier, AsyncJobStatus, ActivationStatus, ProcessStatus, Description, Version, Source, ActionType, MultiPackUpdatedDateTime, LastModifiedDate, CreatedDate, CreatedBy.Name FROM OmniDataPack WHERE Id IN :dataPackIds
+16:33:57.345 (356919297)|SOQL_EXECUTE_END|[2136]|Rows:1
+16:33:57.345 (361961356)|SOQL_EXECUTE_BEGIN|[2176]|Aggregations:0|SELECT Id, Name, Body, BodyLength, ParentId FROM Attachment WHERE Name = 'Data' AND ParentId = :dataPackId
+16:33:57.345 (371909844)|SOQL_EXECUTE_END|[2176]|Rows:1
+16:33:57.345 (384978606)|SOQL_EXECUTE_BEGIN|[1858]|Aggregations:0|Select MasterLabel, DeveloperName, NamespacePrefix, DefaultImportService__c, DefaultExportService__c, DefaultActivateService__c, DefaultExportLimit__c, DefaultImportLimit__c, DefaultActivateLimit__c, DefaultImportPostProcess__c, PrimarySObjectType__c from VlocityDataPackConfiguration__mdt where DeveloperName =: dataPackName AND DefaultExportService__c != null ORDER BY NamespacePrefix NULLS FIRST LIMIT 1
+16:33:57.345 (389237954)|SOQL_EXECUTE_END|[1858]|Rows:1
+16:33:57.345 (397076918)|SOQL_EXECUTE_BEGIN|[1568]|Aggregations:0|SELECT Id, Name, Body, ParentId FROM Attachment WHERE Id IN :dataPackDataIdsToQuery
+16:33:57.345 (405583933)|SOQL_EXECUTE_END|[1568]|Rows:1
+16:33:57.345 (416856963)|SAVEPOINT_SET|[2665]|SavepointValue0
+16:33:57.345 (422580742)|SOQL_EXECUTE_BEGIN|[10]|Aggregations:0|SELECT MapId__c, InterfaceFieldAPIName__c, InterfaceObjectName__c, InterfaceObjectLookupOrder__c, DomainObjectFieldAPIName__c, DomainObjectAPIName__c, LookupDomainObjectName__c, LookupDomainObjectFieldName__c,LookupDomainObjectRequestedFieldName__c, UpsertKey__c, DomainObjectCreationOrder__c, LinkCreatedIndex__c, LinkCreatedField__c, DefaultValue__c, FilterOperator__c, FilterValue__c, FilterGroup__C, ConfigurationProcess__c, ConfigurationAttribute__c, ConfigurationCategory__c, ConfigurationType__c, ConfigurationValue__c, ConfigurationGroup__c, ConfigurationKey__c, IsRequiredForUpsert__c, ConfigurationPattern__c, Formula__c, FormulaConverted__c, FormulaResultPath__c, FormulaOrder__c, DomainObjectFieldType__c, TransformValuesMap__c, DisplayType__c FROM DRMapItem__c where Name = 'PriceList Migration' AND IsDisabled__c = false ORDER BY DomainObjectCreationOrder__c
+16:33:57.345 (438776892)|SOQL_EXECUTE_END|[10]|Rows:32
+16:33:57.345 (442424968)|SOQL_EXECUTE_BEGIN|[114]|Aggregations:0|Select DeveloperName, NamespacePrefix, CompositeUniqueFieldName__c,MatchingKeyFields__c,MatchingKeyObject__c,ObjectAPIName__c,ReturnKeyField__c from DRMatchingKey__mdt ORDER BY NamespacePrefix NULLS FIRST
+16:33:57.345 (448767738)|SOQL_EXECUTE_END|[114]|Rows:122
+16:33:57.542 (542309267)|CODE_UNIT_STARTED|[EXTERNAL]|InteractionPlatformLimitTracker
+16:33:57.542 (700148606)|CODE_UNIT_STARTED|[EXTERNAL]|Validation:PriceList:a438X000003TgcV
+16:33:57.542 (700205266)|CODE_UNIT_FINISHED|Validation:PriceList:a438X000003TgcV
+16:33:57.738 (738189341)|SOQL_EXECUTE_BEGIN|[1007]|Aggregations:0|SELECT id,  IsDeleted,  Name,  RecordType.DeveloperName,  LastModifiedDate,  SystemModstamp,  Code__c,  CurrencyCode__c,  Description__c,  EffectiveFromDate__c,  EffectiveUntilDate__c,  GlobalKey__c,  IsActive__c,  LoyaltyCode__c,  vlocity_cmt__ParentPriceListId__r.GlobalKey__c,  Sequence__c,  CountOfActiveEntries__c FROM vlocity_cmt__PriceList__c WHERE  id in :objIds
+16:33:57.738 (744968313)|SOQL_EXECUTE_END|[1007]|Rows:1
+16:33:57.738 (747194586)|DML_BEGIN|[1115]|Op:Insert|Type:vlocity_cmt__SyncDeltaObject__c|Rows:1
+16:33:57.738 (773777702)|DML_END|[1115]
+16:33:57.738 (778657340)|SOQL_EXECUTE_BEGIN|[1278]|Aggregations:0|SELECT MAX(Name) maxIndex FROM SyncDeltaObject__c WHERE Id = :tmpVar1 WITH SECURITY_ENFORCED
+16:33:57.738 (782858497)|SOQL_EXECUTE_END|[1278]|Rows:1
+16:33:57.738 (783986678)|DML_BEGIN|[356]|Op:Upsert|Type:vlocity_cmt__XOMParameter__c|Rows:1
+16:33:57.738 (799648366)|DML_END|[356]
+16:34:02.350 (5350422089)|SOQL_EXECUTE_BEGIN|[96]|Aggregations:0|SELECT Id,Name,vlocity_cmt__Code__c,vlocity_cmt__IsActive__c,vlocity_cmt__PriceListId__c FROM vlocity_cmt__PricingElement__c WHERE vlocity_cmt__IsActive__c = true AND vlocity_cmt__PricelistId__c in :priceListIds
+16:34:02.350 (5394097563)|SOQL_EXECUTE_END|[96]|Rows:3644
+16:34:02.350 (5468153469)|SYSTEM_METHOD_ENTRY|[EXTERNAL]|Collections.Collections()
+16:34:02.350 (5468164799)|ENTERING_MANAGED_PKG|java__util
+16:34:02.350 (5468176199)|ENTERING_MANAGED_PKG|java__util
+16:34:02.350 (5468183839)|ENTERING_MANAGED_PKG|java__util
+16:34:02.350 (5468188619)|ENTERING_MANAGED_PKG|java__util
+16:34:02.350 (5468202209)|ENTERING_MANAGED_PKG|java__util
+16:34:02.350 (5468206129)|ENTERING_MANAGED_PKG|java__util
+16:34:02.350 (5468209229)|ENTERING_MANAGED_PKG|java__util
+16:34:02.350 (5468220579)|ENTERING_MANAGED_PKG|java__util
+16:34:02.350 (5468224019)|ENTERING_MANAGED_PKG|java__util
+16:34:02.350 (5468229579)|SYSTEM_METHOD_EXIT|[EXTERNAL]|Collections
+16:34:02.350 (5468234559)|ENTERING_MANAGED_PKG|java__util
+16:34:02.504 (5504440321)|SOQL_EXECUTE_BEGIN|[96]|Aggregations:0|SELECT Id,Name,vlocity_cmt__Code__c,vlocity_cmt__IsActive__c,vlocity_cmt__PriceListId__c FROM vlocity_cmt__PricingElement__c WHERE vlocity_cmt__IsActive__c = true AND vlocity_cmt__PricelistId__c in :priceListIds AND Id not in :pricingEleIdList
+16:34:02.504 (5544469338)|SOQL_EXECUTE_END|[96]|Rows:3595
+16:34:02.625 (5625319276)|CODE_UNIT_STARTED|[EXTERNAL]|01qcX000006OdzH|AuditPricingElementTrigger on PricingElement trigger event BeforeUpdate|__sfdc_trigger/AuditPricingElementTrigger
+16:34:02.625 (5626272888)|METHOD_ENTRY|[1]|01pcX000002EbEo|AuditPricingElementTriggerHandler.AuditPricingElementTriggerHandler()
+16:34:02.625 (5626282558)|METHOD_EXIT|[1]|AuditPricingElementTriggerHandler
+16:34:02.625 (5626287958)|METHOD_ENTRY|[7]|01pcX000002EbEo|AuditPricingElementTriggerHandler.beforeUpdate(Map<Id,SObject>, Map<Id,SObject>)
+16:34:02.625 (5626292348)|METHOD_EXIT|[7]|01pcX000002EbEo|AuditPricingElementTriggerHandler.beforeUpdate(Map<Id,SObject>, Map<Id,SObject>)
+16:34:02.625 (5626364398)|CODE_UNIT_FINISHED|AuditPricingElementTrigger on PricingElement trigger event BeforeUpdate|__sfdc_trigger/AuditPricingElementTrigger
+16:34:02.689 (5689040255)|SOQL_EXECUTE_BEGIN|[1007]|Aggregations:0|SELECT id,  IsDeleted,  Name,  LastModifiedDate,  SystemModstamp,  AdjustmentValue__c,  Amount__c,  CalculationType__c,  Code__c,  CurrencyCode__c,  DisplayText__c,  EffectiveFromDate__c,  EffectiveUntilDate__c,  GlobalKey2__c,  GlobalKey__c,  HelpText__c,  IsActive__c,  IsOverride__c,  IsReusable__c,  LoyaltyAmount__c,  LoyaltyCode__c,  vlocity_cmt__ObjectTypeId__r.GlobalKey__c,  vlocity_cmt__OfferId__r.GlobalKey__c,  PerUsageAmount__c,  vlocity_cmt__PerUsageMeasurementId__r.GlobalKey__c,  PerUsageUnitOfMeasure__c,  vlocity_cmt__PriceListId__r.GlobalKey__c,  PricingMatrixBindingData__c,  vlocity_cmt__PricingMatrixId__r.GlobalKey__c,  vlocity_cmt__PricingVariableId__r.GlobalKey__c,  vlocity_cmt__ProductId__r.GlobalKey__c,  vlocity_cmt__PromotionId__r.GlobalKey__c,  RuleInfo__c,  vlocity_cmt__TimePlanId__r.GlobalKey__c,  VersionNumber__c,  PricingVariableAppliesTo__c,  PricingVariableType__c FROM vlocity_cmt__PricingElement__c WHERE  id in :objIds
+16:34:02.689 (5716667982)|SOQL_EXECUTE_END|[1007]|Rows:49
+16:34:02.689 (5818307615)|DML_BEGIN|[1115]|Op:Insert|Type:vlocity_cmt__SyncDeltaObject__c|Rows:49
+16:34:02.689 (5921051389)|DML_END|[1115]
+16:34:02.689 (5924054025)|SOQL_EXECUTE_BEGIN|[1278]|Aggregations:0|SELECT MAX(Name) maxIndex FROM SyncDeltaObject__c WHERE Id = :tmpVar1 WITH SECURITY_ENFORCED
+16:34:02.689 (5932730510)|SOQL_EXECUTE_END|[1278]|Rows:1
+16:34:02.689 (5933271691)|DML_BEGIN|[356]|Op:Upsert|Type:vlocity_cmt__XOMParameter__c|Rows:1
+16:34:02.689 (5947124004)|DML_END|[356]
+16:34:02.625 (5948876886)|CODE_UNIT_STARTED|[EXTERNAL]|01qcX000006OdzH|AuditPricingElementTrigger on PricingElement trigger event AfterUpdate|__sfdc_trigger/AuditPricingElementTrigger
+16:34:02.625 (5949170057)|METHOD_ENTRY|[10]|01pcX000002EbEo|AuditPricingElementTriggerHandler.afterUpdate(Map<Id,SObject>, Map<Id,SObject>)
+16:34:02.625 (5949908458)|METHOD_ENTRY|[1]|01pcX000002EbEj|AuditLogService.AuditLogService()
+16:34:02.625 (5949924268)|METHOD_ENTRY|[3]||System.Crypto.generateAesKey(Integer)
+16:34:02.625 (5950677589)|METHOD_EXIT|[3]||System.Crypto.generateAesKey(Integer)
+16:34:02.625 (5950683999)|METHOD_ENTRY|[3]||System.EncodingUtil.convertToHex(Blob)
+16:34:02.625 (5950697299)|METHOD_EXIT|[3]||System.EncodingUtil.convertToHex(Blob)
+16:34:02.625 (5950708089)|METHOD_EXIT|[1]|AuditLogService
+16:34:02.625 (5950713919)|METHOD_ENTRY|[20]|01pcX000002EbEj|AuditLogService.capture(Schema.SObjectType, System.TriggerOperation, Map<Id,SObject>, Map<Id,SObject>)
+16:34:02.625 (5950735550)|METHOD_ENTRY|[7]|01pcX000002EbEj|AuditLogService.operationName(System.TriggerOperation)
+16:34:02.625 (5950780050)|METHOD_EXIT|[7]|01pcX000002EbEj|AuditLogService.operationName(System.TriggerOperation)
+16:34:02.625 (5951344451)|METHOD_ENTRY|[1]|01pcX000002EbEf|AuditConfigProvider.AuditConfigProvider()
+16:34:02.625 (5951352251)|METHOD_EXIT|[1]|AuditConfigProvider
+16:34:02.625 (5951355911)|METHOD_ENTRY|[8]|01pcX000002EbEf|AuditConfigProvider.getConfiguration(Schema.SObjectType)
+16:34:02.625 (5951636481)|METHOD_ENTRY|[38]|01pcX000002EbEf|AuditConfigProvider.getConfigurations()
+16:34:02.625 (5951644561)|METHOD_ENTRY|[47]||System.Test.isRunningTest()
+16:34:02.625 (5951652641)|METHOD_EXIT|[47]||System.Test.isRunningTest()
+16:34:02.625 (5952545823)|SOQL_EXECUTE_BEGIN|[52]|Aggregations:0|SELECT DeveloperName, Object_API_Name__c, External_Key_Field__c FROM Audit_Object_Config__mdt WHERE Active__c = TRUE WITH SYSTEM_MODE
+16:34:02.625 (5956043099)|SOQL_EXECUTE_END|[52]|Rows:5
+16:34:02.625 (5957236861)|SOQL_EXECUTE_BEGIN|[54]|Aggregations:0|SELECT DeveloperName, Object_Config__r.DeveloperName, Field_API_Name__c, Track_Insert__c, Track_Update__c, Track_Delete__c, Value_Mode__c FROM Audit_Field_Config__mdt WHERE Active__c = TRUE WITH SYSTEM_MODE
+16:34:02.625 (5962577641)|SOQL_EXECUTE_END|[54]|Rows:11
+16:34:02.625 (5962709211)|METHOD_ENTRY|[51]|01pcX000002EbEf|AuditConfigProvider.loadConfigurations(List<Audit_Object_Config__mdt>, List<Audit_Field_Config__mdt>)
+16:34:02.625 (5963014521)|CONSTRUCTOR_ENTRY|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963030871)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963124631)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963129441)|CONSTRUCTOR_EXIT|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963190332)|CONSTRUCTOR_ENTRY|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963193862)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963202242)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963204332)|CONSTRUCTOR_EXIT|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963222392)|CONSTRUCTOR_ENTRY|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963224682)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963230522)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963232422)|CONSTRUCTOR_EXIT|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963249582)|CONSTRUCTOR_ENTRY|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963251752)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963256742)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963258552)|CONSTRUCTOR_EXIT|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963273602)|CONSTRUCTOR_ENTRY|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963276092)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963280712)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963282452)|CONSTRUCTOR_EXIT|[71]|01pcX000002EbEf|<init>(String,String)|AuditConfigProvider.ObjectConfig
+16:34:02.625 (5963401802)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963408972)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963415612)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963418302)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963440072)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963442742)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963446272)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963449192)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963463702)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963466302)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963469782)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963472142)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963484392)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963486602)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963489902)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963492162)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963504292)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963506482)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963509862)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963512192)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963523972)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963526222)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963529382)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963531582)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963545712)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963547902)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963551162)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963553342)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963567602)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963569912)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963573132)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963575402)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963589672)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963591862)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963595012)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963597222)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963611622)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963614262)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963617822)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963620022)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963632962)|CONSTRUCTOR_ENTRY|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963635132)|SYSTEM_MODE_ENTER|false
+16:34:02.625 (5963638242)|SYSTEM_MODE_EXIT|false
+16:34:02.625 (5963640462)|CONSTRUCTOR_EXIT|[82]|01pcX000002EbEf|<init>(String,Boolean,Boolean,Boolean,String)|AuditConfigProvider.FieldConfig
+16:34:02.625 (5963649512)|METHOD_EXIT|[51]|01pcX000002EbEf|AuditConfigProvider.loadConfigurations(List<Audit_Object_Config__mdt>, List<Audit_Field_Config__mdt>)
+16:34:02.625 (5963655532)|METHOD_EXIT|[38]|01pcX000002EbEf|AuditConfigProvider.getConfigurations()
+16:34:02.625 (5964286633)|METHOD_ENTRY|[1]|01pcX000002EbEh|AuditConfigurationValidator.AuditConfigurationValidator()
+16:34:02.625 (5964358003)|METHOD_EXIT|[1]|AuditConfigurationValidator
+16:34:02.625 (5964363163)|METHOD_ENTRY|[41]|01pcX000002EbEh|AuditConfigurationValidator.validate(AuditConfigProvider.ObjectConfig)
+16:34:02.625 (6029533754)|METHOD_EXIT|[41]|01pcX000002EbEh|AuditConfigurationValidator.validate(AuditConfigProvider.ObjectConfig)
+16:34:02.625 (6029555674)|METHOD_EXIT|[8]|01pcX000002EbEf|AuditConfigProvider.getConfiguration(Schema.SObjectType)
+16:34:02.625 (6029565464)|METHOD_ENTRY|[12]|01pcX000002EbEj|AuditLogService.validateContext(System.TriggerOperation, Map<Id,SObject>, Map<Id,SObject>)
+16:34:02.625 (6029720004)|METHOD_EXIT|[12]|01pcX000002EbEj|AuditLogService.validateContext(System.TriggerOperation, Map<Id,SObject>, Map<Id,SObject>)
+16:34:02.625 (6030136325)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030158835)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030207195)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030231085)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030287655)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030298225)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030318435)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030325865)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030369405)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030377735)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030396725)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030402825)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030444375)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030451935)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030470565)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030476225)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030517505)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030525015)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030543475)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030549215)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030589246)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030596606)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030614646)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030620236)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030660366)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030667696)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030685926)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030691536)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030740436)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030749046)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030767716)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030773426)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030814236)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030822016)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030840296)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030846896)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030887056)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030920066)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030940506)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030946876)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6030989566)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6030996986)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031015456)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031021296)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031061356)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031068826)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031087086)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031092836)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031132286)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031139446)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031157717)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031163497)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031203137)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031210527)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031228407)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031233877)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031273187)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031280557)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031298477)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031304277)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031343487)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031350957)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031369287)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031374747)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031414067)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031421277)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031439247)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031444707)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031484027)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031491207)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031509367)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031514857)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031553937)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031561327)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031579157)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031584697)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031624957)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031632097)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031650177)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031655847)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031695337)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031702557)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031720598)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031726018)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031766138)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031773338)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031791278)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031796818)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031836728)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031843958)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031862028)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031867538)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031907558)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031914798)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031932698)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031938228)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6031977788)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6031984908)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032003028)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032009068)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032049698)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032057158)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032075098)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032080828)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032120608)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032128148)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032146058)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032151658)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032191468)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032198838)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032216828)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032222348)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032262169)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032269339)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032287119)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032292549)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032332099)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032339249)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032357349)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032363029)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032402909)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032410399)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032428339)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032433929)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032474429)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032481479)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032499389)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032504949)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032545029)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032552089)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032570219)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032575629)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032616679)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032623969)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032642159)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032647869)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032688269)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032695839)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032713839)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032719329)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032759499)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032767109)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032784879)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032790699)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032831030)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032838380)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032856990)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032863410)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032905430)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032913100)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032931690)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032937470)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6032979760)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6032989040)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033008440)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033014250)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033055520)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033063160)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033081250)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033086830)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033127150)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033134590)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033152610)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033158010)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033197660)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033205400)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033223400)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033228930)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033269000)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033276260)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033294400)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033299770)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033339110)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033346900)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033365290)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033370911)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033411041)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033418241)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033436261)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033441811)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033481331)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033488521)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033506531)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033512041)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033551591)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033558961)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033576961)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033582561)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033622211)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033629321)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033647541)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033653241)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033692821)|METHOD_ENTRY|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033700191)|METHOD_EXIT|[29]|01pcX000002EbEj|AuditLogService.enabled(AuditConfigProvider.FieldConfig, System.TriggerOperation)
+16:34:02.625 (6033718401)|METHOD_ENTRY|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6033724131)|METHOD_EXIT|[34]|01pcX000002EbEj|AuditLogService.valuesEqual(Object, Object)
+16:34:02.625 (6034757673)|METHOD_ENTRY|[1]|01pcX000002EbEi|AuditLogRepository.AuditLogRepository()
+16:34:02.625 (6034767193)|METHOD_EXIT|[1]|AuditLogRepository
+16:34:02.625 (6034771603)|METHOD_ENTRY|[60]|01pcX000002EbEi|AuditLogRepository.save(List<Audit_Log__c>)
+16:34:02.625 (6034790113)|METHOD_EXIT|[60]|01pcX000002EbEi|AuditLogRepository.save(List<Audit_Log__c>)
+16:34:02.625 (6034794023)|METHOD_EXIT|[20]|01pcX000002EbEj|AuditLogService.capture(Schema.SObjectType, System.TriggerOperation, Map<Id,SObject>, Map<Id,SObject>)
+16:34:02.625 (6034797943)|METHOD_EXIT|[10]|01pcX000002EbEo|AuditPricingElementTriggerHandler.afterUpdate(Map<Id,SObject>, Map<Id,SObject>)
+16:34:02.625 (6035020423)|CODE_UNIT_FINISHED|AuditPricingElementTrigger on PricingElement trigger event AfterUpdate|__sfdc_trigger/AuditPricingElementTrigger
+16:34:02.625 (6111920464)|CODE_UNIT_FINISHED|InteractionPlatformLimitTracker
+16:34:03.119 (6119511948)|SAVEPOINT_ROLLBACK|[2862]|SavepointValue0
+16:34:03.119 (6129140444)|DML_BEGIN|[1960]|Op:Upsert|Type:OmniDataPack|Rows:1
+16:34:03.119 (6143548688)|DML_END|[1960]
+16:34:03.119 (6145230861)|SOQL_EXECUTE_BEGIN|[1968]|Aggregations:0|SELECT Id FROM Attachment WHERE Name = 'Data' AND ParentId = :packId
+16:34:03.119 (6155991870)|SOQL_EXECUTE_END|[1968]|Rows:1
+16:34:03.119 (6158358383)|SOQL_EXECUTE_BEGIN|[652]|Aggregations:0|SELECT Id, Name FROM Attachment WHERE Name NOT IN ('Data', 'Summary') AND ParentId = :dataPackId
+16:34:03.119 (6166916378)|SOQL_EXECUTE_END|[652]|Rows:53
+16:34:03.119 (6178159087)|DML_BEGIN|[692]|Op:Upsert|Type:Attachment|Rows:1
+16:34:03.119 (6214602669)|DML_END|[692]
+16:34:03.119 (6219201967)|DML_BEGIN|[2010]|Op:Upsert|Type:Attachment|Rows:1
+16:34:03.119 (6236185176)|DML_END|[2010]

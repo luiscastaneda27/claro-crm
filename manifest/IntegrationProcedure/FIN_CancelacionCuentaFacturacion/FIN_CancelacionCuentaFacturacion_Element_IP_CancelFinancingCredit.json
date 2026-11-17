@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_CancelFinancingCredit",
+    "OmniProcessId": {
+        "Name": "CancelacionCuentaFacturacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelacionCuentaFacturacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CancelCredit",
+        "OmniProcessId": {
+            "Name": "CancelacionCuentaFacturacion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelacionCuentaFacturacion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelacionCuentaFacturacion/Procedure/CancelCredit",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CancelCredit",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "accountNumber": "%IP_OrderCancelFinancing:accountNumber%",
+            "accountNumberInternal": "%IP_OrderCancelFinancing:accountNumberInternal%",
+            "createdDateCredit": "%IP_OrderCancelFinancing:createdDateCredit%",
+            "createdDateTimeCredit": "%IP_OrderCancelFinancing:createdDateTimeCredit%",
+            "financingCode": "%IP_OrderCancelFinancing:financingCode%",
+            "reasonId": "%IP_OrderCancelFinancing:reasonId%",
+            "userId": "%IP_OrderCancelFinancing:userId%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "FIN_CancelFinancingCredit",
+        "label": "IntegrationProcedureAction5",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelacionCuentaFacturacion/Procedure/IP_CancelFinancingCredit"
+}

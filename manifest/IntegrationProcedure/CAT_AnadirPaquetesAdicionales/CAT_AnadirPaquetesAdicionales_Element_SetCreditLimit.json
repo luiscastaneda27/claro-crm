@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetCreditLimit",
+    "OmniProcessId": {
+        "Name": "Añadir Paquetes Adicionales",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/AñadirPaquetesAdicionales/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CreditLimit": "=IF(%GetCreditLimitType% == 'Límite Nacional Servicios',%GetCreditLimitsOrderItemPlan:CreditLimitServicios%,IF(%GetCreditLimitType% == 'Límite Roaming',%GetCreditLimitsOrderItemPlan:CreditLimitRoaming%,IF(%GetCreditLimitType% == 'Límite Nacional Paquetes',%GetCreditLimitsOrderItemPlan:CreditLimitPaquetes%,'Límite no identificado')))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "CreditLimit",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/AñadirPaquetesAdicionales/Procedure/SetCreditLimit"
+}

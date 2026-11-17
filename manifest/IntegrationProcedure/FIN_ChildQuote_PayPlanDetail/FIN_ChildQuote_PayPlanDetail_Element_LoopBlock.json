@@ -1,0 +1,32 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LoopBlock",
+    "OmniProcessId": {
+        "Name": "FIN_ChildQuotePayPlanDetail",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "LoopBlock1",
+        "loopList": "IP_getSimById:PaymentPlan",
+        "loopOutput": {
+            "AbonoCapital": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTable:AbonoCapital%)",
+            "CapitalFinal": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTable:CapitalFinal%)",
+            "CuotaMes": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTable:CuotaMes%)",
+            "FechaCuota": "%IP_getSimById:PaymentPlan:date%",
+            "IVA": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTable:IVA%)",
+            "InteresCorriente": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTable:InteresCorriente%)",
+            "NumCuota": "%IP_getSimById:PaymentPlan:termNo%",
+            "SaldoCapitalInicial": "=CONCAT(\"$ \",%DRT_SimulacionDetalladaDataTable:SaldoCapitalInicial%)"
+        },
+        "show": null
+    },
+    "Type": "Loop Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure/LoopBlock"
+}

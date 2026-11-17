@@ -1,0 +1,41 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionFail",
+    "OmniProcessId": {
+        "Name": "APIMCMICCusInstallmenAssetMng",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/APIMCMICCusInstallmenAssetMng/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Response": "Hubo un problema en la consulta del servicio",
+            "errorFianza": "=IF(ISBLANK(%SVResponse:response%), true,IF(%SVResponse:response:responseCode% == \"404\",true ,IF(%SVResponse:response:error|1:origin% == 3 , true, false)))",
+            "errorUpdateCredit": "=IF(ISBLANK(%SVResponse:response%), true,IF(%SVResponse:response:responseCode% == \"404\",true ,IF(%SVResponse:response:error|1:origin% == 1 , true, false)))",
+            "result": {
+                "ValidEnrolamiento": "%SVValidEnrolamiento:ValidEnrolamiento%"
+            }
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%SVResponse:response%) || ISNOTBLANK(%SVResponse:response:error%) || %SVResponse:response:responseCode% == \"404\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/APIMCMICCusInstallmenAssetMng/Procedure/ResponseActionFail"
+}

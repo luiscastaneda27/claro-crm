@@ -1,0 +1,211 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "defaultBillingAccount",
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom4413",
+        "InputFieldName": "%vlocity_namespace%__OrderId__r.%vlocity_namespace%__DefaultBillingAccountId__r.FVU_AccountExternalID__c",
+        "InputObjectName": "Asset",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Asset",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'MSISDN'",
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom2811",
+        "InputFieldName": "Product2.%vlocity_namespace%__Type__c",
+        "InputObjectName": "Asset",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Asset",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'Active'",
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom2506",
+        "InputFieldName": "Status",
+        "InputObjectName": "Asset",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Asset",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(isPrefixFound != -1, SUBSTRING(%Asset:@B2C-ATTR-MSISDN%,2),%Asset:@B2C-ATTR-MSISDN%)",
+        "FormulaResultPath": "phoneNumberNew",
+        "FormulaSequence": 2,
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom4205",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "STRINGINDEXOF(%Asset:@B2C-ATTR-MSISDN%,\"57\")",
+        "FormulaResultPath": "isPrefixFound",
+        "FormulaSequence": 1,
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom5011",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom3124",
+        "InputFieldName": "Asset:Account.Name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "accountName",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom1712",
+        "InputFieldName": "defaultBillingAccount",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "defaultBillingAccount",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom2485",
+        "InputFieldName": "phoneNumberNew",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "label",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom2948",
+        "InputFieldName": "Asset:@B2C-ATTR-MSISDN",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "lineNumber",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FINGetLineNumberByBillingAccountCustom7022",
+        "InputFieldName": "Asset:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FINGetLineNumberByBillingAccount",
+        "OmniDataTransformationId": {
+            "Name": "FINGetLineNumberByBillingAccount",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FINGetLineNumberByBillingAccount",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "value",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

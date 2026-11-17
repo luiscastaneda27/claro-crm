@@ -1,0 +1,47 @@
+{
+    "Description": "Esta clase, une los Ids de las promociones compatibles (promociones activas donde el plan es un promotion item) por \"_\" para ser usadas en la llamada de \"getCartsPromotions\"",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PromotionsQualification",
+    "OmniProcessId": {
+        "Name": "Filtrar Promociones Compatibles",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "PromotionsList": "%TransformJsonToArray%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction2",
+        "remoteClass": "CATPromotionsQualification",
+        "remoteMethod": "promotionsQualification",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "qualifiedPromotions",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/FiltrarPromocionesCompatibles/Procedure/PromotionsQualification"
+}

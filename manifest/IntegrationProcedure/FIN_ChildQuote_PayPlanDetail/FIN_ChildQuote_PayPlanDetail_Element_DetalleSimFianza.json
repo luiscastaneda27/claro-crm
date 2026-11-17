@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DetalleSimFianza",
+    "OmniProcessId": {
+        "Name": "FIN_ChildQuotePayPlanDetail",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock1",
+        "OmniProcessId": {
+            "Name": "FIN_ChildQuotePayPlanDetail",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure/ConditionalBlock1",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock1",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AE": "%IPgetSimById:financingData:summary:AEInterestRate%",
+            "IM": "%IPgetSimById:financingData:summary:monthlyInterestRate%",
+            "IR": "%IPgetSimById:financingData:summary:interestRate%",
+            "Plazo": "%IPgetSimById:financingData:summary:term%",
+            "SF": "%IPgetSimById:financingData:summary:maxLegalInterestRate%",
+            "VAF": "%IPgetSimById:financingData:summary:baseAmount%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure/DetalleSimFianza"
+}

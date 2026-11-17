@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_RegistroCallMovilFail",
+    "OmniProcessId": {
+        "Name": "EU_RegistroCallMovil",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/EU/RegistroCallMovil/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "=IF(ISBLANK(%httpCallLoop|1:responseMessage%), \"La actualización en call movil no pudo ser realizada\", %httpCallLoop|1:responseMessage%)",
+            "messageCode": "%httpCallLoop:messageCode%",
+            "status": "%httpCallLoop|1:status%",
+            "statusCode": "%httpCallLoop|1:statusCode%",
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%httpCallLoop:statusCode% != null && (%httpCallLoop:statusCode% < 200 || %httpCallLoop:statusCode% >= 300)\n\n",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "httpCallLoop",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/EU/RegistroCallMovil/Procedure/RA_RegistroCallMovilFail"
+}

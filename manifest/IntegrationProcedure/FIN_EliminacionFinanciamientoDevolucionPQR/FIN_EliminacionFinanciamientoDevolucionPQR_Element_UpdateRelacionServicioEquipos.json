@@ -1,0 +1,59 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "UpdateRelacionServicioEquipos",
+    "OmniProcessId": {
+        "Name": "EliminacionFinanciamientoDevolucionPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "GetPaymentReferencesDevDinero",
+        "OmniProcessId": {
+            "Name": "EliminacionFinanciamientoDevolucionPQR",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure/GetPaymentReferencesDevDinero",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "GetPaymentReferencesDevDinero",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "ConceptoFianza": "=IF(ISBLANK(%ResponseDevoFinan:ValorDevolucionFianza%), \"\", %ResponseDevoFinan:ConceptoFianza%)",
+            "ReversoPago": true,
+            "ServicioYEquipoId": "%recordId%",
+            "ValorDevolucionCP": "%ResponseDevoFinan:currentBalance%",
+            "ValorDevolucionFianza": "%ResponseDevoFinan:ValorDevolucionFianza%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "DR_PVU_UpdateRelacionServiciosEquipos",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionFinanciamientoDevolucionPQR/Procedure/UpdateRelacionServicioEquipos"
+}

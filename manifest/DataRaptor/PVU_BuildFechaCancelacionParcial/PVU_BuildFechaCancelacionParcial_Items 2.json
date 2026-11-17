@@ -1,0 +1,142 @@
+[
+    {
+        "FormulaExpression": "FUNCTION('PVU_ServiceOrdersRequestBuilder','getInterfazSettringMTDByName', 'PVU_DiasCancelacionParcialNumeroClaro')",
+        "FormulaResultPath": "diasParaNumerosClaro",
+        "FormulaSequence": 2,
+        "GlobalKey": "PVU_BuildFechaCancelacionParcial511510398973562",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_BuildFechaCancelacionParcial",
+        "OmniDataTransformationId": {
+            "Name": "PVU_BuildFechaCancelacionParcial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_BuildFechaCancelacionParcial",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FUNCTION('PVU_ServiceOrdersRequestBuilder','getInterfazSettringMTDByName', 'PVU_DiasCancelacionParcialNumeroNoClaro')",
+        "FormulaResultPath": "diasParaNumerosNoClaro",
+        "FormulaSequence": 1,
+        "GlobalKey": "PVU_BuildFechaCancelacionParcial4920725029309271",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_BuildFechaCancelacionParcial",
+        "OmniDataTransformationId": {
+            "Name": "PVU_BuildFechaCancelacionParcial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_BuildFechaCancelacionParcial",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(OM_PortationStatus == \"0\" || OM_PortationStatus == 0, ADDDAY(fechaInicioSusp, %diasParaNumerosClaro%), ADDDAY(fechaInicioSusp, %diasParaNumerosNoClaro%))",
+        "FormulaResultPath": "BuildFechaFinCanc",
+        "FormulaSequence": 3,
+        "GlobalKey": "PVU_BuildFechaCancelacionParcial18016562661254099",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_BuildFechaCancelacionParcial",
+        "OmniDataTransformationId": {
+            "Name": "PVU_BuildFechaCancelacionParcial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_BuildFechaCancelacionParcial",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_BuildFechaCancelacionParcial7757807766164813",
+        "InputFieldName": "BuildFechaFinCanc",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_BuildFechaCancelacionParcial",
+        "OmniDataTransformationId": {
+            "Name": "PVU_BuildFechaCancelacionParcial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_BuildFechaCancelacionParcial",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "DATE(yyyy-MM-dd)",
+        "OutputFieldName": "FechaCancelacionParcial",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_BuildFechaCancelacionParcial9328194512695722",
+        "InputFieldName": "diasParaNumerosClaro",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_BuildFechaCancelacionParcial",
+        "OmniDataTransformationId": {
+            "Name": "PVU_BuildFechaCancelacionParcial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_BuildFechaCancelacionParcial",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "diasParaNumerosClaro",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_BuildFechaCancelacionParcial985895928858805",
+        "InputFieldName": "diasParaNumerosNoClaro",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_BuildFechaCancelacionParcial",
+        "OmniDataTransformationId": {
+            "Name": "PVU_BuildFechaCancelacionParcial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_BuildFechaCancelacionParcial",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "diasParaNumerosNoClaro",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_BuildFechaCancelacionParcial642784310060444",
+        "InputFieldName": "fechaInicioSusp",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_BuildFechaCancelacionParcial",
+        "OmniDataTransformationId": {
+            "Name": "PVU_BuildFechaCancelacionParcial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_BuildFechaCancelacionParcial",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "fechaInicioSusp",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

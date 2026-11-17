@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_RespuestaCancelarCredito",
+    "OmniProcessId": {
+        "Name": "EliminacionAutomaticaFinanciamientoNotaCrédito",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBCallCancelacion",
+        "OmniProcessId": {
+            "Name": "EliminacionAutomaticaFinanciamientoNotaCrédito",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure/CBCallCancelacion",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBCallCancelacion",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Mensaje": "=CONCAT(%IP_CancelarCredito:categoryCode%, ' ' ,%IP_CancelarCredito:categoryDescription%)"
+        },
+        "executionConditionalFormula": "%IP_CancelarCredito:success% == false",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure/SV_RespuestaCancelarCredito"
+}

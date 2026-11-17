@@ -1,0 +1,65 @@
+{
+    "Description": "Llamada al método \"getCartsProducts\" de CPQ, para traer solo los productos que cumplan con las condiciones establecidas. Dentro del input le estamos pasando el includeIneligible = true, esto genera que en la respuesta se vean los productos descalificados.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "GetProductsBySpecificId",
+    "OmniProcessId": {
+        "Name": "Compatibilidad Paquetes Por Pais",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompatibilidadPaquetesPorPais/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ProductIdGiven",
+        "OmniProcessId": {
+            "Name": "Compatibilidad Paquetes Por Pais",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompatibilidadPaquetesPorPais/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompatibilidadPaquetesPorPais/Procedure/ProductIdGiven",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ProductIdGiven",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "cartId": "%cartId%",
+            "category": "%CatalogId%",
+            "filters": "Product2.%vlocity_namespace%__Type__c:Add On,Product2.Id:%GetCompatibleProductsByCountry%,Product2.%vlocity_namespace%__SubType__c:%SubType%",
+            "includeIneligible": true,
+            "pagesize": 1000
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction2",
+        "remoteClass": "CpqAppHandler",
+        "remoteMethod": "getCartsProducts",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "records",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompatibilidadPaquetesPorPais/Procedure/GetProductsBySpecificId"
+}

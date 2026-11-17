@@ -1,0 +1,270 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "'PushEvent'",
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom9",
+        "InputFieldName": "%vlocity_namespace%__OrchestrationItemType__c",
+        "InputObjectName": "%vlocity_namespace%__OrchestrationItem__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrchestrationItem",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "orchestrationPlanId",
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom6381",
+        "InputFieldName": "%vlocity_namespace%__OrchestrationPlanId__c",
+        "InputObjectName": "%vlocity_namespace%__OrchestrationItem__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrchestrationItem",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "DESERIALIZE(OrchestrationItem:resultResponse)",
+        "FormulaResultPath": "OrchestrationItem:deserializeReponse",
+        "FormulaSequence": 2,
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom9205",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FUNCTION('CustomOmniStudioFunctions','findLastElementArray',FILTER(LIST(OrchestrationItem:deserializeReponse),'type == \"CustomerOrderNotification\"'))",
+        "FormulaResultPath": "lastNodeCustomer",
+        "FormulaSequence": 3,
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom9766",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FUNCTION('CustomOmniStudioFunctions','findLastElementArray',FILTER(LIST(OrchestrationItem:deserializeReponse),'type == \"ServiceOrderNotification\"'))",
+        "FormulaResultPath": "lastNodeService",
+        "FormulaSequence": 4,
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom1255",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(OrchestrationItem:%vlocity_namespace%__OrchestrationPlanId__r.%vlocity_namespace%__OrderId__r.%vlocity_namespace%__OrderStatus__c == \"In Progress\" && (ISNOTBLANK(lastNodeCustomer:errorCode)||ISNOTBLANK(lastNodeService:errorCode)),true,false)",
+        "FormulaResultPath": "existErrorCode",
+        "FormulaSequence": 5,
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom8809",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "OrchestrationItem:%vlocity_namespace%__Response__c",
+        "FormulaResultPath": "OrchestrationItem:resultResponse",
+        "FormulaSequence": 1,
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom4065",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom2721",
+        "InputFieldName": "existErrorCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "existErrorCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom6542",
+        "InputFieldName": "lastNodeCustomer",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "lastNodeCustomer",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom1216",
+        "InputFieldName": "lastNodeService",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "lastNodeService",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom8090",
+        "InputFieldName": "OrchestrationItem:deserializeReponse",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "response",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom4984",
+        "InputFieldName": "size",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "Integer",
+        "OutputFieldName": "size",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_GetOrchestrationItemByPlanCustom8502",
+        "InputFieldName": "ultimoregistro",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_GetOrchestrationItemByPlan",
+        "OmniDataTransformationId": {
+            "Name": "OM_GetOrchestrationItemByPlan",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_GetOrchestrationItemByPlan",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "ultimoregistro",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

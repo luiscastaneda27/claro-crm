@@ -1,0 +1,64 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DR_TransformAddFinancingOtherChargesRequestToXML",
+    "OmniProcessId": {
+        "Name": "FinancingOtherCharges",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinancingOtherCharges/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlock6",
+        "OmniProcessId": {
+            "Name": "FinancingOtherCharges",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinancingOtherCharges/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinancingOtherCharges/Procedure/ConditionalBlock6",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlock6",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "amount": "=%amount%",
+            "billingAccount": "=%billingAccount%",
+            "channel": "=DR_GetHeaderEricsson:channel",
+            "chargeService": "%chargeService%",
+            "expirationDate": "%expirationDate%",
+            "financingCode": "%financingCode%",
+            "idApplication": "=DR_GetHeaderEricsson:idApplication",
+            "remark": "%remark%",
+            "startDate": "=DR_GetHeaderEricsson:startDate"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "PVUTransformAddFinancingOtherChargesRequestToXML",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "ignoreCache": false,
+        "label": "DataMapperTransformAction1",
+        "responseJSONNode": "DR_TransformAddFinancingOtherChargesRequestToXML",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Transform Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinancingOtherCharges/Procedure/DR_TransformAddFinancingOtherChargesRequestToXML"
+}

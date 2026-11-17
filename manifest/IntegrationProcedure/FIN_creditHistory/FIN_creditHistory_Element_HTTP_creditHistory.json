@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "HTTP_creditHistory",
+    "OmniProcessId": {
+        "Name": "creditHistory",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/creditHistory/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "errorMessage": "=IF(ISNOTBLANK(%HTTP_creditHistory:errorMessage%), %HTTP_creditHistory:errorMessage%, 'Ha ocurrido un error al consultar el servicio')",
+            "statusId": "=IF(ISNOTBLANK(%HTTP_creditHistory:statusId%), %HTTP_creditHistory:statusId%, -10)",
+            "transactionId": "=IF(ISNOTBLANK(%HTTP_creditHistory:transactionid%), %HTTP_creditHistory:transactionid%, 0)"
+        },
+        "label": "HTTPAction4",
+        "namedCredential": "CapaMediaAuthenticated",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "GET",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "ApkSitSfic": "%DME_GetApiKey:ValueKey%",
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+            },
+            "sendBody": true,
+            "timeout": 0,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "%SVURL:URL%",
+        "retryCount": 0,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/creditHistory/Procedure/HTTP_creditHistory"
+}

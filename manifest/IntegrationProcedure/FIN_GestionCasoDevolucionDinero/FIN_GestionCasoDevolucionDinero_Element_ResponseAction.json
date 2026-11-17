@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction",
+    "OmniProcessId": {
+        "Name": "GestionCasoDevolucionDinero",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GestionCasoDevolucionDinero/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "BillingAccount": "%IP_IPGetFinancingInfoV1:financings:financing:chargeBillingAccount%",
+            "accountNumberInternal": "%IP_IPGetFinancingInfoV1:financings:financing:accountNumberId%",
+            "amount": "%DR_GetCaseDetails:Case:PVU_Valor__c%",
+            "chargeService": "%FIN_DRGetParam:Params:Value%",
+            "financingCode": "%DR_GetCaseDetails:Case:NumeroCredito%",
+            "userId": "=$Vlocity.UserId",
+            "validDate": "%SVParams:validDate%"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GestionCasoDevolucionDinero/Procedure/ResponseAction"
+}

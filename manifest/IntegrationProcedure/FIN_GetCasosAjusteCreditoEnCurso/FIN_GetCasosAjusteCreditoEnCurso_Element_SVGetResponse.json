@@ -1,0 +1,33 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVGetResponse",
+    "OmniProcessId": {
+        "Name": "GetCasosAjusteCreditoEnCurso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/GetCasosAjusteCreditoEnCurso/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "canProceed": "=ISBLANK(%DR_GetCasosAjusteCreditoCurso:Casos%)",
+            "caseId": "=%DR_GetCasosAjusteCreditoCurso:Casos|1:Id%",
+            "caseNumber": "=%DR_GetCasosAjusteCreditoCurso:Casos|1:CaseNumber%",
+            "message": "=IF(ISBLANK(%DR_GetCasosAjusteCreditoCurso:Casos%),$Vlocity.NULL,%DR_GetMessages:Message:MainMessage%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/GetCasosAjusteCreditoEnCurso/Procedure/SVGetResponse"
+}

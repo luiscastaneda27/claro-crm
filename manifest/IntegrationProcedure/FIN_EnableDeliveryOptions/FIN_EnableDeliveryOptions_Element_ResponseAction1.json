@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseAction1",
+    "OmniProcessId": {
+        "Name": "EnableDeliveryOptions",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EnableDeliveryOptions/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "DeliveryFIN": "=DecisionMatrixAction1|1:Variable",
+            "DeliveryFINTMK": "=IF(%DRGetProductTaxRate:productIVA% = true && %DRGetProductTaxRate:User:userChannel% = 'TMK' && %DRGetProductTaxRate:serviceDaneCode% = false,true,false)",
+            "matrix": "=DecisionMatrixAction1",
+            "messageDeliveryFIN": "=IPGetMessages:message:MainMessage",
+            "productIVAFIN": "=DRGetProductTaxRate:productIVA"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EnableDeliveryOptions/Procedure/ResponseAction1"
+}

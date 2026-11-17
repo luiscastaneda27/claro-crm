@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_GuardarLogIntegracion",
+    "OmniProcessId": {
+        "Name": "CusPaymReestructureSaveFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CusPaymReestructureSaveFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Endpoint": "/ros-rest/CusPaymReestructure/saveReestructure",
+            "Metodo": "POST",
+            "Name": "CusPaymReestructureSaveReestructure",
+            "Request": "%SV_RequestBody%",
+            "Response": "=IF(ISBLANK(%SV_Response:response%),%SV_Response:responseEmpty%,%SV_Response:response%)",
+            "StatusCode": "=IF(ISBLANK(%SV_Response:response:code%),\"\",%SV_Response:response:code%)"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "PVU_GuardarLogIntegracion",
+        "label": "PVU_GuardarLogIntegracion",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CusPaymReestructureSaveFianza/Procedure/IP_GuardarLogIntegracion"
+}

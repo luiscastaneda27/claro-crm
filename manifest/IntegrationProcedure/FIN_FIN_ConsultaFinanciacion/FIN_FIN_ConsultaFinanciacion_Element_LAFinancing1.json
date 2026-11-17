@@ -1,0 +1,92 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "LAFinancing1",
+    "OmniProcessId": {
+        "Name": "FIN_ConsultaFinanciacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SuccessCondition",
+        "OmniProcessId": {
+            "Name": "FIN_ConsultaFinanciacion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure/SuccessCondition",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SuccessCondition",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "advancedMerge": true,
+        "advancedMergeMap": [
+            {
+                "listKey": "DRTranfConsultaFinanciacion:ConsultaFinanciacion",
+                "matchingPath": "financingCode",
+                "normalizeKey": "1"
+            },
+            {
+                "listKey": "SVListLAFinancingLinea:LAFinancingLinea",
+                "matchingPath": "NumeroDeCredito",
+                "normalizeKey": "1"
+            },
+            {
+                "listKey": "DRGetFinancingActive",
+                "matchingPath": "financingCode",
+                "normalizeKey": "1"
+            }
+        ],
+        "allowMergeNulls": false,
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "dynamicOutputFields": "",
+        "executionConditionalFormula": "ISNOTBLANK(%DR_GetAssetWithCreditDetails:NumeroCuenta%)",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "filterListFormula": "",
+        "hasPrimary": false,
+        "label": "ListAction1",
+        "mergeFields": [
+        ],
+        "mergeListsOrder": [
+            "DRGetFinancingActive",
+            "DRTranfConsultaFinanciacion:ConsultaFinanciacion",
+            "SVListLAFinancingLinea:LAFinancingLinea"
+        ],
+        "preventIntraListMerge": false,
+        "primaryListKey": "",
+        "responseJSONNode": "LAFinancing",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "sortBy": [
+        ],
+        "sortInDescendingOrder": false,
+        "updateFieldValue": {
+            "numerolinea": "=IF(ISNOTBLANK(%numerolinea%),%numerolinea%,\"No tiene línea asociada\")"
+        },
+        "useFormulas": true
+    },
+    "Type": "List Merge Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure/LAFinancing1"
+}

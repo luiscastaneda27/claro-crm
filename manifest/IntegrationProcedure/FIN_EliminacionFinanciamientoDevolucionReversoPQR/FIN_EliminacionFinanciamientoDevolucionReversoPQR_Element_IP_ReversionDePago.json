@@ -1,0 +1,67 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_ReversionDePago",
+    "OmniProcessId": {
+        "Name": "EliminacionFinanciamientoDevolucionReversoPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionFinanciamientoDevolucionReversoPQR/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBReversoDePago",
+        "OmniProcessId": {
+            "Name": "EliminacionFinanciamientoDevolucionReversoPQR",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionFinanciamientoDevolucionReversoPQR/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionFinanciamientoDevolucionReversoPQR/Procedure/CBReversoDePago",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBReversoDePago",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "CaseId": "%CaseId%",
+            "billingAccount": "=%IP_ObtenerInformacionFinanciamiento:financings:financing:paymentReference%",
+            "calculateAmount": "=true",
+            "chargeService": "=%DM_ObtenerChargeService:Params:Value%",
+            "financingCode": "=%NumeroCredito%",
+            "remark": "='Ajuste de saldo por cancelación de crédito'",
+            "suretyChargeService": "%FIN_GetFianzaByCreditNumber:Parametro:Valor%",
+            "suretyId": "%FIN_GetFianzaByCreditNumber:suretyId%",
+            "user": "%FIN_GetFianzaByCreditNumber:User:UsuarioRed%",
+            "validDate": "=CONCAT(   YEAR(TODAY()), '-',   IF(MONTH(TODAY()) < 10, CONCAT('0', MONTH(TODAY())), MONTH(TODAY())), '-',   IF(DAY(TODAY()) < 10, CONCAT('0', DAY(TODAY())), DAY(TODAY())) )"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "disableChainable": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "integrationProcedureKey": "FIN_IP_CusInstallRefund",
+        "label": "IntegrationProcedureAction2",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionFinanciamientoDevolucionReversoPQR/Procedure/IP_ReversionDePago"
+}

@@ -1,0 +1,50 @@
+{
+    "Description": "Llamada al método \"getCartsProducts\" de CPQ, para traer solo los productos que están disponibles en el carrito, respetando reglas de contexto y filtrando ya de una vez por AddOn y el tipo de paquete que se quiere consultar",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "GetProductsRemoteMethodCallSubTypeList",
+    "OmniProcessId": {
+        "Name": "Compatibilidad Paquetes Adicionales Ventas",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompatibilidadPaquetesAdicionalesVentas/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "cartId": "%cartId%",
+            "category": "%CatalogId%",
+            "filters": "Product2.%vlocity_namespace%__Type__c:Add On,Product2.%vlocity_namespace%__SubType__c:%IncludedAddOnTypes%",
+            "pagesize": 1000
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%SubType%) ",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "CpqAppHandler",
+        "remoteMethod": "getCartsProducts",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "records",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompatibilidadPaquetesAdicionalesVentas/Procedure/GetProductsRemoteMethodCallSubTypeList"
+}

@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVSaveLogs",
+    "OmniProcessId": {
+        "Name": "CancelFinancingCredit",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelFinancingCredit/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBSaveLog",
+        "OmniProcessId": {
+            "Name": "CancelFinancingCredit",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CancelFinancingCredit/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelFinancingCredit/Procedure/CBSaveLog",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBSaveLog",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "Descripcion": "RQ: Acc: %SV_Request:accountNumber% FC: %SV_Request:financingCode% VF: %SV_Request:validFrom% TI: %SVParams:tipoDeIntento% - RPC: %SOAPCancelCredit:status%%DRTransformResponse:categoryCode%%DRTransformResponse:responseCode% TId:%DRTransformResponse:traceabilityId%/",
+            "Endpoint": "/CancelFinancingManagement/v1.0",
+            "Metodo": "POST",
+            "Name": "CancelFinancingManagement",
+            "Request": "%DataMapperTransformAction%",
+            "Response": "%SOAPCancelCredit%",
+            "StatusCode": "%SOAPCancelCredit:status%%DRTransformResponse:categoryCode%%DRTransformResponse:responseCode%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues4",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CancelFinancingCredit/Procedure/SVSaveLogs"
+}

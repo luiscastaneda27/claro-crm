@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DMP_CrearCuentaPreregistro",
+    "OmniProcessId": {
+        "Name": "EU_CrearCuentaPreRegistro",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/EU/CrearCuentaPreRegistro/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Origen": "Llamada",
+            "documentType": "%documentType%",
+            "nombreCompleto": "=IF(ISNOTBLANK(%IP_CustomerBiographicInformation:CustomerBiographicInformation%), %IP_CustomerBiographicInformation:CustomerBiographicInformation:nombres%+\" \"+%IP_CustomerBiographicInformation:CustomerBiographicInformation:primerApellido%+IF(ISNOTBLANK(%IP_CustomerBiographicInformation:CustomerBiographicInformation:segundoApellido%), \" \"+%IP_CustomerBiographicInformation:CustomerBiographicInformation:segundoApellido%, NULL), IF(ISNOTBLANK(%firstName%), %firstName%+\" \"+IF(ISNOTBLANK(%segundoNombre%),%segundoNombre%+\" \",NULL)+%lastName%+IF(ISNOTBLANK(%segundoApellido%), \" \"+%segundoApellido%, NULL), %lastName%))",
+            "numeroDocumento": "=IF(ISNOTBLANK(%IP_CustomerBiographicInformation:CustomerBiographicInformation%), %IP_CustomerBiographicInformation:CustomerBiographicInformation:numeroDocumento%, %documentNumber%)",
+            "recordTypeId": "%recordTypeId%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "EU_DMP_CrearCuentaPreregistro",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/EU/CrearCuentaPreRegistro/Procedure/DMP_CrearCuentaPreregistro"
+}

@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "HTTP_customerCharges",
+    "OmniProcessId": {
+        "Name": "customerCharges",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/customerCharges/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+            "errorMessage": "=IF(ISNOTBLANK(%HTTP_customerCharges:errorMessage%), %HTTP_customerCharges:errorMessage%, 'Ha ocurrido un error al consultar el servicio')",
+            "statusId": "=IF(ISNOTBLANK(%HTTP_customerCharges:statusId%), %HTTP_customerCharges:statusId%, -10)",
+            "transactionId": "=IF(ISNOTBLANK(%HTTP_customerCharges:transactionid%), %HTTP_customerCharges:transactionid%, 0)"
+        },
+        "label": "HTTPAction4",
+        "namedCredential": "OmCredentialEricsson",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "GET",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "ApkSitSfic": "%DME_GetApiKey:ValueKey%",
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+            },
+            "sendBody": true,
+            "timeout": 0,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "%SVURL:URL%",
+        "retryCount": 0,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/customerCharges/Procedure/HTTP_customerCharges"
+}

@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Informacion_Caso",
+    "OmniProcessId": {
+        "Name": "EliminacionAutomaticaFinanciamientoNotaCrédito",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CBUpdateCase",
+        "OmniProcessId": {
+            "Name": "EliminacionAutomaticaFinanciamientoNotaCrédito",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure/CBUpdateCase",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CBUpdateCase",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CodigoCierre": "=IF(%SVSuccesCase:success% , 'Se realiza eliminación de financiamiento', 'No aplica')",
+            "Status": "=IF(%SVSuccesCase:success% , 'Cerrado' , 'En curso')",
+            "SubEstado": "=IF(%SVSuccesCase:success% , '-' , 'Error en sistema')"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues3",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/EliminacionAutomaticaFinanciamientoNotaCredito/Procedure/SV_Informacion_Caso"
+}

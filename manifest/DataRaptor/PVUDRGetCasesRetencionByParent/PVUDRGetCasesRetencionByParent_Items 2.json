@@ -1,0 +1,296 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Id",
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem3",
+        "InputFieldName": "ParentId",
+        "InputObjectName": "Case",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "SonCase",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(FILTER(LIST(SonCase), 'PVU_Level2__c == \"Cambio de Plan\" || PVU_Level3__c == \"Beneficios para tu plan\"'), true, false)",
+        "FormulaResultPath": "hasCambioPlan",
+        "FormulaSequence": 2,
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom6261",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ISBLANK(%SonCase%),0,LISTSIZE(%SonCase%))",
+        "FormulaResultPath": "CantidadHijos",
+        "FormulaSequence": 1,
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem2",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem17",
+        "InputFieldName": "SonCase:PVU_Codigo_de_Cierre__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SonCase:CodigoCierre",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem18",
+        "InputFieldName": "SonCase:Status",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SonCase:Estado",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem19",
+        "InputFieldName": "SonCase:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SonCase:Id",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom2280",
+        "InputFieldName": "SonCase:PVU_Level2__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SonCase:Level2",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom9744",
+        "InputFieldName": "SonCase:PVU_Level3__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SonCase:Level3",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem6",
+        "InputFieldName": "SonCase:CaseNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SonCase:Numero",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem7",
+        "InputFieldName": "SonCase:PVU_Order__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SonCase:Orden",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem8",
+        "InputFieldName": "SonCase:OM_Orden_Procesada__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SonCase:OrdenProcesada",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem9",
+        "InputFieldName": "SonCase:PVU_Order__r.%vlocity_namespace%__OrderStatus__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "SonCase:OrderStatus",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem10",
+        "InputFieldName": "CantidadHijos",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "TotalCasos",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom0jIVA0000001cb72AAItem11",
+        "InputFieldName": "CantidadOrdenesProcesadas",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "TotalOrdenesProcesadas",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetCasesRetencionByParentCustom4412",
+        "InputFieldName": "hasCambioPlan",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetCasesRetencionByParent",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetCasesRetencionByParent",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetCasesRetencionByParent",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "hasCambioPlan",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

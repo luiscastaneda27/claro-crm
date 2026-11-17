@@ -1,0 +1,53 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_ValuesForHeader",
+    "OmniProcessId": {
+        "Name": "CPQGetGlobalHeaderDetails",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CPQ/GetGlobalHeaderDetails/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AccountName": "%DataRaptorResult:AccountName%",
+            "ApprovalRequired": "=result",
+            "BlockedDueToIssueWithDelivery": "=IF(%DataRaptorResult:OrderDeliveryStatus% = 'BlockedDueToIssue' OR(%DM_BlockHeaderInPorta:Action% = 'Block'), true, false)",
+            "CancelarVenta": "=IF(%SVCancelOrder:CancelarVenta%==true,true,false)",
+            "EntregaDelProductoAlCliente": "=IF(%DataRaptorResult:DeliveryMethod% != 'Delivery' && %DataRaptorResult:Status% == 'DeliveryAndActivated' && %DataRaptorResult:OrderDeliveredAgent% > 0 && %RAAccessProcess:FVU_procesoVenta% == true && %getUserDetail:UserDetails:Channel% != 'SF_TMK'  && %SVAllies:IsAllies% != true, true,false)",
+            "EntregaDelProductoAlClienteAllies": "=IF(%DataRaptorResult:DeliveryMethod% != 'Delivery' && %DataRaptorResult:Status% == 'DeliveryAndActivated' && %DataRaptorResult:OrderDeliveredAgent% > 0 && %RAAccessProcess:FVU_procesoVenta% == true && %getUserDetail:UserDetails:Channel% != 'SF_TMK'  && %SVAllies:IsAllies% == true, true, false)",
+            "EntregadaCliente": "=IF((%DataRaptorResult:OrderItemDeliveryStatus% == \"DeliveredCustomer\" OR %DataRaptorResult:OrderItemDeliveryStatus% == \"ReadyForDelivery\") AND %DataRaptorResult:PurchaseType% == \"POR\", true, false)",
+            "GenerarCodigoCUT": "=IF(%DataRaptorResult:Status% == 'DeliveryAndActivated' && %DataRaptorResult:OrderDeliveryStatus% == 'OMSNotified' && %RAAccessProcess:FVU_procesoVenta% == true && %getUserDetail:UserDetails:Channel% != 'SF_TMK' && %DataRaptorResult:IsDeviceReadyForPickUp% == true && %DataRaptorResult:validacionIdentidadCUT% != 'Fallido', true,false)",
+            "GenerateQRcode": "=%DataRaptorResult:showGenerateQRcode%",
+            "Id": "=DataRaptorResult:Id",
+            "ModificacionDeAgendamiento": "=IF(%DataRaptorResult:Status% == 'DeliveryAndActivated' && %getUserDetail:UserDetails:Type% != 'BackOffice TMK' && (%DataRaptorResult:DeliveryMethod% == 'Delivery' || %DataRaptorResult:DeliveryMethod% == 'PickUp'),true,false)",
+            "OrderId": "%DataRaptorResult:Id%",
+            "OrderItemIdESIM": "%DataRaptorResult:OrderItemESIMId%",
+            "OrderNumber": "%DataRaptorResult:OrderNumber%",
+            "PINLinkDePagos": "=IF(%DataRaptorResult:Status% == 'InPayment' && %DataRaptorResult:OrderPaymentMethod% == 'Pin Link de Pagos',true,false)",
+            "PortabilidadBloqueada": "=IF(%DataRaptorResult:OrderDeliveryStatus% == \"PortabilityBlocked\" AND %DataRaptorResult:PurchaseType% == \"POR\", true, false)",
+            "RecaudoManual": "=IF(%DataRaptorResult:Status% == 'InPayment' && %DataRaptorResult:OrderPaymentMethod% == 'Sistemas de Recaudo en el Aliado', true, false)",
+            "RechazoABD": "=IF((%DataRaptorResult:OMOrderStatus% == \"Superseded\" AND %DataRaptorResult:PurchaseType% == \"POR\" AND %DataRaptorResult:CancelReasonCode% != \"5001\") OR %DataRaptorResult:ClosingReason% == \"Duplicada por Retoma de Portabilidad\", true, false)",
+            "ReintentoSubProcesos": "=IF(%RAAccessProcess:FIN_fianza% == true,%DataRaptorResult:RetriesSubProcess%,false)",
+            "RenewPortaFlag": "%DataRaptorResult:RenewPortaFlag%",
+            "ShowRenewPortaABD": "=IF(%DataRaptorResult:PurchaseType% == \"POR\" && (%DataRaptorResult:ClosingReason% == \"Duplicada por Retoma de Portabilidad\" || %DataRaptorResult:CancelReasonCode% == \"5001\"),false,IF(%DataRaptorResult:PurchaseType% == \"POR\" && %DataRaptorResult:Status% == \"Cerrada Perdida\" && %DataRaptorResult:OMOrderStatus% == \"Superseded\",true,false))",
+            "ShowRenewPortaDesk": "=IF(%DataRaptorResult:PurchaseType% == \"POR\" && %DataRaptorResult:Status% == \"DeliveryAndActivated\" && %DataRaptorResult:OrderDeliveryStatus% == \"PortabilityBlocked\" && %DataRaptorResult:DeliveryMethod% == \"Delivery\", true, false)",
+            "ShowReserveESim": "=IF(%DataRaptorResult:ESimExists% && ISBLANK(%DataRaptorResult:ICCIDWithCheckDigit%) && %DataRaptorResult:Status% = 'DeliveryAndActivated',true,false)",
+            "UserType": "=%getUserDetail:UserDetails:Type%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CPQ/GetGlobalHeaderDetails/Procedure/SV_ValuesForHeader"
+}

@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DRUpdateQuote",
+    "OmniProcessId": {
+        "Name": "FIN_CreateFinancingCart",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_Create/FinancingCart/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "OpportunityId": "%DMP_CreateOpporunityQuote:Opportunity_1:Id%",
+            "Pricebook2Id": "%DME_GetPbNamePlName:PricelistId%",
+            "Quote": "%SV_OppQuoteFields:Quote%",
+            "RecordTypeId": "%DME_GetPbNamePlName:RecordTypeId%",
+            "daneCode": "%GetUserDaneCode%"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FIN_UpdateQuote",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_Create/FinancingCart/Procedure/DRUpdateQuote"
+}

@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionSuccess",
+    "OmniProcessId": {
+        "Name": "APIMCMICGetSimulation",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/APIMCMICGetSimulation/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "Descripcion": "",
+                "Name": "APIMCMICGetSimulation",
+                "enpoint": "/ros-rest/APIMCMICGetSimulation/getSimulation",
+                "metodo": "POST",
+                "request": "%BodyRequest%",
+                "response": "%HTTPGetSimulation%",
+                "simulacion": true,
+                "statusCode": "%HTTPGetSimulation:responseStatus:code%"
+            },
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%HTTPGetSimulation:responseStatus:code% == 200 && %HTTPGetSimulation:responseStatus:status% == \"OK\"",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "HTTPGetSimulation",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/APIMCMICGetSimulation/Procedure/ResponseActionSuccess"
+}

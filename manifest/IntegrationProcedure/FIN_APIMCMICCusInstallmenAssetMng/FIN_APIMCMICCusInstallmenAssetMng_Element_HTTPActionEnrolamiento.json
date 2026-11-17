@@ -1,0 +1,79 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "HTTPActionEnrolamiento",
+    "OmniProcessId": {
+        "Name": "APIMCMICCusInstallmenAssetMng",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/APIMCMICCusInstallmenAssetMng/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "financingCode": "%DRGetAssetSuscribeDetails:Order:creditNumber%",
+            "headerRequest": {
+                "additionalNode": "",
+                "channel": "%DRGetHeaderIntegration:Channel%",
+                "idApplication": "%DRGetHeaderIntegration:IdApplication%",
+                "idBusinessTransaction": "%DRGetHeaderIntegration:IdBusinessTransaction%",
+                "idESBTransaction": "%DRGetHeaderIntegration:IdESBTransaction%",
+                "ipApplication": "%DRGetHeaderIntegration:IpApplication%",
+                "password": "%DRGetHeaderIntegration:Password%",
+                "startDate": "%DRGetHeaderIntegration:StartDate%",
+                "target": "%DRGetHeaderIntegration:Target%",
+                "userApplication": "%DRGetHeaderIntegration:UserApplication%",
+                "userSession": "%DRGetHeaderIntegration:UserSession%"
+            },
+            "model": "%DRGetAssetSuscribeDetails:OrderItem:ModeloTerm%",
+            "reasonId": "%DRGetAssetSuscribeDetails:reasonId%",
+            "reference1": "%DRGetAssetSuscribeDetails:OrderItem:Imei%",
+            "reference2": "%DRGetAssetSuscribeDetails:OrderItem:Imei%",
+            "referenceDate": "%DRGetHeaderIntegration:StartDate%",
+            "salesChannel": "%DRGetAssetSuscribeDetails:User:salesChannel%",
+            "userName": "salesforce"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "HTTPAction2",
+        "namedCredential": "CapaMediaAuthenticated",
+        "postActionLogging": "",
+        "preActionLogging": "%endpoint%",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "restMethod": "PUT",
+        "restOptions": {
+            "clientCertificateName": "",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "isCompressed": false,
+            "params": {
+            },
+            "sendBody": true,
+            "timeout": 0,
+            "xmlEscapeResponse": false
+        },
+        "restPath": "/ros-rest/APIMCMICCusInstallmenAssetMng/assetSuscribe",
+        "retryCount": 3,
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "type": "Integration",
+        "useFormulas": true
+    },
+    "Type": "Rest Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/APIMCMICCusInstallmenAssetMng/Procedure/HTTPActionEnrolamiento"
+}

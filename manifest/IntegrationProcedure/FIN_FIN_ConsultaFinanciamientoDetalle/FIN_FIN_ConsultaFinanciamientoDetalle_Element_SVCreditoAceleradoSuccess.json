@@ -1,0 +1,71 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCreditoAceleradoSuccess",
+    "OmniProcessId": {
+        "Name": "FIN_ConsultaFinanciamientoDetalle",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "CreditoAcelerado",
+        "OmniProcessId": {
+            "Name": "FIN_ConsultaFinanciamientoDetalle",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure/CreditoAcelerado",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "CreditoAcelerado",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "CMICCusInstallmenInq": "%IPCMICCusInstallmenInqWrapper%",
+            "accountId": "%accountId%",
+            "capitalPagoMinimo": "%IP_PagoMinimo:CapitalPagoMinimo%",
+            "detail": "%IPGetFinancingCodeInfoV1%",
+            "dueDate": "%IPFinancingSearchv1:dueDate%",
+            "errorGeneralCreditDetail": "=IF(%IPFinancingSearchv1:responseCode% <> \"FS_ESB_0\" || %IPTransactionDetails:responseCode% <> \"FS_ESB_0\" , true, false)",
+            "errorGeneralCreditDetailMsg": "%DMGetCreditDetailGeneralErrorMsg:Params:Value%",
+            "fianza": "%RASecurity:fianza%",
+            "finStatus": "%DMTEGetAsset:Asset:FIN_EstadoDeFinanciacion__c%",
+            "financingCode": "%recordId%",
+            "interesesCorrientes": "%IP_PagoMinimo:InteresesCorrientes%",
+            "interesesCorrientesIVA": "%IP_PagoMinimo:InteresesCorrientesIVA%",
+            "interesesDeMora": "%IP_PagoMinimo:InteresesMora%",
+            "interesesDeMoraIVA": "%IP_PagoMinimo:InteresesMoraIVA%",
+            "invoiceDebtAge": "=IF(%IPGetFinancingCodeInfoV1:financings:financing:debitState% == \"NORMAL\",\"0 días de mora\" , CONCAT(%IPGetBillingAccountDebtAge:debtAges:invoiceDebtAge%, \" días de mora\"))",
+            "isBlock1Selected": true,
+            "isBlock2Selected": false,
+            "isBlock3Selected": false,
+            "isBlockPagoMinimoSelected": false,
+            "isBlockPagoTotalSelected": false,
+            "pagoMinimo": "%IPFinancingSearchv1:openAmount%",
+            "paymentReference": "%IPFinancingSearchv1:paymentReference%",
+            "realDebtAge": "%IPGetBillingAccountDebtAge:debtAges:realDebtAge%",
+            "realDebtAgeVector": "%IPGetBillingAccountDebtAge:debtAges:realDebtAgeVector%",
+            "remainingBalance": "%IPFinancingSearchv1:remainingBalance%",
+            "serviceAccount": "%DMTEGetAsset:Asset:FIN_NumeroDeCuenta__c%",
+            "suretyId": "%DR_GetFianzaByCreditNumber:suretyId%",
+            "valorAcelerado": "%IP_PagoMinimo:ValorAcelerado%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues2",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciamientoDetalle/Procedure/SVCreditoAceleradoSuccess"
+}

@@ -1,0 +1,45 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Response_ActionFail",
+    "OmniProcessId": {
+        "Name": "CusPaymReestructureSaveFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/CusPaymReestructureSaveFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "result": {
+                "Descripcion": "",
+                "Name": "CusPaymReestructureSaveReestructure",
+                "enpoint": "/ros-rest/CusPaymReestructure/saveReestructure",
+                "metodo": "POST",
+                "request": "%SV_RequestBody%",
+                "response": "%SV_Response:response%",
+                "statusId": "%SV_Response:response:statusId%"
+            },
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%SV_Response:response%) || %SV_Response:response:statusId% != \"SUCCESS\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/CusPaymReestructureSaveFianza/Procedure/Response_ActionFail"
+}

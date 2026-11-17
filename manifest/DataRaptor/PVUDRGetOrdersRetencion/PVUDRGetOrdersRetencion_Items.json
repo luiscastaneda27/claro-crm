@@ -1,0 +1,206 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "IdParent",
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom819",
+        "InputFieldName": "ParentId",
+        "InputObjectName": "Case",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrderCases",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "IdParent",
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom5620",
+        "InputFieldName": "Id",
+        "InputObjectName": "Case",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrderParent",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ISBLANK(%OrderCases%),0,LISTSIZE(%OrderCases%))",
+        "FormulaResultPath": "TotalOrdenesProcesadas",
+        "FormulaSequence": 1,
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom7149",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(ISBLANK(%OrderParent%),0,LISTSIZE(%OrderParent%))",
+        "FormulaResultPath": "TotalOrdenesProcesadasPadre",
+        "FormulaSequence": 2,
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom9199",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom881",
+        "InputFieldName": "OrderCases:PVU_Order__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderCases:IdOrder",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom4322",
+        "InputFieldName": "OrderCases:PVU_Order__r.%vlocity_namespace%__RequestDate__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderCases:RequestDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom5695",
+        "InputFieldName": "OrderParent:PVU_Order__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderParent:IdOrderParent",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom8428",
+        "InputFieldName": "OrderParent:PVU_Order__c.Status",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderParent:Status",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom6299",
+        "InputFieldName": "TotalOrdenesProcesadas",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "TotalOrdenesProcesadas",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDRGetOrdersRetencionCustom8404",
+        "InputFieldName": "TotalOrdenesProcesadasPadre",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDRGetOrdersRetencion",
+        "OmniDataTransformationId": {
+            "Name": "PVUDRGetOrdersRetencion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDRGetOrdersRetencion",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "TotalOrdenesProcesadasPadre",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

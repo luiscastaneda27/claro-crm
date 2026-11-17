@@ -1,0 +1,173 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CreateSimQuoteCart",
+    "OmniProcessId": {
+        "Name": "FinanciacionSimulacionFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "TryCatchInsert",
+        "OmniProcessId": {
+            "Name": "FinanciacionSimulacionFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure/TryCatchInsert",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "TryCatchInsert",
+    "ParentElementType": "Try Catch Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "fields": "Id,Name",
+            "inputFields": [
+                {
+                    "OpportunityId": "%QuoteInfo:OpportunityId%"
+                },
+                {
+                    "Name": "%QuoteInfo:ProductName%"
+                },
+                {
+                    "Status": "Borrador"
+                },
+                {
+                    "Pricebook2Id": "%QuoteInfo:QuotePricebook%"
+                },
+                {
+                    "CAT_DeliveryMethod__c": "%QuoteData:DeliveryMethod%"
+                },
+                {
+                    "FVU_Channel__c": "%QuoteData:Channel%"
+                },
+                {
+                    "%vlocity_namespace%__PriceListId__c": "%QuoteInfo:QuotePriceList%"
+                },
+                {
+                    "FIN_CreditQuota__c": "%QuoteInfo:QuoteCreditQuote%"
+                },
+                {
+                    "FIN_IDDeSimulacion__c": "%FinancingSimulationFianza:financingData:simulationSummary:simulationID%"
+                },
+                {
+                    "FVU_DaneCiudadCAVOrden__c": "%QuoteInfo:QuoteDaneCode%"
+                },
+                {
+                    "%vlocity_namespace%__DefaultServiceAccountId__c": "%QuoteInfo:DefaultServiceAccountId%"
+                },
+                {
+                    "FIN_tipoDeVenta__c": "%QuoteData:TipoDeVenta%"
+                },
+                {
+                    "FIN_TipoDeCuota__c": "%QuoteData:TipoDeCuota%"
+                },
+                {
+                    "FIN_PlazoMeses__c": "%DRT_CreateSimQuoteCart:FIN_PlazoMeses__c%"
+                },
+                {
+                    "FIN_ValorDeCuotaMensual__c": "%DRT_CreateSimQuoteCart:FIN_ValorDeCuotaMensual__c%"
+                },
+                {
+                    "FIN_TasaDeInteresMensual__c": "%DRT_CreateSimQuoteCart:FIN_TasaDeInteresMensual__c|1%"
+                },
+                {
+                    "FIN_SaldoADiferir__c": "%DRT_CreateSimQuoteCart:FIN_SaldoADiferir__c%"
+                },
+                {
+                    "FIN_TasaDeInteresEA__c": "%DRT_CreateSimQuoteCart:FIN_TasaDeInteresEA__c%"
+                },
+                {
+                    "FIN_TasaMaximaLegalVigente__c": "%DRT_CreateSimQuoteCart:FIN_TasaMaximaLegalVigente__c%"
+                },
+                {
+                    "FIN_TotalDeIntereses__c": "%DRT_CreateSimQuoteCart:FIN_TotalDeIntereses__c%"
+                },
+                {
+                    "FIN_ValorTotal__c": "%DRT_CreateSimQuoteCart:FIN_ValorTotal__c%"
+                },
+                {
+                    "FIN_TotalIVAIntereses__c": "%DRT_CreateSimQuoteCart:FIN_TotalIVAIntereses__c%"
+                },
+                {
+                    "RecordTypeId": "%DRE_GetRecordType:RecordTypeId%"
+                },
+                {
+                    "FIN_AccountExternalID__c": "%SVDetallada:customerID%"
+                },
+                {
+                    "%vlocity_namespace%__DefaultBillingAccountId__c": "%DRTE_GetBillingAccountId:BillingAccount:Id%"
+                },
+                {
+                    "FIN_CuotaInicial__c": "%QuoteData:cuotaInicial%"
+                },
+                {
+                    "FIN_CuotaInicialVoluntaria__c": "%QuoteData:cuotaInicialVoluntaria%"
+                },
+                {
+                    "FIN_TasaInteresMoratoria__c": "%FinancingSimulationFianza:financingData:simulationSummary:latePaymentInterestRate%"
+                },
+                {
+                    "FIN_IsFianza__c": "%SVParams:isFianza%"
+                },
+                {
+                    "FIN_Total_Credito_Con_Intereses_Fianza__c": "%DRT_CreateSimQuoteCart:FIN_Total_Credito_Con_Intereses_Fianza__c%"
+                },
+                {
+                    "FIN_ErrorSistemaFianza__c": "%SVParams:errorSistemaFianza%"
+                },
+                {
+                    "FIN_DiaEstimadoPago__c": "%DRT_CreateSimQuoteCart:FIN_DiaEstimadoPago__c%"
+                },
+                {
+                    "FIN_CicloDeFacturacion__c": "%DRT_CreateSimQuoteCart:FIN_CicloDeFacturacion__c%"
+                },
+                {
+                    "FIN_SimulationDate__c": "%simulationDate%"
+                },
+                {
+                    "FIN_PagosInicialesTerminales__c": "%SVParams:pagosInicialesTerminales%"
+                },
+                {
+                    "FIN_PagosInicialesTecnologia__c": "%SVParams:pagosInicialesTecnologia%"
+                }
+            ],
+            "methodName": "createCart",
+            "objectType": "Quote",
+            "subaction": "createQuote"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": false,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction2",
+        "remoteClass": "CpqAppHandler",
+        "remoteMethod": "createCart",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure/CreateSimQuoteCart"
+}

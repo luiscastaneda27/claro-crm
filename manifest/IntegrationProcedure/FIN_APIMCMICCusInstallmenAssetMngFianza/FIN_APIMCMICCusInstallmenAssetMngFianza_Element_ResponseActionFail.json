@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "ResponseActionFail",
+    "OmniProcessId": {
+        "Name": "APIMCMICCusInstallmenAssetMngFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/APIMCMICCusInstallmenAssetMngFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "errorEnrolamiento": "=IF((ISBLANK(%SVResponse:response%) || ISBLANK(%SVResponse:response:responseStatus:code%)), true,IF(%SVResponse:response:responseCode% == \"404\",true ,IF(%SVResponse:response:error|1:origin% == 2 , true, false)))",
+            "errorFianza": "=IF((ISBLANK(%SVResponse:response%) || ISBLANK(%SVResponse:response:responseStatus:code%)), true,IF(%SVResponse:response:responseCode% == \"404\",true ,IF(%SVResponse:response:error|1:origin% == 3 , true, false)))",
+            "errorUpdateCredit": "=IF((ISBLANK(%SVResponse:response%) || ISBLANK(%SVResponse:response:responseStatus:code%)), true,IF(%SVResponse:response:responseCode% == \"404\",true ,IF(%SVResponse:response:error|1:origin% == 1 , true, false)))",
+            "result": {
+                "Descripcion": "",
+                "Name": "Enrolamiento",
+                "enpoint": "/ros-rest/APIMCMICCusInstallmenAssetMng/assetSuscribe",
+                "metodo": "PUT",
+                "request": "%SVRequestBody%",
+                "response": "%SVResponse:response%",
+                "statusCode": "%SVResponse:response:responseStatus:code%"
+            },
+            "success": false
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%SVResponse:response%) || ISNOTBLANK(%SVResponse:response:error%) || %SVResponse:response:responseCode% == \"404\" || ISBLANK(%SVResponse:response:responseStatus:code%)",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/APIMCMICCusInstallmenAssetMngFianza/Procedure/ResponseActionFail"
+}

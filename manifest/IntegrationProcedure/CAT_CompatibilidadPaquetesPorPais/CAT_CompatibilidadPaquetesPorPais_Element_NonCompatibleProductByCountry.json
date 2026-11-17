@@ -1,0 +1,37 @@
+{
+    "Description": "Verificamos si el paso anterior no trae productos. Esto significa que no hay producto correspondiente al país que se intento buscar.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "NonCompatibleProductByCountry",
+    "OmniProcessId": {
+        "Name": "Compatibilidad Paquetes Por Pais",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompatibilidadPaquetesPorPais/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SelectedCountryIsGiven",
+        "OmniProcessId": {
+            "Name": "Compatibilidad Paquetes Por Pais",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompatibilidadPaquetesPorPais/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompatibilidadPaquetesPorPais/Procedure/SelectedCountryIsGiven",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SelectedCountryIsGiven",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "disOnTplt": false,
+        "executionConditionalFormula": "ISBLANK(%GetCompatibleProductsByCountry%)",
+        "isIfElseBlock": false,
+        "label": "ConditionalBlock4",
+        "show": null
+    },
+    "Type": "Conditional Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompatibilidadPaquetesPorPais/Procedure/NonCompatibleProductByCountry"
+}

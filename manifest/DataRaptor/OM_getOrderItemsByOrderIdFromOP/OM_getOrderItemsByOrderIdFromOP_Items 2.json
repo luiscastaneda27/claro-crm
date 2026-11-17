@@ -1,0 +1,289 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "orchestrationPlanId",
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom6105",
+        "InputFieldName": "Id",
+        "InputObjectName": "%vlocity_namespace%__OrchestrationPlan__c",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrchestrationPlan",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "OrchestrationPlan:%vlocity_namespace%__OrderId__c",
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom1762",
+        "InputFieldName": "OrderId",
+        "InputObjectName": "OrderItem",
+        "InputObjectQuerySequence": 2,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "OrderItem",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "OrderItem:%vlocity_namespace%__AssetReferenceId__c",
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom7856",
+        "InputFieldName": "%vlocity_namespace%__AssetReferenceId__c",
+        "InputObjectName": "Asset",
+        "InputObjectQuerySequence": 3,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Asset",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "ORDER BY",
+        "FilterValue": "Name ASC, %vlocity_namespace%__OrderProductId__r.Product2.ProductCode ASC",
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom2429",
+        "InputObjectName": "Asset",
+        "InputObjectQuerySequence": 3,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Asset",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FORMATDATETIME(Asset:%vlocity_namespace%__ConnectDate__c,\"yyyy-MM-dd'T'HH:mm:ss\",\"America/Bogota\")",
+        "FormulaResultPath": "Asset:assetConnectedDateFormat",
+        "FormulaSequence": 1,
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom5207",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom1578",
+        "InputFieldName": "OrchestrationPlan:%vlocity_namespace%__AccountId__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AccountId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom3887",
+        "InputFieldName": "Asset:Id",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "AssetId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom3092",
+        "InputFieldName": "Asset:Product2.%vlocity_namespace%__ParentClassId__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "ParentClassId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom5641",
+        "InputFieldName": "Asset:Product2.%vlocity_namespace%__SubType__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "ProductSubType",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom4740",
+        "InputFieldName": "Asset:%vlocity_namespace%__Action__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "assetAction",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom4859",
+        "InputFieldName": "Asset:assetConnectedDateFormat",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "assetConnectedDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom2111",
+        "InputFieldName": "Asset:Name",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "assetName",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom4285",
+        "InputFieldName": "Asset:%vlocity_namespace%__OrderProductId__r.Product2.ProductCode",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "assetProductCode",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "OM_getOrderItemsByOrderIdFromOPCustom4884",
+        "InputFieldName": "Asset:Status",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "OM_getOrderItemsByOrderIdFromOP",
+        "OmniDataTransformationId": {
+            "Name": "OM_getOrderItemsByOrderIdFromOP",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/OM_getOrderItemsByOrderIdFromOP",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "assetStatus",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

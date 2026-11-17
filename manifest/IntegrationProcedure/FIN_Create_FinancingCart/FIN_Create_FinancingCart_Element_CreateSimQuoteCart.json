@@ -1,0 +1,90 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CreateSimQuoteCart",
+    "OmniProcessId": {
+        "Name": "FIN_CreateFinancingCart",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_Create/FinancingCart/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "fields": "Id,Name",
+            "inputFields": [
+                {
+                    "OpportunityId": "%DMP_CreateOpporunityQuote:Opportunity_1:Id%"
+                },
+                {
+                    "Name": "00000001"
+                },
+                {
+                    "Status": "Borrador"
+                },
+                {
+                    "Pricebook2Id": "%DME_GetPbNamePlName:PricebookId%"
+                },
+                {
+                    "CAT_DeliveryMethod__c": "Immediatepickup"
+                },
+                {
+                    "FVU_Channel__c": "SF_CAV"
+                },
+                {
+                    "%vlocity_namespace%__PriceListId__c": "%DME_GetPbNamePlName:PricelistId%"
+                },
+                {
+                    "FIN_MasterQuote__c": "true"
+                },
+                {
+                    "FIN_tipoDeVenta__c": "Financiacion"
+                },
+                {
+                    "FIN_CreditQuota__c": "%Cupo%"
+                },
+                {
+                    "FVU_DaneCiudadCAVOrden__c": "11001000"
+                },
+                {
+                    "%vlocity_namespace%__DefaultServiceAccountId__c": "%ServiceAccountId%"
+                },
+                {
+                    "RecordTypeId": "%DME_GetPbNamePlName:RecordTypeId%"
+                }
+            ],
+            "methodName": "createCart",
+            "objectType": "Quote",
+            "subaction": "createQuote"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction1",
+        "remoteClass": "CpqAppHandler",
+        "remoteMethod": "createCart",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_Create/FinancingCart/Procedure/CreateSimQuoteCart"
+}

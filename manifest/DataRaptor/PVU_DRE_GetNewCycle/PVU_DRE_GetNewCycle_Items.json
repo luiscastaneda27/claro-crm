@@ -1,0 +1,66 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "ContextId",
+        "GlobalKey": "PVU_DRE_GetNewCycleCustom7516",
+        "InputFieldName": "Id",
+        "InputObjectName": "Case",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRE_GetNewCycle",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRE_GetNewCycle",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRE_GetNewCycle",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Case",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "SUBSTRING(%Case:FechaCorte_NuevoCiclo__c%, 8, 10)+ \"-\" + SUBSTRING(%Case:FechaCorte_NuevoCiclo__c%, 5, 7) + \"-\"  + SUBSTRING(%Case:FechaCorte_NuevoCiclo__c%, 0, 4)",
+        "FormulaResultPath": "transformDate",
+        "FormulaSequence": 1,
+        "GlobalKey": "PVU_DRE_GetNewCycleCustom618",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRE_GetNewCycle",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRE_GetNewCycle",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRE_GetNewCycle",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVU_DRE_GetNewCycleCustom7085",
+        "InputFieldName": "transformDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVU_DRE_GetNewCycle",
+        "OmniDataTransformationId": {
+            "Name": "PVU_DRE_GetNewCycle",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVU_DRE_GetNewCycle",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "newCycleDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

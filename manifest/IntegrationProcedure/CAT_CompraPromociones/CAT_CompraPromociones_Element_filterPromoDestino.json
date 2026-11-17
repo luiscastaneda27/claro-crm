@@ -1,0 +1,63 @@
+{
+    "Description": "Ejecuta el método \"filterPromosDestino\" para aplicar el filtro de retención por rol y por rango de precios, sin incluir la lógica de “Obsequios de CFM”. HDU - 669698",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "filterPromoDestino",
+    "OmniProcessId": {
+        "Name": "Compra de Promociones - Omni",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompraPromociones/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ConditionalBlockFilterPromo",
+        "OmniProcessId": {
+            "Name": "Compra de Promociones - Omni",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/CompraPromociones/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompraPromociones/Procedure/ConditionalBlockFilterPromo",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ConditionalBlockFilterPromo",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalChainableResponse": {
+        },
+        "additionalInput": {
+            "precioPromo": "%DMETotalPromoPriceFromAsset:promoMasAddons%",
+            "promosDisponibles": "%CompatibleOffersList:CompatibleOffersList%",
+            "userRole": "%DMExtractFieldInOrder:userRole%"
+        },
+        "additionalOutput": {
+        },
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "%DMExtractFieldInOrder:ordenRetencion%",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "RemoteAction3",
+        "remoteClass": "CATOfertasRetencion",
+        "remoteMethod": "filterPromosDestino",
+        "remoteOptions": {
+        },
+        "responseJSONNode": "",
+        "responseJSONPath": "listaPromosFinal",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyAdditionalInput": true,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/CompraPromociones/Procedure/filterPromoDestino"
+}

@@ -1,0 +1,45 @@
+{
+    "Description": "se obtiene cuál es el precio más alto",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "CalculoMas1",
+    "OmniProcessId": {
+        "Name": "CATMaximoPagoInicial",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/MaximoPagoInicial/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopBlock1",
+        "OmniProcessId": {
+            "Name": "CATMaximoPagoInicial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/MaximoPagoInicial/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/MaximoPagoInicial/Procedure/LoopBlock1",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopBlock1",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "precioMaximo": "=MAX(%setPreciosMaximosMas1:precioMaximoCreditQuota%,%setPreciosMaximosMas1:precioMaximoPagosIniciales%,%setPreciosMaximosMas1:precioMaximoCuotaInicial%)"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues16",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/MaximoPagoInicial/Procedure/CalculoMas1"
+}

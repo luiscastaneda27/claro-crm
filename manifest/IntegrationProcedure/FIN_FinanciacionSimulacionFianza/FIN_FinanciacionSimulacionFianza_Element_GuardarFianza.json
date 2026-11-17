@@ -1,0 +1,59 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "GuardarFianza",
+    "OmniProcessId": {
+        "Name": "FinanciacionSimulacionFianza",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "SimulacionDetallada",
+        "OmniProcessId": {
+            "Name": "FinanciacionSimulacionFianza",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure/SimulacionDetallada",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "SimulacionDetallada",
+    "ParentElementType": "Conditional Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "additionalInput": {
+            "Fianza:AfianzadorSeleccionado": "=IF(%SVParams:optionType%==\"cliente\",'Afianzador traido por cliente',IF(%surety:suretyName%='No aplica fianza','No Aplica por regla comercial',IF(ISBLANK(%surety:suretyName%),'No Disponible','Afianzador Ofrecido por Claro'))",
+            "Fianza:ImpuestoIVAExento": "=IF(%surety:exemptVatTax%=true,1,0)",
+            "Fianza:Name": "=IF(%SVParams:optionType%==\"cliente\",'Tercero',IF(ISBLANK(%surety:suretyName%),'No Disponible',%surety:suretyName%))",
+            "Fianza:QuoteId": "%CreateSimQuoteCart:records:Id%",
+            "Fianza:SiglaAfianzador": "=IF(%SVParams:optionType%==\"cliente\",'Tercero',%surety:suretyInitials%)"
+        },
+        "additionalOutput": {
+        },
+        "bundle": "FIN_UpsertFianza",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "failureResponse": {
+        },
+        "label": "DataMapperPostAction1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnOnlyAdditionalOutput": false,
+        "returnOnlyFailureResponse": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "DRT_ResultadoSimulacion",
+        "sendOnlyAdditionalInput": false,
+        "show": null,
+        "useFormulas": true
+    },
+    "Type": "DataRaptor Post Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FinanciacionSimulacionFianza/Procedure/GuardarFianza"
+}

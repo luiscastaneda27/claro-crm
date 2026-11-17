@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RANoResultsCondition",
+    "OmniProcessId": {
+        "Name": "FIN_ConsultaFinanciacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "Response": "No existen financiamientos relacionados al cliente",
+            "mensaje": "No existen financiamientos relacionados al cliente",
+            "responseCode": "%IPGetFinancingInfoV1:responseCode%",
+            "success": "=IF(%IPGetFinancingInfoV1:success%== null, false, %IPGetFinancingInfoV1:success% )"
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "%IPGetFinancingInfo:code% != \"202\"",
+        "label": "ResponseAction2",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": false,
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN/FIN_ConsultaFinanciacion/Procedure/RANoResultsCondition"
+}

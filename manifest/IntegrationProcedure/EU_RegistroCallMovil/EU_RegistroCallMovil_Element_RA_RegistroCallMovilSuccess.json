@@ -1,0 +1,40 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RA_RegistroCallMovilSuccess",
+    "OmniProcessId": {
+        "Name": "EU_RegistroCallMovil",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/EU/RegistroCallMovil/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "additionalOutput": {
+            "message": "La actualización en call movil se realizó exitosamente",
+            "responseMessage": "%httpCallLoop|1:responseMessage%",
+            "status": "%httpCallLoop|1:status%",
+            "statusCode": "%httpCallLoop|1:statusCode%",
+            "success": true
+        },
+        "disOnTplt": false,
+        "executionConditionalFormula": "(%httpCallLoop:statusCode% >= 200 && %httpCallLoop:statusCode% < 300 && %httpCallLoop:statusCode% != null)\n",
+        "label": "ResponseAction1",
+        "responseDefaultData": {
+        },
+        "responseFormat": "JSON",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "returnFullDataJSON": false,
+        "returnOnlyAdditionalOutput": true,
+        "sendJSONNode": "",
+        "sendJSONPath": "httpCallLoop",
+        "show": null,
+        "useFormulas": true,
+        "vlcResponseHeaders": {
+        }
+    },
+    "Type": "Response Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/EU/RegistroCallMovil/Procedure/RA_RegistroCallMovilSuccess"
+}

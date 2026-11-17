@@ -1,0 +1,30 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Mock",
+    "OmniProcessId": {
+        "Name": "BTC_IPGetLines",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/BTC/IPGetLines/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "response": "=IF(%DRE_GetNumberLines:accountName% == \"SEBASTIAN ESCOBAR\", %SV_MockCase1:response%,\r\n    IF(%DRE_GetNumberLines:accountName% == \"FROY RODRÍGUEZ\", %SV_MockCase2:response%,\r\n        IF(%DRE_GetNumberLines:accountName% == \"MATHEUS FORGANES\", %SV_MockCase4:response%,  \r\n            %SV_MockCase3:response%))"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues5",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/BTC/IPGetLines/Procedure/SV_Mock"
+}

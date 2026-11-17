@@ -1,0 +1,299 @@
+[
+    {
+        "FormulaExpression": "IF(%objectList:CustomerProductDelivery:CustomerAcceptation% == \"No\", \"Cancelled\" , \"\")",
+        "FormulaResultPath": "formOrderStatusVelocity",
+        "FormulaSequence": 5,
+        "GlobalKey": "FVU_transformOrderStatusCustom4106",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(%objectList:CustomerProductDelivery:CustomerAcceptation% == \"Yes\" && %objectList:status% == \"EXITOSA\", \"Closed\", IF(%objectList:CustomerProductDelivery:CustomerAcceptation% == \"No\" && %objectList:status% == \"EXITOSA\", \"Canceled\", \"ClosedWithError\"))",
+        "FormulaResultPath": "formOrderDeliveryStatus",
+        "FormulaSequence": 1,
+        "GlobalKey": "FVU_transformOrderStatusCustom8791",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(%objectList:CustomerProductDelivery:CustomerAcceptation% == \"Yes\", %objectList:CustomerProductDelivery:ClosingReason%, IF((%objectList:CustomerProductDelivery:CustomerAcceptation% == \"No\",%objectList:CustomerProductDelivery:ClosingReasonRejected% , \"\"))",
+        "FormulaResultPath": "formClosingReason",
+        "FormulaSequence": 3,
+        "GlobalKey": "FVU_transformOrderStatusCustom7603",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "NOW()",
+        "FormulaResultPath": "formEndDate",
+        "FormulaSequence": 4,
+        "GlobalKey": "FVU_transformOrderStatusCustom1696",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "QUERY(\"SELECT Id FROM OrderItem WHERE Product2.Family = 'Device' AND OrderId = '{0}'\", objectList:ContextId)",
+        "FormulaResultPath": "formOrderItemId",
+        "FormulaSequence": 2,
+        "GlobalKey": "FVU_transformOrderStatusCustom8875",
+        "IsDisabled": true,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom3755",
+        "InputFieldName": "formOrderStatusVelocity",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Order:%vlocity_namespace%__OrderStatus__c",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom698",
+        "InputFieldName": "formEndDate",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Order:EndDate",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom1543",
+        "InputFieldName": "formClosingReason",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Order:FVU_ClosingReason",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom1035",
+        "InputFieldName": "formOrderDeliveryStatus",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Order:FVU_OrderDeliveryStatus",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom196",
+        "InputFieldName": "objectList:ContextId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Order:Id",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom6646",
+        "InputFieldName": "objectList:CustomerProductDelivery:CustomerAcceptation",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Order:Status",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{\"Yes\":\"\",\"No\":\"Cerrada Perdida\"}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom5389",
+        "InputFieldName": "objectList:BillNumber",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:BillNumber",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom9590",
+        "InputFieldName": "objectList:CustomerProductDelivery:CustomerAcceptation",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:FVU_ProductDeliveryStatus",
+        "OutputObjectName": "json",
+        "TransformValueMappings": "{\"Yes\":\"DeliveredCustomer\",\"No\":\"Refused\"}",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom5258",
+        "InputFieldName": "objectList:OrderItem:OrderItemFamily",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:Family",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "FVU_transformOrderStatusCustom2425",
+        "InputFieldName": "objectList:OrderItem:OrderProductId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "FVU_transformOrderStatus",
+        "OmniDataTransformationId": {
+            "Name": "FVU_transformOrderStatus",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/FVU_transformOrderStatus",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "OrderItem:Id",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]

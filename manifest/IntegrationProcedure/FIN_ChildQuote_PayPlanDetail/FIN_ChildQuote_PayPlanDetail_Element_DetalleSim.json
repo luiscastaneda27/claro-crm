@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "DetalleSim",
+    "OmniProcessId": {
+        "Name": "FIN_ChildQuotePayPlanDetail",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "AE": "%IP_getSimById:SimulationSummary:AEInterestRate%",
+            "IM": "%IP_getSimById:SimulationSummary:monthlyInterestRate%",
+            "IR": "%IP_getSimById:SimulationSummary:interestRate%",
+            "Plazo": "%IP_getSimById:SimulationSummary:term%",
+            "SF": "%IP_getSimById:SimulationSummary:maxLegalInterestRate%",
+            "VAF": "%IP_getSimById:SimulationSummary:baseAmount%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues1",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/FIN_ChildQuote/PayPlanDetail/Procedure/DetalleSim"
+}

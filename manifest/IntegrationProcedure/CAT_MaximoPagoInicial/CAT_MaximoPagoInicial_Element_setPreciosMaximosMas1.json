@@ -1,0 +1,47 @@
+{
+    "Description": "precioMaximoPagosIniciales = a partir del porcentaje del JSON de acuerdo al tipo de producto\nprecioMaximoCreditQuota = Diferencia entre el precio del producto y el cupo disponible\nprecioMaximoCuotaInicial= a partir de la matriz",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "setPreciosMaximosMas1",
+    "OmniProcessId": {
+        "Name": "CATMaximoPagoInicial",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/MaximoPagoInicial/Procedure",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "LoopBlock1",
+        "OmniProcessId": {
+            "Name": "CATMaximoPagoInicial",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/CAT/MaximoPagoInicial/Procedure",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/MaximoPagoInicial/Procedure/LoopBlock1",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "LoopBlock1",
+    "ParentElementType": "Loop Block",
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "precioMaximoCreditQuota": "=IF(%nuevaLista:listaIterar:CreditQuota% < %nuevaLista:listaIterar:Price%,%nuevaLista:listaIterar:Price% - %nuevaLista:listaIterar:CreditQuota%,0)",
+            "precioMaximoCuotaInicial": "=%SetValues14:porcentajeCuotaInicial% * %nuevaLista:listaIterar:Price% / 100",
+            "precioMaximoPagosIniciales": "=%SetValues14:porcentajeMaximoMas1% * %nuevaLista:listaIterar:Price% / 100"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValues15",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/CAT/MaximoPagoInicial/Procedure/setPreciosMaximosMas1"
+}

@@ -1,0 +1,383 @@
+[
+    {
+        "FilterGroup": 0,
+        "FilterOperator": "=",
+        "FilterValue": "Id",
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom8522",
+        "InputFieldName": "Id",
+        "InputObjectName": "Case",
+        "InputObjectQuerySequence": 1,
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Case",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FORMATDATETIME(NOW(), \"HH:mm:ss\")",
+        "FormulaResultPath": "Hora",
+        "FormulaSequence": 6,
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom68",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "FORMATDATETIME(NOW(), \"dd/MM/yyyy\")",
+        "FormulaResultPath": "Fecha",
+        "FormulaSequence": 5,
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom5627",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(Case:PVU_Level3__c == 'Cesión de contrato',\r\n%Case:PVU_Cuenta_cesionario__r.FVU_DocumentNumber__c%,\r\n%Case:Account.FVU_DocumentNumber__c%\r\n)",
+        "FormulaResultPath": "NumeroDocumento",
+        "FormulaSequence": 7,
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom4772",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(\r\n  Case:PVU_Level3__c == 'Cesión de contrato',\r\n  CONCAT(\r\n    Case:PVU_Cuenta_cesionario__r.%vlocity_namespace%__PrimaryContactId__r.FirstName,\r\n    ' ',\r\n    Case:PVU_Cuenta_cesionario__r.%vlocity_namespace%__PrimaryContactId__r.MiddleName\r\n  ),\r\n  CONCAT(\r\n    Case:Account.%vlocity_namespace%__PrimaryContactId__r.FirstName,\r\n    ' ',\r\n    Case:Account.%vlocity_namespace%__PrimaryContactId__r.MiddleName\r\n  )\r\n)",
+        "FormulaResultPath": "Nombres",
+        "FormulaSequence": 1,
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom8390",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "IF(\r\n  Case:PVU_Level3__c == 'Cesión de contrato',\r\n  CONCAT(\r\n    Case:PVU_Cuenta_cesionario__r.%vlocity_namespace%__PrimaryContactId__r.LastName,\r\n    ' ',\r\n    Case:PVU_Cuenta_cesionario__r.%vlocity_namespace%__PrimaryContactId__r.FVU_SecondLastName__c\r\n  ),\r\n  CONCAT(\r\n    Case:Account.%vlocity_namespace%__PrimaryContactId__r.LastName,\r\n    ' ',\r\n    Case:Account.%vlocity_namespace%__PrimaryContactId__r.FVU_SecondLastName__c\r\n  )\r\n)",
+        "FormulaResultPath": "Apellidos",
+        "FormulaSequence": 2,
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom7554",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "SUBSTRING(Case:PVU_RequestProcessInfo__c, 0, STRINGINDEXOF(Case:PVU_RequestProcessInfo__c, \"-\"))",
+        "FormulaResultPath": "Complete",
+        "FormulaSequence": 4,
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom5818",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "FormulaExpression": "SUBSTRING(Case:PVU_RequestProcessInfo__c, STRINGINDEXOF(Case:PVU_RequestProcessInfo__c, \"-\")+1)",
+        "FormulaResultPath": "Coincidence",
+        "FormulaSequence": 3,
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom8596",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 0,
+        "OutputFieldName": "Formula",
+        "OutputObjectName": "Formula",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom8553",
+        "InputFieldName": "Case:AccountId",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:AccountId",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom315",
+        "InputFieldName": "Apellidos",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:Apellidos",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom5302",
+        "InputFieldName": "Case:PVU_CAV__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:Canal",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom4784",
+        "InputFieldName": "Coincidence",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:Coincidence",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom7458",
+        "InputFieldName": "Complete",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:Complete",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom9299",
+        "InputFieldName": "NumeroDocumento",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldFormat": "String",
+        "OutputFieldName": "Case:DocumentNumber",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom6885",
+        "InputFieldName": "Hora",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:Hora",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom2289",
+        "InputFieldName": "Nombres",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:Nombres",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom8520",
+        "InputFieldName": "Case:PVU_Observaciones__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:Observaciones",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom8343",
+        "InputFieldName": "Case:PVU_Level3__c",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:VOz",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    },
+    {
+        "GlobalKey": "PVUDREGetCaseDataProvidenceCustom5078",
+        "InputFieldName": "Fecha",
+        "IsDisabled": false,
+        "IsRequiredForUpsert": false,
+        "IsUpsertKey": false,
+        "Name": "PVUDREGetCaseDataProvidence",
+        "OmniDataTransformationId": {
+            "Name": "PVUDREGetCaseDataProvidence",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniDataTransform/PVUDREGetCaseDataProvidence",
+            "VlocityRecordSObjectType": "OmniDataTransform"
+        },
+        "OutputCreationSequence": 1,
+        "OutputFieldName": "Case:fecha",
+        "OutputObjectName": "json",
+        "VlocityDataPackType": "SObject",
+        "VlocityRecordSObjectType": "OmniDataTransformItem"
+    }
+]
