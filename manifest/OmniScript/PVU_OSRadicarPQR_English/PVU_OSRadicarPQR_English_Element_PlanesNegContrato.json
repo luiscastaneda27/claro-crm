@@ -1,0 +1,74 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "PlanesNegContrato",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepNegContrato",
+        "OmniProcessId": {
+            "Name": "OSRadicarPQR",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/StepNegContrato",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepNegContrato",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "accessibleInFutureSteps": false,
+        "allowClear": false,
+        "allowDelete": false,
+        "allowEdit": false,
+        "allowNew": false,
+        "conditionType": "Hide if False",
+        "controlWidth": 12,
+        "deleteLabel": "",
+        "editLabel": "",
+        "elementName": "",
+        "hide": false,
+        "label": "Asociar Servicios",
+        "maxDisplay": 4,
+        "mode": "Table",
+        "newLabel": "",
+        "selectCheckBox": "AsociarPlanNegContrato",
+        "selectMode": "Single",
+        "selectSobject": "",
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "0",
+                        "field": "PlanesSize"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "Servicio",
+                        "field": "Step1:negacionTipo"
+                    }
+                ]
+            }
+        },
+        "sobjectMapping": [
+        ],
+        "sumElement": "",
+        "svgIcon": "user",
+        "svgSprite": "utility",
+        "valueSvgMap": [
+        ]
+    },
+    "Type": "Edit Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/PlanesNegContrato"
+}

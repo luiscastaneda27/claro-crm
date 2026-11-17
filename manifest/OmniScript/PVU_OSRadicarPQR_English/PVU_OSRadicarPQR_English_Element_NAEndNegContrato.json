@@ -1,0 +1,78 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "NAEndNegContrato",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "iconName": "",
+        "iconPosition": "left",
+        "iconVariant": "",
+        "label": "NAEndNegContrato",
+        "loginAction": "login",
+        "message": {
+        },
+        "objectAction": "home",
+        "pubsub": false,
+        "recordAction": "view",
+        "replace": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Negación de contrato",
+                        "field": "VozCliente"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "haveOrdersPortabilidad"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "Deactivated",
+                        "field": "SelectedAssetStatus"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "orderResponse:Response:InfoOrderStatusSuspension"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "orderResponse:Response:InfoOrderStatusCancelacion"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "TyTFinanciado",
+                        "field": "Step1:negacionTipo"
+                    }
+                ]
+            }
+        },
+        "ssm": false,
+        "targetFilter": "Recent",
+        "targetId": "%Details:CaseId%",
+        "targetLWCLayout": "lightning",
+        "targetName": "Case",
+        "targetType": "Record",
+        "validationRequired": "Submit",
+        "variant": "brand",
+        "wpm": false
+    },
+    "Type": "Navigate Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/NAEndNegContrato"
+}

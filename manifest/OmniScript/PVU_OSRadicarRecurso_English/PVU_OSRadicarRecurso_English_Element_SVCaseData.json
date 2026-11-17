@@ -1,0 +1,40 @@
+{
+    "Description": "20240510 - CV: se agrega el valor \"Presencial\" para el SVCaseData\n20231114 - se  saca Status Cerrado",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseData",
+    "OmniProcessId": {
+        "Name": "OSRadicarRecurso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarRecurso/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%ContextId%",
+                "Categoria": "%radicacionStep1:Categoria%",
+                "Origin": "=IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', 'Phone','Presencial')",
+                "SubCategoria": "%radicacionStep1:SubCategoria%",
+                "VozCliente": "%radicacionStep1:VozCliente%"
+            }
+        },
+        "label": "SVCaseData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarRecurso/English/SVCaseData"
+}

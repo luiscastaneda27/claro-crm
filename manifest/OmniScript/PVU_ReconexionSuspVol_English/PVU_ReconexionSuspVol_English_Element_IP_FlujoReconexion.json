@@ -1,0 +1,106 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_FlujoReconexion",
+    "OmniProcessId": {
+        "Name": "ReconexionSuspVol",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ReconexionSuspVol/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ]
+        },
+        "extraPayload": {
+            "AssetId": "%AssetId_context%",
+            "Case": "%Case%",
+            "DatosAdjunto": "%DatosAdjunto%",
+            "Email": "%IPValidaciones:suspensionesInfo:Email%",
+            "FutureOrderId": "%OrderId%",
+            "Linea": "%IPValidaciones:suspensionesInfo:NumeroLineaAsset%",
+            "MetodoNotif": "%IPValidaciones:suspensionesInfo:MedioNotificacionPreferido%",
+            "Nombre": "%IPValidaciones:suspensionesInfo:Nombre%",
+            "RequestedDate": "%RequestedDate%",
+            "Telefono": "%IPValidaciones:suspensionesInfo:Telefono%",
+            "notificationMessage": "%Mensajes:RECONSUSPVOL001%",
+            "proccessName": "%processNameValue%",
+            "subCausal": "%assetSubCausal%",
+            "tieneAdjunto": "%tieneAdjunto%"
+        },
+        "failureAbortLabel": "",
+        "failureAbortMessage": "",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_FlujoReconexion",
+        "label": "IP_FlujoReconexion",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "IPupdateCaso",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "FAILED",
+                        "field": "Validation:status"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "ERROR",
+                        "field": "Validation:response:result"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "false",
+                        "field": "Validation:success"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ReconexionSuspVol/English/IP_FlujoReconexion"
+}

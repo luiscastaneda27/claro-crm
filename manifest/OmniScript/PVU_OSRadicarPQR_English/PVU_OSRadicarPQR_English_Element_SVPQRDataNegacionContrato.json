@@ -1,0 +1,97 @@
+{
+    "Description": "20240416 - FM - Evolutivo: se mapea min, productos seleccionados, cuantaSeleccionada en 93 y cuentaBA en 92\n20240117 - FM -BUG UAT Smoke: Se corrije nodo notificationSource para tomar valores para tercero no autorizado",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVPQRDataNegacionContrato",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "caso": {
+                "address": [
+                    {
+                        "address": "%DatosCuenta:Billing|1:Direccion%",
+                        "departmentCode": "%codigoDaneDepartamento%",
+                        "municipalityCode": "%codigoDaneCiudad%",
+                        "neighborhood": "=IF(%DatosCuenta:Billing|1:Vecindario% <> null, %DatosCuenta:Billing|1:Vecindario%, %DatosCuenta:Billing|1:CentroPoblado%)",
+                        "populatedCenterCode": "%codigoDaneCentro%"
+                    }
+                ],
+                "alternativeAddress": null,
+                "alternativePhone": null,
+                "asesorRadicadorPQR": "%UserData|1:PVU_Usuario_Red__c%",
+                "caseOrigin": "%SFCaseCreated:OrigenCaso%",
+                "categoryCode": "%codigoCategoria%",
+                "clientVoiceCode": "%codigoVozCliente%",
+                "closingReason": null,
+                "cuentaBA": "%asociarResponse:response:ctaBA%",
+                "cuentaSeleccionada": "%asociarResponse:response:ctaSeleccionada%",
+                "description": "%Step2:DescripcionCaso%",
+                "docNumber": "%DatosCuenta:Cliente:NumeroDocumento%",
+                "docNumberContact": "%Step2:TerceroBlock:NumeroDocTercero%",
+                "docType": "%DatosCuenta:Cliente:TipoDocumento%",
+                "docTypeContact": "%Step2:TerceroBlock:TipoDocTercero%",
+                "email": "%DatosCuenta:Cliente:Email%",
+                "emailContact": null,
+                "equipoFinanciado": {
+                    "cuentaFinanciamiento": "%IPSetActivosSeleccioadosFin:cuentaFinanciamiento%",
+                    "nombreEquipo": "%IPSetActivosSeleccioadosFin:nombreEquipo%",
+                    "numeroCredito": "%IPSetActivosSeleccioadosFin:numeroCredito%",
+                    "serialEquipo": "%IPSetActivosSeleccioadosFin:serialEquipo%"
+                },
+                "firstName": "%DatosCuenta:Cliente:ContactoPrimerNombre%",
+                "firstNameContact": "%Step2:TerceroBlock:NombreTercero%",
+                "interaction": "%SFCaseCreated:NumeroCaso%",
+                "lastName": "%DatosCuenta:Cliente:ContactoApellido%",
+                "lastNameContact": "%Step2:TerceroBlock:ApellidoTercero%",
+                "middleNameContact": null,
+                "min": "=IF(%asociarResponse:response:min% <> null, %asociarResponse:response:min%, null)",
+                "mobile": null,
+                "notificationSource": "=IF(%Step2:MedioNotificacionPreferidoVerbal% <> null, %Step2:MedioNotificacionPreferidoVerbal%, IF(%Step2:MedioNotificacionPreferidoEscrito% <> null, %Step2:MedioNotificacionPreferidoEscrito%, IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', 'Llamada telefónica', 'Correo Electrónico')))",
+                "origin": "%SFCaseCreated:OrigenCaso%",
+                "originS": "%environmentCode%",
+                "phone": "%DatosCuenta:Cliente:Telefono%",
+                "productosSeleccionados": "=IF(%asociarResponse:response:seleccionados% <> null, %asociarResponse:response:seleccionados%, null)",
+                "serialE": "%asociarResponse:response:SerialE%",
+                "subcategoryCode": "%codigoSubCategoria%",
+                "subject": "%Step2:AsuntoCaso%",
+                "typeCode": "=IF(%Step1:PeticionQueja% == 'Queja', %Step1:PeticionQueja%, 'Peticion')",
+                "ubicacionAsesorRadicador": "%UserData|1:FVU_CiudadCAV__c%",
+                "valorAjusteSolicitado": "%Step2:ValoresReclamacion%",
+                "valorPrecioVenta": "%IPSetActivosSeleccioadosFin:valorPrecioVenta%"
+            }
+        },
+        "label": "SVPQRDataNegacionContrato",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "TyTFinanciado",
+                        "field": "Step1:negacionTipo"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/SVPQRDataNegacionContrato"
+}

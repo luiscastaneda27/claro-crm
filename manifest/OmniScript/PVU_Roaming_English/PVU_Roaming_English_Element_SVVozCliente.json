@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVVozCliente",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "VozCliente": "=IF(%RoamingActive% = true,IF( %Validations:valid_hasDesacRoamingOrder% = false,  %Roaming_Status_Validation:RActivoRadiosinVigencia%, %Roaming_Status_Validation:RActivoRadio%),%Roaming_Status_Validation:RDesactivadoRadio%)\t",
+            "thirPersonPV": "%SelecCliente:EsTercero%",
+            "vozCliente": "=IF(%RoamingActive% = true,IF( %Validations:valid_hasDesacRoamingOrder% = false,  %Roaming_Status_Validation:RActivoRadiosinVigencia%, %Roaming_Status_Validation:RActivoRadio%),%Roaming_Status_Validation:RDesactivadoRadio%)\t"
+        },
+        "label": "SVVozCliente",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SVVozCliente"
+}

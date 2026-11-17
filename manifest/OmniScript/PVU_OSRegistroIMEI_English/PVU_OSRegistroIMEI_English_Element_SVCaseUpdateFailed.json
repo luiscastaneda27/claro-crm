@@ -1,0 +1,123 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdateFailed",
+    "OmniProcessId": {
+        "Name": "Registro de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRegistroIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "Ciudad": "%TypeAheadCity%",
+                "CodigoCierre": "Trámite no exitoso",
+                "ComoAdquirio": "%ComoAdquirio%",
+                "ContactEmail": "%CorreoElectronico%",
+                "ContactPhone": "%TelefonoContacto%",
+                "ContenidoCorreo": "%IPEnviarAceptacionRegistro:AceptacionEnviada%",
+                "Departamento": "%TypeAheadDepartment%",
+                "Direccion": "%Direccion%",
+                "Id": "%CaseId%",
+                "NombreCliente": "%NameFinal%",
+                "NumeroDocumento": "%NumeroDocReconocer%",
+                "PinImei": "%ClaveOTP%",
+                "Status": "Cerrado",
+                "SubEstado": "No se realiza trámite gestión IMEI",
+                "TipoDocumento": "%tipoDocFromContext%"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "0",
+                                    "field": "IPConsultaIMEIDualSIMResponse:piCode"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "registroImei1Response:isValid"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "registroImei1Response:success"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "1",
+                                    "field": "IPConsultaIMEIDualSIMResponse:piCode"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "registroImei1Response:isValid"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "registroImei2Response:isValid"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "registroImei1Response:success"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "registroImei2Response:success"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRegistroIMEI/English/SVCaseUpdateFailed"
+}

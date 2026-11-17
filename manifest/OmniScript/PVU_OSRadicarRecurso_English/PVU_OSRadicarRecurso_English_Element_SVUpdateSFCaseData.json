@@ -1,0 +1,60 @@
+{
+    "Description": "20231114 - se setea Status Cerrado",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateSFCaseData",
+    "OmniProcessId": {
+        "Name": "OSRadicarRecurso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarRecurso/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CaseToUpdate": {
+                "ApellidoTercero": "=IF(%radicacionStep2:TerceroBlock:ApellidoTercero% <> null, %radicacionStep2:TerceroBlock:ApellidoTercero%, '')",
+                "Asunto": "%radicacionStep2:AsuntoRecursoNew%",
+                "CanalAtencion": "=IF(%UserData|1:FVU_Canal__c% <> 'SF_TMK', 'CAV', 'MKT')",
+                "Cun": "%caseInfo:OriginalCase|1:PVU_CUN__c%",
+                "Descripcion": "%radicacionStep2:DescripcionCaso%",
+                "FechaSAP": "%IPFilterRecurso:UpdateCase:fechaSap%",
+                "Id": "%Details:CaseId%",
+                "MedioNotificacion": "=IF(%UserData|1:FVU_Canal__c% == 'SF_CAV',IF(%radicacionStep1:MedioNotificacionPreferidoEscrito% <> null, %radicacionStep1:MedioNotificacionPreferidoEscrito%, IF(%radicacionStep1:MedioNotificacionPreferidoVerbal% <> null, %radicacionStep1:MedioNotificacionPreferidoVerbal%, IF(%radicacionStep1:MedioNotificacionPreferidoNoAutorizado% <> null, %radicacionStep1:MedioNotificacionPreferidoNoAutorizado%,''))),IF(%radicacionStep1:MedioNotificacionPreferidoEscritoTMK% <> null, %radicacionStep1:MedioNotificacionPreferidoEscritoTMK%, IF(%radicacionStep1:MedioNotificacionPreferidoVerbal% <> null, %radicacionStep1:MedioNotificacionPreferidoVerbal%, IF(%radicacionStep1:MedioNotificacionPreferidoNoAutorizado% <> null, %radicacionStep1:MedioNotificacionPreferidoNoAutorizado%,''))))",
+                "MedioNotificacionValor": "=IF(%radicacionStep1:MedioNotificacionElegidoClienteMail% <> null, %radicacionStep1:MedioNotificacionElegidoClienteMail%, IF(%radicacionStep1:MedioNotificacionElegidoClienteCorrespondencia% <> null, %radicacionStep1:MedioNotificacionElegidoClienteCorrespondencia%, IF(%radicacionStep1:MedioNotificacionElegidoClienteTelefonica% <> null, %radicacionStep1:MedioNotificacionElegidoClienteTelefonica%, IF(%radicacionStep1:MedioNotificacionElegidoNoAutorizado% <> null, %radicacionStep1:MedioNotificacionElegidoNoAutorizado%,''))))",
+                "MedioRadicacion": "=IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', %radicacionStep1:MedioRadicacionTMK%,%radicacionStep1:MedioRadicacionCAV%)",
+                "NombreTercero": "=IF(%radicacionStep2:TerceroBlock:NombreTercero% <> null, %radicacionStep2:TerceroBlock:NombreTercero%, '')",
+                "Nr": "%pqrResponse:nr%",
+                "NumeroDocTercero": "=IF(%radicacionStep2:TerceroBlock:NumeroDocTercero% <> null, %radicacionStep2:TerceroBlock:NumeroDocTercero%, '')",
+                "QuienRealiza": "%radicacionStep2:Radicador%",
+                "Status": "Cerrado",
+                "TemaRadicacion": "%radicacionStep2:Tema%",
+                "TipoDocTercero": "=IF(%radicacionStep2:TerceroBlock:TipoDocTercero% <> null, %radicacionStep2:TerceroBlock:TipoDocTercero%, null)",
+                "TipoPQR": "%Step2:PeticionQueja%",
+                "TipoRecurso": "%radicacionStep1:TipoRecursoR%",
+                "ValoresReclamacion": "%ValoresReclamacion%"
+            },
+            "dayFechaSAP": "=DAYOFMONTH(%IPFilterRecurso:UpdateCase:fechaSap%) ",
+            "fechaSAPMessage": "=%IPFilterRecurso:UpdateCase:fechaSap%",
+            "fechaSAPSMS": "=%dayFechaSAP%+\"/\"+%monthFechaSAP%+\"/\"+%yearFechaSAP%",
+            "monthFechaSAP": "=MONTH(%IPFilterRecurso:UpdateCase:fechaSap%)",
+            "yearFechaSAP": "=YEAR(%IPFilterRecurso:UpdateCase:fechaSap%)"
+        },
+        "label": "SVUpdateSFCaseData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarRecurso/English/SVUpdateSFCaseData"
+}

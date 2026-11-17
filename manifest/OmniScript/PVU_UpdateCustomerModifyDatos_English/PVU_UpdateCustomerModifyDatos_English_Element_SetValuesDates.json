@@ -1,0 +1,34 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesDates",
+    "OmniProcessId": {
+        "Name": "UpdateCustomerModify",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/UpdateCustomerModifyDatos/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ThisDate": "=IF(%WellDate% > 12, MOMENT(%DateBirthdateModify%, 'DD-MM-YYYY').format('YYYY-DD-MM'), MOMENT(%DateBirthdateModify%, 'DD-MM-YYYY').format('YYYY-MM-DD'))",
+            "WellDate": "=NUMBER(SUBSTRING(%DateBirthdateModify%, 0, 2))"
+        },
+        "label": "SetValuesDates",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/UpdateCustomerModifyDatos/English/SetValuesDates"
+}

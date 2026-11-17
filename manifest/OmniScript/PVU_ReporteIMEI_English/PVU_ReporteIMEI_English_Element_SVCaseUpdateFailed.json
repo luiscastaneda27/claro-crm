@@ -1,0 +1,139 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdateFailed",
+    "OmniProcessId": {
+        "Name": "PVUReporteImei",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ReporteIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AceptaCompartirFiscalia": "%ReporteImei:ReporteFiscalia:CompartirFiscalia%",
+                "CiudadMunicEvento": "%ciudadReporte%",
+                "CodigoCierre": "Trámite no exitoso",
+                "CorreoReporter": "%correo%",
+                "DepartamentoEvento": "%departamentoReporte%",
+                "DescripcionEvento": "%descripcionEvento%",
+                "DireccionHechos": "%direccionHechos%",
+                "DireccionReporter": "%ReporteImei:Text1%",
+                "DocNumberReporter": "%numIdReporte%",
+                "DocTypeReporter": "%ReporteImei:TipoDocumentoReporte%",
+                "HuboUsoDe": "%ReporteImei:ReporteFiscalia:Arma%",
+                "HuboViolencia": "%ReporteImei:ReporteFiscalia:UsoViolencia%",
+                "Id": "%CaseId%",
+                "ImeiReporte1": "%imeiFromContext%",
+                "ImeiReporte2": "%IPConsultaIMEIDualSIMResponse:imei2%",
+                "MINReporte": "%minFromContext%",
+                "MotivoReporte": "=IF(%ReporteImei:Motivo% == 1, 'Robo', 'Pérdida')",
+                "NombreApellidosReporter": "%nombreReporteInput%",
+                "PhoneReporter": "%ReporteImei:Text7%",
+                "PinImei": "=IF(%IPConsultaIMEIDualSIMResponse:imei2%<>null,'Imei: ' + %imeiFromContext% + ' Pin: ' + %PinIMEI1% + ' / Imei2: ' + %IPConsultaIMEIDualSIMResponse:imei2%+ ' Pin: ' + %PinIMEI2%, 'Imei: ' + %imeiFromContext% + ' Pin: ' + %PinIMEI1%)",
+                "Status": "Cerrado",
+                "SubEstado": "No se realiza trámite gestión IMEI",
+                "TipoReporte": "=IF(%ReporteImei:TipoReporte% <> 'Equipo','Linea + Equipo',%ReporteImei:TipoReporte%)",
+                "VictimaMenorEdad": "%ReporteImei:ReporteFiscalia:VictimaMenor%"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "Security:accessProcess:PVU_Resolucion_7811"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "<>",
+                                                "data": "1",
+                                                "field": "reportarImei1Response:message:reportarImeiNegativoResponse:codigo"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "reportarImei1Response: success"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "1",
+                                    "field": "IPConsultaIMEIDualSIMResponse:piCode"
+                                },
+                                {
+                                    "group": {
+                                        "operator": "OR",
+                                        "rules": [
+                                            {
+                                                "condition": "<>",
+                                                "data": "1",
+                                                "field": "reportarImei2Response:message:reportarImeiNegativoResponse:codigo"
+                                            },
+                                            {
+                                                "condition": "=",
+                                                "data": "false",
+                                                "field": "reportarImei2Response: success"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "false",
+                                    "field": "reportarImei1Response:success"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "true",
+                                    "field": "Security:accessProcess:PVU_Resolucion_7811"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ReporteIMEI/English/SVCaseUpdateFailed"
+}

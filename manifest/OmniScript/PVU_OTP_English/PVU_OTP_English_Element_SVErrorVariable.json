@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": true,
+    "Name": "SVErrorVariable",
+    "OmniProcessId": {
+        "Name": "OTP",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OTP/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "MaxOTPRetries": "=IF(OR(%IPEnviarOTP|1:responsePinGenerationDescription% == \"Ha superado el limite de Generación de Pin\",%IPEnviarOTP:responsePinGenerationDescription% == \"Ha superado el limite de Generación de Pin\"), true, false)",
+            "OTPError": "=true"
+        },
+        "label": "SVErrorVariable",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "OTPValidado"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validationFailed"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OTP/English/SVErrorVariable"
+}

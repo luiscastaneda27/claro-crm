@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateCase",
+    "OmniProcessId": {
+        "Name": "OSPagosNoAbonados",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSPagosNoAbonados/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CaseUpdate": {
+                "Banco": "=IF(%SelectBanco% == 'OTRO', %TextBanco%, %SelectBanco%)",
+                "CuentaDestino": "%CuentaDestinoFormula%",
+                "FechaPago": "%FechaPago%",
+                "Id": "%Details:CaseId%",
+                "Mediodelpago": "%SelectMedio%",
+                "ReferenciaPago": "%TxtReferenciaPago%",
+                "SoporteAdjunto": true,
+                "Status": "En Curso",
+                "SubEstado": "Pendiente de aprobación",
+                "ValorPago": "%ValorPago%"
+            }
+        },
+        "label": "SVCaseDataUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSPagosNoAbonados/English/SVUpdateCase"
+}

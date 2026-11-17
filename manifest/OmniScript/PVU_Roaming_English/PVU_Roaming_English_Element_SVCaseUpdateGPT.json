@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdateGPT",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "CodigoCierre": "No aplica",
+                "FechaFin": "%fechaFin%",
+                "FechaInicio": "%fechaInicio%",
+                "Id": "%IPCreateCase:Details:CaseId%",
+                "NombreProceso": "%processName%",
+                "OrderId": "%OrderId%",
+                "PinImei": "%AceptacionCondiciones:claveOTP%",
+                "Status": "En curso",
+                "SubEstado": "Pendiente aprobación",
+                "TarifaPorDemanda": "%EsTarifaPorDemanda%"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validationGPT"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "Modificación de vigencia",
+                        "field": "vozCliente"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SVCaseUpdateGPT"
+}

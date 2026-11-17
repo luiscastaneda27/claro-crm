@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetVaTercerAutorizado",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "DatosAdjunto": {
+                "ActualLinkedEntityId": "%accountIdFromContext%",
+                "ContentDocumentId": "%DatosTercero:AdjuntoTercero|1:data%"
+            },
+            "SVTercerAutorizado": {
+                "TipoDoc": "%DatosTercero:TipoDoc%",
+                "apellidos": "%DatosTercero:primerApellido%  %DatosTercero:segundoApellido%",
+                "mail": "%DatosTercero:mail%",
+                "nombres": "%DatosTercero:primerNombre%  %DatosTercero:segundoNombre%",
+                "numeroDOC": "%DatosTercero:NumDoc%",
+                "registroIdClaro": "%Validation:transaction%",
+                "telefono": "%DatosTercero:telefono%"
+            },
+            "tieneAdjunto": "%SelecCliente:EsTercero%"
+        },
+        "label": "SetVaTercerAutorizado",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SetVaTercerAutorizado"
+}

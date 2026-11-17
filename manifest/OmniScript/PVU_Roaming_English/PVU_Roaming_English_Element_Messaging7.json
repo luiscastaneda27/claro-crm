@@ -1,0 +1,72 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "Messaging7",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ActivarRoamingInternacional",
+        "OmniProcessId": {
+            "Name": "Roaming",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/ActivarRoamingInternacional",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ActivarRoamingInternacional",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "Messaging7",
+        "messages": [
+            {
+                "active": true,
+                "text": "%Mensajes:ROAMING004%",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "selecciona",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "MsgSelectedOne"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "CHKDateFinish"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "CHKIndefinido"
+                    }
+                ]
+            }
+        },
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/Messaging7"
+}

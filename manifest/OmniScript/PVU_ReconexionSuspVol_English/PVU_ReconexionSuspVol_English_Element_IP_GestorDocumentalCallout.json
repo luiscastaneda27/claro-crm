@@ -1,0 +1,112 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IP_GestorDocumentalCallout",
+    "OmniProcessId": {
+        "Name": "ReconexionSuspVol",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ReconexionSuspVol/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "docName": "PODER_#%IPupdateCaso:Details:CaseNumber%.pdf",
+            "document": {
+                "xdCRM": "SALESFORCE",
+                "xdEmpresa": "COMCEL",
+                "xdIdSalesforce": "%IPupdateCaso:Details:CaseNumber%",
+                "xdMIN": "%IPValidaciones:suspensionesInfo:NumeroLineaAsset%",
+                "xdNumeroIdentificacion": "%SVTercerAutorizado:numeroDOC%",
+                "xdTipoDocumental": "CONTRATO",
+                "xdTipoIdentificacion": "%SVTercerAutorizado:TipoDoc%"
+            },
+            "idDocument": "%DatosTercero:AdjuntoTercero|1:vId%",
+            "serieDocumental": "1",
+            "target": "1",
+            "xdIdProceso": "Reconexion"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_IPMSEnSpDocUpload_InsertEnSpDocDelay",
+        "label": "IP_GestorDocumentalCallout",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "SelecCliente:EsTercero"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "FAILED",
+                        "field": "Validation:status"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "ERROR",
+                        "field": "Validation:response:result"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "false",
+                        "field": "Validation:success"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ReconexionSuspVol/English/IP_GestorDocumentalCallout"
+}

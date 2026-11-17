@@ -1,0 +1,113 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPReportarImei1Bdo",
+    "OmniProcessId": {
+        "Name": "PVUReporteImei",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ReporteIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "ciudad": "%ciudadReporte%",
+            "correo": "%correo%",
+            "departamento": "%departamentoReporte%",
+            "descripcionEvento": "%descripcionEvento%",
+            "direccionHechos": "%direccionHechos%",
+            "direccionReporte": "%direccionReporte%",
+            "empleoViolencia": "%empleoViolencia%",
+            "fiscalia": "%fiscalia%",
+            "huboViolencia": "%empleoViolencia%",
+            "idCuenta": "%idCuenta%",
+            "idUsuario": "%idUsuario%",
+            "imei": "%imeiInput%",
+            "marca": "%marcaInput%",
+            "menorEdad": "%menorEdad%",
+            "min": "%minInput%",
+            "modelo": "%modeloInput%",
+            "msisdn": "%formatMSISDN:msisdn%",
+            "nombreReporte": "%nombreReporteInput%",
+            "numIdReporte": "%numIdReporte%",
+            "telContactoReporte": "%telContactoReporte%",
+            "tipoArma": "%tipoArma%",
+            "tipoDocReporte": "%tipoDocReporte%",
+            "tipoReporte": "%tipoReporte%",
+            "tipoReporteAbd": "%tipoReporteAbd%",
+            "victimaMenorEdad": "%menorEdad%"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_IPsvcReportarImeiBdo",
+        "label": "IPReportarImei1Bdo",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "reportarImei1Response",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "Cancelar",
+                        "field": "Radio1"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "true",
+                        "field": "Security:accessProcess:PVU_Resolucion_7811"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ReporteIMEI/English/IPReportarImei1Bdo"
+}

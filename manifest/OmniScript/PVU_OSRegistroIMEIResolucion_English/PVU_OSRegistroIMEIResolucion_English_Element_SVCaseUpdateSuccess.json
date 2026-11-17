@@ -1,0 +1,62 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdateSuccess",
+    "OmniProcessId": {
+        "Name": "Registro de IMEI Resolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRegistroIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "Ciudad": "%TypeAheadCity%",
+                "CodigoCierre": "Se realiza registro",
+                "ComoAdquirio": "%ComoAdquirio%",
+                "ContactEmail": "%IPGetAccountInfoIMEI:Details:accountEmail%",
+                "ContactPhone": "%IPGetAccountInfoIMEI:Details:accountPhone%",
+                "ContenidoCorreo": "%IPEnviarAceptacionRegistro:AceptacionEnviada%",
+                "Departamento": "%TypeAheadDepartment%",
+                "Direccion": "%Direccion%",
+                "Id": "%CaseId%",
+                "NombreCliente": "%IPGetAccountInfoIMEI:Details:accountName%",
+                "NumeroDocCliente": "%IPGetAccountInfoIMEI:Details:accountDocumentNumber%",
+                "PinImei": "%ClaveOTP%",
+                "Resolusion": true,
+                "Status": "Cerrado",
+                "SubEstado": "Registro realizado",
+                "TipoDocumento": "%IPGetAccountInfoIMEI:Details:accountDocumentType%"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "lwcComponentOverride": "",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "registroImei1Response:success"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRegistroIMEIResolucion/English/SVCaseUpdateSuccess"
+}

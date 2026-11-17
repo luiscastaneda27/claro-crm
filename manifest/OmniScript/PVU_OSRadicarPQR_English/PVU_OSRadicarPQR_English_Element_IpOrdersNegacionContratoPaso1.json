@@ -1,0 +1,114 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IpOrdersNegacionContratoPaso1",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "AssetId": "%ServicioSelected|1:AssetId%",
+            "CaseInfo": {
+                "Id": "%Details:CaseId%",
+                "fechaInicioSusp": "%Fechas:FechaHoy%",
+                "numeroLinea": "%ServicioSelected|1:AssetMinNegContrato%"
+            },
+            "CaseInfoCancelacion": {
+                "Id": "%Details:CaseId%",
+                "fechaInicioSusp": "%Fechas:FechaFutura%",
+                "numeroLinea": "%ServicioSelected|1:AssetMinNegContrato%"
+            },
+            "MotivoUpdate": "NECO01",
+            "ProcessName": "FUNCIONAL_FRAUDE_COM_SUSPENSION_38",
+            "ProcessNameB": "FUNCIONAL_FRAUDE_COM_DEACTIVATION_266",
+            "tipoEjecucion": "OS1"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_IPFlujoNegacionContrato",
+        "label": "IpOrdersNegacionContratoPaso1",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "queueableChainable": false,
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "orderResponse",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Negación de contrato",
+                        "field": "VozCliente"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "haveOrdersPortabilidad"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "Deactivated",
+                        "field": "SelectedAssetStatus"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "TyTFinanciado",
+                        "field": "Step1:negacionTipo"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/IpOrdersNegacionContratoPaso1"
+}

@@ -1,0 +1,63 @@
+{
+    "Description": "20231114 - se setea Status Cerrado\n20240322 - se quita mapeo \"TemaRadicacion\": \"%Step2:Tema%\"\n20240411 - mapeo TipoPQR: %Step1:PeticionQueja%",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateSFCaseData",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CaseToUpdate": {
+                "ApellidoTercero": "=IF(%Step2:TerceroBlock:ApellidoTercero% <> null, %Step2:TerceroBlock:ApellidoTercero%, '')",
+                "Asunto": "%Step2:AsuntoCaso%",
+                "CanalAtencion": "=IF(%UserData|1:FVU_Canal__c% <> 'SF_TMK', 'CAV', 'MKT')",
+                "Cuenta92": "=IF(%VozCliente% == 'Fianza', %IPSetActivosSeleccioadosFin:cuentaFinanciamiento%, '')",
+                "Cun": "=IF(%IPPQRList:isCunBlank% == true, %IPPQRList2:UpdateCase:cun%, %IPPQRList:UpdateCase:cun%)",
+                "Descripcion": "%Step2:DescripcionCaso%",
+                "FechaSAP": "=IF(%IPPQRList:isCunBlank% == true, %IPPQRList2:UpdateCase:fechaSap%, %IPPQRList:UpdateCase:fechaSap%)",
+                "Id": "%Details:CaseId%",
+                "MedioNotificacion": "=IF(%Step2:MedioNotificacionPreferidoEscrito% <> null, %Step2:MedioNotificacionPreferidoEscrito%, IF(%Step2:MedioNotificacionPreferidoVerbal% <> null, %Step2:MedioNotificacionPreferidoVerbal%, IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', 'Llamada Telefónica','Correo Electrónico')))",
+                "MedioNotificacionValor": "=IF(%Step2:MedioNotificacionElegidoClienteMail% <> null, %Step2:MedioNotificacionElegidoClienteMail%, IF(%Step2:MedioNotificacionElegidoClienteCorrespondencia% <> null, %Step2:MedioNotificacionElegidoClienteCorrespondencia%, IF(%Step2:MedioNotificacionElegidoClienteTelefonica% <> null, %Step2:MedioNotificacionElegidoClienteTelefonica%, IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', %MedioNotificacionTelefono%,%MedioNotificacionMail%))))",
+                "MedioRadicacion": "=IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', %Step2:MedioRadicacionTMK%,%Step2:MedioRadicacionCAV%)",
+                "NombreProducto": "=IF(%VozCliente% == 'Fianza',%IPSetActivosSeleccioadosFin:nombreEquipo%, '')",
+                "NombreTercero": "=IF(%Step2:TerceroBlock:NombreTercero% <> null, %Step2:TerceroBlock:NombreTercero%, '')",
+                "Nr": "%pqrResponse:nr%",
+                "NumeroCredito": "=IF(%VozCliente% == 'Fianza', %IPSetActivosSeleccioadosFin:numeroCredito%, '')",
+                "NumeroDocTercero": "=IF(%Step2:TerceroBlock:NumeroDocTercero% <> null, %Step2:TerceroBlock:NumeroDocTercero%, '')",
+                "QuienRealiza": "%Step2:Radicador%",
+                "Status": "=IF(%Step1:vozDeClienteQueja-Block:vozDeClienteQueja% == 'Queja de portación no solicitada', 'En curso', IF(%VozCliente% == 'Negación de contrato' && (%SelectedAssetStatus% == 'Deactivated' || %haveOrdersPortabilidad% == true || %Step1:negacionTipo% == 'TyTFinanciado'), 'En Curso', 'Cerrado'))",
+                "SubEstado": "=IF(%VozCliente% == 'Negación de contrato' && %Step1:negacionTipo% == 'TyTFinanciado' , 'Pendiente de aprobación', '')",
+                "TipoDocTercero": "=IF(%Step2:TerceroBlock:TipoDocTercero% <> null, %Step2:TerceroBlock:TipoDocTercero%, null)",
+                "TipoPQR": "%Step1:PeticionQueja%",
+                "ValoresReclamacion": "%Step2:ValoresReclamacion%",
+                "origenCuenta": "=IF(%Step3:NoRequiereProducto%, '', 'Movil')"
+            },
+            "CunOrNr": "=IF(%IPPQRList:isCunBlank% == true, %IPPQRList2:UpdateCase:caseNumber%, %IPPQRList:UpdateCase:caseNumber%)",
+            "dayFechaSAP": "=DAYOFMONTH(%fechaSAPMessage%) ",
+            "fechaSAPMessage": "=IF(%IPPQRList:isCunBlank% == true, %IPPQRList2:UpdateCase:fechaSap%, %IPPQRList:UpdateCase:fechaSap%)",
+            "monthFechaSAP": "=MONTH(%fechaSAPMessage%)",
+            "yearFechaSAP": "=YEAR(%fechaSAPMessage%)"
+        },
+        "label": "SVUpdateSFCaseData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/SVUpdateSFCaseData"
+}

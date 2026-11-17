@@ -1,0 +1,94 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MsgNonAssociatedProduct",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "StepNegContrato",
+        "OmniProcessId": {
+            "Name": "OSRadicarPQR",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/StepNegContrato",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "StepNegContrato",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "hideLabel": true,
+        "label": "MsgNonAssociatedProduct",
+        "messages": [
+            {
+                "active": true,
+                "text": "Debes escoger al menos un producto",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": null,
+                        "field": "ServicioSelected|1:AsociarProductoNegContrato"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "IPFilterListEjecutado"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "TyTFinanciado",
+                        "field": "Step1:negacionTipo"
+                    }
+                ]
+            }
+        },
+        "showMessageAs": "toast",
+        "validateExpression": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": null,
+                        "field": "ServicioSelected|1:AsociarProductoNegContrato"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "IPFilterListEjecutado"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "TyTFinanciado",
+                        "field": "Step1:negacionTipo"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/MsgNonAssociatedProduct"
+}

@@ -1,0 +1,103 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "RAReportarImeiBdoDualSim",
+    "OmniProcessId": {
+        "Name": "Registro de IMEI",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRegistroIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ]
+        },
+        "extraPayload": {
+            "ciudadReporte": "%ciudadReporte%",
+            "correo": "%correo%",
+            "departamentoReporte": "%departamentoReporte%",
+            "descripcionEvento": "%descripcionEvento%",
+            "direccionHechos": "%direccionHechos%",
+            "empleoViolencia": "%empleoViolencia%",
+            "fiscalia": "%fiscalia%",
+            "idCuenta": "%idCuenta%",
+            "idUsuario": "%idUsuario%",
+            "imeiInput": "%imeiInput%",
+            "marcaInput": "%marcaInput%",
+            "menorEdad": "%menorEdad%",
+            "minInput": "%minInput%",
+            "modeloInput": "%modeloInput%",
+            "msisdnInput": "%msisdnInput%",
+            "nombreReporte": "%nombreReporte%",
+            "numIdReporte": "%numIdReporte%",
+            "procedureName": "PVU_IPsvcReportarImeiBdo",
+            "telContactoReporte": "%telContactoReporte%",
+            "tipoArma": "%tipoArma%",
+            "tipoDocReporte": "%tipoDocReporte%",
+            "tipoReporteAbd": "%tipoReporteAbd%"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "label": "RAReportarImeiBdoDualSim",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteClass": "PVU_IMEISystemInterface",
+        "remoteMethod": "callIP",
+        "remoteOptions": {
+            "postTransformBundle": "",
+            "preTransformBundle": ""
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "reportarImeiResponse",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "null",
+                        "field": "%IPConsultaIMEIDualSIMResponse:imei2%"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Remote Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRegistroIMEI/English/RAReportarImeiBdoDualSim"
+}

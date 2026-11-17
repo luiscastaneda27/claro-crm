@@ -1,0 +1,36 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCodigosPQR",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "VozCliente": "=IF(%Step1:PeticionQueja% == 'Queja', %vozDeClienteQueja-Block:vozDeCliente%, IF(%Step1:PeticionQueja% == 'Requerimiento Legal', %vozDeClienteRequerimientoLegal-Block:vozDeCliente%, %vozDeClientePeticion-Block:vozDeCliente%))",
+            "codigoCategoria": "=IF(%Step1:PeticionQueja% == 'Queja', %vozDeClienteQueja-Block:codigoCategoria%, IF(%Step1:PeticionQueja% == 'Requerimiento Legal', %vozDeClienteRequerimientoLegal-Block:codigoCategoria%, %vozDeClientePeticion-Block:codigoCategoria%))",
+            "codigoSubCategoria": "=IF(%Step1:PeticionQueja% == 'Queja', %vozDeClienteQueja-Block:codigoSubCategoria%, IF(%Step1:PeticionQueja% == 'Requerimiento Legal', %vozDeClienteRequerimientoLegal-Block:codigoSubCategoria%, %vozDeClientePeticion-Block:codigoSubCategoria%))",
+            "codigoVozCliente": "=IF(%Step1:PeticionQueja% == 'Queja', %vozDeClienteQueja-Block:codigoVozDeCliente%, IF(%Step1:PeticionQueja% == 'Requerimiento Legal', %vozDeClienteRequerimientoLegal-Block:codigoVozDeCliente%, %vozDeClientePeticion-Block:codigoVozDeCliente%))"
+        },
+        "label": "SVCodigosPQR",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/SVCodigosPQR"
+}

@@ -1,0 +1,58 @@
+{
+    "Description": "20241023 - FM: Se agrega mapeo de id transaction que retorna id claro",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVTercerAutorizado",
+    "OmniProcessId": {
+        "Name": "SuspensionVol",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/SuspensionVol/Spanish (Mexico)",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "DatosAdjuntosTercero": {
+                "DatosAdjunto": {
+                    "ActualLinkedEntityId": "%AccountId%",
+                    "ContentDocumentId": "%DatosTercero:AdjuntoTercero|1:data%"
+                },
+                "tieneAdjunto": "%SelecCliente:EsTercero%"
+            },
+            "DatosTerceroAutorizado": {
+                "TipoDoc": "%DatosTercero:TipoDoc%",
+                "apellidos": "%DatosTercero:primerApellido%  %DatosTercero:segundoApellido%",
+                "nombres": "%DatosTercero:primerNombre%  %DatosTercero:segundoNombre%",
+                "numeroDOC": "%DatosTercero:NumDoc%",
+                "registroIdClaro": "%Validation:transaction%"
+            }
+        },
+        "label": "SVTercerAutorizado",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "SelecCliente:EsTercero"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/SuspensionVol/Spanish (Mexico)/SVTercerAutorizado"
+}

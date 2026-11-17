@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVAceptacionCondiciones",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AvanzarEnvioOTP": true,
+            "AvanzarRegistro": true,
+            "AvanzarValidacionOTP": true,
+            "CHKDateFinish": "=IF(%vozCliente% =\"Desactivación de servicios y paquetes\",true , %CHKDateFinish%)",
+            "FinishDate": "=IF(%vozCliente% =\"Desactivación de servicios y paquetes\", MOMENT(TODAY()).format(\"YYYY-MM-DD\"), %FinishDate%)",
+            "mostrarStepAceptacion": "=OR(AND(%EsTarifaPorDemanda% == false, %RoamingActive% == true),AND(%EsTarifaPorDemanda% == true, %RoamingActive% == false), AND(%EsTarifaPorDemanda% == false, %RoamingActive% == false), %DesactivarServicioRoaming% == true, %DesactivarPaquete% == true, %vozCliente% == 'Habilitación Servicio - Línea con bloqueo CAN', %vozCliente% == 'Modificación de vigencia')",
+            "nombresPaquetes": "=IF(%PaquetesRoaming:paquetesRoamingSize% > 0,%PaquetesRoaming:nombresPaquetes%, 'No activa paquete')",
+            "paquetesRoaming": "%PaquetesRoaming:paquetesRoaming%",
+            "paquetesRoamingSize": "%PaquetesRoaming:paquetesRoamingSize%",
+            "validacionEnvioOTP": "=IF(%vozCliente% = 'Activación de servicio y paquetes', %Mensajes:ROAMING011%, IF(%vozCliente% = 'Desactivación de servicios y paquetes', %Mensajes:ROAMING009%, IF(%vozCliente% = 'Habilitación Servicio - Linea con bloqueo CAN', %Mensajes:ROAMING008%, %Mensajes:ROAMING009%)))",
+            "validacionOTP": "=IF(%vozCliente% = 'Activación de servicio y paquetes', %Mensajes:ROAMING012%, IF(%vozCliente% = 'Desactivación de servicios y paquetes', %Mensajes:ROAMING010%, IF(%vozCliente% = 'Habilitación Servicio - Linea con bloqueo CAN', %Mensajes:ROAMING009%, %Mensajes:ROAMING010%)))",
+            "validarEnvioCondiciones": "=IF(%vozCliente% = 'Activación de servicio y paquetes', %Mensajes:ROAMING010%, IF(%vozCliente% = 'Desactivación de servicios y paquetes', %Mensajes:ROAMING008%, IF(%vozCliente% = 'Habilitación Servicio - Linea con bloqueo CAN', %Mensajes:ROAMING007%, %Mensajes:ROAMING008%)))"
+        },
+        "label": "SVAceptacionCondiciones",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SVAceptacionCondiciones"
+}

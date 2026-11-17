@@ -1,0 +1,35 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVOrderDates",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "fechaFinSusp": "=IF(%CHKDateFinish% != NULL, %IPFormatEndDate:fechaGuionYYYYMMDD%, NULL)",
+            "fechaInicioSusp": "=IF(%vozCliente% = 'Desactivación de servicios y paquetes', %IPFormatDateToday:fechaGuionYYYYMMDD%, %IPFormatInitialDate:fechaGuionYYYYMMDD%)",
+            "processName": "=IF(%processName% = \"RoamingDesactivacion\" && %DesactivarServicioRoaming% = true, \"RoamingDesactivacion_ServicioYpaquetes\", %processName%) "
+        },
+        "label": "SVOrderDates",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SVOrderDates"
+}

@@ -1,0 +1,34 @@
+{
+    "IsActive": false,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseVozClienteFail",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CaseCodigoCierre": "=IF(%VozCliente%='Activación de servicio y paquetes','No Se realiza Activación', IF(%VozCliente%='Desactivación de servicios y paquetes','No se realiza desactivación', IF(%VozCliente%='Modificación de vigencia','No se realiza modificación', 'No se habilita servicio')))",
+            "CaseSubEstado": "=IF(%VozCliente%='Activación de servicio y paquetes','Activación Roaming No realizada', IF(%VozCliente%='Desactivación de servicios y paquetes','Desactivación Roaming No realizada', IF(%VozCliente%='Modificación de vigencia','Modificación Roaming No realizada', 'Habilitación Servicio - Roaming CAN No realizado')))"
+        },
+        "label": "SVCaseVozClienteFail",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SVCaseVozClienteFail"
+}

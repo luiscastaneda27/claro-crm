@@ -1,0 +1,38 @@
+{
+    "EmbeddedOmniScriptKey": "PVU|OTP|English",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "OTP",
+    "OmniProcessId": {
+        "Name": "OSProcesoFinalRetencion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSProcesoFinalRetencion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "Language": "English",
+        "Sub Type": "OTP",
+        "Type": "PVU",
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Cambio_de_Plan",
+                        "field": "processName"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "DesactivarServicios",
+                        "field": "processName"
+                    }
+                ]
+            }
+        }
+    },
+    "Type": "OmniScript",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSProcesoFinalRetencion/English/OTP"
+}

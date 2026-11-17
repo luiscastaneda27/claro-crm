@@ -1,0 +1,74 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "MessagingErrorPin1",
+    "OmniProcessId": {
+        "Name": "Registro de IMEI Resolucion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRegistroIMEIResolucion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "ST_EnvioOTP",
+        "OmniProcessId": {
+            "Name": "Registro de IMEI Resolucion",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRegistroIMEIResolucion/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRegistroIMEIResolucion/English/ST_EnvioOTP",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "ST_EnvioOTP",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 6,
+        "hideLabel": true,
+        "label": "MessagingErrorPin1",
+        "lwcComponentOverride": "",
+        "messages": [
+            {
+                "active": true,
+                "text": "%Msg:errorOTP%",
+                "type": "Warning",
+                "value": true
+            },
+            {
+                "active": false,
+                "text": "",
+                "type": "Requirement",
+                "value": false
+            }
+        ],
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "NO",
+                        "field": "showPin1Response"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "OTPValidado"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "IPEnviarOTP:responsePinGenerationValid"
+                    }
+                ]
+            }
+        },
+        "showMessageAs": "inline",
+        "validateExpression": null
+    },
+    "Type": "Validation",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRegistroIMEIResolucion/English/MessagingErrorPin1"
+}

@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdate",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "CodigoCierre": "=IF(%EsTarifaPorDemanda% && %RoamingActive% = true, 'No exitoso', '-' )",
+                "FechaFin": "%fechaFin%",
+                "FechaInicio": "%fechaInicio%",
+                "Id": "%IPCreateCase:Details:CaseId%",
+                "NombreProceso": "%processName%",
+                "OrderId": "%OrderId%",
+                "PinImei": "%AceptacionCondiciones:claveOTP%",
+                "Status": "=IF(%EsTarifaPorDemanda% && %RoamingActive% = true, 'Cerrado',  'En curso' )",
+                "SubEstado": "=IF(%EsTarifaPorDemanda% == true && %RoamingActive% == true, '-' ,IF(%UpdateOrderResponse:EndProcess% == 'success' && (%fechaInicio% == %IPFormatDateToday:fechaGuionYYYYMMDD% || %vozCliente% == 'Modificación de vigencia' || %vozCliente% == 'Desactivación de servicios y paquetes'|| %vozCliente% == 'Habilitación Servicio - Línea con bloqueo CAN') ,'Pendiente de ejecución','-') )",
+                "TarifaPorDemanda": "%EsTarifaPorDemanda%"
+            }
+        },
+        "label": "SVCaseUpdate",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "false",
+                        "field": "validationGPT"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "Modificación de vigencia",
+                        "field": "vozCliente"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SVCaseUpdate"
+}

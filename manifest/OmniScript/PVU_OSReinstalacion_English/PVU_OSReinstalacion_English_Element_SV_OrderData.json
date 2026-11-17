@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_OrderData",
+    "OmniProcessId": {
+        "Name": "OSReinstalacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSReinstalacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Order": {
+                "ATDPDatetime": "%ATDPRequest:ATDPIntegrations:FVU_ContractStatusApproval:dateAccept%",
+                "ATDPNotificationMethod": "%ATDPRequest:ATDPIntegrations:FVU_CallATDP:tipoEnvio%",
+                "AccountId": "%ContextId%",
+                "AdvancedCharge": "%ResponseCreditScoreCheck:matrizPersonaVenta:cfmAnticipado%",
+                "EffectiveDate": "=TODAY()",
+                "Email": "%ATDPRequest:ATDPIntegrations:FVU_CallATDP:mailEnvio%",
+                "Id": "%NewOrder:OrderId%",
+                "InquiryContact": "%data:typeSend%",
+                "Nuit": "%Validation:transaction%",
+                "OriginatingChannel": "%UserDetails:BusinessChannel%",
+                "Phone": "%ATDPRequest:ATDPIntegrations:FVU_CallATDP:numeroEnvio%",
+                "ProcessUserId": "%userId%",
+                "PurchaseType": "ACT",
+                "SalesType": "Venta",
+                "ShortName": "%UserDetails:Name%",
+                "Status": "Análisis de Necesidad"
+            }
+        },
+        "label": "SV_OrderData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSReinstalacion/English/SV_OrderData"
+}

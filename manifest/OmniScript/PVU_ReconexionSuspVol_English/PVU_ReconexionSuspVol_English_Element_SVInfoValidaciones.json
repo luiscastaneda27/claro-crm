@@ -1,0 +1,44 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVInfoValidaciones",
+    "OmniProcessId": {
+        "Name": "ReconexionSuspVol",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ReconexionSuspVol/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%IPValidaciones:Account:Id%",
+            "AccountInfo": "%IPValidaciones:Account%",
+            "Mensajes": "%IPValidaciones:suspensionesInfo:Mensajes%",
+            "SuspensionesDetail": "%IPValidaciones:suspensionesInfo%",
+            "aplicaReconexion": "%IPValidaciones:aplicaReconexion%",
+            "assetSubCausal": "%IPValidaciones:suspensionesInfo:Subcausal%",
+            "caseNumber": "%IPValidaciones:openCases|1:CaseNumber%",
+            "currentDate": "%IPValidaciones:TodayDate%",
+            "fechaInicioSuspTemporal": "=SUBSTRING(%IPValidaciones:suspensionesInfo:Suspensiones|1:StatusStartDate%,0,10)",
+            "idCaseCreated": "%IPValidaciones:openCases|1:Id%",
+            "openCasesSize": "%IPValidaciones:openCasesSize%",
+            "saldoMora": "%IPValidaciones:saldoMora%"
+        },
+        "label": "SVInfoValidaciones",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ReconexionSuspVol/English/SVInfoValidaciones"
+}

@@ -1,0 +1,98 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPNotificarMesaControl",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "caseNumber": "%SFCaseCreated:NumeroCaso%",
+            "comments": "%Step2:DescripcionCaso%",
+            "cun": "%CaseToUpdate:Cun%",
+            "dateFiling": "%svDateFiling%",
+            "desactiveDate": "%deactiveDate%",
+            "documentNumber": "%caso:docNumber%",
+            "documentType": "%DocumentoResponse:TipoDocumento%",
+            "lastName": "%caso:lastName%",
+            "meansFiling": "%caso:caseOrigin%",
+            "min": "%caso:min%",
+            "minStatus": "%SeleccionLineaResponse|1:AssetStatus%",
+            "name": "%caso:firstName%",
+            "numberAccount": "%SeleccionLineaResponse|1:AssetBillingAccountNumber%",
+            "typology": "%Step1:PeticionQueja%",
+            "voiceCustomer": "%Step1:vozDeClienteQueja-Block:vozDeClienteQueja%"
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_IPHLBMSNuPoReqDenialProcess",
+        "label": "IPNotificarMesaControl",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "MesaControlResponse",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Queja de portación no solicitada",
+                        "field": "Step1:vozDeClienteQueja-Block:vozDeClienteQueja"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/IPNotificarMesaControl"
+}

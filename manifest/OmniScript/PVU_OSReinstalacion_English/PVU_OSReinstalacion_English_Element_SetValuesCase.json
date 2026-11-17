@@ -1,0 +1,50 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesCase",
+    "OmniProcessId": {
+        "Name": "OSReinstalacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSReinstalacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%accountId%",
+                "AssetId": "%IPValidaciones:assetInfo:assetId%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "Ciudad": "%IPValidaciones:userDetails:CiudadCAV%",
+                "NombreCliente": "%IPValidaciones:accountInfo:name%",
+                "NumeroDocCliente": "%IPValidaciones:accountInfo:documentNumber%",
+                "Plan": "%IPValidaciones:assetInfo:planName%",
+                "Promociones": "%IPValidaciones:promos%",
+                "PuntoDeVenta": "%IPValidaciones:userDetails:PuntoVenta%",
+                "Status": "En curso",
+                "SubCategoria": "Reinstalación",
+                "SubCausal": "%IPValidaciones:subcausal%",
+                "SubEstado": "=IF( %IPValidaciones:subcausal% == \"GPT: REORIGINACION\",\"Pendiente de aprobación\" ,\"Pendiente de ejecución\")",
+                "TipoDocumento": "%IPValidaciones:accountInfo:documentType%",
+                "TipoReinstalacion": "%IPValidaciones:datosGenerales:TipoReinstalacion%",
+                "VozCliente": "Reinstalación Servicio Móvil"
+            }
+        },
+        "label": "SetValuesCase",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSReinstalacion/English/SetValuesCase"
+}

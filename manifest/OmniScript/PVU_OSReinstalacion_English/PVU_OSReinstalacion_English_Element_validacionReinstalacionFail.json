@@ -1,0 +1,111 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "validacionReinstalacionFail",
+    "OmniProcessId": {
+        "Name": "OSReinstalacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSReinstalacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "allowSaveForLater": false,
+        "businessCategory": "",
+        "businessEvent": "",
+        "cancelLabel": "Cancel",
+        "cancelMessage": "Are you sure?",
+        "chartLabel": null,
+        "completeLabel": "Complete",
+        "completeMessage": "Are you sure you want to complete the script?",
+        "conditionType": "Hide if False",
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "instruction": "",
+        "instructionKey": "",
+        "knowledgeOptions": {
+            "dataCategoryCriteria": "",
+            "keyword": "",
+            "language": "English",
+            "publishStatus": "Online",
+            "remoteTimeout": 30000,
+            "typeFilter": ""
+        },
+        "label": "Reinstalación",
+        "message": {
+        },
+        "nextLabel": "Siguiente",
+        "nextWidth": "0",
+        "previousLabel": "Previous",
+        "previousWidth": "0",
+        "pubsub": false,
+        "remoteClass": "",
+        "remoteMethod": "",
+        "remoteOptions": {
+        },
+        "remoteTimeout": 30000,
+        "saveLabel": "Save for later",
+        "saveMessage": "Are you sure you want to save it for later?",
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validacionCuarentena"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validacionSubCausales"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validacionMora"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validacionCasos"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validacionDiasLineaClaro"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "validacionDiasLineaPortout"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": "Deactivated",
+                        "field": "IPValidaciones:assetInfo:status"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "true",
+                        "field": "IPValidaciones:validarOrdenRoboPerdida"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "validationRequired": true,
+        "wpm": false
+    },
+    "Type": "Step",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSReinstalacion/English/validacionReinstalacionFail"
+}

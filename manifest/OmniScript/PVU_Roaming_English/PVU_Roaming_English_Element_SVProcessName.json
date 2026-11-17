@@ -1,0 +1,34 @@
+{
+    "Description": "20240826 - setea el nombre del proceso en funcion de la accion que elija el cliente. Determina la configuracion de la orden.",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVProcessName",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "processName": "=IF(OR(%Roaming_Status_Validation:RActivoRadio% == 'Activación de servicio y paquetes',%Roaming_Status_Validation:RDesactivadoRadio% == 'Activación de servicio y paquetes',%Roaming_Status_Validation:RActivoRadiosinVigencia% == 'Activación de servicio y paquetes' \t), \t'RoamingActivacion', IF(OR( %Roaming_Status_Validation:RActivoRadio% == 'Desactivación de servicios y paquetes',%Roaming_Status_Validation:RDesactivadoRadio% == 'Desactivación de servicios y paquetes',%Roaming_Status_Validation:RActivoRadiosinVigencia% == 'Desactivación de servicios y paquetes'),'RoamingDesactivacion',IF(OR(%Roaming_Status_Validation:RActivoRadio% == 'Modificación de vigencia',%Roaming_Status_Validation:RDesactivadoRadio% == 'Modificación de vigencia',%Roaming_Status_Validation:RActivoRadiosinVigencia% == 'Modificación de vigencia'),'Roaming_ModificacionVigencia','')))"
+        },
+        "label": "SVProcessName",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SVProcessName"
+}

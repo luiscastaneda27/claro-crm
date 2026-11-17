@@ -1,0 +1,65 @@
+{
+    "Description": "20231114 - se setea Status Cerrado\n20240322 - se quita mapeo \"TemaRadicacion\": \"%Step2:Tema%\"\n20240411 - mapeo TipoPQR: %Step1:PeticionQueja%",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVUpdateSFCaseNegContrato",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CaseToUpdate": {
+                "ApellidoTercero": "=IF(%Step2:TerceroBlock:ApellidoTercero% <> null, %Step2:TerceroBlock:ApellidoTercero%, '')",
+                "AssetId": "=%ServicioSelected|1:AssetId%",
+                "Asunto": "%Step2:AsuntoCaso%",
+                "CanalAtencion": "=IF(%UserData|1:FVU_Canal__c% <> 'SF_TMK', 'CAV', 'MKT')",
+                "Descripcion": "%Step2:DescripcionCaso%",
+                "Id": "%Details:CaseId%",
+                "InfoPQR": "=%caso%",
+                "MedioNotificacion": "=IF(%Step2:MedioNotificacionPreferidoEscrito% <> null, %Step2:MedioNotificacionPreferidoEscrito%, IF(%Step2:MedioNotificacionPreferidoVerbal% <> null, %Step2:MedioNotificacionPreferidoVerbal%, IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', 'Llamada Telefónica','Correo Electrónico')))",
+                "MedioNotificacionValor": "=IF(%Step2:MedioNotificacionElegidoClienteMail% <> null, %Step2:MedioNotificacionElegidoClienteMail%, IF(%Step2:MedioNotificacionElegidoClienteCorrespondencia% <> null, %Step2:MedioNotificacionElegidoClienteCorrespondencia%, IF(%Step2:MedioNotificacionElegidoClienteTelefonica% <> null, %Step2:MedioNotificacionElegidoClienteTelefonica%, IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', %MedioNotificacionTelefono%,%MedioNotificacionMail%))))",
+                "MedioRadicacion": "=IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', %Step2:MedioRadicacionTMK%,%Step2:MedioRadicacionCAV%)",
+                "NombreTercero": "=IF(%Step2:TerceroBlock:NombreTercero% <> null, %Step2:TerceroBlock:NombreTercero%, '')",
+                "NumeroDocTercero": "=IF(%Step2:TerceroBlock:NumeroDocTercero% <> null, %Step2:TerceroBlock:NumeroDocTercero%, '')",
+                "NumeroLinea": "=IF(%VozCliente% == 'Negación de contrato', %ServicioSelected|1:AssetMinNegContrato%, '')",
+                "QuienRealiza": "%Step2:Radicador%",
+                "Status": "=IF(%Step1:vozDeClienteQueja-Block:vozDeClienteQueja% == 'Queja de portación no solicitada' || %VozCliente% == 'Negación de contrato', 'En curso', 'Cerrado')",
+                "SubEstado": "=IF(%VozCliente% == 'Negación de contrato', '-', '')",
+                "TipoDocTercero": "=IF(%Step2:TerceroBlock:TipoDocTercero% <> null, %Step2:TerceroBlock:TipoDocTercero%, null)",
+                "TipoPQR": "%Step1:PeticionQueja%",
+                "ValoresReclamacion": "%Step2:ValoresReclamacion%"
+            }
+        },
+        "label": "SVUpdateSFCaseNegContrato",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Negación de contrato",
+                        "field": "VozCliente"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/SVUpdateSFCaseNegContrato"
+}

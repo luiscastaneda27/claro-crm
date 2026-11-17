@@ -1,0 +1,37 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVMedioNotificacionPreferido",
+    "OmniProcessId": {
+        "Name": "OSRadicarRecurso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarRecurso/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "MedioNotificacionCliente": "=%DatosCuenta:Cliente:NotificationChoice%",
+            "MedioNotificacionDireccion": "%DatosCuenta:Billing|1:Direccion%",
+            "MedioNotificacionMail": "%DatosCuenta:Cliente:Email%",
+            "MedioNotificacionPreferido": "=IF(%DatosCuenta:Cliente:NotificationChoice% == 'Correo electrónico', %DatosCuenta:Cliente:Email%, IF(%DatosCuenta:Cliente:NotificationChoice% == 'SMS - Teléfono de contacto', %DatosCuenta:Cliente:Telefono%,''))",
+            "MedioNotificacionTelefono": "%DatosCuenta:Cliente:Telefono%"
+        },
+        "label": "SVMedioNotificacionPreferido",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarRecurso/English/SVMedioNotificacionPreferido"
+}

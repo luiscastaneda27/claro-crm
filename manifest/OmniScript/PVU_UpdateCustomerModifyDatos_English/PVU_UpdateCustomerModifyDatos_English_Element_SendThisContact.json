@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SendThisContact",
+    "OmniProcessId": {
+        "Name": "UpdateCustomerModify",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/UpdateCustomerModifyDatos/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ContactUpdated": {
+                "Birthdate": "=IF(%ThisDate% != null, %ThisDate%, null)",
+                "DocumentNumber": "%Contact:DocumentNumber%",
+                "DocumentType": "%Contact:DocumentType%",
+                "Email": "%Contact:Email%",
+                "ExpeditionDate": "%Contact:ExpeditionDate%",
+                "ExpeditionSite": "%Contact:ExpeditionSite%",
+                "ExpeditionSiteDpto": "%Contact:ExpeditionSiteDpto%",
+                "FirstName": "%Contact:FirstName%",
+                "Gender": "%Contact:Gender%",
+                "HearingProblemCustomer": "%Contact:HearingProblemCustomer%",
+                "Id": "%Contact:Id%",
+                "LastName": "%Contact:LastName%",
+                "Occupation": "%Contact:Occupation%",
+                "Phone": "%Contact:Phone%",
+                "SecondLastName": "%Contact:SecondLastName%"
+            }
+        },
+        "label": "SendThisContact",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/UpdateCustomerModifyDatos/English/SendThisContact"
+}

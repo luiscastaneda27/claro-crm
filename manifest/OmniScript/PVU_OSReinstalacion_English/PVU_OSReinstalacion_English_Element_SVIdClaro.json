@@ -1,0 +1,49 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVIdClaro",
+    "OmniProcessId": {
+        "Name": "OSReinstalacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSReinstalacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%accountId%",
+            "Application": "=IF(%IPValidaciones:subcausal% != \"GPT: REORIGINACION\" &&  %IPValidaciones:subcausal% != \"Explotacion no Autorizada\" &&  %IPValidaciones:subcausal% != \"Des No Aprobacion DPC\" &&  %IPValidaciones:subcausal% != \"Des Proteccion Comercial\", \"SF_CANCELACION_VOLUNTARIA\", \"SF_RECONEX_REINSTALA_CAUSAL_FRAUD\")",
+            "Channel": "1",
+            "DocumentNumber": "=%IPValidaciones:accountInfo:documentNumber%",
+            "DocumentType": "=%IPValidaciones:accountInfo:documentType%",
+            "IsThirdPerson": false,
+            "RecordId": "%accountId%",
+            "isThirdPersonPV": false
+        },
+        "label": "SVIdClaro",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            {
+                "vlcCart": {
+                    "vlcCart": {
+                        "vlcCart": true,
+                        "vlcKnowledge": false
+                    },
+                    "vlcKnowledge": false
+                },
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSReinstalacion/English/SVIdClaro"
+}

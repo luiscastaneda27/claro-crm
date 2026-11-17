@@ -1,0 +1,60 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "AB_UpdateSObjects",
+    "OmniProcessId": {
+        "Name": "UpdateCustomerModify",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/UpdateCustomerModifyDatos/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "applyIfError": false,
+        "conditionType": "Hide if False",
+        "controlWidth": 12,
+        "enableActionMessage": false,
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "hide": false,
+        "label": "AB_UpdateSObjects",
+        "show": {
+            "group": {
+                "operator": "OR",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "FS_ESB_0",
+                        "field": "CreateAddressResponse:code"
+                    },
+                    {
+                        "condition": "=",
+                        "data": "NotValidToModify",
+                        "field": "IsValidToModifyData"
+                    },
+                    {
+                        "group": {
+                            "operator": "AND",
+                            "rules": [
+                                {
+                                    "condition": "=",
+                                    "data": "ValidToModify",
+                                    "field": "IsValidToModifyData"
+                                },
+                                {
+                                    "condition": "=",
+                                    "data": "newClient",
+                                    "field": "ClientType"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "validationRequired": "Step"
+    },
+    "Type": "Action Block",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/UpdateCustomerModifyDatos/English/AB_UpdateSObjects"
+}

@@ -1,0 +1,55 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVReporteImeiData",
+    "OmniProcessId": {
+        "Name": "PVUReporteImei",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ReporteIMEI/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "ciudadReporte": "=IF(%ReporteImei:TypeAheadCity-Block:TypeAheadCity% != null, %ReporteImei:TypeAheadCity-Block:TypeAheadCity%, 'EL ENCANTO')",
+            "correo": "%Email1%",
+            "departamentoReporte": "=IF(%ReporteImei:TypeAheadDepartment-Block:TypeAheadDepartment% != null, %ReporteImei:TypeAheadDepartment-Block:TypeAheadDepartment%, 'AMAZONAS')",
+            "descripcionEvento": "%ReporteImei:TextArea1%",
+            "direccionHechos": "%ReporteImei:Text9%",
+            "direccionReporte": "%ReporteImei:Text1%",
+            "empleoViolencia": "=IF(%ReporteImei:ReporteFiscalia:UsoViolencia% != null, IF(%ReporteImei:ReporteFiscalia:UsoViolencia% == 'Si','1','0'), '0')",
+            "fechaInicioSusp": "=CONCATENATE(YEAR(TODAY()),'-',IF(MONTH(TODAY())< 10, CONCATENATE(0,MONTH(TODAY())), MONTH(TODAY())), '-',IF(DAYOFMONTH(TODAY())< 10, CONCATENATE(0,DAYOFMONTH(TODAY())), DAYOFMONTH(TODAY())))",
+            "fiscalia": "=IF(%ReporteImei:ReporteFiscalia:CompartirFiscalia% == 'Si','1','0')",
+            "idCuenta": "%AccountId%",
+            "idUsuario": "%userId%",
+            "imeiInput": "%imeiFromContext%",
+            "marcaInput": "%marcaFromContext%",
+            "menorEdad": "=IF(%ReporteImei:ReporteFiscalia:VictimaMenor% != null, IF(%ReporteImei:ReporteFiscalia:VictimaMenor% == 'Si', '1', '0'), '0')",
+            "minInput": "%minFromContext%",
+            "modeloInput": "%modeloFromContext%",
+            "msisdnInput": "%msisdnFromContext%",
+            "nombreReporteInput": "%ReporteImei:NombreYApellidos%",
+            "numIdReporte": "%ReporteImei:NumeroDocReconocer%",
+            "telContactoReporte": "%ReporteImei:Text7%",
+            "tipoArma": "=IF(%ReporteImei:ReporteFiscalia:Arma% != null, '1', '0')",
+            "tipoDocReporte": "%ReporteImei:TipoDocReconocer%",
+            "tipoReporte": "=IF(%Motivo% == 1,1,2)",
+            "tipoReporteAbd": "%ReporteImei:Motivo%"
+        },
+        "label": "SVReporteImeiData",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ReporteIMEI/English/SVReporteImeiData"
+}

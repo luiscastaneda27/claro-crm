@@ -1,0 +1,39 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVValidacionReinstalacion",
+    "OmniProcessId": {
+        "Name": "OSReinstalacion",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSReinstalacion/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "fechaHoy": "=NOW()",
+            "validacionCasos": "=%IPValidaciones:openCasesSize% > 0",
+            "validacionCuarentena": "=AND(%IPValidaciones:consultaCuarentena:numberStatus% <> \"Activo\", %IPValidaciones:consultaCuarentena:numberStatus% <> \"Tiempo de cuarentena No Nativa\")",
+            "validacionDiasLineaClaro": "=AND(%IPValidaciones:consultaOperador:operatorDesc% == 'CLARO', %IPValidaciones:diasDesactivacion% > 90)",
+            "validacionDiasLineaPortout": "=AND(%IPValidaciones:consultaOperador:operatorDesc% <> 'CLARO', %IPValidaciones:assetInfo:orderSubType% == 'Portout', %IPValidaciones:diasDesactivacion% > 28)",
+            "validacionMora": "=%IPValidaciones:consultaMora:Estado% == 'Mora'",
+            "validacionSubCausales": "=OR\n(%IPValidaciones:assetInfo:orderSubType% == 'Fallecimiento', \n%IPValidaciones:assetInfo:orderSubType% == 'Robo_Perdida')"
+        },
+        "label": "SVValidacionReinstalacion",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSReinstalacion/English/SVValidacionReinstalacion"
+}

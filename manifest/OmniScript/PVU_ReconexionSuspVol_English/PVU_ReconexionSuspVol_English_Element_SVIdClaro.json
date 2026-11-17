@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVIdClaro",
+    "OmniProcessId": {
+        "Name": "ReconexionSuspVol",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ReconexionSuspVol/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "AccountId": "%AccountInfo:Id%",
+            "Application": "=IF(%SelecCliente:EsTercero%, \n\"SF_TERCERO_AUTORIZADO_POSVENTA\", \nIF(%IPValidaciones:suspensionesInfo:Subcausal% != \"Sus Verificación Negación del servicio\" && \n%IPValidaciones:suspensionesInfo:Subcausal% != \"Sus Verificación Prot al Cliente\" && \n%IPValidaciones:suspensionesInfo:Subcausal% != \"Suspensión Por Consumo Inusual\" && \n%IPValidaciones:suspensionesInfo:Subcausal% != \"Sus Revisión Protección Tecnológica\", \n\"SF_RECONEXION\", \n\"SF_RECONEX_REINSTALA_CAUSAL_FRAUD\"))",
+            "Channel": "1",
+            "IsThirdPerson": "%SelecCliente:EsTercero%",
+            "RecordId": "%AccountInfo:Id%",
+            "isThirdPersonPV": "%SelecCliente:EsTercero%",
+            "thirdPersonData": "%DatosTercero%"
+        },
+        "label": "SVIdClaro",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": {
+            "vlcCart": {
+                "vlcCart": true,
+                "vlcKnowledge": false
+            },
+            "vlcKnowledge": false
+        },
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ReconexionSuspVol/English/SVIdClaro"
+}

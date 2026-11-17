@@ -1,0 +1,45 @@
+{
+    "Description": "20240510 - CV: se agrega el valor \"Presencial\" para el SVCaseData\n20240118 - FM: el canal ahora es SF_TMK o SF_CAV. 20231114 - se  saca Status Cerrado",
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseData",
+    "OmniProcessId": {
+        "Name": "OSRadicarPQR",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarPQR/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%ContextId%",
+                "Categoria": "=IF(%Step1:PeticionQueja% == 'Queja', %vozDeClienteQueja-Block:categoria%, IF(%Step1:PeticionQueja% == 'Requerimiento Legal', %vozDeClienteRequerimientoLegal-Block:categoria%, %vozDeClientePeticion-Block:categoria%))",
+                "EstadoLinea": "=IF(%SeleccionLineaResponse|1:AssetStatus% == 'Deactivated', 'Desactivada', IF(%SeleccionLineaResponse|1:AssetStatus% == 'Active', 'Activa', IF(%SeleccionLineaResponse|1:AssetStatus% == 'Suspended', 'Suspendida ', '')))",
+                "FechaRecibidoRL": "%fechaRecibidoReqLegal%",
+                "NumeroLinea": "%SeleccionLineaResponse|1:AssetMin%",
+                "Origin": "=IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', 'Phone','Presencial')",
+                "SubCategoria": "=IF(%Step1:PeticionQueja% == 'Queja', %vozDeClienteQueja-Block:subcategoria%, IF(%Step1:PeticionQueja% == 'Requerimiento Legal', %vozDeClienteRequerimientoLegal-Block:subcategoria%, %vozDeClientePeticion-Block:subcategoria%))",
+                "TiempoDesactivacion": "%TiempoDesactivacion%",
+                "TipoSolicitud": "%TipoDeSolicitud%",
+                "VozCliente": "=IF(%Step1:PeticionQueja% == 'Queja', %vozDeClienteQueja-Block:vozDeCliente%, IF(%Step1:PeticionQueja% == 'Requerimiento Legal', %vozDeClienteRequerimientoLegal-Block:vozDeCliente%, %vozDeClientePeticion-Block:vozDeCliente%))"
+            }
+        },
+        "label": "SVCaseData",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarPQR/English/SVCaseData"
+}

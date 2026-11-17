@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVPrecargaModificacionVigancia",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CHKDateFinish": "=IF(%LastClosedCase:FechaFin%!=NULL && %vozCliente% = 'Modificación de vigencia', true, false)",
+            "CHKIndefinido": "=IF(%LastClosedCase:FechaFin% != NULL && %vozCliente% = 'Modificación de vigencia',false, true)",
+            "FinishDate": "%LastClosedCase:FechaFin%",
+            "InitialDateModify": "%LastClosedCase:FechaInicio%"
+        },
+        "label": "SVPrecargaModificacionVigancia",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Modificación de vigencia",
+                        "field": "vozCliente"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SVPrecargaModificacionVigancia"
+}

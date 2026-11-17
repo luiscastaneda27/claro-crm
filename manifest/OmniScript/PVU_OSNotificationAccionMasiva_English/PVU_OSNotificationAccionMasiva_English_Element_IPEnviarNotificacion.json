@@ -1,0 +1,126 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "IPEnviarNotificacion",
+    "OmniProcessId": {
+        "Name": "OSNotificationAccionMasiva",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSNotificationAccionMasiva/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "ParentElementId": {
+        "Name": "NotificationSelected",
+        "OmniProcessId": {
+            "Name": "OSNotificationAccionMasiva",
+            "VlocityDataPackType": "VlocityMatchingKeyObject",
+            "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSNotificationAccionMasiva/English",
+            "VlocityRecordSObjectType": "OmniProcess"
+        },
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSNotificationAccionMasiva/English/NotificationSelected",
+        "VlocityRecordSObjectType": "OmniProcessElement"
+    },
+    "ParentElementName": "NotificationSelected",
+    "ParentElementType": "Step",
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "businessCategory": "",
+        "businessEvent": "",
+        "controlWidth": 3,
+        "enableActionMessage": false,
+        "enableDefaultAbort": false,
+        "errorMessage": {
+            "custom": [
+            ],
+            "default": null
+        },
+        "extraPayload": {
+            "communicationOrigin": "TCRM",
+            "communicationType": "COMERCIAL",
+            "contentType": "CONTENTID",
+            "deliveryReceipts": "N",
+            "description": "Enviar notificacion Proceso Cobranza",
+            "messageType": "SMTP",
+            "parameters": {
+                "_BODY_": "%Message%",
+                "_NAME1_": "%AccountName%",
+                "_NUMER_LINEA_": "%NumeroLinea%",
+                "_PROCESO_": "Proceso Cobranza"
+            },
+            "profileId": "SALESFORCE",
+            "pushType": "SINGLE",
+            "receiver": [
+                {
+                    "mail": "%EmailSelected%"
+                }
+            ],
+            "sendTimes": 1,
+            "state": "Active",
+            "subject": "Consulta el detalle de tu solicitud Claro",
+            "templateid": "CAMBIOSERV_01",
+            "tryTimes": 3
+        },
+        "failureAbortLabel": "Abort",
+        "failureAbortMessage": "Are you sure?",
+        "failureGoBackLabel": "Go Back",
+        "failureNextLabel": "Continue",
+        "inProgressMessage": "In Progress",
+        "integrationProcedureKey": "PVU_IPNotificationCusChannel",
+        "label": "Enviar notificación",
+        "message": {
+        },
+        "postMessage": "Done",
+        "postTransformBundle": "",
+        "preTransformBundle": "",
+        "pubsub": false,
+        "redirectNextLabel": "Next",
+        "redirectNextWidth": 3,
+        "redirectPageName": "",
+        "redirectPreviousLabel": "Previous",
+        "redirectPreviousWidth": 3,
+        "redirectTemplateUrl": "vlcAcknowledge.html",
+        "remoteOptions": {
+            "chainable": false,
+            "postTransformBundle": "",
+            "preTransformBundle": "",
+            "useFuture": false
+        },
+        "remoteTimeout": 30000,
+        "responseJSONNode": "IPEnviarNotificacion",
+        "responseJSONPath": "",
+        "sendJSONNode": "",
+        "sendJSONPath": "",
+        "sendOnlyExtraPayload": true,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "<>",
+                        "data": "true",
+                        "field": "IPEnviarNotificacion:value:data:isValid"
+                    },
+                    {
+                        "condition": "<>",
+                        "data": null,
+                        "field": "RadioMedios"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "svgIcon": "",
+        "svgSprite": "",
+        "useContinuation": false,
+        "validationRequired": "Step",
+        "wpm": false
+    },
+    "Type": "Integration Procedure Action",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSNotificationAccionMasiva/English/IPEnviarNotificacion"
+}

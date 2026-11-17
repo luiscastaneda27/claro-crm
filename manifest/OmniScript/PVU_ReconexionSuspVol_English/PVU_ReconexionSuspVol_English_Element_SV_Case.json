@@ -1,0 +1,47 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SV_Case",
+    "OmniProcessId": {
+        "Name": "ReconexionSuspVol",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/ReconexionSuspVol/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "AccountId": "%AccountInfo:Id%",
+                "AssetId": "%AssetId_context%",
+                "Categoria": "Solicitud de información y modificaciones",
+                "DatosTerceroValues": "%SVTercerAutorizado%",
+                "FechaReconexion": "%RequestedDate%",
+                "MINReporte": "%IPValidaciones:suspensionesInfo:NumeroLineaAsset%",
+                "OrderId": "%OrderId%",
+                "RecordTypeName": "GestionCasosPosventa",
+                "Status": "En curso",
+                "SubCategoria": "Reconexión de servicios",
+                "SubCausal": "%assetSubCausal%",
+                "SubEstado": "=IF(%assetSubCausal% == \"Sus Revisión Protección Tecnológica\", \"Pendiente de aprobación\", \"Pendiente ejecución\")",
+                "VozCliente": "=IF(%assetSubCausal% == \"Sus Revisión Protección Tecnológica\" || %assetSubCausal% == \"Suspensión Por Consumo Inusual\",\"Proceso Gpt\", IF(%assetSubCausal% == \"Sus Verificación Prot al Cliente\" || %assetSubCausal% == \"Sus Verificación Negación del servicio\", \"Proceso Prevención Fraude\", \"Reconexión Suspensión Temporal Voluntaria\"))"
+            },
+            "processNameValue": "=IF( %assetSubCausal% = 'Temporal Voluntaria', 'Reconexion', 'Reactivacion_PrevencionFraudeYGPT')"
+        },
+        "label": "SetValues1",
+        "message": {
+        },
+        "pubsub": false,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/ReconexionSuspVol/English/SV_Case"
+}

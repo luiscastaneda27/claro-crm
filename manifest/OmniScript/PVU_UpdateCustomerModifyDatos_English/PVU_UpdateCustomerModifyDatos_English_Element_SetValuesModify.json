@@ -1,0 +1,46 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SetValuesModify",
+    "OmniProcessId": {
+        "Name": "UpdateCustomerModify",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/UpdateCustomerModifyDatos/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "actionMessage": "",
+        "chainOnStep": false,
+        "disOnTplt": false,
+        "elementValueMap": {
+            "ClientType": "=IF(%newClient%, 'newClient', 'clientExist')",
+            "CorreoModify": "=IF(%CamposOriginales:Email% != %StepUpdateCustomer:ContactInfoModify:EmailModify%,%StepUpdateCustomer:ContactInfoModify:EmailModify%, NULL)",
+            "DateBirthdateModify": "=IF(%CamposOriginales:Birthdate% != %ContactInfoModify:FormatedBirthDate%,%StepUpdateCustomer:ContactInfoModify:DateBirthdateModify%, NULL)",
+            "DocumentNumberModify": "=IF(%CamposOriginales:DocumentNumber% != %StepUpdateCustomer:ContactInfoModify:FormDocNumberModify%,%StepUpdateCustomer:ContactInfoModify:FormDocNumberModify%, NULL)",
+            "DocumentTypeModify": "=IF(%CamposOriginales:DocumentType% != %StepUpdateCustomer:ContactInfoModify:FormDocTypeModify%,%StepUpdateCustomer:ContactInfoModify:FormDocTypeModify%, NULL)",
+            "ExpeditionDateModify": "=IF(%CamposOriginales:ContactExpeditionDate% != %StepUpdateCustomer:ContactInfoModify:ExpeditionDateModify%,%StepUpdateCustomer:ContactInfoModify:ExpeditionDateModify%, NULL)",
+            "FirstNameModified": "=IF(%CamposOriginales:FirstNameConcat% != %StepUpdateCustomer:ContactInfoModify:FirstNameModify%,%StepUpdateCustomer:ContactInfoModify:FirstNameModify%, NULL)",
+            "GenderModifyField": "=IF(%StepUpdateCustomer:ContactInfoModify:GenderModify% = 'Female','Femenino', IF(%StepUpdateCustomer:ContactInfoModify:GenderModify% = 'Male','Masculino', 'No Binario'))",
+            "LastNameModified": "=IF(%CamposOriginales:LastNameConcat% != %StepUpdateCustomer:ContactInfoModify:FormulaLastNameContact%, %StepUpdateCustomer:ContactInfoModify:FormulaLastNameContact%, NULL)",
+            "ModifyGender": "=IF(%CamposOriginales:Gender% != %StepUpdateCustomer:ContactInfoModify:GenderModify%, IF(%StepUpdateCustomer:ContactInfoModify:GenderModify% = 'Male','M', IF(%StepUpdateCustomer:ContactInfoModify:GenderModify% = 'Female','F', 'No Binario')), NULL)",
+            "NameModify": "=IF(%CamposOriginales:Name% != %StepUpdateCustomer:ContactInfoModify:FormulaNameConcat%,%StepUpdateCustomer:ContactInfoModify:FormulaNameConcat%, NULL)",
+            "NotificacionChoice": "=IF(%CamposOriginales:PreferencesContact% = 'CorreoElectronico' ,'SMTP', 'SMS')",
+            "OriginalGender": "=IF(%CamposOriginales:Gender% = 'Female','Femenino', IF(%CamposOriginales:Gender% = 'Male','Masculino', 'No Binario'))",
+            "PhoneModify": "=IF(%CamposOriginales:Phone% != %StepUpdateCustomer:ContactInfoModify:PhoneModify%,%StepUpdateCustomer:ContactInfoModify:PhoneModify%, NULL)",
+            "SecondLastNameModify": "=IF(%StepUpdateCustomer:ContactInfoModify:SecondLastNameModify% != null,%StepUpdateCustomer:ContactInfoModify:SecondLastNameModify%,\"\")",
+            "originalDocNumber": "%CamposOriginales:DocumentNumber%",
+            "originalDocType": "%CamposOriginales:DocumentType%"
+        },
+        "executionConditionalFormula": "",
+        "failOnStepError": true,
+        "failureConditionalFormula": "",
+        "label": "SetValuesModify",
+        "responseJSONNode": "",
+        "responseJSONPath": "",
+        "show": null
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/UpdateCustomerModifyDatos/English/SetValuesModify"
+}

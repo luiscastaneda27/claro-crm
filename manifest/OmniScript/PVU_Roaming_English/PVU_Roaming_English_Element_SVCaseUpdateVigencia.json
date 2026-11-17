@@ -1,0 +1,56 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseUpdateVigencia",
+    "OmniProcessId": {
+        "Name": "Roaming",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/Roaming/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "Case": {
+                "CodigoCierre": "=IF(%IPCheckOutOrden:EndProcess% == 'fail' || %IPCancelOrdenFuturaVigencia:EndProcess% == 'fail' , 'No exitoso', '-' )",
+                "FechaFin": "%fechaFin%",
+                "FechaInicio": "%fechaInicio%",
+                "Id": "%IPCreateCase:Details:CaseId%",
+                "NombreProceso": "%processName%",
+                "Orden_Procesada": "=IF(%IPCheckOutOrden:EndProcess% == 'fail' || %IPCancelOrdenFuturaVigencia:EndProcess% == 'fail', 'No Exitosa', 'Exitosa' )",
+                "OrderId": "%OrderId%",
+                "PinImei": "%AceptacionCondiciones:claveOTP%",
+                "Status": "En curso",
+                "SubEstado": "=IF(%IPCheckOutOrden:EndProcess% == 'fail' || %IPCancelOrdenFuturaVigencia:EndProcess% == 'fail' ,'Modificación Roaming No realizada','Modificación vigencia Roaming realizada')",
+                "TarifaPorDemanda": "%EsTarifaPorDemanda%"
+            }
+        },
+        "label": "SVCaseUpdateVigencia",
+        "message": {
+        },
+        "pubsub": false,
+        "show": {
+            "group": {
+                "operator": "AND",
+                "rules": [
+                    {
+                        "condition": "=",
+                        "data": "Modificación de vigencia",
+                        "field": "vozCliente"
+                    }
+                ]
+            }
+        },
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/Roaming/English/SVCaseUpdateVigencia"
+}

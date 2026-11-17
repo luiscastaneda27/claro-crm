@@ -1,0 +1,42 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVCaseInfo",
+    "OmniProcessId": {
+        "Name": "UpdateCustomerModify",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/UpdateCustomerModifyDatos/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "CamposEditados": "=\"Nombres: \" + %StepUpdateCustomer:ContactInfoModify:FormulaNameConcat% + \"\\r\\nGenero: \" + %GenderModifyField% + \"\\r\\nTipo documento: \" + %StepUpdateCustomer:ContactInfoModify:FormDocTypeModify% + \"\\r\\nNumero de documento: \" + %StepUpdateCustomer:ContactInfoModify:FormDocNumberModify% + \"\\r\\nFecha de expedición: \" + %StepUpdateCustomer:ContactInfoModify:ExpeditionDateModify% + \"\\r\\nCorreo: \" + %StepUpdateCustomer:ContactInfoModify:EmailModify%+ \"\\r\\nTipo Telefono: \" + %StepUpdateCustomer:ContactInfoModify:TypePhoneModify% + \"\\r\\nNumero Telefono: \" + %StepUpdateCustomer:ContactInfoModify:PhoneModify% + \"\\r\\nFecha de Nacimiento: \" + %StepUpdateCustomer:ContactInfoModify:FormatedBirthDate%",
+            "CamposOrigin": "=\"Nombres: \" + %CamposOriginales:Name% + \"\\r\\nGenero: \" + %OriginalGender% + \"\\r\\nTipo documento: \" + %CamposOriginales:DocumentType% + \"\\r\\nNumero de documento: \" + %CamposOriginales:DocumentNumber% + \"\\r\\nFecha de expedición: \" + %CamposOriginales:ContactExpeditionDate% + \"\\r\\nCorreo: \" + %CamposOriginales:Email%+ \"\\r\\nTipo Telefono: \" + %CamposOriginales:AccountPhoneType% + \"\\r\\nNumero Telefono: \" + %CamposOriginales:Phone% + \"\\r\\nFecha de Nacimiento: \" + %CamposOriginales:Birthdate%",
+            "CodigoCierre": "=IF(%CreateAddressResponse:code% = 'FS_ESB_0' || %IsValidToModifyData% == 'NotValidToModify' || (%IsValidToModifyData% == 'ValidToModify' && %ClientType% == 'newClient'),'Modificación Exitosa','Modificación no exitosa')",
+            "Contact": {
+                "Birthdate": "%StepUpdateCustomer:ContactInfoModify:DateBirthdateModify%",
+                "DocumentType": "%StepUpdateCustomer:ContactInfoModify:FormDocTypeModify%",
+                "SecondLastName": "%SecondLastNameModify%"
+            },
+            "StatusCase": "=IF(%CreateAddressResponse:code% = 'FS_ESB_0' || %IsValidToModifyData% == 'NotValidToModify' || (%IsValidToModifyData% == 'ValidToModify' && %ClientType% == 'newClient'),'Abierto','Cerrado')",
+            "VozCliente": "=IF(%StepUpdateCustomer:ContactInfoModify:DatosComplementarios% = true, 'Modificación de datos complementarios',IF(%StepUpdateCustomer:ContactInfoModify:DatosComplejos% = true, 'Modificación de datos complejos', ''))"
+        },
+        "label": "SVCaseInfo",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/UpdateCustomerModifyDatos/English/SVCaseInfo"
+}

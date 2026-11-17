@@ -1,0 +1,48 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVRequestEmailNotificationModify",
+    "OmniProcessId": {
+        "Name": "UpdateCustomerModify",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/UpdateCustomerModifyDatos/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "attachment": [
+                {
+                    "name": "",
+                    "type": ""
+                }
+            ],
+            "content": "%mensajeParametrizado%",
+            "emailEnvio": "=%CamposOriginales:Email%",
+            "envio": "=IF(%CorreoModify% != NULL,'SMS',IF(%PhoneModify% != NULL,'SMTP',IF(%CamposOriginales:PreferencesContact% = 'CorreoElectronico' ,'SMTP', 'SMS')))",
+            "phoneEnvio": "=\"57\"+%CamposOriginales:Phone%",
+            "receiver": {
+                "mail": "%Email%"
+            }
+        },
+        "label": "SVRequestEmailNotification",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            {
+                "vlcCart": true,
+                "vlcKnowledge": false
+            },
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/UpdateCustomerModifyDatos/English/SVRequestEmailNotificationModify"
+}

@@ -1,0 +1,43 @@
+{
+    "IsActive": true,
+    "IsOmniScriptEmbeddable": false,
+    "Name": "SVServiceResource",
+    "OmniProcessId": {
+        "Name": "OSRadicarRecurso",
+        "VlocityDataPackType": "VlocityMatchingKeyObject",
+        "VlocityMatchingRecordSourceKey": "OmniProcess/PVU/OSRadicarRecurso/English",
+        "VlocityRecordSObjectType": "OmniProcess"
+    },
+    "PropertySetConfig": {
+        "HTMLTemplateId": "",
+        "controlWidth": 12,
+        "elementValueMap": {
+            "caso": {
+                "caseNumber": "%NumeroCaso%",
+                "caseOrigin": "%SFCaseCreated:OrigenCaso%",
+                "correoElectronicoNotificacion": "%radicacionStep1:MedioNotificacionElegidoClienteMail%",
+                "description": "%DescripcionCaso%",
+                "filingMean": "=IF(%UserData|1:FVU_Canal__c% == 'SF_TMK', '',%radicacionStep1:MedioRadicacionCAV%)",
+                "interaction": "%SFCaseCreated:NumeroCaso%",
+                "notificationSource": "=IF(%UserData|1:FVU_Canal__c% == 'SF_CAV',%radicacionStep1:MedioNotificacionPreferidoEscrito%,%radicacionStep1:MedioNotificacionPreferidoEscritoTMK%)",
+                "resourceType": "%TipoRecursoR%",
+                "subject": "%AsuntoRecursoNew%"
+            }
+        },
+        "label": "SVPQRResource",
+        "message": {
+        },
+        "pubsub": false,
+        "show": null,
+        "showPersistentComponent": [
+            true,
+            false
+        ],
+        "ssm": false,
+        "wpm": false
+    },
+    "Type": "Set Values",
+    "VlocityDataPackType": "SObject",
+    "VlocityRecordSObjectType": "OmniProcessElement",
+    "VlocityRecordSourceKey": "OmniProcessElement/OmniProcess/PVU/OSRadicarRecurso/English/SVServiceResource"
+}
