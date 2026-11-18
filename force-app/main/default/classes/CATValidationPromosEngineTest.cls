@@ -82,6 +82,78 @@ public class CATValidationPromosEngineTest {
         insert appliedPromoItem;
     }
 
+    private static Map<String, Object> runBundleValidation(Id orderItemId) {
+        Order testOrder = [SELECT Id FROM Order LIMIT 1];
+        Map<String, Object> input = new Map<String, Object>{
+            'OrderId' => testOrder.Id,
+            'OrderItemId' => orderItemId,
+            'PromotionClass' => CATValidationPromosEngine.BUNDLE_CLASS,
+            'PromotionCode' => 'BundleNuevo',
+            'clasesNoObligatoriasList' => new List<String>{'Bundle','Terceros','Plan Lector'}
+        };
+        Map<String, Object> output = new Map<String, Object>();
+        Test.startTest();
+        new CATValidationPromosEngine().invokeMethod('promotionClassValidation', input, output, new Map<String, Object>());
+        Test.stopTest();
+        return output;
+    }
+
+    private static Id insertAppliedBundle(Id orderItemId) {
+        Order testOrder = [SELECT Id FROM Order LIMIT 1];
+        vlocity_cmt__Promotion__c bundlePromo = new vlocity_cmt__Promotion__c(
+            Name = 'Bundle Promo',
+            CAT_PromotionClass__c = CATValidationPromosEngine.BUNDLE_CLASS,
+            vlocity_cmt__Code__c = 'BundleAplicado',
+            CAT_Type__c = 'Estandar',
+            vlocity_cmt__IsActive__c = true,
+            vlocity_cmt__IsOrderable__c = true,
+            vlocity_cmt__EffectiveStartDate__c = System.today().addDays(-1),
+            vlocity_cmt__EffectiveEndDate__c = System.today().addDays(1)
+        );
+        insert bundlePromo;
+        vlocity_cmt__OrderAppliedPromotion__c applied = new vlocity_cmt__OrderAppliedPromotion__c(
+            vlocity_cmt__OrderId__c = testOrder.Id,
+            vlocity_cmt__PromotionId__c = bundlePromo.Id,
+            vlocity_cmt__Action__c = 'Add'
+        );
+        insert applied;
+        insert new vlocity_cmt__OrderAppliedPromotionItem__c(
+            vlocity_cmt__OrderAppliedPromotionId__c = applied.Id,
+            vlocity_cmt__OrderItemId__c = orderItemId
+        );
+        return applied.Id;
+    }
+
+    @isTest
+    static void testSecondBundleOnSameLineIsBlocked() {
+        List<OrderItem> items = [SELECT Id FROM OrderItem ORDER BY CreatedDate, Id];
+        insertAppliedBundle(items[0].Id);
+
+        Map<String, Object> output = runBundleValidation(items[0].Id);
+
+        Assert.areEqual('InvalidPromo', output.get('promotionClassValidation'), 'Debe bloquear un segundo Bundle en la misma línea');
+        Assert.areEqual(CATValidationPromosEngine.BUNDLE_ERROR_MESSAGE, output.get('errorMessage'));
+    }
+
+    @isTest
+    static void testBundleOnOtherLineIsNotBlocked() {
+        List<OrderItem> items = [SELECT Id FROM OrderItem ORDER BY CreatedDate, Id];
+        insertAppliedBundle(items[0].Id);
+
+        Map<String, Object> output = runBundleValidation(items[1].Id);
+
+        Assert.areNotEqual(CATValidationPromosEngine.BUNDLE_ERROR_MESSAGE, output.get('errorMessage'), 'Un Bundle en otra línea no debe bloquear');
+    }
+
+    @isTest
+    static void testFirstBundleIsNotBlocked() {
+        List<OrderItem> items = [SELECT Id FROM OrderItem ORDER BY CreatedDate, Id];
+
+        Map<String, Object> output = runBundleValidation(items[0].Id);
+
+        Assert.areNotEqual(CATValidationPromosEngine.BUNDLE_ERROR_MESSAGE, output.get('errorMessage'), 'El primer Bundle debe permitirse');
+    }
+
     @isTest
     static void testPromotionClassValidationValidPromo() {
         // Create input map with valid data

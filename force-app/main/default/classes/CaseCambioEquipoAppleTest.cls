@@ -1,3 +1,13 @@
+/*--------------------------------------------------------------------------
+
+Company:        VASS
+Description:    Clase de prueba de CaseCambioEquipoApple.
+
+History
+<Date>                    <Description>                    <Version>
+18-11-26                  Creación de la clase             inicial version
+
+----------------------------------------------------------------------------*/
 @IsTest
 private class CaseCambioEquipoAppleTest {
 

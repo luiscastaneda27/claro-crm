@@ -6,7 +6,8 @@ Code Coverage:  82%
 History
 <Date>            <Author>             <Description>             <Version>
 20-Sep-24         Josue Pineda         inicial version
-29-Dec-26		  Hugo Revuelta		   Bug fix 701576					
+29-Dec-26		  Hugo Revuelta		   Bug fix 701576
+18-Nov-26         VASS                 Validación: solo una promoción Bundle por línea (OrderItem)
 ----------------------------------------------------------------------------*/
 global with sharing class CATValidationPromosEngine implements vlocity_cmt.VlocityOpenInterface {
     global Boolean invokeMethod(String methodName, Map<String, Object> input, Map<String, Object> output, Map<String, Object> options) { 
@@ -37,6 +38,13 @@ global with sharing class CATValidationPromosEngine implements vlocity_cmt.Vloci
         System.debug('promotionCode: ' + promotionCode);
         Id orderItemId = (Id) input.get('OrderItemId');
         System.debug('orderItemId: ' + orderItemId);
+
+        // Solo se permite una promoción Bundle por línea (OrderItem)
+        if (BUNDLE_CLASS.equalsIgnoreCase(promotionClass) && hasBundleApplied(orderId, orderItemId)) {
+            output.put('errorMessage', BUNDLE_ERROR_MESSAGE);
+            output.put('promotionClassValidation', 'InvalidPromo');
+            return;
+        }
 
         Boolean hasRecords = false;
         Boolean validarCompatibilidad = true;
@@ -141,5 +149,36 @@ global with sharing class CATValidationPromosEngine implements vlocity_cmt.Vloci
             System.debug('validarCompatibilidad: ' + validarCompatibilidad);
         }
         System.debug('output: ' + output);
+    }
+
+    @TestVisible
+    private static final String BUNDLE_CLASS = 'Bundle';
+    @TestVisible
+    private static final String BUNDLE_ERROR_MESSAGE = 'Solo se puede agregar una promoción Bundle. Elimine la promoción Bundle del carrito para agregar una diferente.';
+
+    /*
+     * Indica si ya existe una promoción Bundle agregada (Add/Change) en la orden para el OrderItem indicado.
+     * Una promoción Bundle puede aplicar a varios OrderItems (plan e hijos), por eso se revisan todos sus items.
+     * Si no se recibe OrderItemId, se valida a nivel de toda la orden.
+     */
+    private static Boolean hasBundleApplied(Id orderId, Id orderItemId) {
+        for (vlocity_cmt__OrderAppliedPromotion__c applied : [
+                SELECT Id,
+                    (SELECT vlocity_cmt__OrderItemId__c FROM vlocity_cmt__OrderAppliedPromotionAffectedItems__r)
+                FROM vlocity_cmt__OrderAppliedPromotion__c
+                WHERE vlocity_cmt__OrderId__c = :orderId
+                    AND vlocity_cmt__PromotionId__r.CAT_PromotionClass__c = :BUNDLE_CLASS
+                    AND vlocity_cmt__Action__c IN ('Add', 'Change')
+                WITH USER_MODE]) {
+            if (orderItemId == null || applied.vlocity_cmt__OrderAppliedPromotionAffectedItems__r.isEmpty()) {
+                return true;
+            }
+            for (vlocity_cmt__OrderAppliedPromotionItem__c item : applied.vlocity_cmt__OrderAppliedPromotionAffectedItems__r) {
+                if (item.vlocity_cmt__OrderItemId__c == orderItemId) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

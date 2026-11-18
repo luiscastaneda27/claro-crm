@@ -1,14 +1,14 @@
-/**
- * @description Pasa a En curso los casos abiertos de cambio por fabricante de equipo financiado Apple.
- * Reemplaza la rama cambioEquipoApple > openCase > Actualizar_Caso de PVU_Case_Assignment.
- *
- * El update corre en un Queueable a propósito: dentro de la transacción que crea el caso sería un
- * guardado recursivo y no dispararía los flows after-save de Update, como
- * PVU_UpdateCase_CambioDeEquipo. No puede ser @future: PVU_IntegrationProcedureInvocable solo corre
- * los IP en línea si System.isQueueable(); en @future los encola y supera el límite de 1 job.
- *
- * Es without sharing porque reemplaza a un flow record-triggered, que corre en contexto de sistema.
- */
+/*--------------------------------------------------------------------------
+
+Company:        VASS
+Description:    Pasa a En curso los casos abiertos de cambio por fabricante de equipo financiado Apple.
+                Reemplaza la rama cambioEquipoApple > openCase > Actualizar_Caso de PVU_Case_Assignment.
+
+History
+<Date>                    <Description>                    <Version>
+18-11-26                  Creación de la clase             inicial version
+
+----------------------------------------------------------------------------*/
 public without sharing class CaseCambioEquipoApple implements Queueable, Database.AllowsCallouts {
 
     @TestVisible private static final String LEVEL3_APPLE = 'Cambio por fabricante equipo financiado Apple';
