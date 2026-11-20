@@ -146,6 +146,29 @@ public class CATValidationPromosEngineTest {
     }
 
     @isTest
+    static void testBundleBlockedWhenOrderItemIdIsEmpty() {
+        // Cambio de Plan: el IP envía OrderItemId = "" y la validación se hace a nivel de orden
+        List<OrderItem> items = [SELECT Id FROM OrderItem ORDER BY CreatedDate, Id];
+        insertAppliedBundle(items[0].Id);
+        Order testOrder = [SELECT Id FROM Order LIMIT 1];
+        Map<String, Object> input = new Map<String, Object>{
+            'OrderId' => testOrder.Id,
+            'OrderItemId' => '',
+            'PromotionCode' => '',
+            'PromotionClass' => CATValidationPromosEngine.BUNDLE_CLASS
+        };
+        Map<String, Object> output = new Map<String, Object>();
+
+        Test.startTest();
+        Boolean result = new CATValidationPromosEngine().invokeMethod('promotionClassValidation', input, output, new Map<String, Object>());
+        Test.stopTest();
+
+        Assert.isTrue(result, 'No debe lanzar excepción con OrderItemId vacío');
+        Assert.areEqual('InvalidPromo', output.get('promotionClassValidation'));
+        Assert.areEqual(CATValidationPromosEngine.BUNDLE_ERROR_MESSAGE, output.get('errorMessage'));
+    }
+
+    @isTest
     static void testFirstBundleIsNotBlocked() {
         List<OrderItem> items = [SELECT Id FROM OrderItem ORDER BY CreatedDate, Id];
 

@@ -6,6 +6,7 @@ import { FlexCardMixin } from "vlocity_cmt/flexCardMixin";
           import pubsub from "vlocity_cmt/pubsub";
           import { getRecord } from "lightning/uiRecordApi";
           import { OmniscriptBaseMixin } from "vlocity_cmt/omniscriptBaseMixin";
+          
           import data from "./definition";
           
           import styleDef from "./styleDefinition";
@@ -28,20 +29,23 @@ import { FlexCardMixin } from "vlocity_cmt/flexCardMixin";
                   }
               @track record;
               @track _sessionApiVars = {};
-              @track Label={AddToCart:"Add to Cart",
-      CPQSeeDetailsLabel:"See Details",
-      CPQEndDateOfPromotionPlaceholder:"End Date of Promotion",
-      CPQOfferEndsLabel:"Offer Ends",
-      CPQStartDateOfPromotionPlaceholder:"Start Date of Promotion",
-      CPQOfferStartsLabel:"Offer Starts",
-      CPQDescriptionOfPromotionPlaceholder:"A Short Description of Promotion",
-      CPQPromotion:"Promotion"
-      };
+              
+              @track Label={CPQPromotion:"Promoción",
+        CPQDescriptionOfPromotionPlaceholder:"Una breve descripción de la promoción",
+        CPQOfferStartsLabel:"La promoción empieza",
+        CPQStartDateOfPromotionPlaceholder:"Fecha de inicio de la promoción",
+        CPQOfferEndsLabel:"La promoción termina",
+        CPQEndDateOfPromotionPlaceholder:"Fecha de finalización de la promoción",
+        CPQSeeDetailsLabel:"Ver Detalles",
+        AddToCart:"Agregar al carrito"
+        };
               pubsubEvent = [];
               customEvent = [];
               
               connectedCallback() {
+                
                 super.connectedCallback();
+                this.setThemeClass(data);
                 this.setStyleDefinition(styleDef);
                 data.Session = {} //reinitialize on reload
                 

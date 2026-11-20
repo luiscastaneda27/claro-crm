@@ -36,7 +36,9 @@ global with sharing class CATValidationPromosEngine implements vlocity_cmt.Vloci
         System.debug('promotionClass: ' + promotionClass);
         String promotionCode = (String) input.get('PromotionCode');
         System.debug('promotionCode: ' + promotionCode);
-        Id orderItemId = (Id) input.get('OrderItemId');
+        // Desde Cambio de Plan el IP envía OrderItemId vacío (""): se trata como null para no lanzar "Invalid id"
+        String orderItemIdStr = (String) input.get('OrderItemId');
+        Id orderItemId = String.isBlank(orderItemIdStr) ? null : (Id) orderItemIdStr;
         System.debug('orderItemId: ' + orderItemId);
 
         // Solo se permite una promoción Bundle por línea (OrderItem)
