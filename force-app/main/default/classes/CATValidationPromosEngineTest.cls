@@ -132,7 +132,7 @@ public class CATValidationPromosEngineTest {
         Map<String, Object> output = runBundleValidation(items[0].Id);
 
         Assert.areEqual('InvalidPromo', output.get('promotionClassValidation'), 'Debe bloquear un segundo Bundle en la misma línea');
-        Assert.areEqual(CATValidationPromosEngine.BUNDLE_ERROR_MESSAGE, output.get('errorMessage'));
+        Assert.areEqual(CATValidationPromosEngine.getBundleErrorMessage(), output.get('errorMessage'));
     }
 
     @isTest
@@ -142,12 +142,12 @@ public class CATValidationPromosEngineTest {
 
         Map<String, Object> output = runBundleValidation(items[1].Id);
 
-        Assert.areNotEqual(CATValidationPromosEngine.BUNDLE_ERROR_MESSAGE, output.get('errorMessage'), 'Un Bundle en otra línea no debe bloquear');
+        Assert.areNotEqual(CATValidationPromosEngine.getBundleErrorMessage(), output.get('errorMessage'), 'Un Bundle en otra línea no debe bloquear');
     }
 
     @isTest
-    static void testBundleBlockedWhenOrderItemIdIsEmpty() {
-        // Cambio de Plan: el IP envía OrderItemId = "" y la validación se hace a nivel de orden
+    static void testBundleNotBlockedWhenOrderItemIdIsEmpty() {
+        // Sin OrderItemId no se puede saber la línea: no se bloquea ni se muestra el mensaje de Bundle
         List<OrderItem> items = [SELECT Id FROM OrderItem ORDER BY CreatedDate, Id];
         insertAppliedBundle(items[0].Id);
         Order testOrder = [SELECT Id FROM Order LIMIT 1];
@@ -155,7 +155,8 @@ public class CATValidationPromosEngineTest {
             'OrderId' => testOrder.Id,
             'OrderItemId' => '',
             'PromotionCode' => '',
-            'PromotionClass' => CATValidationPromosEngine.BUNDLE_CLASS
+            'PromotionClass' => CATValidationPromosEngine.BUNDLE_CLASS,
+            'clasesNoObligatoriasList' => new List<String>{'Bundle','Terceros','Plan Lector'}
         };
         Map<String, Object> output = new Map<String, Object>();
 
@@ -164,8 +165,16 @@ public class CATValidationPromosEngineTest {
         Test.stopTest();
 
         Assert.isTrue(result, 'No debe lanzar excepción con OrderItemId vacío');
-        Assert.areEqual('InvalidPromo', output.get('promotionClassValidation'));
-        Assert.areEqual(CATValidationPromosEngine.BUNDLE_ERROR_MESSAGE, output.get('errorMessage'));
+        Assert.areNotEqual(CATValidationPromosEngine.getBundleErrorMessage(), output.get('errorMessage'), 'Sin OrderItemId no debe mostrar el mensaje de Bundle');
+    }
+
+    @isTest
+    static void testBundleMessageComesFromCustomMetadata() {
+        MensajesPersonalizados__mdt registro = MensajesPersonalizados__mdt.getInstance(CATValidationPromosEngine.BUNDLE_MESSAGE_CODE);
+
+        Assert.isNotNull(registro, 'Debe existir el registro del mensaje de Bundle');
+        Assert.isTrue(String.isNotBlank(registro.Mensaje__c), 'El registro debe tener mensaje');
+        Assert.areEqual(registro.Mensaje__c, CATValidationPromosEngine.getBundleErrorMessage());
     }
 
     @isTest
@@ -174,7 +183,7 @@ public class CATValidationPromosEngineTest {
 
         Map<String, Object> output = runBundleValidation(items[0].Id);
 
-        Assert.areNotEqual(CATValidationPromosEngine.BUNDLE_ERROR_MESSAGE, output.get('errorMessage'), 'El primer Bundle debe permitirse');
+        Assert.areNotEqual(CATValidationPromosEngine.getBundleErrorMessage(), output.get('errorMessage'), 'El primer Bundle debe permitirse');
     }
 
     @isTest

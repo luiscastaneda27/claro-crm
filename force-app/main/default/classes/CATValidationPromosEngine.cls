@@ -43,7 +43,7 @@ global with sharing class CATValidationPromosEngine implements vlocity_cmt.Vloci
 
         // Solo se permite una promoción Bundle por línea (OrderItem)
         if (BUNDLE_CLASS.equalsIgnoreCase(promotionClass) && hasBundleApplied(orderId, orderItemId)) {
-            output.put('errorMessage', BUNDLE_ERROR_MESSAGE);
+            output.put('errorMessage', getBundleErrorMessage());
             output.put('promotionClassValidation', 'InvalidPromo');
             return;
         }
@@ -156,12 +156,21 @@ global with sharing class CATValidationPromosEngine implements vlocity_cmt.Vloci
     @TestVisible
     private static final String BUNDLE_CLASS = 'Bundle';
     @TestVisible
-    private static final String BUNDLE_ERROR_MESSAGE = 'Solo se puede agregar una promoción Bundle. Elimine la promoción Bundle del carrito para agregar una diferente.';
+    private static final String BUNDLE_MESSAGE_CODE = 'MSG017';
+    // Solo se usa si el registro de MensajesPersonalizados__mdt no existe o no tiene mensaje
+    private static final String BUNDLE_DEFAULT_MESSAGE = 'No es posible agregar la promoción.';
+
+    // Obtiene el mensaje de error de Bundle desde MensajesPersonalizados__mdt
+    @TestVisible
+    private static String getBundleErrorMessage() {
+        String mensaje = MensajesPersonalizados__mdt.getInstance(BUNDLE_MESSAGE_CODE)?.Mensaje__c;
+        return String.isBlank(mensaje) ? BUNDLE_DEFAULT_MESSAGE : mensaje;
+    }
 
     /*
      * Indica si ya existe una promoción Bundle agregada (Add/Change) en la orden para el OrderItem indicado.
      * Una promoción Bundle puede aplicar a varios OrderItems (plan e hijos), por eso se revisan todos sus items.
-     * Si no se recibe OrderItemId, se valida a nivel de toda la orden.
+     * Si no se recibe OrderItemId no se bloquea, para no mostrar un mensaje equivocado.
      */
     private static Boolean hasBundleApplied(Id orderId, Id orderItemId) {
         for (vlocity_cmt__OrderAppliedPromotion__c applied : [
@@ -172,11 +181,8 @@ global with sharing class CATValidationPromosEngine implements vlocity_cmt.Vloci
                     AND vlocity_cmt__PromotionId__r.CAT_PromotionClass__c = :BUNDLE_CLASS
                     AND vlocity_cmt__Action__c IN ('Add', 'Change')
                 WITH USER_MODE]) {
-            if (orderItemId == null || applied.vlocity_cmt__OrderAppliedPromotionAffectedItems__r.isEmpty()) {
-                return true;
-            }
             for (vlocity_cmt__OrderAppliedPromotionItem__c item : applied.vlocity_cmt__OrderAppliedPromotionAffectedItems__r) {
-                if (item.vlocity_cmt__OrderItemId__c == orderItemId) {
+                if (String.isNotBlank(orderItemId) && item.vlocity_cmt__OrderItemId__c == orderItemId) {
                     return true;
                 }
             }
