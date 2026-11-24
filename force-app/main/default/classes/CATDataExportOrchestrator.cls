@@ -50,8 +50,8 @@ public with sharing class CATDataExportOrchestrator {
                     prodCodeList,
                     promotionCodeList,
                     tipoCarga,
-                    incluirCompatibilidad
-                    
+                    incluirCompatibilidad,
+                    true // HDU 819649: primer eslabón, bloquea una segunda ejecución
                 );
                 Database.executeBatch(purgeBatch);
             }

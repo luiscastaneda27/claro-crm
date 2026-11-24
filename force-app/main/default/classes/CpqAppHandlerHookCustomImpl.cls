@@ -9,9 +9,17 @@ History
 15-Jul-25		  Fernanda Maldonado	Añadir manejo de proceso 'Cambio de Plan'
 15-Ago-25         Gabriel Alvis        Ajuste en validación del límite de crédito       1.1
 03-Feb-26         Silvia Tovar         Si omite HDC = true (Proceso de reversión) no valida limite de credito
+13-Nov-26         Nicolas Ibarra       HU 826417: en migración con eSIM se reemplaza la SIM Card por eSIM
 ---------------------------------------------------------------------------------------------------------*/
 global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.VlocityOpenInterface
 {
+    @TestVisible private static Boolean deletingCFMItems = false;
+    //Evita que el CPQ_AddChildItems del reemplazo de SIM vuelva a disparar el reemplazo
+    @TestVisible private static Boolean swappingSimToEsim = false;
+    private static final String SIM_CARD_PRODUCT_CODE = 'B2C-MOV-OFR-SIMCARD';
+    private static final String ESIM_PRODUCT_CODE = 'B2C-MOB-OFR-ESIM';
+    private static final String PLAN_AND_TERMINAL_PURCHASE_TYPE = 'ATT';
+
     global Boolean invokeMethod(String methodName, Map<String, Object> input, Map<String, Object> output, Map<String, Object> options)
     {
         try
@@ -90,6 +98,10 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
             else if (methodName == 'getCartsItems.PreInvoke' || methodName == 'postCartsPromoItems.PreInvoke'){
                 //Obtener el Id del carrito para identificar si se trata de una Orden o de una cotización
                 Id cartId = (String)input.get('cartId');
+                //HU 826417: respaldo del reemplazo de SIM Card por eSIM al recargar los items del carrito
+                if(methodName == 'getCartsItems.PreInvoke' && !swappingSimToEsim){
+                    swapSimCardToEsim(cartId);
+                }
                 System.debug('CartId Object Type: ' + cartId.getSObjectType().getDescribe().getName());
                 String priceCustomFields;
                 if (cartId.getSObjectType().getDescribe().getName() == 'Quote'){
@@ -212,12 +224,24 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
 
                 //Consultar el Cupo Disponible de la orden
                 //TODO: Agregar análisi de Cupo Disponible para financiación cuando se tenga el campo de donde se debe obtener.
-                List<SObject> remainingQuotaList = [SELECT FVU_RemainingQuota__c,FVU_OrderSubType__c, FVU_IsIVAExempt__c,PVU_OmitirHDC__c FROM Order WHERE Id = :cartId WITH USER_MODE LIMIT 1];
+                List<SObject> remainingQuotaList = [SELECT FVU_RemainingQuota__c,FVU_OrderSubType__c, FVU_IsIVAExempt__c,PVU_OmitirHDC__c,FVU_MigraData__c,FVU_PurchaseType__c FROM Order WHERE Id = :cartId WITH USER_MODE LIMIT 1];
                 Decimal remainingQuota = (Decimal)remainingQuotaList[0].get('FVU_RemainingQuota__c');
                 String orderSubtype = (String)remainingQuotaList[0].get('FVU_OrderSubType__c');
                 Boolean isIVAExemptOrder = (Boolean)remainingQuotaList[0].get('FVU_IsIVAExempt__c');
                 Boolean omitHDC = (Boolean)remainingQuotaList[0].get('PVU_OmitirHDC__c');
                 system.debug('IsIvaOrder: ' + isIVAExemptOrder);
+
+                //HU 826417: en migración con eSIM no se permite agregar la SIM Card (el grupo "Escoja SIM Card" solo debe tener eSIM)
+                Boolean esimSaleOrder = !swappingSimToEsim && remainingQuotaList[0].get('FVU_PurchaseType__c') != PLAN_AND_TERMINAL_PURCHASE_TYPE
+                                        && isEsimSale((String)remainingQuotaList[0].get('FVU_MigraData__c'));
+                if(esimSaleOrder){
+                    if([SELECT COUNT() FROM PricebookEntry WHERE Id = :itemId AND Product2.ProductCode = :SIM_CARD_PRODUCT_CODE WITH USER_MODE] > 0){
+                        System.debug('--- postCartsItems.PreInvoke Limpiar items: SIM Card en migración con eSIM');
+                        input.put('simcardnotallowed', true);
+                        input.put('items', null);
+                        return true;
+                    }
+                }
 
                 //Consultar con el itemId (PriceBook Entry Id) el Id (product2), Family, Type y Subtype del producto.
                 //En la consulta filtrar usando las condiciones que identifican a un plan móvil. Si la consulta retorna 0 resultados, el producto
@@ -239,6 +263,10 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                 //Si omite HDC = true (Proceso de reversión) no valida limite de credito
                 String productType = (String)planOrAddOnList[0].getSObject('Product2').get('vlocity_cmt__Type__c');
                 System.debug('productType: ' + productType);
+                //HU 826417: al agregar el plan en migración con eSIM se avisa que la SIM Card se reemplaza por eSIM
+                if(esimSaleOrder && productType == 'Plan'){
+                    input.put('esimSale', true);
+                }
                 if (creditLimitDebug == false && (productType == 'Add On' || orderSubtype == 'Cambio de Plan' || omitHDC == true )) {
                     return true;
                 }
@@ -420,6 +448,30 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                         {
                             //Si se cumplen las condiciones anteriores indicar que se devuelva al carrito el mensaje específico
                             morethanoneplanMessage.message = 'No es posible agregar más de un plan móvil al carrito. Por favor, asegúrate de revisar y eliminar cualquier plan adicional antes de proceder con la compra';
+                        }
+                    }
+                }
+
+                //HU 826417: mensajes para migración con eSIM
+                if(input.get('simcardnotallowed') != null && (Boolean)input.get('simcardnotallowed'))
+                {
+                    vlocity_cmt.JSONResult simCardResult = (vlocity_cmt.JSONResult)output.get('result');
+                    for(vlocity_cmt.JSONMessage simCardMessage : simCardResult.messages)
+                    {
+                        if(simCardMessage.code.equals('143'))
+                        {
+                            simCardMessage.message = 'Esta venta es una migración con eSIM: no es posible agregar SIM Card física.';
+                        }
+                    }
+                }
+                else if(input.get('esimSale') != null && (Boolean)input.get('esimSale'))
+                {
+                    vlocity_cmt.JSONResult esimSaleResult = (vlocity_cmt.JSONResult)output.get('result');
+                    for(vlocity_cmt.JSONMessage esimSaleMessage : esimSaleResult.messages)
+                    {
+                        if(esimSaleMessage.code.equals('150'))
+                        {
+                            esimSaleMessage.message += ' Migración con eSIM: la SIM Card se reemplaza automáticamente por eSIM; si aún la ves, recarga el carrito.';
                         }
                     }
                 }
@@ -617,6 +669,9 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                 String filters = (String)input.get('filters');
                 System.debug('filters: ' + filters);
 
+                
+
+
                 if(accStatusTodoClaro == 'Potencial' && planOrderItem.isEmpty() && filters != null){
                     //Guardar Id de Promo que no quiero que aparezca
                     List<vlocity_cmt__Promotion__c> promos = [SELECT Id FROM vlocity_cmt__Promotion__c WHERE CAT_PromotionClass__c = 'Descuento Todo Claro' AND CAT_Type__c = 'TodoClaro' WITH USER_MODE];
@@ -700,7 +755,7 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                 System.debug('deleteAppliedPromoItems.PreInvoke options: ' + options);
                 // Obtener el valor de vlocity_cmt__OrderAppliedPromotionId__c del input map.
                 String orderAppliedPromotionId = (String) input.get('id');
-                vlocity_cmt__OrderAppliedPromotion__c orderAppliedPromotion = [SELECT Id,vlocity_cmt__PromotionId__r.CAT_PromotionClass__c FROM vlocity_cmt__OrderAppliedPromotion__c WHERE Id = :orderAppliedPromotionId WITH USER_MODE];
+                vlocity_cmt__OrderAppliedPromotion__c orderAppliedPromotion = [SELECT Id, vlocity_cmt__PromotionId__c, vlocity_cmt__PromotionId__r.CAT_PromotionClass__c FROM vlocity_cmt__OrderAppliedPromotion__c WHERE Id = :orderAppliedPromotionId WITH USER_MODE];
                 String promotionClass = orderAppliedPromotion.vlocity_cmt__PromotionId__r.CAT_PromotionClass__c;
                 System.debug('orderAppliedPromotionId PreInvoke: ' + orderAppliedPromotionId);
                 /// lista de valores correspondientes a vlocity_cmt__OrderItemId__c, para borrar esos Order Items, usando el valor de vlocity_cmt__OrderAppliedPromotionId__c obtenido del input map
@@ -721,7 +776,8 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                 System.debug('orderItemIdMap: ' + orderItemMap);
                 //Se agregan las entradas de OrderItem al input map del metodo deleteAppliedPromoItems.
                 input.put('orderItemIds', orderItemMap);
-                input.put('promotionClass', promotionClass); 
+                input.put('promotionClass', promotionClass);
+                input.put('promotionId', orderAppliedPromotion.vlocity_cmt__PromotionId__c);
                 System.debug('orderItemIdsList: ' + orderItemMap);
 
                 /*Get Princicipal Governor Limits
@@ -747,7 +803,68 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                 Integer globalDMLRowsLimit = Limits.getLimitDMLRows();
                 System.debug('--- myDMLRowsLimit: ' + myDMLRowsLimit +' of ' +globalDMLRowsLimit + ' - Remaining: ' + (globalDMLRowsLimit - myDMLRowsLimit));
                 */
-            }
+            } 
+			else if (methodName == 'getCartsPromotions.PostInvoke') {
+                Id cartId = (Id)input.get('cartId');
+         		System.debug('++getCartsPromotions.PostInvoke');
+                System.debug('CPQ Output Keys: ' + output.keySet());
+            	// 1. Only run this if the cart is a Quote
+                if (cartId != null && cartId.getSObjectType().getDescribe().getName() == 'Quote') {
+                    
+                    // 2. Get the 'result' map
+                    Object resultObj = output.get('result');
+                    if (resultObj == null) return true;
+                    // 3. Drill down to 'records' (or 'items') inside result
+                    String jsonStr = JSON.serialize(resultObj);
+        			Map<String, Object> resultMap = (Map<String, Object>)JSON.deserializeUntyped(jsonStr);
+                    List<Object> records = (List<Object>)resultMap.get('records');
+                    System.debug('records.size: '+ records.size() );
+                    if (records == null || records.isEmpty()) return true;
+        
+                    List<Object> filteredItems = new List<Object>();
+        
+                    for (Object itemObj : records) {
+                        Map<String, Object> item = (Map<String, Object>)itemObj;
+                        System.debug('++item: '+ item);
+                        // 3. Check your specific field (e.g., CAT_PromotionClass__c)
+                        // Note: The CPQ API often prefixes fields with the namespace or 'vlocity_cmt__'
+                        String promoClass ; 
+                        String promoCode; 
+                        if (item.containsKey('fields')) {
+                            Map<String, Object> fieldsMap = (Map<String, Object>)item.get('fields');
+                
+                            // Promote values from 'fields' to the top level to match 'before.json'
+                            for (String key : fieldsMap.keySet()) {
+                                item.put(key, fieldsMap.get(key));
+                            }
+                            
+                            // Remove the 'fields' node entirely to clean up the structure
+                            item.remove('fields');
+                        }
+                        // 2. Now get the class from the promoted top-level
+                        promoClass = (String)item.get('CAT_PromotionClass__c');
+                        System.debug('++promoClass: '+ promoClass);
+                        if (promoClass != 'Descuento') {
+                            System.debug('item added: '+ promoCode);
+                            filteredItems.add(item);
+                        } else{
+                            System.debug('item removed: '+ promoCode);
+                        }
+                    }
+                    System.debug('filteredItems.size: '+ filteredItems.size() );
+        
+                    output.remove('result'); // Remove the old nested structure
+                    output.put('records', filteredItems);
+                    output.put('totalSize', filteredItems.size());
+                    output.put('messages', new List<Object>()); // Matches before.json
+                    
+                    // Clear metadata keys often added by handlers that aren't in before.json
+                    output.remove('errorCode');
+                    output.remove('error');
+                    
+                }
+                
+            } 
             else if(methodName == 'deleteAppliedPromoItems.PostInvoke') {
                 System.debug('inputPostInvoke input: ' + input);
                 System.debug('inputPostInvokeOrderItemList: ' + input.get('orderItemIds'));
@@ -770,20 +887,33 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                     String productType = orderItemIdMap.get(orderItemId);
                     System.debug('productType: ' + productType); 
                     if(productType == 'Add On') {
-                        //Construir String de OrderItemIds.
                         System.debug('inputPostInvokeOrderItemString: ' +  orderItemId);
-                        // Inicializar variables para el borrado se puede usar llamando el Integration Procedure CPQ_DeleteItemFromCart (es el mismo que usa el carrito al borrar productos)
+                        // When the deleted promotion is a Bundle, the Add On may still have
+                        // OrderAppliedPromotionItem__c records from other promotions (e.g. Descuento, Claro Video).
+                        // We delete only those specific junction records — NOT the whole OrderAppliedPromotion —
+                        // so the other promotions remain applied to the Plan.
+                        if (promotionClass == 'Bundle') {
+                            List<vlocity_cmt__OrderAppliedPromotionItem__c> blockingPromoItems = [
+                                SELECT Id
+                                FROM vlocity_cmt__OrderAppliedPromotionItem__c
+                                WHERE vlocity_cmt__OrderItemId__c = :orderItemId
+                                AND vlocity_cmt__OrderAppliedPromotionId__r.vlocity_cmt__OrderId__c = :cartId
+                                WITH USER_MODE
+                            ];
+                            System.debug('blockingPromoItems for Add On ' + orderItemId + ': ' + blockingPromoItems);
+                            if (!blockingPromoItems.isEmpty()) {
+                                delete as user blockingPromoItems;
+                                System.debug('Deleted ' + blockingPromoItems.size() + ' blocking OrderAppliedPromotionItem records');
+                            }
+                        }
                         procedureName = 'CPQ_DeleteItemFromCart';
-                        // Llamar IP para borrar los items
-                        // Populating input map for an Integration Procedure, with CartId and the String of OrderItemIds. 
                         ipInput.put('cartId', cartId);
                         ipInput.put('id', orderItemId);
                         ipInput.put('price', false);
                         ipInput.put('validate', false);
                         System.debug('ipInput: ' + ipInput);
-                        // Call the IP via runIntegrationService, and save the output to ipOutput 
                         ipOutput = (Map<String, Object>)vlocity_cmt.IntegrationProcedureService.runIntegrationService(procedureName, ipInput, ipOptions);
-                        System.debug('ipOutput: ' + ipOutput); 
+                        System.debug('ipOutput: ' + ipOutput);
                     }
                     if( productType == 'Handset' || productType == 'Tech') { // se quita producttype = plan para que tenga su propia lógica
                         //Se obtiene el valor de vlocity_cmt__OrderItemId__c del OrderItem de tipo Plan.
@@ -810,7 +940,7 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                             resultadosObtenidos = true; 
                             conservarPlan = (Boolean)results[0].getOutputParameters().get('quitarCarrito');
                             clasesBeneficio = (String)results[0].getOutputParameters().get('clasesBeneficio');
-                            clasesBeneficioList = clasesBeneficio.split(','); 
+                            clasesBeneficioList = String.isNotBlank(clasesBeneficio) ? clasesBeneficio.split(',') : new List<String>();
                         }
                         //eliminaProd = false; No eliminar la promo del carrito
                         
@@ -821,9 +951,9 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
 
                         //if ( resultadosObtenidos && clasesBeneficio and ) {                            
                             if((resultadosObtenidos && clasesBeneficioList.contains(promotionClass) && conservarPlan != true)  ){
-                                Boolean planTieneOtraPromo = false; 
+                                Boolean planTieneOtraPromo = false;
                                 System.debug('Se debe eliminar el plan');
-                                List<vlocity_cmt__OrderAppliedPromotionItem__c> segundaOrderAppliedPromos = [SELECT Id, vlocity_cmt__OrderAppliedPromotionId__r.vlocity_cmt__PromotionId__r.name FROM vlocity_cmt__OrderAppliedPromotionItem__c where vlocity_cmt__OrderItemId__c = :orderItemId WITH USER_MODE];
+                                List<vlocity_cmt__OrderAppliedPromotionItem__c> segundaOrderAppliedPromos = [SELECT Id, vlocity_cmt__OrderAppliedPromotionId__c, vlocity_cmt__OrderAppliedPromotionId__r.vlocity_cmt__PromotionId__r.Name FROM vlocity_cmt__OrderAppliedPromotionItem__c WHERE vlocity_cmt__OrderItemId__c = :orderItemId WITH USER_MODE];
                                 if (segundaOrderAppliedPromos != null) {
                                     for (vlocity_cmt__OrderAppliedPromotionItem__c segundaOrderAppliedPromo : segundaOrderAppliedPromos) {
                                         System.debug('Se debe eliminar promoción adicional');
@@ -856,9 +986,63 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                                 // Call the IP via runIntegrationService, and save the output to ipOutput 
                                 ipOutput = (Map<String, Object>)vlocity_cmt.IntegrationProcedureService.runIntegrationService(procedureName, ipInput, ipOptions);
                                 System.debug('ipOutput: ' + ipOutput);
-                                
+
+                            } else if (promotionClass == 'Obsequios de CFM') {
+                                if (!deletingCFMItems) {
+                                deletingCFMItems = true;
+                                try {
+                                System.debug('promotionClass is Obsequios de CFM — deleting all other promos and all products from the cart');
+                                // Step 1: delete all other OrderAppliedPromotions in the cart
+                                List<vlocity_cmt__OrderAppliedPromotion__c> allOtherPromos = [
+                                    SELECT Id
+                                    FROM vlocity_cmt__OrderAppliedPromotion__c
+                                    WHERE vlocity_cmt__OrderId__c = :cartId
+                                    WITH USER_MODE
+                                ];
+                                System.debug('allOtherPromos to delete: ' + allOtherPromos.size());
+                                for (vlocity_cmt__OrderAppliedPromotion__c otherPromo : allOtherPromos) {
+                                    Map<String, Object> deletePromoInput = new Map<String, Object>();
+                                    Map<String, Object> deletePromoOutput = new Map<String, Object>();
+                                    Map<String, Object> deletePromoOptions = new Map<String, Object>();
+                                    deletePromoInput.put('cartId', cartId);
+                                    deletePromoInput.put('price', false);
+                                    deletePromoInput.put('id', otherPromo.Id);
+                                    deletePromoInput.put('externalRefresh', true);
+                                    System.debug('Deleting OrderAppliedPromotion: ' + otherPromo.Id);
+                                    vlocity_cmt.CpqAppHandler cpqHandler = new vlocity_cmt.CpqAppHandler();
+                                    cpqHandler.invokeMethod('deleteAppliedPromoItems', deletePromoInput, deletePromoOutput, deletePromoOptions);
+                                    System.debug('deleteAppliedPromoItems output: ' + deletePromoOutput);
+                                }
+                                // Step 2: delete all OrderItems via CPQ IP (needed for Vlocity triggers).
+                                // Re-entrant hook calls from within this IP are blocked by deletingCFMItems guard above.
+                                List<OrderItem> allOrderItems = [
+                                    SELECT Id
+                                    FROM OrderItem
+                                    WHERE OrderId = :cartId
+                                    WITH USER_MODE
+                                ];
+                                System.debug('allOrderItems to delete: ' + allOrderItems.size());
+                                for (OrderItem oi : allOrderItems) {
+                                    try {
+                                        Map<String, Object> deleteItemInput = new Map<String, Object>();
+                                        Map<String, Object> deleteItemOptions = new Map<String, Object>();
+                                        deleteItemInput.put('cartId', cartId);
+                                        deleteItemInput.put('id', oi.Id);
+                                        deleteItemInput.put('price', false);
+                                        deleteItemInput.put('validate', false);
+                                        ipOutput = (Map<String, Object>) vlocity_cmt.IntegrationProcedureService.runIntegrationService('CPQ_DeleteItemFromCart', deleteItemInput, deleteItemOptions);
+                                        System.debug('CPQ_DeleteItemFromCart output: ' + ipOutput);
+                                    } catch (Exception ex) {
+                                        System.debug('CPQ_DeleteItemFromCart failed for OrderItem ' + oi.Id + ': ' + ex.getMessage());
+                                    }
+                                }
+                                } finally {
+                                    deletingCFMItems = false;
+                                }
+                                } else {
+                                    System.debug('Skipping CFM deletion — already in progress (re-entrant call)');
+                                }
                             }
-                    	//}
                     }
                 }
                 if(orderItemPlan != null) {
@@ -1035,6 +1219,13 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
                 System.debug('--- myDMLRowsLimit: ' + myDMLRowsLimit +' of ' +globalDMLRowsLimit + ' - Remaining: ' + (globalDMLRowsLimit - myDMLRowsLimit));
                 */
             }
+            else if (methodName == 'getCartLineItemPrices.PreInvoke'){
+                //HU 826417: la pantalla recalcula precios después de agregar un plan, en una transacción aparte.
+                //Se reemplaza la SIM Card por eSIM antes de ese cálculo.
+                if(!swappingSimToEsim && input.get('cartId') != null){
+                    swapSimCardToEsim((Id)input.get('cartId'));
+                }
+            }
             return true;
         }
         catch (Exception ex)
@@ -1043,5 +1234,170 @@ global with sharing class CpqAppHandlerHookCustomImpl implements vlocity_cmt.Vlo
             System.debug('--- Stack Trace: ' + ex.getStackTraceString());
             throw ex;
         }
+    }
+
+    /*
+    HU 826417: en una migración pre-pos con eSIM (SimType = eSIM en FVU_MigraData__c) el carrito debe quedar solo con eSIM.
+    Las reglas de elegibilidad no aplican a hijos del bundle, por eso se reemplaza la SIM Card por eSIM dentro de su
+    "Escoja SIM Card" con los IP CPQ_DeleteItemFromCart y CPQ_AddChildItems.
+    Se ejecuta en getCartLineItemPrices.PreInvoke y getCartsItems.PreInvoke, no en el alta del plan: sumado a postCartsItems
+    supera el límite de 100 SOQL del namespace vlocity_cmt (medido: alta 57, borrado 12, alta de hijo 12, precios 19).
+    Si el grupo ya tiene eSIM (p. ej. el asesor agregó la SIM Card a mano) solo se borra la SIM Card.
+    Solo actúa en órdenes Draft y no en Plan + Terminal (ATT), donde el catálogo no permite eSIM.
+    Si no se puede agregar la eSIM, se vuelve a poner la SIM Card.
+    Al final se recalculan precios con price = true; sin ese parámetro el IP solo lee los precios y la eSIM queda sin valores.
+    Si algo falla no se interrumpe la operación del carrito: la orden queda con SIM Card como hasta ahora.
+    */
+    @TestVisible
+    private static void swapSimCardToEsim(Id cartId)
+    {
+        if(cartId.getSObjectType() != Order.SObjectType){
+            return;
+        }
+        List<Order> orders = [SELECT Pricebook2Id, Status, FVU_PurchaseType__c, FVU_MigraData__c FROM Order WHERE Id = :cartId WITH USER_MODE LIMIT 1];
+        //Solo carritos en Draft; en Plan + Terminal (ATT) el flow CAT_OrderItemProductType no permite eSIM
+        if(orders.isEmpty() || orders[0].Status != 'Draft' || orders[0].FVU_PurchaseType__c == PLAN_AND_TERMINAL_PURCHASE_TYPE
+           || !isEsimSale(orders[0].FVU_MigraData__c)){
+            return;
+        }
+        List<OrderItem> simCardItems = new List<OrderItem>();
+        //Grupos "Escoja SIM Card" que ya tienen eSIM: ahí solo se borra la SIM Card
+        Set<String> groupsWithEsim = new Set<String>();
+        for(OrderItem simItem : [SELECT Id, vlocity_cmt__ParentItemId__c, Product2.ProductCode FROM OrderItem
+                                 WHERE OrderId = :cartId AND Product2.ProductCode IN (:SIM_CARD_PRODUCT_CODE, :ESIM_PRODUCT_CODE) WITH USER_MODE]){
+            if(simItem.Product2.ProductCode == SIM_CARD_PRODUCT_CODE){
+                simCardItems.add(simItem);
+            } else {
+                groupsWithEsim.add(simItem.vlocity_cmt__ParentItemId__c);
+            }
+        }
+        if(simCardItems.isEmpty()){
+            return;
+        }
+        Id esimEntryId;
+        Id simCardEntryId;
+        for(PricebookEntry entry : [SELECT Id, Product2.ProductCode FROM PricebookEntry
+                                    WHERE Pricebook2Id = :orders[0].Pricebook2Id AND Product2.ProductCode IN (:SIM_CARD_PRODUCT_CODE, :ESIM_PRODUCT_CODE) AND IsActive = true
+                                    WITH USER_MODE]){
+            if(entry.Product2.ProductCode == ESIM_PRODUCT_CODE){
+                esimEntryId = entry.Id;
+            } else {
+                simCardEntryId = entry.Id;
+            }
+        }
+        if(esimEntryId == null){
+            System.debug('--- swapSimCardToEsim: no hay PricebookEntry activa de eSIM en la lista de precios de la orden');
+            return;
+        }
+        Set<String> parentReferences = new Set<String>();
+        for(OrderItem simCardItem : simCardItems){
+            parentReferences.add(simCardItem.vlocity_cmt__ParentItemId__c);
+        }
+        //El padre de la SIM Card es el "Escoja SIM Card" del plan
+        Map<String, OrderItem> simGroupByReference = new Map<String, OrderItem>();
+        for(OrderItem simGroupItem : [SELECT Id, PricebookEntryId, vlocity_cmt__ProductHierarchyPath__c, vlocity_cmt__AssetReferenceId__c
+                                      FROM OrderItem WHERE OrderId = :cartId AND vlocity_cmt__AssetReferenceId__c IN :parentReferences WITH USER_MODE]){
+            simGroupByReference.put(simGroupItem.vlocity_cmt__AssetReferenceId__c, simGroupItem);
+        }
+
+        swappingSimToEsim = true;
+        try{
+            Boolean cartChanged = false;
+            for(OrderItem simCardItem : simCardItems){
+                OrderItem simGroupItem = simGroupByReference.get(simCardItem.vlocity_cmt__ParentItemId__c);
+                if(simGroupItem == null){
+                    continue;
+                }
+                Map<String, Object> deleteInput = new Map<String, Object>{
+                    'cartId' => cartId, 'id' => simCardItem.Id, 'price' => false, 'validate' => false
+                };
+                Map<String, Object> deleteOutput = (Map<String, Object>)vlocity_cmt.IntegrationProcedureService.runIntegrationService('CPQ_DeleteItemFromCart', deleteInput, new Map<String, Object>());
+                System.debug('--- swapSimCardToEsim CPQ_DeleteItemFromCart output: ' + deleteOutput);
+                cartChanged = true;
+                if(groupsWithEsim.contains(simCardItem.vlocity_cmt__ParentItemId__c)){
+                    continue;
+                }
+
+                if(addChildToSimGroup(cartId, simGroupItem, esimEntryId)){
+                    groupsWithEsim.add(simCardItem.vlocity_cmt__ParentItemId__c);
+                } else if(simCardEntryId != null){
+                    //Compensación: si no se pudo agregar la eSIM se vuelve a poner la SIM Card para no dejar el grupo vacío
+                    addChildToSimGroup(cartId, simGroupItem, simCardEntryId);
+                }
+            }
+            if(cartChanged){
+                Map<String, Object> priceOutput = (Map<String, Object>)vlocity_cmt.IntegrationProcedureService.runIntegrationService('CPQ_GetCartLineItemPrices', new Map<String, Object>{'cartId' => cartId, 'price' => true}, new Map<String, Object>());
+                System.debug('--- swapSimCardToEsim CPQ_GetCartLineItemPrices output: ' + priceOutput);
+            }
+        }
+        catch(Exception ex){
+            System.debug('--- swapSimCardToEsim Exception: ' + ex.getMessage() + ' ' + ex.getStackTraceString());
+        }
+        finally{
+            swappingSimToEsim = false;
+        }
+    }
+
+    //Agrega un hijo al "Escoja SIM Card" con el mismo input que arma CATAgregarProductosHijosAlCarrito. True si CPQ responde "Añadido" (código 150).
+    private static Boolean addChildToSimGroup(Id cartId, OrderItem simGroupItem, Id pricebookEntryId)
+    {
+        Map<String, Object> parentRecord = new Map<String, Object>{
+            'records' => new List<Object>{ new Map<String, Object>{
+                'Pricebook2Id' => simGroupItem.PricebookEntryId,
+                'productHierarchyPath' => simGroupItem.vlocity_cmt__ProductHierarchyPath__c
+            }}
+        };
+        Map<String, Object> addInput = new Map<String, Object>{
+            'methodName' => 'CPQ_AddChildItems',
+            'cartId' => cartId,
+            'price' => true,
+            'validate' => false,
+            'includeAttachment' => false,
+            'items' => new List<Object>{ new Map<String, Object>{
+                'parentId' => simGroupItem.Id,
+                'parentHierarchyPath' => simGroupItem.vlocity_cmt__ProductHierarchyPath__c,
+                'itemId' => pricebookEntryId,
+                'parentRecord' => parentRecord
+            }}
+        };
+        Map<String, Object> addOutput = (Map<String, Object>)vlocity_cmt.IntegrationProcedureService.runIntegrationService('CPQ_AddChildItems', addInput, new Map<String, Object>());
+        System.debug('--- swapSimCardToEsim CPQ_AddChildItems output: ' + addOutput);
+        return hasMessageCode(addOutput, '150');
+    }
+
+    @TestVisible
+    private static Boolean hasMessageCode(Map<String, Object> ipOutput, String code)
+    {
+        if(ipOutput == null || !(ipOutput.get('messages') instanceof List<Object>)){
+            return false;
+        }
+        for(Object message : (List<Object>)ipOutput.get('messages')){
+            if(message instanceof Map<String, Object> && code.equals(String.valueOf(((Map<String, Object>)message).get('code')))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //FVU_MigraData__c es una lista JSON: [{"ICCID":"...","SimType":"eSIM",...}]
+    @TestVisible
+    private static Boolean isEsimSale(String migraData)
+    {
+        if(String.isBlank(migraData)){
+            return false;
+        }
+        try{
+            Object parsed = JSON.deserializeUntyped(migraData);
+            List<Object> entries = parsed instanceof List<Object> ? (List<Object>)parsed : new List<Object>{parsed};
+            for(Object entry : entries){
+                if(entry instanceof Map<String, Object> && 'eSIM'.equals(((Map<String, Object>)entry).get('SimType'))){
+                    return true;
+                }
+            }
+        }
+        catch(JSONException ex){
+            System.debug('--- isEsimSale: FVU_MigraData__c no es JSON válido: ' + ex.getMessage());
+        }
+        return false;
     }
 }

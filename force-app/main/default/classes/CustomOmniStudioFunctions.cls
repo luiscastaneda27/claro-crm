@@ -72,7 +72,9 @@
         else if (methodName == 'jsonObjToArray')     outputMap.put('result', jsonObjToArray((List<Object>)inputMap.get('arguments')));
         else if (methodName == 'insertNewLineByIndex')     outputMap.put('result', insertNewLineByIndex((List<Object>)inputMap.get('arguments')));
         else if (methodName == 'getNowGMT') 		 outputMap.put('result', getNowGMT());
-         
+        else if (methodName == 'formatTimeToAmPm')            outputMap.put('result', formatTimeToAmPm((List<Object>)inputMap.get('arguments')));
+        else if (methodName == 'evaluarHoraMaximaCancelarCasos')            outputMap.put('result', evaluarHoraMaxima((List<Object>)inputMap.get('arguments')));
+
         return true;
     }
     
@@ -848,4 +850,108 @@
         }
     }
 
+    /**
+    * @description: Dado una determinada fecha, evalua si este momento es mas tarde que una hora parametrizada en el sistema
+    * @author hllanos
+    * @param arguments ->
+    * @return String
+    **/
+    private Boolean evaluarHoraMaxima(List<Object> arguments) {
+        // 1. Obtener los argumentos enviados desde la fórmula del DataRaptor
+        if (arguments == null || arguments.isEmpty() || arguments[0] == null) {
+            return false;
+        }
+
+        try {
+            // Limpiamos el texto para extraer yyyy-MM-dd
+            String inputDateStr = String.valueOf(arguments[0]).left(10);
+            Date fechaConsultada = Date.valueOf(inputDateStr);
+
+            // 2. Leer la hora maxima desde el Custom Metadata Type
+            InterfaceSettings__mdt config = InterfaceSettings__mdt.getInstance('PVU_HoraMaximaCancelacionCasos');
+            String horaConfigurada = (config != null && String.isNotBlank(config.IdCode__c))
+                ? config.IdCode__c.trim()
+                : '22';
+
+            Integer horaMaxima = 22;
+            Integer minutoMaximo = 0;
+
+            if (horaConfigurada.contains(':')) {
+                List<String> partes = horaConfigurada.split(':');
+                horaMaxima = Integer.valueOf(partes[0]);
+                minutoMaximo = Integer.valueOf(partes[1]);
+            } else {
+                horaMaxima = Integer.valueOf(horaConfigurada);
+            }
+
+            // 3. Obtener la Fecha y Hora actual forzando la zona horaria de Colombia
+            Datetime ahora = Datetime.now();
+
+            // Extraer la fecha en Colombia y convertirla a tipo Date para compararla seguro
+            String fechaColombiaStr = ahora.format('yyyy-MM-dd', 'America/Bogota');
+            Date fechaActualColombia = Date.valueOf(fechaColombiaStr);
+
+            Time horaActualColombia = Time.newInstance(
+                Integer.valueOf(ahora.format('H', 'America/Bogota')),
+                Integer.valueOf(ahora.format('m', 'America/Bogota')),
+                0,
+                0
+            );
+
+            Time horaMaximaTime = Time.newInstance(
+                horaMaxima,
+                minutoMaximo,
+                0,
+                0
+            );
+
+            // 4. Evaluar la lógica
+            if (fechaActualColombia > fechaConsultada) {
+                return true;
+            } else if (fechaActualColombia == fechaConsultada && horaActualColombia >= horaMaximaTime) {
+                return true;
+            }
+
+            return false;
+
+        } catch (Exception e) {
+            // Manejo de error si la fecha viene en un formato no parseable por Date.valueOf()
+            System.debug('Error en TimeValidationHelper: ' + e.getMessage());
+            return false;
+        }
+    }
+
+    public static String formatTimeToAmPm(List<Object> arguments) {
+        try {
+            if (arguments == null || arguments.isEmpty() || arguments[0] == null) {
+                return '';
+            }
+
+            String hora = String.valueOf(arguments[0]).trim();
+
+            List<String> partes = hora.split(':');
+
+            Integer horas = Integer.valueOf(partes[0]);
+            Integer minutos = 0;
+
+            if (partes.size() > 1 && String.isNotBlank(partes[1])) {
+                minutos = Integer.valueOf(partes[1]);
+            }
+
+            String periodo = horas >= 12 ? 'PM' : 'AM';
+
+            Integer horas12 = Math.mod(horas, 12);
+            if (horas12 == 0) {
+                horas12 = 12;
+            }
+
+            return String.valueOf(horas12) + ':' +
+                   String.valueOf(minutos).leftPad(2, '0') +
+                   ' ' + periodo;
+
+        } catch (Exception e) {
+            System.debug('Error en formatTimeToAmPm: ' + e.getMessage());
+            return '';
+        }
+    }
 }

@@ -40,7 +40,7 @@ global with sharing class CATGetPromotionsWithLatestAdjustment implements vlocit
 
         vlocity_cmt.CpqAppHandler cpqAppHandlerCall = new vlocity_cmt.CpqAppHandler();
 
-        Object getCartsPromotionsResponse = cpqAppHandlerCall.invokeMethod('getCartsPromotions', new map<String, Object>{'methodName'=>'getCartsPromotions','cartId'=>orderId,'filters'=>'Id:' + promotionIdsStr,'fields'=>'CAT_Type__c,CAT_PromotionClass__c, CAT_Oferta_Retencion__c' }, output, options);
+        Object getCartsPromotionsResponse = cpqAppHandlerCall.invokeMethod('getCartsPromotions', new map<String, Object>{'methodName'=>'getCartsPromotions','cartId'=>orderId,'filters'=>'Id:' + promotionIdsStr,'fields'=>'CAT_Type__c,CAT_PromotionClass__c, CAT_Oferta_Retencion__c,CAT_Obligatorio__c' }, output, options);
 
         System.debug('getCartsPromotionsResponse: ' + getCartsPromotionsResponse);
         String getCartsPromotionsResponseStr = JSON.serialize(getCartsPromotionsResponse);

@@ -69,6 +69,7 @@ global class FVU_CloneOrder implements vlocity_cmt.VlocityOpenInterface2 {
             clonedRecord.FVU_ClonedOrderParent__c = originalOrder.Id;
             clonedRecord.Status = 'Draft';
             clonedRecord.FVU_ClosingReason__c = '';
+            clonedRecord.FVU_RejectionDate__c = null;
 
             // Reset fields for OM
             clonedRecord.vlocity_cmt__OrderStatus__c = 'Ready To Submit';

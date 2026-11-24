@@ -29,6 +29,7 @@ global with sharing class PVU_IMEIBodyBuilder implements vlocity_cmt.VlocityOpen
         String tipoReporteAbd     = (String) inputMap.get('tipoReporteAbd');
         String usuario     = (String) inputMap.get('usuario');
         String msisdn     = (String) inputMap.get('msisdn');
+        String imsi     = (String) inputMap.get('imsi');
         String fiscalia     = (String) inputMap.get('fiscalia');
         String empleoViolencia     = (String) inputMap.get('empleoViolencia');
         String tipoArma     = (String) inputMap.get('tipoArma');
@@ -54,7 +55,7 @@ global with sharing class PVU_IMEIBodyBuilder implements vlocity_cmt.VlocityOpen
         String aceptaInfoLegal     = (String) inputMap.get('aceptaInfoLegal');
         String usuarioRed     = (String) inputMap.get('usuarioRed');
         Object compList     = inputMap.get('compList');
-
+        
         Map<String, Object> body = new Map<String, Object>();
 
         List<Object> productOrderItemList = new List<Object>();
@@ -148,8 +149,8 @@ global with sharing class PVU_IMEIBodyBuilder implements vlocity_cmt.VlocityOpen
             }
             when 'registroIMEI' {
                 pcList.add(makeCharacteristic('imei', imei));
-                pcList.add(makeCharacteristic('msisdn', null));
-                pcList.add(makeCharacteristic('imsi', null));
+                pcList.add(makeCharacteristic('msisdn', msisdn));
+                pcList.add(makeCharacteristic('imsi', imsi));
             }
             when 'gestionDuplicadosIMEI' {
                 //cargar la lista de duplas
@@ -246,7 +247,6 @@ global with sharing class PVU_IMEIBodyBuilder implements vlocity_cmt.VlocityOpen
         outMap.put('body', body);
         outMap.put('category', category);
         outMap.put('imei', imei);
-
         return JSON.serialize(body);
     }
 

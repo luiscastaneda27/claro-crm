@@ -11,7 +11,8 @@ public with sharing class AI_EngagementInteractionSelector {
         Datetime cutoffTime = Datetime.now().addMinutes(-minutes);
         
         return Database.getQueryLocator([
-            SELECT Id, Status
+         SELECT Id, Status,ExternalIdentifier,Sentiment,
+            AI_Sentiment_Detail__c,AI_Cause__c,AI_Action__c
             FROM EngagementInteraction
             WHERE Status != :COMPLETED_STATUS
             AND CreatedDate <= :cutoffTime

@@ -38,7 +38,6 @@ public with sharing class CATDataExtractionService {
                 Database.executeBatch(batchCompatibidad);
                 if (tipoCarga == 'Compatibilidad'){
                     CATDataUpdateService.updateSuccessLogRecord('Extracción y carga de datos completada con éxito.', objetoControlId,idLogRecord);
-          
                     //Notificacion
                     CATNotificationService.enqueue(objetoControlId);
                 }
@@ -49,7 +48,7 @@ public with sharing class CATDataExtractionService {
                 Set<String> uniqueProductCodes = new Set<String>(prodCodeList);
                 List<String> productCodeList = new List<String>(uniqueProductCodes);
                 Set<String> uniquePromotionCodes ;
-                List<String> promotionCodeList ; 
+                List<String> promotionCodeList = new List<String>();
                 if(promoCodeList != null) {
                     uniquePromotionCodes = new Set<String>(promoCodeList);
                 	promotionCodeList = new List<String>(uniquePromotionCodes);
@@ -57,14 +56,14 @@ public with sharing class CATDataExtractionService {
                 
         
                 // Pre-query all necessary data to reduce SOQL calls
-                Map<String, Product2> productsByCode = getProductsByProductCode(productCodeList);
+                Map<String, Product2> productsByCode = getProductsByProductCode(productCodeList, tipoCarga);
                 Set<Id> productIds = new Set<Id>();
                 for (Product2 prod : productsByCode.values()) {
                     productIds.add(prod.Id);
                     allProductsByIdBatch.put(prod.Id,prod);
                 }
                 
-                Map<String, vlocity_cmt__Promotion__c> promotionsByCode = getPromotionByCode(productCodeList);
+                Map<String, vlocity_cmt__Promotion__c> promotionsByCode = getPromotionByCode(productCodeList, tipoCarga);
                 Set<Id> promotionsIds = new Set<Id>();
                 for (vlocity_cmt__Promotion__c promo : promotionsByCode.values()) {
                     promotionsIds.add(promo.Id);
@@ -74,14 +73,7 @@ public with sharing class CATDataExtractionService {
                 
                 Map<Id, List<vlocity_cmt__RuleAssignment__c>> productRulesByObjectId = getRuleAssignments(productIds);
                 
-                // Promotions and related data
-                List<vlocity_cmt__PromotionItem__c> promoItemList = new List<vlocity_cmt__PromotionItem__c>();
                 Map<Id, Product2> childItemsByParentIdPromo  = new Map<Id, Product2>();
-                if(promoCodeList != null) {
-                    promoItemList = getPromotionItemsPromo(promotionCodeList,productCodeList);
-                }
-                
-      
                 System.debug('+++promotionsIds: '+ promotionsIds);
                 childItemsByParentIdPromo = getProductChildItemsPromo(promotionsIds);
                 Set<Id> promoChildProductIds = new Set<Id>();
@@ -121,57 +113,56 @@ public with sharing class CATDataExtractionService {
                 System.debug('allProductsByIdBatch: '+ allProductsByIdBatch.size());
                 Map<String, vlocity_cmt__ProductChildItem__c> parentProductByChildProductCodeBatch = getParentProductByChildProductCode(productsByCode,childItemsByParentId, childItemsByParentIdPromo);
                 
-                Set<Id> promotionIds = new Set<Id>();
-                Set<Id> promoItemIds = new Set<Id>();
-                for(vlocity_cmt__PromotionItem__c promoItem : promoItemList){
-                    promotionIds.add(promoItem.vlocity_cmt__PromotionId__c);
-                }
-                List<vlocity_cmt__PromotionItem__c> promoItemListProduct = getPromotionItemsProduct(productCodeList);
-                for(vlocity_cmt__PromotionItem__c promoItem : promoItemListProduct){
-                    promotionIds.add(promoItem.vlocity_cmt__PromotionId__c);
-         
-                    promoItemList.add(promoItem); //se agrega promoitem de las promociones asociadas al plan
-                }
-       
-                
-                Map<Id, List<vlocity_cmt__PriceListEntry__c>> priceListEntriesByPromoId = getPriceListEntriesByPromotion(promotionIds,productCodeList,promotionCodeList,promoItemList);
-                // Iterate over the values of the priceListEntriesByPromoId map
-                Set<Id> pleIds = new Set<Id>();
-                for (List<vlocity_cmt__PriceListEntry__c> priceListEntries : priceListEntriesByPromoId.values()) {
-                    for (vlocity_cmt__PriceListEntry__c ple : priceListEntries) {
-                        pleIds.add(ple.Id);
-                    }
-                }
-                
-                Map<Id, List<vlocity_cmt__RuleAssignment__c>> pleRulesByObjectId = getRuleAssignments(pleIds);
-                Map<Id, List<vlocity_cmt__RuleAssignment__c>> promotionRulesByObjectId = getRuleAssignments(promotionIds);
-                
-                 // Attributes and related data
-                Map<Id, List<vlocity_cmt__AttributeAssignment__c>> attributesByObjectId = getAttributeAssignments(productIds, productsByCode, childItemsByParentIdPromo);
+                // Attributes and related data
+                //Map<Id, List<vlocity_cmt__AttributeAssignment__c>> attributesByObjectId = getAttributeAssignments(productIds, productsByCode, childItemsByParentIdPromo);
                 
                 // Compatibility and related data
                 Map<Id, List<vlocity_cmt__CatalogProductRelationship__c>> compatibilityByObjectId = getProductCompatibility(productIds, childItemsByParentIdPromo);
                 
-                // Prices
-                Map<String, List<vlocity_cmt__PriceListEntry__c>> pricesByProductCode = getProductPrices(productCodeList, childItemsByParentIdPromo );
-                
-                Integer batchSize = 50;
-                CATAttributeExportBatch batchJob = new CATAttributeExportBatch(allProductsByIdBatch, parentProductByChildProductCodeBatch);
-                Database.executeBatch(batchJob,batchSize);
-                
-                extractAndLoadProducts(productsByCode, childItemsByParentId, productRulesByObjectId, promotionsByCode,childItemsByParentIdPromo); 
-               // extractAndLoadProductCompatibility(compatibilityByObjectId, productsByCode);   
-                extractAndLoadProductPrices(pricesByProductCode);
-                extractAndLoadPromotions(promoItemList, priceListEntriesByPromoId, promotionRulesByObjectId,pleRulesByObjectId);
-                //extractAndLoadProductAttributes(attributesByObjectId, productsByCode,childItemsByParentId, childItemsByParentIdPromo);
-                // Lógica para registrar la finalización exitosa.
-                
+                // HOTFIX HDU 818659: La consulta de precios (getProductPrices) y las cargas de
+                // CAT_PreciosProductosExportados__c y CAT_PromocionesExportadas__c
+                // se difieren a una cadena de batches troceados. Así se evitan los
+                // límites acumulados de la transacción síncrona del finish() del purge batch:
+                //   - "Too many query rows: 50001" (la query de precios cruzaba el tope)
+                //   - "Too many DML rows: 10001"  (productos + precios + promociones en una transacción)
+                // Solo productos queda síncrono: por sí solo está bajo el límite.
+                // Cadena: productos (sync) -> CATProductPricesExportBatch -> CATPromotionsExportBatch
+                //         -> calculateAndUpdateData (en el finish del batch de promociones).
+                // Se arma la lista de códigos a precificar (productos + productos de promos tipo plan),
+                // equivalente al filtro que usaba getProductPrices (prodCodeList + childItemsByParentIdPromo).
+                Set<String> priceCodeSet = new Set<String>(productCodeList);
+                for (Product2 prodPromo : childItemsByParentIdPromo.values()) {
+                    if (prodPromo.ProductCode != null) {
+                        priceCodeSet.add(prodPromo.ProductCode);
+                    }
+                }
+                List<String> priceCodeList = new List<String>(priceCodeSet);
+
+                // Carga síncrona de volumen seguro (solo productos).
+                extractAndLoadProducts(productsByCode, childItemsByParentId, productRulesByObjectId, promotionsByCode,childItemsByParentIdPromo);
+               // extractAndLoadProductCompatibility(compatibilityByObjectId, productsByCode);
+
                 System.debug('+++queries at the end: '+ Limits.getQueries());
-                    //return listResponse;
-                    //Se llama a la clase que maneja la actualización de precios
-                   System.debug('+++promoItemList: '+ promoItemList);
-                CATDataUpdateService.calculateAndUpdateData(objetoControlId,idLogRecord,productCodeList,pricesByProductCode,promoItemList);
-                //CATDataUpdateService.calculateAndUpdateData(objetoControlId,productCodeList,pricesByProductCode);  
+
+                // HOTFIX HDU 825558: Se encadena todo en serie para que la notificación de
+                // "finalizado" (enqueue dentro de calculateAndUpdateData) solo se dispare cuando
+                // TODOS los batches terminaron. Antes CATAttributeExportBatch se lanzaba suelto y
+                // corría en paralelo vía Flex Queue; la cadena de precios podía terminar y notificar
+                // antes de que atributos insertara CAT_AtributosProductosExportados__c, dejando un
+                // conteo incompleto para el consumo externo vía Bulk API.
+                // Cadena: atributos -> (finish) precios -> (finish) promociones -> (finish) calculateAndUpdateData.
+                Integer batchSize = 50;
+                CATAttributeExportBatch batchJob = new CATAttributeExportBatch(
+                    allProductsByIdBatch,
+                    parentProductByChildProductCodeBatch,
+                    priceCodeList,
+                    objetoControlId,
+                    idLogRecord,
+                    productCodeList,
+                    promotionCodeList,
+                    tipoCarga
+                );
+                Database.executeBatch(batchJob, batchSize);
                // String successLog = createSuccessLogRecord('Extracción y carga de datos completada con éxito.', objetoControlId,fechaInicio);
                   String resultadoProceso = 'Éxito';
                   System.debug('[SUCCESS] El proceso de extracción y carga de datos ha finalizado correctamente.');
@@ -259,15 +250,29 @@ public with sharing class CATDataExtractionService {
 	}
     
     
-     private static Map<String, Product2> getProductsByProductCode(List<String> prodCodeList) {
-        List<Product2> productList = [
-            SELECT Id, Name, ProductCode, vlocity_cmt__Type__c,CAT_PrecioOneTime__c,CAT_Oferta_Retencion__c,vlocity_cmt__SpecificationSubType__c, vlocity_cmt__SubType__c, Description, Short_Description__c, Family,
-                   vlocity_cmt__SellingEndDate__c, CAT_Canales__c, CAT_Proceso_Negocio__c, vlocity_cmt__SellingStartDate__c,
-                   vlocity_cmt__IsOrderable__c, IsActive
-            FROM Product2
-            WHERE ProductCode IN :prodCodeList
-            WITH SECURITY_ENFORCED
-        ];
+     private static Map<String, Product2> getProductsByProductCode(List<String> prodCodeList, String tipoCarga) {
+        Datetime fechaLimiteExtract = Date.today().addDays(-2);
+        List<Product2> productList;
+        if (tipoCarga == 'Total') {
+            productList = [
+                SELECT Id, Name, ProductCode, vlocity_cmt__Type__c,CAT_PrecioOneTime__c,CAT_Oferta_Retencion__c,vlocity_cmt__SpecificationSubType__c, vlocity_cmt__SubType__c, Description, Short_Description__c, Family,
+                       vlocity_cmt__SellingEndDate__c, CAT_Canales__c, CAT_Proceso_Negocio__c, vlocity_cmt__SellingStartDate__c,
+                       vlocity_cmt__IsOrderable__c, IsActive
+                FROM Product2
+                WHERE ProductCode IN :prodCodeList
+                AND (IsActive = true OR (IsActive = false AND CAT_fecha_inactivacion_Extract__c >= :fechaLimiteExtract))
+                WITH SECURITY_ENFORCED
+            ];
+        } else {
+            productList = [
+                SELECT Id, Name, ProductCode, vlocity_cmt__Type__c,CAT_PrecioOneTime__c,CAT_Oferta_Retencion__c,vlocity_cmt__SpecificationSubType__c, vlocity_cmt__SubType__c, Description, Short_Description__c, Family,
+                       vlocity_cmt__SellingEndDate__c, CAT_Canales__c, CAT_Proceso_Negocio__c, vlocity_cmt__SellingStartDate__c,
+                       vlocity_cmt__IsOrderable__c, IsActive
+                FROM Product2
+                WHERE ProductCode IN :prodCodeList
+                WITH SECURITY_ENFORCED
+            ];
+        }
         Map<String, Product2> productMap = new Map<String, Product2>();
         for (Product2 prod : productList) {
             productMap.put(prod.ProductCode, prod);
@@ -276,15 +281,29 @@ public with sharing class CATDataExtractionService {
         return productMap;
     }
     
-    private static Map<String, vlocity_cmt__Promotion__c> getPromotionByCode(List<String> prodCodeList) {
-        List<vlocity_cmt__Promotion__c> promotionList = [
-            SELECT Id, Name, vlocity_cmt__Code__c, vlocity_cmt__Description__c, vlocity_cmt__EffectiveStartDate__c, 
-            vlocity_cmt__EffectiveEndDate__c,CAT_Oferta_Retencion__c,CAT_PromotionClass__c,CAT_Type__c ,  CAT_Canales__c, CAT_Proceso_Negocio__c, 
-            vlocity_cmt__IsOrderable__c, vlocity_cmt__IsActive__c 
-            FROM vlocity_cmt__Promotion__c 
-            WHERE vlocity_cmt__Code__c IN :prodCodeList AND CAT_PromotionClass__c = 'Bundle'
-            WITH SECURITY_ENFORCED
-        ]; 
+    private static Map<String, vlocity_cmt__Promotion__c> getPromotionByCode(List<String> prodCodeList, String tipoCarga) {
+        Datetime fechaLimiteExtract = Date.today().addDays(-2);
+        List<vlocity_cmt__Promotion__c> promotionList;
+        if (tipoCarga == 'Total') {
+            promotionList = [
+                SELECT Id, Name, vlocity_cmt__Code__c, vlocity_cmt__Description__c, vlocity_cmt__EffectiveStartDate__c, 
+                vlocity_cmt__EffectiveEndDate__c,CAT_Oferta_Retencion__c,CAT_PromotionClass__c,CAT_Type__c ,  CAT_Canales__c, CAT_Proceso_Negocio__c, 
+                vlocity_cmt__IsOrderable__c, vlocity_cmt__IsActive__c 
+                FROM vlocity_cmt__Promotion__c 
+                WHERE vlocity_cmt__Code__c IN :prodCodeList AND CAT_PromotionClass__c = 'Bundle'
+                AND (vlocity_cmt__IsActive__c = true OR (vlocity_cmt__IsActive__c = false AND CAT_fecha_inactivacion_Extract__c >= :fechaLimiteExtract))
+                WITH SECURITY_ENFORCED
+            ];
+        } else {
+            promotionList = [
+                SELECT Id, Name, vlocity_cmt__Code__c, vlocity_cmt__Description__c, vlocity_cmt__EffectiveStartDate__c, 
+                vlocity_cmt__EffectiveEndDate__c,CAT_Oferta_Retencion__c,CAT_PromotionClass__c,CAT_Type__c ,  CAT_Canales__c, CAT_Proceso_Negocio__c, 
+                vlocity_cmt__IsOrderable__c, vlocity_cmt__IsActive__c 
+                FROM vlocity_cmt__Promotion__c 
+                WHERE vlocity_cmt__Code__c IN :prodCodeList AND CAT_PromotionClass__c = 'Bundle'
+                WITH SECURITY_ENFORCED
+            ];
+        } 
         Map<String, vlocity_cmt__Promotion__c> promotionMap = new Map<String, vlocity_cmt__Promotion__c>();
         for (vlocity_cmt__Promotion__c promo : promotionList) {
             promotionMap.put(promo.vlocity_cmt__Code__c, promo);
@@ -520,44 +539,8 @@ public with sharing class CATDataExtractionService {
         return mapByObjectId;
     }
     
-    private static Map<String, List<vlocity_cmt__PriceListEntry__c>> getProductPrices(List<String> prodCodeList, Map<Id, Product2> childItemsByParentIdPromo) {
-        List<String> newProdCodeList = new List<String>();
-        for (Product2 prod : childItemsByParentIdPromo.values()) {
-            // Add the Id of each Product2 record to the set
-            newProdCodeList.add(prod.ProductCode);
-        }
-        System.debug('++newProdCodeList: '+ newProdCodeList);
-        List<vlocity_cmt__PriceListEntry__c> priceListEntries = [
-            SELECT vlocity_cmt__ProductId__r.ProductCode,vlocity_cmt__ProductId__r.vlocity_cmt__Type__c, vlocity_cmt__PriceListName__c, vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c, vlocity_cmt__DisplayText__c,
-                   vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c,
-                   vlocity_cmt__PricingElementAmount__c, vlocity_cmt__EffectiveFromDate__c
-            FROM vlocity_cmt__PriceListEntry__c
-            WHERE (vlocity_cmt__ProductId__r.ProductCode IN :prodCodeList OR vlocity_cmt__ProductId__r.ProductCode IN :newProdCodeList)
-            AND vlocity_cmt__IsActive__c = true
-            AND vlocity_cmt__PricingElementId__c != null
-            AND vlocity_cmt__PricingElementId__r.vlocity_cmt__AdjustmentValue__c = null
-            AND vlocity_cmt__IsOverride__c	= false
-            AND ((vlocity_cmt__EffectiveFromDate__c <= TODAY AND (vlocity_cmt__EffectiveUntilDate__c >= TODAY OR vlocity_cmt__EffectiveUntilDate__c = null))
-            OR (vlocity_cmt__EffectiveFromDate__c > TODAY))
-            WITH SECURITY_ENFORCED
-        ];
-        System.debug('++priceListEntries: '+ priceListEntries.size());
+    // HOTFIX HDU 818659: getProductPrices se movió a CATProductPricesExportBatch (consulta por chunk).
 
-        Map<String, List<vlocity_cmt__PriceListEntry__c>> pricesByCode = new Map<String, List<vlocity_cmt__PriceListEntry__c>>();
-        for (vlocity_cmt__PriceListEntry__c ple : priceListEntries) {
-            String productCode = ple.vlocity_cmt__ProductId__r.ProductCode;
-            if(!pricesByCode.containsKey(productCode)) {
-                pricesByCode.put(productCode, new List<vlocity_cmt__PriceListEntry__c>());
-            }
-            pricesByCode.get(productCode).add(ple);
-        }
-        System.debug('++pricesByCode: '+ pricesByCode.size());
-        
-        return pricesByCode;
-    }
-
-
-     
     /**
      * @description Extracción y carga de datos de productos en CAT_ProductosExportados__c.
      * @return void
@@ -661,170 +644,11 @@ public with sharing class CATDataExtractionService {
         }
       }    
 
-    /**
-     * @description Extracción y carga de datos de promociones en CAT_PromocionesExportadas__c.
-     * @return void
-     */
-    private static void extractAndLoadPromotions(List<vlocity_cmt__PromotionItem__c> promoItemList, Map<Id, List<vlocity_cmt__PriceListEntry__c>> priceListEntriesByPromoId, Map<Id, List<vlocity_cmt__RuleAssignment__c>> promotionRulesByObjectId,Map<Id, List<vlocity_cmt__RuleAssignment__c>> pleByObjectId ) {
-        List<CAT_PromocionesExportadas__c> promocionesExportadas = new List<CAT_PromocionesExportadas__c>();
-        System.debug('++++pleByObjectId:'+ pleByObjectId);
-        System.debug('++promoItemList.size() '+ promoItemList.size());
-        for (vlocity_cmt__PromotionItem__c promoItem : promoItemList) {
-            Id currentPromoId = promoItem.Id;
-            List<vlocity_cmt__PriceListEntry__c> relatedPriceListEntries = priceListEntriesByPromoId.get(currentPromoId);
-            
-            if (relatedPriceListEntries != null && !relatedPriceListEntries.isEmpty()) {
-                
-                //promo items con pricelist entries asociados
-                for (vlocity_cmt__PriceListEntry__c eachPricelistentry : relatedPriceListEntries) { 
-                    CAT_PromocionesExportadas__c infoPromoExportada = new CAT_PromocionesExportadas__c();
-                    System.debug('+++relatedPriceListEntries.size():' + relatedPriceListEntries.size());
-                    System.debug('eachPricelistentry.vlocity_cmt__PricingElementId__r.vlocity_cmt__AdjustmentValue__c: '+ eachPricelistentry.vlocity_cmt__PricingElementId__r.vlocity_cmt__AdjustmentValue__c);
-                    //CAT_PromocionesExportadas__c infoPromoExportada = new CAT_PromocionesExportadas__c();
-                    
-                    infoPromoExportada.CAT_NombrePromocion__c = promoItem.vlocity_cmt__PromotionId__r.Name;
-                    infoPromoExportada.CAT_CodigoPromocion__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__Code__c;
-                    infoPromoExportada.CAT_DescripcionPromocion__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__Description__c;
-                    infoPromoExportada.CAT_PromocionOrderable__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__IsOrderable__c;
-                    infoPromoExportada.CAT_PromocionActivo__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__IsActive__c;
-                    infoPromoExportada.CAT_TipoPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_Type__c;
-                    infoPromoExportada.CAT_CardinalidadDefault__c = promoItem.vlocity_cmt__Quantity__c;
-                    infoPromoExportada.CAT_CardinalidadMaxima__c = promoItem.vlocity_cmt__MaxQuantity__c;
-                    infoPromoExportada.CAT_CardinalidadMinima__c = promoItem.vlocity_cmt__MinQuantity__c;
-                    infoPromoExportada.CAT_InicioVigenciaPromocion__c = promoItem.vlocity_cmt__EffectiveFromDate__c;
-                    infoPromoExportada.CAT_FinVigenciaPromocion__c = promoItem.vlocity_cmt__EffectiveUntilDate__c;
-                    infoPromoExportada.CAT_TipoBeneficioPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_PromotionClass__c;
-                    infoPromoExportada.CAT_DescPrimerMesPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_FirstMonthDiscount__c;
-                    infoPromoExportada.CAT_PcntPrimerMesPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_FirstMonthDiscountPercent__c;
-                    infoPromoExportada.CAT_ProcesosNegocioPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_Proceso_Negocio__c;
-                    infoPromoExportada.CAT_NombreProductoPromocion__c = promoItem.vlocity_cmt__ProductId__r.Name;
-                    infoPromoExportada.CAT_CodigoProductoPromocion__c = promoItem.vlocity_cmt__ProductId__r.ProductCode;
-                    infoPromoExportada.CAT_TipoProductoPromocion__c = promoItem.vlocity_cmt__ProductId__r.vlocity_cmt__Type__c;
-                    infoPromoExportada.CAT_CodigoListaPrecioPrecios__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c;
-                    infoPromoExportada.CAT_CanalAsignadoPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_Canales__c;
-                    infoPromoExportada.CAT_Descripcion__c = promoItem.vlocity_cmt__Description__c;
-                    System.debug('oferta retencion: '+ promoItem.vlocity_cmt__PromotionId__r.CAT_Oferta_Retencion__c);
-                    infoPromoExportada.CAT_Oferta_Retencion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_Oferta_Retencion__c;                    
-                
-                    // Context Rules
-                    if (promotionRulesByObjectId.containsKey(currentPromoId)) {
-                        vlocity_cmt__RuleAssignment__c rule = promotionRulesByObjectId.get(currentPromoId)[0];
-                        infoPromoExportada.CAT_ReglaCtxProducto__c = rule.vlocity_cmt__RuleId__r.Name;
-                        infoPromoExportada.CAT_DescripcionReglaCtxProducto__c = rule.vlocity_cmt__RuleId__r.vlocity_cmt__Description__c;
-                    } 
-                    //reglas elegibilidad pleByObjectId
-                  //  if (relatedPriceListEntries != null && !relatedPriceListEntries.isEmpty()) {
-                      //  for (vlocity_cmt__PriceListEntry__c eachPricelistentry : relatedPriceListEntries) {
-                     System.debug('+++eachPricelistentry: '+ eachPricelistentry.Id);
-                      if(pleByObjectId.containsKey(eachPricelistentry.Id)) {
-                          Boolean hayRegla = true;
-                          vlocity_cmt__RuleAssignment__c ruleInstance = pleByObjectId.get(eachPricelistentry.Id)[0];
-                          System.debug('+++ruleInstance: '+ ruleInstance);
-                          infoPromoExportada.CAT_NombreReglaElegibilidadProd__c = ruleInstance.vlocity_cmt__RuleId__r.Name;
-                          infoPromoExportada.CAT_DescReglaElegProd__c = ruleInstance.vlocity_cmt__RuleId__r.vlocity_cmt__Description__c;
-                          System.debug('+++hayRegla: '+ hayRegla);
-                      }
-                    // PriceListEntry info
-                    
-                    infoPromoExportada.CAT_DisplayNameAjustePromocion__c = eachPricelistentry.vlocity_cmt__DisplayText__c;
-                    infoPromoExportada.CAT_TipoAjuste__c = eachPricelistentry.vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__AdjustmentMethod__c;
-                    infoPromoExportada.CAT_ValorOverridePrecioPromocion__c = eachPricelistentry.vlocity_cmt__IsOverride__c;
-                    infoPromoExportada.CAT_InicioVigenciaAjustePromocion__c = eachPricelistentry.vlocity_cmt__EffectiveFromDate__c;
-                    infoPromoExportada.CAT_FinVigAj__c = eachPricelistentry.vlocity_cmt__EffectiveUntilDate__c;
-                    infoPromoExportada.CAT_Frecuencia__c = eachPricelistentry.vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c;
-                    if(eachPricelistentry.vlocity_cmt__IsOverride__c){
-                        infoPromoExportada.CAT_ValorAjustePrecioPromocion__c = eachPricelistentry.vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c;
-                    } else {
-                        infoPromoExportada.CAT_ValorAjustePrecioPromocion__c = eachPricelistentry.vlocity_cmt__PricingElementId__r.vlocity_cmt__AdjustmentValue__c;
-                    }
-      
-                    promocionesExportadas.add(infoPromoExportada);
-                     //   }                    
-                   // }                    
-                }
-            } else {
-                CAT_PromocionesExportadas__c infoPromoExportada = new CAT_PromocionesExportadas__c();
-                //promo item sin pricelistentry relacionado
-                infoPromoExportada.CAT_CodigoListaPrecioPrecios__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c;
-                infoPromoExportada.CAT_NombrePromocion__c = promoItem.vlocity_cmt__PromotionId__r.Name;
-                infoPromoExportada.CAT_CodigoPromocion__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__Code__c;
-                infoPromoExportada.CAT_DescripcionPromocion__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__Description__c;
-                infoPromoExportada.CAT_PromocionOrderable__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__IsOrderable__c;
-                infoPromoExportada.CAT_PromocionActivo__c = promoItem.vlocity_cmt__PromotionId__r.vlocity_cmt__IsActive__c;
-                infoPromoExportada.CAT_TipoPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_Type__c;
-                infoPromoExportada.CAT_CardinalidadDefault__c = promoItem.vlocity_cmt__Quantity__c;
-                infoPromoExportada.CAT_CardinalidadMaxima__c = promoItem.vlocity_cmt__MaxQuantity__c;
-                infoPromoExportada.CAT_CardinalidadMinima__c = promoItem.vlocity_cmt__MinQuantity__c;
-                infoPromoExportada.CAT_InicioVigenciaPromocion__c = promoItem.vlocity_cmt__EffectiveFromDate__c;
-                infoPromoExportada.CAT_FinVigenciaPromocion__c = promoItem.vlocity_cmt__EffectiveUntilDate__c;
-                infoPromoExportada.CAT_TipoBeneficioPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_PromotionClass__c;
-                infoPromoExportada.CAT_DescPrimerMesPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_FirstMonthDiscount__c;
-                infoPromoExportada.CAT_PcntPrimerMesPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_FirstMonthDiscountPercent__c;
-                infoPromoExportada.CAT_ProcesosNegocioPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_Proceso_Negocio__c;
-                infoPromoExportada.CAT_NombreProductoPromocion__c = promoItem.vlocity_cmt__ProductId__r.Name;
-                infoPromoExportada.CAT_CodigoProductoPromocion__c = promoItem.vlocity_cmt__ProductId__r.ProductCode;
-                infoPromoExportada.CAT_TipoProductoPromocion__c = promoItem.vlocity_cmt__ProductId__r.vlocity_cmt__Type__c;
-                infoPromoExportada.CAT_CanalAsignadoPromocion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_Canales__c;
-                infoPromoExportada.CAT_Oferta_Retencion__c = promoItem.vlocity_cmt__PromotionId__r.CAT_Oferta_Retencion__c; 
-                promocionesExportadas.add(infoPromoExportada);
-            }
-            
-        }
-        if (!promocionesExportadas.isEmpty()) {
-            insert as user promocionesExportadas;
-            System.debug('Se crearon '+ promocionesExportadas.size() + ' registros en CAT_PromocionesExportadas__c');
-        }
-    }
-    
-     
-    /**
-     * @description Extracción y carga de datos de precios en CAT_PreciosProductosExportados__c.
-     * @return void
-     */
-     private static void extractAndLoadProductPrices(Map<String, List<vlocity_cmt__PriceListEntry__c>> pricesByProductCode) {
-        List<CAT_PreciosProductosExportados__c> preciosProdExportados = new List<CAT_PreciosProductosExportados__c>();
-        Map<String, CAT_PreciosProductosExportados__c> consolidatedRecordsMap = new Map<String, CAT_PreciosProductosExportados__c>();
-        System.debug('+++pricesByProductCode: ' + pricesByProductCode.size());
-        for (String productCode : pricesByProductCode.keySet()) {
-            List<vlocity_cmt__PriceListEntry__c> priceListEntries = pricesByProductCode.get(productCode);
-            for (vlocity_cmt__PriceListEntry__c ple : priceListEntries) {
-                String codePlusPriceList;
-                if(ple.vlocity_cmt__ProductId__r.vlocity_cmt__Type__c == 'Plan' ){
-                    codePlusPriceList = ple.vlocity_cmt__ProductId__r.ProductCode + ple.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c +ple.vlocity_cmt__DisplayText__c;
-                }else {
-                    codePlusPriceList = ple.vlocity_cmt__ProductId__r.ProductCode + ple.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c +ple.vlocity_cmt__DisplayText__c+ple.vlocity_cmt__EffectiveFromDate__c;
-                }
-                String tipoProducto = ple.vlocity_cmt__ProductId__r.vlocity_cmt__Type__c ;
-                CAT_PreciosProductosExportados__c currentConsolidatedRecord;
-                if (!consolidatedRecordsMap.containsKey(codePlusPriceList)) {
-                    currentConsolidatedRecord = new CAT_PreciosProductosExportados__c();
-                    currentConsolidatedRecord.CAT_CodigoProductoPrecios__c = ple.vlocity_cmt__ProductId__r.ProductCode;
-                    currentConsolidatedRecord.CAT_ListaPrecioPrecios__c = ple.vlocity_cmt__PriceListName__c;
-                    currentConsolidatedRecord.CAT_CodigoListaPrecioPrecios__c = ple.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c;
-                    consolidatedRecordsMap.put(codePlusPriceList, currentConsolidatedRecord);
-                } else {
-                    currentConsolidatedRecord = consolidatedRecordsMap.get(codePlusPriceList);
-                }
+    // HOTFIX HDU 818659: extractAndLoadPromotions se movió a CATPromotionsExportBatch.execute()
+    // (inserta CAT_PromocionesExportadas__c por chunk, con el mismo mapeo).
 
-                if (ple.vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c == 'Monthly' || (tipoProducto == 'Handset' || tipoProducto == 'Tech') ){
-                    currentConsolidatedRecord.CAT_NombrePrecioSinImpuestosPrecios__c = ple.vlocity_cmt__DisplayText__c;
-                    currentConsolidatedRecord.CAT_PrecioSinImpuestosPrecios__c = ple.vlocity_cmt__PricingElementAmount__c;
-                    currentConsolidatedRecord.CAT_InicioVigenciaPrecioSinImpPrecios__c = ple.vlocity_cmt__EffectiveFromDate__c;
-                } else {
-                    currentConsolidatedRecord.CAT_NombrePrecioConImpuestosPrecios__c = ple.vlocity_cmt__DisplayText__c;
-                    currentConsolidatedRecord.CAT_PrecioConImpuestosPrecios__c = ple.vlocity_cmt__PricingElementAmount__c;
-                    currentConsolidatedRecord.CAT_InicioVigenciaPrecioConImpPrecios__c = ple.vlocity_cmt__EffectiveFromDate__c;
-                }
-            }
-        }
-        
-        preciosProdExportados.addAll(consolidatedRecordsMap.values());
-        
-        if (!preciosProdExportados.isEmpty()) {
-            insert as user preciosProdExportados;
-            System.debug('Se crearon '+ preciosProdExportados.size() + ' registros en CAT_PreciosProductosExportados__c');
-        }
-    }    
+    // HOTFIX HDU 818659: extractAndLoadProductPrices se movió a CATProductPricesExportBatch.execute()
+    // (consolida e inserta CAT_PreciosProductosExportados__c por chunk, con el mismo mapeo).
 
     /**
      * @description Actualiza un registro de seguimiento de fallo en CAT_SeguimientoProductosExportados__c.

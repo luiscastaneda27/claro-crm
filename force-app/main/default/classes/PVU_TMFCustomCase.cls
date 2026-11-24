@@ -113,7 +113,7 @@ History
                             cas.put(fieldName, dtValue);
                         }else if( fieldDescribe.getType() == Schema.DisplayType.Date){
                             // cas.put(fieldName, (Date) fieldJSON.get('value'));
-                            cas.put(fieldName, Date.valueOf((String) fieldJSON.get('value')));
+                            cas.put(fieldName, Date.valueOf((String) fieldJSON.get('value'))); 
                         }else if( fieldDescribe.getType() == Schema.DisplayType.Boolean){
                             cas.put(fieldName, (Boolean) fieldJSON.get('value'));
                         }else{
@@ -450,6 +450,74 @@ History
     }
 
     @TestVisible
+    // HU 811299 - Canales digitales: el owner del caso debe ser el usuario de integración (contexto de ejecución).
+    // La lista se parametriza en el CMT ApplicationSetting__mdt.PVU_CanalesDigitales__c (registro GeneralConfiguration),
+    // separada por ';'. El CMT es la única fuente de verdad; si viene vacío, ningún canal se trata como digital.
+    // Cache de los canales digitales (en minúsculas) resueltos desde el CMT.
+    private static Set<String> digitalChannelsCache;
+
+    // HU 811299 - Devuelve el set de canales digitales (minúsculas) desde el CMT.
+    @TestVisible
+    private static Set<String> getDigitalChannels(){
+        if(digitalChannelsCache != null){
+            return digitalChannelsCache;
+        }
+        Set<String> result = new Set<String>();
+        ApplicationSetting__mdt setting = ApplicationSetting__mdt.getInstance('GeneralConfiguration');
+        if(setting != null && String.isNotBlank(setting.PVU_CanalesDigitales__c)){
+            for(String canal : setting.PVU_CanalesDigitales__c.split(';')){
+                if(String.isNotBlank(canal)){
+                    result.add(canal.trim().toLowerCase());
+                }
+            }
+        }
+        digitalChannelsCache = result;
+        return digitalChannelsCache;
+    }
+
+    // HU 811299 - Devuelve true si el canal recibido corresponde a un canal digital.
+    @TestVisible
+    private static Boolean isDigitalChannel(Map<String,Object> channel){
+        if(channel == null){ return false; }
+        String channelName = (String) channel.get('name');
+        if(String.isBlank(channelName)){ return false; }
+        return getDigitalChannels().contains(channelName.trim().toLowerCase());
+    }
+
+    // HU 811299 - Resuelve de forma centralizada el OwnerId del Caso para los tres escenarios de creación
+    // (manageCaseByClient, manageCaseBySubscriberNumber, manageCaseByFinancingCode), garantizando el mismo
+    // comportamiento sin importar por qué método enrute insertCaseTMF. Orden de prioridad:
+    //   1) Canal digital              => usuario de integración (contexto de ejecución).
+    //   2) Escenario financiación     => cola FIN_BackAjustesFinanciacion.
+    //   3) Owner de la cuenta ACTIVO  => owner de la cuenta.
+    //   4) Owner de la cuenta INACTIVO:
+    //        - voz 'Portabilidad Out' => cola PVU_MesaPortout (o usuario creador si la cola no existe).
+    //        - otra voz               => usuario que crea el caso.
+    @TestVisible
+    private static Id resolveOwnerId(Map<String,Object> channel, String customerVoice, Id accountOwnerId, Boolean esFinanciacion){
+        if(isDigitalChannel(channel)){
+            return UserInfo.getUserId();
+        }
+        if(esFinanciacion == true){
+            return getQueueIdByName('FIN_BackAjustesFinanciacion');
+        }
+        Boolean ownerActivo = false;
+        if(accountOwnerId != null){
+            List<User> owners = [SELECT Id, IsActive FROM User WHERE Id = :accountOwnerId WITH SYSTEM_MODE LIMIT 1];
+            ownerActivo = !owners.isEmpty() && owners[0].IsActive;
+        }
+        if(ownerActivo){
+            return accountOwnerId;
+        }
+        // Owner inactivo: Portabilidad Out => cola PVU_MesaPortout; cualquier otra voz => usuario que crea el caso.
+        if('Portabilidad Out'.equalsIgnoreCase(customerVoice)){
+            Id mesaPortoutId = getQueueIdByName('PVU_MesaPortout');
+            return mesaPortoutId != null ? mesaPortoutId : UserInfo.getUserId();
+        }
+        return UserInfo.getUserId();
+    }
+
+    @TestVisible
     private static void manageCaseBySubscriberNumber(Case cas, Map<String, Object> inputMap, Map<String, Object> outMap){
         String typeMatchCM = (String) inputMap.get('customerVoice');
         String status = (String) inputMap.get('status');
@@ -475,33 +543,8 @@ History
             cas.put('PVU_MINReporteImei__c', subscriberNumber);
             cas.put('AccountId', ast[0].AccountId);
             cas.put('ContactId', ast[0].Account.vlocity_cmt__PrimaryContactId__c);
-            // Obtener el Owner real del Account
-            Id ownerId = ast[0].Account.OwnerId;
-            
-            // Consultar si el Owner está activo
-            User usr = [
-                SELECT Id, IsActive 
-                FROM User 
-                WHERE Id = :ownerId 
-                WITH SYSTEM_MODE LIMIT 1
-            ];
-            
-            // Obtener QueueId de la cola PVU_MesaPortout
-            Group queue = [
-                SELECT Id 
-                FROM Group 
-                WHERE DeveloperName = 'PVU_MesaPortout' 
-                  AND Type = 'Queue'
-                 WITH SYSTEM_MODE LIMIT 1
-            ];
-            
-            // Si owner está activo => asignar al owner
-            // Si NO está activo => asignar a la cola
-            if (usr.IsActive) {
-                cas.put('OwnerId', ownerId);
-            } else {
-                cas.put('OwnerId', queue.Id);
-            }
+            // HU 811299 - Asignación de owner centralizada (ver resolveOwnerId).
+            cas.put('OwnerId', resolveOwnerId(channel, typeMatchCM, ast[0].Account.OwnerId, false));
             cas.put('Status', status);
             cas.put('Description', description);
             cas.put('PVU_Level1__c', category);
@@ -582,7 +625,8 @@ History
                 //20240229 - FM - HU 656412 - INICIO
                 cas.put('AccountId', cuenta[0].Id);
                 cas.put('ContactId', cuenta[0].vlocity_cmt__PrimaryContactId__c);
-                cas.put('OwnerId',cuenta[0].OwnerId);
+                // HU 811299 - Asignación de owner centralizada (ver resolveOwnerId).
+                cas.put('OwnerId', resolveOwnerId(channel, typeMatchCM, cuenta[0].OwnerId, false));
                 //20240229 - FM - HU 656412 - FIN
                 cas.put('Status', status);
                 cas.put('Description', description);
@@ -663,9 +707,10 @@ History
             }
 
             if (!isError) {
-                // Obtener el ID de la cola 'FIN_BackAjustesFinanciacion'
-                Id queueId = getQueueIdByName('FIN_BackAjustesFinanciacion');
-                if (queueId == null) {
+                // HU 811299 - Asignación de owner centralizada (ver resolveOwnerId). Escenario financiación => esFinanciacion=true.
+                Id ownerToAssign = resolveOwnerId(channel, typeMatchCM, cuenta[0].OwnerId, true);
+                if (ownerToAssign == null) {
+                    // Solo ocurre si la cola FIN_BackAjustesFinanciacion no existe (caso no digital ni Portabilidad Out).
                     outMap.put('message', 'Queue \'FIN_BackAjustesFinanciacion\' not found. Cases cannot be assigned.');
                     outMap.put('status', 'Failed');
                     outMap.put('code', '409');
@@ -673,8 +718,7 @@ History
                 }
                 cas.put('AccountId', cuenta[0].Id);
                 cas.put('ContactId', cuenta[0].vlocity_cmt__PrimaryContactId__c);
-                // Asignar a la cola en lugar del Owner de la cuenta
-                cas.put('OwnerId', queueId);
+                cas.put('OwnerId', ownerToAssign);
                 //20240229 - FM - HU 656412 - FIN
                 cas.put('Status', status);
                 cas.put('Description', description);

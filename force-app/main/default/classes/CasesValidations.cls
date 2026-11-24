@@ -98,9 +98,11 @@ global with sharing class CasesValidations implements vlocity_cmt.VlocityOpenInt
             devolucionDineroObtenerAssetSaldoFin(input, outMap, options); 
         }else if(methodName.equals('devolucionDineroObtenerAssetSaldo')) {
             devolucionDineroObtenerAssetSaldo(input, outMap, options); 
+        }else if(methodName.equals('cancelacionDigitalValidar')) {
+            cancelacionDigitalValidar(input, outMap, options); 
         }
         
-               
+                
         return true;
     }
     
@@ -1133,5 +1135,119 @@ public void cobroErrado( Map<String,Object> input, Map <String,Object> outMap, M
         
         outMap.put('CasesAssets',assetRecords.isEmpty()? new List<Asset>() : new List<Asset> {assetRecords[0]});
         outMap.put('CasesAssetsSize', assetRecords.size());
+    }
+
+    public void cancelacionDigitalValidar(Map<String,Object> input, Map<String,Object> outMap, Map<String,Object> options){
+        String assetId = (String)input.get('AssetId');
+        List<Object> causales = (List<Object>)input.get('Causales');
+         String caseId = (String)input.get('CaseId');
+        List<String> listCausales = new List<String>();
+        if(causales != null){
+            for(Object causal : causales){
+                listCausales.add((String)causal);
+            }
+        }
+
+        List<Case> openCasesCancelacion = new List<Case>();
+        List<Case> openCasesPortOut = new List<Case>();
+        List<Case> openCasesOtros = new List<Case>();
+        Boolean lineaValida = false;
+
+        List<Asset> assets = [SELECT Id, vlocity_cmt__SubscriptionId__r.vlocity_cmt__Status__c, vlocity_cmt__SubscriptionId__r.OM_SubStatus__c FROM Asset WHERE Id = :assetId WITH USER_MODE LIMIT 1];
+
+        if(!assets.isEmpty()){
+            Asset a = assets[0];
+            lineaValida = (a.vlocity_cmt__SubscriptionId__r.vlocity_cmt__Status__c == 'Active') ||
+                         !(a.vlocity_cmt__SubscriptionId__r.vlocity_cmt__Status__c == 'Suspended' && (
+                             a.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Total Mora' ||
+                             a.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Parcial Mora' ||
+                             a.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Robó / Pérdida' ||
+                             a.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Temporal Voluntaria'
+                         ));
+        }
+
+        if(!listCausales.isEmpty()){
+            openCasesCancelacion = [SELECT Id, CaseNumber, Status, PVU_Level3__c, PVU_Order__c, PVU_Order__r.OrderNumber
+                                    FROM Case
+                                    WHERE PVU_Level3__c IN :listCausales
+                                    AND Status IN ('Abierto','En curso')
+                                    AND AssetId = :assetId
+                                    And Id !=:caseId
+                                    WITH USER_MODE
+                                    ORDER BY CreatedDate desc
+                                    LIMIT 1];
+        }
+
+        openCasesPortOut = [SELECT Id, CaseNumber, Status, PVU_Level3__c
+                            FROM Case
+                            WHERE PVU_Level3__c = 'Portabilidad Out'
+                            AND Status IN ('Abierto','En curso')
+                            AND AssetId = :assetId
+                            WITH USER_MODE];
+
+        openCasesOtros = [SELECT Id, CaseNumber, Status, PVU_Level3__c, PVU_Codigo_de_Cierre__c, PVU_Order__c, PVU_Order__r.OrderNumber
+                          FROM Case
+                          WHERE PVU_Level3__c NOT IN ('Cancelación Voluntaria','Cancelación Voluntaria Digital','Portabilidad Out')
+                          AND Status IN ('Abierto','En curso')
+                          AND AssetId = :assetId
+                          WITH USER_MODE];
+
+        Boolean otrosCerrados = false;
+        if(!openCasesOtros.isEmpty()){
+            List<Case> casesToClose = new List<Case>();
+            List<Order> ordersToCancel = new List<Order>();
+            Set<Id> orderIds = new Set<Id>();
+
+            for(Case c : openCasesOtros){
+                if(c.PVU_Order__c != null){
+                    orderIds.add(c.PVU_Order__c);
+                }
+            }
+
+            Map<Id, Order> orderMap = new Map<Id, Order>();
+            if(!orderIds.isEmpty()){
+                orderMap = new Map<Id, Order>([SELECT Id, vlocity_cmt__OrderStatus__c, Status
+                                               FROM Order WHERE Id IN :orderIds WITH USER_MODE]);
+            }
+
+            PVU_MensajesGestiones__mdt msj = [SELECT MensajeArea__c FROM PVU_MensajesGestiones__mdt WHERE Codigo__c = 'CANDIG002' WITH USER_MODE LIMIT 1];
+                    
+
+            for(Case c : openCasesOtros){
+                c.Status = 'Cerrado';
+                c.PVU_Codigo_de_Cierre__c = 'No exitoso';
+                Order relatedOrder = orderMap.get(c.PVU_Order__c);
+                if(relatedOrder != null && (relatedOrder.vlocity_cmt__OrderStatus__c == 'Queued' || relatedOrder.vlocity_cmt__OrderStatus__c == 'Draft')){
+                    c.OM_Orden_Procesada__c = 'No Exitosa';
+                    c.PVU_Observaciones__c = msj.MensajeArea__c
+                        .replace('{0}', c.CaseNumber)
+                        .replace('{1}', c.PVU_Order__r.OrderNumber);
+                    ordersToCancel.add(new Order(
+                        Id = c.PVU_Order__c,
+                        vlocity_cmt__OrderStatus__c = 'Cancelled',
+                        Status = 'Closed'
+                    ));
+                }
+                casesToClose.add(c);
+            }
+
+            if(!ordersToCancel.isEmpty()){
+                update ordersToCancel;
+            }
+            if(!casesToClose.isEmpty()){
+                update casesToClose;
+            }
+            otrosCerrados = true;
+        }
+
+        outMap.put('openCasesCancelacion', openCasesCancelacion);
+        outMap.put('openCasesCancelacionId', openCasesCancelacion.size()>0?openCasesCancelacion[0].Id: null);
+        outMap.put('openCasesCancelacionSize', openCasesCancelacion.size());
+        outMap.put('openCasesPortOut', openCasesPortOut);
+        outMap.put('openCasesPortOutSize', openCasesPortOut.size());
+        outMap.put('openCasesOtros', openCasesOtros);
+        outMap.put('openCasesOtrosSize', openCasesOtros.size());
+        outMap.put('openCasesOtrosCerrados', otrosCerrados);
+        outMap.put('lineaValida', lineaValida);
     }
 }

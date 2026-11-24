@@ -143,6 +143,7 @@ global with sharing class OM_ManageFutureOrders implements vlocity_cmt.XOMOrches
                     ipInput.put('orderSubType', interSetmdt.orderSubTypeFDO__c );
                     ipInput.put('canal', canal);
                     ipInput.put('usuarioGenerador', usuarioGenerador);
+                    ipInput.put('ProccessName', OrderIntegrationSystemInterfaceConstants.getValue('OM_CANCELACION_FRAUDE'));
                 }
             
                 if(orderType == OT_SUSPENSION && orderSubType == OST_TEMPORAL){     //FVU_ReasonCode__c == '7' 
@@ -159,6 +160,7 @@ global with sharing class OM_ManageFutureOrders implements vlocity_cmt.XOMOrches
                     ipInput.put('orderSubType', interSetmdt.orderSubTypeFDO__c );   //'Activation'                      // v 1.5
                     ipInput.put('canal', canal);
                     ipInput.put('usuarioGenerador', usuarioGenerador);
+                    ipInput.put('ProccessName', OrderIntegrationSystemInterfaceConstants.getValue('ORD_TYPE_RECONEXION'));
                 }
                 
                 if(orderType == OT_SUSPENSION && orderSubType == OST_ROB_PER){      //FVU_ReasonCode__c == '2022'  
@@ -176,6 +178,7 @@ global with sharing class OM_ManageFutureOrders implements vlocity_cmt.XOMOrches
                     ipInput.put('orderSubType', interSetmdt.orderSubTypeFDO__c );   //'Robo_Perdida'                            // v 1.5
                     ipInput.put('canal', canal);
                     ipInput.put('usuarioGenerador', usuarioGenerador);
+                    ipInput.put('ProccessName', OrderIntegrationSystemInterfaceConstants.getValue('OM_CANCELACION_ROBO_PERDIDA'));
                 }
                 
                 if(funcBloqAction == ACTION_CHANGE && (orderType == OT_CAMBIOSIM || orderType == OT_CAMBIOESIM || (orderType == OT_RECONEXION && orderSubType == OST_CAMBIOSIM_RP ))){   //FVU_ReasonCode__c == '2032', '2038' y '2064' con cambio SIM
@@ -193,6 +196,7 @@ global with sharing class OM_ManageFutureOrders implements vlocity_cmt.XOMOrches
                     ipInput.put('orderSubType', interSetmdt.orderSubTypeFDO__c);    //'Cambio_de_Funcionalidades'                // v 1.5
                     ipInput.put('canal', canal);
                     ipInput.put('usuarioGenerador', usuarioGenerador);
+                    ipInput.put('ProccessName', OrderIntegrationSystemInterfaceConstants.getValue('CAMBIOS_CAMBIO_FUNCIONALIDADES'));
                 }
                
                 if(!Test.isRunningTest()) {             

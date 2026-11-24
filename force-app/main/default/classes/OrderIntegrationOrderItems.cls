@@ -290,8 +290,7 @@ public with sharing class OrderIntegrationOrderItems {
             
             if(OM_OrderIntegrationHelper.ignoreFRL(derivedStrAction, derivedStrSubAction, (String)orderInstance.Type, (String)orderInstance.FVU_OrderSubType__c, derivedStrTechProductSubType, lstFRL, derivedFRLId)){
                 continue;
-            }
-            
+            }            
             if(!OrderIntegrationSystemInterfaceUtility.ericsonActionByActionSubActionSubType.containskey(derivedStrAction+derivedStrSubAction+derivedStrTechProductSubType)){
                 if(!(derivedStrTechProductSubType == OrderIntegrationSystemInterfaceConstants.PRODUCT_SUB_TYPE && derivedStrSubAction == OrderIntegrationSystemInterfaceConstants.CHANGEPLAN_ADD)){
                     objProdWithoutAction.ApiName = 'GenerarJSON';

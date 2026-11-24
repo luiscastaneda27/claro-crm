@@ -22,12 +22,19 @@ public with sharing class CATDataUpdateService {
         System.debug('[INFO] Iniciando el proceso de actualización de datos.');
         
         List<Product2> tytsByCode = getTyTsByProductCode(prodCodeList);
+        if (promoItemList == null) {
+            promoItemList = [
+                SELECT vlocity_cmt__ProductId__r.ProductCode
+                FROM vlocity_cmt__PromotionItem__c
+                WHERE vlocity_cmt__ProductId__r.ProductCode IN :prodCodeList
+                WITH SECURITY_ENFORCED
+            ];
+        }
         // getPreciosPorProductosNew
         List<CAT_PreciosProductosExportados__c> preciosProductosExportadosList = getPreciosProductosExporados(prodCodeList);
  		Map<String, CAT_PreciosProductosExportados__c> precioPorProductoPL = getPreciosPorProductosPL(preciosProductosExportadosList);
         Map<String, List<CAT_PreciosProductosExportados__c>> precioPorProductoTyT = getPreciosPorProductosNew(preciosProductosExportadosList,tytsByCode);
         Map<String,List<CAT_PromocionesExportadas__c>> promocionesExportadasList = getPromocionesExportadas(prodCodeList);
-        Map<String,List<CAT_PromocionesExportadas__c>> promocionesExportadasListAddons = getPromocionesExportadasAddOns(prodCodeList);
         Map<String,CAT_ProductosExportados__c> productosExportadosMap = getProductosExportados(); 
      	Map<String,CAT_PreciosProductosExportados__c> precioPorProductoPromoList = getPreciosPorPromo(preciosProductosExportadosList,tytsByCode);
         Map<String, List<CAT_PromocionesExportadas__c>> codigoPromoAddOnsMap = updatePricesAddOn(prodCodeList);
@@ -36,9 +43,9 @@ public with sharing class CATDataUpdateService {
             // Invoca los métodos de cálculo y actualización para cada proceso.
             
             updatePriceUVT(tytsByCode,pricesByProductCode,precioPorProductoTyT,precioPorProductoPL);
-            updateTotalPrice(precioPorProductoPromoList,promoItemList,promocionesExportadasList,productosExportadosMap,codigoPromoAddOnsMap,promocionesExportadasListAddons);
+            List<String> preciosOmitidos = updateTotalPrice(precioPorProductoPromoList,promoItemList,promocionesExportadasList,productosExportadosMap,codigoPromoAddOnsMap);
 
-            updateSuccessLogRecord('Extracción y carga de datos completada con éxito.', objetoControlId,idLogRecord);
+            updateSuccessLogRecord('Extracción y carga de datos completada con éxito.', objetoControlId,idLogRecord, preciosOmitidos);
           
             //Notificacion
             CATNotificationService.enqueue(objetoControlId);
@@ -59,7 +66,7 @@ public with sharing class CATDataUpdateService {
                    vlocity_cmt__SellingEndDate__c, CAT_Canales__c, CAT_Proceso_Negocio__c, vlocity_cmt__SellingStartDate__c,
                    vlocity_cmt__IsOrderable__c, IsActive
             FROM Product2
-            WHERE (vlocity_cmt__Type__c  = 'Handset' OR vlocity_cmt__Type__c = 'Tech')
+            WHERE (vlocity_cmt__Type__c  = 'Handset' OR vlocity_cmt__Type__c = 'Tech' OR vlocity_cmt__Type__c = 'SIM Card')
             AND ProductCode IN :prodCodeList
             WITH SECURITY_ENFORCED
         ];
@@ -76,104 +83,146 @@ public with sharing class CATDataUpdateService {
     }
     
     private static Map<String,List<CAT_PromocionesExportadas__c>>  updatePricesAddOn(List<String> prodCodeList){
-        List<CAT_PromocionesExportadas__c> promocionesExportadasListAjustes = [ SELECT Id,CAT_CardinalidadDefault__c ,CAT_CardinalidadMaxima__c ,CAT_CardinalidadMinima__c , CAT_DescripcionPromocion__c ,CAT_Frecuencia__c,CAT_FinVigenciaPromocion__c,CAT_InicioVigenciaPromocion__c ,CAT_ValorOverridePrecioPromocion__c,CAT_CodigoPromocion__c,CAT_CodigoProductoPromocion__c,CAT_TipoProductoPromocion__c,CAT_TipoAjuste__c, CAT_ValorAjustePrecioPromocion__c,CAT_TipoBeneficioPromocion__c, CAT_TipoPromocion__c, CAT_PromocionOrderable__c, CAT_PromocionActivo__c , CAT_ProcesosNegocioPromocion__c , CAT_NombrePromocion__c , CAT_NombreProductoPromocion__c,CAT_CodigoListaPrecioPrecios__c    FROM CAT_PromocionesExportadas__c where CAT_TipoProductoPromocion__c  = 'Add On' and CAT_Frecuencia__c = 'Monthly' and CAT_ValorAjustePrecioPromocion__c != null AND CAT_CodigoPromocion__c IN :prodCodeList  WITH SECURITY_ENFORCED
-        ]; 
-		List<CAT_PromocionesExportadas__c> promocionesExportadasList = [ SELECT Id,CAT_CardinalidadDefault__c ,CAT_CardinalidadMaxima__c ,CAT_CardinalidadMinima__c , CAT_DescripcionPromocion__c ,CAT_Frecuencia__c,CAT_FinVigenciaPromocion__c,CAT_InicioVigenciaPromocion__c ,CAT_ValorOverridePrecioPromocion__c,CAT_CodigoPromocion__c,CAT_CodigoProductoPromocion__c,CAT_TipoProductoPromocion__c,CAT_TipoAjuste__c, CAT_ValorAjustePrecioPromocion__c,CAT_TipoBeneficioPromocion__c, CAT_TipoPromocion__c, CAT_PromocionOrderable__c, CAT_PromocionActivo__c , CAT_ProcesosNegocioPromocion__c , CAT_NombrePromocion__c , CAT_NombreProductoPromocion__c,CAT_CodigoListaPrecioPrecios__c    FROM CAT_PromocionesExportadas__c where CAT_TipoProductoPromocion__c  = 'Add On' and CAT_ValorAjustePrecioPromocion__c = null AND CAT_CodigoPromocion__c IN :prodCodeList WITH SECURITY_ENFORCED];
-        Map<String, List<CAT_PromocionesExportadas__c>> codigoPromoMap = new Map<String, List<CAT_PromocionesExportadas__c>> ();
+        System.debug('prodCodeList: '+ prodCodeList);
+        List<CAT_PromocionesExportadas__c> allAddOnRecords = [
+            SELECT Id, CAT_CodigoPromocion__c, CAT_CodigoProductoPromocion__c,CAT_ValorOverridePrecioPromocion__c, CAT_ValorAjustePrecioPromocion__c,
+                   CAT_Frecuencia__c, CAT_DisplayNameAjustePromocion__c, CAT_CodigoListaPrecioPrecios__c,CAT_TipoAjuste__c
+            FROM CAT_PromocionesExportadas__c
+            WHERE CAT_TipoProductoPromocion__c = 'Add On'
+            AND CAT_CodigoPromocion__c IN :prodCodeList
+            WITH SECURITY_ENFORCED
+        ];
+
+        Map<String, CAT_PromocionesExportadas__c> baseRecordMap = new Map<String, CAT_PromocionesExportadas__c>();
+        Map<String, CAT_PromocionesExportadas__c> adjustmentTemplateMap = new Map<String, CAT_PromocionesExportadas__c>();
         List<String> codigosProductos = new List<String>();
-        for (CAT_PromocionesExportadas__c promoExportada : promocionesExportadasList ){
-            String codigoPromo = promoExportada.CAT_CodigoPromocion__c ;
-            codigosProductos.add(promoExportada.CAT_CodigoProductoPromocion__c);
-            
-        }
-        for (CAT_PromocionesExportadas__c promoExportada : promocionesExportadasListAjustes ){
-            String codigoPromo = promoExportada.CAT_CodigoPromocion__c ;
-            codigosProductos.add(promoExportada.CAT_CodigoProductoPromocion__c);
-            
-        }
-       
-        System.debug('++codigosProductos:' + codigosProductos);
-        List<vlocity_cmt__PriceListEntry__c> priceListEntries = [
-            SELECT Id, vlocity_cmt__PromotionId__c,vlocity_cmt__PromotionItemId__c,vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c, vlocity_cmt__EffectiveUntilDate__c, vlocity_cmt__IsOverride__c, vlocity_cmt__ProductId__r.Name,
-                   vlocity_cmt__ProductId__r.ProductCode, vlocity_cmt__ProductId__r.vlocity_cmt__Type__c, vlocity_cmt__DisplayText__c,vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c,
-                   vlocity_cmt__PricingElementAmount__c, vlocity_cmt__PricingElementId__r.vlocity_cmt__AdjustmentValue__c,vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c,
-                   vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.Name, vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__AdjustmentMethod__c,
-                   vlocity_cmt__EffectiveFromDate__c
-            FROM vlocity_cmt__PriceListEntry__c
-            WHERE vlocity_cmt__IsActive__c = true
-            AND vlocity_cmt__PricingElementId__c != null
-            AND vlocity_cmt__PricingElementId__r.vlocity_cmt__AdjustmentValue__c = null
-            AND vlocity_cmt__ProductId__r.ProductCode IN :codigosProductos  
-            AND ((vlocity_cmt__EffectiveFromDate__c <= TODAY AND (vlocity_cmt__EffectiveUntilDate__c >= TODAY OR vlocity_cmt__EffectiveUntilDate__c = null))
-            OR (vlocity_cmt__EffectiveFromDate__c > TODAY) OR (vlocity_cmt__EffectiveFromDate__c = null and vlocity_cmt__EffectiveUntilDate__c = null ))
-            WITH SECURITY_ENFORCED ];
-        
-    	Map<String, vlocity_cmt__PriceListEntry__c> plePorCodigoMap = new Map<String,vlocity_cmt__PriceListEntry__c>();
-    	//Map<String, List<vlocity_cmt__PriceListEntry__c>> plePorCodigoMap1 = new Map<String,List<vlocity_cmt__PriceListEntry__c>>();
-        for (vlocity_cmt__PriceListEntry__c ple : priceListEntries){
-            String productCodeFrecuencia = ple.vlocity_cmt__ProductId__r.ProductCode+ple.vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c;
-            plePorCodigoMap.put(productCodeFrecuencia,ple);
-            
-        }
-        List<CAT_PromocionesExportadas__c> newRecordsToUpsert = new List<CAT_PromocionesExportadas__c>();
-        for (CAT_PromocionesExportadas__c promoExportada : promocionesExportadasList ){
-            if (promoExportada.CAT_ValorAjustePrecioPromocion__c == null){
-                System.debug('add on sin descuento');
-                CAT_PromocionesExportadas__c originalRecord = promoExportada;
-                CAT_PromocionesExportadas__c registroNuevo = originalRecord.clone(false, true, false, false);
-                String searchKeyImpuestos = promoExportada.CAT_CodigoProductoPromocion__c+'Mensual con impuestos';
-                String searchKeySinImpuestos = promoExportada.CAT_CodigoProductoPromocion__c+'Monthly';
-                vlocity_cmt__PriceListEntry__c pleImpuestos = plePorCodigoMap.get(searchKeyImpuestos);
-                vlocity_cmt__PriceListEntry__c pleSinImpuestos = plePorCodigoMap.get(searchKeySinImpuestos);
-                originalRecord.CAT_DisplayNameAjustePromocion__c = pleImpuestos.vlocity_cmt__DisplayText__c;
-                originalRecord.CAT_ValorAjustePrecioPromocion__c = pleImpuestos.vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c;	
-                originalRecord.CAT_Frecuencia__c = pleImpuestos.vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c;
-                originalRecord.CAT_CodigoListaPrecioPrecios__c = pleImpuestos.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c;
-                registroNuevo.CAT_ValorAjustePrecioPromocion__c =  pleSinImpuestos.vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c;
-                registroNuevo.CAT_Frecuencia__c = pleSinImpuestos.vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c; 
-                registroNuevo.CAT_DisplayNameAjustePromocion__c = pleSinImpuestos.vlocity_cmt__DisplayText__c ;
-                registroNuevo.CAT_CodigoListaPrecioPrecios__c = pleSinImpuestos.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c;
-                newRecordsToUpsert.add(originalRecord);
-                newRecordsToUpsert.add(registroNuevo);
+
+        for(CAT_PromocionesExportadas__c rec : allAddOnRecords) {
+            codigosProductos.add(rec.CAT_CodigoProductoPromocion__c);
+            if(rec.CAT_ValorAjustePrecioPromocion__c == null) {
+                baseRecordMap.put(rec.CAT_CodigoProductoPromocion__c, rec);
+            } else {
+                adjustmentTemplateMap.put(rec.CAT_CodigoProductoPromocion__c, rec);
             }
-        }
-        for (CAT_PromocionesExportadas__c promoExportada : promocionesExportadasListAjustes ) {
-            System.debug('add on con descuento');
-            CAT_PromocionesExportadas__c originalRecord = promoExportada;
-            CAT_PromocionesExportadas__c registroNuevo = originalRecord.clone(false, true, false, false);
-            CAT_PromocionesExportadas__c registroNuevo2 = originalRecord.clone(false, true, false, false);
-            String searchKeyImpuestos = promoExportada.CAT_CodigoProductoPromocion__c+'Mensual con impuestos';
-            String searchKeySinImpuestos = promoExportada.CAT_CodigoProductoPromocion__c+'Monthly';
-            vlocity_cmt__PriceListEntry__c pleImpuestos = plePorCodigoMap.get(searchKeyImpuestos);
-            vlocity_cmt__PriceListEntry__c pleSinImpuestos = plePorCodigoMap.get(searchKeySinImpuestos);
-            registroNuevo2.CAT_DisplayNameAjustePromocion__c = pleImpuestos.vlocity_cmt__DisplayText__c;
-            registroNuevo2.CAT_TipoAjuste__c = '';
-            registroNuevo2.CAT_CodigoListaPrecioPrecios__c = pleImpuestos.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c;
-            registroNuevo2.CAT_ValorAjustePrecioPromocion__c = pleImpuestos.vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c;    
-            registroNuevo2.CAT_Frecuencia__c = pleImpuestos.vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c;
-            registroNuevo.CAT_ValorAjustePrecioPromocion__c =  pleSinImpuestos.vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c;
-            registroNuevo.CAT_TipoAjuste__c = '';    
-            registroNuevo.CAT_CodigoListaPrecioPrecios__c = pleImpuestos.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c;
-            registroNuevo.CAT_Frecuencia__c = pleSinImpuestos.vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c; 
-            registroNuevo.CAT_DisplayNameAjustePromocion__c = pleSinImpuestos.vlocity_cmt__DisplayText__c ;
-            newRecordsToUpsert.add(registroNuevo2);
-            newRecordsToUpsert.add(registroNuevo);
-            
-        }
-        for (CAT_PromocionesExportadas__c promoExportada : newRecordsToUpsert ){
-            String codigoPromo = promoExportada.CAT_CodigoPromocion__c ;
-            if(!codigoPromoMap.containsKey(codigoPromo)){
-                codigoPromoMap.put(codigoPromo, new List<CAT_PromocionesExportadas__c>());
-            }
-            codigoPromoMap.get(codigoPromo).add(promoExportada);
         }
 
-        upsert as user newRecordsToUpsert;   
+        List<vlocity_cmt__PriceListEntry__c> priceListEntries = [
+            SELECT Id, vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c,
+                   vlocity_cmt__ProductId__r.ProductCode, vlocity_cmt__DisplayText__c, vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c,
+                   vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c
+            FROM vlocity_cmt__PriceListEntry__c
+            WHERE vlocity_cmt__IsActive__c = true
+            AND vlocity_cmt__PromotionId__c = null
+            AND vlocity_cmt__ProductId__r.ProductCode IN :codigosProductos
+            AND ((vlocity_cmt__EffectiveFromDate__c <= TODAY AND (vlocity_cmt__EffectiveUntilDate__c >= TODAY OR vlocity_cmt__EffectiveUntilDate__c = null)) OR (vlocity_cmt__EffectiveFromDate__c > TODAY) OR (vlocity_cmt__EffectiveFromDate__c = null AND vlocity_cmt__EffectiveUntilDate__c = null))
+            WITH SECURITY_ENFORCED
+        ];
+
+        Map<String, Map<String, vlocity_cmt__PriceListEntry__c>> groupedPles = new Map<String, Map<String, vlocity_cmt__PriceListEntry__c>>();
+        for(vlocity_cmt__PriceListEntry__c ple : priceListEntries) {
+            String pCode = ple.vlocity_cmt__ProductId__r.ProductCode;
+            if(!groupedPles.containsKey(pCode)) groupedPles.put(pCode, new Map<String, vlocity_cmt__PriceListEntry__c>());
+            groupedPles.get(pCode).put(ple.vlocity_cmt__PricingElementId__r.vlocity_cmt__PricingVariableId__r.vlocity_cmt__RecurringFrequency__c, ple);
+        }
+
+        List<CAT_PromocionesExportadas__c> recordsToUpsert = new List<CAT_PromocionesExportadas__c>();
+
+        for(String pCode : groupedPles.keySet()) {
+            vlocity_cmt__PriceListEntry__c pleImp = groupedPles.get(pCode).get('Mensual con impuestos');
+            vlocity_cmt__PriceListEntry__c pleSin = groupedPles.get(pCode).get('Monthly');
+
+            if(pleImp == null || pleSin == null) continue;
+
+            if(baseRecordMap.containsKey(pCode)) {
+                CAT_PromocionesExportadas__c existingRec = baseRecordMap.get(pCode);
+
+                CAT_PromocionesExportadas__c taxed = existingRec.clone(false, true, false, false);
+                taxed.CAT_ValorAjustePrecioPromocion__c = pleImp.vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c;
+                taxed.CAT_Frecuencia__c = 'Mensual con impuestos';
+                taxed.CAT_DisplayNameAjustePromocion__c = pleImp.vlocity_cmt__DisplayText__c;
+                taxed.CAT_CodigoListaPrecioPrecios__c = pleImp.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c;
+                recordsToUpsert.add(taxed);
+
+                CAT_PromocionesExportadas__c newMonthly = existingRec.clone(false, true, false, false);
+                newMonthly.CAT_ValorAjustePrecioPromocion__c = pleSin.vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c;
+                newMonthly.CAT_Frecuencia__c = 'Monthly';
+                newMonthly.CAT_DisplayNameAjustePromocion__c = pleSin.vlocity_cmt__DisplayText__c;
+                newMonthly.CAT_CodigoListaPrecioPrecios__c = pleSin.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c;
+                recordsToUpsert.add(newMonthly);
+            }
+            else if (adjustmentTemplateMap.containsKey(pCode)) {
+                CAT_PromocionesExportadas__c template = adjustmentTemplateMap.get(pCode);
+
+                CAT_PromocionesExportadas__c r1 = template.clone(false, true, false, false);
+                r1.CAT_ValorAjustePrecioPromocion__c = pleImp.vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c;
+                r1.CAT_Frecuencia__c = 'Mensual con impuestos';
+                r1.CAT_DisplayNameAjustePromocion__c = pleImp.vlocity_cmt__DisplayText__c;
+                r1.CAT_TipoAjuste__c = null;
+                r1.CAT_ValorOverridePrecioPromocion__c = false;
+
+                CAT_PromocionesExportadas__c r2 = template.clone(false, true, false, false);
+                r2.CAT_ValorAjustePrecioPromocion__c = pleSin.vlocity_cmt__PricingElementId__r.vlocity_cmt__Amount__c;
+                r2.CAT_Frecuencia__c = 'Monthly';
+                r2.CAT_DisplayNameAjustePromocion__c = pleSin.vlocity_cmt__DisplayText__c;
+                r2.CAT_TipoAjuste__c = null;
+                r2.CAT_ValorOverridePrecioPromocion__c = false;
+
+                recordsToUpsert.add(r1);
+                recordsToUpsert.add(r2);
+            }
+        }
+        // Precios base solo en memoria para updateTotalPrice. No se persisten:
+        // CAT_PromocionesExportadas__c debe conservar las filas que armó el batch.
+        Map<String, List<CAT_PromocionesExportadas__c>> codigoPromoMap = new Map<String, List<CAT_PromocionesExportadas__c>> ();
+        Map<String, List<String>> productToPromosMap = new Map<String, List<String>>();
+        for (CAT_PromocionesExportadas__c adj : allAddOnRecords) {
+            if (!productToPromosMap.containsKey(adj.CAT_CodigoProductoPromocion__c)) {
+                productToPromosMap.put(adj.CAT_CodigoProductoPromocion__c, new List<String>());
+            }
+            List<String> existingPromos = productToPromosMap.get(adj.CAT_CodigoProductoPromocion__c);
+            if (!existingPromos.contains(adj.CAT_CodigoPromocion__c)) {
+                existingPromos.add(adj.CAT_CodigoPromocion__c);
+            }
+        }
+
+        for (CAT_PromocionesExportadas__c r : recordsToUpsert) {
+            List<String> associatedPromos = productToPromosMap.get(r.CAT_CodigoProductoPromocion__c);
+
+            if (associatedPromos != null) {
+                for (String promoCode : associatedPromos) {
+                    if (!codigoPromoMap.containsKey(promoCode)) {
+                        codigoPromoMap.put(promoCode, new List<CAT_PromocionesExportadas__c>());
+                    }
+                    codigoPromoMap.get(promoCode).add(r.clone(true, true, false, false));
+                }
+            }
+        }
+
+        for (CAT_PromocionesExportadas__c adj : allAddOnRecords) {
+            if (adj.CAT_ValorAjustePrecioPromocion__c != null) {
+                if (!codigoPromoMap.containsKey(adj.CAT_CodigoPromocion__c)) {
+                    codigoPromoMap.put(adj.CAT_CodigoPromocion__c, new List<CAT_PromocionesExportadas__c>());
+                }
+                Boolean alreadyInList = false;
+                for(CAT_PromocionesExportadas__c existing : codigoPromoMap.get(adj.CAT_CodigoPromocion__c)) {
+                    if(existing.Id != null && existing.Id == adj.Id) {
+                        alreadyInList = true;
+                        break;
+                    }
+                }
+
+                if(!alreadyInList) {
+                    codigoPromoMap.get(adj.CAT_CodigoPromocion__c).add(adj);
+                }
+            }
+        }
+        System.debug('++codigoPromoMap: '+ codigoPromoMap.size());
+
         return codigoPromoMap;
-    }       
+    }
     private static Map<String,List<CAT_PromocionesExportadas__c>> getPromocionesExportadas(List<String> prodCodeList) { 
         
-        List<CAT_PromocionesExportadas__c> promocionesExportadasList = [ SELECT Id, CAT_Frecuencia__c,CAT_CodigoListaPrecioPrecios__c ,CAT_FinVigenciaPromocion__c,CAT_InicioVigenciaPromocion__c ,CAT_ValorOverridePrecioPromocion__c,CAT_CodigoPromocion__c,CAT_CodigoProductoPromocion__c,CAT_TipoProductoPromocion__c,CAT_TipoAjuste__c, CAT_ValorAjustePrecioPromocion__c,CAT_TipoBeneficioPromocion__c FROM CAT_PromocionesExportadas__c where CAT_TipoBeneficioPromocion__c = 'Bundle' AND CAT_CodigoPromocion__c IN :prodCodeList  WITH SECURITY_ENFORCED
+        List<CAT_PromocionesExportadas__c> promocionesExportadasList = [ SELECT Id, CAT_Frecuencia__c,CAT_CodigoListaPrecioPrecios__c ,CAT_FinVigenciaPromocion__c,CAT_InicioVigenciaPromocion__c ,CAT_InicioVigenciaAjustePromocion__c,CAT_ValorOverridePrecioPromocion__c,CAT_CodigoPromocion__c,CAT_CodigoProductoPromocion__c,CAT_TipoProductoPromocion__c,CAT_TipoAjuste__c, CAT_ValorAjustePrecioPromocion__c,CAT_TipoBeneficioPromocion__c FROM CAT_PromocionesExportadas__c where CAT_TipoBeneficioPromocion__c = 'Bundle' AND CAT_CodigoPromocion__c IN :prodCodeList  WITH SECURITY_ENFORCED
         ];
         Map<String, List<CAT_PromocionesExportadas__c>> promocionesExportadasMap = new Map<String, List<CAT_PromocionesExportadas__c>>();
         for (CAT_PromocionesExportadas__c promoExportada : promocionesExportadasList) {
@@ -271,12 +320,12 @@ public with sharing class CATDataUpdateService {
     
     /**
      * @description Actualiza el precio total en los productos.
-     * @return void
+     * @return Códigos de producto, lista y promoción omitidos por precio vacío.
      */
-    private static void updateTotalPrice(Map<String,CAT_PreciosProductosExportados__c> precioPorProductoPromoList,List<vlocity_cmt__PromotionItem__c> promoItemList,Map<String,List<CAT_PromocionesExportadas__c>> promocionesExportadasList,Map<String,CAT_ProductosExportados__c> productosExportadosMap,Map<String, List<CAT_PromocionesExportadas__c>> codigoPromoAddOnsMap,Map<String,List<CAT_PromocionesExportadas__c>> promocionesExportadasListAddOns) {
+    private static List<String> updateTotalPrice(Map<String,CAT_PreciosProductosExportados__c> precioPorProductoPromoList,List<vlocity_cmt__PromotionItem__c> promoItemList,Map<String,List<CAT_PromocionesExportadas__c>> promocionesExportadasList,Map<String,CAT_ProductosExportados__c> productosExportadosMap,Map<String, List<CAT_PromocionesExportadas__c>> codigoPromoAddOnsMap) {
         System.debug('[INFO] Actualizando el precio total en los registros de precios de productos.');
         Datetime fechaActual = datetime.NOW();
-        List<CAT_PreciosProductosExportados__c> recordsToUpdate = new List<CAT_PreciosProductosExportados__c>();
+        List<String> preciosOmitidos = new List<String>();
         Map<String, vlocity_cmt__PromotionItem__c> promoItemByCodeMap = new Map<String, vlocity_cmt__PromotionItem__c>();
 
         for (vlocity_cmt__PromotionItem__c promoItem : promoItemList) {
@@ -286,18 +335,17 @@ public with sharing class CATDataUpdateService {
         List<CAT_PreciosProductosExportados__c> recordsToDelete = new List<CAT_PreciosProductosExportados__c>();
 
         for (String productCodePL : precioPorProductoPromoList.keySet()) {
-            
+
             System.debug('++productCode en for: '+ productCodePL);
             List<String> parts = productCodePL.split('\\+');
 
-            // Access the first element (the first part)
             String productCode = parts[0].trim();
             String pricelistCode = parts[1].trim();
             String productCodePLCode = productCode+pricelistCode;
             System.debug('productCodePLCode: '+ productCodePLCode );
             System.debug('productCode: '+ productCode );
             CAT_ProductosExportados__c prodExportado = productosExportadosMap.get(productCode);
-            
+
             vlocity_cmt__PromotionItem__c promoItem = promoItemByCodeMap.get(productCode);
             if(promoItem!= null){
                 System.debug(promoItem);
@@ -309,141 +357,182 @@ public with sharing class CATDataUpdateService {
                 if (originalRecord != null) {
                     List<CAT_PromocionesExportadas__c> promociones = promocionesExportadasList.get(productCodePLCode);
                     if(promociones != null){
-                        System.debug('promociones: '+ promociones.size());     
-                        //Lógica para ajustes de precio con impuestos y sin impuestos
-                        Map<String,CAT_PromocionesExportadas__c> tipoPrecioPorPromo = new Map<String,CAT_PromocionesExportadas__c>();
-                        Map<String,Decimal> ajustesAddonPorPromo = new Map<String,Decimal>();
-                        Decimal sumaDeAjustesSinImpuestos = 0 ;
-                        Decimal sumaDeAjustesImpuestos = 0 ;
+                        System.debug('promociones: '+productCode + ' ' + promociones.size());
+                        Map<String, Map<String, CAT_PromocionesExportadas__c>> groupedAdjustments = new Map<String, Map<String, CAT_PromocionesExportadas__c>>();
                         String codigoPromocion;
                         for(CAT_PromocionesExportadas__c promoExportada : promociones) {
                             if(promoExportada.CAT_TipoProductoPromocion__c == 'Plan'){
                                 codigoPromocion = promoExportada.CAT_CodigoPromocion__c;
-                                String codigoFrecuencia = promoExportada.CAT_CodigoPromocion__c + promoExportada.CAT_Frecuencia__c;
-                             	tipoPrecioPorPromo.put(codigoFrecuencia, promoExportada); 
-                            } 
+                                System.debug('++codigoPromocion: '+ codigoPromocion);
+                                String groupKey = promoExportada.CAT_CodigoPromocion__c + '_' + promoExportada.CAT_InicioVigenciaAjustePromocion__c;
+
+                                if(!groupedAdjustments.containsKey(groupKey)) {
+                                    groupedAdjustments.put(groupKey, new Map<String, CAT_PromocionesExportadas__c>());
+                                }
+                                groupedAdjustments.get(groupKey).put(promoExportada.CAT_Frecuencia__c, promoExportada);
+                            }
                         }
-                       List<CAT_PromocionesExportadas__c> ajustesAddons = promocionesExportadasListAddOns.get(codigoPromocion);
-                        
-                        if (ajustesAddons!= null){
-                            System.debug('ajustesAddons: ' + ajustesAddons.size());
-                            System.debug('hay ajustes en addons');
-                            for(CAT_PromocionesExportadas__c promoExportada : ajustesAddons) {
-                                if (promoExportada.CAT_TipoProductoPromocion__c == 'Add On') {
-                                    if (promoExportada.CAT_Frecuencia__c == 'Monthly'){
-                                        System.debug('ajuste addon sin impuesots');
-                                        sumaDeAjustesSinImpuestos = sumaDeAjustesSinImpuestos - promoExportada.CAT_ValorAjustePrecioPromocion__c ;
-                                	} else {
-                                    	System.debug('ajuste addon con impuesots');
-                                    	sumaDeAjustesImpuestos = sumaDeAjustesImpuestos - promoExportada.CAT_ValorAjustePrecioPromocion__c ;
-                                	}
-                              
-                            	}
-                        	}
-                        } 
-                        
-                        System.debug('++sumaDeAjustesImpuestos: '+ sumaDeAjustesImpuestos);
-                        System.debug('++sumaDeAjustesSinImpuestos: '+ sumaDeAjustesSinImpuestos);
-                        
-                        Map<String,CAT_PromocionesExportadas__c> promoPorProducto = new Map<String,CAT_PromocionesExportadas__c>();
+                        System.debug('groupedAdjustments.size: '+productCode + ' ' + groupedAdjustments.size());
+
+                       Map<String,CAT_PromocionesExportadas__c> promoPorProducto = new Map<String,CAT_PromocionesExportadas__c>();
                         for(CAT_PromocionesExportadas__c promoExportada : promociones) {
-                             promoPorProducto.put(promoExportada.CAT_CodigoPromocion__c, promoExportada);                 
+                             promoPorProducto.put(promoExportada.CAT_CodigoPromocion__c, promoExportada);
                         }
                         System.debug('promoPorProducto: '+ promoPorProducto.size());
-                        for(String promoCode : promoPorProducto.keySet()) {
-                            Decimal addOnImpuesto = 0;
-                            Decimal addOnSinImpuesto = 0;
-                            List<CAT_PromocionesExportadas__c> addOns = codigoPromoAddOnsMap.get(promoCode);
-                            if (addOns != null) {
-                                System.debug('addOns size: '+ addOns.size());
-                                for (CAT_PromocionesExportadas__c addOn : addOns) {
-                                    System.debug('addon frequeny: '+ addOn.CAT_Frecuencia__c);
-                                    if(addOn.CAT_Frecuencia__c == 'Monthly'){
-                                        addOnSinImpuesto = addOnSinImpuesto + addOn.CAT_ValorAjustePrecioPromocion__c;
+                         for(String groupKey : groupedAdjustments.keySet()) {
+                             System.debug('groupKey: '+ groupKey);
+                            Map<String, CAT_PromocionesExportadas__c> pair = groupedAdjustments.get(groupKey);
+                            CAT_PromocionesExportadas__c monthlyBase = pair.get('Monthly');
+                            CAT_PromocionesExportadas__c taxedBase = pair.get('Mensual con impuestos');
+                             if(monthlyBase != null && taxedBase != null) {
+                                String promoCode = monthlyBase.CAT_CodigoPromocion__c;
+                                Decimal sumaDeAjustesSinImpuestos = 0 ;
+                                Decimal sumaDeAjustesImpuestos = 0 ;
+                                System.debug('promoCode: '+ promoCode);
+                                List<CAT_PromocionesExportadas__c> ajustesAddons = codigoPromoAddOnsMap.get(promoCode);
+
+                                if (ajustesAddons != null) {
+                                    System.debug('++ajustesAddons: '+ ajustesAddons.size());
+                                    Map<String, List<CAT_PromocionesExportadas__c>> addonGroups = new Map<String, List<CAT_PromocionesExportadas__c>>();
+                                    for(CAT_PromocionesExportadas__c item : ajustesAddons) {
+                                        if (!addonGroups.containsKey(item.CAT_CodigoProductoPromocion__c)) {
+                                            addonGroups.put(item.CAT_CodigoProductoPromocion__c, new List<CAT_PromocionesExportadas__c>());
+                                        }
+                                        addonGroups.get(item.CAT_CodigoProductoPromocion__c).add(item);
+                                    }
+
+                                    for (String prodCode : addonGroups.keySet()) {
+                                        List<CAT_PromocionesExportadas__c> groupItems = addonGroups.get(prodCode);
+                                        System.debug('++groupItems: '+ groupItems.size());
+                                        CAT_PromocionesExportadas__c overrideMonthly = null;
+                                        CAT_PromocionesExportadas__c overrideTaxed = null;
+                                        List<CAT_PromocionesExportadas__c> baseRecords = new List<CAT_PromocionesExportadas__c>();
+                                        List<CAT_PromocionesExportadas__c> adjustmentRecords = new List<CAT_PromocionesExportadas__c>();
+                                        Boolean hasOverride = false;
+                                        System.debug('++sumaDeAjustesImpuestos: '+ sumaDeAjustesImpuestos);
+                                        for (CAT_PromocionesExportadas__c item : groupItems) {
+                                            System.debug('item.id: '+ item.Id);
+                                            if (item.CAT_ValorOverridePrecioPromocion__c == true) {
+                                                System.debug('item.CAT_Frecuencia__c: '+ codigoPromocion +' ' + item.CAT_Frecuencia__c );
+                                                hasOverride = true;
+                                                if (item.CAT_Frecuencia__c == 'Monthly') overrideMonthly = item;
+                                                else overrideTaxed = item;
+                                            } else if (item.CAT_TipoAjuste__c == null) {
+                                                System.debug('item.CAT_ValorAjustePrecioPromocion__c: '+ item.CAT_ValorAjustePrecioPromocion__c );
+                                                baseRecords.add(item);
+                                            } else {
+                                                System.debug('item.CAT_ValorAjustePrecioPromocion__c: '+ item.CAT_ValorAjustePrecioPromocion__c );
+                                                adjustmentRecords.add(item);
+                                            }
+                                        }
+                                        System.debug('baseRecords: '+baseRecords.size());
+                                        System.debug('++hasOverride: '+ hasOverride );
+                                        if (hasOverride) {
+                                            if (overrideMonthly != null) {
+                                                System.debug('overrideMonthly.CAT_ValorAjustePrecioPromocion__c '+ overrideMonthly.CAT_ValorAjustePrecioPromocion__c );
+                                                sumaDeAjustesSinImpuestos = overrideMonthly.CAT_ValorAjustePrecioPromocion__c;
+                                            }
+                                            if (overrideTaxed != null) {
+                                                System.debug('overrideTaxed.CAT_ValorAjustePrecioPromocion__c '+ overrideTaxed.CAT_ValorAjustePrecioPromocion__c );
+                                                sumaDeAjustesImpuestos = overrideTaxed.CAT_ValorAjustePrecioPromocion__c;
+                                            }
+                                        } else {
+                                            for (CAT_PromocionesExportadas__c b : baseRecords) {
+                                                if (b.CAT_Frecuencia__c == 'Monthly') sumaDeAjustesSinImpuestos += b.CAT_ValorAjustePrecioPromocion__c;
+                                                else sumaDeAjustesImpuestos += b.CAT_ValorAjustePrecioPromocion__c;
+                                            }
+                                            for (CAT_PromocionesExportadas__c a : adjustmentRecords) {
+                                                if (a.CAT_Frecuencia__c == 'Monthly') sumaDeAjustesSinImpuestos += a.CAT_ValorAjustePrecioPromocion__c;
+                                                else sumaDeAjustesImpuestos += a.CAT_ValorAjustePrecioPromocion__c;
+                                            }
+                                        }
+                                    }
+                                }
+                                 System.debug('++sumaDeAjustesImpuestos: '+ promoCode + ' ' +  sumaDeAjustesImpuestos);
+                       			 System.debug('++sumaDeAjustesSinImpuestos: '+ promoCode + ' ' + sumaDeAjustesSinImpuestos);
+
+                                CAT_PreciosProductosExportados__c registroActualizado = originalRecord.clone(false, true, false, false);
+                                registroActualizado.CAT_Codigo_Promocion__c = promoCode;
+                                System.debug('se define promo code: '+ promoCode);
+                                String promoVigente = ((promoPorProducto.get(promoCode).CAT_FinVigenciaPromocion__c != null && promoPorProducto.get(promoCode).CAT_FinVigenciaPromocion__c >= fechaActual) || promoPorProducto.get(promoCode).CAT_FinVigenciaPromocion__c == null ) ? 'vigente' : 'no vigente';
+                                System.debug('promoVigente: '+ promoVigente);
+                                if(promoVigente == 'vigente'){
+                                    String tipoAjuste = promoPorProducto.get(promoCode).CAT_TipoAjuste__c;
+                                    Boolean isOverride = promoPorProducto.get(promoCode).CAT_ValorOverridePrecioPromocion__c;
+                                    if (isOverride){
+                                        System.debug('es override');
+                                        Decimal ajustePrecioSinImpuestos = monthlyBase.CAT_ValorAjustePrecioPromocion__c + sumaDeAjustesSinImpuestos;
+                                        Decimal ajustePrecioImpuestos = taxedBase.CAT_ValorAjustePrecioPromocion__c + sumaDeAjustesImpuestos;
+                                        registroActualizado.CAT_PrecioConImpuestosPrecios__c = ajustePrecioImpuestos;
+                                        registroActualizado.CAT_PrecioSinImpuestosPrecios__c = ajustePrecioSinImpuestos;
+                                        String adjustedPriceFormat = ajustePrecioImpuestos.setScale(0).format();
+                                        registroActualizado.CAT_NombrePrecioConImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
+                                        registroActualizado.CAT_NombrePrecioSinImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
+
+                                    } else if (registroActualizado.CAT_PrecioConImpuestosPrecios__c == null || registroActualizado.CAT_PrecioSinImpuestosPrecios__c == null) {
+                                        preciosOmitidos.add(productCode + ' / ' + pricelistCode + ' / ' + promoCode);
+                                        continue;
                                     } else {
-                                        addOnImpuesto = addOnImpuesto + addOn.CAT_ValorAjustePrecioPromocion__c; 
+                                        System.debug('no es override');
+                                        Decimal adjustedPrice;
+                                        if (tipoAjuste == 'Absolute') {
+                                            System.debug('es Absolute');
+                                            System.debug('monthlyBase.CAT_ValorAjustePrecioPromocion__c: '+ monthlyBase.CAT_ValorAjustePrecioPromocion__c);
+                                            System.debug('sumaDeAjustesSinImpuestos: '+ sumaDeAjustesSinImpuestos);
+                                            Decimal ajustePrecioSinImpuestos = monthlyBase.CAT_ValorAjustePrecioPromocion__c + sumaDeAjustesSinImpuestos;
+                                            Decimal ajustePrecioImpuestos = taxedBase.CAT_ValorAjustePrecioPromocion__c + sumaDeAjustesImpuestos;
+                                            adjustedPrice = registroActualizado.CAT_PrecioConImpuestosPrecios__c + ajustePrecioImpuestos;
+                                            registroActualizado.CAT_PrecioConImpuestosPrecios__c = registroActualizado.CAT_PrecioConImpuestosPrecios__c + ajustePrecioImpuestos;
+                                            registroActualizado.CAT_PrecioSinImpuestosPrecios__c = registroActualizado.CAT_PrecioSinImpuestosPrecios__c + ajustePrecioSinImpuestos;
+                                            String adjustedPriceFormat = adjustedPrice.setScale(0).format();
+                                            registroActualizado.CAT_NombrePrecioConImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
+                                            registroActualizado.CAT_NombrePrecioSinImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
+
+                                        } else if (tipoAjuste == 'Percent') {
+                                            System.debug('es Percent');
+                                            Decimal ajustePrecioSinImpuestos = promoPorProducto.get(promoCode).CAT_ValorAjustePrecioPromocion__c;
+                                            adjustedPrice = registroActualizado.CAT_PrecioConImpuestosPrecios__c - (registroActualizado.CAT_PrecioConImpuestosPrecios__c * ajustePrecioSinImpuestos / 100) + sumaDeAjustesImpuestos;
+                                            registroActualizado.CAT_PrecioConImpuestosPrecios__c = registroActualizado.CAT_PrecioConImpuestosPrecios__c - (registroActualizado.CAT_PrecioConImpuestosPrecios__c * ajustePrecioSinImpuestos / 100);
+                                            registroActualizado.CAT_PrecioSinImpuestosPrecios__c = registroActualizado.CAT_PrecioSinImpuestosPrecios__c - (registroActualizado.CAT_PrecioSinImpuestosPrecios__c * ajustePrecioSinImpuestos / 100);
+                                            String adjustedPriceFormat = adjustedPrice.setScale(0).format();
+                                            registroActualizado.CAT_NombrePrecioConImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
+                                            registroActualizado.CAT_NombrePrecioSinImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
+
+                                        }
                                     }
                                 }
-                            }
-                            
-                            CAT_PreciosProductosExportados__c registroActualizado = originalRecord.clone(false, true, false, false);
-                            registroActualizado.CAT_Codigo_Promocion__c = promoCode;
-                            System.debug('se define promo code');
-                            String promoVigente = ((promoPorProducto.get(promoCode).CAT_FinVigenciaPromocion__c != null && promoPorProducto.get(promoCode).CAT_FinVigenciaPromocion__c >= fechaActual) || promoPorProducto.get(promoCode).CAT_FinVigenciaPromocion__c == null ) ? 'vigente' : 'no vigente';
-                            System.debug('promoVigente: '+ promoVigente);
-                            if(promoVigente == 'vigente'){
-                                String tipoAjuste = promoPorProducto.get(promoCode).CAT_TipoAjuste__c;
-                            	Boolean isOverride = promoPorProducto.get(promoCode).CAT_ValorOverridePrecioPromocion__c; 
-                                if (isOverride){
-                                    System.debug('es override');
-                                    String keySearchMonthly = promoCode+'Monthly';
-                                    String keySearchImpuestos = promoCode+'Mensual con impuestos';
-                                    Decimal ajustePrecioSinImpuestos = tipoPrecioPorPromo.get(keySearchMonthly).CAT_ValorAjustePrecioPromocion__c + addOnSinImpuesto;
-                                    Decimal ajustePrecioImpuestos = tipoPrecioPorPromo.get(keySearchImpuestos).CAT_ValorAjustePrecioPromocion__c + addOnImpuesto;
-                                    registroActualizado.CAT_PrecioConImpuestosPrecios__c = ajustePrecioImpuestos;
-                                    registroActualizado.CAT_PrecioSinImpuestosPrecios__c = ajustePrecioSinImpuestos;
-                                    String adjustedPriceFormat = ajustePrecioImpuestos.setScale(0).format();
-                                    registroActualizado.CAT_NombrePrecioConImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
-                                    registroActualizado.CAT_NombrePrecioSinImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
-                                                           
-                                } else {
-                                    System.debug('no es override');
-                                    Decimal adjustedPrice;
-                                    if (tipoAjuste == 'Absolute') {
-                                        System.debug('es Absolute');
-                                        String keySearchMonthly = promoCode+'Monthly';
-                                        String keySearchImpuestos = promoCode+'Mensual con impuestos';
-                                        System.debug('tipoPrecioPorPromo.get(keySearchMonthly).CAT_ValorAjustePrecioPromocion__c: '+ tipoPrecioPorPromo.get(keySearchMonthly).CAT_ValorAjustePrecioPromocion__c);
-                                        System.debug('addOnSinImpuesto: '+ addOnSinImpuesto);
-                                        System.debug('sumaDeAjustesSinImpuestos: '+ sumaDeAjustesSinImpuestos);
-                                        Decimal ajustePrecioSinImpuestos = tipoPrecioPorPromo.get(keySearchMonthly).CAT_ValorAjustePrecioPromocion__c + addOnSinImpuesto - sumaDeAjustesSinImpuestos;
-                                        Decimal ajustePrecioImpuestos = tipoPrecioPorPromo.get(keySearchImpuestos).CAT_ValorAjustePrecioPromocion__c + addOnImpuesto - sumaDeAjustesImpuestos;
-                                        adjustedPrice = registroActualizado.CAT_PrecioConImpuestosPrecios__c + ajustePrecioImpuestos;
-                                        registroActualizado.CAT_PrecioConImpuestosPrecios__c = registroActualizado.CAT_PrecioConImpuestosPrecios__c + ajustePrecioImpuestos;
-                                        registroActualizado.CAT_PrecioSinImpuestosPrecios__c = registroActualizado.CAT_PrecioSinImpuestosPrecios__c + ajustePrecioSinImpuestos;
-                                        String adjustedPriceFormat = adjustedPrice.setScale(0).format();
-                                        registroActualizado.CAT_NombrePrecioConImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
-                                        registroActualizado.CAT_NombrePrecioSinImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
-                                        
-                                    } else if (tipoAjuste == 'Percent') {
-                                        System.debug('es Percent');
-                                        Decimal ajustePrecioSinImpuestos = promoPorProducto.get(promoCode).CAT_ValorAjustePrecioPromocion__c;
-                                        adjustedPrice = registroActualizado.CAT_PrecioConImpuestosPrecios__c - (registroActualizado.CAT_PrecioConImpuestosPrecios__c * ajustePrecioSinImpuestos / 100) + addOnImpuesto;
-                                        registroActualizado.CAT_PrecioConImpuestosPrecios__c = registroActualizado.CAT_PrecioConImpuestosPrecios__c - (registroActualizado.CAT_PrecioConImpuestosPrecios__c * ajustePrecioSinImpuestos / 100);
-                                        registroActualizado.CAT_PrecioSinImpuestosPrecios__c = registroActualizado.CAT_PrecioSinImpuestosPrecios__c - (registroActualizado.CAT_PrecioSinImpuestosPrecios__c * ajustePrecioSinImpuestos / 100);
-                                        String adjustedPriceFormat = adjustedPrice.setScale(0).format();
-                                        registroActualizado.CAT_NombrePrecioConImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
-                                        registroActualizado.CAT_NombrePrecioSinImpuestosPrecios__c = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
-                                        
-                                    }
-                                }
-                            }
-                            newRecordsToInsert.add(registroActualizado);         
+                                CAT_PreciosProductosExportados__c registroActualizadoPromo = registroActualizado.clone(false, true, false, false);
+                                registroActualizadoPromo.CAT_CodigoProductoPrecios__c  = registroActualizado.CAT_Codigo_Promocion__c;
+                                registroActualizadoPromo.CAT_Codigo_Promocion__c  = '' ;
+                                newRecordsToInsert.add(registroActualizadoPromo);
+                                newRecordsToInsert.add(registroActualizado);
+                             }
+
                         }
                     }
-                           
+
                 }
-            }       
+            }
         }
-   
+
         if (!newRecordsToInsert.isEmpty()) {
             try {
-               // update recordsToUpdate;
                 insert as user newRecordsToInsert;
-                System.debug('[INFO] ' + recordsToUpdate.size() + ' records updated successfully.');
+                System.debug('[INFO] ' + newRecordsToInsert.size() + ' records inserted successfully.');
             } catch (DmlException e) {
                 System.debug('ERROR: DML Exception occurred: ' + e.getMessage());
             }
         }
-       
+
         if(!recordsToDelete.isEmpty()){
             try{
                 delete as user recordsToDelete;
             } catch (DmlException e) {
                 System.debug('ERROR: DML Exception occurred: ' + e.getMessage());
             }
-        }  
+        }
         System.debug('[INFO] El proceso de actualización del precio total ha finalizado.');
+        return preciosOmitidos;
     }
     
 
@@ -489,6 +578,9 @@ public with sharing class CATDataUpdateService {
             productsByCodeMap.put(product.ProductCode, product);
         }
         System.debug('candidateIds: ' + candidateIds);
+        if (pricesByProductCode == null) {
+            pricesByProductCode = queryPricesByProductCode(productsByCodeMap.keySet());
+        }
 
         List<vlocity_cmt__AttributeAssignment__c> attrAssignments = [
             SELECT vlocity_cmt__ObjectId__c, vlocity_cmt__Value__c
@@ -504,6 +596,9 @@ public with sharing class CATDataUpdateService {
             Product2 producto = productsByCodeMap.get(productCode);
             if(producto!= null){
                 List<vlocity_cmt__PriceListEntry__c> priceListEntriesPorProducto = pricesByProductCode.get(productCode);
+                if (priceListEntriesPorProducto == null) {
+                    continue;
+                }
                 for (vlocity_cmt__PriceListEntry__c ple : priceListEntriesPorProducto){
                     //productPrices.put(ple.vlocity_cmt__ProductId__c, ple.vlocity_cmt__PricingElementAmount__c);
                     String searchKey = productCode+ple.vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c+ple.vlocity_cmt__DisplayText__c+ple.vlocity_cmt__EffectiveFromDate__c;
@@ -552,6 +647,8 @@ public with sharing class CATDataUpdateService {
                     String adjustedPriceFormat = adjustedPrice.setScale(0).format();
                     precioActualizado.CAT_NombrePrecioConImpuestosPrecios__c  ='$ ' + adjustedPriceFormat + ' impuestos incluidos';
                     precioActualizado.CAT_NombrePrecioSinImpuestosPrecios__c  = '$ ' + adjustedPriceFormat + ' impuestos incluidos';
+                    precioActualizado.CAT_InicioVigenciaPrecioConImpPrecios__c  = precioActualizado.CAT_InicioVigenciaPrecioSinImpPrecios__c;
+                    precioActualizado.CAT_FinVigenciaPrecioConImpuestos__c  = precioActualizado.CAT_FinVigenciaPrecioSinImpuestos__c;
                     System.debug('++precioActualizado: '+ precioActualizado);
                     recordsToUpdate.add(precioActualizado);
                     
@@ -572,6 +669,33 @@ public with sharing class CATDataUpdateService {
         
         System.debug('[INFO] El proceso de actualización del precio ha finalizado.');
     }
+
+    private static Map<String, List<vlocity_cmt__PriceListEntry__c>> queryPricesByProductCode(Set<String> productCodes) {
+        Map<String, List<vlocity_cmt__PriceListEntry__c>> pricesByProductCode = new Map<String, List<vlocity_cmt__PriceListEntry__c>>();
+        if (productCodes == null || productCodes.isEmpty()) {
+            return pricesByProductCode;
+        }
+        for (vlocity_cmt__PriceListEntry__c ple : [
+            SELECT vlocity_cmt__ProductId__r.ProductCode, vlocity_cmt__PriceListId__r.vlocity_cmt__Code__c,
+                   vlocity_cmt__DisplayText__c, vlocity_cmt__PricingElementAmount__c, vlocity_cmt__EffectiveFromDate__c
+            FROM vlocity_cmt__PriceListEntry__c
+            WHERE vlocity_cmt__ProductId__r.ProductCode IN :productCodes
+            AND vlocity_cmt__IsActive__c = true
+            AND vlocity_cmt__PricingElementId__c != null
+            AND vlocity_cmt__PricingElementId__r.vlocity_cmt__AdjustmentValue__c = null
+            AND vlocity_cmt__IsOverride__c = false
+            AND ((vlocity_cmt__EffectiveFromDate__c <= TODAY AND (vlocity_cmt__EffectiveUntilDate__c >= TODAY OR vlocity_cmt__EffectiveUntilDate__c = null))
+            OR (vlocity_cmt__EffectiveFromDate__c > TODAY))
+            WITH SECURITY_ENFORCED
+        ]) {
+            String productCode = ple.vlocity_cmt__ProductId__r.ProductCode;
+            if (!pricesByProductCode.containsKey(productCode)) {
+                pricesByProductCode.put(productCode, new List<vlocity_cmt__PriceListEntry__c>());
+            }
+            pricesByProductCode.get(productCode).add(ple);
+        }
+        return pricesByProductCode;
+    }
     
     
     /**
@@ -580,6 +704,10 @@ public with sharing class CATDataUpdateService {
      * @return void
      */
     public static void updateSuccessLogRecord(String message, String objetoControlId, Id idLogRecord) {
+        updateSuccessLogRecord(message, objetoControlId, idLogRecord, null);
+    }
+
+    public static void updateSuccessLogRecord(String message, String objetoControlId, Id idLogRecord, List<String> preciosOmitidos) {
         //  COMENTARIO: Lógica para insertar el registro de trazabilidad en custom object CAT_SeguimientoProductosExportados__c
         System.debug('[LOGGING] Creando registro de control: ' + message);
         CAT_Control_Interno_Digital__c logInterno = [SELECT Id FROM CAT_Control_Interno_Digital__c WHERE Id = :objetoControlId WITH SECURITY_ENFORCED LIMIT 1];
@@ -588,8 +716,11 @@ public with sharing class CATDataUpdateService {
         logRecord.CAT_FechaFinSfSeguimiento__c = datetime.NOW();
         logRecord.CAT_ResultadoGlobalSeguimiento__c = 'Éxito';
         logInterno.CAT_Estado_Final__c = 'Procesado';
+        if (preciosOmitidos != null && !preciosOmitidos.isEmpty()) {
+            logInterno.CAT_Listado_Error__c = String.join(preciosOmitidos, '\n');
+        }
         update as user logInterno;
-        update as user logRecord;    
+        update as user logRecord;
 
     }
     

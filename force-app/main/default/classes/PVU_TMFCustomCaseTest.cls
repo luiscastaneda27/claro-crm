@@ -1138,4 +1138,71 @@ public with sharing class PVU_TMFCustomCaseTest {
             'Debe haberse creado el Case failed');
     }
 
+    // HU 811299 - Tests de resolveOwnerId (asignación centralizada de owner).
+
+    @isTest
+    static void resolveOwnerIdCanalDigitalTest() {
+        // Canal digital => usuario de integración (contexto de ejecución = usuario actual).
+        Map<String,Object> channel = new Map<String,Object>{ 'name' => 'SuperApp' };
+        Test.startTest();
+        Id owner = PVU_TMFCustomCase.resolveOwnerId(channel, 'Cualquier voz', UserInfo.getUserId(), false);
+        Test.stopTest();
+        System.assertEquals(UserInfo.getUserId(), owner,
+            'Canal digital debe asignar el usuario de integración (contexto de ejecución)');
+    }
+
+    @isTest
+    static void resolveOwnerIdOwnerActivoTest() {
+        // No digital + owner activo => Account.OwnerId (el usuario actual está activo).
+        Map<String,Object> channel = new Map<String,Object>{ 'name' => 'Web' };
+        Test.startTest();
+        Id owner = PVU_TMFCustomCase.resolveOwnerId(channel, 'Otra voz', UserInfo.getUserId(), false);
+        Test.stopTest();
+        System.assertEquals(UserInfo.getUserId(), owner,
+            'Owner de cuenta activo debe conservarse como owner del caso');
+    }
+
+    @isTest
+    static void resolveOwnerIdPortabilidadOutOwnerInactivoTest() {
+        // No digital + owner inactivo + voz 'Portabilidad Out' => cola PVU_MesaPortout (si existe).
+        Map<String,Object> channel = new Map<String,Object>{ 'name' => 'App' };
+        Id inactiveOwner = getInactiveUserIdOrNull();
+        Test.startTest();
+        Id owner = PVU_TMFCustomCase.resolveOwnerId(channel, 'Portabilidad Out', inactiveOwner, false);
+        Test.stopTest();
+        // Con owner inactivo (o nulo) y voz Portabilidad Out, no debe quedar como el owner inactivo.
+        System.assertNotEquals(inactiveOwner, owner,
+            'Portabilidad Out con owner inactivo no debe dejar el owner inactivo');
+    }
+
+    @isTest
+    static void resolveOwnerIdOtraVozOwnerInactivoTest() {
+        // No digital + owner inactivo + otra voz => usuario que crea el caso.
+        Map<String,Object> channel = new Map<String,Object>{ 'name' => 'App' };
+        Id inactiveOwner = getInactiveUserIdOrNull();
+        Test.startTest();
+        Id owner = PVU_TMFCustomCase.resolveOwnerId(channel, 'Otra voz', inactiveOwner, false);
+        Test.stopTest();
+        System.assertEquals(UserInfo.getUserId(), owner,
+            'Owner inactivo con otra voz debe asignar el usuario que crea el caso');
+    }
+
+    @isTest
+    static void resolveOwnerIdFinanciacionTest() {
+        // No digital + financiación => cola FIN_BackAjustesFinanciacion (o null si no existe la cola).
+        Map<String,Object> channel = new Map<String,Object>{ 'name' => 'Web' };
+        Test.startTest();
+        Id owner = PVU_TMFCustomCase.resolveOwnerId(channel, 'Ajuste de Credito', UserInfo.getUserId(), true);
+        Test.stopTest();
+        // Si la cola existe, owner es un Group (Queue); si no, es null. En ambos casos no es el Account owner.
+        System.assertNotEquals(UserInfo.getUserId(), owner,
+            'Escenario financiación no debe asignar el owner de la cuenta');
+    }
+
+    // Helper: devuelve el Id de un usuario inactivo si existe, o null.
+    private static Id getInactiveUserIdOrNull() {
+        List<User> inactivos = [SELECT Id FROM User WHERE IsActive = false LIMIT 1];
+        return inactivos.isEmpty() ? null : inactivos[0].Id;
+    }
+
 }

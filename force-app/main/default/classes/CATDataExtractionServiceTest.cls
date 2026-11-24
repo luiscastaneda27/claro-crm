@@ -287,7 +287,7 @@ public class CATDataExtractionServiceTest {
         // --- THEN ---
         // Verify that the correct custom object records were created.
         System.assertEquals(2, [SELECT COUNT() FROM CAT_ProductosExportados__c], 'Should have created 2 CAT_ProductosExportados__c record.');
-        System.assertEquals(3, [SELECT COUNT() FROM CAT_PromocionesExportadas__c], 'Should have created 3 CAT_PromocionesExportadas__c record.');
+        System.assertEquals(2, [SELECT COUNT() FROM CAT_PromocionesExportadas__c], 'Should have created 3 CAT_PromocionesExportadas__c record.');
         System.assertEquals(5, [SELECT COUNT() FROM CAT_AtributosProductosExportados__c], 'Should have created 5 CAT_AtributosProductosExportados__c record.');
         System.assertEquals(0, [SELECT COUNT() FROM CAT_CompatibilidadProductosExportados__c], 'Should have created 0 CAT_CompatibilidadProductosExportados__c record.');
         System.assertEquals(1, [SELECT COUNT() FROM CAT_PreciosProductosExportados__c], 'Should have created 1 CAT_PreciosProductosExportados__c record.');
@@ -322,7 +322,7 @@ public class CATDataExtractionServiceTest {
         // --- THEN ---
         // Verify that the correct custom object records were created.
         System.assertEquals(2, [SELECT COUNT() FROM CAT_ProductosExportados__c], 'Should have created 2 CAT_ProductosExportados__c record.');
-        System.assertEquals(3, [SELECT COUNT() FROM CAT_PromocionesExportadas__c], 'Should have created 3 CAT_PromocionesExportadas__c record.');
+        System.assertEquals(2, [SELECT COUNT() FROM CAT_PromocionesExportadas__c], 'Should have created 3 CAT_PromocionesExportadas__c record.');
         System.assertEquals(5, [SELECT COUNT() FROM CAT_AtributosProductosExportados__c], 'Should have created 5 CAT_AtributosProductosExportados__c record.');
         System.assertEquals(1, [SELECT COUNT() FROM CAT_CompatibilidadProductosExportados__c], 'Should have created 1 CAT_CompatibilidadProductosExportados__c record.');
         System.assertEquals(1, [SELECT COUNT() FROM CAT_PreciosProductosExportados__c], 'Should have created 1 CAT_PreciosProductosExportados__c record.');

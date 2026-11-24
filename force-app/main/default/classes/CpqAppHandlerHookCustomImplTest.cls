@@ -298,5 +298,751 @@ public class CpqAppHandlerHookCustomImplTest {
             System.debug('Exception: ' + e.getMessage());
             throw e;
         }
-    }   
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // getCartsProducts.PostInvoke
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldReturnTrue_WhenGetCartsProductsPostInvoke() {
+        // Given / When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod(
+            'getCartsProducts.PostInvoke',
+            new Map<String, Object>{'fields' => 'Test'},
+            new Map<String, Object>(),
+            new Map<String, Object>()
+        );
+        Test.stopTest();
+
+        // Then
+        Assert.isTrue(result, 'getCartsProducts.PostInvoke should return true');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // getCartsItems.PreInvoke — Quote cart
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldSetQuoteFields_WhenGetCartsItemsPreInvoke_WithQuoteCartId() {
+        // Given
+        Account acc = new Account(Name = 'Quote GetCartsItems Account');
+        insert acc;
+        Opportunity opp = new Opportunity(Name = 'Quote GetCartsItems Opp', StageName = 'Prospecting', CloseDate = System.today(), AccountId = acc.Id);
+        insert opp;
+        Quote q = new Quote(Name = 'Quote GetCartsItems', OpportunityId = opp.Id, Pricebook2Id = Test.getStandardPricebookId());
+        insert q;
+
+        Map<String, Object> input = new Map<String, Object>{'cartId' => q.Id, 'fields' => ''};
+        Map<String, Object> output = new Map<String, Object>();
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('getCartsItems.PreInvoke', input, output, new Map<String, Object>());
+        Test.stopTest();
+
+        // Then
+        String fields = (String) input.get('fields');
+        Assert.isTrue(fields.contains('Quote.Id'), 'fields should contain Quote.Id for a Quote cart');
+        Assert.isFalse(fields.contains('Order.Type'), 'Order-specific fields should not appear for a Quote cart');
+        Assert.isTrue(result, 'Should return true');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // postCartsItems.PreInvoke — Quote cart (early return)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldSetQuoteFieldsAndEarlyReturn_WhenPostCartsItemsPreInvoke_WithQuoteCartId() {
+        // Given
+        Account acc = new Account(Name = 'Quote PostCartsItems Account');
+        insert acc;
+        Opportunity opp = new Opportunity(Name = 'Quote PostCartsItems Opp', StageName = 'Prospecting', CloseDate = System.today(), AccountId = acc.Id);
+        insert opp;
+        Quote q = new Quote(Name = 'Quote PostCartsItems', OpportunityId = opp.Id, Pricebook2Id = Test.getStandardPricebookId());
+        insert q;
+
+        Map<String, Object> input = new Map<String, Object>{'cartId' => q.Id, 'fields' => ''};
+        Map<String, Object> output = new Map<String, Object>();
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('postCartsItems.PreInvoke', input, output, new Map<String, Object>());
+        Test.stopTest();
+
+        // Then — Quote path sets Quote-specific fields and returns before any SOQL
+        String fields = (String) input.get('fields');
+        Assert.isTrue(fields.contains('Quote.Id'), 'fields should contain Quote.Id for a Quote cart');
+        Assert.isNull(input.get('abovecreditlimit'), 'Credit limit should not be evaluated for a Quote cart');
+        Assert.isTrue(result, 'Should return true');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // postCartsItems.PreInvoke — skip credit limit: Cambio de Plan
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // postCartsItems.PreInvoke — skip credit limit: OmitirHDC
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldSkipCreditLimitCheck_WhenOmitirHDCIsTrue() {
+        // Given
+        Product2 mobilePlan = new Product2(
+            Name = 'Plan OmitHDC', ProductCode = 'PO_OmitHDC_TEST',
+            Family = 'Mobile', vlocity_cmt__Type__c = 'Plan', vlocity_cmt__SubType__c = 'Postpaid',
+            vlocity_cmt__SpecificationType__c = 'Offer', vlocity_cmt__SpecificationSubType__c = 'Bundle'
+        );
+        insert mobilePlan;
+        Pricebook2 pb = new Pricebook2(Id = Test.getStandardPricebookId(), IsActive = true);
+        PricebookEntry pbe = new PricebookEntry(Pricebook2Id = pb.Id, Product2Id = mobilePlan.Id, UnitPrice = 0, IsActive = true, vlocity_cmt__RecurringUOM__c = 'Monthly');
+        insert pbe;
+        Account acc = new Account(Name = 'OmitHDC Account');
+        insert acc;
+        Order ord = new Order(
+            Name = 'OmitHDC Order', EffectiveDate = System.today(), Status = 'Draft',
+            AccountId = acc.Id, Pricebook2Id = pb.Id, FVU_CreditQuota__c = 1000,
+            PVU_OmitirHDC__c = true
+        );
+        insert ord;
+
+        Map<String, Object> input = new Map<String, Object>{
+            'cartId' => ord.Id, 'fields' => '', 'recPrice' => 99999,
+            'items' => new List<Object>{new Map<String, Object>{'itemId' => pbe.Id}}
+        };
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('postCartsItems.PreInvoke', input, new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then
+        Assert.isTrue(result, 'Should return true when OmitirHDC is true');
+        Assert.isNull(input.get('abovecreditlimit'), 'Credit limit check should be skipped when OmitirHDC is true');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // postCartsItems.PreInvoke — IVA-exempt: Mobile Plan (REC_MNTH_STD_PRC branch)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldUseExcludingTaxPriceSOQL_WhenIVAExemptOrder_MobilePlan() {
+        // Given
+        Product2 mobilePlan = new Product2(
+            Name = 'Plan IVAExempt', ProductCode = 'PO_IVAExempt_Plan',
+            Family = 'Mobile', vlocity_cmt__Type__c = 'Plan', vlocity_cmt__SubType__c = 'Postpaid',
+            vlocity_cmt__SpecificationType__c = 'Offer', vlocity_cmt__SpecificationSubType__c = 'Bundle'
+        );
+        insert mobilePlan;
+        Pricebook2 pb = new Pricebook2(Id = Test.getStandardPricebookId(), IsActive = true);
+        PricebookEntry pbe = new PricebookEntry(Pricebook2Id = pb.Id, Product2Id = mobilePlan.Id, UnitPrice = 0, IsActive = true, vlocity_cmt__RecurringUOM__c = 'Monthly');
+        insert pbe;
+        Account acc = new Account(Name = 'IVAExempt Plan Account');
+        insert acc;
+        Order ord = new Order(
+            Name = 'IVAExempt Plan Order', EffectiveDate = System.today(), Status = 'Draft',
+            AccountId = acc.Id, Pricebook2Id = pb.Id, FVU_CreditQuota__c = 1000000,
+            FVU_IsIVAExempt__c = true
+        );
+        insert ord;
+
+        Map<String, Object> input = new Map<String, Object>{
+            'cartId' => ord.Id, 'fields' => '', 'recPrice' => 1,
+            'items' => new List<Object>{new Map<String, Object>{'itemId' => pbe.Id}}
+        };
+
+        // When — exercises the isIVAExemptOrder == true SOQL branch for Plan (line 316)
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('postCartsItems.PreInvoke', input, new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then — no exception, method completes normally
+        Assert.isTrue(result, 'Should return true for IVA-exempt plan order');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // postCartsItems.PreInvoke — IVA-exempt: Add On (REC_MNTH_STD_PRC branch)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldUseExcludingTaxPriceSOQL_WhenIVAExemptOrder_AddOn() {
+        // Given
+        Product2 addOnProd = new Product2(
+            Name = 'AddOn IVAExempt', ProductCode = 'PO_IVAExempt_AddOn',
+            Family = 'Mobile', vlocity_cmt__Type__c = 'Add On',
+            vlocity_cmt__SpecificationType__c = 'Offer', vlocity_cmt__SpecificationSubType__c = 'Simple'
+        );
+        insert addOnProd;
+        Pricebook2 pb = new Pricebook2(Id = Test.getStandardPricebookId(), IsActive = true);
+        PricebookEntry pbeAddOn = new PricebookEntry(Pricebook2Id = pb.Id, Product2Id = addOnProd.Id, UnitPrice = 0, IsActive = true, vlocity_cmt__RecurringUOM__c = 'Monthly');
+        insert pbeAddOn;
+        Account acc = new Account(Name = 'IVAExempt AddOn Account');
+        insert acc;
+        Order ord = new Order(
+            Name = 'IVAExempt AddOn Order', EffectiveDate = System.today(), Status = 'Draft',
+            AccountId = acc.Id, Pricebook2Id = pb.Id, FVU_CreditQuota__c = 1000000,
+            FVU_IsIVAExempt__c = true
+        );
+        insert ord;
+
+        Map<String, Object> input = new Map<String, Object>{
+            'cartId' => ord.Id, 'fields' => '', 'recPrice' => 1000,
+            'CreditLimit' => 500000,
+            'items' => new List<Object>{new Map<String, Object>{'itemId' => pbeAddOn.Id}}
+        };
+
+        // When — exercises the isIVAExemptOrder == true SOQL branch for AddOn (line 262)
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('postCartsItems.PreInvoke', input, new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then — CreditLimit > recPrice → addOnAdded should be true
+        Assert.isTrue(result, 'Should return true for IVA-exempt add-on order');
+        Assert.isTrue((Boolean)input.get('addOnAdded'), 'addOnAdded should be set when credit limit is sufficient');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // getCartsPromotions.PostInvoke — Quote cart, null result (early return)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldReturnTrue_WhenGetCartsPromotionsPostInvoke_NullResult() {
+        // Given
+        Account acc = new Account(Name = 'PostInvoke NullResult Account');
+        insert acc;
+        Opportunity opp = new Opportunity(Name = 'NullResult Opp', StageName = 'Prospecting', CloseDate = System.today(), AccountId = acc.Id);
+        insert opp;
+        Quote q = new Quote(Name = 'NullResult Quote', OpportunityId = opp.Id, Pricebook2Id = Test.getStandardPricebookId());
+        insert q;
+
+        Map<String, Object> input  = new Map<String, Object>{'cartId' => q.Id};
+        Map<String, Object> output = new Map<String, Object>(); // no 'result' key
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('getCartsPromotions.PostInvoke', input, output, new Map<String, Object>());
+        Test.stopTest();
+
+        // Then — exits at the null-result guard (line 794)
+        Assert.isTrue(result, 'Should return true when result is null');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // getCartsPromotions.PostInvoke — Quote cart, empty records (early return)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldReturnTrue_WhenGetCartsPromotionsPostInvoke_EmptyRecords() {
+        // Given
+        Account acc = new Account(Name = 'PostInvoke EmptyRecords Account');
+        insert acc;
+        Opportunity opp = new Opportunity(Name = 'EmptyRecords Opp', StageName = 'Prospecting', CloseDate = System.today(), AccountId = acc.Id);
+        insert opp;
+        Quote q = new Quote(Name = 'EmptyRecords Quote', OpportunityId = opp.Id, Pricebook2Id = Test.getStandardPricebookId());
+        insert q;
+
+        Map<String, Object> resultMap = new Map<String, Object>{'records' => new List<Object>()};
+        Map<String, Object> input  = new Map<String, Object>{'cartId' => q.Id};
+        Map<String, Object> output = new Map<String, Object>{'result' => resultMap};
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('getCartsPromotions.PostInvoke', input, output, new Map<String, Object>());
+        Test.stopTest();
+
+        // Then — exits at the empty-records guard (line 800)
+        Assert.isTrue(result, 'Should return true when records list is empty');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // getCartsPromotions.PostInvoke — Quote cart, Descuento promo filtered out
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldFilterOutDescuentoPromo_WhenGetCartsPromotionsPostInvoke_QuoteCart() {
+        // Given
+        Account acc = new Account(Name = 'PostInvoke Filter Account');
+        insert acc;
+        Opportunity opp = new Opportunity(Name = 'Filter Opp', StageName = 'Prospecting', CloseDate = System.today(), AccountId = acc.Id);
+        insert opp;
+        Quote q = new Quote(Name = 'Filter Quote', OpportunityId = opp.Id, Pricebook2Id = Test.getStandardPricebookId());
+        insert q;
+
+        // Build output.result with two promos: one Descuento (should be filtered) and one Bundle (kept)
+        List<Object> records = new List<Object>{
+            new Map<String, Object>{
+                'fields' => new Map<String, Object>{'CAT_PromotionClass__c' => 'Descuento'},
+                'Id'    => 'someId1',
+                'Name'  => 'Descuento Promo'
+            },
+            new Map<String, Object>{
+                'fields' => new Map<String, Object>{'CAT_PromotionClass__c' => 'Bundle'},
+                'Id'    => 'someId2',
+                'Name'  => 'Bundle Promo'
+            }
+        };
+        Map<String, Object> input  = new Map<String, Object>{'cartId' => q.Id};
+        Map<String, Object> output = new Map<String, Object>{'result' => new Map<String, Object>{'records' => records}};
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('getCartsPromotions.PostInvoke', input, output, new Map<String, Object>());
+        Test.stopTest();
+
+        // Then — only the non-Descuento promo remains
+        List<Object> filteredRecords = (List<Object>) output.get('records');
+        Assert.isNotNull(filteredRecords, 'Filtered records should be present in output');
+        Assert.areEqual(1, filteredRecords.size(), 'Only the non-Descuento promo should remain');
+        Assert.areEqual(1, (Integer) output.get('totalSize'), 'totalSize should match filtered count');
+        Assert.isTrue(result, 'Should return true');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // deleteAppliedPromoItems.PostInvoke — Bundle promo class: blocking items deleted
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldDeleteBlockingPromoItems_WhenBundlePromotion_AddOnType() {
+        // Given
+        Product2 addOnProd = new Product2(
+            Name = 'AddOn Bundle Test', ProductCode = 'B2C-ADDON-BUNDLE-TEST',
+            Family = 'Mobile', vlocity_cmt__Type__c = 'Add On',
+            vlocity_cmt__SpecificationType__c = 'Offer', vlocity_cmt__SpecificationSubType__c = 'Simple'
+        );
+        insert addOnProd;
+        Pricebook2 pb = new Pricebook2(Id = Test.getStandardPricebookId(), IsActive = true);
+        PricebookEntry pbeAddOn = new PricebookEntry(Pricebook2Id = pb.Id, Product2Id = addOnProd.Id, UnitPrice = 0, IsActive = true, vlocity_cmt__RecurringUOM__c = 'Monthly');
+        insert pbeAddOn;
+
+        Account acc = new Account(Name = 'Bundle Promo Account');
+        insert acc;
+        Order ord = new Order(Name = 'Bundle Promo Order', EffectiveDate = System.today(), Status = 'Draft', AccountId = acc.Id, Pricebook2Id = pb.Id);
+        insert ord;
+
+        OrderItem addOnOI = new OrderItem(
+            OrderId = ord.Id, Product2Id = addOnProd.Id, PricebookEntryId = pbeAddOn.Id,
+            Quantity = 1, UnitPrice = 0, vlocity_cmt__LineNumber__c = '0001',
+            vlocity_cmt__Action__c = 'Add', vlocity_cmt__ProvisioningStatus__c = 'New',
+            vlocity_cmt__ServiceAccountId__c = acc.Id
+        );
+        insert addOnOI;
+
+        vlocity_cmt__Promotion__c bundlePromo = new vlocity_cmt__Promotion__c(
+            vlocity_cmt__Code__c = 'BUNDLE-TEST-PROMO', Name = 'Bundle Test Promo',
+            CAT_Type__c = 'Estandar', CAT_PromotionClass__c = 'Bundle'
+        );
+        insert bundlePromo;
+
+        vlocity_cmt__OrderAppliedPromotion__c appliedPromo = new vlocity_cmt__OrderAppliedPromotion__c(
+            vlocity_cmt__PromotionId__c = bundlePromo.Id, vlocity_cmt__OrderId__c = ord.Id
+        );
+        insert appliedPromo;
+
+        vlocity_cmt__OrderAppliedPromotionItem__c blockingItem = new vlocity_cmt__OrderAppliedPromotionItem__c(
+            vlocity_cmt__OrderAppliedPromotionId__c = appliedPromo.Id,
+            vlocity_cmt__OrderItemId__c = addOnOI.Id,
+            vlocity_cmt__AppliedAction__c = 'Add'
+        );
+        insert blockingItem;
+
+        Map<String, Object> input = new Map<String, Object>{
+            'cartId'        => ord.Id,
+            'promotionClass'=> 'Bundle',
+            'orderItemIds'  => new Map<Id, String>{addOnOI.Id => 'Add On'},
+            'externalRefresh' => true   // skip price-refresh IP call at the end
+        };
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('deleteAppliedPromoItems.PostInvoke', input, new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then — blocking OrderAppliedPromotionItem should be deleted
+        List<vlocity_cmt__OrderAppliedPromotionItem__c> remaining = [
+            SELECT Id FROM vlocity_cmt__OrderAppliedPromotionItem__c
+            WHERE Id = :blockingItem.Id
+        ];
+        Assert.areEqual(0, remaining.size(), 'Blocking promo items should be deleted for Bundle promotion');
+        Assert.isTrue(result, 'Should return true');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // deleteAppliedPromoItems.PostInvoke — Handset product type (sets Modification = 0)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    @isTest
+    static void shouldSetModificationToZero_WhenHandsetProductType() {
+        // Given
+        Product2 handsetProd = new Product2(
+            Name = 'Handset Test', ProductCode = 'B2C-HANDSET-TEST',
+            Family = 'Device', vlocity_cmt__Type__c = 'Handset'
+        );
+        insert handsetProd;
+        Pricebook2 pb = new Pricebook2(Id = Test.getStandardPricebookId(), IsActive = true);
+        PricebookEntry pbeHandset = new PricebookEntry(Pricebook2Id = pb.Id, Product2Id = handsetProd.Id, UnitPrice = 0, IsActive = true, vlocity_cmt__RecurringUOM__c = 'Monthly');
+        insert pbeHandset;
+
+        Account acc = new Account(Name = 'Handset Account');
+        insert acc;
+        Order ord = new Order(Name = 'Handset Order', EffectiveDate = System.today(), Status = 'Draft', AccountId = acc.Id, Pricebook2Id = pb.Id);
+        insert ord;
+
+        OrderItem handsetOI = new OrderItem(
+            OrderId = ord.Id, Product2Id = handsetProd.Id, PricebookEntryId = pbeHandset.Id,
+            Quantity = 1, UnitPrice = 0, vlocity_cmt__LineNumber__c = '0001',
+            vlocity_cmt__Action__c = 'Add', vlocity_cmt__ProvisioningStatus__c = 'New',
+            vlocity_cmt__ServiceAccountId__c = acc.Id
+        );
+        insert handsetOI;
+
+        Map<String, Object> input = new Map<String, Object>{
+            'cartId'         => ord.Id,
+            'promotionClass' => 'Terceros',
+            'orderItemIds'   => new Map<Id, String>{handsetOI.Id => 'Handset'},
+            'externalRefresh'=> true    // skip price-refresh IP call
+        };
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('deleteAppliedPromoItems.PostInvoke', input, new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then — vlocity_cmt__Modification__c should be set to 0 for Handset type
+        OrderItem updated = [SELECT vlocity_cmt__Modification__c FROM OrderItem WHERE Id = :handsetOI.Id];
+        Assert.areEqual(0, updated.vlocity_cmt__Modification__c, 'Modification should be 0 for Handset product type');
+        Assert.isTrue(result, 'Should return true');
+    }
+
+    
+
+    @isTest
+    static void shouldNotRemovePromo_WhenAppliedPromosFieldIsNull() {
+        // Given
+        Account acc = new Account(Name = 'No OTP Account');
+        insert acc;
+
+        Pricebook2 pb = new Pricebook2(Id = Test.getStandardPricebookId(), IsActive = true);
+
+        vlocity_cmt__Promotion__c promo = new vlocity_cmt__Promotion__c(
+            vlocity_cmt__Code__c = 'B2C-PROMO-DISNEY-SA',
+            Name = 'Disney SA Null Test',
+            CAT_Type__c = 'Estandar',
+            CAT_PromotionClass__c = 'Terceros'
+        );
+        insert promo;
+
+        Order ord = new Order(
+            Name = 'OTP Null Order',
+            EffectiveDate = System.today(),
+            Status = 'Draft',
+            AccountId = acc.Id,
+            Pricebook2Id = pb.Id
+        );
+        insert ord;
+
+        String filters = 'Id:' + promo.Id;
+        Map<String, Object> input = new Map<String, Object>{
+            'cartId' => ord.Id,
+            'filters' => filters,
+            'fields' => ''
+        };
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        hook.invokeMethod('getCartsPromotions.PreInvoke', input, output, options);
+        Test.stopTest();
+
+        // Then
+        String updatedFilters = (String) input.get('filters');
+        Assert.isTrue(updatedFilters.contains(promo.Id), 'Promo should remain when applied promos field is null');
+    }
+
+    @isTest
+    static void shouldProcessCode310Messages_WhenGetCartsItemsPostInvoke() {
+        // Given
+        String basicJson = '{"totalSize":0,"records":[],"name":null,"messages":[],"description":null,"data":null,"actions":{}}';
+        vlocity_cmt.JSONResult jsonResult = (vlocity_cmt.JSONResult)JSON.deserialize(basicJson, vlocity_cmt.JSONResult.class);
+
+        vlocity_cmt.JSONMessage msgWithComma = (vlocity_cmt.JSONMessage)JSON.deserialize(
+            '{"code":"310","message":"prefix: part1, extracted message"}', vlocity_cmt.JSONMessage.class);
+        vlocity_cmt.JSONMessage msgWithoutComma = (vlocity_cmt.JSONMessage)JSON.deserialize(
+            '{"code":"310","message":"prefix: message without comma"}', vlocity_cmt.JSONMessage.class);
+        vlocity_cmt.JSONMessage msgWithoutColon = (vlocity_cmt.JSONMessage)JSON.deserialize(
+            '{"code":"310","message":"message without colon"}', vlocity_cmt.JSONMessage.class);
+        vlocity_cmt.JSONMessage otherCode = (vlocity_cmt.JSONMessage)JSON.deserialize(
+            '{"code":"200","message":"success message"}', vlocity_cmt.JSONMessage.class);
+
+        List<vlocity_cmt.JSONMessage> messages = new List<vlocity_cmt.JSONMessage>{
+            msgWithComma, msgWithoutComma, msgWithoutColon, otherCode
+        };
+        jsonResult.messages = messages;
+
+        Map<String, Object> input = new Map<String, Object>();
+        Map<String, Object> output = new Map<String, Object>{'result' => jsonResult};
+        Map<String, Object> options = new Map<String, Object>();
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean r1 = hook.invokeMethod('getCartsItems.PostInvoke', input, output, options);
+        Boolean r2 = hook.invokeMethod('postCartsPromoItems.PostInvoke', input, output, options);
+        Test.stopTest();
+
+        // Then
+        Assert.isTrue(r1, 'getCartsItems.PostInvoke should return true');
+        Assert.isTrue(r2, 'postCartsPromoItems.PostInvoke should return true');
+        Assert.areEqual('extracted message', msgWithComma.message, 'Should extract message after colon and comma');
+        Assert.areEqual('message without comma', msgWithoutComma.message, 'Should extract message after colon when no comma');
+    }
+
+    @isTest
+    static void shouldReturnEarly_WhenOrderCart_GetCartsPromotionsPostInvoke() {
+        // Given — Order cartId (not Quote): the PostInvoke body is skipped entirely
+        Account acc = new Account(Name = 'Order Cart PostInvoke Account');
+        insert acc;
+
+        Order ord = new Order(
+            Name = 'Order Cart PostInvoke',
+            EffectiveDate = System.today(),
+            Status = 'Draft',
+            AccountId = acc.Id,
+            Pricebook2Id = Test.getStandardPricebookId()
+        );
+        insert ord;
+
+        Map<String, Object> input = new Map<String, Object>{'cartId' => ord.Id};
+        Map<String, Object> output = new Map<String, Object>{'result' => new Map<String, Object>{'records' => new List<Object>()}};
+        Map<String, Object> options = new Map<String, Object>();
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('getCartsPromotions.PostInvoke', input, output, options);
+        Test.stopTest();
+
+        // Then
+        Assert.isTrue(result, 'Should return true when cartId is an Order (inner block skipped)');
+        Assert.isFalse(output.containsKey('records') && !output.containsKey('result'),
+            'Output should NOT be restructured when cart is not a Quote');
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // HU 826417 — Reemplazo de SIM Card por eSIM en migración con eSIM
+    // ─────────────────────────────────────────────────────────────────────────
+    private static Order createSimCart(String migraData) {
+        return createSimCart(migraData, null);
+    }
+
+    private static Order createSimCart(String migraData, String purchaseType) {
+        Product2 simGroup = new Product2(Name = 'Escoja SIM Card Test', ProductCode = 'B2C-MOV-OFR-ESCOJA-SIM-TEST', Family = 'Mobile');
+        Product2 simCard = new Product2(Name = 'SIM Card Test', ProductCode = 'B2C-MOV-OFR-SIMCARD', Family = 'Mobile');
+        Product2 esim = new Product2(Name = 'eSIM Test', ProductCode = 'B2C-MOB-OFR-ESIM', Family = 'Mobile');
+        insert new List<Product2>{simGroup, simCard, esim};
+        Id pricebookId = Test.getStandardPricebookId();
+        PricebookEntry pbeGroup = new PricebookEntry(Pricebook2Id = pricebookId, Product2Id = simGroup.Id, UnitPrice = 0, IsActive = true);
+        PricebookEntry pbeSimCard = new PricebookEntry(Pricebook2Id = pricebookId, Product2Id = simCard.Id, UnitPrice = 0, IsActive = true);
+        PricebookEntry pbeEsim = new PricebookEntry(Pricebook2Id = pricebookId, Product2Id = esim.Id, UnitPrice = 0, IsActive = true);
+        insert new List<PricebookEntry>{pbeGroup, pbeSimCard, pbeEsim};
+        Account acc = new Account(Name = 'SIM Swap Account');
+        insert acc;
+        Order ord = new Order(Name = 'SIM Swap Order', EffectiveDate = System.today(), Status = 'Draft',
+            AccountId = acc.Id, Pricebook2Id = pricebookId, FVU_MigraData__c = migraData, FVU_PurchaseType__c = purchaseType);
+        insert ord;
+        OrderItem groupItem = new OrderItem(OrderId = ord.Id, Product2Id = simGroup.Id, PricebookEntryId = pbeGroup.Id,
+            Quantity = 1, UnitPrice = 0, vlocity_cmt__LineNumber__c = '0001.0002', vlocity_cmt__Action__c = 'Add',
+            vlocity_cmt__AssetReferenceId__c = 'sim-group-ref', vlocity_cmt__ProductHierarchyPath__c = 'plan<group');
+        insert groupItem;
+        OrderItem simItem = new OrderItem(OrderId = ord.Id, Product2Id = simCard.Id, PricebookEntryId = pbeSimCard.Id,
+            Quantity = 1, UnitPrice = 0, vlocity_cmt__LineNumber__c = '0001.0002.0001', vlocity_cmt__Action__c = 'Add',
+            vlocity_cmt__ParentItemId__c = 'sim-group-ref', vlocity_cmt__ProductHierarchyPath__c = 'plan<group<sim');
+        insert simItem;
+        return ord;
+    }
+
+    @isTest
+    static void shouldDetectEsimSale_OnlyWhenSimTypeIsEsim() {
+        Assert.isTrue(CpqAppHandlerHookCustomImpl.isEsimSale('[{"ICCID":"","SimType":"eSIM","NRN":""}]'), 'Lista con SimType eSIM');
+        Assert.isTrue(CpqAppHandlerHookCustomImpl.isEsimSale('{"SimType":"eSIM"}'), 'Objeto con SimType eSIM');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.isEsimSale('[{"SimType":"USIM"}]'), 'SimType USIM');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.isEsimSale('[{"SimType":""}]'), 'SimType vacío');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.isEsimSale(''), 'Campo vacío');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.isEsimSale(null), 'Campo nulo');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.isEsimSale('no es json'), 'JSON inválido');
+    }
+
+    @isTest
+    static void shouldTrySimSwap_WhenGetCartLineItemPricesPreInvoke_WithEsimMigration() {
+        // Given
+        Order ord = createSimCart('[{"ICCID":"","SimType":"eSIM","NRN":""}]');
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+        Boolean result = hook.invokeMethod('getCartLineItemPrices.PreInvoke', new Map<String, Object>{'cartId' => ord.Id},
+            new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then: los IP de CPQ no existen en el contexto de prueba; el reemplazo no debe romper la operación del carrito
+        Assert.isTrue(result, 'El hook debe responder true aunque el reemplazo no se complete');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.swappingSimToEsim, 'La bandera de reemplazo debe quedar liberada');
+    }
+
+    @isTest
+    static void shouldTrySimSwap_WhenGetCartsItemsPreInvoke_WithEsimMigration() {
+        // Given
+        Order ord = createSimCart('[{"SimType":"eSIM"}]');
+        Map<String, Object> input = new Map<String, Object>{'cartId' => ord.Id, 'fields' => ''};
+
+        // When
+        Test.startTest();
+        Boolean result = new CpqAppHandlerHookCustomImpl().invokeMethod('getCartsItems.PreInvoke', input,
+            new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then: el reemplazo no altera el armado de campos que ya hacía este evento
+        Assert.isTrue(result, 'El hook debe responder true');
+        Assert.isTrue(String.valueOf(input.get('fields')).contains('FVU_OneTimeTotalIncTaxes__c'), 'Se mantienen los campos personalizados');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.swappingSimToEsim, 'La bandera de reemplazo debe quedar liberada');
+    }
+
+    @isTest
+    static void shouldBlockSimCard_WhenPostCartsItemsPreInvoke_WithEsimMigration() {
+        // Given
+        Order ord = createSimCart('[{"SimType":"eSIM"}]');
+        PricebookEntry pbeSimCard = [SELECT Id FROM PricebookEntry WHERE Product2.ProductCode = 'B2C-MOV-OFR-SIMCARD' LIMIT 1];
+        Map<String, Object> input = new Map<String, Object>{
+            'cartId' => ord.Id, 'fields' => '',
+            'items' => new List<Object>{new Map<String, Object>{'itemId' => pbeSimCard.Id}}
+        };
+
+        // When
+        Test.startTest();
+        Boolean result = new CpqAppHandlerHookCustomImpl().invokeMethod('postCartsItems.PreInvoke', input, new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then
+        Assert.isTrue(result, 'El hook debe responder true');
+        Assert.isTrue((Boolean)input.get('simcardnotallowed'), 'Debe marcar la SIM Card como no permitida');
+        Assert.isNull(input.get('items'), 'Debe vaciar los items para que no se agregue la SIM Card');
+    }
+
+    @isTest
+    static void shouldSetEsimMessages_WhenPostCartsItemsPostInvoke() {
+        // Given
+        vlocity_cmt.JSONResult blockedResult = (vlocity_cmt.JSONResult)JSON.deserialize(
+            '{"totalSize":0,"records":[],"messages":[{"code":"143","message":"Original"}],"actions":{}}', vlocity_cmt.JSONResult.class);
+        vlocity_cmt.JSONResult addedResult = (vlocity_cmt.JSONResult)JSON.deserialize(
+            '{"totalSize":1,"records":[],"messages":[{"code":"150","message":"Añadido exitosamente."}],"actions":{}}', vlocity_cmt.JSONResult.class);
+        CpqAppHandlerHookCustomImpl hook = new CpqAppHandlerHookCustomImpl();
+
+        // When
+        Test.startTest();
+        hook.invokeMethod('postCartsItems.PostInvoke', new Map<String, Object>{'simcardnotallowed' => true},
+            new Map<String, Object>{'result' => blockedResult}, new Map<String, Object>());
+        hook.invokeMethod('postCartsItems.PostInvoke', new Map<String, Object>{'esimSale' => true},
+            new Map<String, Object>{'result' => addedResult}, new Map<String, Object>());
+        Test.stopTest();
+
+        // Then
+        Assert.isTrue(blockedResult.messages[0].message.contains('migración con eSIM'), 'Mensaje de SIM Card no permitida');
+        Assert.isTrue(addedResult.messages[0].message.contains('se reemplaza automáticamente por eSIM'), 'Aviso de reemplazo al agregar el plan');
+    }
+
+    @isTest
+    static void shouldOnlyRemoveSimCard_WhenGroupAlreadyHasEsim() {
+        // Given: el grupo ya tiene eSIM y además una SIM Card agregada a mano
+        Order ord = createSimCart('[{"SimType":"eSIM"}]');
+        PricebookEntry pbeEsim = [SELECT Id, Product2Id FROM PricebookEntry WHERE Product2.ProductCode = 'B2C-MOB-OFR-ESIM' LIMIT 1];
+        insert new OrderItem(OrderId = ord.Id, Product2Id = pbeEsim.Product2Id, PricebookEntryId = pbeEsim.Id,
+            Quantity = 1, UnitPrice = 0, vlocity_cmt__LineNumber__c = '0001.0002.0002', vlocity_cmt__Action__c = 'Add',
+            vlocity_cmt__ParentItemId__c = 'sim-group-ref', vlocity_cmt__ProductHierarchyPath__c = 'plan<group<esim');
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl.swapSimCardToEsim(ord.Id);
+        Test.stopTest();
+
+        // Then: los IP de CPQ no existen en el contexto de prueba; se valida que no rompa y libere la bandera
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.swappingSimToEsim, 'La bandera de reemplazo debe quedar liberada');
+    }
+
+    @isTest
+    static void shouldNotTouchSimCard_WhenPlanAndTerminalOrder() {
+        // Given: Plan + Terminal (ATT), donde el catálogo no permite eSIM
+        Order ord = createSimCart('[{"SimType":"eSIM"}]', 'ATT');
+        PricebookEntry pbeSimCard = [SELECT Id FROM PricebookEntry WHERE Product2.ProductCode = 'B2C-MOV-OFR-SIMCARD' LIMIT 1];
+        Map<String, Object> input = new Map<String, Object>{
+            'cartId' => ord.Id, 'fields' => '',
+            'items' => new List<Object>{new Map<String, Object>{'itemId' => pbeSimCard.Id}}
+        };
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl.swapSimCardToEsim(ord.Id);
+        new CpqAppHandlerHookCustomImpl().invokeMethod('postCartsItems.PreInvoke', input, new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then
+        Assert.areEqual(1, [SELECT COUNT() FROM OrderItem WHERE OrderId = :ord.Id AND Product2.ProductCode = 'B2C-MOV-OFR-SIMCARD'],
+            'En Plan + Terminal la SIM Card se mantiene');
+        Assert.isNull(input.get('simcardnotallowed'), 'En Plan + Terminal no se bloquea la SIM Card');
+    }
+
+    @isTest
+    static void shouldDetectAddedMessageCode() {
+        Assert.isTrue(CpqAppHandlerHookCustomImpl.hasMessageCode(new Map<String, Object>{
+            'messages' => new List<Object>{new Map<String, Object>{'code' => '150', 'message' => 'Añadido exitosamente.'}}}, '150'), 'Código 150 presente');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.hasMessageCode(new Map<String, Object>{
+            'messages' => new List<Object>{new Map<String, Object>{'code' => '310', 'message' => 'Error'}}}, '150'), 'Código 150 ausente');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.hasMessageCode(null, '150'), 'Salida nula');
+        Assert.isFalse(CpqAppHandlerHookCustomImpl.hasMessageCode(new Map<String, Object>(), '150'), 'Sin mensajes');
+    }
+
+    @isTest
+    static void shouldNotSwapSim_WhenSimTypeIsNotEsim() {
+        // Given
+        Order ord = createSimCart('[{"ICCID":"","SimType":"USIM","NRN":""}]');
+
+        // When
+        Test.startTest();
+        CpqAppHandlerHookCustomImpl.swapSimCardToEsim(ord.Id);
+        Test.stopTest();
+
+        // Then
+        Assert.areEqual(1, [SELECT COUNT() FROM OrderItem WHERE OrderId = :ord.Id AND Product2.ProductCode = 'B2C-MOV-OFR-SIMCARD'],
+            'La SIM Card debe quedarse cuando la venta no es eSIM');
+    }
+
+    @isTest
+    static void shouldSkipSimSwap_WhenAlreadySwapping() {
+        // Given
+        Order ord = createSimCart('[{"SimType":"eSIM"}]');
+        CpqAppHandlerHookCustomImpl.swappingSimToEsim = true;
+
+        // When
+        Test.startTest();
+        Boolean result = new CpqAppHandlerHookCustomImpl().invokeMethod('getCartLineItemPrices.PreInvoke', new Map<String, Object>{'cartId' => ord.Id},
+            new Map<String, Object>(), new Map<String, Object>());
+        Test.stopTest();
+
+        // Then: con la bandera activa (llamada interna del propio reemplazo) no se vuelve a reemplazar
+        Assert.isTrue(result, 'El hook debe responder true');
+        Assert.areEqual(1, [SELECT COUNT() FROM OrderItem WHERE OrderId = :ord.Id AND Product2.ProductCode = 'B2C-MOV-OFR-SIMCARD'],
+            'La SIM Card no se toca durante un reemplazo en curso');
+    }
 }

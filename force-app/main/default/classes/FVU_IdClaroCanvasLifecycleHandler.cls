@@ -1,7 +1,11 @@
 /**
  * The FVU_IdClaroCanvasLifecycleHandler class provides methods to customize the Aa Identidad Claro Connected App lifecycle.
  * It provides a dynamic URL for the Canvas, based on account, user, and application information.
- */
+ 
+History
+<Date>            <Version>  	  <Author>                  <Description>             					
+2026-09-04     		1.1           Fábrica VASS         		HU804371 - Send to Id Claro "IDCSUCURSAL" parameter.
+*/
 public with sharing class FVU_IdClaroCanvasLifecycleHandler implements Canvas.CanvasLifecycleHandler{
     
     private final static String CANVAS_URL_PATH = System.label.FVU_IdClaro_CANVAS_URL_PATH;
@@ -52,10 +56,20 @@ public with sharing class FVU_IdClaroCanvasLifecycleHandler implements Canvas.Ca
         FVU_IdClaroRepresentation params = new FVU_IdClaroRepresentation();
 
         Map<String,String> dataMap = new Map<String,String>();
+        String codigoDUsuario = ''; //[20260904 - HU804371]
+        String codigoRedUsuario = '';  //[20260904 - HU804371]
+            
+        // Check if userId is valid and retrieve related data
+        //[20260904 - HU804371]: Relocated the following block of code to retrieve the User.FVU_CodigoD__c value.
+        if(FVU_IdClaroUtils.isValidUserId(String.valueOf(parameters.get('userId')))){
+            User user = new FVU_UserSelector().getUserIdClaroData(String.valueOf(parameters.get('userId')));            
+            codigoRedUsuario = user.PVU_Usuario_Red__c;
+            codigoDUsuario = String.isBlank(user.FVU_CodigoD__c)? '': user.FVU_CodigoD__c;
+        }
 
         // Retrieve IdClaro metadata based on application and channel
         FVU_IdClaroMetadata__mdt idClaroMetadata = new FVU_IdClaroMetadataSelector().getIdClaroMetadata(String.valueOf(parameters.get('application')).unescapeHtml4(), String.valueOf(parameters.get('channel')));
-        populateParametersFromIdClaroMetadata(params, idClaroMetadata, dataMap);
+        populateParametersFromIdClaroMetadata(params, idClaroMetadata, dataMap, codigoDUsuario);
         
         // Check if the person to be authenticated is a client (has a Salesforce account record) or an authorized third person
         Boolean isThirdPerson = parameters.get('isAuthorizedPerson')!=null? Boolean.valueOf(parameters.get('isAuthorizedPerson')): false;
@@ -78,9 +92,8 @@ public with sharing class FVU_IdClaroCanvasLifecycleHandler implements Canvas.Ca
         }
 
         // Check if userId is valid and retrieve related data
-        if(FVU_IdClaroUtils.isValidUserId(String.valueOf(parameters.get('userId')))){
-            User user = new FVU_UserSelector().getUserIdClaroData(String.valueOf(parameters.get('userId')));
-            dataMap.put('user', user.PVU_Usuario_Red__c);
+        if(FVU_IdClaroUtils.isValidUserId(String.valueOf(parameters.get('userId')))){            
+            dataMap.put('user', codigoRedUsuario);
         }
         
         // Generate a data string from params
@@ -113,7 +126,7 @@ public with sharing class FVU_IdClaroCanvasLifecycleHandler implements Canvas.Ca
         return resultIV;
     }
 
-    private void populateParametersFromIdClaroMetadata(FVU_IdClaroRepresentation params, FVU_IdClaroMetadata__mdt idClaroMetadata, Map<String,String> dataMap) {
+    private void populateParametersFromIdClaroMetadata(FVU_IdClaroRepresentation params, FVU_IdClaroMetadata__mdt idClaroMetadata, Map<String,String> dataMap, string codigoDUsuario) {
         if(idClaroMetadata != null) {
             dataMap.put('urlOK', idClaroMetadata.FVU_UrlOK__c == null ? '' : idClaroMetadata.FVU_UrlOK__c);
             dataMap.put('methodSendOK', idClaroMetadata.FVU_MethodSendOK__c == null ? '' : idClaroMetadata.FVU_MethodSendOK__c);
@@ -123,6 +136,7 @@ public with sharing class FVU_IdClaroCanvasLifecycleHandler implements Canvas.Ca
             dataMap.put('company', idClaroMetadata.FVU_Company__c);
             dataMap.put('application', idClaroMetadata.FVU_Application__c);
             dataMap.put('accessKey', idClaroMetadata.FVU_AccessKey__c);
+            dataMap.put('idSucursal',codigoDUsuario);  //[20260904 - HU804371]
             dataMap.put('chanelTypeCode', idClaroMetadata.FVU_ChanelTypeCode__c);
         }
     }

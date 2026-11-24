@@ -13,6 +13,7 @@ History
 2025-09-23     2.2         Luis Mendoza    	    Cambios para evitar vulneravilidades
 2025-12-15     2.3         Hever Salas    	    HDU-691571: [EVOLUTIVOS OM]Modificación atributos de info Activación y conciliación de paq adicionales
 2026-02-24     2.3         Hllanos   	        HDU:346607 Reconexion temp voluntaria
+2026-06-01     2.4         Fábrica VASS         HDU-774014: [Proyecto Tráfico Offline - Cambio de ciclo de facturación asíncrono]-Se incluye condicional en el método "orderTypeAssigment". Se incluye condicional en el método "topAttributes"
 ---------------------------------------------------------------------------------------------------------------------------------------------------*/
 global with sharing class OM_AccountDetailsHelper{
     
@@ -252,8 +253,11 @@ global with sharing class OM_AccountDetailsHelper{
         }else if(SubAction == OrderIntegrationSystemInterfaceConstants.getValue('SUB_ACTION_CON_RED')
                  || SubAction == OrderIntegrationSystemInterfaceConstants.getValue('CONCILE_LINE_MODIFY') 
                  || SubAction == OrderIntegrationSystemInterfaceConstants.getValue('CONCILE_LINE_NOCHANGE')){
-            topOrderType = OrderIntegrationSystemInterfaceConstants.CON_RED_ORDERTYPE;
-        } else {
+            topOrderType = OrderIntegrationSystemInterfaceConstants.CON_RED_ORDERTYPE;        
+        } else if (SubAction == OrderIntegrationSystemInterfaceConstants.SUB_ACTION_CHANGEBILLCYCLE) { // V. 2.4
+            topOrderType = OrderIntegrationSystemInterfaceConstants.ORDER_TYPE_CHANGEBILLCYCLE;
+        }
+        else {
             topOrderType = OrderIntegrationSystemInterfaceConstants.ORDER_TYPE;
         }
         return topOrderType;
@@ -426,8 +430,13 @@ global with sharing class OM_AccountDetailsHelper{
             }else if(str.equalsIgnoreCase('Scope')){
                 if(SubType == 'Conciliacion_red'){
                     lstAtt.add(new EricsonRequestJSON.cls_attributes(str, OrderIntegrationSystemInterfaceConstants.VALUE_LINEA));
-                }
-            }else{
+                }                
+            }else if(str.equalsIgnoreCase('newBillCycleId')){  // V. 2.4
+                if (String.isNotBlank((String)orderInstance.get(mapAttr.get('cls_attributes').get(str)))) {
+                    lstAtt.add(new EricsonRequestJSON.cls_attributes(str, (String)orderInstance.get(mapAttr.get('cls_attributes').get(str))));
+                }              
+            }
+            else{
                 lstAtt.add(new EricsonRequestJSON.cls_attributes(str, mapAttr.get('cls_attributes').get(str))); 
             }
         }

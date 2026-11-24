@@ -78,6 +78,33 @@ private class CATCustomObjectPurgeServiceTest {
         System.assertEquals(0, recordsInSecondObject, 'Los registros del segundo objeto deben ser eliminados por el encadenamiento.');
     }
     
+    // HDU 819649: El primer eslabón (isFirstBatch=true) debe nular el semáforo
+    // CAT_ObjetoSeguimiento__c para bloquear una segunda ejecución.
+    @IsTest
+    private static void testPurgeBatch_BloqueaSegundaEjecucion() {
+        // 1. Configuración: un registro de seguimiento habilitado ('X') de un run anterior.
+        CAT_SeguimientoProductosExportados__c seg = new CAT_SeguimientoProductosExportados__c(
+            CAT_ObjetoSeguimiento__c = 'X'
+        );
+        insert seg;
+        String objectToTest = 'CAT_ProductosExportados__c';
+        createSampleRecords(objectToTest, 5);
+
+        // 2. Ejecución: primer eslabón con isFirstBatch=true, sin encadenar.
+        Test.startTest();
+        CATCustomObjectPurgeService purgeBatch = new CATCustomObjectPurgeService(
+            objectToTest, new List<String>(), null, null, null, null, null, true
+        );
+        Database.executeBatch(purgeBatch);
+        Test.stopTest();
+
+        // 3. Verificación: el semáforo quedó en null (bloqueado) en el start().
+        CAT_SeguimientoProductosExportados__c updated = [
+            SELECT CAT_ObjetoSeguimiento__c FROM CAT_SeguimientoProductosExportados__c WHERE Id = :seg.Id
+        ];
+        System.assertEquals(null, updated.CAT_ObjetoSeguimiento__c, 'El semáforo debe quedar en null para bloquear una segunda ejecución.');
+    }
+
     // Test para el finish() cuando es el último batch y debe llamar al servicio de extracción.
     @IsTest
     private static void testPurgeBatch_Finish_CallExtractionService() {

@@ -36,6 +36,8 @@ History
 01-10-25          2.1           Hever Salas    	    HDU-522202: [INNOVACION]-Configuracion para recibir solicitudes de productos de innovacion
 11-11-2025        2.2           Hever Salas    	    HDU-629197: [INNOVACION] Integracion SOM compra paquetes en productos de innovacion
 15-12-2025        2.3           Hever Salas    	    HDU-691571: [EVOLUTIVOS OM]Modificación atributos de info Activación y conciliación de paq adicionales
+18-05-2026        2.4           Hllanos   		    HDU-755515: [Evolutivo] Establecer la hora de ejecución para el disparador en SOM
+01-06-2026		  2.4.1			Fábrica VASS		HDU-774014: [Proyecto Tráfico Offline - Cambio de ciclo de facturación asíncrono]-En la consulta SOQL "orderInstance" se agrega el field "PVU_NewBillCycle__c"
 ------------------------------------------------------------------------------------------------------------------------------------------------*/
     global with sharing class OrderIntegrationAccountDetails {
     
@@ -115,7 +117,7 @@ History
                                vlocity_cmt__OrchestrationPlanId__c, OM_PortabilityProcessId__c, Type, FVU_OrderSubType__c,
                                OM_NRN__c, OM_PortabilityStatus__c, CreatedBy.FVU_BusinessChannel__c, CreatedBy.FederationIdentifier,
                                vlocity_cmt__DefaultBillingAccountId__r.FVU_AccountExternalID__c, PVU_CaseInfo__c, CreatedBy.FVU_CodigoD__c,
-                               OM_Canal__c
+                               OM_Canal__c, PVU_NewBillCycle__c, OM_RequestedStartDateSOM__c // V. 2.4.1
                                FROM Order WHERE Id =: orderId WITH SECURITY_ENFORCED LIMIT 1];
         String Channel = (String)orderInstance.CreatedBy.FVU_BusinessChannel__c;
         String Person = (String)orderInstance.CreatedBy.FederationIdentifier;
@@ -221,7 +223,7 @@ History
                     }
                 }
             }
-
+            
             List<vlocity_cmt__Subscription__c> lstSubscription = [
                 SELECT Id, OM_MSISDN_Temporary__c
                 FROM vlocity_cmt__Subscription__c
@@ -296,7 +298,13 @@ History
         instEricsonReq.orderType = topOrderType;//ProductOfferingOrder
         instEricsonReq.createdDate = ordCreateDate;  //Datetime.now().formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'');
         instEricsonReq.description = OrderIntegrationSystemInterfaceConstants.ORDSF+(orderInstance.OrderNumber);
-        instEricsonReq.requestedStartDate = null;
+        // --- 522147	[Evolutivo] Establecer la hora de ejecución para SOM ---
+        if (orderInstance.OM_RequestedStartDateSOM__c != null) {
+            instEricsonReq.requestedStartDate = orderInstance.OM_RequestedStartDateSOM__c.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'');
+        } else {
+            instEricsonReq.requestedStartDate = null;
+        }
+        // ---------------------------------------------
         instEricsonReq.orderSpecification = null; // mostly to be added to custom setting, discuss
         instEricsonReq.correlationID = null;
         instEricsonReq.run = true;

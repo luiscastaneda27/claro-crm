@@ -19,11 +19,22 @@ public with sharing class CATCustomObjectPurgeService implements Database.Batcha
     private List<String> promotionCodeList;
     private String tipoCarga;
     private Boolean incluirCompatibilidad;
+    // HDU 819649: true solo en el primer eslabón de la cadena de purga. Se usa para
+    // nulear el semáforo de habilitación una única vez al arrancar el proceso.
+    private Boolean isFirstBatch;
 
     /**
      * @description Constructor que recibe el objeto a depurar y los parámetros para la siguiente clase CATDataExtractionService.
      */
     public CATCustomObjectPurgeService(String objectApiName, List<String> objectsRemaining, String objetoControlId, List<String> prodCodeList, List<String> promotionCodeList, String tipoCarga,Boolean incluirCompatibilidad) {
+        this(objectApiName, objectsRemaining, objetoControlId, prodCodeList, promotionCodeList, tipoCarga, incluirCompatibilidad, false);
+    }
+
+    /**
+     * @description HDU 819649 - Sobrecarga con isFirstBatch. El Orchestrator lo invoca con
+     * isFirstBatch=true para el primer objeto; la re-instanciación en finish() usa false.
+     */
+    public CATCustomObjectPurgeService(String objectApiName, List<String> objectsRemaining, String objetoControlId, List<String> prodCodeList, List<String> promotionCodeList, String tipoCarga, Boolean incluirCompatibilidad, Boolean isFirstBatch) {
         this.objectApiName = objectApiName;
         this.objectsRemaining = objectsRemaining;
         this.objetoControlId = objetoControlId;
@@ -31,6 +42,7 @@ public with sharing class CATCustomObjectPurgeService implements Database.Batcha
         this.promotionCodeList = promotionCodeList;
         this.tipoCarga = tipoCarga;
         this.incluirCompatibilidad = incluirCompatibilidad;
+        this.isFirstBatch = isFirstBatch;
     }
 
     /**
@@ -38,7 +50,44 @@ public with sharing class CATCustomObjectPurgeService implements Database.Batcha
      */
     public Database.QueryLocator start(Database.BatchableContext bc) {
         System.debug('Iniciando batch job para el objeto: ' + objectApiName);
+
+        // HDU 819649: Bloqueo de segunda ejecución. Al arrancar el proceso (primer eslabón),
+        // se nulea CAT_ObjetoSeguimiento__c de los registros de seguimiento existentes. Ese
+        // campo en 'X' es el semáforo que el Flow lee para habilitar un nuevo proceso; mientras
+        // la purga corre, el registro del run anterior sigue vivo con 'X' hasta que se depura
+        // CAT_SeguimientoProductosExportados__c (último objeto de la lista), dejando una ventana
+        // en la que el Flow permitiría una segunda ejecución. Nularlo aquí cierra esa ventana.
+        // Best-effort: si el update falla, se registra y el proceso continúa.
+        if (isFirstBatch == true) {
+            lockNuevaEjecucion();
+        }
+
         return Database.getQueryLocator('SELECT Id FROM ' + objectApiName + ' WITH SECURITY_ENFORCED');
+    }
+
+    /**
+     * @description HDU 819649 - Nulea el semáforo CAT_ObjetoSeguimiento__c en los registros
+     * de seguimiento existentes para impedir que el Flow habilite una segunda ejecución
+     * mientras este proceso está en curso.
+     */
+    private void lockNuevaEjecucion() {
+        try {
+            List<CAT_SeguimientoProductosExportados__c> seguimientos = [
+                SELECT Id, CAT_ObjetoSeguimiento__c
+                FROM CAT_SeguimientoProductosExportados__c
+                WHERE CAT_ObjetoSeguimiento__c != null
+            ];
+            if (!seguimientos.isEmpty()) {
+                for (CAT_SeguimientoProductosExportados__c seg : seguimientos) {
+                    seg.CAT_ObjetoSeguimiento__c = null;
+                }
+                update seguimientos;
+                System.debug('HDU 819649: Se bloqueó una nueva ejecución nulando ' + seguimientos.size() + ' registro(s) de seguimiento.');
+            }
+        } catch (Exception e) {
+            // Best-effort: no frenar el proceso si no se pudo nular el semáforo.
+            System.debug('HDU 819649: No se pudo nular el semáforo de seguimiento: ' + e.getMessage());
+        }
     }
 
     /**
@@ -73,7 +122,8 @@ public with sharing class CATCustomObjectPurgeService implements Database.Batcha
                 this.prodCodeList,
                 this.promotionCodeList,
                 this.tipoCarga,
-                this.incluirCompatibilidad
+                this.incluirCompatibilidad,
+                false // HDU 819649: eslabones siguientes no repiten el bloqueo
             );
             Database.executeBatch(nextPurgeBatch);
         } else {

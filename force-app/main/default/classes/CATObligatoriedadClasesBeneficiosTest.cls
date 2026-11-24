@@ -42,4 +42,71 @@ public class CATObligatoriedadClasesBeneficiosTest {
         }
     }
 
+    @isTest
+    static void testObtenerObligatorias_filtersCorrectly() {
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+
+        List<Map<String, Object>> promos = new List<Map<String, Object>>{
+            new Map<String, Object>{ 'CAT_Obligatorio__c' => true,  'Name' => 'Promo Obligatoria' },
+            new Map<String, Object>{ 'CAT_Obligatorio__c' => false, 'Name' => 'Promo No Obligatoria' },
+            new Map<String, Object>{ 'CAT_Obligatorio__c' => true,  'Name' => 'Otra Obligatoria' }
+        };
+
+        Map<String, Object> input = new Map<String, Object>{ 
+            'listaPromoFinal' => promos,
+            'orderSubType' => ''
+        };
+
+        CATObligatoriedadClasesBeneficios instance = new CATObligatoriedadClasesBeneficios();
+        Test.startTest();
+        instance.invokeMethod('obtenerObligatorias', input, output, options);
+        Test.stopTest();
+
+        List<Object> result = (List<Object>) output.get('listaPromosObligatorias');
+        Assert.areEqual(2, result.size(), 'Should return only the 2 mandatory promotions');
+    }
+
+    @isTest
+    static void testObtenerObligatorias_nullInputReturnsEmpty() {
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+        Map<String, Object> input = new Map<String, Object>{ 
+            'listaPromoFinal' => null,
+            'orderSubType' => ''
+        };
+
+        CATObligatoriedadClasesBeneficios instance = new CATObligatoriedadClasesBeneficios();
+        Test.startTest();
+        instance.invokeMethod('obtenerObligatorias', input, output, options);
+        Test.stopTest();
+
+        List<Object> result = (List<Object>) output.get('listaPromosObligatorias');
+        Assert.areEqual(0, result.size(), 'Null input should return empty list');
+    }
+
+    @isTest
+    static void testObtenerObligatorias_adicionAdicionalesReturnsEmpty() {
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+
+        List<Map<String, Object>> promos = new List<Map<String, Object>>{
+            new Map<String, Object>{ 'CAT_Obligatorio__c' => true,  'Name' => 'Promo Obligatoria' },
+            new Map<String, Object>{ 'CAT_Obligatorio__c' => true,  'Name' => 'Otra Obligatoria' }
+        };
+
+        Map<String, Object> input = new Map<String, Object>{
+            'listaPromoFinal' => promos,
+            'orderSubType' => 'Adicion_de_Adicionales'
+        };
+
+        CATObligatoriedadClasesBeneficios instance = new CATObligatoriedadClasesBeneficios();
+        Test.startTest();
+        instance.invokeMethod('obtenerObligatorias', input, output, options);
+        Test.stopTest();
+
+        List<Object> result = (List<Object>) output.get('listaPromosObligatorias');
+        Assert.areEqual(0, result.size(), 'Adicion de adicionales should return empty mandatory list');
+    }
+
 }

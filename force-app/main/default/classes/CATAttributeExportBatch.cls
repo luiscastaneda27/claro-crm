@@ -14,9 +14,25 @@
  public with sharing class CATAttributeExportBatch implements Database.Batchable<SObject> {
 
     // Member variables to hold data queried in the constructor
-   private Map<Id, Product2> allProductsById; 
+   private Map<Id, Product2> allProductsById;
    private Map<String, vlocity_cmt__ProductChildItem__c> parentProductByChildProductCode;
-   
+
+   // HOTFIX HDU 825558: Parámetros para encadenar la cadena de precios desde finish().
+   // Los atributos (CAT_AtributosProductosExportados__c) dejan de lanzarse sueltos: este
+   // batch pasa a ser el primer eslabón de la cadena síncrona
+   //   atributos -> precios -> promociones -> calculateAndUpdateData (notifica).
+   // Antes CATAttributeExportBatch corría en paralelo vía Flex Queue y la notificación
+   // (enqueue en calculateAndUpdateData) podía dispararse ANTES de que terminara de
+   // insertar los atributos, de modo que el consumo externo vía Bulk API obtenía un
+   // conteo incompleto de CAT_AtributosProductosExportados__c.
+   private Boolean chainPrices = false;
+   private List<String> priceCodeList;
+   private String objetoControlId;
+   private Id idLogRecord;
+   private List<String> productCodeList;
+   private List<String> promotionCodeList;
+   private String tipoCarga;
+
    // Cache Map: Field Name => Data Type String
    private Map<String, String> fieldTypeCache = new Map<String, String>();
    private Map<String, String> fieldLabelCache = new Map<String, String>();
@@ -25,7 +41,7 @@
    public CATAttributeExportBatch( Map<Id, Product2> allProducts, Map<String, vlocity_cmt__ProductChildItem__c> parentsByChildCode) {
        this.allProductsById = allProducts;
        this.parentProductByChildProductCode = parentsByChildCode;
-       
+
        // --- CACHE INITIALIZATION ---
        // Perform describes once in the constructor
        Map<String, Schema.SObjectField> fieldMap = Product2.SObjectType.getDescribe().fields.getMap();
@@ -42,7 +58,31 @@
            }
        }
    }
-   
+
+   // HOTFIX HDU 825558: Constructor que, además de los datos de atributos, recibe los
+   // parámetros para encadenar CATProductPricesExportBatch en finish(). Con esto la
+   // notificación de "finalizado" solo se emite cuando atributos, precios y promociones
+   // ya terminaron, evitando el conteo incompleto de CAT_AtributosProductosExportados__c.
+   public CATAttributeExportBatch(
+       Map<Id, Product2> allProducts,
+       Map<String, vlocity_cmt__ProductChildItem__c> parentsByChildCode,
+       List<String> priceCodeList,
+       String objetoControlId,
+       Id idLogRecord,
+       List<String> productCodeList,
+       List<String> promotionCodeList,
+       String tipoCarga
+   ) {
+       this(allProducts, parentsByChildCode);
+       this.chainPrices = true;
+       this.priceCodeList = (priceCodeList != null) ? priceCodeList : new List<String>();
+       this.objetoControlId = objetoControlId;
+       this.idLogRecord = idLogRecord;
+       this.productCodeList = (productCodeList != null) ? productCodeList : new List<String>();
+       this.promotionCodeList = (promotionCodeList != null) ? promotionCodeList : new List<String>();
+       this.tipoCarga = tipoCarga;
+   }
+
    // List of Product2 fields to be treated as individual attributes if they have values
    private final List<String> VIRTUAL_ATTR_FIELDS = new List<String>{
        'CAT_ApplicableCountries__c',
@@ -245,5 +285,21 @@
    // Finish method: Optional for post-processing logic
    public void finish(Database.BatchableContext bc) {
        System.debug('Batch process for attributes completed.');
+
+       // HOTFIX HDU 825558: Primer eslabón de la cadena síncrona. Solo cuando este batch
+       // de atributos terminó de insertar, se dispara la cadena de precios -> promociones
+       // -> calculateAndUpdateData (que notifica). Así la notificación nunca se adelanta
+       // a la carga de CAT_AtributosProductosExportados__c.
+       if (chainPrices) {
+           CATProductPricesExportBatch pricesBatch = new CATProductPricesExportBatch(
+               priceCodeList,
+               objetoControlId,
+               idLogRecord,
+               productCodeList,
+               promotionCodeList,
+               tipoCarga
+           );
+           Database.executeBatch(pricesBatch, 50);
+       }
    }
 }

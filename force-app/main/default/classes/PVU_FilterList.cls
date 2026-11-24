@@ -98,6 +98,10 @@ global with sharing class PVU_FilterList implements vlocity_cmt.VlocityOpenInter
             system.debug('Exception>>>causa:' + ex.getCause() + ' traza>>>>'+ex.getStackTraceString());
         }
         outMap.put('Borrado', result);
+        system.debug( JSON.serialize(outMap.get('Borrado')));
+        system.debug(outMap.get('Borrado'));
+        system.debug(outMap);
+
     }
     
     public void addMinAdicion(Map<String,Object> inputMap,Map<String,Object> outMap){

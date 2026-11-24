@@ -42,6 +42,7 @@ History
 26-05-25          1.0.33      Hever Salas    	   HDU-561645: [CAMBIOS] Creación de ordenes de servicio (SOM Ericsson)  CONCICLIACION  BSCS-OM RED
 11-05-25          1.0.34      Hever Salas    	   BUG-620821: R5-SIT-E2 Se evidencia que al realizar una desactivación con la causal 266, Des No Aprobación DPC, el sistema genera error en el plan de orquestación relacionado con el servicio Adicional Activo
 13-05-25          1.0.35      Hever Salas    	   BUG-621423: R5-SIT-E3- Al registrar un caso de cesión de contrato, no se realiza el cierre automático
+01-06-26          1.0.36      Fábrica VASS         HDU-774014: [Proyecto Tráfico Offline - Cambio de ciclo de facturación asíncrono]-Se agregan las variables "ORDER_TYPE_CHANGEBILLCYCLE", "SUB_ACTION_CHANGEBILLCYCLE" y "PROCESS_CHANGEBILLCYCLE"
 ----------------------------------------------------------------------------*/
 
 public with sharing class OrderIntegrationSystemInterfaceConstants {
@@ -265,7 +266,10 @@ public with sharing class OrderIntegrationSystemInterfaceConstants {
     public static final String CON_RED_ORDERTYPE = 'Conciliation';	     			//V. 1.0.33
     public static final String SUB_DESCRIPTION_OFFER = 'B2C-ATTR';					//V. 1.0.34
     public static final String TECHNICAL_OTT_PRODUCT = 'PO_MovPosOptOTT';			//V. 1.0.35
-    
+    public static final String SUB_ACTION_CHANGEBILLCYCLE = 'ChangeBillCycle';		//V. 1.0.36
+    public static final String ORDER_TYPE_CHANGEBILLCYCLE = 'ChangeBillCycle';		//V. 1.0.36
+    public static final String PROCESS_CHANGEBILLCYCLE = 'completeChangeBillCycle'; //V. 1.0.36
+        
     /**
     * @description: Métodos para obtener valores de un custom metadata a través de la Clave
     * @author karsanchez | 12-11-2024 

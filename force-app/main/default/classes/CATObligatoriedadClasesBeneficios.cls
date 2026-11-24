@@ -16,7 +16,10 @@ global with sharing class CATObligatoriedadClasesBeneficios implements vlocity_c
             if (methodName.equalsIgnoreCase('filterPromotions')) {
                 System.debug('Calling filterPromotions method');
                 filterPromotions(input, output, options);
-            } 
+            } else if (methodName.equalsIgnoreCase('obtenerObligatorias')) {
+                System.debug('Calling obtenerObligatorias method');
+                obtenerObligatorias(input, output);
+            }
         } catch (Exception e) {
             result = false;
             System.debug('Exception occurred: ' + e.getMessage());
@@ -61,5 +64,35 @@ global with sharing class CATObligatoriedadClasesBeneficios implements vlocity_c
         output.put('listaPromoFinal', listaPromoFinal);
         
         
+    }
+
+    public void obtenerObligatorias(Map<String, Object> input, Map<String, Object> output) {
+        List<Object> listaPromosObligatorias = new List<Object>();
+        String orderSubType = String.valueOf(input.get('orderSubType')).trim();
+        if (orderSubType.equalsIgnoreCase('Adicion_de_Adicionales')) {
+            output.put('listaPromosObligatorias', listaPromosObligatorias);
+            return;
+        }
+        List<Object> listaPromoFinal = (List<Object>) input.get('listaPromoFinal');
+        if (listaPromoFinal == null) {
+            listaPromoFinal = new List<Object>();
+        }
+        for (Object promo : listaPromoFinal) {
+            Map<String, Object> data = (Map<String, Object>) promo;
+            if (toBoolean(data.get('CAT_Obligatorio__c'))) {
+                listaPromosObligatorias.add(promo);
+            }
+        }
+        output.put('listaPromosObligatorias', listaPromosObligatorias);
+    }
+
+    private static Boolean toBoolean(Object rawValue) {
+        if (rawValue == null) {
+            return false;
+        }
+        if (rawValue instanceof Boolean) {
+            return (Boolean)rawValue;
+        }
+        return String.valueOf(rawValue).trim().equalsIgnoreCase('true');
     }
 }

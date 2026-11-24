@@ -212,6 +212,7 @@ public with sharing class PVU_Gestiones_Masivas_Handler {
                            vlocity_cmt__SubscriptionId__r.OM_PortationStatus__c
                            FROM Asset 
                            WHERE vlocity_cmt__BillingAccountId__r.FVU_AccountExternalID__c =: WGestionMasiva.BillingAccountNumber
+                                 AND vlocity_cmt__Action__c != 'Disconnect'
                            WITH SYSTEM_MODE])
         {
             if(mapAssetsRoot.get(asset.vlocity_cmt__BillingAccountId__r.FVU_AccountExternalID__c) == null && asset.Product2.vlocity_cmt__Type__c == 'Plan' && asset.vlocity_cmt__ParentItemId__c == null ){
@@ -327,7 +328,7 @@ public with sharing class PVU_Gestiones_Masivas_Handler {
         Boolean isAssetActive = WGestionMasiva.Asset.Status == 'Active';
         Boolean isAssetDeactivated = WGestionMasiva.Asset.Status == 'Deactivated';
         Boolean isDesactivationCollectionsSubStatus = WGestionMasiva.Asset.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Desactivación por Collections';
-        Boolean isAssetSuspendedByCollections = isAssetSuspended && (WGestionMasiva.Asset.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Parcial Mora' || WGestionMasiva.Asset.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Total Mora');
+        Boolean isAssetSuspendedByCollections = isAssetSuspended && (WGestionMasiva.Asset.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Parcial Mora' || WGestionMasiva.Asset.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Total Mora' || WGestionMasiva.Asset.vlocity_cmt__SubscriptionId__r.OM_SubStatus__c == 'Suspensión Por Collections');
         Boolean isActionDeactivateNETFLIXSA40 = WGestionMasiva.GestionMasiva.PVU_Action__c == 'DEACTIVATE_NETFLIXSA40';
         
         // ------------------------------------------ Chequeo de escenarios sin reasonId ---------------------------------------------------------------       
@@ -413,7 +414,7 @@ public with sharing class PVU_Gestiones_Masivas_Handler {
                     WGestionMasiva.setError('ValidacionesIniciales', false, 'El Asset no puede estar Desactivado para esta operación.'); 
                 }
                 else if (isActionSuspension && isAssetSuspended && !isAssetSuspendedByCollections){
-                    WGestionMasiva.setError('ValidacionesIniciales', false, 'El Asset esta suspendido por otro subcausal diferente a (Parcial Mora y/o Total Mora).'); 
+                    WGestionMasiva.setError('ValidacionesIniciales', false, 'El Asset esta suspendido por otro subcausal diferente a (Parcial Mora y/o Total Mora y/o Suspensión Por Collections).'); 
                 }
                 
             }
@@ -531,7 +532,8 @@ public with sharing class PVU_Gestiones_Masivas_Handler {
         String assetId = WGestionMasiva.Asset.Id;
         String requestType = 'subscritionNum';
         ipInput.put('AssetId', assetId);
-        ipInput.put('requestType', requestType);         
+        ipInput.put('requestType', requestType);
+        ipInput.put('processName', 'BulkAPI');
         
         
         ipOutput = (Map<String, Object>) vlocity_cmt.IntegrationProcedureService.runIntegrationService(procedureName, ipInput, ipOptions);       

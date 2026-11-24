@@ -1130,5 +1130,273 @@ private class CustomOmniStudioFunctionsTest {
         }
     }
 
-	
+    @IsTest
+    static void formatTimeToAmPm_simpleTest() {
+
+        List<Object> args = new List<Object>();
+        args.add('17:30');
+
+        Map<String, Object> inputMap = new Map<String, Object>();
+        inputMap.put('arguments', args);
+
+        Map<String, Object> outputMap = new Map<String, Object>();
+
+        CustomOmniStudioFunctions csf = new CustomOmniStudioFunctions();
+
+        Boolean retValue = csf.invokeMethod('formatTimeToAmPm', inputMap, outputMap, null);
+        String result = (String) outputMap.get('result');
+
+        System.debug(result);
+
+        System.assert(retValue, 'FORMATTIME_TO_AMPM() invokeMethod returned false');
+        System.assertEquals('5:30 PM', result);
+    }
+
+
+    @IsTest
+    static void formatTimeToAmPm_hourOnlyTest() {
+
+        List<Object> args = new List<Object>();
+        args.add('11');
+
+        Map<String, Object> inputMap = new Map<String, Object>();
+        inputMap.put('arguments', args);
+
+        Map<String, Object> outputMap = new Map<String, Object>();
+
+        CustomOmniStudioFunctions csf = new CustomOmniStudioFunctions();
+
+        Boolean retValue = csf.invokeMethod('formatTimeToAmPm', inputMap, outputMap, null);
+        String result = (String) outputMap.get('result');
+
+        System.debug(result);
+
+        System.assert(retValue, 'FORMATTIME_TO_AMPM() invokeMethod returned false');
+        System.assertEquals('11:00 AM', result);
+    }
+
+
+    @IsTest
+    static void formatTimeToAmPm_midnightAndNoonTest() {
+
+        CustomOmniStudioFunctions csf = new CustomOmniStudioFunctions();
+
+        // Caso 00:00
+        Map<String, Object> inputMidnight = new Map<String, Object>{
+            'arguments' => new List<Object>{'0:00'}
+        };
+
+        Map<String, Object> outputMidnight = new Map<String, Object>();
+
+        csf.invokeMethod('formatTimeToAmPm', inputMidnight, outputMidnight, null);
+
+        System.assertEquals('12:00 AM', outputMidnight.get('result'));
+
+
+        // Caso 12:00
+        Map<String, Object> inputNoon = new Map<String, Object>{
+            'arguments' => new List<Object>{'12:00'}
+        };
+
+        Map<String, Object> outputNoon = new Map<String, Object>();
+
+        csf.invokeMethod('formatTimeToAmPm', inputNoon, outputNoon, null);
+
+        System.assertEquals('12:00 PM', outputNoon.get('result'));
+    }
+
+
+    @IsTest
+    static void formatTimeToAmPm_exceptionTest() {
+
+        List<Object> args = new List<Object>();
+
+        Map<String, Object> inputMap = new Map<String, Object>();
+        inputMap.put('arguments', args);
+
+        Map<String, Object> outputMap = new Map<String, Object>();
+
+        CustomOmniStudioFunctions csf = new CustomOmniStudioFunctions();
+
+        Boolean retValue = csf.invokeMethod('formatTimeToAmPm', inputMap, outputMap, null);
+
+        String result = (String) outputMap.get('result');
+
+        System.debug(result);
+
+        System.assert(retValue, 'FORMATTIME_TO_AMPM() should return true');
+        System.assertEquals('', result);
+    }
+
+    @IsTest
+    static void testEvaluarHoraMaximaCancelarCasos_FechaAnterior() {
+
+        CustomOmniStudioFunctions service = new CustomOmniStudioFunctions();
+
+        Map<String,Object> input = new Map<String,Object>();
+        Map<String,Object> output = new Map<String,Object>();
+
+        List<Object> argumentos = new List<Object>();
+
+        // Fecha vieja para forzar:
+        // fechaActualColombia > fechaConsultada
+        argumentos.add('2020-01-01');
+
+        input.put('arguments', argumentos);
+
+        Test.startTest();
+
+        service.invokeMethod(
+            'evaluarHoraMaximaCancelarCasos',
+            input,
+            output,
+            new Map<String,Object>()
+        );
+
+        Test.stopTest();
+
+        System.assertEquals(
+            true,
+            output.get('result'),
+            'Debe retornar true cuando la fecha consultada es anterior'
+        );
+    }
+
+
+    @IsTest
+    static void testEvaluarHoraMaximaCancelarCasos_FechaFutura() {
+
+        CustomOmniStudioFunctions service = new CustomOmniStudioFunctions();
+
+        Map<String,Object> input = new Map<String,Object>();
+        Map<String,Object> output = new Map<String,Object>();
+
+        List<Object> argumentos = new List<Object>();
+
+        // Fecha futura para que no entre en ninguna condición
+        argumentos.add('2099-12-31');
+
+        input.put('arguments', argumentos);
+
+        Test.startTest();
+
+        service.invokeMethod(
+            'evaluarHoraMaximaCancelarCasos',
+            input,
+            output,
+            new Map<String,Object>()
+        );
+
+        Test.stopTest();
+
+        System.assertEquals(
+            false,
+            output.get('result'),
+            'Debe retornar false para una fecha futura'
+        );
+    }
+
+
+    @IsTest
+    static void testEvaluarHoraMaximaCancelarCasos_FechaHoy() {
+
+        CustomOmniStudioFunctions service = new CustomOmniStudioFunctions();
+
+        Map<String,Object> input = new Map<String,Object>();
+        Map<String,Object> output = new Map<String,Object>();
+
+        String fechaHoy = Datetime.now()
+            .format('yyyy-MM-dd','America/Bogota');
+
+
+        input.put(
+            'arguments',
+            new List<Object>{fechaHoy}
+        );
+
+
+        Test.startTest();
+
+        service.invokeMethod(
+            'evaluarHoraMaximaCancelarCasos',
+            input,
+            output,
+            new Map<String,Object>()
+        );
+
+        Test.stopTest();
+
+
+        System.assertNotEquals(
+            null,
+            output.get('result'),
+            'Debe devolver un resultado booleano'
+        );
+    }
+
+
+    @IsTest
+    static void testEvaluarHoraMaximaCancelarCasosArgumentoNull() {
+
+        CustomOmniStudioFunctions service = new CustomOmniStudioFunctions();
+
+        Map<String,Object> input = new Map<String,Object>();
+        Map<String,Object> output = new Map<String,Object>();
+
+        input.put(
+            'arguments',
+            new List<Object>{null}
+        );
+
+
+        Test.startTest();
+
+        service.invokeMethod(
+            'evaluarHoraMaximaCancelarCasos',
+            input,
+            output,
+            new Map<String,Object>()
+        );
+
+        Test.stopTest();
+
+
+        System.assertEquals(
+            false,
+            output.get('result')
+        );
+    }
+
+
+    @IsTest
+    static void testEvaluarHoraMaximaCancelarCasosFechaInvalida() {
+
+        CustomOmniStudioFunctions service = new CustomOmniStudioFunctions();
+
+        Map<String,Object> input = new Map<String,Object>();
+        Map<String,Object> output = new Map<String,Object>();
+
+        input.put(
+            'arguments',
+            new List<Object>{'texto-no-fecha'}
+        );
+
+
+        Test.startTest();
+
+        service.invokeMethod(
+            'evaluarHoraMaximaCancelarCasos',
+            input,
+            output,
+            new Map<String,Object>()
+        );
+
+        Test.stopTest();
+
+
+        System.assertEquals(
+            false,
+            output.get('result')
+        );
+    }
 }

@@ -7,6 +7,7 @@ History
 <Date>            <Author>             <Description>             <Version>
 29-May-24         Emmanuel Ruarte       HDU-736687              inicial version
 07-06-2024		 Hever Salas			HDU-736685				  1.0.1
+19-11-2026		VASS
 ----------------------------------------------------------------------------*/
 global with sharing class OrderReserveSimBackPropogateAttributes implements vlocity_cmt.XOMOrchestrationInterfaces.IAutoTask {
     global void executeBatch(List <vlocity_cmt__OrchestrationItem__c> items){
@@ -66,8 +67,15 @@ global with sharing class OrderReserveSimBackPropogateAttributes implements vloc
                                                                                           from vlocity_cmt__FulfilmentRequestLineDecompRelationship__c
                                                                                           where vlocity_cmt__SourceOrderItemId__r.Order.vlocity_cmt__OrchestrationPlanId__c =: orchestItem.vlocity_cmt__OrchestrationPlanId__c
                                                                                           and vlocity_cmt__DestinationFulfilmentRequestLineId__c =: orchestItem.vlocity_cmt__FulfilmentRequestLineId__c
-                                                                                          AND vlocity_cmt__SourceOrderItemId__r.Product2.Name = 'SIM Card' WITH SECURITY_ENFORCED
+                                                                                          AND vlocity_cmt__SourceOrderItemId__r.Product2.Name IN ('SIM Card','eSIM')
+                                                                                          AND vlocity_cmt__SourceOrderItemId__r.vlocity_cmt__Action__c != 'Disconnect' WITH SECURITY_ENFORCED
                                                                                          ];
+        /*List<vlocity_cmt__FulfilmentRequestLineDecompRelationship__c> frlDecomposeList = [SELECT Id, vlocity_cmt__SourceOrderItemId__c 
+                                                                                          from vlocity_cmt__FulfilmentRequestLineDecompRelationship__c
+                                                                                          where vlocity_cmt__SourceOrderItemId__r.Order.vlocity_cmt__OrchestrationPlanId__c =: orchestItem.vlocity_cmt__OrchestrationPlanId__c
+                                                                                          and vlocity_cmt__DestinationFulfilmentRequestLineId__c =: orchestItem.vlocity_cmt__FulfilmentRequestLineId__c
+                                                                                          AND vlocity_cmt__SourceOrderItemId__r.Product2.Name = 'SIM Card' WITH SECURITY_ENFORCED
+                                                                                         ];*/
         System.debug('========frlDecomposeList======='+frlDecomposeList);
         List<OrderItem> oiUpdateList = new List<OrderItem>();
         Map<String, object> oliAttributeSelectedValue  = new Map<String, object>();

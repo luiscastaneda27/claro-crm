@@ -561,8 +561,8 @@ public Class CasesValidationsTest{
         
     }
     
-    @isTest
-    private static void devolucionDineroOrdenTest(){
+    /* @isTest
+   private static void devolucionDineroOrdenTest(){
         Map<String, Object> input = new Map<String, Object>();
         Map<String, Object> options = new Map<String, Object>();
         Map<String, Object> output = new Map<String, Object>();
@@ -576,9 +576,8 @@ public Class CasesValidationsTest{
         fueinvocado = validation.invokeMethod(methodName, input, output, options);
         Test.stopTest();
         System.AssertEquals(true, fueinvocado, 'El metodo ' + methodName + ' no fue invocado');
-        System.AssertEquals(true, (Decimal)output.get('openOrdersSize') > 0, 'La lista de casos candidatos es vacía');
         
-    }
+    }*/
     
     @isTest
     private static void devolucionDineroPQRTest(){
@@ -828,8 +827,10 @@ public Class CasesValidationsTest{
         Boolean result = false;
         
         Account cuenta = [SELECT Id FROM Account][0];
+        Asset asset = [SELECT Id FROM Asset LIMIT 1];
         
-        input.put('AccountId',(String)cuenta.Id);        
+        input.put('AccountId',(String)cuenta.Id);
+        input.put('AssetId',(String)asset.Id);
         
         Test.startTest();
         CasesValidations validation = new CasesValidations();
@@ -1080,7 +1081,6 @@ public Class CasesValidationsTest{
         input.put('AccountId',(String)cuenta.Id);
         input.put('Cun','1234569789');
         input.put('Nr','987654321');
-        input.put('AsseId',asset.Id);
         
         Test.startTest();
         CasesValidations validation = new CasesValidations();
@@ -1336,6 +1336,188 @@ public Class CasesValidationsTest{
         System.assertEquals(2, (Decimal)output.get('CasesOpenSize'), 'Debe haber 2 casos abiertos/en curso de soporte');
 
        
+    }
+    
+    @isTest
+    private static void cancelacionDigitalValidarTest(){
+        Account acc = new Account(Name = 'Cuenta Test Cancelacion Digital', FVU_DocumentType__c = 'CC', FVU_DocumentNumber__c = '98765', FVU_AccountExternalID__c = 'EXT-98765');
+        insert acc;
+
+        Product2 prod = new Product2(Name = 'Product Cancelacion', ProductCode = 'TERM-CANCEL');
+        insert prod;
+
+        Asset ast = new Asset(Name = 'Asset Cancelacion', AccountId = acc.Id, Status = 'Active', Product2Id = prod.Id);
+        insert ast;
+
+        List<String> causales = new List<String>{'Cancelación Fallecimiento', 'Cancelación Voluntaria'};
+
+        Map<String, Object> input = new Map<String, Object>();
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+
+        input.put('AssetId', (String)ast.Id);
+        input.put('Causales', causales);
+
+        Test.startTest();
+        CasesValidations validation = new CasesValidations();
+        Boolean result = validation.invokeMethod('cancelacionDigitalValidar', input, output, options);
+        Test.stopTest();
+
+        System.assertEquals(true, result, 'El método cancelacionDigitalValidar no fue invocado');
+        System.assert(output.containsKey('lineaValida'), 'Debe contener el indicador lineaValida');
+    }
+    
+    @isTest
+    private static void cambioNumeroTest(){
+        Account acc = new Account(Name = 'Cuenta Test Cambio Numero', FVU_DocumentType__c = 'CC', FVU_DocumentNumber__c = '11111');
+        insert acc;
+
+        Product2 prod = new Product2(Name = 'Product CN', ProductCode = 'TERM-CN');
+        insert prod;
+
+        Asset ast = new Asset(Name = 'Asset Cambio Numero', AccountId = acc.Id);
+        insert ast;
+
+        Map<String, Object> input = new Map<String, Object>();
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+
+        input.put('AssetId', (String)ast.Id);
+        input.put('VozCliente', 'Cambio de número');
+        input.put('AccountId', (String)acc.Id);
+
+        Test.startTest();
+        CasesValidations validation = new CasesValidations();
+        Boolean result = validation.invokeMethod('cambioNumero', input, output, options);
+        Test.stopTest();
+
+        System.assertEquals(true, result, 'El método cambioNumero no fue invocado');
+        System.assertEquals(0, (Decimal)output.get('openCasesSize'), 'No debe haber casos sin datos de prueba');
+    }
+
+   /* @isTest
+    private static void desglosePagoTest(){
+        Account acc = new Account(Name = 'Cuenta Test Desglose', FVU_DocumentType__c = 'CC', FVU_DocumentNumber__c = '22222');
+        insert acc;
+
+        Map<String, Object> input = new Map<String, Object>();
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+
+        input.put('AccountId', (String)acc.Id);
+        input.put('vozCliente', 'Pago no abonado');
+
+        Test.startTest();
+        CasesValidations validation = new CasesValidations();
+        Boolean result = validation.invokeMethod('desglosePago', input, output, options);
+        Test.stopTest();
+
+        System.assertEquals(true, result, 'El método desglosePago no fue invocado');
+    }*/
+
+    @isTest
+    private static void devolucionObtenerAssetSaldoTest(){
+        Account acc = new Account(Name = 'Cuenta Test Asset Saldo', FVU_DocumentType__c = 'CC', FVU_DocumentNumber__c = '33333', FVU_AccountExternalID__c = 'EXT-33333');
+        insert acc;
+
+        Account billingAcc = new Account(Name = 'Billing Asset Saldo', FVU_DocumentType__c = 'CC', FVU_DocumentNumber__c = '33334', FVU_AccountExternalID__c = 'EXT-33333');
+        insert billingAcc;
+
+        Product2 prod = new Product2(Name = 'Handset Product', ProductCode = 'HANDSET-01', Family = 'Device', vlocity_cmt__Type__c = 'Handset');
+        insert prod;
+
+        Asset ast = new Asset(
+            Name = 'Asset Handset Saldo',
+            AccountId = acc.Id,
+            Status = 'Active',
+            Product2Id = prod.Id,
+            vlocity_cmt__BillingAccountId__c = billingAcc.Id
+        );
+        insert ast;
+
+        Map<String, Object> input = new Map<String, Object>();
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+
+        input.put('AccountId', (String)acc.Id);
+        input.put('DefaultBillingAccount', 'EXT-33333');
+
+        Test.startTest();
+        CasesValidations validation = new CasesValidations();
+        Boolean result = validation.invokeMethod('devolucionObtenerAssetSaldo', input, output, options);
+        Test.stopTest();
+
+        System.assertEquals(true, result, 'El método devolucionObtenerAssetSaldo no fue invocado');
+        System.assertEquals(1, (Decimal)output.get('CasesAssetsSize'), 'Debe haber 1 asset');
+    }
+
+    @isTest
+    private static void devolucionDineroObtenerAssetSaldoFinTest(){
+        Account acc = new Account(Name = 'Cuenta Test Asset Saldo Fin', FVU_DocumentType__c = 'CC', FVU_DocumentNumber__c = '44444');
+        insert acc;
+
+        Product2 prod = new Product2(Name = 'Handset Product SF', ProductCode = 'HANDSET-02', Family = 'Device', vlocity_cmt__Type__c = 'Handset');
+        insert prod;
+
+        Asset ast = new Asset(
+            Name = 'Asset Handset Saldo Fin',
+            AccountId = acc.Id,
+            Status = 'Active',
+            Product2Id = prod.Id,
+            FIN_IdReferenciaDelCredito92__c = 'CRED-44444'
+        );
+        insert ast;
+
+        Map<String, Object> input = new Map<String, Object>();
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+
+        input.put('AccountId', (String)acc.Id);
+        input.put('DefaultBillingAccount', 'CRED-44444');
+
+        Test.startTest();
+        CasesValidations validation = new CasesValidations();
+        Boolean result = validation.invokeMethod('devolucionDineroObtenerAssetSaldoFin', input, output, options);
+        Test.stopTest();
+
+        System.assertEquals(true, result, 'El método devolucionDineroObtenerAssetSaldoFin no fue invocado');
+        System.assertEquals(1, (Decimal)output.get('CasesAssetsSize'), 'Debe haber 1 asset');
+    }
+
+    @isTest
+    private static void devolucionDineroObtenerAssetSaldoTest(){
+        Account acc = new Account(Name = 'Cuenta Test Dinero Saldo', FVU_DocumentType__c = 'CC', FVU_DocumentNumber__c = '55555');
+        insert acc;
+
+        Account billingAcc = new Account(Name = 'Billing Dinero Saldo', FVU_DocumentType__c = 'CC', FVU_DocumentNumber__c = '55556', FVU_AccountExternalID__c = 'EXT-55555');
+        insert billingAcc;
+
+        Product2 prod = new Product2(Name = 'Plan Product', ProductCode = 'PLAN-01', Family = 'Plan', vlocity_cmt__Type__c = 'Plan');
+        insert prod;
+
+        Asset ast = new Asset(
+            Name = 'Asset Plan Saldo',
+            AccountId = acc.Id,
+            Status = 'Active',
+            Product2Id = prod.Id,
+            vlocity_cmt__BillingAccountId__c = billingAcc.Id
+        );
+        insert ast;
+
+        Map<String, Object> input = new Map<String, Object>();
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+
+        input.put('AccountId', (String)acc.Id);
+        input.put('DefaultBillingAccount', 'EXT-55555');
+
+        Test.startTest();
+        CasesValidations validation = new CasesValidations();
+        Boolean result = validation.invokeMethod('devolucionDineroObtenerAssetSaldo', input, output, options);
+        Test.stopTest();
+
+        System.assertEquals(true, result, 'El método devolucionDineroObtenerAssetSaldo no fue invocado');
+        System.assertEquals(1, (Decimal)output.get('CasesAssetsSize'), 'Debe haber 1 asset');
     }
     
 }

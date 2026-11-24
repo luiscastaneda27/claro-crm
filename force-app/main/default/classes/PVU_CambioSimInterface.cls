@@ -14,6 +14,8 @@
 2025-06-13        Hllanos               Adding validateHistoryRoboPerdida
 2026-02-16        JAguilar              Change on merge by         08
                                         position method
+2026-05-18        hllanos              calculateMidnightDates      09
+                                        
 ***********************************************************************************/
 global with sharing class PVU_CambioSimInterface implements vlocity_cmt.VlocityOpenInterface{
 	class MyException extends Exception{}
@@ -40,6 +42,8 @@ global with sharing class PVU_CambioSimInterface implements vlocity_cmt.VlocityO
                 Map<String, Object> response = validateHistoryRoboPerdida(inputMap, outMap);
             } else if (methodName.Equals('checkPromoCFMLast6Months')){
                 Map<String, Object> response = checkPromoCFMLast6Months(inputMap, outMap);
+            } else if (methodName.Equals('calculateMidnightDates')){
+                Map<String, Object> response = calculateMidnightDates(inputMap, outMap);
             }
             
         } catch(Exception ex) {
@@ -558,4 +562,89 @@ global with sharing class PVU_CambioSimInterface implements vlocity_cmt.VlocityO
         System.debug('outMap>' + outMap);
         return outMap;
     }
+    
+    private Map<String, Object> calculateMidnightDates(Map<String, Object> input, Map<String, Object> output) {
+        try {
+            // 1. Obtener parámetros de entrada desde el IP
+            String orderId = (String) input.get('orderId');
+            // Se espera que envíes "HH:mm" (ej. "22:00") desde el IP en lugar de minutos enteros
+            String timeCheckout = (String) input.get('minutesCheckout'); 
+            String timeSOM = (String) input.get('minutesSOM');      
+            
+            String requestedDateStr = (String) input.get('requestedDate'); 
+            Date baseDate;
+            
+            // Validar que vengan las horas
+            if (String.isBlank(timeCheckout) || String.isBlank(timeSOM)) {
+                output.put('EndProcess', 'error');
+                output.put('error', 'Los parámetros timeCheckout y timeSOM ("HH:mm") son obligatorios.');
+                return output;
+            }
+            
+            if (String.isNotBlank(requestedDateStr)) {
+                // MODO DIRECTO:
+                baseDate = Date.valueOf(requestedDateStr.substring(0, 10));
+            } else {
+                // MODO ORDEN
+                if (String.isBlank(orderId)) {
+                    output.put('EndProcess', 'error');
+                    output.put('error', 'El orderId es obligatorio si no se envía requestedDate.');
+                    return output;
+                }
+                
+                Order ord = [SELECT Id, vlocity_cmt__RequestedStartDate__c FROM Order WHERE Id = :orderId LIMIT 1];
+                
+                if (ord.vlocity_cmt__RequestedStartDate__c == null) {
+                    output.put('EndProcess', 'error');
+                    output.put('error', 'El campo RequestedStartDate está vacío en la Orden.');
+                    return output;
+                }
+                
+                Object requestedDateObj = ord.vlocity_cmt__RequestedStartDate__c;
+                if (requestedDateObj instanceof Datetime) {
+                    baseDate = ((Datetime)requestedDateObj).dateGmt(); // dateGmt() para evitar el desfase
+                } else {
+                    baseDate = (Date)requestedDateObj;
+                }
+            }
+            
+            // 2. Restar UN DÍA a la fecha base
+            Date previousDay = baseDate.addDays(-1);
+            
+            // 3. Extraer la hora y los minutos de los parámetros "HH:mm"
+            List<String> partsCheckout = timeCheckout.split(':');
+            List<String> partsSOM = timeSOM.split(':');
+            
+            Integer hourCheckoutCOL = Integer.valueOf(partsCheckout[0]);
+            Integer minCheckout     = Integer.valueOf(partsCheckout[1]);
+            Integer hourSOMCOL      = Integer.valueOf(partsSOM[0]);
+            Integer minSOM          = Integer.valueOf(partsSOM[1]);
+
+            // Convertir hora Colombia a UTC (COL = UTC - 5)
+            Integer hourCheckoutUTC = Math.mod(hourCheckoutCOL + 5, 24);
+            Integer hourSOMUTC      = Math.mod(hourSOMCOL      + 5, 24);
+
+            // Si la hora UTC < 5 significa que en Colombia todavía es el día anterior
+            // (ej: 22 COL → 03 UTC), por lo que se aplica sobre baseDate y no previousDay
+            Date targetDayCheckout = (hourCheckoutUTC < 5) ? baseDate : previousDay;
+            Date targetDaySOM      = (hourSOMUTC      < 5) ? baseDate : previousDay;
+            DateTime adjustedDate1 = DateTime.newInstanceGmt(targetDayCheckout.year(), targetDayCheckout.month(), targetDayCheckout.day(), hourCheckoutUTC, minCheckout, 0);
+            DateTime adjustedDate2 = DateTime.newInstanceGmt(targetDaySOM.year(),      targetDaySOM.month(),      targetDaySOM.day(),      hourSOMUTC,      minSOM,      0);
+            
+            String dateFormat = 'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\'';
+            
+            // 5. Asignar al Output
+            output.put('fechaAjustadaCheckout', adjustedDate1.formatGMT(dateFormat));
+            output.put('fechaAjustadaSOM', adjustedDate2.formatGMT(dateFormat));
+            output.put('EndProcess', 'success');
+            
+            return output;
+            
+        } catch(Exception e) {
+            output.put('EndProcess', 'error');
+            output.put('error', e.getMessage());
+            return output;
+        }
+    }
+
 }

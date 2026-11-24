@@ -80,6 +80,14 @@ global with sharing class OM_UpdateJsonAttribute implements vlocity_cmt.VlocityO
     public void modifyJSON(Map<String,Object> inputMap, Map<String,Object> outMap, Map<String,Object> options){
         
        	Map<String,Object> mapAttributeCodeToValue = (Map<String,Object>)inputMap.get('mapAttributeCodeToValue');
+        Set<String> lstAvoidNullAttr = new Set<String>();
+        String sAvoidNullAttr = '';
+        if(inputMap.containskey('avoidNullAttr')){
+            sAvoidNullAttr = String.valueOf(inputMap.get('avoidNullAttr'));
+        }
+        if(!String.isEmpty(sAvoidNullAttr)){
+            lstAvoidNullAttr = new Set<String>(sAvoidNullAttr.split(','));
+        }
         List<Object> lstAttributes = new List<Object>();
 
         Map<String,Object> jsonAttribute = (Map<String,Object>)inputMap.get('jsonAttribute');
@@ -88,15 +96,18 @@ global with sharing class OM_UpdateJsonAttribute implements vlocity_cmt.VlocityO
         for(Object ItemAttribute: lstAttributes){
             Map<String,Object> attribute = new Map<String,Object>();
             attribute = (Map<String,Object>)ItemAttribute;
+            String sAttrCode = (String)attribute.get('attributeuniquecode__c');
             
-            if(mapAttributeCodeToValue.containsKey((String)attribute.get('attributeuniquecode__c'))){
-                String newValueAttribute = (String)mapAttributeCodeToValue.get((String)attribute.get('attributeuniquecode__c'));
-                Map<String, Object> attributeRunTimeInfo = new Map<String,Object>();
-                attributeRunTimeInfo = (Map<String,Object>)attribute.get('attributeRunTimeInfo');
-                attributeRunTimeInfo.put('value', newValueAttribute);
-                attribute.put('attributeRunTimeInfo', attributeRunTimeInfo);
-                attribute.put('SegmentValue', newValueAttribute);
-                ItemAttribute = attribute;
+            if(mapAttributeCodeToValue.containsKey(sAttrCode)){
+                String newValueAttribute = (String)mapAttributeCodeToValue.get(sAttrCode);
+                if(!lstAvoidNullAttr.contains(sAttrCode) || (lstAvoidNullAttr.contains(sAttrCode) && newValueAttribute != null && !String.isEmpty(newValueAttribute))){
+                    Map<String, Object> attributeRunTimeInfo = new Map<String,Object>();
+                    attributeRunTimeInfo = (Map<String,Object>)attribute.get('attributeRunTimeInfo');
+                    attributeRunTimeInfo.put('value', newValueAttribute);
+                    attribute.put('attributeRunTimeInfo', attributeRunTimeInfo);
+                    attribute.put('SegmentValue', newValueAttribute);
+                    ItemAttribute = attribute;
+                }
             }
         }
 		jsonAttribute = new Map<String,Object>();

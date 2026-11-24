@@ -67,6 +67,34 @@ public with sharing class OM_UpdateJsonAttributeTest {
     }
     
     @isTest
+    static void modifyJSONNullAttrTest(){
+        
+        OM_UpdateJsonAttribute testUpdateJSON = new OM_UpdateJsonAttribute();
+    	
+        vlocity_cmt__FulfilmentRequestLine__c frl = new vlocity_cmt__FulfilmentRequestLine__c();
+        frl.vlocity_cmt__JSONAttribute__c = '{"223541c2-e1cb-fe89-a86d-b07a65470f1b":[{"attributefilterable__c":true,"value__c":null,"valuedatatype__c":"Text","categorycode__c":"223541c2-e1cb-fe89-a86d-b07a65470f1b","objecttype__c":null,"isconfigurable__c":true,"objectid__c":"","Name":"TechRCNRN","isnotassetizable__c":false,"querylabel__c":null,"rulemessage__c":null,"hasrule__c":false,"valueinnumber__c":null,"valuedescription__c":null,"querycode__c":null,"id":"","attributedisplaysequence__c":null,"isquerydriven__c":false,"formatmask__c":null,"attributeconfigurable__c":true,"categoryname__c":"Category","ishidden__c":false,"isreadonly__c":false,"isactive__c":true,"attributeRunTimeInfo":{"default":"","dataType":"Text","value":""},"Code":"TechRCNRN","attributeid__c":"a0a79000000G4G1AAK","attributedisplayname__c":"TechRCNRN","attributecategoryid__c":"","isrequired__c":false,"Filterable":false,"uidisplaytype__c":null,"attributeuniquecode__c":"TechRCNRN","displaysequence__c":null,"SegmentValue":""}]}';
+        INSERT frl;
+        
+
+        Map<String, Object> output = new Map<String, Object>();
+        Map<String, Object> options = new Map<String, Object>();
+        
+        String JSONAttrInput = '{"jsonAttribute":{"223541c2-e1cb-fe89-a86d-b07a65470f1b":[{"SegmentValue":"","displaysequence__c":null,"attributeuniquecode__c":"TechPCcontractId","uidisplaytype__c":null,"Filterable":false,"isrequired__c":false,"attributecategoryid__c":"","attributedisplayname__c":"TechPCcontractId","attributeid__c":"a0a79000000G48yAAC","Code":"TechPCcontractId","attributeRunTimeInfo":{"value":"CONTR0000210082","dataType":"Text","default":""},"isactive__c":true,"isreadonly__c":false,"ishidden__c":false},{"SegmentValue":"","displaysequence__c":null,"attributeuniquecode__c":"TechPCfechaActivacion","uidisplaytype__c":null,"Filterable":false,"isrequired__c":false,"attributecategoryid__c":"","attributedisplayname__c":"TechPCfechaActivacion","attributeid__c":"a0a79000000G490AAC","Code":"TechPCfechaActivacion","attributeRunTimeInfo":{"value":"","dataType":"Text","default":""},"isactive__c":true,"isreadonly__c":false,"ishidden__c":false}]},"mapAttributeCodeToValue":{"TechPCfechaActivacion":"2024-06-25T10:05:00.000Z","TechPCcontractId":null},"avoidNullAttr":"TechPCcontractId"}';
+		Map<String, object> input = (Map<String, object>)JSON.deserializeUntyped(JSONAttrInput); 
+
+        system.debug(input);
+        
+        Test.startTest();
+        testUpdateJSON.invokeMethod('modifyJSON', input, output, options);
+        Test.stopTest();
+        
+		String result = String.valueOf(output.get('JSONAttribute'));
+        system.debug(result);
+        System.Assert(result.contains('CONTR0000210082'));
+        
+    }
+    
+    @isTest
     static void extractAttributeJSONTest(){
         OM_UpdateJsonAttribute testUpdateJSON = new OM_UpdateJsonAttribute();
         Map<String, Object> output = new Map<String, Object>();

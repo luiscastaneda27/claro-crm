@@ -316,7 +316,7 @@ global without sharing class OM_AccountDetailsHelperTest{
         OrderIntegrationSystemInterfaceUtility.getOMEricsonMappings();
         
         Order orderInstance = [SELECT Id, Type, FVU_OrderSubType__c, FVU_OriginalChannel__c, PVU_SuspensionLevel__c, vlocity_cmt__OrchestrationPlanId__c, 
-                               CreatedBy.FVU_CodigoD__c
+                               CreatedBy.FVU_CodigoD__c, PVU_NewBillCycle__c
                               FROM Order 
                                LIMIT 1];
         
